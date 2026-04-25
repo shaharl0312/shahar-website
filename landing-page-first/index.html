@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>השקעות ללוחמים — שחר לוי</title>
+  <meta name="description" content="תוכנית ליווי אישית שתכניס אותך לעולם ההשקעות בבטחה. 3 מפגשים. 3 שעות. ויוצאים משקיעים בפועל." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       CSS CUSTOM PROPERTIES
+    ============================================================ */
+    :root {
+      --bg-deep:          #0d0e10;
+      --bg-panel:         #141517;
+      --bg-surface:       rgba(255,255,255,0.025);
+      --bg-surface-hover: rgba(255,255,255,0.04);
+      --gold:             #C9A84C;
+      --gold-dim:         rgba(201,168,76,0.8);
+      --gold-glow:        rgba(201,168,76,0.15);
+      --gold-border:      rgba(201,168,76,0.25);
+      --text-primary:     #f4f5f5;
+      --text-body:        #9ca3af;
+      --text-muted:       #6b7280;
+      --border:           rgba(255,255,255,0.07);
+      --border-strong:    rgba(255,255,255,0.12);
+      --green-glow:       rgba(34,197,94,0.06);
+      --green-border:     rgba(34,197,94,0.2);
+      --radius-sm:        6px;
+      --radius-md:        8px;
+      --radius-lg:        12px;
+      --transition-fast:  200ms ease;
+      --transition-base:  300ms ease;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-feature-settings: "cv01", "ss03";
+      background-color: var(--bg-deep);
+      color: var(--text-body);
+      line-height: 1.65;
+      font-size: 17px;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a  { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button { font-family: inherit; border: none; outline: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ============================================================
+       TYPOGRAPHY SCALE
+    ============================================================ */
+    h1, h2, h3, h4 {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    h1 {
+      font-size: clamp(36px, 6vw, 62px);
+      letter-spacing: -1.4px;
+      line-height: 1.05;
+    }
+
+    h2 {
+      font-size: clamp(28px, 4vw, 40px);
+      letter-spacing: -0.8px;
+      line-height: 1.2;
+    }
+
+    h3 {
+      font-size: clamp(18px, 2.5vw, 22px);
+      letter-spacing: -0.4px;
+      line-height: 1.3;
+    }
+
+    p { color: var(--text-body); }
+
+    /* ============================================================
+       LAYOUT UTILITIES
+    ============================================================ */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-sm {
+      padding: 72px 0;
+    }
+
+    /* ============================================================
+       ANIMATION CLASSES
+    ============================================================ */
+    .animate {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .animate.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .animate-delay-1 { transition-delay: 0.1s; }
+    .animate-delay-2 { transition-delay: 0.2s; }
+    .animate-delay-3 { transition-delay: 0.3s; }
+    .animate-delay-4 { transition-delay: 0.4s; }
+    .animate-delay-5 { transition-delay: 0.5s; }
+
+    /* ============================================================
+       SHARED COMPONENTS
+    ============================================================ */
+
+    /* PILL BADGE */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201,168,76,0.12);
+      border: 1px solid var(--gold-border);
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      padding: 6px 14px;
+      border-radius: 40px;
+    }
+
+    /* CTA BUTTON */
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--gold);
+      color: #0d0e10;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      transition:
+        background var(--transition-fast),
+        box-shadow var(--transition-fast),
+        transform var(--transition-fast);
+      box-shadow:
+        0 0 0 0 rgba(201,168,76,0),
+        0 4px 16px rgba(201,168,76,0.25);
+      min-height: 44px;
+      white-space: nowrap;
+    }
+
+    .btn-cta:hover {
+      background: #d9b85c;
+      box-shadow:
+        0 0 0 3px rgba(201,168,76,0.18),
+        0 8px 28px rgba(201,168,76,0.35);
+      transform: translateY(-1px);
+    }
+
+    .btn-cta:active { transform: translateY(0); }
+
+    .btn-cta-lg {
+      font-size: 18px;
+      padding: 17px 36px;
+    }
+
+    /* SURFACE CARD */
+    .card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      transition: background var(--transition-base);
+    }
+
+    .card:hover {
+      background: var(--bg-surface-hover);
+    }
+
+    /* ============================================================
+       NAVIGATION
+    ============================================================ */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-panel);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: background var(--transition-base), backdrop-filter var(--transition-base);
+    }
+
+    .nav.scrolled {
+      background: rgba(20,21,23,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      padding: 0 24px;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    /* In RTL: logo on right (natural start), CTA on left (natural end) */
+    .nav-logo img {
+      max-height: 40px;
+      width: auto;
+    }
+
+    .nav-cta {
+      font-size: 14px;
+      padding: 10px 20px;
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      background:
+        radial-gradient(ellipse 80% 50% at 20% 0%, rgba(201,168,76,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 100%, rgba(201,168,76,0.05) 0%, transparent 50%),
+        var(--bg-deep);
+      padding: 120px 0 140px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 40% 60% at 50% 40%, rgba(201,168,76,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      margin-bottom: 28px;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--text-body);
+      max-width: 640px;
+      margin: 0 auto 40px;
+    }
+
+    .hero-cta-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .hero-footnote {
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-footnote svg {
+      flex-shrink: 0;
+      color: var(--gold);
+    }
+
+    /* ============================================================
+       SECTION HEADERS
+    ============================================================ */
+    .section-header {
+      margin-bottom: 56px;
+    }
+
+    .section-header h2 {
+      margin-bottom: 16px;
+    }
+
+    .section-header p {
+      font-size: 18px;
+      max-width: 600px;
+    }
+
+    /* ============================================================
+       PROBLEM SECTION
+    ============================================================ */
+    .problem-section {
+      background: var(--bg-panel);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .problem-text {
+      max-width: 680px;
+      font-size: 18px;
+      line-height: 1.8;
+      white-space: pre-line;
+    }
+
+    .problem-text strong {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    /* ============================================================
+       STORY SECTION
+    ============================================================ */
+    .story-box {
+      border-right: 3px solid var(--gold);
+      background: rgba(201,168,76,0.04);
+      padding: 28px 32px;
+      border-radius: var(--radius-md);
+      margin-bottom: 32px;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--text-body);
+    }
+
+    .story-followup {
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--text-body);
+      max-width: 640px;
+    }
+
+    /* ============================================================
+       SOCIAL PROOF
+    ============================================================ */
+    .proof-section {
+      background: var(--bg-panel);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .quote-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-right: 3px solid var(--gold);
+      border-radius: var(--radius-lg);
+      padding: 32px 36px;
+      margin-bottom: 48px;
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--text-body);
+      position: relative;
+    }
+
+    .quote-card::before {
+      content: '\201C';
+      font-size: 80px;
+      color: var(--gold);
+      opacity: 0.15;
+      position: absolute;
+      top: -10px;
+      left: 24px;
+      line-height: 1;
+      font-family: Georgia, serif;
+      pointer-events: none;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .stat-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      transition: background var(--transition-base), border-color var(--transition-base);
+    }
+
+    .stat-card:hover {
+      background: var(--bg-surface-hover);
+      border-color: var(--gold-border);
+    }
+
+    .stat-number {
+      font-size: clamp(36px, 5vw, 52px);
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: -1px;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .stat-text {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-body);
+    }
+
+    /* ============================================================
+       HOW IT WORKS
+    ============================================================ */
+    .steps-container {
+      position: relative;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      position: relative;
+    }
+
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      right: calc(33.333% - 28px);
+      left: calc(33.333% - 28px);
+      height: 1px;
+      background: linear-gradient(to left, transparent, var(--gold-border) 20%, var(--gold-border) 80%, transparent);
+      pointer-events: none;
+    }
+
+    .step-card {
+      padding: 0 24px 0;
+      position: relative;
+    }
+
+    .step-card:first-child { padding-right: 0; }
+    .step-card:last-child  { padding-left: 0; }
+
+    .step-number-circle {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid var(--gold-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+    }
+
+    .step-title {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      line-height: 1.35;
+    }
+
+    .step-text {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text-body);
+    }
+
+    /* ============================================================
+       PRICING
+    ============================================================ */
+    .pricing-intro {
+      max-width: 680px;
+      font-size: 18px;
+      line-height: 1.8;
+      margin-bottom: 48px;
+    }
+
+    .price-card-wrap {
+      max-width: 560px;
+      margin: 0 auto 40px;
+    }
+
+    .price-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      position: relative;
+      box-shadow:
+        0 0 0 1px rgba(201,168,76,0.05),
+        0 20px 60px rgba(0,0,0,0.4),
+        0 0 80px rgba(201,168,76,0.04);
+    }
+
+    .price-badge-top {
+      margin-bottom: 24px;
+    }
+
+    .price-amount {
+      font-size: clamp(52px, 8vw, 72px);
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 32px;
+    }
+
+    .price-features {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+
+    .price-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 16px;
+      color: var(--text-body);
+      line-height: 1.5;
+    }
+
+    .price-feature svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--gold);
+    }
+
+    .price-bold-note {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-primary);
+      line-height: 1.6;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .urgency-box {
+      background: rgba(201,168,76,0.08);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: var(--radius-md);
+      padding: 24px 28px;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--text-body);
+      margin-bottom: 16px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .guarantee-box {
+      background: var(--green-glow);
+      border: 1px solid var(--green-border);
+      border-radius: var(--radius-md);
+      padding: 24px 28px;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--text-body);
+      margin-bottom: 32px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .guarantee-box svg {
+      flex-shrink: 0;
+      color: rgba(34,197,94,0.7);
+      margin-top: 2px;
+    }
+
+    .pricing-tagline {
+      font-size: 16px;
+      color: var(--text-muted);
+      font-style: italic;
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+
+    .pricing-cta-wrap {
+      text-align: center;
+    }
+
+    /* ============================================================
+       FAQ
+    ============================================================ */
+    .faq-section {
+      background: var(--bg-panel);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-list {
+      max-width: 720px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-item:first-child {
+      border-top: 1px solid var(--border);
+    }
+
+    .faq-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 0;
+      cursor: pointer;
+      background: none;
+      text-align: right;
+      color: var(--text-primary);
+      font-size: 17px;
+      font-weight: 500;
+      line-height: 1.4;
+      transition: color var(--transition-fast);
+      min-height: 44px;
+    }
+
+    .faq-trigger:hover {
+      color: var(--gold);
+    }
+
+    .faq-icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .faq-icon svg {
+      transition: transform var(--transition-base);
+      color: var(--text-muted);
+    }
+
+    .faq-item.open .faq-icon {
+      background: rgba(201,168,76,0.1);
+      border-color: var(--gold-border);
+    }
+
+    .faq-item.open .faq-icon svg {
+      transform: rotate(180deg);
+      color: var(--gold);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      padding-bottom: 0;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding-bottom: 22px;
+    }
+
+    .faq-answer-inner {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-body);
+    }
+
+    /* ============================================================
+       CLOSING
+    ============================================================ */
+    .closing-section {
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(201,168,76,0.06) 0%, transparent 60%),
+        var(--bg-deep);
+    }
+
+    .closing-options {
+      max-width: 640px;
+      font-size: 18px;
+      line-height: 1.85;
+      color: var(--text-body);
+      margin-bottom: 64px;
+      white-space: pre-line;
+    }
+
+    .closing-options strong {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .closing-final {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .closing-final h2 {
+      margin-bottom: 40px;
+    }
+
+    .closing-signature {
+      margin-top: 28px;
+      font-size: 15px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .footer {
+      background: var(--bg-deep);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 40px 0;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo img {
+      max-height: 32px;
+      width: auto;
+      opacity: 0.7;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* ============================================================
+       DIVIDER
+    ============================================================ */
+    .divider {
+      width: 40px;
+      height: 2px;
+      background: var(--gold);
+      margin-bottom: 24px;
+      opacity: 0.6;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 900px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .steps-grid::before {
+        display: none;
+      }
+
+      .step-card {
+        padding: 0;
+        padding-bottom: 40px;
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+      }
+
+      .step-card:last-child {
+        padding-bottom: 0;
+      }
+
+      .step-card-content {
+        flex: 1;
+      }
+
+      .step-number-circle {
+        margin-bottom: 0;
+        flex-shrink: 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .section  { padding: 72px 0; }
+      .section-sm { padding: 56px 0; }
+
+      .hero { padding: 80px 0 100px; }
+
+      h1 { letter-spacing: -0.8px; }
+      h2 { letter-spacing: -0.4px; }
+
+      .nav-inner { padding: 0 16px; }
+      .nav-cta {
+        font-size: 13px;
+        padding: 9px 14px;
+      }
+
+      .story-box { padding: 20px 20px 20px 20px; }
+      .price-card { padding: 28px 24px; }
+      .quote-card { padding: 24px 24px; }
+
+      .stats-grid { grid-template-columns: 1fr; }
+
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <nav class="nav" id="main-nav" aria-label="ניווט ראשי">
+    <div class="nav-inner">
+      <a href="https://katzr.net/c98992" class="btn-cta nav-cta" aria-label="פתיחת טופס ליצירת קשר">
+        אני רוצה שהכסף שלי יתחיל לעבוד &#8592;
+      </a>
+      <a href="/" class="nav-logo" aria-label="שחר לוי &#8212; השקעות ללוחמים">
+        <img src="../../My logo.png" alt="לוגו שחר לוי &#8212; השקעות ללוחמים" />
+      </a>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section class="hero" aria-label="גיבור">
+    <div class="hero-inner">
+      <div class="hero-badge animate">
+        <span class="badge">תוכנית ליווי אישית &middot; 297 &#8362;</span>
+      </div>
+
+      <h1 class="animate animate-delay-1">
+        אתה לא חייב להיות מומחה בשוק ההון כדי לגרום לכסף שלך להתחיל לעבוד.
+      </h1>
+
+      <p class="hero-subtitle animate animate-delay-2">
+        תוכנית ליווי אישית שתכניס אותך לעולם ההשקעות בבטחה &#8212; בלי לבזבז שעות על יוטיוב, בלי להתבלבל, ובלי לפחד ללחוץ על כפתור ה&#8217;קנה&#8217;.
+      </p>
+
+      <div class="hero-cta-wrap animate animate-delay-3">
+        <a href="https://katzr.net/c98992" class="btn-cta btn-cta-lg">
+          אני רוצה שהכסף שלי יתחיל לעבוד &#8592;
+        </a>
+        <span class="hero-footnote">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          אנשי קבע ייקבלו 500 ש&#8221;ח בחזרה &#8212; פרטים למטה
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROBLEM SECTION
+  ============================================================ -->
+  <section class="section problem-section" aria-label="הבעיה">
+    <div class="container">
+      <div class="animate">
+        <div class="divider"></div>
+        <h2 style="margin-bottom: 32px;">יש לך כסף. אתה פשוט לא יודע מה לעשות איתו.</h2>
+      </div>
+      <p class="problem-text animate animate-delay-1">אתה מסיים חודש, מסתכל על החשבון, ורואה שוב את אותו הסכום יושב שם.
+לא עלה. לא ירד. סתם שוכב.
+
+ניסית לחפש &#8212; יוטיוב, אינסטגרם, פודקאסטים. כל אחד אומר משהו אחר. מניות, נדל&#8221;ן, קריפטו, ומלא מושגים שלא הפכו אותך לקרוב יותר לפעולה. מלא רעש ואפס כיוון.
+
+אז אתה אומר לעצמך &#8216;הסוף&#8221;ש זה ייקרה&#8217; &#8212; ובלי לשים לב, עוד חודש עובר.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SHAHAR'S STORY
+  ============================================================ -->
+  <section class="section" aria-label="הסיפור של שחר">
+    <div class="container">
+      <div class="animate">
+        <div class="divider"></div>
+        <h2 style="margin-bottom: 32px;">גם אני הייתי שם בדיוק.</h2>
+      </div>
+
+      <div class="story-box animate animate-delay-1">
+        שנה אחרי שנכנסתי לצבא, התחיל להיערם לי כסף. לא הרבה &#8212; אבל משהו.
+        חקרתי חודשים. קראתי, ראיתי, שאלתי.
+        ובסוף, אחרי המון חששות ובלי הבנה אמיתית, אמרתי לעצמי: פשוט אבצע.
+        <br /><br />
+        ואז נכנסתי לקבע &#8212; והמשכורות השתנו. וזה חייב אותי להבין מה אני עושה עם הכסף שלי, כי פתאום זה היה כבר לא &#8216;מעט&#8217;.
+        <br /><br />
+        ואז הבנתי משהו שאף אחד לא אמר לי: זה ממש לא מסובך. זה רק לא מוסבר נכון.
+      </div>
+
+      <p class="story-followup animate animate-delay-2">
+        עזרתי כבר למספר קצינים להיכנס לעולם ההשקעות. ראיתי כמה כסף ישב להם פשוט שוכב. וביחד &#8212; הכנסנו אותו לעבוד.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SOCIAL PROOF
+  ============================================================ -->
+  <section class="section proof-section" aria-label="המלצות">
+    <div class="container">
+      <div class="animate">
+        <div class="divider"></div>
+        <h2 style="margin-bottom: 36px;">קצין לפני שחרור, 100,000 ש&#8221;ח בעו&#8221;ש.</h2>
+      </div>
+
+      <div class="quote-card animate animate-delay-1">
+        &#8216;רצה לעשות את זה המון זמן &#8212; לא ידע מאיפה להתחיל. ביחד בנינו לו אסטרטגיית השקעה, נכנסנו לשוק, ועכשיו הוא יכול לטוס לטייל בעולם &#8212; ויודע שהכסף ממשיך לעבוד בלעדיו.&#8217;
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card animate animate-delay-1">
+          <div class="stat-number">&#215;2</div>
+          <p class="stat-text">מה שמשקיעים היום שווה פי 2 בעוד 7 שנים, בממוצע 10% בשנה.</p>
+        </div>
+        <div class="stat-card animate animate-delay-2">
+          <div class="stat-number">3</div>
+          <p class="stat-text">מפגשים של שעה. זה הכל שצריך.</p>
+        </div>
+        <div class="stat-card animate animate-delay-3">
+          <div class="stat-number">500 &#8362;</div>
+          <p class="stat-text">חזרה לאנשי קבע, רק מעצם פתיחת חשבון.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       HOW IT WORKS
+  ============================================================ -->
+  <section class="section" aria-label="איך זה עובד">
+    <div class="container">
+      <div class="section-header animate">
+        <div class="divider"></div>
+        <h2>3 מפגשים. 3 שעות. ויוצאים משקיעים בפועל.</h2>
+        <p style="margin-top:16px; font-size:18px;">לא קורס. לא PDF. לא סרטון שאולי תראה. אנחנו יושבים ביחד &#8212; ועושים ביחד.</p>
+      </div>
+
+      <div class="steps-container">
+        <div class="steps-grid">
+
+          <!-- Step 1 -->
+          <div class="step-card animate animate-delay-1">
+            <div class="step-number-circle" aria-hidden="true">01</div>
+            <div class="step-card-content">
+              <h3 class="step-title">למה בכלל להשקיע?</h3>
+              <p class="step-text">לפני שנוגעים בכסף &#8212; מבינים את התמונה הגדולה. למה דווקא עכשיו, למה דווקא שוק ההון, ומה קורה לכסף שלא משקיעים אותו. וכבר במפגש הזה יוצאים עם השקעה ראשונה בפועל.</p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="step-card animate animate-delay-2">
+            <div class="step-number-circle" aria-hidden="true">02</div>
+            <div class="step-card-content">
+              <h3 class="step-title">הידע שמפריד בין מי שמרוויח למי שמשלם.</h3>
+              <p class="step-text">יש 4 מושגים שכל משקיע צריך להכיר. מי שלא מכיר אותם &#8212; משלם על זה בלי לדעת. לומדים אותם, מבינים איך משחקים איתם לטובתנו, ופותחים ביחד תיק השקעות אמיתי.</p>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="step-card animate animate-delay-3">
+            <div class="step-number-circle" aria-hidden="true">03</div>
+            <div class="step-card-content">
+              <h3 class="step-title">נכנסים לשוק עם אסטרטגיה.</h3>
+              <p class="step-text">לא &#8216;ניסיון&#8217;. לא &#8216;לנסות לראות מה יקרה&#8217;. נכנסים עם תוכנית, מבצעים השקעה בפועל, ויוצאים עם מפת דרכים לשנים הבאות.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PRICING
+  ============================================================ -->
+  <section class="section" id="pricing" aria-label="מחיר">
+    <div class="container">
+      <div class="animate">
+        <div class="divider"></div>
+        <h2 style="margin-bottom: 28px;">297 ש&#8221;ח. והם עשויים לחזור אליך.</h2>
+      </div>
+
+      <p class="pricing-intro animate animate-delay-1">
+        תקשיב &#8212; לפני שאתה רואה את המחיר, שנייה. קצין בן 23 שמתחיל להשקיע היום 1,000 ש&#8221;ח בחודש &#8212; בגיל 30 יש לו תיק שמכפיל את עצמו. לא בגלל קסם. בגלל שהכסף שמרוויח, מרוויח בעצמו. וככל שממתינים &#8212; זה עובד פחות. כל חודש שהכסף שלך יושב בעו&#8221;ש הוא חודש שהשוק עלה בלעדיך.
+      </p>
+
+      <div class="price-card-wrap animate animate-delay-2">
+        <div class="price-card">
+          <div class="price-badge-top">
+            <span class="badge">המחיר עולה בקרוב</span>
+          </div>
+
+          <div class="price-amount">297 &#8362;</div>
+
+          <ul class="price-features" role="list">
+            <li class="price-feature">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              3 מפגשים אישיים בזום, אחד על אחד
+            </li>
+            <li class="price-feature">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              ביצוע בפועל בכל מפגש &#8212; לא רק ללמוד, לעשות
+            </li>
+            <li class="price-feature">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              סיכומים מלאים של כל מה שעברנו
+            </li>
+            <li class="price-feature">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              כניסה לשוק עם אסטרטגיה ברורה קדימה
+            </li>
+          </ul>
+
+          <p class="price-bold-note">
+            ומי שעובר את כל השלבים ביחד איתי &#8212; ייקבל חזרה חלק משמעותי מהעלות, ישירות לחשבון. אנשי קבע בדרך כלל מקבלים 500 ש&#8221;ח.
+          </p>
+        </div>
+      </div>
+
+      <div class="urgency-box animate animate-delay-3">
+        <strong style="color: var(--gold); font-weight: 500;">שים לב &#8212;</strong>
+        המחיר הזה לא נשאר כאן לתמיד. 297 ש&#8221;ח זה מחיר הפתיחה &#8212; ואחרי שיהיו מספיק ביקורות וממליצים, הוא עולה. אם הגעת לדף הזה עכשיו &#8212; זה הזמן שלך.
+      </div>
+
+      <div class="guarantee-box animate animate-delay-4">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        <span>אם אחרי המפגש הראשון תרגיש שזה לא בשבילך &#8212; אנחנו מפסיקים ואתה לא משלם על מה שלא היה. פשוט כך.</span>
+      </div>
+
+      <p class="pricing-tagline animate animate-delay-5">
+        297 ש&#8221;ח זה המחיר של לקחת את הבן זוג לארוחת ערב טובה. ההבדל הוא שארוחת הערב לא מכפילה את עצמה בעוד 7 שנים.
+      </p>
+
+      <div class="pricing-cta-wrap animate animate-delay-5">
+        <a href="https://katzr.net/c98992" class="btn-cta btn-cta-lg">
+          אני רוצה שהכסף שלי יתחיל לעבוד &#8592;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FAQ
+  ============================================================ -->
+  <section class="section faq-section" aria-label="שאלות נפוצות">
+    <div class="container">
+      <div class="animate">
+        <div class="divider"></div>
+        <h2 style="margin-bottom: 48px;">מה שאתה שכנראה שואל את עצמך.</h2>
+      </div>
+
+      <div class="faq-list animate animate-delay-1" role="list">
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-trigger" aria-expanded="false">
+            <span>איך מתחילים?</span>
+            <span class="faq-icon" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer" role="region">
+            <p class="faq-answer-inner">לוחצים על הכפתור, שולחים הודעה, וקובעים מפגש ראשון. זהו. בלי בלבולי מוח.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-trigger" aria-expanded="false">
+            <span>אין לי זמן. איך 3 שעות יספיקו?</span>
+            <span class="faq-icon" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer" role="region">
+            <p class="faq-answer-inner">שלוש שעות על פני כמה שבועות &#8212; זה שעה אחת פנויה בשבוע. ואנחנו לא מבזבזים אפילו דקה. כל מפגש מסתיים עם פעולה בפועל, לא עם שיעורי בית.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-trigger" aria-expanded="false">
+            <span>אני לא מבין שום דבר בהשקעות. זה בסדר?</span>
+            <span class="faq-icon" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer" role="region">
+            <p class="faq-answer-inner">זה בדיוק בשבילך. מגיעים אפס ויוצאים עם תיק פעיל. לא מניחים שיש ידע מוקדם.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-trigger" aria-expanded="false">
+            <span>כמה כסף צריך כדי להתחיל?</span>
+            <span class="faq-icon" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer" role="region">
+            <p class="faq-answer-inner">הסכום המינימלי הוא 5,000 ש&#8221;ח זמינים להשקעה ראשונית. ראיתי קצינים שמתחילים עם 500 ש&#8221;ח בחודש וקצינים שיש להם 100,000 שיושבים בעו&#8221;ש. המנגנון זהה &#8212; הסכום הוא שלך.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-trigger" aria-expanded="false">
+            <span>למה לא ללמוד לבד מיוטיוב?</span>
+            <span class="faq-icon" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer" role="region">
+            <p class="faq-answer-inner">כי יוטיוב לא יושב איתך ולא לוחץ על &#8216;קנה&#8217; ביחד איתך. המידע קיים. הביצוע &#8212; זה מה שחסר. כאן אנחנו עושים את זה ביחד.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-trigger" aria-expanded="false">
+            <span>המפגשים הם פרונטליים?</span>
+            <span class="faq-icon" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer" role="region">
+            <p class="faq-answer-inner">הכל בזום. לא צריך להגיע לשום מקום. עושים את זה מהמחשב או מהנייד.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CLOSING
+  ============================================================ -->
+  <section class="section closing-section" aria-label="סיכום">
+    <div class="container">
+      <div class="animate">
+        <div class="divider"></div>
+        <h2 style="margin-bottom: 36px;">יש לך שלוש אפשרויות.</h2>
+      </div>
+
+      <p class="closing-options animate animate-delay-1"><strong>אפשרות א&#8217;:</strong> לסגור את הדף הזה, לחזור לשגרה, ולראות את הכסף יושב עוד חודש. ועוד חודש אחריו.
+
+<strong>אפשרות ב&#8217;:</strong> ללכת ללמוד את זה לבד. יוטיוב, פודקאסטים, אינסטגרם &#8212; הכל שם. בין משימה למשימה, בטוח תמצא כמה שעות פנויות לסנן את כל הרעש ולהבין מה נכון לך.
+
+<strong>אפשרות ג&#8217;:</strong> להקדיש 3 שעות &#8212; ולצאת עם תיק פעיל, אסטרטגיה ברורה, ועם הכסף שמתחיל לעבוד בשבילך.</p>
+
+      <div class="closing-final animate animate-delay-2">
+        <h2>אם הגעת עד לכאן &#8212; אתה יודע שהגיע הזמן.</h2>
+        <div style="margin-top: 40px;">
+          <a href="https://katzr.net/c98992" class="btn-cta btn-cta-lg">
+            אני רוצה שהכסף שלי יתחיל לעבוד &#8592;
+          </a>
+        </div>
+        <p class="closing-signature">&#8212; שחר, מי שעשה את הדרך הזאת ומכיר אותה טוב מידי</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer" aria-label="כותרת תחתונה">
+    <div class="footer-inner">
+      <a href="/" aria-label="חזרה לדף הבית">
+        <div class="footer-logo">
+          <img src="../../My logo.png" alt="שחר לוי &#8212; השקעות ללוחמים" />
+        </div>
+      </a>
+      <p class="footer-copy">&#169; 2026 שחר לוי &#8212; השקעות ללוחמים</p>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    /* ============================================================
+       NAV SCROLL BEHAVIOR
+    ============================================================ */
+    (function () {
+      var nav = document.getElementById('main-nav');
+
+      function handleScroll() {
+        var scrollY = window.scrollY || window.pageYOffset;
+        if (scrollY > 50) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+      }
+
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll();
+    })();
+
+    /* ============================================================
+       INTERSECTION OBSERVER — ANIMATE ON SCROLL
+    ============================================================ */
+    (function () {
+      if (!('IntersectionObserver' in window)) {
+        var els = document.querySelectorAll('.animate');
+        for (var i = 0; i < els.length; i++) {
+          els[i].classList.add('visible');
+        }
+        return;
+      }
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      var targets = document.querySelectorAll('.animate');
+      targets.forEach(function (el) {
+        observer.observe(el);
+      });
+    })();
+
+    /* ============================================================
+       FAQ ACCORDION
+    ============================================================ */
+    (function () {
+      var items = document.querySelectorAll('.faq-item');
+
+      items.forEach(function (item) {
+        var trigger = item.querySelector('.faq-trigger');
+
+        trigger.addEventListener('click', function () {
+          var isOpen = item.classList.contains('open');
+
+          // Close all
+          items.forEach(function (other) {
+            other.classList.remove('open');
+            var otherTrigger = other.querySelector('.faq-trigger');
+            if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
+          });
+
+          // Toggle clicked
+          if (!isOpen) {
+            item.classList.add('open');
+            trigger.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+    })();
+
+    /* ============================================================
+       SMOOTH SCROLL FOR ANCHOR LINKS
+    ============================================================ */
+    (function () {
+      var anchors = document.querySelectorAll('a[href^="#"]');
+      anchors.forEach(function (anchor) {
+        anchor.addEventListener('click', function (e) {
+          var href   = anchor.getAttribute('href');
+          var target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
