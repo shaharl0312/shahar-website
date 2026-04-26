@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="UTF-8">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Heebo', sans-serif; background: #1a1a1a; color: #fff; direction: rtl; padding: 24px; }
+h2 { color: #C9A84C; font-size: 22px; margin-bottom: 6px; }
+.subtitle { color: #aaa; font-size: 14px; margin-bottom: 24px; }
+.variants { display: flex; gap: 20px; flex-wrap: wrap; }
+.variant-card { flex: 1; min-width: 280px; border-radius: 16px; overflow: hidden; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; border: 2px solid transparent; }
+.variant-card:hover { transform: translateY(-4px); }
+.variant-card.selected { border-color: #C9A84C; box-shadow: 0 0 0 3px rgba(201,168,76,0.3); }
+.variant-header { padding: 16px 20px; font-size: 13px; font-weight: bold; letter-spacing: 0.5px; }
+.variant-body { padding: 16px 20px; }
+.variant-tag { display: inline-block; font-size: 11px; padding: 3px 10px; border-radius: 20px; margin-bottom: 12px; }
+.variant-desc { font-size: 13px; line-height: 1.6; margin-bottom: 14px; }
+.variant-features { font-size: 12px; line-height: 2; }
+.variant-features li { list-style: none; }
+.variant-features li::before { content: "✓  "; color: #C9A84C; }
+
+/* Variant A - Dark Linear */
+.var-a .variant-header { background: #2D2D2D; color: #C9A84C; border-bottom: 1px solid rgba(201,168,76,0.2); }
+.var-a .variant-body { background: #383838; color: #e0e0e0; }
+.var-a .variant-tag { background: rgba(201,168,76,0.15); color: #C9A84C; border: 1px solid rgba(201,168,76,0.3); }
+.var-a .mini-tab { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); color: #aaa; padding: 6px 12px; border-radius: 6px; display: inline-block; font-size: 12px; margin-left: 6px; }
+.var-a .mini-tab.active { background: rgba(201,168,76,0.15); border-color: rgba(201,168,76,0.4); color: #C9A84C; }
+.var-a .mini-row { background: rgba(255,255,255,0.04); border-radius: 6px; padding: 8px 12px; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; border: 1px solid rgba(255,255,255,0.06); }
+.var-a .mini-fee { background: rgba(201,168,76,0.15); color: #C9A84C; padding: 2px 8px; border-radius: 20px; font-size: 11px; }
+
+/* Variant B - Light Stripe */
+.var-b .variant-header { background: #fff; color: #2D2D2D; border-bottom: 1px solid #e5edf5; }
+.var-b .variant-body { background: #F7F5F0; color: #2D2D2D; }
+.var-b .variant-tag { background: rgba(201,168,76,0.1); color: #8a6a1e; border: 1px solid rgba(201,168,76,0.3); }
+.var-b .mini-tab { background: #fff; border: 1px solid #e5edf5; color: #505a63; padding: 6px 12px; border-radius: 8px; display: inline-block; font-size: 12px; margin-left: 6px; box-shadow: 0 1px 3px rgba(50,50,93,0.08); }
+.var-b .mini-tab.active { background: #C9A84C; border-color: #C9A84C; color: #fff; }
+.var-b .mini-row { background: #fff; border-radius: 8px; padding: 8px 12px; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; box-shadow: 0 2px 6px rgba(50,50,93,0.08), 0 1px 2px rgba(0,0,0,0.04); }
+.var-b .mini-fee { background: rgba(201,168,76,0.12); color: #8a6a1e; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+
+/* Variant C - Navy Revolut */
+.var-c .variant-header { background: #1B3A6B; color: #C9A84C; border-bottom: 1px solid rgba(201,168,76,0.2); }
+.var-c .variant-body { background: #2D2D2D; color: #e0e0e0; }
+.var-c .variant-tag { background: rgba(201,168,76,0.15); color: #C9A84C; border: 1px solid rgba(201,168,76,0.3); border-radius: 20px; }
+.var-c .mini-tab { background: transparent; border: 2px solid rgba(255,255,255,0.15); color: #aaa; padding: 6px 14px; border-radius: 9999px; display: inline-block; font-size: 12px; margin-left: 6px; }
+.var-c .mini-tab.active { background: #C9A84C; border-color: #C9A84C; color: #2D2D2D; font-weight: bold; }
+.var-c .mini-row { padding: 8px 12px; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.var-c .mini-fee { background: #C9A84C; color: #2D2D2D; padding: 2px 10px; border-radius: 9999px; font-size: 11px; font-weight: bold; }
+
+.choice-label { margin-top: 12px; text-align: center; font-size: 13px; font-weight: bold; color: #888; padding: 6px; border-radius: 8px; }
+
+/* Click selection */
+.options { display: flex; gap: 20px; flex-wrap: wrap; }
+.option { flex: 1; min-width: 280px; border-radius: 16px; overflow: hidden; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; border: 2px solid transparent; }
+.option:hover { transform: translateY(-4px); }
+.option.selected { border-color: #C9A84C !important; box-shadow: 0 0 0 3px rgba(201,168,76,0.35) !important; }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<h2>בחר עיצוב לאפליקציית תעודות הסל</h2>
+<p class="subtitle">כל וריאנט כולל את אותה פונקציונליות. לחץ על עיצוב כדי לבחור בו.</p>
+
+<div class="options">
+
+  <!-- Variant A: Dark Linear -->
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="var-a">
+      <div class="variant-header">
+        ◈ &nbsp; מאגר תעודות הסל — השקעות ללוחמים
+      </div>
+      <div class="variant-body">
+        <span class="variant-tag">A — כהה פרמיום</span>
+        <p class="variant-desc">רקע אנתרציט עמוק, גבולות זהב עדינים, תחושת Bloomberg / Terminal פיננסי.</p>
+        <div style="margin-bottom: 10px;">
+          <span class="mini-tab active">אמריקאיות</span>
+          <span class="mini-tab">איריות</span>
+          <span class="mini-tab">ישראליות</span>
+        </div>
+        <div class="mini-row"><span>VOO — S&P 500</span><span class="mini-fee">0.03%</span></div>
+        <div class="mini-row"><span>VTI — שוק מלא</span><span class="mini-fee">0.03%</span></div>
+        <div class="mini-row"><span>QQQ — טכנולוגיה</span><span class="mini-fee">0.20%</span></div>
+        <ul class="variant-features" style="margin-top: 10px;">
+          <li>Inter Variable + font-feature-settings</li>
+          <li>גבולות semi-transparent</li>
+          <li>Zero shadows (depth by contrast)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="choice-label">A — Dark Premium</div>
+  </div>
+
+  <!-- Variant B: Light Stripe -->
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="var-b">
+      <div class="variant-header">
+        ◈ &nbsp; מאגר תעודות הסל — השקעות ללוחמים
+      </div>
+      <div class="variant-body">
+        <span class="variant-tag">B — בהיר מקצועי</span>
+        <p class="variant-desc">רקע קרם נקי, כרטיסים לבנים עם צלליות עדינות, מתאים לשיתוף עם לקוחות.</p>
+        <div style="margin-bottom: 10px;">
+          <span class="mini-tab active">אמריקאיות</span>
+          <span class="mini-tab">איריות</span>
+          <span class="mini-tab">ישראליות</span>
+        </div>
+        <div class="mini-row"><span>VOO — S&P 500</span><span class="mini-fee">0.03%</span></div>
+        <div class="mini-row"><span>VTI — שוק מלא</span><span class="mini-fee">0.03%</span></div>
+        <div class="mini-row"><span>QQQ — טכנולוגיה</span><span class="mini-fee">0.20%</span></div>
+        <ul class="variant-features" style="margin-top: 10px; color: #444;">
+          <li>Inter weight-300 לכותרות (Stripe style)</li>
+          <li>Multi-layer shadows</li>
+          <li>Border-radius 8px (לא pill)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="choice-label" style="color: #555;">B — Light Clean</div>
+  </div>
+
+  <!-- Variant C: Navy Revolut -->
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="var-c">
+      <div class="variant-header">
+        ◈ &nbsp; מאגר תעודות הסל — השקעות ללוחמים
+      </div>
+      <div class="variant-body">
+        <span class="variant-tag">C — נייבי מיליטרי</span>
+        <p class="variant-desc">Header כחול כהה, כפתורי pill, ללא צלליות — תחושת fintech צבאי-מקצועי.</p>
+        <div style="margin-bottom: 10px;">
+          <span class="mini-tab active">אמריקאיות</span>
+          <span class="mini-tab">איריות</span>
+          <span class="mini-tab">ישראליות</span>
+        </div>
+        <div class="mini-row"><span>VOO — S&P 500</span><span class="mini-fee">0.03%</span></div>
+        <div class="mini-row"><span>VTI — שוק מלא</span><span class="mini-fee">0.03%</span></div>
+        <div class="mini-row"><span>QQQ — טכנולוגיה</span><span class="mini-fee">0.20%</span></div>
+        <ul class="variant-features" style="margin-top: 10px;">
+          <li>Heebo — גופן RTL מושלם</li>
+          <li>Pill buttons (9999px)</li>
+          <li>Header navy + content anthracite</li>
+        </ul>
+      </div>
+    </div>
+    <div class="choice-label">C — Navy Military</div>
+  </div>
+
+</div>
+</body>
+</html>
