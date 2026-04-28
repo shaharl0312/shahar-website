@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>מאגר תעודות הסל - Navy | השקעות ללוחמים</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://s3.tradingview.com/tv.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #2D2D2D;
+      --card:      #363636;
+      --text:      #f0f0f0;
+      --text2:     #8d969e;
+      --gold:      #C9A84C;
+      --gold-bg:   rgba(201, 168, 76, 0.12);
+      --gold-ring: rgba(201, 168, 76, 0.25);
+      --border:    rgba(255, 255, 255, 0.07);
+      --shadow-sm: none;
+      --shadow-md: none;
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.6);
+      --radius-sm: 9999px;
+      --radius:    12px;
+      --radius-lg: 12px;
+    }
+
+    body {
+      font-family: 'Heebo', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      direction: rtl;
+      min-height: 100vh;
+    }
+
+    /* ---- HEADER ---- */
+    header {
+      background: #1B3A6B;
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-icon {
+      width: 34px;
+      height: 34px;
+      background: #C9A84C;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 16px;
+    }
+    .logo-text {
+      font-size: 17px;
+      font-weight: 700;
+      color: #f0f0f0;
+      letter-spacing: -0.3px;
+    }
+    .logo-sub {
+      font-size: 12px;
+      color: var(--text2);
+      font-weight: 400;
+    }
+
+    .search-wrap {
+      position: relative;
+      flex: 1;
+      max-width: 300px;
+    }
+    .search-wrap .search-icon {
+      position: absolute;
+      right: 11px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text2);
+      font-size: 13px;
+      pointer-events: none;
+    }
+    .search-wrap input {
+      width: 100%;
+      padding: 9px 34px 9px 12px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius-sm);
+      background: rgba(255,255,255,0.08);
+      font-size: 14px;
+      font-family: 'Heebo', sans-serif;
+      color: #f0f0f0;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .search-wrap input:focus {
+      outline: none;
+      border-color: #C9A84C;
+      box-shadow: 0 0 0 3px var(--gold-ring);
+    }
+    .search-wrap input::placeholder { color: #aab; }
+    .search-clear {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text2);
+      font-size: 13px;
+      display: none;
+      padding: 2px;
+    }
+
+    /* ---- MARKET TABS ---- */
+    .market-nav {
+      background: #1B3A6B;
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+    .tabs-wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 10px 24px;
+      display: flex;
+      gap: 8px;
+    }
+    .tab {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: transparent;
+      color: #ccc;
+      font-family: 'Heebo', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .tab:hover {
+      border-color: #C9A84C;
+      color: #C9A84C;
+    }
+    .tab.active {
+      background: #C9A84C;
+      border-color: #C9A84C;
+      color: #1B3A6B;
+      font-weight: 700;
+    }
+    .tab i { font-size: 13px; }
+
+    /* ---- MAIN CONTENT ---- */
+    .content {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 24px 24px 60px;
+    }
+    .market-title {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.4px;
+      margin-bottom: 4px;
+    }
+    .market-subtitle {
+      font-size: 14px;
+      color: var(--text2);
+      margin-bottom: 20px;
+    }
+
+    /* ---- CATEGORY / ACCORDION ---- */
+    .category {
+      background: #363636;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255,255,255,0.07);
+      margin-bottom: 14px;
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+    .category:hover { box-shadow: none; }
+
+    .cat-header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-family: 'Heebo', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      direction: rtl;
+      text-align: right;
+      transition: background 0.15s;
+    }
+    .cat-header:hover { background: rgba(201,168,76,0.06); }
+    .cat-header.open { color: var(--gold); }
+
+    .cat-header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .cat-count {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text2);
+      background: var(--bg);
+      padding: 2px 8px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+    }
+    .cat-chevron {
+      color: var(--text2);
+      font-size: 13px;
+      transition: transform 0.25s;
+    }
+    .cat-header.open .cat-chevron { transform: rotate(180deg); color: var(--gold); }
+
+    .cat-body {
+      display: none;
+      border-top: 1px solid var(--border);
+    }
+    .cat-body.open { display: block; }
+
+    /* ---- ETF ROW ---- */
+    .etf-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 14px 20px;
+      cursor: pointer;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      gap: 16px;
+      transition: background 0.12s;
+    }
+    .etf-row:last-child { border-bottom: none; }
+    .etf-row:hover {
+      background: rgba(201, 168, 76, 0.05);
+    }
+
+    .etf-left { flex: 1; min-width: 0; }
+    .etf-header-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 5px;
+    }
+    .etf-ticker {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gold);
+      background: var(--gold-bg);
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(201, 168, 76, 0.25);
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+    .etf-name {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .etf-desc-short {
+      font-size: 13px;
+      color: var(--text2);
+      line-height: 1.55;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .etf-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .fee-badge {
+      font-size: 12px;
+      font-weight: 700;
+      color: #1B3A6B;
+      background: #C9A84C;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      white-space: nowrap;
+    }
+    .open-detail {
+      font-size: 12px;
+      color: var(--text2);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* ---- EMPTY / NO RESULTS ---- */
+    .empty {
+      text-align: center;
+      padding: 60px 24px;
+      color: var(--text2);
+    }
+    .empty i {
+      font-size: 40px;
+      color: var(--border);
+      margin-bottom: 14px;
+      display: block;
+    }
+    .empty p { font-size: 15px; }
+
+    /* ---- MODAL ---- */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(2px);
+      z-index: 500;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: #363636;
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 700px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-lg);
+      animation: modalIn 0.2s ease-out;
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: translateY(12px) scale(0.98); }
+      to   { opacity: 1; transform: translateY(0)   scale(1); }
+    }
+
+    .modal-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 22px 24px 18px;
+      border-bottom: 1px solid var(--border);
+      gap: 12px;
+    }
+    .modal-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text2);
+      font-size: 18px;
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.15s, color 0.15s;
+    }
+    .modal-close:hover { background: var(--bg); color: var(--text); }
+
+    .modal-title { font-size: 19px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+    .modal-subtitle { font-size: 13px; color: var(--text2); margin-top: 3px; }
+
+    .modal-body { padding: 20px 24px 24px; }
+
+    .modal-fee-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .modal-fee-label {
+      font-size: 14px;
+      color: var(--text2);
+    }
+    .modal-fee-value {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--gold);
+      background: var(--gold-bg);
+      border: 1px solid rgba(201, 168, 76, 0.25);
+      padding: 4px 14px;
+      border-radius: 20px;
+    }
+
+    .chart-box {
+      width: 100%;
+      height: 380px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 20px;
+      background: #2D2D2D;
+      position: relative;
+    }
+    .chart-box .chart-loader {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--text2);
+      font-size: 14px;
+    }
+    .chart-box .chart-loader i { font-size: 28px; color: var(--border); }
+
+    .modal-desc-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text2);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+    .modal-desc {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 640px) {
+      .header-inner { flex-wrap: wrap; }
+      .search-wrap { max-width: 100%; width: 100%; }
+      .tabs-wrap { overflow-x: auto; padding-bottom: 6px; }
+      .etf-row { flex-direction: column; gap: 8px; }
+      .etf-right { flex-direction: row; }
+      .chart-box { height: 280px; }
+      .modal-head { padding: 16px; }
+      .modal-body { padding: 16px; }
+    }
+
+    /* ---- SEARCH HIGHLIGHT ---- */
+    .hl { background: rgba(201,168,76,0.25); border-radius: 2px; padding: 0 1px; }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <div class="logo">
+        <div class="logo-icon"><i class="fa-solid fa-chart-line"></i></div>
+        <div>
+          <div class="logo-text">השקעות ללוחמים</div>
+          <div class="logo-sub">מאגר תעודות הסל</div>
+        </div>
+      </div>
+      <div class="search-wrap">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" id="searchInput" placeholder="חיפוש לפי שם, טיקר..." autocomplete="off">
+        <button class="search-clear" id="searchClear" onclick="clearSearch()" aria-label="נקה חיפוש">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MARKET TABS -->
+  <nav class="market-nav" role="navigation" aria-label="בחירת שוק">
+    <div class="tabs-wrap">
+      <button class="tab active" data-market="us" onclick="switchMarket('us')">
+        <i class="fa-solid fa-star-and-crescent"></i>
+        אמריקאיות
+      </button>
+      <button class="tab" data-market="irish" onclick="switchMarket('irish')">
+        <i class="fa-solid fa-globe-europe"></i>
+        איריות (UCITS)
+      </button>
+      <button class="tab" data-market="israeli" onclick="switchMarket('israeli')">
+        <i class="fa-solid fa-star-of-david"></i>
+        ישראליות
+      </button>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="content">
+    <div id="marketTitle" class="market-title"></div>
+    <div id="marketSubtitle" class="market-subtitle"></div>
+    <div id="etfList"></div>
+  </main>
+
+  <!-- MODAL -->
+  <div id="modalOverlay" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal" id="modal">
+      <div class="modal-head">
+        <div>
+          <div class="modal-title" id="modalTitle"></div>
+          <div class="modal-subtitle" id="modalSubtitle"></div>
+        </div>
+        <button class="modal-close" onclick="closeModal()" aria-label="סגור">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-fee-row">
+          <span class="modal-fee-label">דמי ניהול שנתיים:</span>
+          <span class="modal-fee-value" id="modalFee"></span>
+        </div>
+        <div class="chart-box" id="chartBox">
+          <div class="chart-loader" id="chartLoader">
+            <i class="fa-regular fa-chart-bar"></i>
+            <span>טוען גרף...</span>
+          </div>
+          <div id="tvChart" style="width:100%;height:100%;"></div>
+        </div>
+        <div class="modal-desc-title">אודות הקרן</div>
+        <p class="modal-desc" id="modalDesc"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ---- DATA ----
+    let etfData  = null;
+    let currMkt  = 'us';
+    let query    = '';
+
+    // ---- SYMBOL MAPS ----
+    const US_SYM = {
+      VOO:'AMEX:VOO', VTI:'AMEX:VTI', QQQM:'NASDAQ:QQQM', QQQ:'NASDAQ:QQQ',
+      SPY:'AMEX:SPY', IVV:'AMEX:IVV', VEA:'AMEX:VEA', VEU:'AMEX:VEU',
+      VTWO:'AMEX:VTWO', DIA:'AMEX:DIA', SCHG:'AMEX:SCHG', RSP:'NYSE:RSP',
+      VONV:'AMEX:VONV', VIG:'AMEX:VIG', VOOG:'AMEX:VOOG', VOOV:'AMEX:VOOV',
+      IJH:'AMEX:IJH', IJK:'AMEX:IJK', IJJ:'AMEX:IJJ', IWO:'AMEX:IWO',
+      IWN:'AMEX:IWN', IJT:'AMEX:IJT', IJS:'AMEX:IJS', IWV:'AMEX:IWV',
+      IWB:'AMEX:IWB', XLF:'AMEX:XLF', XLY:'AMEX:XLY', XLK:'AMEX:XLK',
+      XLE:'AMEX:XLE', XLB:'AMEX:XLB', XLI:'AMEX:XLI', XLU:'AMEX:XLU',
+      XLV:'AMEX:XLV', XLP:'AMEX:XLP', XLC:'AMEX:XLC', XLRE:'AMEX:XLRE',
+      RSPF:'NYSE:RSPF', RSPD:'NYSE:RSPD', RSPT:'NYSE:RSPT', RSPG:'NYSE:RSPG',
+      RSPM:'NYSE:RSPM', RSPN:'NYSE:RSPN', RSPU:'NYSE:RSPU', RSPH:'NYSE:RSPH',
+      RSPS:'NYSE:RSPS', RSPC:'NYSE:RSPC', RSPR:'NYSE:RSPR',
+      PEJ:'AMEX:PEJ', SOXX:'NASDAQ:SOXX', SMH:'NASDAQ:SMH', IGV:'NASDAQ:IGV',
+      TAN:'NYSE:TAN', CIBR:'NASDAQ:CIBR', KRE:'AMEX:KRE', OZEM:'AMEX:OZEM',
+      MSOS:'AMEX:MSOS', XBI:'AMEX:XBI', XHB:'AMEX:XHB', ITB:'AMEX:ITB',
+      XAR:'AMEX:XAR', JETS:'AMEX:JETS', XME:'AMEX:XME', KIE:'AMEX:KIE',
+      IHI:'AMEX:IHI', XRT:'AMEX:XRT', COWZ:'NASDAQ:COWZ', SKYY:'NYSE:SKYY',
+      MAGS:'NASDAQ:MAGS', NLR:'AMEX:NLR', KBWB:'NASDAQ:KBWB', ITA:'AMEX:ITA',
+      QCLN:'NASDAQ:QCLN', GDX:'AMEX:GDX', OIH:'AMEX:OIH', IEDI:'AMEX:IEDI',
+      IYT:'AMEX:IYT', BOTZ:'NASDAQ:BOTZ', IHE:'AMEX:IHE', DRIV:'AMEX:DRIV',
+      SOCL:'NASDAQ:SOCL', FINX:'NASDAQ:FINX', BUG:'NASDAQ:BUG',
+      RING:'NASDAQ:RING', URA:'AMEX:URA', ICLN:'NASDAQ:ICLN',
+      TNA:'AMEX:TNA', SOXL:'NASDAQ:SOXL', TQQQ:'NASDAQ:TQQQ', SQQQ:'NASDAQ:SQQQ',
+      SOXS:'NASDAQ:SOXS', QLD:'NASDAQ:QLD', SSO:'AMEX:SSO', SPXL:'AMEX:SPXL',
+      TECL:'AMEX:TECL', FAS:'AMEX:FAS', URTY:'AMEX:URTY', UDOW:'AMEX:UDOW',
+      ZJPN:'AMEX:ZJPN', VGK:'AMEX:VGK', INDA:'BATS:INDA', MCHI:'NASDAQ:MCHI',
+      VWO:'AMEX:VWO', EEM:'AMEX:EEM', DFE:'AMEX:DFE',
+      TLT:'NASDAQ:TLT', IEF:'NASDAQ:IEF', BND:'NASDAQ:BND', BNDX:'NASDAQ:BNDX',
+      SHV:'NASDAQ:SHV', TFLO:'AMEX:TFLO', BIL:'AMEX:BIL',
+      GLD:'AMEX:GLD', SLV:'AMEX:SLV', PDBC:'NASDAQ:PDBC', IBIT:'NASDAQ:IBIT',
+      ETHA:'NASDAQ:ETHA',
+    };
+
+    const IRISH_SYM = {
+      CSPX:'LSE:CSPX', EQQQ:'LSE:EQQQ', ZPRR:'LSE:ZPRR', CIND:'LSE:CIND',
+      VWRL:'LSE:VWRL', IUGF:'LSE:IUGF', UDVD:'LSE:UDVD',
+      SPXP:'LSE:SPXP', ANXG:'LSE:ANXG', R2US:'LSE:R2US', DJIA:'LSE:DJIA',
+      LEM:'XETRA:LEM', WLD:'XETRA:WLD',
+      INRG:'LSE:INRG', XCDU:'LSE:XCDU', WCLD:'LSE:WCLD', XIT6:'LSE:XIT6',
+      URNU:'LSE:URNU', ISUN:'LSE:ISUN', ISPY:'LSE:ISPY', WFIN:'LSE:WFIN',
+      FLWR:'LSE:FLWR', GDX:'LSE:GDX',
+      VWCE:'XETRA:VWCE', IWDA:'XETRA:IWDA', EIMI:'XETRA:EIMI',
+      SWRD:'LSE:SWRD', AGGG:'LSE:AGGG', SSAC:'LSE:SSAC', VHYL:'LSE:VHYL',
+      VAGF:'LSE:VAGF', SPPW:'XETRA:SPPW', IS3N:'XETRA:IS3N',
+    };
+
+    function resolveSymbol(etf, mktId) {
+      if (mktId === 'us')      return US_SYM[etf.ticker]    || ('NASDAQ:' + etf.ticker);
+      if (mktId === 'irish')   return IRISH_SYM[etf.ticker] || ('LSE:' + etf.ticker);
+      if (mktId === 'israeli') return etf.fundNumber ? ('TASE:' + etf.fundNumber) : null;
+      return null;
+    }
+
+    // ---- INIT ----
+    async function init() {
+      try {
+        const res = await fetch('etf-data.json');
+        etfData = await res.json();
+        render();
+      } catch (e) {
+        document.getElementById('etfList').innerHTML =
+          '<div class="empty"><i class="fa-solid fa-triangle-exclamation"></i><p>שגיאה בטעינת הנתונים</p></div>';
+      }
+    }
+
+    // ---- RENDER ----
+    function render() {
+      const market = etfData.markets.find(m => m.id === currMkt);
+      if (!market) return;
+
+      const subtitles = {
+        us:      'קרנות סל הנסחרות בבורסות האמריקאיות',
+        irish:   'קרנות UCITS בניהול אירי - יעילות מס גבוהה לתושבי ישראל',
+        israeli: 'קרנות סל הנסחרות בבורסה לניירות ערך בתל אביב',
+      };
+
+      document.getElementById('marketTitle').textContent    = market.name;
+      document.getElementById('marketSubtitle').textContent = subtitles[currMkt] || '';
+
+      const q = query.trim().toLowerCase();
+      const listEl = document.getElementById('etfList');
+      let totalFound = 0;
+      let html = '';
+
+      market.categories.forEach((cat, ci) => {
+        const filtered = cat.etfs.filter(etf => {
+          if (!q) return true;
+          const ticker = (etf.ticker || '').toLowerCase();
+          const sector = (etf.sector || '').toLowerCase();
+          const desc   = (etf.description || '').toLowerCase();
+          return ticker.includes(q) || sector.includes(q) || desc.includes(q);
+        });
+        if (!filtered.length) return;
+        totalFound += filtered.length;
+        const isFirst = ci === 0;
+
+        html += `
+          <div class="category">
+            <button class="cat-header${isFirst ? ' open' : ''}" onclick="toggleCat(this)" aria-expanded="${isFirst}">
+              <span>${cat.name}</span>
+              <span class="cat-header-right">
+                <span class="cat-count">${filtered.length} קרנות</span>
+                <i class="fa-solid fa-chevron-down cat-chevron"></i>
+              </span>
+            </button>
+            <div class="cat-body${isFirst ? ' open' : ''}">
+              ${filtered.map(etf => renderRow(etf, q)).join('')}
+            </div>
+          </div>`;
+      });
+
+      if (!totalFound) {
+        html = `<div class="empty">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <p>לא נמצאו קרנות עבור "<strong>${escHtml(query)}</strong>"</p>
+        </div>`;
+      }
+
+      listEl.innerHTML = html;
+
+      // Attach click listeners to etf rows
+      listEl.querySelectorAll('.etf-row').forEach(row => {
+        row.addEventListener('click', () => {
+          const idx    = +row.dataset.idx;
+          const catIdx = +row.dataset.cat;
+          const market = etfData.markets.find(m => m.id === currMkt);
+          const etf    = market.categories[catIdx].etfs[idx];
+          openModal(etf);
+        });
+      });
+    }
+
+    function renderRow(etf, q) {
+      const isIsraeli = currMkt === 'israeli';
+      const idLabel   = isIsraeli ? etf.fundNumber || etf.ticker : etf.ticker;
+      const name      = etf.sector || '';
+      const shortDesc = (etf.description || '').split('.')[0] + '.';
+
+      // store indices via data attrs - we re-resolve on click
+      const market = etfData.markets.find(m => m.id === currMkt);
+      const catIdx = market.categories.findIndex(c => c.etfs.includes(etf));
+      const idx    = market.categories[catIdx].etfs.indexOf(etf);
+
+      const hlTicker = q ? highlight(idLabel, q)  : escHtml(idLabel);
+      const hlName   = q ? highlight(name, q)      : escHtml(name);
+      const hlDesc   = q ? highlight(shortDesc, q) : escHtml(shortDesc);
+
+      return `
+        <div class="etf-row" data-cat="${catIdx}" data-idx="${idx}" role="button" tabindex="0" aria-label="${escHtml(name)}">
+          <div class="etf-left">
+            <div class="etf-header-line">
+              <span class="etf-ticker">${hlTicker}</span>
+              <span class="etf-name">${hlName}</span>
+            </div>
+            <div class="etf-desc-short">${hlDesc}</div>
+          </div>
+          <div class="etf-right">
+            <span class="fee-badge">${escHtml(etf.fee)}</span>
+            <span class="open-detail"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+          </div>
+        </div>`;
+    }
+
+    // ---- ACCORDION ----
+    function toggleCat(btn) {
+      const body    = btn.nextElementSibling;
+      const isOpen  = body.classList.contains('open');
+      body.classList.toggle('open', !isOpen);
+      btn.classList.toggle('open', !isOpen);
+      btn.setAttribute('aria-expanded', String(!isOpen));
+    }
+
+    // ---- TABS ----
+    function switchMarket(id) {
+      currMkt = id;
+      document.querySelectorAll('.tab').forEach(t => {
+        t.classList.toggle('active', t.dataset.market === id);
+      });
+      render();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ---- SEARCH ----
+    document.getElementById('searchInput').addEventListener('input', function() {
+      query = this.value;
+      document.getElementById('searchClear').style.display = query ? 'flex' : 'none';
+      render();
+    });
+    document.getElementById('searchInput').addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') clearSearch();
+    });
+    function clearSearch() {
+      query = '';
+      document.getElementById('searchInput').value = '';
+      document.getElementById('searchClear').style.display = 'none';
+      render();
+    }
+
+    // ---- MODAL ----
+    let tvWidget = null;
+
+    function openModal(etf) {
+      const isIsraeli = currMkt === 'israeli';
+      const idLabel   = isIsraeli ? etf.fundNumber || etf.ticker : etf.ticker;
+      const name      = etf.sector || '';
+      const mktLabel  = { us: 'אמריקאית', irish: 'אירית (UCITS)', israeli: 'ישראלית' }[currMkt];
+
+      document.getElementById('modalTitle').textContent    = name;
+      document.getElementById('modalSubtitle').textContent = idLabel + ' - ' + mktLabel;
+      document.getElementById('modalFee').textContent      = etf.fee;
+      document.getElementById('modalDesc').textContent     = etf.description || '';
+
+      // Reset chart
+      const chartDiv  = document.getElementById('tvChart');
+      const loaderDiv = document.getElementById('chartLoader');
+      chartDiv.innerHTML = '';
+      loaderDiv.style.display = 'flex';
+
+      document.getElementById('modalOverlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+
+      const symbol = resolveSymbol(etf, currMkt);
+
+      if (!symbol) {
+        loaderDiv.innerHTML = '<i class="fa-regular fa-circle-xmark"></i><span>גרף לא זמין עבור קרן זו</span>';
+        return;
+      }
+
+      // Small delay to let modal animate in before injecting widget
+      setTimeout(() => {
+        loaderDiv.style.display = 'none';
+        if (typeof TradingView === 'undefined') {
+          loaderDiv.style.display = 'flex';
+          loaderDiv.innerHTML = '<i class="fa-solid fa-wifi"></i><span>TradingView לא זמין</span>';
+          return;
+        }
+        try {
+          tvWidget = new TradingView.widget({
+            autosize:         true,
+            symbol:           symbol,
+            interval:         'W',
+            timezone:         'Asia/Jerusalem',
+            theme:            'dark',
+            style:            '2',
+            locale:           'he_IL',
+            container_id:     'tvChart',
+            hide_side_toolbar: false,
+            allow_symbol_change: true,
+            save_image:       false,
+            studies:          [],
+          });
+        } catch (err) {
+          loaderDiv.style.display = 'flex';
+          loaderDiv.innerHTML = '<i class="fa-regular fa-circle-xmark"></i><span>לא ניתן לטעון גרף</span>';
+        }
+      }, 200);
+    }
+
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+      document.getElementById('tvChart').innerHTML = '';
+      tvWidget = null;
+    }
+
+    // Close on overlay click
+    document.getElementById('modalOverlay').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // Keyboard: Enter/Space on etf rows
+    document.getElementById('etfList').addEventListener('keydown', function(e) {
+      if ((e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('etf-row')) {
+        e.preventDefault();
+        e.target.click();
+      }
+    });
+
+    // ---- HELPERS ----
+    function escHtml(s) {
+      return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+    function highlight(text, q) {
+      if (!q) return escHtml(text);
+      const escaped = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      return escHtml(text).replace(new RegExp('(' + escaped + ')', 'gi'), '<span class="hl">$1</span>');
+    }
+
+    // ---- START ----
+    init();
+  </script>
+</body>
+</html>
