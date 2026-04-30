@@ -701,7 +701,7 @@
     // ---- INIT ----
     async function init() {
       try {
-        const res = await fetch('etf-data.json');
+        const res = await fetch('/etf-app/etf-data.json');
         etfData = await res.json();
         render();
       } catch (e) {
