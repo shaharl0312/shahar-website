@@ -1,7 +1,6 @@
 {
+  "buildCommand": "mkdir -p dist && cp -r landing-page-first/. dist/ && mkdir -p dist/etf-app && cp -r etf-app/. dist/etf-app/",
+  "outputDirectory": "dist",
   "cleanUrls": true,
-  "trailingSlash": false,
-  "rewrites": [
-    { "source": "/", "destination": "/landing-page-first/index.html" }
-  ]
+  "trailingSlash": false
 }
