@@ -1,0 +1,19 @@
+/* פלטת צבעים — שבט אלה, צופי פרדס חנה כרכור */
+
+:root {
+  /* ירוק ראשי — גוף הדמות והטקסט העברי */
+  --scouts-green-dark: #3A7A2A;
+  --scouts-green-main: #5AAD3A;
+  --scouts-green-light: #8CC64A;
+
+  /* כחול — הסרט והצל הכחול ברקע */
+  --scouts-blue-dark: #1A5FAA;
+  --scouts-blue-main: #2E8BC0;
+  --scouts-blue-light: #5BAAD6;
+
+
+  /* ניטרלים */
+  --scouts-white: #FFFFFF;
+  --scouts-off-white: #F8F8F6;
+  --scouts-text-dark: #1A1A1A;
+}

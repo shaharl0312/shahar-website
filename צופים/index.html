@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>שבט אלה</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --green:      #4A9A2E;
+      --green-dark: #2E6B1A;
+      --blue:       #2278B0;
+      --blue-dark:  #145080;
+      --gold:       #C8990E;
+      --bg:         #F5F4F0;
+      --surface:    #FFFFFF;
+      --ink:        #141414;
+      --ink-mid:    #3A3A3A;
+      --ink-soft:   #787878;
+      --border:     #E4E2DC;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 16px; }
+
+    body {
+      font-family: 'Heebo', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV BAR ─── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(245, 244, 240, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      border-radius: 50%;
+      background: var(--surface);
+      padding: 3px;
+    }
+
+    .nav-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+
+    .nav-tag {
+      font-size: 12px;
+      color: var(--ink-soft);
+      font-weight: 400;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      background: linear-gradient(160deg, var(--green-dark) 0%, var(--blue-dark) 100%);
+      padding: 72px 24px 64px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* subtle texture */
+    .hero-logo {
+      width: 110px;
+      height: 110px;
+      object-fit: contain;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      padding: 8px;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+      filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3));
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 20% 80%, rgba(255,255,255,0.04) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-heading {
+      font-size: clamp(32px, 7vw, 52px);
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-heading span {
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      margin-top: 16px;
+      font-size: 16px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.6);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── CONTENT WRAPPER ─── */
+    .wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 56px 24px 96px;
+    }
+
+    /* ─── PROSE (opening paragraphs) ─── */
+    .prose p {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--ink-mid);
+      line-height: 1.85;
+      margin-bottom: 22px;
+    }
+
+    .prose p:first-child {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.75;
+    }
+
+    .prose p strong {
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    /* ─── DIVIDER ─── */
+    .rule {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 44px 0;
+    }
+
+    /* ─── SECTION LABEL ─── */
+    .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 32px;
+    }
+
+    .label::before {
+      content: '';
+      width: 16px;
+      height: 2px;
+      background: var(--green);
+      border-radius: 1px;
+      flex-shrink: 0;
+    }
+
+    /* ─── TIPS ─── */
+    .tips { display: flex; flex-direction: column; gap: 0; }
+
+    .tip {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 0 20px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tip:first-child { border-top: 1px solid var(--border); }
+
+    .tip-num {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--green);
+      padding-top: 3px;
+      letter-spacing: 0.04em;
+    }
+
+    .tip-body h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .tip-body p {
+      font-size: 16px;
+      color: var(--ink-mid);
+      line-height: 1.8;
+      margin-bottom: 10px;
+    }
+
+    .tip-body p:last-child { margin-bottom: 0; }
+
+    /* ─── CLOSING QUOTE ─── */
+    .closing {
+      margin-top: 44px;
+      padding: 36px 32px;
+      background: var(--surface);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+    }
+
+    .closing-list {
+      font-size: 16px;
+      color: var(--ink-mid);
+      line-height: 1.85;
+      margin-bottom: 24px;
+    }
+
+    .closing-quote {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--green-dark);
+      line-height: 1.4;
+      letter-spacing: -0.02em;
+      padding-right: 16px;
+      border-right: 3px solid var(--green);
+    }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 13px;
+      color: var(--ink-soft);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 480px) {
+      .hero { padding: 56px 20px 48px; }
+      .wrap { padding: 40px 20px 72px; }
+
+      .prose p { font-size: 17px; }
+      .prose p:first-child { font-size: 18px; }
+
+      .tip { grid-template-columns: 36px 1fr; gap: 0 14px; }
+
+      .closing { padding: 28px 22px; }
+      .closing-quote { font-size: 17px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a class="nav-logo" href="#">
+      <img src="shevet-ela-logo.png" alt="שבט אלה" />
+      <div>
+        <div class="nav-name">שבט אלה</div>
+        <div class="nav-tag">צופי פרדס חנה כרכור</div>
+      </div>
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img src="shevet-ela-logo.png" alt="שבט אלה" class="hero-logo" />
+    <div class="hero-eyebrow">שבט אלה — פרדס חנה כרכור</div>
+    <h1 class="hero-heading">שכבת <span>תבור</span></h1>
+    <p class="hero-sub">מסר קטן ממני אליכם</p>
+  </section>
+
+  <!-- CONTENT -->
+  <main class="wrap">
+
+    <!-- opening -->
+    <div class="prose">
+      <p>אתם נמצאים עכשיו בתקופה לא פשוטה. עומס מכל כיוון, לחץ, ומרגישים כאילו הכל מתנקז לרגע הזה.</p>
+
+      <p>קודם כל אני רוצה שתזכרו משהו אחד: זאת אחת מהתקופות היפות שלכם. גם אם אתם לא מבינים את זה עכשיו, תבינו אחר כך. להיות בעשייה זה לא עונש. זה בגרויות, צופים, עבודה, כל ההכנות לקיץ. ביחד. זה לא מקרי.</p>
+
+      <p>אצלי זה היה בגרויות וגודו בעיקר. לא שכחתי את זה.</p>
+
+      <p>לפני הכל, נשימה אחת. אתם עושים את הדברים האלה בשביל משמעות, בשביל ליהנות, בשביל לפתח את עצמכם. ברור שיש דברים קשים ומאתגרים. אבל בסוף, זאת הסיבה שאתם פה.</p>
+    </div>
+
+    <hr class="rule" />
+
+    <!-- tips -->
+    <div class="label">לתכלס</div>
+
+    <div class="tips">
+
+      <div class="tip">
+        <div class="tip-num">01</div>
+        <div class="tip-body">
+          <h3>יומן גוגל קאלנדר</h3>
+          <p>ממש לרשום שם הכל: בית ספר, צופים, עבודה, חברים. מה שיודעים מראש. כשהכל רשום, מפסיקים לבזבז אנרגיה על "מה עכשיו" ומה לא שכחתי. זה פשוט שם.</p>
+        </div>
+      </div>
+
+      <div class="tip">
+        <div class="tip-num">02</div>
+        <div class="tip-body">
+          <h3>לתכנן שניה לפני שמתחילים</h3>
+          <p>לפני שמתחילים ללמוד, שאלה אחת: כמה זמן יש לי ומה בדיוק אני רוצה להשיג ממנו? נניח שעה. מה בדיוק, אם אספיק, ירגיש לי שהשעה הייתה שווה? ואז לגשת לזה בלבד.</p>
+          <p>ועוד דבר: לשים לב לאנרגיה שלכם. לא ערניים? אז לא חייב לעשות את הדבר הכי קשה ביומן. מרגישים שאתם בריכוז טוב? דווקא אז לקחת את המשימה הכי כבדה. זה עוזר גם להיות שלמים עם עצמנו, בלי לחץ מתמיד על מה שנשאר.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- closing -->
+    <div class="closing">
+      <p class="closing-list">יש 24 שעות ביממה לכולנו. ומלא דברים שרוצים לעשות: ללמוד, לעבוד, צופים, חברים, משפחה, להתאמן.</p>
+      <p class="closing-quote">היופי הוא לא מי שעובד הכי קשה.<br />אלא מי שעובד הכי חכם.</p>
+    </div>
+
+  </main>
+
+  <footer class="footer">שבט אלה — צופי פרדס חנה כרכור</footer>
+
+</body>
+</html>
