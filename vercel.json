@@ -1,5 +1,5 @@
 {
-  "buildCommand": "mkdir -p dist && cp -r landing-page-first/. dist/ && mkdir -p dist/etf-app && cp -r etf-app/. dist/etf-app/ && mkdir -p dist/tzofim && cp -r 'צופים/'. dist/tzofim/ && mkdir -p dist/my-app && cp -r my-app/. dist/my-app/ && cp dist/logo.png dist/my-app/",
+  "buildCommand": "mkdir -p dist && cp -r landing-page-first/. dist/ && mkdir -p dist/etf-app && cp -r etf-app/. dist/etf-app/ && mkdir -p dist/tzofim && cp -r צופים/. dist/tzofim/",
   "outputDirectory": "dist",
   "cleanUrls": true,
   "trailingSlash": false
