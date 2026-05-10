@@ -694,14 +694,14 @@
     function resolveSymbol(etf, mktId) {
       if (mktId === 'us')      return US_SYM[etf.ticker]    || ('NASDAQ:' + etf.ticker);
       if (mktId === 'irish')   return IRISH_SYM[etf.ticker] || ('LSE:' + etf.ticker);
-      if (mktId === 'israeli') return etf.fundNumber ? ('TASE:' + etf.fundNumber) : null;
+      if (mktId === 'israeli') return etf.tvSymbol || null;
       return null;
     }
 
     // ---- INIT ----
     async function init() {
       try {
-        const res = await fetch('/etf-app/etf-data.json');
+        const res = await fetch('/etf-app/etf-data-versions/etf-data-v3.json');
         etfData = await res.json();
         render();
       } catch (e) {
