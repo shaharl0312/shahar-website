@@ -671,24 +671,22 @@
       SOXS:'NASDAQ:SOXS', QLD:'NASDAQ:QLD', SSO:'AMEX:SSO', SPXL:'AMEX:SPXL',
       TECL:'AMEX:TECL', FAS:'AMEX:FAS', URTY:'AMEX:URTY', UDOW:'AMEX:UDOW',
       ZJPN:'AMEX:ZJPN', VGK:'AMEX:VGK', INDA:'BATS:INDA', MCHI:'NASDAQ:MCHI',
+      KWEB:'AMEX:KWEB', FXI:'AMEX:FXI',
       VWO:'AMEX:VWO', EEM:'AMEX:EEM', DFE:'AMEX:DFE',
       TLT:'NASDAQ:TLT', IEF:'NASDAQ:IEF', BND:'NASDAQ:BND', BNDX:'NASDAQ:BNDX',
+      SCHD:'AMEX:SCHD',
       SHV:'NASDAQ:SHV', TFLO:'AMEX:TFLO', BIL:'AMEX:BIL',
       GLD:'AMEX:GLD', SLV:'AMEX:SLV', PDBC:'NASDAQ:PDBC', IBIT:'NASDAQ:IBIT',
       ETHA:'NASDAQ:ETHA',
     };
 
     const IRISH_SYM = {
-      CSPX:'LSE:CSPX', EQQQ:'LSE:EQQQ', ZPRR:'LSE:ZPRR', CIND:'LSE:CIND',
-      VWRL:'LSE:VWRL', IUGF:'LSE:IUGF', UDVD:'LSE:UDVD',
-      SPXP:'LSE:SPXP', ANXG:'LSE:ANXG', R2US:'LSE:R2US', DJIA:'LSE:DJIA',
-      LEM:'XETRA:LEM', WLD:'XETRA:WLD',
-      INRG:'LSE:INRG', XCDU:'LSE:XCDU', WCLD:'LSE:WCLD', XIT6:'LSE:XIT6',
-      URNU:'LSE:URNU', ISUN:'LSE:ISUN', ISPY:'LSE:ISPY', WFIN:'LSE:WFIN',
-      FLWR:'LSE:FLWR', GDX:'LSE:GDX',
-      VWCE:'XETRA:VWCE', IWDA:'XETRA:IWDA', EIMI:'XETRA:EIMI',
-      SWRD:'LSE:SWRD', AGGG:'LSE:AGGG', SSAC:'LSE:SSAC', VHYL:'LSE:VHYL',
-      VAGF:'LSE:VAGF', SPPW:'XETRA:SPPW', IS3N:'XETRA:IS3N',
+      // v4 confirmed TASE-listed Irish ETFs
+      CSPX:'LSE:CSPX', CNDX:'LSE:CNDX', FWRA:'LSE:FWRA',
+      SPXP:'LSE:SPXP', EQQS:'LSE:EQQS', R2US:'LSE:R2US',
+      MXFS:'LSE:MXFS', MXWS:'LSE:MXWS',
+      XIT6:'LSE:XIT6', HEAL:'LSE:HEAL',
+      IEUX:'LSE:IEUX',
     };
 
     function resolveSymbol(etf, mktId) {
@@ -701,7 +699,7 @@
     // ---- INIT ----
     async function init() {
       try {
-        const res = await fetch('/etf-app/etf-data-versions/etf-data-v3.json');
+        const res = await fetch('/etf-app/etf-data-versions/etf-data-v4.json');
         etfData = await res.json();
         render();
       } catch (e) {
