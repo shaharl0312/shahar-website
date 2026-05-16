@@ -348,6 +348,7 @@
       <p class="reveal" style="opacity:0.55;font-family:var(--font-heading);font-size:var(--h3-size);font-weight:500;">
         השקעות בלי כאב ראש - ובלי מילים שלא אומרות כלום
       </p>
+      <p class="reveal" style="opacity:0.4;font-family:var(--font-heading);font-size:1.1rem;font-weight:400;margin-top:1.2rem;color:#aaa;">שחר לוי</p>
     </div>
   </section>
 
@@ -445,7 +446,7 @@
           <div class="lottie-diamond">
             <svg width="100%" height="100%" viewBox="0 0 40 40" fill="none"><polygon points="20,4 36,20 20,36 4,20" fill="#C9A84C" opacity="0.9"/></svg>
           </div>
-          <h3>מניה = בעלות</h3>
+          <h3>מניה = בעלות על חברות</h3>
           <p style="opacity:0.72;">כשקונים מניה של אפל - נהיים בעלים של חלק קטן מאפל. החברה מרוויחה - גם אתם מרוויחים.</p>
           <img src="./images/06-stock.png" alt="מניה" style="width:100%;border-radius:10px;object-fit:cover;margin-top:auto;" />
         </div>
@@ -474,15 +475,15 @@
           <h2 class="reveal">מדד ה-S&amp;P 500</h2>
           <div class="divider reveal"></div>
           <ul class="bullet-list reveal">
-            <li>500 החברות הגדולות והדומיננטיות בארה"ב — Apple, Nvidia, Microsoft ועוד</li>
-            <li>לא מניה אחת — פיזור אוטומטי על כל הכלכלה האמריקאית</li>
-            <li>מי שהשקיע ב-1990 — קיבל פי 18 על כספו עד היום</li>
+            <li>500 החברות הגדולות והדומיננטיות בארה"ב - Apple, Nvidia, Microsoft ועוד</li>
+            <li>לא מניה אחת - פיזור אוטומטי על כל הכלכלה האמריקאית</li>
+            <li>מי שהשקיע ב-1990 - קיבל פי 18 על כספו עד היום</li>
           </ul>
           <div class="quote-box reveal">
             כשאתה קונה S&amp;P 500 — אתה לא מהמר על חברה אחת. אתה משקיע בכלכלה האמריקאית כולה.
           </div>
         </div>
-        <canvas id="snpChart" class="reveal" style="width:100%;height:min(46vh,400px);border-radius:12px;display:block;"></canvas>
+        <img src="./images/snp500-real.png" alt="גרף S&P 500 היסטורי" class="float-img reveal" style="border-radius:12px;" />
       </div>
     </div>
   </section>
@@ -522,7 +523,7 @@
     <div class="slide-badge">07</div>
     <div class="slide-content" style="gap:var(--content-gap);">
       <p class="eyebrow reveal">שחיקת הכסף</p>
-      <h2 class="reveal">אינפלציה — האויב השקט</h2>
+      <h2 class="reveal">אינפלציה - האויב השקט</h2>
       <div class="divider reveal"></div>
 
       <div class="col-with-image reveal" style="flex:1;min-height:0;">
@@ -691,10 +692,10 @@
       <div class="col-with-image reveal" style="flex:1;min-height:0;">
         <div style="display:flex;flex-direction:column;gap:var(--content-gap);">
           <div class="quote-box">
-            זה לא קורה ביום – זה קורה לאט ובזכות הרגלים.
+            זה לא קורה ביום - זה קורה לאט ובזכות הרגלים.
           </div>
           <div class="card" style="display:flex;flex-direction:column;gap:0.4rem;">
-            <p style="opacity:0.9;font-style:italic;">"אי אפשר לצפות להיות חטוב בלי ללכת לחדר כושר או לעשות סתם דברים – כסף דורש אימון והבנה."</p>
+            <p style="opacity:0.9;font-style:italic;">"אי אפשר לצפות להיות חטוב בלי ללכת לחדר כושר או לעשות סתם דברים - כסף דורש אימון והבנה."</p>
           </div>
           <p style="font-family:var(--font-heading);font-weight:700;font-size:var(--body-size);color:var(--gold);">
             למידה אחת = כוח לכל החיים.
@@ -837,53 +838,6 @@
       document.getElementById('r-bar').style.width = Math.max(5, Math.min(92, invPct)) + '%';
       updateChart(init, monthly, rate, years);
     }
-
-    // ── S&P 500 HISTORICAL CHART ──────────────────────────
-    (function initSnpChart() {
-      const ctx = document.getElementById('snpChart').getContext('2d');
-      const years = [1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,
-                     2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,
-                     2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,
-                     2020,2021,2022,2023,2024,2025];
-      const values = [330,417,435,466,459,615,741,970,1229,1469,
-                      1320,1148,880,1111,1211,1248,1418,1468,903,1115,
-                      1258,1257,1426,1848,2059,2044,2239,2674,2507,3231,
-                      3756,4766,3840,4769,5882,5307];
-      const grad = ctx.createLinearGradient(0, 0, 0, 400);
-      grad.addColorStop(0, 'rgba(201,168,76,0.55)');
-      grad.addColorStop(1, 'rgba(201,168,76,0.03)');
-      new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: years,
-          datasets: [{
-            data: values, fill: true, tension: 0.3,
-            pointRadius: 0, borderWidth: 2,
-            borderColor: '#C9A84C',
-            backgroundColor: grad
-          }]
-        },
-        options: {
-          responsive: true, maintainAspectRatio: false,
-          plugins: { legend: { display: false }, tooltip: { enabled: false } },
-          scales: {
-            x: {
-              grid: { color: 'rgba(255,255,255,0.06)' },
-              ticks: { color: 'rgba(247,245,240,0.7)', font: { family: 'Heebo', size: 11 } }
-            },
-            y: {
-              position: 'right',
-              grid: { color: 'rgba(255,255,255,0.06)' },
-              ticks: {
-                color: 'rgba(247,245,240,0.7)',
-                font: { family: 'Heebo', size: 11 },
-                callback: v => v.toLocaleString()
-              }
-            }
-          }
-        }
-      });
-    })();
 
     initGrowthChart();
     document.querySelectorAll('.calc-input').forEach(el => el.addEventListener('input', updateCalc));
