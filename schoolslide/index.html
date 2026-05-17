@@ -322,7 +322,47 @@
     @media (max-height: 600px) {
       :root { --slide-padding: clamp(0.5rem,2.5vw,1.5rem); --content-gap: clamp(0.25rem,0.8vw,0.65rem); }
     }
-    @media (max-width: 600px) { :root { --title-size: clamp(1.5rem,8vw,3rem); } }
+    @media (max-width: 600px) {
+      :root {
+        --title-size:    clamp(1.5rem, 8vw, 2.6rem);
+        --h2-size:       clamp(1.05rem, 5vw, 1.65rem);
+        --h3-size:       clamp(0.88rem, 3.2vw, 1.15rem);
+        --body-size:     clamp(0.78rem, 2.8vw, 0.96rem);
+        --slide-padding: 1.1rem;
+        --content-gap:   0.45rem;
+      }
+
+      /* tighter slide padding on phone */
+      .slide-content {
+        padding: 1.1rem;
+        padding-bottom: 1.1rem;
+      }
+
+      /* grid-3 → single column (slide 4 cards, etc.) */
+      .grid-3 { grid-template-columns: 1fr; }
+
+      /* slide 2 photos: keep 2 columns, lose the big top margin */
+      #slide-2 .grid-3 {
+        grid-template-columns: 1fr 1fr !important;
+        margin-top: 0.5rem !important;
+      }
+      .photo-frame { aspect-ratio: 4/3; }
+
+      /* slide 11 mentor cards: 2 columns */
+      #slide-11 .grid-3 { grid-template-columns: 1fr 1fr !important; }
+
+      /* hide float-img when stacked in col-with-image — takes too much vertical space */
+      .col-with-image .float-img { display: none; }
+
+      /* hide decorative images inside .card (slide 4) */
+      .card > img { display: none; }
+
+      /* quote-big: allow wrapping on narrow screens */
+      .quote-big { white-space: normal !important; font-size: clamp(0.95rem, 4vw, 1.35rem) !important; }
+
+      /* money amounts slightly smaller */
+      .money-amount { font-size: clamp(1.4rem, 7vw, 2rem) !important; }
+    }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.2s !important; }
       html { scroll-behavior: auto; }
