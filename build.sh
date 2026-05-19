@@ -1,7 +1,6 @@
 #!/bin/sh
 mkdir -p dist
 cp -r landing-page-first/. dist/
-cp landing-page-first/index_v4.html dist/index.html
 cp -r etf-app dist/etf-app
 mkdir -p dist/tzofim && cp -r tzofim/. dist/tzofim/
 mkdir -p dist/schoolslide && cp -r schoolslide/. dist/schoolslide/
