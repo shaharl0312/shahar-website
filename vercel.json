@@ -2,5 +2,5 @@
   "buildCommand": "sh build.sh",
   "outputDirectory": "dist",
   "cleanUrls": true,
-  "trailingSlash": true
+  "trailingSlash": false
 }
