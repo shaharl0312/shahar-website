@@ -1,6 +1,6 @@
 {
-  "buildCommand": "mkdir -p dist && cp -r landing-page-first/. dist/ && cp -r etf-app dist/etf-app && mkdir -p dist/tzofim && cp -r tzofim/. dist/tzofim/ && mkdir -p dist/schoolslide && cp -r schoolslide/. dist/schoolslide/ && echo '=== verify ===' && ls dist/etf-app/etf-data-versions/",
+  "buildCommand": "sh build.sh",
   "outputDirectory": "dist",
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": true
 }
