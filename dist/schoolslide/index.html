@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>חינוך פיננסי — שחר לוי</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800;900&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --gold:        #C9A84C;
+      --gold-light:  #E8C97A;
+      --gold-dark:   #A07830;
+      --gold-glow:   rgba(201,168,76,0.3);
+      --dark:        #2D2D2D;
+      --dark-2:      #1a1a1a;
+      --cream:       #F7F5F0;
+      --cream-dark:  #EAE6DD;
+      --white:       #ffffff;
+      --green:       #4ade80;
+      --red:         #f87171;
+
+      --font-heading: 'Rubik', sans-serif;
+      --font-body:    'Heebo', sans-serif;
+
+      --title-size:  clamp(2.2rem, 6.5vw, 5.5rem);
+      --h2-size:     clamp(1.5rem, 4.5vw, 3.4rem);
+      --h3-size:     clamp(1.1rem, 2.5vw, 1.9rem);
+      --body-size:   clamp(0.95rem, 1.7vw, 1.3rem);
+      --small-size:  clamp(0.8rem, 1.3vw, 1.05rem);
+
+      --slide-padding: clamp(1.5rem, 5vw, 5rem);
+      --content-gap:   clamp(0.55rem, 1.8vw, 1.5rem);
+      --ease-out:      cubic-bezier(0.16, 1, 0.3, 1);
+      --dur:           0.6s;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; overflow-x: hidden; }
+    html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+    body { font-family: var(--font-body); font-size: var(--body-size); line-height: 1.6; }
+
+    /* ── SLIDE SHELL ── */
+    .slide {
+      width: 100vw; height: 100vh; height: 100dvh;
+      overflow: hidden; scroll-snap-align: start;
+      display: flex; flex-direction: column; position: relative;
+    }
+    .slide-content {
+      flex: 1; display: flex; flex-direction: column;
+      justify-content: center; max-height: 100%; overflow: hidden;
+      padding: var(--slide-padding);
+      padding-bottom: calc(var(--slide-padding) + 4rem);
+      gap: var(--content-gap);
+    }
+    .slide-badge { display: none; }
+
+    /* ── THEMES ── */
+    .bg-dark { background: #1a1a1a; color: var(--cream); }
+    .bg-dark::before {
+      content: ''; position: absolute; top: 0; right: 0;
+      width: 50%; height: 50%;
+      background: radial-gradient(ellipse at top right, rgba(201,168,76,0.15) 0%, transparent 68%);
+      pointer-events: none; z-index: 0;
+    }
+    .bg-dark .slide-content, .bg-dark .slide-badge { position: relative; z-index: 1; }
+    .bg-dark h1, .bg-dark h2 { color: var(--gold); font-family: var(--font-heading); letter-spacing: -0.025em; text-shadow: 0 0 40px rgba(201,168,76,0.2); }
+    .bg-dark h3                { color: var(--cream); font-family: var(--font-heading); }
+    .bg-dark .accent           { color: var(--gold); }
+    .bg-dark .card             { background: rgba(0,0,0,0.30); border: 1px solid rgba(201,168,76,0.18); border-radius: 14px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 8px 28px rgba(0,0,0,0.45); }
+    .bg-dark .divider          { background: var(--gold); box-shadow: 0 0 10px rgba(201,168,76,0.5); }
+    .bg-dark .quote-box        { border-color: var(--gold); background: rgba(201,168,76,0.07); }
+
+    .bg-cream { background: var(--cream); color: var(--dark); }
+    .bg-cream h1, .bg-cream h2 { color: var(--dark); font-family: var(--font-heading); letter-spacing: -0.02em; }
+    .bg-cream h3                { color: var(--dark); font-family: var(--font-heading); }
+    .bg-cream .accent           { color: var(--gold-dark); }
+    .bg-cream .card             { background: var(--white); border: 1px solid rgba(45,45,45,0.08); box-shadow: rgba(45,45,45,0.08) 0 8px 32px, rgba(45,45,45,0.04) 0 1px 4px; border-radius: 20px; }
+    .bg-cream .divider          { background: var(--gold); box-shadow: 0 0 8px rgba(201,168,76,0.35); }
+    .bg-cream .quote-box        { border-color: var(--gold-dark); background: rgba(201,168,76,0.07); }
+
+    /* ── TYPOGRAPHY ── */
+    h1 { font-family: var(--font-heading); font-size: var(--title-size); font-weight: 900; line-height: 1.0; }
+    h2 { font-family: var(--font-heading); font-size: var(--h2-size); font-weight: 800; line-height: 1.1; }
+    h3 { font-family: var(--font-heading); font-size: var(--h3-size); font-weight: 700; line-height: 1.25; }
+    p  { font-size: var(--body-size); line-height: 1.7; }
+
+    .glow-text {
+      background: linear-gradient(125deg, var(--gold-light) 0%, var(--gold) 45%, var(--gold-dark) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      filter: drop-shadow(0 0 20px rgba(201,168,76,0.3));
+    }
+    .eyebrow {
+      font-family: var(--font-heading); font-size: var(--small-size); font-weight: 800;
+      letter-spacing: 0.26em; text-transform: uppercase; opacity: 0.38; flex-shrink: 0;
+    }
+    .bg-dark  .eyebrow { color: var(--gold); }
+    .bg-cream .eyebrow { color: var(--dark); }
+
+    /* ── COMMON COMPONENTS ── */
+    .divider { width: clamp(48px,10vw,96px); height: 3px; border-radius: 2px; flex-shrink: 0; }
+    .card    { padding: clamp(0.75rem,1.5vw,1.2rem); }
+    .quote-box {
+      border-right: 5px solid; border-radius: 0 14px 14px 0;
+      border-bottom: 2px solid transparent;
+      padding: clamp(0.6rem,1.5vw,1rem) clamp(0.75rem,2vw,1.5rem);
+      font-size: var(--body-size); line-height: 1.65; flex-shrink: 0;
+      transition: font-size 0.5s ease, padding 0.5s ease,
+                  border-right-color 0.45s ease, border-bottom-color 0.45s ease,
+                  border-radius 0.45s ease, background 0.45s ease;
+    }
+    .quote-big {
+      border-right-color: transparent !important;
+      border-bottom-color: rgba(201,168,76,0.55) !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      align-self: center !important;
+      margin: 0 auto !important;
+      display: block !important;
+      width: fit-content !important;
+      white-space: nowrap !important;
+      font-size: clamp(1.45rem, 3.4vw, 2.4rem) !important;
+      font-weight: 600 !important;
+      text-align: center !important;
+      line-height: 1.4 !important;
+      padding: 0 clamp(1rem, 2.5vw, 2rem) clamp(0.9rem, 1.8vw, 1.3rem) !important;
+    }
+    /* גרשיים זהב — מוסתרים כברירת מחדל, מופיעים בפאזה הראשונה */
+    #slide-3 .quote-box::before {
+      content: '\201C';
+      display: block;
+      max-height: 0; overflow: hidden; opacity: 0;
+      font-size: 3.8em; line-height: 0.75;
+      color: #C9A84C; font-family: Georgia, serif; text-align: center;
+      transition: max-height 0.5s ease, opacity 0.45s ease;
+    }
+    #slide-3 .quote-box.quote-big::before {
+      max-height: 4em; opacity: 0.65; margin-bottom: 0.15em;
+    }
+    /* כותרת שקף 3 קבועה למעלה */
+    #slide-3 > .slide-content { justify-content: flex-start; }
+    #s3-body { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: var(--content-gap); min-height: 0; }
+    .bullet-list { list-style: none; display: flex; flex-direction: column; gap: clamp(0.28rem,0.7vh,0.55rem); }
+    .bullet-list li { display: flex; align-items: flex-start; gap: 0.55rem; font-size: var(--body-size); line-height: 1.5; }
+    .bullet-list li::before { content: '◆'; color: var(--gold); font-size: 0.6em; margin-top: 0.32em; flex-shrink: 0; }
+
+    /* ── LAYOUTS ── */
+    .grid-2         { display: grid; grid-template-columns: 1fr 1fr;        gap: var(--content-gap); }
+    .grid-3         { display: grid; grid-template-columns: repeat(3,1fr);  gap: var(--content-gap); }
+    .col-with-image { display: grid; grid-template-columns: 1fr 1fr;        gap: var(--content-gap); align-items: center; min-height: 0; }
+
+    @media (max-width: 768px) {
+      .col-with-image, .grid-2 { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ── FLOAT IMAGES ── */
+    .float-img { width: 100%; height: min(46vh,400px); object-fit: cover; }
+    .bg-dark .float-img {
+      -webkit-mask-image: radial-gradient(ellipse 88% 82% at center, black 45%, transparent 90%);
+      mask-image: radial-gradient(ellipse 88% 82% at center, black 45%, transparent 90%);
+      filter: drop-shadow(0 0 32px rgba(201,168,76,0.22)) drop-shadow(0 12px 36px rgba(0,0,0,0.7));
+    }
+
+    /* ── PHOTO CARDS (slide 2) ── */
+    .photo-card { display: flex; flex-direction: column; gap: 0.5rem; align-items: center; min-height: 0; }
+    .photo-frame {
+      width: 100%; aspect-ratio: 4/3; border-radius: 18px;
+      overflow: hidden; flex-shrink: 0;
+      box-shadow: 0 14px 44px rgba(0,0,0,0.15), 0 0 0 2px rgba(201,168,76,0.22);
+      transition: box-shadow 0.3s ease;
+    }
+    .photo-frame:hover { box-shadow: 0 18px 56px rgba(0,0,0,0.2), 0 0 0 2px rgba(201,168,76,0.5); }
+    .photo-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.5s ease; }
+    .photo-frame:hover img { transform: scale(1.04); }
+    .photo-frame img.portrait-fix { transform: rotate(-90deg) scale(1.18); object-position: 20% center; }
+    .photo-frame:hover img.portrait-fix { transform: rotate(-90deg) scale(1.22); }
+
+    /* ── SPLIT COLS (slide 3) ── */
+    .split-col { border-radius: 18px; padding: clamp(0.75rem,1.5vw,1.25rem); display: flex; flex-direction: column; gap: 0.5rem; }
+    .split-col.positive { background: rgba(74,222,128,0.07); border: 1.5px solid rgba(74,222,128,0.28); }
+    .split-col.negative { background: rgba(248,113,113,0.07); border: 1.5px solid rgba(248,113,113,0.28); }
+    .col-title { font-family: var(--font-heading); font-weight: 800; font-size: var(--h3-size); margin-bottom: 0.25rem; }
+    .col-title.positive { color: var(--green); }
+    .col-title.negative { color: var(--red); }
+
+    /* ── MONEY CARDS (slide 6 inflation) ── */
+    .money-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--content-gap); flex: 1; min-height: 0; }
+    .money-card {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 0.5rem; border-radius: 22px; padding: clamp(1rem,2.5vw,2rem);
+      text-align: center;
+    }
+    .money-amount { font-family: var(--font-heading); font-weight: 900; font-size: clamp(2rem,5vw,4rem); line-height: 1; }
+    .money-label  { font-size: var(--small-size); font-family: var(--font-heading); font-weight: 600; opacity: 0.65; }
+    .money-note   { font-size: var(--small-size); opacity: 0.6; line-height: 1.4; }
+    .money-now    { background: rgba(74,222,128,0.08); border: 1.5px solid rgba(74,222,128,0.28); }
+    .money-future { background: rgba(248,113,113,0.07); border: 1.5px solid rgba(248,113,113,0.25); }
+    .money-now    .money-amount { color: #22c55e; }
+    .money-future .money-amount { color: #ef4444; }
+
+    /* ── TIME STATS (slide 8 compound) ── */
+    .time-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--content-gap); }
+    .time-stat {
+      border-radius: 18px; padding: clamp(0.75rem,1.5vw,1.25rem);
+      display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.3rem;
+      background: var(--white); border: 1px solid rgba(201,168,76,0.35);
+      box-shadow: 0 4px 20px rgba(45,45,45,0.08);
+    }
+    .time-stat .ts-years { font-family: var(--font-heading); font-weight: 800; font-size: var(--small-size); color: var(--dark); opacity: 0.55; letter-spacing: 0.08em; }
+    .time-stat .ts-total { font-family: var(--font-heading); font-weight: 900; font-size: clamp(1.3rem,3.2vw,2.5rem); color: var(--gold-dark); line-height: 1; letter-spacing: -0.03em; }
+    .time-stat .ts-invested { font-size: var(--small-size); color: var(--dark); opacity: 0.45; }
+    .time-stat .ts-label { font-family: var(--font-heading); font-weight: 700; font-size: var(--small-size); color: var(--gold-dark); }
+    @media (max-width: 600px) { .time-stats { grid-template-columns: 1fr; } }
+
+    /* ── CALCULATOR (slide 8) ── */
+    .calc-wrapper { display: flex; flex-direction: column; gap: clamp(0.6rem,1.5vh,1.2rem); flex: 1; min-height: 0; }
+    .calc-top-row { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(1rem,2.5vw,2.5rem); align-items: start; }
+    @media (max-width: 900px) { .calc-top-row { grid-template-columns: 1fr; } }
+    .calc-chart-wrap { flex: 1; min-height: 0; position: relative; }
+    #growthChart { width: 100% !important; height: 100% !important; }
+    .calc-inputs  { display: flex; flex-direction: column; gap: clamp(0.45rem,1.1vh,0.8rem); }
+    .calc-field   { display: flex; flex-direction: column; gap: 0.22rem; }
+    .calc-label   { font-family: var(--font-heading); font-weight: 700; font-size: var(--small-size); color: var(--cream); opacity: 0.7; }
+    .calc-row     { display: flex; align-items: center; gap: 0.5rem; }
+    .calc-input {
+      flex: 1; padding: clamp(0.38rem,0.85vh,0.6rem) clamp(0.6rem,1.2vw,0.9rem);
+      border: 1.5px solid rgba(45,45,45,0.16); border-radius: 10px;
+      font-family: var(--font-heading); font-weight: 700; font-size: var(--h3-size);
+      color: var(--dark); background: var(--white); transition: border-color 0.2s, box-shadow 0.2s;
+      width: 100%;
+    }
+    .calc-input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,168,76,0.15); }
+    .calc-unit   { font-family: var(--font-heading); font-weight: 700; font-size: var(--small-size); color: var(--cream); opacity: 0.5; white-space: nowrap; }
+    .calc-results { display: flex; flex-direction: column; gap: clamp(0.45rem,1.1vh,0.8rem); }
+    .calc-main {
+      background: var(--white); border-radius: 20px; border: 2px solid var(--gold);
+      padding: clamp(0.75rem,1.5vw,1.25rem); text-align: center;
+      box-shadow: 0 0 0 6px rgba(201,168,76,0.08), 0 8px 32px rgba(201,168,76,0.12);
+    }
+    .calc-main-label  { font-family: var(--font-heading); font-weight: 600; font-size: var(--small-size); opacity: 0.55; margin-bottom: 0.12rem; }
+    .calc-main-amount {
+      font-family: var(--font-heading); font-weight: 900;
+      font-size: clamp(1.75rem,4.5vw,3.25rem); color: var(--gold-dark); line-height: 1; letter-spacing: -0.03em;
+    }
+    .calc-bar-wrap   { display: flex; flex-direction: column; gap: 0.35rem; }
+    .calc-bar-track  { height: clamp(18px,2.8vh,26px); border-radius: 100px; background: rgba(247,245,240,0.12); overflow: hidden; display: flex; }
+    .calc-bar-inv    { height: 100%; background: rgba(247,245,240,0.45); border-radius: 100px 0 0 100px; transition: width 0.7s var(--ease-out); }
+    .calc-bar-profit { height: 100%; background: linear-gradient(to left, var(--gold-light), var(--gold)); flex: 1; border-radius: 0 100px 100px 0; }
+    .calc-bar-labels { display: flex; justify-content: space-between; }
+    .calc-bar-label  { font-family: var(--font-heading); font-size: var(--small-size); font-weight: 700; }
+    .calc-breakdown  { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; }
+    .calc-break {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(201,168,76,0.18);
+      border-radius: 12px; padding: 0.45rem 0.7rem; text-align: center;
+    }
+    .break-label { font-size: var(--small-size); opacity: 0.55; font-family: var(--font-heading); font-weight: 600; color: var(--cream); }
+    .break-val   { font-family: var(--font-heading); font-weight: 800; font-size: var(--h3-size); color: var(--cream); }
+
+    /* ── MENTOR CARDS (slide 11) ── */
+    .mentor-card {
+      display: flex; flex-direction: column; align-items: center; gap: 0.45rem;
+      border-radius: 18px; padding: clamp(0.75rem,1.5vw,1.25rem);
+      background: rgba(0,0,0,0.30); border: 1px solid rgba(201,168,76,0.18);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 8px 28px rgba(0,0,0,0.45);
+    }
+    .mentor-logo {
+      width: clamp(52px,8vw,76px); height: clamp(52px,8vw,76px);
+      border-radius: 50%; object-fit: cover; border: 2px solid rgba(201,168,76,0.3);
+    }
+    .mentor-name     { font-family: var(--font-heading); font-weight: 700; font-size: var(--body-size); text-align: center; }
+    .mentor-platform { font-family: var(--font-heading); font-size: var(--small-size); font-weight: 600; color: var(--gold-dark); }
+    .mentor-desc     { font-size: var(--small-size); opacity: 0.62; text-align: center; line-height: 1.4; }
+
+    /* ── CTA (slide 11) ── */
+    .cta-row { display: flex; align-items: center; gap: clamp(1rem,3vw,2rem); justify-content: center; flex-wrap: wrap; flex-shrink: 0; }
+    .cta-qr  { width: clamp(140px,18vw,220px); border-radius: 10px; border: 2px solid rgba(201,168,76,0.28); }
+    .cta-links { display: flex; flex-direction: column; gap: 0.35rem; }
+    .cta-link  { font-family: var(--font-heading); font-weight: 700; font-size: var(--body-size); color: var(--cream); display: flex; align-items: center; gap: 0.4rem; }
+
+    /* ── HERO RINGS ── */
+    .hero-ring { position: absolute; border-radius: 50%; border: 1px solid rgba(201,168,76,0.12); pointer-events: none; z-index: 0; }
+    @keyframes ring-expand {
+      0%   { transform: translate(-50%,-50%) scale(0.8); opacity: 0.3; }
+      50%  { transform: translate(-50%,-50%) scale(1);   opacity: 0.15; }
+      100% { transform: translate(-50%,-50%) scale(1.15); opacity: 0; }
+    }
+    .hero-ring-1 { width: 40vmin; height: 40vmin; left: 50%; top: 50%; animation: ring-expand 4s ease-out infinite; }
+    .hero-ring-2 { width: 60vmin; height: 60vmin; left: 50%; top: 50%; animation: ring-expand 4s ease-out infinite 1.3s; }
+    .hero-ring-3 { width: 80vmin; height: 80vmin; left: 50%; top: 50%; animation: ring-expand 4s ease-out infinite 2.6s; }
+
+    /* ── LOTTIE DIAMOND ── */
+    .lottie-diamond { display: inline-flex; align-items: center; justify-content: center; width: clamp(32px,4.5vw,48px); height: clamp(32px,4.5vw,48px); }
+    @keyframes diamond-breathe {
+      0%, 100% { transform: scale(1);    filter: drop-shadow(0 0 4px rgba(201,168,76,0.4)); }
+      50%       { transform: scale(1.2);  filter: drop-shadow(0 0 12px rgba(201,168,76,0.85)); }
+    }
+    .slide.visible .lottie-diamond svg { animation: diamond-breathe 2.8s ease-in-out infinite; }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity var(--dur) var(--ease-out), transform var(--dur) var(--ease-out); }
+    .slide.visible .reveal { opacity: 1; transform: translateY(0); }
+    .reveal:nth-child(1) { transition-delay: 0.07s; }
+    .reveal:nth-child(2) { transition-delay: 0.15s; }
+    .reveal:nth-child(3) { transition-delay: 0.24s; }
+    .reveal:nth-child(4) { transition-delay: 0.34s; }
+    .reveal:nth-child(5) { transition-delay: 0.44s; }
+    .reveal:nth-child(6) { transition-delay: 0.54s; }
+    .reveal:nth-child(7) { transition-delay: 0.64s; }
+
+    /* ── NAVIGATION ── */
+    .progress-bar { position: fixed; top: 0; right: 0; height: 3px; background: linear-gradient(to left, var(--gold-light), var(--gold)); z-index: 200; transition: width 0.35s ease; box-shadow: 0 0 8px var(--gold-glow); }
+
+
+    /* ── RESPONSIVE ── */
+    @media (max-height: 700px) {
+      :root { --slide-padding: clamp(0.75rem,3vw,2rem); --content-gap: clamp(0.35rem,1.2vw,0.9rem); --h2-size: clamp(1rem,3vw,1.75rem); }
+    }
+    @media (max-height: 600px) {
+      :root { --slide-padding: clamp(0.5rem,2.5vw,1.5rem); --content-gap: clamp(0.25rem,0.8vw,0.65rem); }
+    }
+    @media (max-width: 600px) {
+      :root {
+        --title-size:    clamp(1.5rem, 8vw, 2.6rem);
+        --h2-size:       clamp(1.05rem, 5vw, 1.65rem);
+        --h3-size:       clamp(0.88rem, 3.2vw, 1.15rem);
+        --body-size:     clamp(0.78rem, 2.8vw, 0.96rem);
+        --slide-padding: 1.1rem;
+        --content-gap:   0.45rem;
+      }
+
+      /* tighter slide padding on phone */
+      .slide-content {
+        padding: 1.1rem;
+        padding-bottom: 1.1rem;
+      }
+
+      /* grid-3 → single column (slide 4 cards, etc.) */
+      .grid-3 { grid-template-columns: 1fr; }
+
+      /* slide 2 photos: keep 2 columns, lose the big top margin */
+      #slide-2 .grid-3 {
+        grid-template-columns: 1fr 1fr !important;
+        margin-top: 0.5rem !important;
+      }
+      .photo-frame { aspect-ratio: 4/3; }
+
+      /* slide 11 mentor cards: 2 columns */
+      #slide-11 .grid-3 { grid-template-columns: 1fr 1fr !important; }
+
+      /* hide float-img when stacked in col-with-image — takes too much vertical space */
+      .col-with-image .float-img { display: none; }
+
+      /* hide decorative images inside .card (slide 4) */
+      .card > img { display: none; }
+
+      /* quote-big: allow wrapping on narrow screens */
+      .quote-big { white-space: normal !important; font-size: clamp(0.95rem, 4vw, 1.35rem) !important; }
+
+      /* money amounts slightly smaller */
+      .money-amount { font-size: clamp(1.4rem, 7vw, 2rem) !important; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.2s !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="progress-bar" id="progressBar" style="width:10%"></div>
+
+
+  <!-- ═══════════════════════════════════════════════
+       שקף 01 — פתיח (dark)
+       ═══════════════════════════════════════════════ -->
+  <section class="slide bg-dark" id="slide-1">
+    <div class="hero-ring hero-ring-1"></div>
+    <div class="hero-ring hero-ring-2"></div>
+    <div class="hero-ring hero-ring-3"></div>
+    <div class="slide-badge">01</div>
+    <div class="slide-content" style="align-items:center;text-align:center;position:relative;z-index:1;">
+      <h1 class="glow-text reveal" style="line-height:0.95;">למה חינוך פיננסי<br/>הוא השיעור הכי חשוב<br/>שתלמדו?</h1>
+      <div class="divider reveal" style="margin:0 auto;"></div>
+      <p class="reveal" style="opacity:0.55;font-family:var(--font-heading);font-size:var(--h3-size);font-weight:500;">
+        השקעות בלי כאב ראש - ובלי מילים שלא אומרות כלום
+      </p>
+      <p class="reveal" style="opacity:0.4;font-family:var(--font-heading);font-size:1.1rem;font-weight:400;margin-top:1.2rem;color:#aaa;">שחר לוי</p>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       שקף 02 — מי אני (cream)
+       ═══════════════════════════════════════════════ -->
+  <section class="slide bg-cream" id="slide-2">
+    <div class="slide-badge">02</div>
+    <div class="slide-content">
+      <h2 class="reveal">מי אני ואיך הגעתי לעולם ההשקעות</h2>
+      <div class="divider reveal"></div>
+
+      <div class="grid-3 reveal" style="flex:1;min-height:0;align-items:start;margin-top:6rem;">
+        <div class="photo-card">
+          <div class="photo-frame">
+            <img src="./my%20photo/judo.jpg" alt="שחר לוי - ג'ודו" loading="eager" />
+          </div>
+        </div>
+        <div class="photo-card">
+          <div class="photo-frame">
+            <img src="./my%20photo/army1.jpg" alt="שחר לוי - צבא" loading="eager" />
+          </div>
+        </div>
+        <div class="photo-card">
+          <div class="photo-frame">
+            <img src="./my%20photo/today.JPG" alt="שחר לוי - היום" loading="eager" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       שקף 03 — אבא עשיר אבא עני (dark)
+       ═══════════════════════════════════════════════ -->
+  <section class="slide bg-dark" id="slide-3">
+    <div class="slide-badge">03</div>
+    <div class="slide-content">
+      <p class="eyebrow reveal">גישת ההשקעות שלנו</p>
+      <h2 class="reveal">כולנו רוצים להיות עשירים -<br/>מה ההבדל?</h2>
+      <div class="divider reveal"></div>
+
+      <div id="s3-body">
+        <div class="grid-2">
+          <div class="split-col positive">
+            <div class="col-title positive">◆ נכס - מכניס כסף לכיס</div>
+            <ul class="bullet-list" style="color:var(--cream);">
+              <li>דירה להשכרה</li>
+              <li>מניות ש"עובדות" כל הזמן</li>
+              <li>קרן מחקה S&amp;P 500</li>
+              <li>עסק שרץ גם בלעדיך</li>
+            </ul>
+          </div>
+          <div class="split-col negative">
+            <div class="col-title negative">◆ התחייבות - מוציאה כסף מהכיס</div>
+            <ul class="bullet-list" style="color:var(--cream);">
+              <li>הלוואות ומשכנתא</li>
+              <li>שכירות על דירה</li>
+              <li>מנויים חודשיים - ספוטיפי, נטפליקס</li>
+              <li>אייפון חדש או שעון חכם</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="quote-box reveal">
+          עשירים קונים נכסים. עניים קונים התחייבויות שמרגישות להם כמו נכסים.
+        </div>
+      </div><!-- /#s3-body -->
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       שקף 04 — מה זה שוק ההון (cream)
+       ═══════════════════════════════════════════════ -->
+  <section class="slide bg-cream" id="slide-4">
+    <div class="slide-badge">04</div>
+    <div class="slide-content">
+      <p class="eyebrow reveal">הבסיס</p>
+      <h2 class="reveal">לפני שמתחילים - מה זה שוק ההון?</h2>
+      <div class="divider reveal"></div>
+
+      <div class="grid-3 reveal" style="flex:1;min-height:0;align-items:stretch;">
+        <div class="card" style="display:flex;flex-direction:column;gap:0.5rem;">
+          <div class="lottie-diamond">
+            <svg width="100%" height="100%" viewBox="0 0 40 40" fill="none"><polygon points="20,4 36,20 20,36 4,20" fill="#C9A84C" opacity="0.9"/></svg>
+          </div>
+          <h3>שוק ירקות - רק לחברות</h3>
+          <p style="opacity:0.72;">בשוק ירקות קונים תוצרת. בשוק ההון קונים חלקי בעלות בחברות. אפל, טסלה, אמזון - הכל פתוח לכולם.</p>
+          <img src="./images/05-market.png" alt="שוק ירקות" style="width:100%;border-radius:10px;object-fit:cover;margin-top:auto;" />
+        </div>
+        <div class="card" style="display:flex;flex-direction:column;gap:0.5rem;">
+          <div class="lottie-diamond">
+            <svg width="100%" height="100%" viewBox="0 0 40 40" fill="none"><polygon points="20,4 36,20 20,36 4,20" fill="#C9A84C" opacity="0.9"/></svg>
+          </div>
+          <h3>מניה = בעלות על חברות</h3>
+          <p style="opacity:0.72;">כשקונים מניה של אפל - נהיים בעלים של חלק קטן מאפל. החברה מרוויחה - גם אתם מרוויחים.</p>
+          <img src="./images/06-stock.png" alt="מניה" style="width:100%;border-radius:10px;object-fit:cover;margin-top:auto;" />
+        </div>
+        <div class="card" style="display:flex;flex-direction:column;gap:0.5rem;">
+          <div class="lottie-diamond">
+            <svg width="100%" height="100%" viewBox="0 0 40 40" fill="none"><polygon points="20,4 36,20 20,36 4,20" fill="#C9A84C" opacity="0.9"/></svg>
+          </div>
+          <h3>הכסף עובד בשבילכם</h3>
+          <p style="opacity:0.72;">אנשים באמזון עובדים 16 שעות - ואתם מרוויחים כי אתם בעלים. זה הנכס הכי פשוט שתוכלו לרכוש.</p>
+          <img src="./images/07-passive-v2.png" alt="כסף עובד" style="width:100%;border-radius:10px;object-fit:cover;margin-top:auto;" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       שקף 05 — מדד ה-S&P 500 (dark)
+       ═══════════════════════════════════════════════ -->
+  <section class="slide bg-dark" id="slide-5">
+    <div class="slide-badge">05</div>
+    <div class="slide-content">
+      <div class="col-with-image" style="flex:1;min-height:0;">
+        <div style="display:flex;flex-direction:column;gap:var(--content-gap);">
+          <p class="eyebrow reveal">מה אנחנו קונים</p>
+          <h2 class="reveal">מדד ה-S&amp;P 500</h2>
+          <div class="divider reveal"></div>
+          <ul class="bullet-list reveal">
+            <li>500 החברות הגדולות והדומיננטיות בארה"ב - Apple, Nvidia, Microsoft ועוד</li>
+            <li>לא מניה אחת - פיזור אוטומטי על כל הכלכלה האמריקאית</li>
+            <li>מי שהשקיע ב-1990 - קיבל פי 18 על כספו עד היום</li>
+          </ul>
+          <div class="quote-box reveal">
+            כשאתה קונה S&amp;P 500 — אתה לא מהמר על חברה אחת. אתה משקיע בכלכלה האמריקאית כולה.
+          </div>
+        </div>
+        <img src="./images/snp500-real.png" alt="גרף S&P 500 היסטורי" class="float-img reveal" style="border-radius:12px;" />
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       שקף 06 — גישת ההשקעה / השקעה פסיבית (cream)
+       ═══════════════════════════════════════════════ -->
+  <section class="slide bg-cream" id="slide-6">
+    <div class="slide-badge">06</div>
+    <div class="slide-content">
+      <div class="col-with-image" style="flex:1;min-height:0;">
+        <div style="display:flex;flex-direction:column;gap:var(--content-gap);">
+          <p class="eyebrow reveal">הגישה שלנו</p>
+          <h2 class="reveal">השקעה פסיבית - לא מסחר</h2>
+          <div class="divider reveal"></div>
+          <ul class="bullet-list reveal">
+            <li>אנחנו לא סוחרים - אנחנו רוכבים על המגמה</li>
+            <li>קרן סל על ה-S&P 500 - פעם בחודש, ואז ממשיכים עם החיים</li>
+            <li>השוק תמיד עולה לאורך זמן - אנחנו פשוט רוצים להיות חלק ממנו</li>
+          </ul>
+          <div class="quote-box reveal">
+            "אל תעשה כלום - פשוט תעמוד שם."
+            <span style="display:block;margin-top:0.3rem;opacity:0.5;font-size:var(--small-size);font-style:normal;">— ג'ון בוגל, מייסד Vanguard</span>
+          </div>
+        </div>
+        <img src="./images/07-passive-active.png" alt="השקעה פסיבית" class="float-img reveal" />
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       שקף 07 — אינפלציה (dark)
+       ═══════════════════════════════════════════════ -->
+  <section class="slide bg-dark" id="slide-7">
+    <div class="slide-badge">07</div>
+    <div class="slide-content" style="gap:var(--content-gap);">
+      <p class="eyebrow reveal">שחיקת הכסף</p>
+      <h2 class="reveal">אינפלציה - האויב השקט</h2>
+      <div class="divider reveal"></div>
+
+      <div class="col-with-image reveal" style="flex:1;min-height:0;">
+        <div style="display:flex;flex-direction:column;gap:var(--content-gap);">
+          <div class="quote-box">
+            כסף שיושב בעו"ש <strong>מאבד ערך</strong> כל שנה
+          </div>
+          <div class="grid-2" style="gap:0.6rem;">
+            <div class="card" style="text-align:center;gap:0.3rem;display:flex;flex-direction:column;">
+              <div style="font-size:var(--body-size);opacity:0.6;">2024</div>
+              <div style="font-family:var(--font-heading);font-size:clamp(1.4rem,3vw,2.2rem);font-weight:800;color:var(--gold);">₪100</div>
+              <div style="font-size:var(--small-size);opacity:0.65;">כוח קנייה</div>
+            </div>
+            <div class="card" style="text-align:center;gap:0.3rem;display:flex;flex-direction:column;">
+              <div style="font-size:var(--body-size);opacity:0.6;">2025</div>
+              <div style="font-family:var(--font-heading);font-size:clamp(1.4rem,3vw,2.2rem);font-weight:800;color:#f87171;">₪97</div>
+              <div style="font-size:var(--small-size);opacity:0.65;">בערך אמיתי</div>
+            </div>
+          </div>
+          <p style="font-size:var(--body-size);">
+            🔑 הפתרון: לשים את הכסף לעבוד.<br/>
+            השקעה מנצחת אינפלציה.
+          </p>
+        </div>
+        <img src="./images/09-inflation.png" alt="כסף מאבד ערך" class="float-img" />
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       שקף 08 — ריבית דריבית (cream)
+       ═══════════════════════════════════════════════ -->
+  <section class="slide bg-cream" id="slide-8">
+    <div class="slide-badge">08</div>
+    <div class="slide-content">
+      <p class="eyebrow reveal">החבר הכי טוב שלכם</p>
+      <h2 class="reveal">ריבית דריבית</h2>
+      <div class="divider reveal"></div>
+
+      <div class="quote-box reveal" style="font-size:var(--body-size);">
+        "הפלא השמיני בתבל. מי שמבין אותו - מרוויח ממנו. מי שלא - משלם אותו."
+        <span style="display:block;margin-top:0.3rem;opacity:0.45;font-size:var(--small-size);font-style:normal;">מיוחס לאלברט איינשטיין</span>
+      </div>
+
+      <!-- ₪500/month at 8% -->
+      <p class="reveal" style="font-size:var(--small-size);opacity:0.5;font-family:var(--font-heading);font-weight:600;letter-spacing:0.06em;">
+        הפקדה חודשית של 500 ₪ בתשואה שנתית של 8%
+      </p>
+      <div class="time-stats reveal">
+        <div class="time-stat">
+          <div class="ts-years">10 שנים</div>
+          <div class="ts-total">91,473 ₪</div>
+          <div class="ts-invested">הפקדתם 60,000 ₪</div>
+          <div class="ts-label">+52% רווח</div>
+        </div>
+        <div class="time-stat">
+          <div class="ts-years">20 שנים</div>
+          <div class="ts-total">294,510 ₪</div>
+          <div class="ts-invested">הפקדתם 120,000 ₪</div>
+          <div class="ts-label">+145% רווח</div>
+        </div>
+        <div class="time-stat">
+          <div class="ts-years">30 שנים</div>
+          <div class="ts-total">745,179 ₪</div>
+          <div class="ts-invested">הפקדתם 180,000 ₪</div>
+          <div class="ts-label">+314% רווח</div>
+        </div>
+      </div>
+
+      <p class="reveal" style="font-family:var(--font-heading);font-weight:800;color:var(--gold);font-size:var(--h3-size);text-align:center;">
+        אתם לא צריכים הרבה כסף - אתם צריכים הרבה זמן.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       שקף 09 — מחשבון ריבית דריבית (dark)
+       ═══════════════════════════════════════════════ -->
+  <section class="slide bg-dark" id="slide-9">
+    <div class="slide-badge">09</div>
+    <div class="slide-content">
+      <p class="eyebrow reveal">בואו נראה מספרים</p>
+      <h2 class="reveal">מחשבון ריבית דריבית</h2>
+      <div class="divider reveal"></div>
+
+      <div class="calc-wrapper reveal">
+        <div class="calc-top-row">
+        <div class="calc-inputs">
+          <div class="calc-field">
+            <label class="calc-label" for="c-init">סכום התחלתי</label>
+            <div class="calc-row">
+              <input class="calc-input" id="c-init" type="number" value="1000" min="0" step="100" />
+              <span class="calc-unit">₪</span>
+            </div>
+          </div>
+          <div class="calc-field">
+            <label class="calc-label" for="c-monthly">הפקדה חודשית</label>
+            <div class="calc-row">
+              <input class="calc-input" id="c-monthly" type="number" value="500" min="0" step="50" />
+              <span class="calc-unit">₪</span>
+            </div>
+          </div>
+          <div class="calc-field">
+            <label class="calc-label" for="c-rate">תשואה שנתית</label>
+            <div class="calc-row">
+              <input class="calc-input" id="c-rate" type="number" value="8" min="0" max="30" step="0.5" />
+              <span class="calc-unit">%</span>
+            </div>
+          </div>
+          <div class="calc-field">
+            <label class="calc-label" for="c-years">מספר שנים</label>
+            <div class="calc-row">
+              <input class="calc-input" id="c-years" type="number" value="20" min="1" max="50" step="1" />
+              <span class="calc-unit">שנים</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="calc-results">
+          <div class="calc-main">
+            <div class="calc-main-label">הסכום שיהיה לך</div>
+            <div class="calc-main-amount" id="r-total">₪ 0</div>
+          </div>
+          <div class="calc-bar-wrap">
+            <div class="calc-bar-track">
+              <div class="calc-bar-inv" id="r-bar" style="width:50%"></div>
+              <div class="calc-bar-profit"></div>
+            </div>
+            <div class="calc-bar-labels">
+              <span class="calc-bar-label" style="color:var(--cream);">הפקדות</span>
+              <span class="calc-bar-label" style="color:var(--gold-dark);">רווח</span>
+            </div>
+          </div>
+          <div class="calc-breakdown">
+            <div class="calc-break">
+              <div class="break-label">סה"כ הפקדתם</div>
+              <div class="break-val" id="r-invested">₪ 0</div>
+            </div>
+            <div class="calc-break">
+              <div class="break-label">רווח מהשוק</div>
+              <div class="break-val" id="r-profit" style="color:var(--gold-dark);">₪ 0</div>
+            </div>
+          </div>
+        </div>
+        </div><!-- /calc-top-row -->
+        <div class="calc-chart-wrap">
+          <canvas id="growthChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       שקף 10 — הרגלים אטומיים (cream)
+       ═══════════════════════════════════════════════ -->
+  <section class="slide bg-cream" id="slide-10">
+    <div class="slide-badge">10</div>
+    <div class="slide-content" style="gap:var(--content-gap);">
+      <p class="eyebrow reveal">הרגלים אטומיים</p>
+      <h2 class="reveal">איך עושים את זה בפועל?</h2>
+      <div class="divider reveal"></div>
+
+      <div class="col-with-image reveal" style="flex:1;min-height:0;">
+        <div style="display:flex;flex-direction:column;gap:var(--content-gap);">
+          <div class="quote-box">
+            זה לא קורה ביום - זה קורה לאט ובזכות הרגלים.
+          </div>
+          <div class="card" style="display:flex;flex-direction:column;gap:0.4rem;">
+            <p style="opacity:0.9;font-style:italic;">"אי אפשר לצפות להיות חטוב בלי ללכת לחדר כושר או לעשות סתם דברים - כסף דורש אימון והבנה."</p>
+          </div>
+          <p style="font-family:var(--font-heading);font-weight:700;font-size:var(--body-size);color:var(--gold);">
+            למידה אחת = כוח לכל החיים.
+          </p>
+        </div>
+        <img src="./images/11-habits.png" alt="הרגלים אטומיים" class="float-img" />
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       שקף 11 — סיכום וצעדים הבאים (dark)
+       ═══════════════════════════════════════════════ -->
+  <section class="slide bg-dark" id="slide-11">
+    <div class="slide-badge">11</div>
+    <div class="slide-content" style="gap:clamp(0.4rem,1.2vh,0.85rem);">
+      <h2 class="reveal" style="font-size:clamp(1.05rem,2.8vw,2.1rem);">"הלוואי שמישהו היה מלמד אותי את זה בבית ספר"</h2>
+      <div class="divider reveal"></div>
+      <p class="eyebrow reveal">ממי ממשיכים ללמוד?</p>
+
+      <div class="grid-3 reveal">
+        <div class="mentor-card">
+          <img src="./my%20photo/lazy%20investor.jpeg" alt="השקעות לעצלנים" class="mentor-logo" />
+          <div class="mentor-name">השקעות לעצלנים</div>
+          <div class="mentor-platform">פודקאסט + אינסטגרם</div>
+          <div class="mentor-desc">מצוין להשקעה פסיבית פשוטה</div>
+        </div>
+        <div class="mentor-card">
+          <img src="./my%20photo/Guy%20Natan.jpeg" alt="גיא נתן" class="mentor-logo" />
+          <div class="mentor-name">גיא נתן</div>
+          <div class="mentor-platform">פודקאסט + אינסטגרם</div>
+          <div class="mentor-desc">השקעות ערך, כלכלה, פיננסים</div>
+        </div>
+        <div class="mentor-card">
+          <img src="./my%20photo/MICHA%20STOCKS.jpeg" alt="מיכה סטוקס" class="mentor-logo" />
+          <div class="mentor-name">מיכה סטוקס</div>
+          <div class="mentor-platform">יוטיוב - האקדמיה</div>
+          <div class="mentor-desc">ניתוח גרפי ומסחר</div>
+        </div>
+      </div>
+
+      <div class="cta-row reveal">
+        <img src="./my%20photo/Instegram%20Qr.JPG" alt="QR קוד אינסטגרם" class="cta-qr" />
+        <div class="cta-links">
+          <div class="cta-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            <strong>@shahar.levy1</strong>
+          </div>
+          <div class="cta-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.16h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.75a16 16 0 0 0 6.07 6.07l.76-.85a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <strong>058-779-0990</strong>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <script>
+    // ── COMPOUND INTEREST CALCULATOR ──────────────────────
+    function calcFV(initial, monthly, rateYearly, years) {
+      const r = (rateYearly / 100) / 12;
+      const n = years * 12;
+      if (r === 0) {
+        const invested = initial + monthly * n;
+        return { total: invested, invested, profit: 0 };
+      }
+      const growth   = Math.pow(1 + r, n);
+      const total    = initial * growth + monthly * ((growth - 1) / r);
+      const invested = initial + monthly * n;
+      return { total, invested, profit: total - invested };
+    }
+
+    function fmt(n) {
+      if (n >= 1000000) return '₪ ' + (n / 1000000).toFixed(2) + 'M';
+      return '₪ ' + Math.round(n).toLocaleString('he-IL');
+    }
+
+    // ── CHART ────────────────────────────────────────
+    let growthChart;
+    function initGrowthChart() {
+      const ctx = document.getElementById('growthChart').getContext('2d');
+      growthChart = new Chart(ctx, {
+        type: 'line',
+        data: { labels: [], datasets: [
+          {
+            label: 'סה"כ הפקדות',
+            data: [], fill: true, tension: 0.35, pointRadius: 0, borderWidth: 2,
+            borderColor: 'rgba(247,245,240,0.5)',
+            backgroundColor: 'rgba(247,245,240,0.08)',
+          },
+          {
+            label: 'סה"כ עם ריבית דריבית',
+            data: [], fill: true, tension: 0.35, pointRadius: 0, borderWidth: 2.5,
+            borderColor: '#C9A84C',
+            backgroundColor: 'rgba(201,168,76,0.18)',
+          }
+        ]},
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          animation: { duration: 400 },
+          plugins: {
+            legend: { display: true, position: 'bottom', labels: { font: { family: 'Heebo', size: 12 }, color: 'rgba(247,245,240,0.65)', boxWidth: 16, padding: 14 } },
+            tooltip: { callbacks: { label: c => '₪ ' + Math.round(c.parsed.y).toLocaleString('he-IL') } }
+          },
+          scales: {
+            x: { grid: { color: 'rgba(247,245,240,0.06)' }, ticks: { font: { family: 'Heebo', size: 11 }, color: 'rgba(247,245,240,0.45)', maxTicksLimit: 8 } },
+            y: { grid: { color: 'rgba(247,245,240,0.06)' }, ticks: { font: { family: 'Heebo', size: 11 }, color: 'rgba(247,245,240,0.45)', callback: v => v >= 1000000 ? (v/1000000).toFixed(1)+'M ₪' : Math.round(v/1000)+'K ₪' } }
+          }
+        }
+      });
+    }
+
+    function updateChart(init, monthly, rate, years) {
+      if (!growthChart) return;
+      const labels = [], dep = [], tot = [];
+      for (let y = 0; y <= years; y++) {
+        labels.push('שנה ' + y);
+        if (y === 0) { dep.push(init); tot.push(init); }
+        else { const r = calcFV(init, monthly, rate, y); dep.push(Math.round(r.invested)); tot.push(Math.round(r.total)); }
+      }
+      growthChart.data.labels = labels;
+      growthChart.data.datasets[0].data = dep;
+      growthChart.data.datasets[1].data = tot;
+      growthChart.update();
+    }
+
+    function updateCalc() {
+      const init    = parseFloat(document.getElementById('c-init').value)    || 0;
+      const monthly = parseFloat(document.getElementById('c-monthly').value) || 0;
+      const rate    = parseFloat(document.getElementById('c-rate').value)    || 0;
+      const years   = parseInt(document.getElementById('c-years').value)     || 1;
+      const res = calcFV(init, monthly, rate, years);
+      document.getElementById('r-total').textContent    = fmt(res.total);
+      document.getElementById('r-invested').textContent = fmt(res.invested);
+      document.getElementById('r-profit').textContent   = fmt(res.profit);
+      const invPct = res.total > 0 ? (res.invested / res.total) * 100 : 50;
+      document.getElementById('r-bar').style.width = Math.max(5, Math.min(92, invPct)) + '%';
+      updateChart(init, monthly, rate, years);
+    }
+
+    initGrowthChart();
+    document.querySelectorAll('.calc-input').forEach(el => el.addEventListener('input', updateCalc));
+    updateCalc();
+
+    // ── NAVIGATION ────────────────────────────────────────
+    const TOTAL        = 11;
+    const SLIDE3_IDX   = 2;
+    let   current      = 0;
+    let   slide3Step   = 0;
+    let   s3Timer      = null;
+    const slides       = Array.from(document.querySelectorAll('.slide'));
+    const pbar         = document.getElementById('progressBar');
+
+    function setSlide3Step(step, instant) {
+      const grid = document.querySelector('#slide-3 .grid-2');
+      const qb   = document.querySelector('#slide-3 .quote-box');
+      clearTimeout(s3Timer);
+      slide3Step = step;
+
+      if (step === 0) {
+        if (instant || grid.style.display === 'none') {
+          grid.style.transition = ''; grid.style.display = 'none';
+        } else {
+          grid.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+          grid.style.opacity    = '0';
+          grid.style.transform  = 'translateY(-8px)';
+          s3Timer = setTimeout(() => { grid.style.display = 'none'; grid.style.transition = ''; }, 370);
+        }
+        qb.classList.add('quote-big');
+      } else {
+        qb.classList.remove('quote-big');
+        grid.style.transition = '';
+        grid.style.display    = '';
+        grid.style.opacity    = '0';
+        grid.style.transform  = 'translateY(22px)';
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          grid.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
+          grid.style.opacity    = '1';
+          grid.style.transform  = 'translateY(0)';
+        }));
+      }
+    }
+
+    function goTo(idx, fromDir = 1) {
+      idx = Math.max(0, Math.min(TOTAL - 1, idx));
+      current = idx;
+      if (idx === SLIDE3_IDX) setSlide3Step(fromDir > 0 ? 0 : 1);
+      slides[idx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+      pbar.style.width = ((idx + 1) / TOTAL * 100) + '%';
+    }
+
+    function goForward() {
+      if (current === SLIDE3_IDX && slide3Step === 0) { setSlide3Step(1); return; }
+      goTo(current + 1, 1);
+    }
+    function goBackward() {
+      if (current === SLIDE3_IDX && slide3Step === 1) { setSlide3Step(0); return; }
+      goTo(current - 1, -1);
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); goForward(); }
+      if (e.key === 'ArrowUp'   || e.key === 'ArrowLeft')                   { e.preventDefault(); goBackward(); }
+    });
+
+    let startY = 0, startX = 0;
+    document.addEventListener('touchstart', e => { startY = e.touches[0].clientY; startX = e.touches[0].clientX; }, { passive: true });
+    document.addEventListener('touchend',   e => {
+      const dy = startY - e.changedTouches[0].clientY;
+      const dx = startX - e.changedTouches[0].clientX;
+      if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 40) dy > 0 ? goForward() : goBackward();
+    });
+
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          const idx = slides.indexOf(entry.target);
+          if (idx !== -1 && idx !== current) {
+            current = idx;
+            pbar.style.width = ((idx + 1) / TOTAL * 100) + '%';
+          }
+        }
+      });
+    }, { threshold: 0.6 });
+
+    slides.forEach(s => obs.observe(s));
+    setSlide3Step(0, true); // init without animation
+    goTo(0);
+  </script>
+</body>
+</html>

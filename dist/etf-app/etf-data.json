@@ -1,0 +1,294 @@
+{
+  "markets": [
+    {
+      "id": "us",
+      "name": "תעודות סל אמריקאיות",
+      "categories": [
+        {
+          "id": "us-indexes",
+          "name": "עבור מדדים",
+          "etfs": [
+            { "sector": "S&P 500", "ticker": "VOO", "fee": "0.03%", "description": "עוקב אחר מדד S&P 500 – 500 החברות הגדולות בארה״ב. אחת הקרנות הזולות והפופולריות ביותר בעולם" },
+            { "sector": "נאסד\"ק 100", "ticker": "QQQM", "fee": "0.15%", "description": "עוקב אחר מדד נאסד\"ק 100 – 100 חברות הטכנולוגיה והצמיחה הגדולות, כולל אפל, מיקרוסופט ונבידיה" },
+            { "sector": "ראסל 2000", "ticker": "VTWO", "fee": "0.07%", "description": "עוקב אחר מדד ראסל 2000 – כ-2,000 חברות קטנות אמריקאיות, חשיפה לצמיחה מקומית" },
+            { "sector": "דאו ג'ונס", "ticker": "DIA", "fee": "0.16%", "description": "עוקב אחר מדד דאו ג'ונס התעשייתי – 30 חברות אמריקאיות מובילות ומגוונות" },
+            { "sector": "צמיחה גדולות ארה\"ב", "ticker": "SCHG", "fee": "0.04%", "description": "מתמקד בחברות צמיחה גדולות בארה\"ב – מדד ה-Dow Jones Large Cap Growth" },
+            { "sector": "שוק המניות הכולל", "ticker": "VTI", "fee": "0.03%", "description": "עוקב אחר שוק המניות האמריקאי כולו – מעל 3,500 חברות, מהגדולות ועד הקטנות" },
+            { "sector": "S&P 500 משקל שווה", "ticker": "RSP", "fee": "0.20%", "description": "עוקב אחר S&P 500 כאשר כל אחת מ-500 המניות מקבלת משקל זהה, ללא שליטת ענקיות" },
+            { "sector": "ראסל 1000 ערך", "ticker": "VONV", "fee": "0.08%", "description": "מתמקד במניות ערך גדולות בארה\"ב מתוך מדד ראסל 1000 – חברות יציבות הנסחרות בהנחה" },
+            { "sector": "דיבידנד ארה\"ב", "ticker": "VIG", "fee": "0.05%", "description": "מתמקד בחברות אמריקאיות שמגדילות את הדיבידנד שלהן שנה אחר שנה – יציבות ואיכות גבוהה" },
+            { "sector": "S&P 500 צמיחה", "ticker": "VOOG", "fee": "0.10%", "description": "מתמקד בחברות הצמיחה מתוך מדד S&P 500 – חברות עם הכנסות ורווחים צומחים" },
+            { "sector": "S&P 500 ערך", "ticker": "VOOV", "fee": "0.10%", "description": "מתמקד בחברות הערך מתוך מדד S&P 500 – חברות יציבות הנסחרות מתחת לשוויין הכלכלי" },
+            { "sector": "S&P Mid-Cap 400", "ticker": "IJH", "fee": "0.05%", "description": "עוקב אחר מדד S&P Mid-Cap 400 – חברות בינוניות אמריקאיות עם פוטנציאל צמיחה" },
+            { "sector": "S&P Mid-Cap 400 צמיחה", "ticker": "IJK", "fee": "0.17%", "description": "מתמקד בחברות בינוניות עם מאפייני צמיחה מתוך מדד S&P Mid-Cap 400" },
+            { "sector": "S&P Mid-Cap 400 ערך", "ticker": "IJJ", "fee": "0.18%", "description": "מתמקד בחברות בינוניות עם מאפייני ערך מתוך מדד S&P Mid-Cap 400" },
+            { "sector": "ראסל 2000 צמיחה", "ticker": "IWO", "fee": "0.24%", "description": "מתמקד בחברות קטנות בעלות קצב צמיחה מהיר מתוך מדד ראסל 2000" },
+            { "sector": "ראסל 2000 ערך", "ticker": "IWN", "fee": "0.24%", "description": "מתמקד בחברות קטנות הנסחרות מתחת לשוויין הכלכלי מתוך מדד ראסל 2000" },
+            { "sector": "S&P Small-Cap 600 צמיחה", "ticker": "IJT", "fee": "0.18%", "description": "מתמקד בחברות קטנות מאוד עם מאפייני צמיחה מתוך מדד S&P Small-Cap 600" },
+            { "sector": "S&P Small-Cap 600 ערך", "ticker": "IJS", "fee": "0.18%", "description": "מתמקד בחברות קטנות מאוד עם מאפייני ערך מתוך מדד S&P Small-Cap 600" },
+            { "sector": "ראסל 3000", "ticker": "IWV", "fee": "0.20%", "description": "עוקב אחר מדד ראסל 3000 – כ-3,000 החברות הגדולות בארה\"ב, כ-98% משוק המניות האמריקאי" },
+            { "sector": "ראסל 1000", "ticker": "IWB", "fee": "0.15%", "description": "עוקב אחר ראסל 1000 – 1,000 החברות הגדולות בארה\"ב, חשיפה רחבה לשוק הגדול" }
+          ]
+        },
+        {
+          "id": "us-sectors",
+          "name": "עבור סקטורים",
+          "etfs": [
+            { "sector": "פיננסים", "ticker": "XLF", "fee": "0.08%", "description": "סקטור הפיננסים – בנקים גדולים, חברות ביטוח ושירותים פיננסיים בארה\"ב" },
+            { "sector": "צרכנות דיסקרציונרית", "ticker": "XLY", "fee": "0.08%", "description": "סקטור הצרכנות הדיסקרציונרית – קמעונות, בידור, רכב ומסעדות" },
+            { "sector": "טכנולוגיה", "ticker": "XLK", "fee": "0.08%", "description": "סקטור הטכנולוגיה – תוכנה, חומרה, שבבים ושירותי IT" },
+            { "sector": "אנרגיה", "ticker": "XLE", "fee": "0.08%", "description": "סקטור האנרגיה – חברות נפט, גז ואנרגיה מתחדשת בארה\"ב" },
+            { "sector": "חומרי גלם", "ticker": "XLB", "fee": "0.08%", "description": "סקטור חומרי הגלם – מתכות, כימיה, ניירות ומינרלים" },
+            { "sector": "תעשייה", "ticker": "XLI", "fee": "0.08%", "description": "סקטור התעשייה – תעופה, ביטחון, ציוד תעשייתי ותחבורה" },
+            { "sector": "שירותים ציבוריים", "ticker": "XLU", "fee": "0.08%", "description": "סקטור השירותים הציבוריים – ספקי חשמל, מים וגז, מניות דפנסיביות ויציבות" },
+            { "sector": "בריאות", "ticker": "XLV", "fee": "0.08%", "description": "סקטור הבריאות – תרופות, מכשור רפואי, ביוטכנולוגיה וביטוח רפואי" },
+            { "sector": "מוצרי צריכה בסיסיים", "ticker": "XLP", "fee": "0.08%", "description": "סקטור מוצרי הצריכה הבסיסיים – מזון, משקאות, טבק ומוצרי ניקיון" },
+            { "sector": "שירותי תקשורת", "ticker": "XLC", "fee": "0.08%", "description": "סקטור שירותי התקשורת – מדיה, מוסיקה, רשתות חברתיות ותקשורת" },
+            { "sector": "נדל\"ן", "ticker": "XLRE", "fee": "0.08%", "description": "סקטור הנדל\"ן – REITs אמריקאיים: נדל\"ן מסחרי, מגורים ותשתיות" }
+          ]
+        },
+        {
+          "id": "us-equal-weight",
+          "name": "סקטורים במשקל שווה",
+          "etfs": [
+            { "sector": "פיננסים", "ticker": "RSPF", "fee": "0.40%", "description": "סקטור הפיננסים במשקל שווה – כל מניה זוכה למשקל זהה, חשיפה רחבה יותר לחברות קטנות" },
+            { "sector": "צרכנות דיסקרציונרית", "ticker": "RSPD", "fee": "0.40%", "description": "סקטור הצרכנות הדיסקרציונרית במשקל שווה – ביצועים שוויוניים לכל המניות בסקטור" },
+            { "sector": "טכנולוגיה", "ticker": "RSPT", "fee": "0.40%", "description": "סקטור הטכנולוגיה במשקל שווה – מפחית תלות בענקיות כמו אפל ומיקרוסופט" },
+            { "sector": "אנרגיה", "ticker": "RSPG", "fee": "0.40%", "description": "סקטור האנרגיה במשקל שווה – חשיפה שוויונית לכל חברות הנפט והגז בסקטור" },
+            { "sector": "חומרי גלם", "ticker": "RSPM", "fee": "0.40%", "description": "סקטור חומרי הגלם במשקל שווה – משקל זהה לכל המניות, כולל חברות קטנות" },
+            { "sector": "תעשייה", "ticker": "RSPN", "fee": "0.40%", "description": "סקטור התעשייה במשקל שווה – חשיפה רחבה ושוויונית לכלל חברות התעשייה" },
+            { "sector": "שירותים ציבוריים", "ticker": "RSPU", "fee": "0.40%", "description": "סקטור השירותים הציבוריים במשקל שווה – חשיפה דפנסיבית עם פיזור שוויוני" },
+            { "sector": "בריאות", "ticker": "RSPH", "fee": "0.40%", "description": "סקטור הבריאות במשקל שווה – מפחית ריכוזיות בחברות ביג-פארמה" },
+            { "sector": "מוצרי צריכה בסיסיים", "ticker": "RSPS", "fee": "0.40%", "description": "סקטור מוצרי הצריכה הבסיסיים במשקל שווה – פיזור שוויוני בין כל חברות המזון והניקיון" },
+            { "sector": "שירותי תקשורת", "ticker": "RSPC", "fee": "0.40%", "description": "סקטור שירותי התקשורת במשקל שווה – חשיפה שוויונית לחברות מדיה ותקשורת" },
+            { "sector": "נדל\"ן", "ticker": "RSPR", "fee": "0.40%", "description": "סקטור הנדל\"ן במשקל שווה – פיזור שוויוני בין כל ה-REITs בסקטור" }
+          ]
+        },
+        {
+          "id": "us-sub-sectors",
+          "name": "תעשיות ותתי-סקטורים",
+          "etfs": [
+            { "sector": "פנאי ובידור", "ticker": "PEJ", "fee": "0.57%", "description": "ענף הפנאי, הבידור, מסעדות ומלונאות בארה\"ב – מרוויח מהוצאות שיקול הדעת של הצרכן" },
+            { "sector": "שבבים", "ticker": "SOXX", "fee": "0.35%", "description": "מניות חברות ייצור ועיצוב שבבים אמריקאיות – NVIDIA, Intel, Broadcom ואחרות" },
+            { "sector": "שבבים (מרוכז)", "ticker": "SMH", "fee": "0.35%", "description": "חשיפה מרוכזת יותר לחברות השבבים הגדולות בעולם – TSMC, NVIDIA, ASML ועוד" },
+            { "sector": "תוכנה", "ticker": "IGV", "fee": "0.41%", "description": "מניות חברות תוכנה מובילות בארה\"ב – Microsoft, Salesforce, Adobe ואחרות" },
+            { "sector": "אנרגיה סולארית", "ticker": "TAN", "fee": "0.71%", "description": "חברות אנרגיה סולארית גלובליות – ייצור פאנלים, מערכות ושירותים לאנרגיית שמש" },
+            { "sector": "אבטחת סייבר", "ticker": "CIBR", "fee": "0.59%", "description": "מניות חברות אבטחת סייבר מובילות – CrowdStrike, Palo Alto Networks, Fortinet ועוד" },
+            { "sector": "בנקים אזוריים", "ticker": "KRE", "fee": "0.35%", "description": "בנקים אזוריים אמריקאיים קטנים ובינוניים – חשיפה לכלכלה המקומית האמריקאית" },
+            { "sector": "GLP-1 וירידה במשקל", "ticker": "OZEM", "fee": "0.59%", "description": "חברות בתחום תרופות GLP-1 ורזון – Novo Nordisk, Eli Lilly ועוד 26 חברות פארמה" },
+            { "sector": "קנאביס", "ticker": "MSOS", "fee": "0.77%", "description": "חברות קנאביס אמריקאיות – מפעילות מדינתיות, לא קנדיות – כפוף לרגולציה אמריקאית" },
+            { "sector": "ביוטכנולוגיה", "ticker": "XBI", "fee": "0.35%", "description": "מניות חברות ביוטכנולוגיה אמריקאיות במשקל שווה – תנודתי אך עם פוטנציאל גבוה" },
+            { "sector": "בנייה למגורים", "ticker": "XHB", "fee": "0.35%", "description": "חברות בנייה ומגורים בארה\"ב – קבלנים, יצרני בניית בתים ומוצרים לבית" },
+            { "sector": "בנייה ושיפוץ", "ticker": "ITB", "fee": "0.39%", "description": "חברות בנייה ומוצרים לבית בארה\"ב – מרוויחות משוק הנדל\"ן הפרטי ושיפוצים" },
+            { "sector": "תעופה וביטחון (שווה)", "ticker": "XAR", "fee": "0.35%", "description": "חברות תעופה וביטחון אמריקאיות במשקל שווה – Raytheon, Boeing, Northrop Grumman" },
+            { "sector": "תעופה אזרחית", "ticker": "JETS", "fee": "0.60%", "description": "חברות תעופה גלובליות – חברות טיסה, שדות תעופה ויצרני מטוסים כמו Boeing ו-Airbus" },
+            { "sector": "מתכות וכרייה", "ticker": "XME", "fee": "0.35%", "description": "חברות כרייה ומתכות אמריקאיות – פחם, פלדה, זהב, ומתכות תעשייתיות" },
+            { "sector": "ביטוח", "ticker": "KIE", "fee": "0.35%", "description": "חברות ביטוח אמריקאיות במשקל שווה – ביטוח חיים, רכוש ורפואה" },
+            { "sector": "מכשור רפואי", "ticker": "IHI", "fee": "0.40%", "description": "חברות מכשור רפואי אמריקאיות – Abbott, Medtronic, Boston Scientific ועוד" },
+            { "sector": "קמעונאות", "ticker": "XRT", "fee": "0.35%", "description": "חברות קמעונאות אמריקאיות במשקל שווה – כולל מסחר אלקטרוני ורשתות פיזיות" },
+            { "sector": "\"פרות מזומן\" 100", "ticker": "COWZ", "fee": "0.49%", "description": "100 חברות S&P 500 עם תזרים מזומנים חופשי גבוה ביחס למחיר – חברות איכות בהנחה" },
+            { "sector": "מחשוב ענן", "ticker": "SKYY", "fee": "0.60%", "description": "חברות מחשוב ענן גלובליות – ספקי ענן, SaaS ותשתיות דיגיטליות" },
+            { "sector": "Magnificent 7", "ticker": "MAGS", "fee": "0.29%", "description": "7 ענקיות הטק: אפל, מיקרוסופט, נבידיה, אלפאבית, אמזון, מטא וטסלה – משקל שווה" },
+            { "sector": "אורניום וגרעין", "ticker": "NLR", "fee": "0.56%", "description": "חברות כורים גרעיניים ואורניום – מרוויחות מהמעבר לאנרגיה גרעינית נקייה" },
+            { "sector": "בנקים גדולים", "ticker": "KBWB", "fee": "0.35%", "description": "הבנקים הגדולים בארה\"ב – JPMorgan, Bank of America, Wells Fargo ועוד" },
+            { "sector": "תעופה וביטחון", "ticker": "ITA", "fee": "0.40%", "description": "חברות תעופה וביטחון אמריקאיות – Raytheon, L3Harris, General Dynamics ועוד" },
+            { "sector": "אנרגיה ירוקה", "ticker": "QCLN", "fee": "0.59%", "description": "חברות אנרגיה ירוקה וטכנולוגיות נקיות גלובליות – חשמל, מים, ואנרגיה מתחדשת" },
+            { "sector": "כורי זהב (גדולים)", "ticker": "GDX", "fee": "0.51%", "description": "חברות כרייה זהב גדולות – Newmont, Barrick Gold ועוד. תנועה מוגברת ביחס לזהב" },
+            { "sector": "שירותי נפט", "ticker": "OIH", "fee": "0.35%", "description": "חברות שירותים לתעשיית הנפט – קידוח, בניית צינורות וציוד לחיפוש נפט" },
+            { "sector": "צרכנות ממוקדת ארה\"ב", "ticker": "IEDI", "fee": "0.18%", "description": "חברות צרכנות דיסקרציונרית עם הכנסות גבוהות מארה\"ב – iShares, מנוהל אקטיבית" },
+            { "sector": "תחבורה", "ticker": "IYT", "fee": "0.39%", "description": "חברות תחבורה אמריקאיות – רכבות, הובלה, תעופה ושילוח לוגיסטי" },
+            { "sector": "רובוטיקה ובינה מלאכותית", "ticker": "BOTZ", "fee": "0.68%", "description": "חברות רובוטיקה, אוטומציה ובינה מלאכותית גלובליות – FANUC, Intuitive Surgical ועוד" },
+            { "sector": "תרופות", "ticker": "IHE", "fee": "0.39%", "description": "חברות תרופות אמריקאיות – Johnson & Johnson, Pfizer, Merck ועוד" },
+            { "sector": "רכב חשמלי וניידות", "ticker": "DRIV", "fee": "0.68%", "description": "חברות רכב חשמלי, טכנולוגיית ניידות ותשתיות טעינה גלובליות – Tesla, NXP ועוד" },
+            { "sector": "מדיה חברתית", "ticker": "SOCL", "fee": "0.65%", "description": "חברות מדיה חברתית גלובליות – Meta, Snap, Pinterest, Tencent ועוד" },
+            { "sector": "פינטק", "ticker": "FINX", "fee": "0.68%", "description": "חברות פינטק ותשלומים גלובליות – Visa, Square, PayPal, Adyen ועוד" },
+            { "sector": "סייבר גלובלי", "ticker": "BUG", "fee": "0.51%", "description": "חברות אבטחת סייבר גלובליות – הגנה על רשתות, נקודות קצה וענן" },
+            { "sector": "כורי זהב (מרוכז)", "ticker": "RING", "fee": "0.39%", "description": "חברות כרייה זהב בפיזור מרוכז יותר – iShares, מינוף גבוה יותר לתנועות מחיר הזהב" },
+            { "sector": "אורניום", "ticker": "URA", "fee": "0.69%", "description": "חברות כרייה ואנרגיה גרעינית – Cameco, Kazatomprom ועוד, ביקוש גובר עם מהפכת הגרעין" },
+            { "sector": "אנרגיה נקייה", "ticker": "ICLN", "fee": "0.41%", "description": "חברות אנרגיה נקייה גלובליות – רוח, שמש, מימן ואחסון אנרגיה" }
+          ]
+        },
+        {
+          "id": "us-leveraged",
+          "name": "ממונפות",
+          "etfs": [
+            { "sector": "ראסל 2000 × 3", "ticker": "TNA", "fee": "1.03%", "description": "ראסל 2000 ממונף פי 3 לעלייה – מגביר רווחים וגם הפסדים שלוש פעמים. לטווח קצר בלבד" },
+            { "sector": "שבבים × 3", "ticker": "SOXL", "fee": "0.75%", "description": "מגזר השבבים ממונף פי 3 לעלייה – תנודתי מאוד, לא מתאים להחזקה ארוכת טווח" },
+            { "sector": "נאסד\"ק × 3", "ticker": "TQQQ", "fee": "0.84%", "description": "נאסד\"ק 100 ממונף פי 3 לעלייה – כלי ספקולטיבי בסיכון גבוה מאוד" },
+            { "sector": "שורט נאסד\"ק × 3", "ticker": "SQQQ", "fee": "0.95%", "description": "נאסד\"ק 100 ממונף פי 3 לירידה – כלי גידור לשוק יורד, מאבד ערך בשוק עולה" },
+            { "sector": "שורט שבבים × 3", "ticker": "SOXS", "fee": "0.97%", "description": "מגזר השבבים ממונף פי 3 לירידה – גידור על ירידת ענף השבבים" },
+            { "sector": "נאסד\"ק × 2", "ticker": "QLD", "fee": "0.95%", "description": "נאסד\"ק 100 ממונף פי 2 לעלייה – ממונף פחות מ-TQQQ, מעט יותר מתון" },
+            { "sector": "S&P 500 × 2", "ticker": "SSO", "fee": "0.89%", "description": "S&P 500 ממונף פי 2 לעלייה – כפל תשואת המדד היומית, לטווח קצר" },
+            { "sector": "S&P 500 × 3", "ticker": "SPXL", "fee": "0.87%", "description": "S&P 500 ממונף פי 3 לעלייה – שלוש פעמים תשואת המדד היומית" },
+            { "sector": "טכנולוגיה × 3", "ticker": "TECL", "fee": "0.85%", "description": "סקטור הטכנולוגיה ממונף פי 3 לעלייה – TECL עוקב אחרי XLK בכפולה של 3" },
+            { "sector": "פיננסים × 3", "ticker": "FAS", "fee": "0.89%", "description": "סקטור הפיננסים ממונף פי 3 לעלייה – עוקב אחרי Russell 1000 Financial בכפולה של 3" },
+            { "sector": "ראסל 2000 × 3", "ticker": "URTY", "fee": "0.95%", "description": "ראסל 2000 ממונף פי 3 לעלייה – גרסת ProShares, חלופה ל-TNA" },
+            { "sector": "דאו ג'ונס × 3", "ticker": "UDOW", "fee": "0.95%", "description": "דאו ג'ונס 30 ממונף פי 3 לעלייה – שלוש פעמים תשואת המדד התעשייתי היומית" }
+          ]
+        },
+        {
+          "id": "us-international",
+          "name": "שווקים בינלאומיים",
+          "etfs": [
+            { "sector": "יפן", "ticker": "ZJPN", "fee": "0.58%", "description": "עוקב אחר מדד MSCI Japan – 306 חברות יפניות גדולות ובינוניות, כולל Toyota ו-Sony" },
+            { "sector": "אירופה", "ticker": "VGK", "fee": "0.06%", "description": "מניות חברות גדולות ובינוניות מאירופה – גרמניה, בריטניה, צרפת ועוד, Vanguard" },
+            { "sector": "הודו", "ticker": "INDA", "fee": "0.62%", "description": "חברות הודיות גדולות ובינוניות – חשיפה לכלכלה ההודית הצומחת במהירות" },
+            { "sector": "סין", "ticker": "MCHI", "fee": "0.59%", "description": "חברות סיניות גדולות ובינוניות – Alibaba, Tencent, Meituan ועוד" },
+            { "sector": "עולם מחוץ לארה\"ב", "ticker": "VEU", "fee": "0.04%", "description": "מניות חברות מכל העולם מחוץ לארה\"ב – אירופה, אסיה, שווקים מתעוררים ועוד" },
+            { "sector": "שווקים מפותחים", "ticker": "VEA", "fee": "0.03%", "description": "שווקים מפותחים מחוץ לארה\"ב – קנדה, אירופה, יפן, אוסטרליה ועוד" },
+            { "sector": "אירופה חברות קטנות", "ticker": "DFE", "fee": "0.58%", "description": "חברות קטנות אירופאיות המחלקות דיבידנד – חשיפה ייחודית לצמיחה אירופאית בינונית" },
+            { "sector": "יורו STOXX 50", "ticker": "FEZ", "fee": "0.29%", "description": "50 החברות הגדולות מגוש האירו – LVMH, SAP, Total ועוד, ייצוג גוש האירו" },
+            { "sector": "טכנולוגיה סינית", "ticker": "KWEB", "fee": "0.70%", "description": "חברות אינטרנט וטכנולוגיה סיניות – Alibaba, Tencent, Baidu, JD.com ועוד" },
+            { "sector": "50 הגדולות בסין", "ticker": "FXI", "fee": "0.74%", "description": "50 החברות הסיניות הגדולות הנסחרות בהונג קונג – חשיפה לשוק הסיני הרחב" },
+            { "sector": "פיננסים אירופה", "ticker": "EUFN", "fee": "0.48%", "description": "חברות פיננסיות אירופאיות – בנקים גדולים, ביטוח ושירותים פיננסיים באירופה" }
+          ]
+        },
+        {
+          "id": "us-bonds-dividends",
+          "name": "אג\"ח ודיבידנד",
+          "etfs": [
+            { "sector": "שוק האג\"ח הכולל", "ticker": "BND", "fee": "0.03%", "description": "שוק האג\"ח האמריקאי המלא – ממשלתי, תאגידי ומשכנתאות. יציב ובטוח יחסית" },
+            { "sector": "הגדלת דיבידנד", "ticker": "VIG", "fee": "0.05%", "description": "חברות אמריקאיות עם היסטוריה עקבית של הגדלת דיבידנד – איכות גבוהה ויציבות" },
+            { "sector": "דיבידנד Schwab", "ticker": "SCHD", "fee": "0.06%", "description": "100 חברות אמריקאיות עם דיבידנד גבוה ויציב – מדיניות פיננסית חזקה ותשואה אטרקטיבית" }
+          ]
+        },
+        {
+          "id": "us-crypto",
+          "name": "ביטקוין ואיתריום",
+          "etfs": [
+            { "sector": "ביטקוין", "ticker": "IBIT", "fee": "0.12%", "description": "קרן ETF לביטקוין של BlackRock – חשיפה ישירה לביטקוין דרך חשבון ברוקר רגיל" },
+            { "sector": "איתריום", "ticker": "ETHA", "fee": "0.25%", "description": "קרן ETF לאיתריום של BlackRock – חשיפה ישירה לאיתריום ללא ארנק דיגיטלי" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "irish",
+      "name": "תעודות סל איריות",
+      "categories": [
+        {
+          "id": "irish-physical",
+          "name": "עבור מדדים – עקיבה פיזית",
+          "etfs": [
+            { "sector": "S&P 500", "ticker": "CSPX", "fee": "0.07%", "description": "iShares Core S&P 500 UCITS – עקיבה פיזית אחר S&P 500, פטור ממס דיבידנד אמריקאי לתושבי ישראל" },
+            { "sector": "נאסד\"ק 100", "ticker": "EQQQ", "fee": "0.30%", "description": "Invesco EQQQ NASDAQ-100 UCITS – עקיבה פיזית אחר נאסד\"ק 100, נסחרת בלונדון ובאמסטרדם" },
+            { "sector": "ראסל 2000", "ticker": "ZPRR", "fee": "0.30%", "description": "SPDR Russell 2000 UCITS – עקיבה פיזית אחר חברות קטנות אמריקאיות, מבנה UCITS איריות" },
+            { "sector": "דאו ג'ונס", "ticker": "CIND", "fee": "0.33%", "description": "iShares Dow Jones Industrial Avg UCITS – עקיבה פיזית אחר 30 חברות דאו ג'ונס" },
+            { "sector": "ביטקוין", "ticker": "BITC", "fee": "0.98%", "description": "ETC Group Physical Bitcoin UCITS – חשיפה פיזית לביטקוין דרך מבנה UCITS האירי" },
+            { "sector": "שוק המניות הגלובלי", "ticker": "VWRL", "fee": "0.22%", "description": "Vanguard FTSE All-World UCITS – מעל 3,500 חברות מכל העולם, הגרסה האירית של VT" },
+            { "sector": "S&P 500 משקל שווה", "ticker": "RSPU", "fee": "0.40%", "description": "Invesco S&P 500 Equal Weight UCITS – כל 500 מניות ה-S&P 500 במשקל שווה, עקיבה פיזית" },
+            { "sector": "ראסל 1000 ערך", "ticker": "XRV1", "fee": "0.15%", "description": "SPDR Russell 1000 Value UCITS – חברות ערך גדולות אמריקאיות, מבנה UCITS פיזי" },
+            { "sector": "דיבידנד ארה\"ב", "ticker": "UDVD", "fee": "0.35%", "description": "WisdomTree US Quality Dividend Growth UCITS – חברות אמריקאיות עם צמיחת דיבידנד" },
+            { "sector": "S&P 500 צמיחה", "ticker": "IUGF", "fee": "0.18%", "description": "iShares S&P 500 Growth UCITS – חברות הצמיחה מתוך S&P 500, מבנה UCITS פיזי" },
+            { "sector": "S&P 500 ערך", "ticker": "S5V0", "fee": "0.25%", "description": "SPDR S&P 500 Value UCITS – חברות הערך מתוך S&P 500, מבנה UCITS פיזי" }
+          ]
+        },
+        {
+          "id": "irish-synthetic",
+          "name": "עבור מדדים – עקיבה סינטטית",
+          "etfs": [
+            { "sector": "S&P 500", "ticker": "SPXP", "fee": "0.05%", "description": "Invesco S&P 500 UCITS (Swap) – עקיבה סינטטית זולה במיוחד, אפס מס על דיבידנד" },
+            { "sector": "נאסד\"ק 100", "ticker": "ANXG", "fee": "0.23%", "description": "Amundi NASDAQ-100 UCITS (Swap) – עקיבה סינטטית אחר נאסד\"ק, יעילות מס גבוהה" },
+            { "sector": "ראסל 2000", "ticker": "R2US", "fee": "0.30%", "description": "Invesco Russell 2000 UCITS (Swap) – עקיבה סינטטית אחר חברות קטנות אמריקאיות" },
+            { "sector": "דאו ג'ונס", "ticker": "DJIA", "fee": "0.50%", "description": "Amundi Dow Jones Industrial Average UCITS (Swap) – עקיבה סינטטית אחר מדד דאו" },
+            { "sector": "S&P 500 משקל שווה", "ticker": "RSPU", "fee": "0.40%", "description": "Invesco S&P 500 Equal Weight UCITS (Swap) – כל 500 מניות במשקל שווה, גרסה סינטטית" },
+            { "sector": "שווקים מתעוררים", "ticker": "LEM", "fee": "0.55%", "description": "db x-trackers MSCI Emerging Markets UCITS (Swap) – חשיפה לשווקים מתעוררים גלובליים" },
+            { "sector": "מניות עולמיות", "ticker": "WLD", "fee": "0.30%", "description": "Amundi MSCI World UCITS (Swap) – חשיפה למניות בכל העולם המפותח, גרסה סינטטית זולה" }
+          ]
+        },
+        {
+          "id": "irish-sub-sectors",
+          "name": "תעשיות ותתי-סקטורים",
+          "etfs": [
+            { "sector": "אנרגיה ירוקה", "ticker": "INRG", "fee": "0.65%", "description": "iShares Global Clean Energy UCITS – חברות אנרגיה נקייה גלובליות, גרסה איריות לICLN" },
+            { "sector": "פנאי ובידור", "ticker": "XCDU", "fee": "0.12%", "description": "SPDR MSCI USA Consumer Discretionary UCITS – צרכנות דיסקרציונרית אמריקאית, פיזי" },
+            { "sector": "שבבים", "ticker": "SMH", "fee": "0.35%", "description": "VanEck Semiconductor UCITS – חשיפה לחברות שבבים גדולות, גרסה אירית לSMH האמריקאי" },
+            { "sector": "מחשוב ענן", "ticker": "WCLD", "fee": "0.40%", "description": "WisdomTree Cloud Computing UCITS – חברות SaaS ומחשוב ענן, גרסה אירית ל-SKYY" },
+            { "sector": "טכנולוגיה", "ticker": "XIT6", "fee": "0.15%", "description": "iShares S&P 500 IT Sector UCITS – סקטור הטכנולוגיה מתוך S&P 500, מבנה UCITS" },
+            { "sector": "אורניום", "ticker": "URNU", "fee": "0.69%", "description": "Sprott Uranium Miners UCITS – חברות כרייה ואנרגיה גרעינית, גרסה אירית ל-URA" },
+            { "sector": "אנרגיה סולארית", "ticker": "ISUN", "fee": "0.69%", "description": "Invesco Solar Energy UCITS – חברות אנרגיה סולארית גלובליות, מבנה UCITS פיזי" },
+            { "sector": "אבטחת סייבר", "ticker": "ISPY", "fee": "0.75%", "description": "ETFS ISE Cyber Security GO UCITS – חברות אבטחת סייבר גלובליות, מבנה UCITS" },
+            { "sector": "בנקים אזוריים", "ticker": "WFIN", "fee": "0.25%", "description": "WisdomTree US Financials UCITS – חברות פיננסיות ובנקים אמריקאיים, מבנה UCITS" },
+            { "sector": "קנאביס", "ticker": "FLWR", "fee": "0.65%", "description": "ETFS Cannabis UCITS – חברות קנאביס גלובליות, מבנה UCITS איריות" },
+            { "sector": "ביוטכנולוגיה", "ticker": "2B77", "fee": "0.45%", "description": "BNP Paribas Easy MSCI Biotechnology UCITS – חברות ביוטכנולוגיה, גרסה אירית" },
+            { "sector": "כורי זהב", "ticker": "GDX", "fee": "0.53%", "description": "VanEck Gold Miners UCITS – חברות כרייה זהב גדולות, הגרסה האירית הנסחרת בלונדון" },
+            { "sector": "נדל\"ן גלובלי", "ticker": "IWDP", "fee": "0.59%", "description": "iShares Developed Markets Property Yield UCITS – נדל\"ן מניב בשווקים מפותחים" },
+            { "sector": "בנייה ושיפוץ", "ticker": "IUSP", "fee": "0.40%", "description": "iShares S&P 500 Consumer Staples UCITS – מוצרי צריכה בסיסיים, מבנה UCITS" },
+            { "sector": "תעופה וביטחון", "ticker": "DFEN", "fee": "0.49%", "description": "Invesco Defence Innovation UCITS – חברות ביטחון, תעופה וטכנולוגיות הגנה" },
+            { "sector": "תעופה אזרחית", "ticker": "JETS", "fee": "0.65%", "description": "HANetf Airlines, Hotels & Cruise Lines UCITS – חברות תיירות ותעופה, מבנה UCITS" },
+            { "sector": "מתכות וכרייה", "ticker": "IMMP", "fee": "0.55%", "description": "iShares MSCI World Metals & Mining UCITS – חברות מתכות וכרייה גלובליות" },
+            { "sector": "ביטוח", "ticker": "INSU", "fee": "0.30%", "description": "SPDR S&P Insurance UCITS – חברות ביטוח אמריקאיות, גרסה אירית ל-KIE" },
+            { "sector": "מכשור רפואי", "ticker": "HEAL", "fee": "0.40%", "description": "iShares Healthcare Innovation UCITS – חברות מכשור רפואי וחדשנות בבריאות" },
+            { "sector": "קמעונאות", "ticker": "RTEU", "fee": "0.25%", "description": "SPDR MSCI USA Consumer Staples UCITS – קמעונאות ומוצרי צריכה, מבנה UCITS" }
+          ]
+        },
+        {
+          "id": "irish-sectors",
+          "name": "עבור סקטורים",
+          "etfs": [
+            { "sector": "אנרגיה", "ticker": "IUES", "fee": "0.15%", "description": "iShares S&P 500 Energy Sector UCITS – סקטור האנרגיה מתוך S&P 500, מבנה UCITS פיזי" },
+            { "sector": "פיננסים", "ticker": "IUFS", "fee": "0.15%", "description": "iShares S&P 500 Financials Sector UCITS – סקטור הפיננסים מתוך S&P 500, מבנה UCITS" },
+            { "sector": "טכנולוגיה", "ticker": "IUIT", "fee": "0.15%", "description": "iShares S&P 500 Information Technology UCITS – סקטור ה-IT מתוך S&P 500, מבנה UCITS" },
+            { "sector": "בריאות", "ticker": "IUHC", "fee": "0.15%", "description": "iShares S&P 500 Health Care Sector UCITS – סקטור הבריאות מתוך S&P 500, מבנה UCITS" },
+            { "sector": "צרכנות דיסקרציונרית", "ticker": "IUCD", "fee": "0.15%", "description": "iShares S&P 500 Consumer Discretionary UCITS – צרכנות דיסקרציונרית, מבנה UCITS" },
+            { "sector": "מוצרי צריכה בסיסיים", "ticker": "IUSP", "fee": "0.15%", "description": "iShares S&P 500 Consumer Staples Sector UCITS – מוצרי צריכה בסיסיים, מבנה UCITS" },
+            { "sector": "תעשייה", "ticker": "IUIS", "fee": "0.15%", "description": "iShares S&P 500 Industrials Sector UCITS – סקטור התעשייה מתוך S&P 500, מבנה UCITS" },
+            { "sector": "נדל\"ן", "ticker": "IURE", "fee": "0.15%", "description": "iShares S&P 500 Real Estate Sector UCITS – סקטור הנדל\"ן מתוך S&P 500, מבנה UCITS" },
+            { "sector": "שירותים ציבוריים", "ticker": "IUUT", "fee": "0.15%", "description": "iShares S&P 500 Utilities Sector UCITS – סקטור השירותים מתוך S&P 500, מבנה UCITS" },
+            { "sector": "חומרי גלם", "ticker": "IUMA", "fee": "0.15%", "description": "iShares S&P 500 Materials Sector UCITS – סקטור חומרי הגלם מתוך S&P 500, מבנה UCITS" }
+          ]
+        },
+        {
+          "id": "irish-international",
+          "name": "שווקים חיצוניים",
+          "etfs": [
+            { "sector": "יפן", "ticker": "XMUJ", "fee": "0.40%", "description": "Xtrackers MSCI Japan UCITS – חברות יפניות גדולות ובינוניות, מבנה UCITS פיזי" },
+            { "sector": "אירופה", "ticker": "VEUR", "fee": "0.10%", "description": "Vanguard FTSE Developed Europe UCITS – חברות אירופאיות מפותחות, גרסה אירית ל-VGK" }
+          ]
+        },
+        {
+          "id": "irish-leveraged",
+          "name": "ממונפות – עקיבה סינטטית",
+          "etfs": [
+            { "sector": "S&P 500 × 2", "ticker": "LSPU", "fee": "0.60%", "description": "Leverage Shares 2x S&P 500 ETP – S&P 500 ממונף פי 2, מבנה ETP איריות" },
+            { "sector": "S&P 500 × 3", "ticker": "LSP3", "fee": "0.60%", "description": "Leverage Shares 3x S&P 500 ETP – S&P 500 ממונף פי 3, מבנה ETP איריות" },
+            { "sector": "נאסד\"ק 100 × 2", "ticker": "QLQP", "fee": "0.60%", "description": "Leverage Shares 2x NASDAQ 100 ETP – נאסד\"ק ממונף פי 2, מבנה ETP איריות" },
+            { "sector": "נאסד\"ק 100 × 3", "ticker": "LYNX", "fee": "0.60%", "description": "Leverage Shares 3x NASDAQ 100 ETP – נאסד\"ק ממונף פי 3, מבנה ETP איריות" },
+            { "sector": "דאו ג'ונס × 3", "ticker": "3LDO", "fee": "0.60%", "description": "Leverage Shares 3x Dow Jones ETP – דאו ג'ונס ממונף פי 3, מבנה ETP איריות" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "israeli",
+      "name": "תעודות סל ישראליות",
+      "categories": [
+        {
+          "id": "il-indexes",
+          "name": "מדדים ישראליים",
+          "etfs": [
+            { "sector": "ת\"א 90", "ticker": "קסם ETF תא 90", "fundNumber": "1146331", "fee": "0.53%", "description": "עוקב אחר מדד ת\"א 90 – 90 החברות הבאות אחרי ת\"א 35, חברות ישראליות בינוניות" },
+            { "sector": "ת\"א בנקים", "ticker": "תכלית סל ת\"א בנקים 5", "fundNumber": "1143726", "fee": "0.20%", "description": "עוקב אחר מדד ת\"א בנקים – 5 הבנקים הגדולים בישראל: לאומי, הפועלים, דיסקונט, מזרחי, בינלאומי" },
+            { "sector": "ת\"א 90 + בנקים", "ticker": "תל אביב 90 + בנקים", "fundNumber": "1213594", "fee": "0.10%", "description": "שילוב של מדד ת\"א 90 יחד עם מניות הבנקים – חשיפה לשוק הישראלי הרחב" },
+            { "sector": "ת\"א SME 60", "ticker": "הראל סל תא SME60", "fundNumber": "1148956", "fee": "0.80%", "description": "עוקב אחר מדד ת\"א SME 60 – 60 חברות קטנות ובינוניות ישראליות הנסחרות בבורסה" },
+            { "sector": "ת\"א פיננסים", "ticker": "קסם ETF תא פיננסים", "fundNumber": "1146554", "fee": "0.45%", "description": "עוקב אחר מדד ת\"א פיננסים – חברות פיננסיות ישראליות, בנקים, ביטוח ושוקי הון" },
+            { "sector": "ת\"א טכנולוגיה", "ticker": "הראל סל תא טכנולוגיה", "fundNumber": "1161827", "fee": "0.45%", "description": "עוקב אחר מדד ת\"א טכנולוגיה – חברות טכנולוגיה ישראליות הנסחרות בבורסת תל אביב" },
+            { "sector": "ת\"א בנייה", "ticker": "תכלית סל תא-בנייה", "fundNumber": "1176536", "fee": "0.00%", "description": "עוקב אחר מדד ת\"א בנייה – חברות נדל\"ן ובנייה ישראליות, כולל יזמים וקבלנים" },
+            { "sector": "ת\"א נדל\"ן", "ticker": "תכלית סל תא נדלן", "fundNumber": "1144559", "fee": "0.45%", "description": "עוקב אחר מדד ת\"א נדל\"ן – חברות נדל\"ן מניב ישראליות, קניונים ומשרדים" },
+            { "sector": "תשתיות לאומיות", "ticker": "MTF תשתיות לאומיות ישראל", "fundNumber": "5130604", "fee": "0.50%", "description": "עוקב אחר מדד תשתיות לאומיות – חברות תשתית ישראליות: חשמל, מים, תחבורה ותקשורת" },
+            { "sector": "ת\"א ביטוח", "ticker": "תכלית סל ת\"א ביטוח", "fundNumber": "1197698", "fee": "0.40%", "description": "עוקב אחר מדד ת\"א ביטוח – חברות הביטוח הגדולות בישראל: מגדל, הפניקס, הראל, כלל" },
+            { "sector": "ת\"א נפט וגז", "ticker": "תכלית סל ת\"א נפט וגז", "fundNumber": "1144807", "fee": "0.50%", "description": "עוקב אחר מדד ת\"א נפט וגז – חברות אנרגיה ישראליות, כולל חברות הגז הטבעי" }
+          ]
+        },
+        {
+          "id": "il-hedged",
+          "name": "מנוטרלות מט\"ח",
+          "etfs": [
+            { "sector": "נאסד\"ק 100 שקלי", "ticker": "קסם KTF נאסד\"ק 100 שקלי", "fundNumber": "5124516", "fee": "0.025%", "description": "עוקב אחר נאסד\"ק 100 תוך ניטרול סיכון שינויי הדולר/שקל – מתאים למי שלא רוצה חשיפה מטבעית" },
+            { "sector": "S&P 500 שקלי", "ticker": "קסם KTF S&P 500 שקלי", "fundNumber": "5124482", "fee": "0.025%", "description": "עוקב אחר S&P 500 תוך ניטרול סיכון שינויי הדולר/שקל – חשיפה לשוק האמריקאי ללא סיכון מטבע" }
+          ]
+        }
+      ]
+    }
+  ]
+}
