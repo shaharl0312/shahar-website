@@ -1,5 +1,8 @@
 {
   "buildCommand": "sh build.sh",
   "outputDirectory": "dist",
-  "trailingSlash": true
+  "trailingSlash": true,
+  "env": {
+    "VERCEL_FORCE_NO_BUILD_CACHE": "1"
+  }
 }
