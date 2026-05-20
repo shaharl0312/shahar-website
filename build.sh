@@ -1,6 +1,7 @@
 #!/bin/sh
 set -e
 mkdir -p dist
+echo "build-started-$(date +%s)" > dist/buildinfo.txt
 cp -r landing-page-first/. dist/
 cp -r etf-app dist/etf-app
 mkdir -p dist/tzofim && cp -r tzofim/. dist/tzofim/
