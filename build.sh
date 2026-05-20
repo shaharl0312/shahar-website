@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 mkdir -p dist
 cp -r landing-page-first/. dist/
 cp -r etf-app dist/etf-app

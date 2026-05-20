@@ -1,5 +1,5 @@
 {
-  "buildCommand": "echo ok",
+  "buildCommand": "sh build.sh",
   "outputDirectory": "dist",
   "trailingSlash": true
 }
