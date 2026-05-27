@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מחשבון ריבית דריבית | השקעות ללוחמים</title>
+  <meta name="description" content="מחשבון ריבית דריבית חינמי - כנס סכומים וגלה כמה הכסף שלך יהיה שווה בעוד 20 שנה.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #2D2D2D;
+      --surface:  #363636;
+      --text:     #F2EFE8;
+      --text2:    #9E9E9E;
+      --text3:    #6B6B6B;
+      --gold:     #C9A84C;
+      --gold-bg:  rgba(201,168,76,.14);
+      --gold-dim: rgba(201,168,76,.08);
+      --row-bg:   #3D3D3D;
+      --inp-bg:   #FFFFFF;
+      --border:   #4A4A4A;
+      --sh:       0 8px 40px rgba(0,0,0,.5), 0 1px 4px rgba(0,0,0,.2);
+      --sh-sm:    0 2px 12px rgba(0,0,0,.3);
+      --r:        14px;
+      --t:        .18s ease;
+    }
+
+    body {
+      font-family: 'Heebo', sans-serif;
+      font-weight: 400;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* Header */
+    .hdr {
+      position: sticky; top: 0; z-index: 20;
+      background: #222222;
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .hdr-in {
+      max-width: 720px; margin: 0 auto;
+      padding: 0 20px; height: 60px;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    }
+    .hdr-logo-wrap {
+      background: #F7F5F0; border-radius: 8px;
+      padding: 3px 7px; display: flex; align-items: center; flex-shrink: 0;
+    }
+    .hdr-logo { height: 38px; display: block; }
+    .hdr-back {
+      font-size: 13px; color: var(--text2);
+      display: flex; align-items: center; gap: 6px;
+      transition: color var(--t);
+    }
+    .hdr-back:hover { color: var(--text); }
+
+    /* Main */
+    .main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+
+    /* Hero */
+    .hero { margin-bottom: 44px; }
+
+    .eyebrow {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      font-family: 'Rubik', sans-serif;
+      font-size: clamp(38px, 8vw, 64px);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -.025em;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 .g { color: var(--gold); }
+
+    .hero p {
+      font-size: 16px; font-weight: 300;
+      color: var(--text2); line-height: 1.78;
+      max-width: 540px;
+    }
+
+    /* Panel */
+    .panel {
+      background: #FFFFFF;
+      border-radius: 22px;
+      box-shadow: 0 8px 40px rgba(0,0,0,.09), 0 1px 4px rgba(0,0,0,.04);
+      padding: 36px 32px;
+      margin-bottom: 40px;
+      --inp-bg: #F0EDE7;
+      --row-bg: #EDEAE3;
+      --border: #E0DAD2;
+    }
+    .panel .lbl { color: #6B7280; }
+    .panel .amt { color: #1A1A1A; }
+    .panel .row-final .lbl { color: #1A1A1A; font-weight: 500; }
+    .panel .row-final .amt { color: var(--gold); }
+    .panel .field label { color: #6B7280; }
+
+    /* Fields */
+    .field { margin-bottom: 18px; }
+
+    .field label {
+      display: block;
+      font-size: 13px; font-weight: 400;
+      color: var(--text2); margin-bottom: 8px;
+    }
+
+    .field input {
+      width: 100%;
+      background: var(--inp-bg);
+      border: 1.5px solid transparent;
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-family: 'Heebo', sans-serif;
+      font-size: 17px; font-weight: 400;
+      color: #1A1A1A;
+      outline: none;
+      transition: border-color var(--t), background var(--t), box-shadow var(--t);
+      direction: ltr;
+      text-align: right;
+    }
+
+    .field input:focus {
+      border-color: var(--gold);
+      background: #FFFFFF;
+      box-shadow: 0 0 0 3px rgba(201,168,76,.22);
+    }
+
+    .field input:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 2px;
+    }
+
+    /* Button */
+    .btn-calc {
+      width: 100%; margin-top: 6px;
+      padding: 16px;
+      background: var(--gold);
+      color: #fff;
+      border: none; border-radius: 10px;
+      font-family: 'Rubik', sans-serif;
+      font-size: 16px; font-weight: 600;
+      cursor: pointer; letter-spacing: .01em;
+      transition: opacity var(--t), transform var(--t);
+    }
+    .btn-calc:hover { opacity: .88; transform: translateY(-1px); }
+    .btn-calc:active { transform: translateY(0); }
+
+    /* Divider */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 28px 0;
+    }
+
+    /* Result rows */
+    .results { display: flex; flex-direction: column; gap: 10px; }
+
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      background: var(--row-bg);
+      border-radius: 10px;
+    }
+
+    .row .lbl {
+      font-size: 14px;
+      color: var(--text2);
+    }
+
+    .row .amt {
+      font-family: 'Rubik', sans-serif;
+      font-size: 22px; font-weight: 700;
+      color: var(--text);
+      direction: ltr;
+    }
+
+    .row-final {
+      background: var(--gold-bg);
+      border: 1.5px solid rgba(201,168,76,.3);
+      padding: 20px 22px;
+    }
+
+    .row-final .amt {
+      font-size: 30px;
+      color: var(--gold);
+    }
+
+    .row-final .lbl {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    /* Chart + Table sections */
+    .sec { margin-bottom: 44px; }
+
+    .sec-title {
+      font-family: 'Rubik', sans-serif;
+      font-size: 19px; font-weight: 600;
+      color: var(--text); margin-bottom: 18px;
+    }
+
+    .chart-box {
+      background: var(--surface);
+      border-radius: 18px;
+      padding: 28px 20px 20px;
+      box-shadow: var(--sh-sm);
+      border: 1px solid var(--border);
+    }
+
+    /* Table */
+    .tbl-wrap {
+      background: #FFFFFF;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    thead tr { background: #F0EDE7; }
+
+    th {
+      padding: 13px 16px;
+      font-size: 12px; font-weight: 600;
+      letter-spacing: .05em;
+      color: #6B7280;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 12px 16px;
+      color: #1A1A1A;
+      text-align: right;
+      border-top: 1px solid #E0DAD2;
+      direction: ltr;
+      text-align: left;
+    }
+
+    td:first-child { direction: rtl; text-align: right; }
+
+    tbody tr:hover td { background: #F5F0DC; }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .btn-calc { transition: opacity var(--t); }
+      * { transition-duration: .01ms !important; }
+    }
+
+    /* Mobile */
+    @media (max-width: 560px) {
+      .hdr-in { padding: 0 14px; height: 54px; }
+      .hdr-logo { height: 32px; }
+      .panel { padding: 24px 20px; }
+      .hero h1 { font-size: 38px; }
+      .row .amt { font-size: 19px; }
+      .row-final .amt { font-size: 26px; }
+      th, td { padding: 10px 12px; font-size: 13px; }
+      .tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      table { min-width: 480px; }
+      .main { padding: 40px 16px 80px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hdr">
+    <div class="hdr-in">
+      <div class="hdr-logo-wrap">
+        <img src="/logo.png" alt="ליווי השקעות ללוחמים" class="hdr-logo">
+      </div>
+      <a href="/warriors-hub/mifgash-1/" class="hdr-back">חזרה למפגש 1</a>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Hero -->
+    <section class="hero">
+      <p class="eyebrow">כלי חינמי</p>
+      <h1>מחשבון <span class="g">ריבית דריבית</span></h1>
+      <p>
+        ריבית דריבית היא הכוח שגורם לכסף לעבוד בשבילך - לא רק הקרן מרוויחה ריבית, אלא גם הרווחים מרוויחים רווחים.
+        500 ₪ לחודש בתשואה שנתית של 7% על פני 20 שנה הופכים לכ-250,000 ₪. הכנס את הנתונים שלך וגלה את המספר שלך.
+      </p>
+    </section>
+
+    <!-- Calculator panel -->
+    <div class="panel">
+
+      <div class="field">
+        <label for="f-initial">סכום השקעה ראשוני (₪)</label>
+        <input type="number" id="f-initial" value="1000" min="0" step="100" inputmode="numeric">
+      </div>
+
+      <div class="field">
+        <label for="f-monthly">השקעה חודשית קבועה (₪)</label>
+        <input type="number" id="f-monthly" value="500" min="0" step="100" inputmode="numeric">
+      </div>
+
+      <div class="field">
+        <label for="f-rate">תשואה שנתית ממוצעת (%)</label>
+        <input type="number" id="f-rate" value="7" min="0" max="100" step="0.1" inputmode="decimal">
+      </div>
+
+      <div class="field">
+        <label for="f-years">מספר שנות ההשקעה</label>
+        <input type="number" id="f-years" value="20" min="1" max="50" step="1" inputmode="numeric">
+      </div>
+
+      <button class="btn-calc" onclick="calculate()">חשב</button>
+
+      <hr class="divider">
+
+      <div class="results">
+        <div class="row">
+          <span class="lbl">השקעה ראשונית</span>
+          <span class="amt" id="r-initial">₪1,000</span>
+        </div>
+        <div class="row">
+          <span class="lbl">סה"כ הפקדות</span>
+          <span class="amt" id="r-deposited">₪121,000</span>
+        </div>
+        <div class="row">
+          <span class="lbl">סה"כ רווח</span>
+          <span class="amt" id="r-profit">₪128,760</span>
+        </div>
+        <div class="row row-final">
+          <span class="lbl">סכום סופי</span>
+          <span class="amt" id="r-total">₪249,760</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Chart -->
+    <section class="sec">
+      <h2 class="sec-title">גידול לאורך הזמן</h2>
+      <div class="chart-box">
+        <canvas id="chart"></canvas>
+      </div>
+    </section>
+
+    <!-- Table -->
+    <section class="sec">
+      <h2 class="sec-title">פירוט שנתי</h2>
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>שנה</th>
+              <th>הון מושקע</th>
+              <th>ערך הפורטפוליו</th>
+              <th>רווח</th>
+              <th>תשואה %</th>
+            </tr>
+          </thead>
+          <tbody id="tbl-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script>
+    let chart = null;
+
+    function fmt(n) {
+      return '₪' + new Intl.NumberFormat('en-US').format(Math.round(n));
+    }
+
+    function fmtPct(n) {
+      return n.toFixed(1) + '%';
+    }
+
+    function calculate() {
+      const initial = Math.max(0, parseFloat(document.getElementById('f-initial').value) || 0);
+      const monthly = Math.max(0, parseFloat(document.getElementById('f-monthly').value) || 0);
+      const rate    = Math.max(0, parseFloat(document.getElementById('f-rate').value)    || 0);
+      const years   = Math.max(1, Math.min(50, parseInt(document.getElementById('f-years').value) || 1));
+
+      const monthlyRate = rate / 100 / 12;
+      let balance = initial;
+      const snapshots = [{ year: 0, invested: initial, value: initial, profit: 0, pct: 0 }];
+
+      for (let y = 1; y <= years; y++) {
+        for (let m = 0; m < 12; m++) {
+          balance = balance * (1 + monthlyRate) + monthly;
+        }
+        const invested = initial + monthly * y * 12;
+        const profit   = balance - invested;
+        const pct      = invested > 0 ? (profit / invested) * 100 : 0;
+        snapshots.push({ year: y, invested, value: balance, profit, pct });
+      }
+
+      const last = snapshots[years];
+
+      document.getElementById('r-initial').textContent   = fmt(initial);
+      document.getElementById('r-deposited').textContent = fmt(last.invested);
+      document.getElementById('r-profit').textContent    = fmt(last.profit);
+      document.getElementById('r-total').textContent     = fmt(last.value);
+
+      const labels   = snapshots.map(d => 'שנה ' + d.year);
+      const invested = snapshots.map(d => d.invested);
+      const values   = snapshots.map(d => d.value);
+
+      if (chart) chart.destroy();
+      chart = new Chart(document.getElementById('chart'), {
+        type: 'line',
+        data: {
+          labels,
+          datasets: [
+            {
+              label: 'הון מושקע',
+              data: invested,
+              borderColor: '#888888',
+              borderDash: [6, 4],
+              borderWidth: 2,
+              pointRadius: 0,
+              fill: false,
+              tension: 0.3,
+            },
+            {
+              label: 'ערך הפורטפוליו',
+              data: values,
+              borderColor: '#C9A84C',
+              borderWidth: 2.5,
+              pointRadius: 0,
+              fill: { target: 0, above: 'rgba(201,168,76,0.12)' },
+              tension: 0.3,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: {
+              position: 'bottom',
+              rtl: true,
+              labels: {
+                font: { family: 'Heebo', size: 13 },
+                color: '#9E9E9E',
+                padding: 20,
+                usePointStyle: true,
+                pointStyleWidth: 16,
+              },
+            },
+            tooltip: {
+              rtl: true,
+              backgroundColor: '#363636',
+              titleColor: '#F2EFE8',
+              bodyColor: '#9E9E9E',
+              borderColor: '#4A4A4A',
+              borderWidth: 1,
+              titleFont: { family: 'Heebo' },
+              bodyFont: { family: 'Heebo' },
+              callbacks: { label: ctx => ' ' + ctx.dataset.label + ': ' + fmt(ctx.raw) },
+            },
+          },
+          scales: {
+            x: {
+              grid: { color: '#4A4A4A' },
+              ticks: { font: { family: 'Heebo', size: 12 }, color: '#9E9E9E' },
+            },
+            y: {
+              grid: { color: '#4A4A4A' },
+              ticks: {
+                font: { family: 'Heebo', size: 12 },
+                color: '#9E9E9E',
+                callback: v => v >= 1000000
+                  ? '₪' + (v / 1000000).toFixed(1) + 'M'
+                  : v >= 1000 ? '₪' + (v / 1000).toFixed(0) + 'K' : '₪' + v,
+              },
+            },
+          },
+        },
+      });
+
+      const tbody = document.getElementById('tbl-body');
+      tbody.innerHTML = snapshots.slice(1).map((d) =>
+        `<tr>
+          <td>${d.year}</td>
+          <td>${fmt(d.invested)}</td>
+          <td>${fmt(d.value)}</td>
+          <td>${fmt(d.profit)}</td>
+          <td>${fmtPct(d.pct)}</td>
+        </tr>`
+      ).join('');
+    }
+
+    calculate();
+
+    document.querySelectorAll('input').forEach(el =>
+      el.addEventListener('input', calculate)
+    );
+  </script>
+
+</body>
+</html>

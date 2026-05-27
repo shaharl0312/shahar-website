@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>הצהרת נגישות | שחר לוי</title>
+  <script defer src="https://cdn.enable.co.il/licenses/enable-L55207fxnyvjk64g-0526-82161/init.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto Sans Hebrew:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:       #09090b;
+      --bg-2:     #111114;
+      --bg-3:     rgba(255,255,255,.03);
+      --gold:     #C9A84C;
+      --gold-l:   #d8bc6e;
+      --gold-g:   rgba(201,168,76,.12);
+      --gold-b:   rgba(201,168,76,.22);
+      --navy:     #1B3A6B;
+      --navy-g:   rgba(27,58,107,.2);
+      --navy-b:   rgba(27,58,107,.45);
+      --text-1:   #f2f3f5;
+      --text-2:   #9ca3af;
+      --text-3:   #5c636e;
+      --border:   rgba(255,255,255,.065);
+      --border-s: rgba(255,255,255,.11);
+      --green:    #22c55e;
+      --green-g:  rgba(34,197,94,.07);
+      --green-b:  rgba(34,197,94,.22);
+      --ease: 240ms ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans Hebrew', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text-2);
+      font-size: 16px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      direction: rtl;
+    }
+    a { color: inherit; text-decoration: none; }
+    h1,h2,h3 { color: var(--text-1); font-weight: 700; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration:.01ms!important; }
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(9,9,11,.88);
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      transition: background var(--ease), border-color var(--ease);
+    }
+    .nav.scrolled { background: rgba(9,9,11,.97); border-bottom-color: var(--border-s); }
+    .nav-in {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 62px; padding: 0 24px;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .nav-logo img { max-height: 36px; width: auto; }
+    .nav-back {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; color: var(--text-3);
+      transition: color var(--ease);
+    }
+    .nav-back:hover { color: var(--gold); }
+    .nav-back svg { transform: scaleX(-1); }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 72px 0 52px;
+      position: relative; overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header-bg {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 60% 70% at 50% 0%, rgba(201,168,76,.07) 0%, transparent 60%);
+    }
+    .page-header-in {
+      position: relative; z-index: 1;
+      max-width: 760px; margin: 0 auto; padding: 0 24px;
+      text-align: center;
+    }
+    .page-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold-g); border: 1px solid var(--gold-b);
+      color: var(--gold); font-size: 11px; font-weight: 700;
+      letter-spacing: .1em; padding: 5px 14px; border-radius: 40px;
+      text-transform: uppercase; margin-bottom: 20px;
+    }
+    .page-title {
+      font-size: clamp(26px, 4vw, 40px);
+      line-height: 1.18; letter-spacing: -.3px;
+      margin-bottom: 14px;
+    }
+    .page-date { font-size: 13px; color: var(--text-3); }
+    .page-intro {
+      margin-top: 18px; font-size: 15px; color: var(--text-3);
+      max-width: 580px; margin-right: auto; margin-left: auto;
+      line-height: 1.7;
+    }
+
+    /* ── LEGAL CONTENT ── */
+    .legal-wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    .legal-body { padding: 60px 0 80px; }
+    .legal-section { margin-bottom: 48px; }
+    .legal-section h2 {
+      font-size: clamp(17px, 2.2vw, 20px);
+      color: var(--text-1);
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .legal-section h2::before {
+      content: '';
+      display: inline-block;
+      width: 3px; height: 18px;
+      background: var(--gold);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .legal-section p { color: var(--text-2); margin-bottom: 12px; font-size: 15.5px; }
+    .legal-section ul {
+      list-style: none; padding: 0;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .legal-section ul li {
+      position: relative;
+      padding-right: 20px;
+      color: var(--text-2);
+      font-size: 15.5px;
+    }
+    .legal-section ul li::before {
+      content: '';
+      position: absolute;
+      right: 0; top: 10px;
+      width: 5px; height: 5px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+    .legal-section ul li strong,
+    .legal-section p strong { color: var(--text-1); }
+
+    /* accessibility badge row */
+    .access-badges {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      margin-top: 6px;
+    }
+    .access-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--green-g); border: 1px solid var(--green-b);
+      color: var(--green); font-size: 12px; font-weight: 600;
+      padding: 5px 13px; border-radius: 40px;
+    }
+    .access-badge svg { flex-shrink: 0; }
+
+    .legal-contact-box {
+      background: var(--bg-2);
+      border: 1px solid var(--border-s);
+      border-radius: 12px;
+      padding: 28px 32px;
+      margin-top: 48px;
+    }
+    .legal-contact-box h3 {
+      font-size: 16px; color: var(--text-1);
+      margin-bottom: 18px;
+    }
+    .contact-row {
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .contact-item {
+      display: flex; gap: 10px; font-size: 15px;
+    }
+    .contact-label { color: var(--text-3); min-width: 120px; flex-shrink: 0; }
+    .contact-value { color: var(--text-2); }
+    .contact-value a { color: var(--gold); transition: color var(--ease); }
+    .contact-value a:hover { color: var(--gold-l); }
+
+    /* ── FOOTER ── */
+    .site-footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 20px 0; }
+    .footer-in {
+      max-width: 1100px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 14px;
+    }
+    .footer-links { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .footer-links a,
+    .footer-cookie-btn {
+      font-size: 13px; color: var(--text-3);
+      text-decoration: none; background: none; border: none;
+      cursor: pointer; padding: 0;
+      font-family: 'Noto Sans Hebrew', sans-serif;
+      transition: color var(--ease);
+    }
+    .footer-links a:hover,
+    .footer-cookie-btn:hover { color: var(--gold); }
+    .footer-sep { color: var(--text-3); font-size: 11px; opacity: .35; user-select: none; }
+    .footer-copy { font-size: 13px; color: var(--text-3); }
+
+    @media (max-width: 600px) {
+      .footer-in { flex-direction: column-reverse; align-items: flex-start; }
+      .contact-item { flex-direction: column; gap: 2px; }
+      .contact-label { min-width: unset; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-in">
+    <a href="index_v3.html" class="nav-logo">
+      <img src="logo.png" alt="שחר לוי – ליווי פיננסי" />
+    </a>
+    <a href="index_v3.html" class="nav-back">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M8.5 2L4 7l4.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      חזרה לאתר
+    </a>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="page-header-bg"></div>
+  <div class="page-header-in">
+    <div class="page-label">נגישות</div>
+    <h1 class="page-title">הצהרת נגישות</h1>
+    <p class="page-date">עדכון אחרון: מאי 2026</p>
+    <p class="page-intro">אנו רואים חשיבות עליונה בהנגשת האתר לכלל האוכלוסייה, לרבות אנשים עם מוגבלויות. אתר נגיש משפר את חוויית הגלישה עבור כולם.</p>
+  </div>
+</header>
+
+<!-- CONTENT -->
+<main class="legal-body">
+  <div class="legal-wrap">
+
+    <div class="legal-section">
+      <h2>1. עמידה בתקן</h2>
+      <div class="access-badges" style="margin-bottom:18px;">
+        <span class="access-badge">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6.5L5 9.5L10 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          ת"י 5568 / WCAG 2.1 AA
+        </span>
+        <span class="access-badge">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6.5L5 9.5L10 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Chrome · Firefox · Safari · Edge
+        </span>
+        <span class="access-badge">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6.5L5 9.5L10 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          NVDA · JAWS · VoiceOver
+        </span>
+      </div>
+      <ul>
+        <li>האתר עומד בדרישות התקן הישראלי ת"י 5568 המבוסס על הנחיות WCAG 2.1 ברמת התאמה AA.</li>
+        <li>האתר מותאם לדפדפנים נפוצים (Chrome, Firefox, Safari, Edge).</li>
+        <li>האתר נבדק והותאם לעבודה עם טכנולוגיות מסייעות מובילות (NVDA, JAWS, VoiceOver).</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <h2>2. פעולות הנגישות שבוצעו</h2>
+      <p>במסגרת הנגשת האתר, יישמנו את האלמנטים הבאים:</p>
+      <ul>
+        <li><strong>ניווט מקלדת:</strong> אפשרות מלאה לשימוש באתר ללא עכבר, באמצעות מקש Tab וקיצורי דרך.</li>
+        <li><strong>תאימות לקוראי מסך:</strong> שימוש במבנה סמנטי, תגיות ARIA ותיאורי תמונות (Alt Text).</li>
+        <li><strong>ניגודיות וצבעים:</strong> עמידה ביחסי ניגודיות גבוהים המקלים על קריאה.</li>
+        <li><strong>גמישות בתצוגה:</strong> תמיכה מלאה בהגדלת גופן (עד 200%) ובתצוגה מותאמת לניידים (RTL).</li>
+        <li><strong>טפסים:</strong> הנגשת שדות קלט, תוויות ברורות והודעות שגיאה מפורטות.</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <h2>3. כלי נגישות (Accessibility Widget)</h2>
+      <p>באתר מותקן תוסף נגישות המאפשר התאמות אישיות:</p>
+      <ul>
+        <li>הגדלה והקטנה של גופן.</li>
+        <li>שינוי ניגודיות (ניגודיות גבוהה / גווני אפור).</li>
+        <li>הדגשת קישורים ומדריך קריאה.</li>
+        <li>ביטול אנימציות.</li>
+      </ul>
+      <p style="margin-top:14px;">ניתן להפעיל את הכלי על ידי לחיצה על סמל הנגישות המופיע בפינת המסך.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>4. מגבלות ידועות ופטורים</h2>
+      <p>לא התבקשו ולא ניתנו פטורים מהנגשת האתר. האתר מונגש במלואו. עם זאת, ייתכן שתכנים המוטמעים מצדדים שלישיים (כגון סרטוני YouTube, מפות חיצוניות או תוספי רשתות חברתיות) אינם עומדים במלואם בדרישות התקן. אנו פועלים מול הספקים השונים לשיפור הנגישות של תכנים אלה.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>5. יצירת קשר ומשוב</h2>
+      <p>נתקלתם בבעיה? אנחנו כאן כדי לתקן. אם מצאתם תקלה או שיש לכם הצעה לשיפור, נשמח שתפנו לרכז הנגישות שלנו.</p>
+      <p style="margin-top:10px;">במידה ופנייתכם לא טופלה לשביעות רצונכם, ניתן לפנות לנציבות שוויון זכויות לאנשים עם מוגבלויות.</p>
+    </div>
+
+    <div class="legal-contact-box">
+      <h3>פרטי רכז הנגישות</h3>
+      <div class="contact-row">
+        <div class="contact-item">
+          <span class="contact-label">שם:</span>
+          <span class="contact-value">שחר לוי</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">דוא"ל:</span>
+          <span class="contact-value"><a href="mailto:shaharl0312@gmail.com">shaharl0312@gmail.com</a></span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">זמן מענה:</span>
+          <span class="contact-value">עד 14 ימי עסקים</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-in">
+    <nav class="footer-links" aria-label="קישורי מדיניות">
+      <a href="privacy-policy.html">מדיניות פרטיות</a>
+      <span class="footer-sep" aria-hidden="true">|</span>
+      <a href="terms.html">תנאי שימוש</a>
+      <span class="footer-sep" aria-hidden="true">|</span>
+      <a href="accessibility.html">הצהרת נגישות</a>
+    </nav>
+    <p class="footer-copy">© כל הזכויות שמורות לשחר לוי 2026</p>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 60), { passive: true });
+</script>
+</body>
+</html>
