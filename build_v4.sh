@@ -4,16 +4,19 @@ mkdir -p dist
 echo "build-started-$(date +%s)" > dist/buildinfo.txt
 
 # Landing page — exclude _archive, promote v4 as production index
-rsync -a --exclude='_archive' landing-page-first/. dist/
+cp -r landing-page-first/. dist/
+rm -rf dist/_archive
 cp landing-page-first/index_v4.html dist/index.html
 
 # ETF app — exclude _archive
 mkdir -p dist/etf-app
-rsync -a --exclude='_archive' etf-app/. dist/etf-app/
+cp -r etf-app/. dist/etf-app/
+rm -rf dist/etf-app/_archive
 
 # Agreement — exclude _archive, promote v2 as production index
 mkdir -p dist/agreement
-rsync -a --exclude='_archive' agreement/. dist/agreement/
+cp -r agreement/. dist/agreement/
+rm -rf dist/agreement/_archive
 cp agreement/index_v2.html dist/agreement/index.html
 
 # Side projects
