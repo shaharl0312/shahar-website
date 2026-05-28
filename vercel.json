@@ -1,5 +1,5 @@
 {
-  "buildCommand": "sh build_v4.sh",
+  "buildCommand": "sh build_v5.sh",
   "outputDirectory": "dist",
   "trailingSlash": true
 }
