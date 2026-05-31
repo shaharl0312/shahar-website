@@ -1762,7 +1762,7 @@
       if (result.error) {
         btn.disabled = false;
         btn.textContent = 'אני רוצה שהכסף שלי יתחיל לעבוד ←';
-        alert('שגיאה בשליחה, נסה שוב.');
+        btn.insertAdjacentHTML('afterend', '<p style="color:#fca5a5;font-size:13px;margin-top:8px;text-align:center;">שגיאה בשליחה, נסה שוב.</p>');
         return;
       }
       localStorage.setItem('lead_submitted', '1');
