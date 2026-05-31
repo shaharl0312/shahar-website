@@ -1,5 +1,5 @@
 {
-  "buildCommand": "sh build_v5.sh",
-  "outputDirectory": "dist",
+  "buildCommand": "sh _infra/build_v5.sh",
+  "outputDirectory": "_infra/dist",
   "trailingSlash": true
 }
