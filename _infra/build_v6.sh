@@ -7,7 +7,7 @@ echo "build-started-$(date +%s)" > _infra/dist/buildinfo.txt
 cp -r landing-page-first/. _infra/dist/
 rm -rf _infra/dist/_archive
 cp landing-page-first/index_v11.html _infra/dist/index.html
-cp landing-page-first/todah_v4.html _infra/dist/todah.html
+mkdir -p _infra/dist/todah && cp landing-page-first/todah_v4.html _infra/dist/todah/index.html
 
 # ETF app — exclude _archive
 mkdir -p _infra/dist/etf-app
