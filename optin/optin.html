@@ -156,11 +156,12 @@
     .btn-submit:active { transform: translateY(0); }
     .btn-submit:disabled { opacity: .55; cursor: not-allowed; transform: none; }
 
-    /* error */
-    .err {
+    .err, .field-err {
       color: #f87171;
-      font-size: 14px;
+      font-size: 13px;
       display: none;
+      text-align: right;
+      margin-top: -4px;
     }
 
     /* trust line */
@@ -187,7 +188,9 @@
 
     <form class="form" id="leadForm" novalidate>
       <input type="text"  id="name"  placeholder="שם מלא"    autocomplete="name" />
+      <p class="field-err" id="nameErr">נא להזין שם מלא</p>
       <input type="tel"   id="phone" placeholder="מספר טלפון" autocomplete="tel"  />
+      <p class="field-err" id="phoneErr">נא להזין מספר טלפון תקין</p>
       <p class="err" id="errMsg">משהו השתבש - נסו שוב</p>
       <button type="button" class="btn-submit" id="submitBtn" onclick="submitLead()">אני רוצה לדעת יותר</button>
     </form>
@@ -210,15 +213,19 @@
       nameEl.style.borderColor  = '';
       phoneEl.style.borderColor = '';
       errMsg.style.display      = 'none';
+      document.getElementById('nameErr').style.display  = 'none';
+      document.getElementById('phoneErr').style.display = 'none';
 
       var hasError = false;
       if (!name || name.length < 2) {
         nameEl.style.borderColor = '#f87171';
+        document.getElementById('nameErr').style.display = 'block';
         nameEl.focus();
         hasError = true;
       }
       if (!phone || phone.replace(/\D/g,'').length < 9) {
         phoneEl.style.borderColor = '#f87171';
+        document.getElementById('phoneErr').style.display = 'block';
         if (!hasError) phoneEl.focus();
         hasError = true;
       }
