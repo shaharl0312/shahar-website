@@ -15,7 +15,9 @@
   <script defer src="https://cdn.enable.co.il/licenses/enable-L55207fxnyvjk64g-0526-82161/init.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" /></noscript>
   <style>
     /* ── TOKENS ─────────────────────────────────────────── */
     :root {
@@ -975,7 +977,7 @@
 <nav class="nav" id="nav">
   <div class="nav-in">
     <a href="#" class="nav-logo">
-      <img src="logo.png" alt="השקעות ללוחמים" />
+      <img src="logo.png" alt="השקעות ללוחמים" fetchpriority="high" />
     </a>
     <a href="#form" class="btn-plain" data-track="cta_hero_secondary">אני רוצה להתחיל ←</a>
   </div>
@@ -1494,11 +1496,20 @@
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
-  const SUPABASE_URL = 'https://hbpapywofrvbcalrwwhq.supabase.co';
-  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhicGFweXdvZnJ2YmNhbHJ3d2hxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwODUwOTUsImV4cCI6MjA5NTY2MTA5NX0.aIvUbNrDTNKeuU4vdIUmBYIitl9t1IbTJo4Ajsz7p2I';
-  const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  // Supabase loads async - only needed when user submits the form
+  (function(){
+    var s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';
+    s.async = true;
+    s.onload = function(){
+      window.sb = window.supabase.createClient(
+        'https://hbpapywofrvbcalrwwhq.supabase.co',
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhicGFweXdvZnJ2YmNhbHJ3d2hxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwODUwOTUsImV4cCI6MjA5NTY2MTA5NX0.aIvUbNrDTNKeuU4vdIUmBYIitl9t1IbTJo4Ajsz7p2I'
+      );
+    };
+    document.head.appendChild(s);
+  })();
 
   // Nav scroll
   const nav = document.getElementById('nav');
@@ -1593,7 +1604,14 @@
     errorEl.style.display = 'none';
     btn.disabled = true;
     btn.textContent = 'שולח...';
-    const { error } = await sb.from('leads').insert({
+    if (!window.sb) {
+      btn.disabled = false;
+      btn.textContent = 'אני רוצה שהכסף שלי יתחיל לעבוד ←';
+      errorEl.textContent = 'טוען... נסה שוב עוד רגע';
+      errorEl.style.display = 'block';
+      return;
+    }
+    const { error } = await window.sb.from('leads').insert({
       full_name: name,
       phone,
       source: 'landing-page'
