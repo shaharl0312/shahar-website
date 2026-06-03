@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>מחשבון ריבית דריבית | השקעות ללוחמים</title>
-  <meta name="description" content="מחשבון ריבית דריבית חינמי — כנס סכומים וגלה כמה הכסף שלך יהיה שווה בעוד 20 שנה.">
+  <meta name="description" content="מחשבון ריבית דריבית חינמי - כנס סכומים וגלה כמה הכסף שלך יהיה שווה בעוד 20 שנה.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -12,19 +12,19 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:       #EFE9DF;
-      --surface:  #FFFFFF;
-      --text:     #1A1A1A;
-      --text2:    #6B7280;
-      --text3:    #9CA3AF;
+      --bg:       #2D2D2D;
+      --surface:  #363636;
+      --text:     #F2EFE8;
+      --text2:    #9E9E9E;
+      --text3:    #6B6B6B;
       --gold:     #C9A84C;
-      --gold-bg:  #F5F0DC;
-      --gold-dim: rgba(201,168,76,.15);
-      --row-bg:   #EDEAE3;
-      --inp-bg:   #F0EDE7;
-      --border:   #E0DAD2;
-      --sh:       0 8px 40px rgba(0,0,0,.09), 0 1px 4px rgba(0,0,0,.04);
-      --sh-sm:    0 2px 12px rgba(0,0,0,.06);
+      --gold-bg:  rgba(201,168,76,.14);
+      --gold-dim: rgba(201,168,76,.08);
+      --row-bg:   #3D3D3D;
+      --inp-bg:   #FFFFFF;
+      --border:   #4A4A4A;
+      --sh:       0 8px 40px rgba(0,0,0,.5), 0 1px 4px rgba(0,0,0,.2);
+      --sh-sm:    0 2px 12px rgba(0,0,0,.3);
       --r:        14px;
       --t:        .18s ease;
     }
@@ -40,34 +40,39 @@
 
     a { text-decoration: none; color: inherit; }
 
-    /* ── Header ── */
+    /* Header */
     .hdr {
       position: sticky; top: 0; z-index: 20;
-      background: rgba(239,233,223,.96);
+      background: #222222;
       border-bottom: 1px solid var(--border);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
     }
     .hdr-in {
       max-width: 720px; margin: 0 auto;
-      padding: 0 24px; height: 60px;
-      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 20px; height: 60px;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
     }
-    .hdr img { height: 26px; display: block; }
+    .hdr-logo-wrap {
+      background: #F7F5F0; border-radius: 8px;
+      padding: 3px 7px; display: flex; align-items: center; flex-shrink: 0;
+    }
+    .hdr-logo { height: 38px; display: block; }
     .hdr-back {
       font-size: 13px; color: var(--text2);
       display: flex; align-items: center; gap: 6px;
+      transition: color var(--t);
     }
     .hdr-back:hover { color: var(--text); }
 
-    /* ── Main ── */
+    /* Main */
     .main {
       max-width: 720px;
       margin: 0 auto;
       padding: 60px 24px 100px;
     }
 
-    /* ── Hero ── */
+    /* Hero */
     .hero { margin-bottom: 44px; }
 
     .eyebrow {
@@ -93,16 +98,24 @@
       max-width: 540px;
     }
 
-    /* ── Panel ── */
+    /* Panel */
     .panel {
-      background: var(--surface);
+      background: #FFFFFF;
       border-radius: 22px;
-      box-shadow: var(--sh);
+      box-shadow: 0 8px 40px rgba(0,0,0,.09), 0 1px 4px rgba(0,0,0,.04);
       padding: 36px 32px;
       margin-bottom: 40px;
+      --inp-bg: #F0EDE7;
+      --row-bg: #EDEAE3;
+      --border: #E0DAD2;
     }
+    .panel .lbl { color: #6B7280; }
+    .panel .amt { color: #1A1A1A; }
+    .panel .row-final .lbl { color: #1A1A1A; font-weight: 500; }
+    .panel .row-final .amt { color: var(--gold); }
+    .panel .field label { color: #6B7280; }
 
-    /* ── Fields ── */
+    /* Fields */
     .field { margin-bottom: 18px; }
 
     .field label {
@@ -119,7 +132,7 @@
       padding: 14px 16px;
       font-family: 'Heebo', sans-serif;
       font-size: 17px; font-weight: 400;
-      color: var(--text);
+      color: #1A1A1A;
       outline: none;
       transition: border-color var(--t), background var(--t), box-shadow var(--t);
       direction: ltr;
@@ -128,7 +141,7 @@
 
     .field input:focus {
       border-color: var(--gold);
-      background: #fff;
+      background: #FFFFFF;
       box-shadow: 0 0 0 3px rgba(201,168,76,.22);
     }
 
@@ -137,7 +150,7 @@
       outline-offset: 2px;
     }
 
-    /* ── Button ── */
+    /* Button */
     .btn-calc {
       width: 100%; margin-top: 6px;
       padding: 16px;
@@ -152,14 +165,14 @@
     .btn-calc:hover { opacity: .88; transform: translateY(-1px); }
     .btn-calc:active { transform: translateY(0); }
 
-    /* ── Divider ── */
+    /* Divider */
     .divider {
       border: none;
       border-top: 1px solid var(--border);
       margin: 28px 0;
     }
 
-    /* ── Result rows ── */
+    /* Result rows */
     .results { display: flex; flex-direction: column; gap: 10px; }
 
     .row {
@@ -185,7 +198,7 @@
 
     .row-final {
       background: var(--gold-bg);
-      border: 1.5px solid rgba(201,168,76,.25);
+      border: 1.5px solid rgba(201,168,76,.3);
       padding: 20px 22px;
     }
 
@@ -200,7 +213,7 @@
       color: var(--text);
     }
 
-    /* ── Chart + Table sections ── */
+    /* Chart + Table sections */
     .sec { margin-bottom: 44px; }
 
     .sec-title {
@@ -214,14 +227,15 @@
       border-radius: 18px;
       padding: 28px 20px 20px;
       box-shadow: var(--sh-sm);
+      border: 1px solid var(--border);
     }
 
-    /* ── Table ── */
+    /* Table */
     .tbl-wrap {
-      background: var(--surface);
+      background: #FFFFFF;
       border-radius: 18px;
       overflow: hidden;
-      box-shadow: var(--sh-sm);
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
     }
 
     table {
@@ -230,38 +244,40 @@
       font-size: 14px;
     }
 
-    thead tr { background: var(--inp-bg); }
+    thead tr { background: #F0EDE7; }
 
     th {
       padding: 13px 16px;
       font-size: 12px; font-weight: 600;
       letter-spacing: .05em;
-      color: var(--text2);
+      color: #6B7280;
       text-align: right;
       white-space: nowrap;
     }
 
     td {
       padding: 12px 16px;
-      color: var(--text);
+      color: #1A1A1A;
       text-align: right;
-      border-top: 1px solid var(--border);
+      border-top: 1px solid #E0DAD2;
       direction: ltr;
       text-align: left;
     }
 
     td:first-child { direction: rtl; text-align: right; }
 
-    tbody tr:hover td { background: var(--gold-bg); }
+    tbody tr:hover td { background: #F5F0DC; }
 
-    /* ── Reduced motion ── */
+    /* Reduced motion */
     @media (prefers-reduced-motion: reduce) {
       .btn-calc { transition: opacity var(--t); }
       * { transition-duration: .01ms !important; }
     }
 
-    /* ── Mobile ── */
+    /* Mobile */
     @media (max-width: 560px) {
+      .hdr-in { padding: 0 14px; height: 54px; }
+      .hdr-logo { height: 32px; }
       .panel { padding: 24px 20px; }
       .hero h1 { font-size: 38px; }
       .row .amt { font-size: 19px; }
@@ -269,6 +285,7 @@
       th, td { padding: 10px 12px; font-size: 13px; }
       .tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
       table { min-width: 480px; }
+      .main { padding: 40px 16px 80px; }
     }
   </style>
 </head>
@@ -276,8 +293,10 @@
 
   <header class="hdr">
     <div class="hdr-in">
-      <img src="../logo.png" alt="השקעות ללוחמים">
-      <a href="../" class="hdr-back">← חזרה</a>
+      <div class="hdr-logo-wrap">
+        <img src="/logo.png" alt="ליווי השקעות ללוחמים" class="hdr-logo">
+      </div>
+      <a href="/warriors-hub/mifgash-1/" class="hdr-back">חזרה למפגש 1</a>
     </div>
   </header>
 
@@ -288,7 +307,7 @@
       <p class="eyebrow">כלי חינמי</p>
       <h1>מחשבון <span class="g">ריבית דריבית</span></h1>
       <p>
-        ריבית דריבית היא הכוח שגורם לכסף לעבוד בשבילך: לא רק הקרן מרוויחה ריבית, אלא גם הרווחים מרוויחים רווחים.
+        ריבית דריבית היא הכוח שגורם לכסף לעבוד בשבילך - לא רק הקרן מרוויחה ריבית, אלא גם הרווחים מרוויחים רווחים.
         500 ₪ לחודש בתשואה שנתית של 7% על פני 20 שנה הופכים לכ-250,000 ₪. הכנס את הנתונים שלך וגלה את המספר שלך.
       </p>
     </section>
@@ -404,13 +423,11 @@
 
       const last = snapshots[years];
 
-      // Results
       document.getElementById('r-initial').textContent   = fmt(initial);
       document.getElementById('r-deposited').textContent = fmt(last.invested);
       document.getElementById('r-profit').textContent    = fmt(last.profit);
       document.getElementById('r-total').textContent     = fmt(last.value);
 
-      // Chart
       const labels   = snapshots.map(d => 'שנה ' + d.year);
       const invested = snapshots.map(d => d.invested);
       const values   = snapshots.map(d => d.value);
@@ -424,7 +441,7 @@
             {
               label: 'הון מושקע',
               data: invested,
-              borderColor: '#B0A898',
+              borderColor: '#888888',
               borderDash: [6, 4],
               borderWidth: 2,
               pointRadius: 0,
@@ -437,7 +454,7 @@
               borderColor: '#C9A84C',
               borderWidth: 2.5,
               pointRadius: 0,
-              fill: { target: 0, above: 'rgba(201,168,76,0.09)' },
+              fill: { target: 0, above: 'rgba(201,168,76,0.12)' },
               tension: 0.3,
             },
           ],
@@ -451,7 +468,7 @@
               rtl: true,
               labels: {
                 font: { family: 'Heebo', size: 13 },
-                color: '#6B7280',
+                color: '#9E9E9E',
                 padding: 20,
                 usePointStyle: true,
                 pointStyleWidth: 16,
@@ -459,6 +476,11 @@
             },
             tooltip: {
               rtl: true,
+              backgroundColor: '#363636',
+              titleColor: '#F2EFE8',
+              bodyColor: '#9E9E9E',
+              borderColor: '#4A4A4A',
+              borderWidth: 1,
               titleFont: { family: 'Heebo' },
               bodyFont: { family: 'Heebo' },
               callbacks: { label: ctx => ' ' + ctx.dataset.label + ': ' + fmt(ctx.raw) },
@@ -466,14 +488,14 @@
           },
           scales: {
             x: {
-              grid: { color: '#E0DAD2' },
-              ticks: { font: { family: 'Heebo', size: 12 }, color: '#9CA3AF' },
+              grid: { color: '#4A4A4A' },
+              ticks: { font: { family: 'Heebo', size: 12 }, color: '#9E9E9E' },
             },
             y: {
-              grid: { color: '#E0DAD2' },
+              grid: { color: '#4A4A4A' },
               ticks: {
                 font: { family: 'Heebo', size: 12 },
-                color: '#9CA3AF',
+                color: '#9E9E9E',
                 callback: v => v >= 1000000
                   ? '₪' + (v / 1000000).toFixed(1) + 'M'
                   : v >= 1000 ? '₪' + (v / 1000).toFixed(0) + 'K' : '₪' + v,
@@ -483,9 +505,8 @@
         },
       });
 
-      // Table
       const tbody = document.getElementById('tbl-body');
-      tbody.innerHTML = snapshots.slice(1).map((d, i) =>
+      tbody.innerHTML = snapshots.slice(1).map((d) =>
         `<tr>
           <td>${d.year}</td>
           <td>${fmt(d.invested)}</td>
@@ -496,10 +517,8 @@
       ).join('');
     }
 
-    // Run on load
     calculate();
 
-    // Live recalc
     document.querySelectorAll('input').forEach(el =>
       el.addEventListener('input', calculate)
     );
