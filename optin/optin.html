@@ -219,6 +219,9 @@
   </div>
 
   <script>
+    var SB_URL  = 'https://hbpapywofrvbcalrwwhq.supabase.co';
+    var SB_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhicGFweXdvZnJ2YmNhbHJ3d2hxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwODUwOTUsImV4cCI6MjA5NTY2MTA5NX0.aIvUbNrDTNKeuU4vdIUmBYIitl9t1IbTJo4Ajsz7p2I';
+
     document.getElementById('leadForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       var btn    = document.getElementById('submitBtn');
@@ -226,7 +229,7 @@
       var name   = document.getElementById('name').value.trim();
       var phone  = document.getElementById('phone').value.trim();
 
-      if (!name || name.length < 2)  { document.getElementById('name').focus();  return; }
+      if (!name || name.length < 2)   { document.getElementById('name').focus();  return; }
       if (!phone || phone.length < 9) { document.getElementById('phone').focus(); return; }
 
       btn.disabled    = true;
@@ -234,20 +237,25 @@
       errMsg.style.display = 'none';
 
       try {
-        var res = await fetch('https://shaharfinance.com/api/submit-lead', {
+        var res = await fetch(SB_URL + '/rest/v1/leads', {
           method:  'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body:    JSON.stringify({ full_name: name, phone: phone })
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey':        SB_ANON,
+            'Authorization': 'Bearer ' + SB_ANON,
+            'Prefer':        'return=minimal'
+          },
+          body: JSON.stringify({ full_name: name, phone: phone })
         });
-        if (res.ok) {
+        if (res.ok || res.status === 201) {
           window.location.href = 'https://shaharfinance.com/todah/';
         } else {
           throw new Error();
         }
       } catch (_) {
-        errMsg.style.display    = 'block';
-        btn.disabled            = false;
-        btn.textContent         = 'אני רוצה לדעת יותר';
+        errMsg.style.display = 'block';
+        btn.disabled         = false;
+        btn.textContent      = 'אני רוצה לדעת יותר';
       }
     });
   </script>
