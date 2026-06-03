@@ -7,3 +7,4 @@ dist/
 _infra/dist/
 .DS_Store
 *.log
+.worktrees/
