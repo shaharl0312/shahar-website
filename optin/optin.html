@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>שחר לוי - ליווי פיננסי לאנשי קבע</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #C9A84C;
+      --dark: #2D2D2D;
+      --cream: #F7F5F0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 24px 48px;
+      text-align: center;
+    }
+
+    .logo {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      height: 44px;
+      z-index: 100;
+    }
+
+    .hero {
+      max-width: 560px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--dark);
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: clamp(1.2rem, 4vw, 1.6rem);
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1.35;
+      margin-bottom: 18px;
+    }
+
+    .sub {
+      font-size: clamp(1rem, 3vw, 1.1rem);
+      color: #666;
+      margin-bottom: 40px;
+      line-height: 1.5;
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 380px;
+      margin: 0 auto;
+    }
+
+    input {
+      padding: 16px 20px;
+      border: 2px solid #e0ddd7;
+      border-radius: 12px;
+      font-size: 1rem;
+      color: var(--dark);
+      background: white;
+      text-align: right;
+      transition: border-color 0.2s;
+      width: 100%;
+      font-family: inherit;
+    }
+
+    input::placeholder { color: #aaa; }
+    input:focus { outline: none; border-color: var(--gold); }
+
+    button[type="submit"] {
+      padding: 18px 24px;
+      background: var(--gold);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.1s;
+      font-family: inherit;
+      margin-top: 4px;
+    }
+
+    button[type="submit"]:hover { opacity: 0.88; }
+    button[type="submit"]:active { transform: scale(0.98); }
+    button[type="submit"]:disabled { opacity: 0.55; cursor: not-allowed; }
+
+    .err {
+      color: #c0392b;
+      font-size: 0.88rem;
+      display: none;
+      text-align: center;
+    }
+
+    .trust {
+      margin-top: 16px;
+      font-size: 0.8rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <img src="/logo.png" alt="שחר לוי" class="logo" />
+
+  <div class="hero">
+    <h1>רוצים לגרום לכסף שלכם לעבוד בשבילכם?</h1>
+    <h2>אנשי קבע? מגיע לכם 500 ש"ח בחזרה בסוף התהליך</h2>
+    <p class="sub">מלאו שם ומספר טלפון ואחזור אליכם</p>
+
+    <form class="form" id="leadForm" novalidate>
+      <input type="text" id="name" name="name" placeholder="שם מלא" autocomplete="name" required />
+      <input type="tel" id="phone" name="phone" placeholder="מספר טלפון" autocomplete="tel" required />
+      <p class="err" id="errMsg">משהו השתבש - נסו שוב</p>
+      <button type="submit" id="submitBtn">אני רוצה לדעת יותר</button>
+    </form>
+
+    <p class="trust">הפרטים שלכם לא יועברו לאף גורם חיצוני</p>
+  </div>
+
+  <script>
+    document.getElementById('leadForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      var btn = document.getElementById('submitBtn');
+      var errMsg = document.getElementById('errMsg');
+      var name = document.getElementById('name').value.trim();
+      var phone = document.getElementById('phone').value.trim();
+
+      if (!name || name.length < 2) {
+        document.getElementById('name').focus();
+        return;
+      }
+      if (!phone || phone.length < 9) {
+        document.getElementById('phone').focus();
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'שולח...';
+      errMsg.style.display = 'none';
+
+      try {
+        var res = await fetch('https://shaharfinance.com/api/submit-lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ full_name: name, phone: phone, source: 'optin-campaign' })
+        });
+
+        if (res.ok) {
+          window.location.href = 'https://shaharfinance.com/todah/';
+        } else {
+          throw new Error('fail');
+        }
+      } catch (err) {
+        errMsg.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'אני רוצה לדעת יותר';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -34,5 +34,8 @@ cp warriors-hub/mifgash-3.html _infra/dist/warriors-hub/mifgash-3/index.html
 mkdir -p _infra/dist/my-app/ribit-derebit
 cp my-app/ribit-derebit/index.html _infra/dist/my-app/ribit-derebit/index.html
 
+# Optin / campaign page
+mkdir -p _infra/dist/go && cp optin/optin.html _infra/dist/go/index.html
+
 echo "build-ok-$(date +%s)" > _infra/dist/buildinfo.txt
 echo "=== BUILD COMPLETE ===" && ls _infra/dist/
