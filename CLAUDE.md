@@ -50,16 +50,27 @@ git add <file> && git commit -m "..." && git push   # deploys automatically
 
 Vercel auto-deploys on every push to master. No need to run `vercel --prod` manually.
 
-## Deploy Rules
+## Branch Workflow
 
-Push to git automatically after every change - no approval needed.
-Vercel deploys automatically on push. This is the intended workflow.
+- `master` = production (shaharfinance.com). Only merge here when ready to go live.
+- `feature/<name>` = work in progress. Push freely, never touches production.
+- Vercel auto-deploys ONLY from master. Other branches get a preview URL only.
 
-## Editing Workflow
+Starting new work:
+```sh
+git worktree add .worktrees/<name> -b feature/<name>
+# edit files directly in .worktrees/<name>/
+git commit + git push origin feature/<name>   # safe, not live
+# when ready:
+git checkout master && git merge feature/<name> && git push   # goes live
+```
 
-- Edit files directly in place - do NOT create versioned copies (no index_v5.html etc.)
-- git history replaces versioning - every commit is a restore point
-- For experiments: create a new git branch, not a new file
+## Editing Rules
+
+- Edit files directly - no versioned copies (no index_v5.html etc.)
+- git history = version history. Every commit is a restore point.
+- Auto-push to feature branches after every change.
+- NEVER merge to master or push master without explicit user approval.
 
 ## Page Layout Defaults
 
