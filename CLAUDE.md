@@ -29,27 +29,37 @@ shahar-website/
 
 ## Current Production Files
 
-| Sub-project | Production entry | Source file |
-|-------------|-----------------|-------------|
-| Landing page (/) | dist/index.html | landing-page-first/index_v4.html |
-| ETF app (/etf-app/) | dist/etf-app/index.html | etf-app/index.html |
-| Agreement (/agreement/) | dist/agreement/index.html | agreement/index_v2.html |
-| Schoolslide (/schoolslide/) | dist/schoolslide/index.html | side-projects/schoolslide/index.html |
-| Tzofim (/tzofim/) | dist/tzofim/index.html | side-projects/tzofim/index.html |
+Edit these files directly - no versioning needed, git tracks history.
+
+| עמוד | קובץ לעריכה |
+|------|-------------|
+| דף נחיתה ראשי (/) | `landing-page-first/index.html` |
+| תודה (/todah/) | `landing-page-first/todah.html` |
+| ETF app (/etf-app/) | `etf-app/index.html` |
+| הסכם (/agreement/) | `agreement/index.html` |
+| מפגש 1 (/warriors-hub/mifgash-1/) | `warriors-hub/mifgash-1.html` |
+| מפגש 2 (/warriors-hub/mifgash-2/) | `warriors-hub/mifgash-2.html` |
+| מפגש 3 (/warriors-hub/mifgash-3/) | `warriors-hub/mifgash-3.html` |
+| מחשבון ריבית | `my-app/ribit-derebit/index.html` |
 
 ## Build & Deploy
 
 ```sh
-sh build_v3.sh          # build locally to dist/
-vercel --prod --yes     # deploy to production (if git push doesn't trigger)
+git add <file> && git commit -m "..." && git push   # deploys automatically
 ```
 
-The build uses `rsync --exclude='_archive'` so archived files never reach production.
+Vercel auto-deploys on every push to master. No need to run `vercel --prod` manually.
 
 ## Deploy Rules
 
-**NEVER push to git or run `vercel --prod` without explicit user approval.**
-Always show the user what will be deployed and wait for a clear "yes" before pushing.
+**NEVER push to git without explicit user approval.**
+Always show the user what will change and wait for a clear "yes" before pushing.
+
+## Editing Workflow
+
+- Edit files directly in place - do NOT create versioned copies (no index_v5.html etc.)
+- git history replaces versioning - every commit is a restore point
+- For experiments: create a new git branch, not a new file
 
 ## Page Layout Defaults
 
@@ -60,13 +70,6 @@ Every new page must include the logo in the top-left corner (small, ~40-48px hei
 ```
 
 Adjust position/size to fit the page design, but always top-left, always small.
-
-## Versioning Rules
-
-- New files get a version suffix: `index_v2.html`, `index_v3.html`, etc.
-- Never overwrite an existing file - always create a new versioned copy.
-- Old versions are moved to `_archive/` inside each sub-project folder, never deleted.
-- Loose experiments and drafts go in `website/drafts/` (outside this repo).
 
 ## API
 - [api/send-notification.js](api/send-notification.js) - Vercel serverless function for push notifications
