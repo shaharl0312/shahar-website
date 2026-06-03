@@ -52,8 +52,8 @@ Vercel auto-deploys on every push to master. No need to run `vercel --prod` manu
 
 ## Deploy Rules
 
-**NEVER push to git without explicit user approval.**
-Always show the user what will change and wait for a clear "yes" before pushing.
+Push to git automatically after every change - no approval needed.
+Vercel deploys automatically on push. This is the intended workflow.
 
 ## Editing Workflow
 
