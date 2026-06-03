@@ -52,24 +52,24 @@ Vercel auto-deploys on every push to master. No need to run `vercel --prod` manu
 
 ## Branch Workflow
 
-- `master` = production (shaharfinance.com). Only merge here when ready to go live.
-- `feature/<name>` = work in progress. Push freely, never touches production.
-- Vercel auto-deploys ONLY from master. Other branches get a preview URL only.
+Two permanent environments:
 
-Starting new work:
-```sh
-git worktree add .worktrees/<name> -b feature/<name>
-# edit files directly in .worktrees/<name>/
-git commit + git push origin feature/<name>   # safe, not live
-# when ready:
-git checkout master && git merge feature/<name> && git push   # goes live
-```
+| Branch | URL | Purpose |
+|--------|-----|---------|
+| `master` | shaharfinance.com | Production - only merge here when ready |
+| `staging` | shahar-finance-staging.vercel.app | Staging - test everything here first |
+
+Normal workflow:
+1. Claude edits files on `staging` branch, commits, pushes automatically
+2. User checks shahar-finance-staging.vercel.app
+3. User says "תעלה" → Claude merges staging to master → shaharfinance.com updates
 
 ## Editing Rules
 
+- Always work on `staging` branch by default.
 - Edit files directly - no versioned copies (no index_v5.html etc.)
 - git history = version history. Every commit is a restore point.
-- Auto-push to feature branches after every change.
+- Auto-push to `staging` after every change - no approval needed.
 - NEVER merge to master or push master without explicit user approval.
 
 ## Page Layout Defaults
