@@ -186,10 +186,10 @@
     <p class="sub">מלאו שם ומספר טלפון ואחזור אליכם</p>
 
     <form class="form" id="leadForm" novalidate>
-      <input type="text"  id="name"  placeholder="שם מלא"        autocomplete="name" required />
-      <input type="tel"   id="phone" placeholder="מספר טלפון"     autocomplete="tel"  required />
+      <input type="text"  id="name"  placeholder="שם מלא"    autocomplete="name" />
+      <input type="tel"   id="phone" placeholder="מספר טלפון" autocomplete="tel"  />
       <p class="err" id="errMsg">משהו השתבש - נסו שוב</p>
-      <button type="submit" class="btn-submit" id="submitBtn">אני רוצה לדעת יותר</button>
+      <button type="button" class="btn-submit" id="submitBtn" onclick="submitLead()">אני רוצה לדעת יותר</button>
     </form>
 
     <p class="trust">הפרטים שלכם לא יועברו לאף גורם חיצוני</p>
@@ -199,19 +199,33 @@
     var SB_URL  = 'https://hbpapywofrvbcalrwwhq.supabase.co';
     var SB_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhicGFweXdvZnJ2YmNhbHJ3d2hxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwODUwOTUsImV4cCI6MjA5NTY2MTA5NX0.aIvUbNrDTNKeuU4vdIUmBYIitl9t1IbTJo4Ajsz7p2I';
 
-    document.getElementById('leadForm').addEventListener('submit', async function(e) {
-      e.preventDefault();
+    async function submitLead() {
       var btn    = document.getElementById('submitBtn');
       var errMsg = document.getElementById('errMsg');
-      var name   = document.getElementById('name').value.trim();
-      var phone  = document.getElementById('phone').value.trim();
+      var nameEl = document.getElementById('name');
+      var phoneEl= document.getElementById('phone');
+      var name   = nameEl.value.trim();
+      var phone  = phoneEl.value.trim();
 
-      if (!name || name.length < 2)   { document.getElementById('name').focus();  return; }
-      if (!phone || phone.length < 9) { document.getElementById('phone').focus(); return; }
+      nameEl.style.borderColor  = '';
+      phoneEl.style.borderColor = '';
+      errMsg.style.display      = 'none';
+
+      var hasError = false;
+      if (!name || name.length < 2) {
+        nameEl.style.borderColor = '#f87171';
+        nameEl.focus();
+        hasError = true;
+      }
+      if (!phone || phone.replace(/\D/g,'').length < 9) {
+        phoneEl.style.borderColor = '#f87171';
+        if (!hasError) phoneEl.focus();
+        hasError = true;
+      }
+      if (hasError) return;
 
       btn.disabled    = true;
       btn.textContent = 'שולח...';
-      errMsg.style.display = 'none';
 
       try {
         var res = await fetch(SB_URL + '/rest/v1/leads', {
@@ -224,7 +238,7 @@
           },
           body: JSON.stringify({ full_name: name, phone: phone })
         });
-        if (res.ok || res.status === 201) {
+        if (res.ok) {
           window.location.href = 'https://shaharfinance.com/todah/';
         } else {
           throw new Error();
@@ -234,7 +248,7 @@
         btn.disabled         = false;
         btn.textContent      = 'אני רוצה לדעת יותר';
       }
-    });
+    }
   </script>
 </body>
 </html>
