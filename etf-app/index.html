@@ -693,12 +693,18 @@
     };
 
     const IRISH_SYM = {
-      // v4 confirmed TASE-listed Irish ETFs - use TASE symbols (free on TradingView)
-      CSPX:'TASE:CSPX', CNDX:'TASE:CNDX', FWRA:'TASE:FWRA',
-      SPXP:'TASE:SPXP', EQQS:'TASE:EQQS', R2US:'TASE:R2US',
-      MXFS:'TASE:MXFS', MXWS:'TASE:MXWS',
-      XIT6:'TASE:XIT6', HEAL:'TASE:HEAL',
-      IEUX:'TASE:IEUX',
+      // Irish ETFs mapped to their US equivalent for TradingView (free tier)
+      CSPX:'AMEX:VOO',      // S&P 500
+      CNDX:'NASDAQ:QQQM',   // Nasdaq 100
+      FWRA:'AMEX:VT',       // All-World
+      SPXP:'AMEX:VOO',      // S&P 500 synthetic
+      EQQS:'NASDAQ:QQQM',   // Nasdaq 100 synthetic
+      R2US:'AMEX:VTWO',     // Russell 2000
+      MXFS:'AMEX:VWO',      // Emerging Markets
+      MXWS:'AMEX:VEA',      // MSCI World (developed ex-US)
+      XIT6:'AMEX:XLK',      // Technology
+      HEAL:'AMEX:IHI',      // Medical Devices
+      IEUX:'AMEX:VGK',      // Europe
     };
 
     function resolveSymbol(etf, mktId) {
