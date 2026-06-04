@@ -282,6 +282,17 @@
       letter-spacing: 0.3px;
       white-space: nowrap;
     }
+    .etf-fund-num {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      background: rgba(0,0,0,0.04);
+      padding: 2px 7px;
+      border-radius: 4px;
+      border: 1px solid rgba(0,0,0,0.08);
+      white-space: nowrap;
+      letter-spacing: 0.2px;
+    }
     .etf-name {
       font-size: 15px;
       font-weight: 500;
@@ -778,6 +789,7 @@
 
     function renderRow(etf, q) {
       const isIsraeli = currMkt === 'israeli';
+      const isIrish   = currMkt === 'irish';
       const idLabel   = isIsraeli ? etf.fundNumber || etf.ticker : etf.ticker;
       const name      = etf.sector || '';
       const shortDesc = (etf.description || '').split('.')[0] + '.';
@@ -791,11 +803,16 @@
       const hlName   = q ? highlight(name, q)      : escHtml(name);
       const hlDesc   = q ? highlight(shortDesc, q) : escHtml(shortDesc);
 
+      const fundNumHtml = (isIrish && etf.fundNumber)
+        ? `<span class="etf-fund-num">${escHtml(etf.fundNumber)}</span>`
+        : '';
+
       return `
         <div class="etf-row" data-cat="${catIdx}" data-idx="${idx}" role="button" tabindex="0" aria-label="${escHtml(name)}">
           <div class="etf-left">
             <div class="etf-header-line">
               <span class="etf-ticker">${hlTicker}</span>
+              ${fundNumHtml}
               <span class="etf-name">${hlName}</span>
             </div>
             <div class="etf-desc-short">${hlDesc}</div>
