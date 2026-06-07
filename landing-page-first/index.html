@@ -704,56 +704,6 @@
     .stat-d { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
     @media (max-width:580px) { .stats { grid-template-columns:1fr; } }
 
-    /* ── PRICING ─────────────────────────────────────────── */
-    .pricing { background: var(--dark); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .price-frame { max-width: 680px; margin: 0 auto 44px; text-align: center; }
-    .price-frame p { font-size: clamp(15.5px,1.9vw,17px); line-height: 1.82; }
-    .price-frame p + p { margin-top: 13px; }
-    .price-card {
-      max-width: 510px; margin: 0 auto;
-      background: linear-gradient(135deg, rgba(201,168,76,.08) 0%, rgba(27,58,107,.1) 100%);
-      border: 1px solid var(--gold-b); border-radius: var(--r-xl);
-      padding: 38px 36px; text-align: center; position: relative; overflow: hidden;
-    }
-    .price-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0;
-      height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-l), var(--gold));
-    }
-    .price-badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(201,168,76,.15); border: 1px solid rgba(201,168,76,.3);
-      color: var(--gold); font-size: 12px; font-weight: 700;
-      padding: 5px 14px; border-radius: 40px; margin-bottom: 18px;
-      letter-spacing: .04em;
-    }
-    .price-num {
-      font-size: clamp(54px,7.5vw,78px); font-weight: 800;
-      color: var(--gold); line-height: 1; margin-bottom: 6px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-    .price-cur { font-size: 30px; vertical-align: super; }
-    .price-hr { width: 38px; height: 2px; background: var(--gold-b); margin: 18px auto; }
-    .price-list { text-align: right; margin-bottom: 22px; }
-    .price-list li {
-      display: flex; align-items: flex-start; gap: 10px;
-      padding: 9px 0; border-bottom: 1px solid var(--border);
-      font-size: 15.5px; color: #c2cbd5;
-    }
-    .price-list li:last-child { border-bottom: none; }
-    .chk {
-      flex-shrink: 0; width: 19px; height: 19px;
-      background: var(--green-g); border: 1px solid var(--green-b);
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      margin-top: 2px;
-    }
-    .chk svg { width: 10px; height: 10px; }
-    .price-highlight {
-      background: rgba(201,168,76,.08); border: 1px solid rgba(201,168,76,.2);
-      border-radius: var(--r-m); padding: 14px 16px;
-      margin-bottom: 26px; font-size: 15px;
-      color: rgba(201,168,76,.85); line-height: 1.65;
-    }
-    .price-note { margin-top: 22px; font-size: 13.5px; color: var(--text-muted); line-height: 1.6; }
     .info-box {
       display: flex; gap: 18px; align-items: flex-start;
       border-radius: var(--r-l); padding: 26px 28px;
@@ -771,7 +721,6 @@
     .urgent h3 { color: var(--gold); margin-bottom: 6px; font-size: 16px; }
     .info-box p { font-size: 15px; line-height: 1.7; color: #adb5bf; }
     @media (max-width:540px) { .info-box { flex-direction: column; } }
-    @media (max-width:520px) { .price-card { padding: 26px 20px; } .price-num { font-size: 58px; } }
 
     /* ── TESTIMONIALS CAROUSEL ──────────────────────────── */
     .testimonials { background: var(--dark); }
@@ -1001,7 +950,7 @@
           אני רוצה שהכסף שלי יתחיל לעבוד ←
         </a>
       </div>
-      <p class="hero-note"><strong>ללא התחייבות.</strong> אחזור אליך תוך 24 שעות</p>
+      <p class="hero-note"><strong>3 מפגשים בזום.</strong> יוצאים עם תיק השקעות פעיל</p>
     </div>
   </div>
 </section>
@@ -1194,8 +1143,8 @@
         <div class="stat-d">מפגשים של שעה. זה הכל שצריך</div>
       </div>
       <div class="stat animate d4">
-        <div class="stat-n" data-count="500" data-suffix="₪">500₪</div>
-        <div class="stat-d">חזרה לאנשי קבע רק מעצם פתיחת חשבון</div>
+        <div class="stat-n" data-count="20">20</div>
+        <div class="stat-d">דקות בחודש זה כל מה שהשיטה דורשת ממך</div>
       </div>
     </div>
   </div>
@@ -1256,10 +1205,10 @@
     <div class="div-bar animate d1"></div>
     <div style="margin-top:28px;">
       <p class="animate d2">
-        אם יצאת מהמפגש הראשון בלי שכלום השתנה בהבנה שלך - אנחנו מפסיקים ואתה לא משלם. פשוט כך.
+        אם יצאת מהמפגש הראשון בלי שכלום השתנה בהבנה שלך - אנחנו מפסיקים שם. פשוט כך. בלי שום התחייבות מצידך.
       </p>
       <p class="animate d3">
-        אני יכול להתחייב על זה כי ראיתי עשרות קצינים שיצאו מהמפגש הראשון עם שינוי אמיתי. אם זה לא יקרה איתך - אין לי מה לגבות ממך.
+        אני יכול להתחייב על זה כי ראיתי עשרות קצינים שיצאו מהמפגש הראשון עם שינוי אמיתי. אם זה לא יקרה איתך - פשוט לא ממשיכים.
       </p>
       <p class="sig-gold animate d4">שחר לוי</p>
     </div>
@@ -1308,7 +1257,7 @@
     </div>
     <div class="faq-item animate d3">
       <button class="faq-q" onclick="faqToggle(this)"><span>יש מלא אנשים שמלמדים השקעות - למה דווקא אותך?</span><div class="faq-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1v9M1 5.5h9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div></button>
-      <div class="faq-ans"><div class="faq-ans-in">נכון. התוכנית שלי מתאימה במיוחד ללו"ז של קצינים ולא יוצאים ממפגש ראשון עם הרצאה - יוצאים עם השקעה בפועל. אם זה לא קרה - אתה לא משלם.</div></div>
+      <div class="faq-ans"><div class="faq-ans-in">נכון. התוכנית שלי מתאימה במיוחד ללו"ז של קצינים ולא יוצאים ממפגש ראשון עם הרצאה - יוצאים עם השקעה בפועל. אם זה לא קרה - פשוט לא ממשיכים הלאה.</div></div>
     </div>
     <div class="faq-item animate d3">
       <button class="faq-q" onclick="faqToggle(this)"><span>מה אם אפסיד הכל?</span><div class="faq-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1v9M1 5.5h9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div></button>
@@ -1942,7 +1891,6 @@
     var labels = {
       'cta_hero_primary':   { location: 'hero',    label: 'primary' },
       'cta_hero_secondary': { location: 'hero',    label: 'secondary' },
-      'cta_pricing':        { location: 'pricing', label: 'primary' },
       'cta_choice':         { location: 'choice',  label: 'primary' }
     };
     var meta = labels[id];
