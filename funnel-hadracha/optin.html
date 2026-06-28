@@ -69,7 +69,6 @@
     }
 
     @keyframes fadeUp  { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes pulseG  { 0%,100% { box-shadow: 0 0 0 0 rgba(201,168,76,.5); } 50% { box-shadow: 0 0 0 8px rgba(201,168,76,0); } }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
@@ -91,20 +90,6 @@
       margin: 0 auto 20px;
       display: block;
       animation: fadeUp .6s ease both;
-    }
-
-    .badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--gold-g); border: 1px solid var(--gold-b);
-      color: var(--gold); font-size: 13px; font-weight: 600;
-      padding: 7px 18px; border-radius: 40px;
-      margin-bottom: 28px;
-      animation: fadeUp .6s ease both;
-    }
-    .badge-dot {
-      width: 7px; height: 7px;
-      background: var(--gold); border-radius: 50%;
-      animation: pulseG 2s ease infinite;
     }
 
     h1 {
@@ -183,8 +168,6 @@
 
   <div class="card">
     <img class="photo" src="/shahar_headshot.png" alt="שחר לוי" />
-
-    <div class="badge"><span class="badge-dot"></span> הדרכה חינמית בוידאו</div>
 
     <h1>איך לבנות תיק השקעות פסיבי</h1>
 
