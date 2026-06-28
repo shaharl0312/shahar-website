@@ -87,9 +87,31 @@
       object-fit: cover;
       object-position: center top;
       border: 3px solid var(--gold);
-      margin: 0 auto 20px;
+      margin: 0 auto 10px;
       display: block;
       animation: fadeUp .6s ease both;
+    }
+
+    .shahar-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-1);
+      animation: fadeUp .6s .05s ease both;
+    }
+
+    .shahar-role {
+      font-size: 12px;
+      color: var(--text-3);
+      margin-bottom: 22px;
+      animation: fadeUp .6s .05s ease both;
+    }
+
+    .eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 14px;
+      animation: fadeUp .6s .08s ease both;
     }
 
     h1 {
@@ -160,6 +182,13 @@
       color: var(--text-3);
       animation: fadeUp .6s .5s ease both;
     }
+
+    .hint {
+      font-size: 12px;
+      color: var(--text-3);
+      text-align: right;
+      margin-top: -6px;
+    }
   </style>
 </head>
 <body>
@@ -168,8 +197,12 @@
 
   <div class="card">
     <img class="photo" src="/shahar_headshot.png" alt="שחר לוי" />
+    <div class="shahar-name">שחר לוי</div>
+    <div class="shahar-role">ליווי פיננסי לאנשי קבע</div>
 
-    <h1>איך לבנות תיק השקעות פסיבי</h1>
+    <p class="eyebrow">הדרכה חינמית בוידאו</p>
+
+    <h1>אתה מוביל חיילים בשטח.<br>הכסף שלך לא מוביל אף אחד.</h1>
 
     <h2>15 דקות, ואתה יודע בדיוק מה לעשות עם הכסף שיושב לך בעו"ש</h2>
 
@@ -181,6 +214,7 @@
       <p class="field-err" id="emailErr">נא להזין אימייל תקין</p>
 
       <input type="tel"   id="phone" placeholder="מספר טלפון" autocomplete="tel"   inputmode="tel"   />
+      <p class="hint">רק כדי לשלוח לך את הקישור אם יקרה משהו באימייל</p>
       <p class="field-err" id="phoneErr">נא להזין מספר טלפון תקין</p>
 
       <p class="err" id="errMsg">משהו השתבש - נסו שוב</p>
@@ -197,6 +231,13 @@
     function isValidEmail(v) {
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
     }
+
+    document.getElementById('leadForm').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        submitLead();
+      }
+    });
 
     async function submitLead() {
       var btn     = document.getElementById('submitBtn');
