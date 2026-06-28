@@ -37,9 +37,8 @@ cp my-app/ribit-derebit/index.html _infra/dist/my-app/ribit-derebit/index.html
 # Optin / campaign page
 mkdir -p _infra/dist/go && cp optin/optin.html _infra/dist/go/index.html
 
-# Course funnel - free guide squeeze page now serves at / (replaces landing-page-first)
-# Old homepage source stays at landing-page-first/index.html, unlinked from / for now.
-cp funnel-hadracha/optin.html _infra/dist/index.html
+# Course funnel - free guide squeeze page + video delivery page
+mkdir -p "_infra/dist/הדרכה" && cp funnel-hadracha/optin.html "_infra/dist/הדרכה/index.html"
 mkdir -p _infra/dist/video && cp funnel-hadracha/video.html _infra/dist/video/index.html
 
 echo "build-ok-$(date +%s)" > _infra/dist/buildinfo.txt
