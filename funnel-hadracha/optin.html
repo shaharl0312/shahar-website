@@ -77,8 +77,20 @@
 
     .card {
       position: relative; z-index: 1;
-      max-width: 540px; width: 100%;
+      max-width: 440px; width: 100%;
       text-align: center;
+    }
+
+    .photo {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 3px solid var(--gold);
+      margin: 0 auto 20px;
+      display: block;
+      animation: fadeUp .6s ease both;
     }
 
     .badge {
@@ -112,56 +124,8 @@
       animation: fadeUp .6s .2s ease both;
     }
 
-    .unity {
-      font-size: 14px;
-      color: var(--text-3);
-      line-height: 1.7;
-      font-style: italic;
-      margin-bottom: 28px;
-      animation: fadeUp .6s .25s ease both;
-    }
-
-    .divider {
-      width: 40px; height: 2px;
-      background: linear-gradient(90deg, var(--gold), transparent);
-      border-radius: 2px;
-      margin: 0 auto 28px;
-      animation: fadeUp .6s .25s ease both;
-    }
-
-    .whats-inside {
-      list-style: none;
-      text-align: right;
-      margin-bottom: 32px;
-      animation: fadeUp .6s .3s ease both;
-    }
-    .whats-inside li {
-      font-size: 14px;
-      color: var(--text-2);
-      padding: 9px 0 9px 0;
-      padding-right: 26px;
-      position: relative;
-      border-bottom: 1px solid var(--border);
-      line-height: 1.5;
-    }
-    .whats-inside li:last-child { border-bottom: none; }
-    .whats-inside li::before {
-      content: '✓';
-      position: absolute;
-      right: 0; top: 9px;
-      color: var(--gold);
-      font-weight: 700;
-    }
-
-    .effort-line {
-      font-size: 13px;
-      color: var(--gold);
-      font-weight: 600;
-      margin-bottom: 14px;
-      animation: fadeUp .6s .32s ease both;
-    }
-
     .form {
+      margin-top: 8px;
       display: flex; flex-direction: column; gap: 12px;
       animation: fadeUp .6s .35s ease both;
     }
@@ -218,23 +182,13 @@
   <div class="bg-grid"></div>
 
   <div class="card">
+    <img class="photo" src="/shahar_headshot.png" alt="שחר לוי" />
+
     <div class="badge"><span class="badge-dot"></span> הדרכה חינמית בוידאו</div>
 
-    <h1>60,000 ש"ח יושבים לך בעו"ש כבר חצי שנה.<br>ובכל חודש שעובר - הם שווים קצת פחות.</h1>
+    <h1>איך לבנות תיק השקעות פסיבי</h1>
 
-    <h2>בוידאו של 15 דקות אני מראה לך בדיוק איך להפוך את הכסף הזה לתיק השקעות שעובד בשבילך - בלי לשבת מול גרפים, ובלי להפוך לאיש שמדבר רק על כסף.</h2>
-
-    <div class="divider"></div>
-
-    <p class="unity">"הייתי קצין קבע בדיוק כמוך. כסף בעו"ש, אפס תוכנית, ופחד לגעת בו. לא מוכר לך חלום - אני מראה לך בדיוק מה עשיתי." - שחר</p>
-
-    <ul class="whats-inside">
-      <li>למה הכסף שיושב בעו"ש מאבד שווי בכל חודש - ולמה זה לא ייחודי לך</li>
-      <li>ההבדל בין "להשקיע" לבין "לשבת מול גרפים כל היום" - זה לא אותו דבר</li>
-      <li>הצעד הראשון הקונקרטי שאתה יכול לעשות הערב - בלי ידע קודם</li>
-    </ul>
-
-    <p class="effort-line">30 שניות למלא</p>
+    <h2>15 דקות, ואתה יודע בדיוק מה לעשות עם הכסף שיושב לך בעו"ש</h2>
 
     <form class="form" id="leadForm" novalidate>
       <input type="text"  id="name"  placeholder="שם מלא"     autocomplete="name"  />
