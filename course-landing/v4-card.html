@@ -30,11 +30,19 @@
   strong,.strong-text{font-weight:500;font-size:18px;}
   ul{list-style:none;}
   li{font-weight:500;font-size:18px;margin-bottom:12px;}
-  button,.btn{font-size:18px;font-weight:700;padding:14px 28px;border:none;border-radius:999px;cursor:pointer;font-family:inherit;}
+  button,.btn{font-size:18px;font-weight:700;padding:14px 28px;border:none;border-radius:999px;cursor:pointer;font-family:inherit;transition:filter .2s ease,opacity .2s ease;}
+  a{transition:opacity .2s ease;}
+  a:hover{opacity:.85;}
+  button:hover,.btn:hover{filter:brightness(1.08);}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px;}
   @media (max-width:768px){
     h1{font-size:36px;} h2{font-size:28px;} h3{font-size:22px;}
     p,li,.strong-text{font-size:16px;}
     button,.btn{font-size:16px;padding:12px 20px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important;}
   }
 
   .band{padding:88px 24px;position:relative;}
@@ -52,7 +60,7 @@
 
   nav{position:fixed;top:0;right:0;left:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 32px;background:var(--anthracite);}
   nav img{height:38px;}
-  .pill-cta{background:var(--gold);color:var(--anthracite);border-radius:999px;padding:10px 22px;font-size:14px;font-weight:700;}
+  .pill-cta{background:var(--gold);color:var(--anthracite);border-radius:999px;padding:12px 22px;font-size:14px;font-weight:700;}
 
   .pill-dark{background:var(--anthracite);color:#fff;}
   .pill-gold{background:var(--gold);color:var(--anthracite);}
@@ -108,7 +116,7 @@
   .mod-card{background:#fff;border-radius:20px;padding:28px;box-shadow:0 10px 30px rgba(0,0,0,.05);color:var(--anthracite);}
   .mod-card h3{color:var(--anthracite);}
   .mod-card .mod-num{font-size:15px;font-weight:800;color:var(--gold);letter-spacing:1px;margin-bottom:8px;}
-  .mod-card p{font-size:15px;color:#5a5a55;margin-bottom:0;}
+  .mod-card p{font-size:16px;color:#5a5a55;margin-bottom:0;}
   .bonus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px;}
   @media (max-width:900px){.bonus-grid{grid-template-columns:1fr;}}
   .bonus-card{background:linear-gradient(135deg,var(--gold),#b8933e);border-radius:16px;padding:20px;color:var(--anthracite);font-weight:500;}
@@ -118,7 +126,7 @@
   @media (max-width:768px){.forwho{grid-template-columns:1fr;}}
   .forwho .box{background:#fff;border-radius:20px;padding:28px;box-shadow:0 10px 30px rgba(0,0,0,.05);color:var(--anthracite);}
   .forwho h3{color:var(--anthracite);}
-  .forwho li{font-size:15px;color:#5a5a55;}
+  .forwho li{font-size:16px;color:#5a5a55;}
 
   .why-block{background:rgba(255,255,255,.06);border-radius:20px;padding:32px;margin-top:40px;}
   .why-block p{opacity:.85;}
@@ -240,7 +248,7 @@
 <!-- OFFER -->
 <section id="offer" class="band band-dark cut-both">
   <div class="inner">
-    <p class="center" style="color:var(--gold);font-weight:700;letter-spacing:.5px;">🚀 הצעת ההשקה - מחזור המייסדים</p>
+    <p class="center" style="color:var(--gold);font-weight:700;letter-spacing:.5px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px;display:inline-block;vertical-align:-3px;margin-left:6px;" aria-hidden="true"><path d="M12 2c2.5 2 4 5.5 4 9 0 2-.5 3.8-1.3 5.2l-1.2-1a7.6 7.6 0 001-4.2c0-2.6-1-5-2.5-6.7C10.5 5.9 9.5 8.4 9.5 11c0 1.5.35 2.9 1 4.2l-1.2 1C8.5 14.8 8 13 8 11c0-3.5 1.5-7 4-9z"/><path d="M9 17.5c-1.7.2-3 1.6-3 3.5 1.9 0 3.3-1.3 3.5-3l-.5-.5z"/><path d="M15 17.5l-.5.5c.2 1.7 1.6 3 3.5 3 0-1.9-1.3-3.3-3-3.5z"/><circle cx="12" cy="11" r="1.4"/></svg>הצעת ההשקה - מחזור המייסדים</p>
     <h2 class="center">מאפס למשקיע בשוק ההון תוך 3 שעות</h2>
     <p class="col-narrow center" style="opacity:.85;">אם אתם אנשי קבע (או פשוט רוצים להתחיל להשקיע בצורה נכונה), בניתי עבורכם תוכנית דיגיטלית שתיקח אתכם שלב אחר שלב - בלי ידע קודם, בלי מושגים מסובכים ובלי לבזבז חודשים על סרטונים ביוטיוב.</p>
     <p class="col-narrow center" style="opacity:.85;">המטרה פשוטה: בסיום התוכנית אתם לא רק תבינו השקעות. אתם תהיו משקיעים. יהיה לכם:</p>
@@ -268,10 +276,10 @@
       <div class="box">
         <h3 style="font-size:19px;opacity:.6;">ולמי היא לא מתאימה?</h3>
         <ul>
-          <li style="opacity:.7;">למי שמחפש להתעשר מהר</li>
-          <li style="opacity:.7;">למי שמחפש המלצות על מניות חמות או מסחר יומי</li>
-          <li style="opacity:.7;">למי שלא מוכן ליישם את מה שהוא לומד</li>
-          <li style="opacity:.7;">למי שכבר משקיע בצורה מסודרת ויש לו אסטרטגיה ברורה</li>
+          <li>למי שמחפש להתעשר מהר</li>
+          <li>למי שמחפש המלצות על מניות חמות או מסחר יומי</li>
+          <li>למי שלא מוכן ליישם את מה שהוא לומד</li>
+          <li>למי שכבר משקיע בצורה מסודרת ויש לו אסטרטגיה ברורה</li>
         </ul>
       </div>
     </div>
@@ -307,9 +315,9 @@
 
     <p class="center" style="margin-top:32px;opacity:.85;">בנוסף להכל תקבלו גם:</p>
     <div class="bonus-grid">
-      <div class="bonus-card">🎁 בונוס: כל מה שאיש קבע חייב לדעת על קרן הפנסיה שלו</div>
-      <div class="bonus-card">🎁 בונוס: ההטבות הכלכליות שמגיעות לאנשי קבע ואסור לפספס</div>
-      <div class="bonus-card">🎁 בונוס: קרן השתלמות - איך להפיק ממנה את המקסימום</div>
+      <div class="bonus-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" style="width:18px;height:18px;display:inline-block;vertical-align:-3px;margin-left:6px;" aria-hidden="true"><rect x="3.5" y="9.5" width="17" height="10" rx="1"/><path d="M3.5 13h17"/><path d="M12 9.5v10"/><path d="M12 9.5c-1.2-2.8-3-3.6-4.3-2.7C6.5 7.6 6.6 9.5 9 9.5"/><path d="M12 9.5c1.2-2.8 3-3.6 4.3-2.7 1.2.8 1.1 2.7-1.3 2.7"/></svg>בונוס: כל מה שאיש קבע חייב לדעת על קרן הפנסיה שלו</div>
+      <div class="bonus-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" style="width:18px;height:18px;display:inline-block;vertical-align:-3px;margin-left:6px;" aria-hidden="true"><rect x="3.5" y="9.5" width="17" height="10" rx="1"/><path d="M3.5 13h17"/><path d="M12 9.5v10"/><path d="M12 9.5c-1.2-2.8-3-3.6-4.3-2.7C6.5 7.6 6.6 9.5 9 9.5"/><path d="M12 9.5c1.2-2.8 3-3.6 4.3-2.7 1.2.8 1.1 2.7-1.3 2.7"/></svg>בונוס: ההטבות הכלכליות שמגיעות לאנשי קבע ואסור לפספס</div>
+      <div class="bonus-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" style="width:18px;height:18px;display:inline-block;vertical-align:-3px;margin-left:6px;" aria-hidden="true"><rect x="3.5" y="9.5" width="17" height="10" rx="1"/><path d="M3.5 13h17"/><path d="M12 9.5v10"/><path d="M12 9.5c-1.2-2.8-3-3.6-4.3-2.7C6.5 7.6 6.6 9.5 9 9.5"/><path d="M12 9.5c1.2-2.8 3-3.6 4.3-2.7 1.2.8 1.1 2.7-1.3 2.7"/></svg>בונוס: קרן השתלמות - איך להפיק ממנה את המקסימום</div>
     </div>
     <p class="center" style="opacity:.7;font-size:15px;margin-top:16px;">וכל עדכון עתידי של התוכנית יתווסף לחשבון שלכם ללא תשלום נוסף.</p>
 
