@@ -17,6 +17,7 @@
     --anthracite:#2D2D2D;
     --cream:#F7F5F0;
     --navy:#1B3A6B;
+    --ease:240ms ease;
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
@@ -30,11 +31,31 @@
   strong,.strong-text{font-weight:500;font-size:18px;}
   ul{list-style:none;}
   li{font-weight:500;font-size:18px;margin-bottom:12px;}
-  button,.btn{font-size:18px;font-weight:700;padding:14px 28px;border:none;border-radius:999px;cursor:pointer;font-family:inherit;transition:filter .2s ease,opacity .2s ease;}
-  a{transition:opacity .2s ease;}
-  a:hover{opacity:.85;}
-  button:hover,.btn:hover{filter:brightness(1.08);}
+  button,.btn{font-size:18px;font-weight:700;padding:14px 28px;border:none;border-radius:999px;cursor:pointer;font-family:inherit;transition:background var(--ease),transform var(--ease);}
   a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px;}
+
+  /* CTA hover - matches production site (shaharfinance.com) */
+  .pill-gold:hover{background:var(--gold-l);transform:translateY(-2px);}
+  .pill-dark:hover{background:#3a3a3a;transform:translateY(-2px);}
+  .pill-cta:hover{background:var(--gold-l);transform:translateY(-2px);}
+  .btn:active{transform:translateY(0);}
+
+  /* Spinning CTA ring - matches production site (shaharfinance.com) */
+  .cta-ring{position:relative;display:inline-block;border-radius:1000px;padding:3px;overflow:hidden;}
+  .cta-ring::before{
+    content:'';position:absolute;inset:-50%;width:200%;height:200%;
+    background:conic-gradient(from 0deg,transparent 0deg,transparent 55deg,#fff 80deg,var(--gold) 110deg,var(--gold-l) 140deg,transparent 170deg,transparent 360deg);
+    animation:spin360 2.8s linear infinite;
+  }
+  .cta-ring .btn{position:relative;z-index:1;}
+  @keyframes spin360{to{transform:rotate(360deg);}}
+
+  /* Scroll reveal - matches production site (shaharfinance.com) */
+  .animate{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease;}
+  .animate.visible{opacity:1;transform:translateY(0);}
+  .d1{transition-delay:.1s} .d2{transition-delay:.2s} .d3{transition-delay:.3s}
+  .d4{transition-delay:.4s} .d5{transition-delay:.5s}
+
   @media (max-width:768px){
     h1{font-size:36px;} h2{font-size:28px;} h3{font-size:22px;}
     p,li,.strong-text{font-size:16px;}
@@ -43,6 +64,7 @@
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto;}
     *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important;}
+    .cta-ring::before{animation:none;background:var(--gold);}
   }
 
   .band{padding:88px 24px;position:relative;}
@@ -185,9 +207,9 @@
     <div>
       <h1>יש לך כסף שיושב בעובר ושב<br>ולא עושה כלום.<br>ואתה יודע שזה לא נכון.</h1>
       <p class="sub">כל חודש שעובר, הוא שווה קצת פחות. לא קרה כלום רע. פשוט לא עשית כלום. וזה בדיוק הבעיה.<br><strong>מאפס למשקיע תוך 3 שעות</strong> - גם אם מעולם לא השקעת שקל.</p>
-      <a href="#offer" class="btn pill-gold">אני רוצה להתחיל</a>
+      <div class="cta-ring"><a href="#offer" class="btn pill-gold">אני רוצה להתחיל</a></div>
     </div>
-    <div class="mock-wrap">
+    <div class="mock-wrap animate d1">
       <div class="mock-card-dull">
         <div class="brand" style="color:#ddd;">עובר ושב</div>
         <div class="chip"></div>
@@ -205,19 +227,19 @@
 <!-- LEAD -->
 <section class="band band-cream cut-top">
   <div class="inner col-narrow">
-    <p>אם הגעת לכאן, כנראה שאתה קצין בקבע עם כסף שנצבר בעובר ושב - ואתה לא בטוח מה לעשות איתו.</p>
-    <p>אתה יודע שזה לא אמור לשבת שם. שמעת על השקעות. ניסית להבין. ויצאת עם יותר בלבול ממה שנכנסת איתו.</p>
-    <p>מנטור אחד אומר דבר אחד. סרטון ביוטיוב אומר הפוך. וכולם מנסים למכור לך משהו.</p>
-    <p>בדף הקצר הזה אני רוצה לספר לך סיפור. ואחרי שתקרא אותו - תחליט בעצמך.</p>
+    <p class="animate">אם הגעת לכאן, כנראה שאתה קצין בקבע עם כסף שנצבר בעובר ושב - ואתה לא בטוח מה לעשות איתו.</p>
+    <p class="animate d1">אתה יודע שזה לא אמור לשבת שם. שמעת על השקעות. ניסית להבין. ויצאת עם יותר בלבול ממה שנכנסת איתו.</p>
+    <p class="animate d2">מנטור אחד אומר דבר אחד. סרטון ביוטיוב אומר הפוך. וכולם מנסים למכור לך משהו.</p>
+    <p class="animate d3">בדף הקצר הזה אני רוצה לספר לך סיפור. ואחרי שתקרא אותו - תחליט בעצמך.</p>
   </div>
 </section>
 
 <!-- STORY -->
 <section class="band band-dark cut-both">
   <div class="inner story-grid">
-    <div class="photo-card"><img src="/shahar_headshot.png" alt="שחר לוי" /></div>
+    <div class="photo-card animate"><img src="/shahar_headshot.png" alt="שחר לוי" /></div>
     <div class="story-text">
-      <p>ישבתי באוטובוס בדרך לבסיס. חבר לידי אמר לי בקצרה שהוא משקיע. כאילו זה כלום. כאילו כסף יכול לעבוד לבד.</p>
+      <p class="animate d1">ישבתי באוטובוס בדרך לבסיס. חבר לידי אמר לי בקצרה שהוא משקיע. כאילו זה כלום. כאילו כסף יכול לעבוד לבד.</p>
       <p>פתחתי את אפליקציית הבנק. ראיתי את הסכום שנצבר. ואז זה נפל עליי: אם אני לא מזיז את הכסף הזה עכשיו - אני אהיה עוד אחד שעבד קשה, נתן הכל, ויצא בלי כלום.</p>
       <p>התחלתי ללמוד איך להשקיע. קראתי. צפיתי. ניסיתי להבין. ואחרי חודשים של מחקר, החלטתי להתחיל - לא כי הבנתי הכל. בגלל שהבנתי דבר אחד: הזמן עובד גם כשאני לא עובד. וכל חודש שאני מחכה - עולה לי כסף.</p>
       <p>אז נכנסתי. שילמתי עמלות שלא הייתי צריך לשלם. עשיתי טעויות של מתחיל. אבל בפעם הראשונה - הייתי בפנים. הרגשתי שהתחלתי לצאת ממירוץ העכברים.</p>
@@ -227,8 +249,8 @@
       <p>אז התחלתי ללמוד באמת. הייתי יושב שעות כדי להבין למה אני עושה כל פעולה. כי אני יודע שהעתיד שלי לא בנוי על מזל.</p>
       <p>ואני זוכר את הרגע שהמלחמה נרגעה קצת. פתחתי את חשבון ההשקעות. וראיתי שיש לי כסף כדי להתחיל. לא כדי לפרוש. ולא כדי להיות מיליונר. כדי שאני אוכל להשתחרר ולנשום.</p>
       <p>והאמת? אני לא חושב שאהיה עכשיו מיליונר מההשקעות. בשביל להיות מיליונר צריך לעשות פעולות אחרות. אבל ההשקעות נותנות לי את האומץ להתחיל. את החופש לקבל החלטות בלי פחד. חופש לא להגיד "אני לא יכול". חופש לעשות מה שאני רוצה באמת!</p>
-      <p><strong>כי כסף הוא לא המטרה. זמן - זו המטרה.</strong></p>
-      <p>וכל האנשים המוצלחים שאנחנו רואים ברשתות הם לא האנשים שיודעים הכול. הם אלה שהחליטו להתחיל לזוז גם שהדרך לא הייתה ברורה עד הסוף.</p>
+      <p class="animate d5"><strong>כי כסף הוא לא המטרה. זמן - זו המטרה.</strong></p>
+      <p class="animate d5">וכל האנשים המוצלחים שאנחנו רואים ברשתות הם לא האנשים שיודעים הכול. הם אלה שהחליטו להתחיל לזוז גם שהדרך לא הייתה ברורה עד הסוף.</p>
     </div>
   </div>
 </section>
@@ -236,11 +258,11 @@
 <!-- TESTIMONIALS -->
 <section class="band band-cream cut-top">
   <div class="inner">
-    <h2 class="center">מה אנשים שסיימו אמרו</h2>
+    <h2 class="center animate">מה אנשים שסיימו אמרו</h2>
     <div class="testi-scroll">
-      <div class="testi-card"><div class="tag-strip"></div><span class="pending">בקרוב</span><div class="name">[שם]</div><p style="opacity:.7;margin-bottom:0;">[הסכום שישב בעו"ש · מה השתנה]</p></div>
-      <div class="testi-card"><div class="tag-strip" style="background:var(--navy);"></div><span class="pending">בקרוב</span><div class="name">[שם]</div><p style="opacity:.7;margin-bottom:0;">[הסכום שישב בעו"ש · מה השתנה]</p></div>
-      <div class="testi-card"><div class="tag-strip"></div><span class="pending">בקרוב</span><div class="name">[שם]</div><p style="opacity:.7;margin-bottom:0;">[הסכום שישב בעו"ש · מה השתנה]</p></div>
+      <div class="testi-card animate d1"><div class="tag-strip"></div><span class="pending">בקרוב</span><div class="name">[שם]</div><p style="opacity:.7;margin-bottom:0;">[הסכום שישב בעו"ש · מה השתנה]</p></div>
+      <div class="testi-card animate d2"><div class="tag-strip" style="background:var(--navy);"></div><span class="pending">בקרוב</span><div class="name">[שם]</div><p style="opacity:.7;margin-bottom:0;">[הסכום שישב בעו"ש · מה השתנה]</p></div>
+      <div class="testi-card animate d3"><div class="tag-strip"></div><span class="pending">בקרוב</span><div class="name">[שם]</div><p style="opacity:.7;margin-bottom:0;">[הסכום שישב בעו"ש · מה השתנה]</p></div>
     </div>
   </div>
 </section>
@@ -248,12 +270,12 @@
 <!-- OFFER -->
 <section id="offer" class="band band-dark cut-both">
   <div class="inner">
-    <p class="center" style="color:var(--gold);font-weight:700;letter-spacing:.5px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px;display:inline-block;vertical-align:-3px;margin-left:6px;" aria-hidden="true"><path d="M12 2c2.5 2 4 5.5 4 9 0 2-.5 3.8-1.3 5.2l-1.2-1a7.6 7.6 0 001-4.2c0-2.6-1-5-2.5-6.7C10.5 5.9 9.5 8.4 9.5 11c0 1.5.35 2.9 1 4.2l-1.2 1C8.5 14.8 8 13 8 11c0-3.5 1.5-7 4-9z"/><path d="M9 17.5c-1.7.2-3 1.6-3 3.5 1.9 0 3.3-1.3 3.5-3l-.5-.5z"/><path d="M15 17.5l-.5.5c.2 1.7 1.6 3 3.5 3 0-1.9-1.3-3.3-3-3.5z"/><circle cx="12" cy="11" r="1.4"/></svg>הצעת ההשקה - מחזור המייסדים</p>
-    <h2 class="center">מאפס למשקיע בשוק ההון תוך 3 שעות</h2>
-    <p class="col-narrow center" style="opacity:.85;">אם אתם אנשי קבע (או פשוט רוצים להתחיל להשקיע בצורה נכונה), בניתי עבורכם תוכנית דיגיטלית שתיקח אתכם שלב אחר שלב - בלי ידע קודם, בלי מושגים מסובכים ובלי לבזבז חודשים על סרטונים ביוטיוב.</p>
-    <p class="col-narrow center" style="opacity:.85;">המטרה פשוטה: בסיום התוכנית אתם לא רק תבינו השקעות. אתם תהיו משקיעים. יהיה לכם:</p>
+    <p class="center animate" style="color:var(--gold);font-weight:700;letter-spacing:.5px;"><svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px;display:inline-block;vertical-align:-3px;margin-left:6px;" aria-hidden="true"><path d="M12 2c2.5 2 4 5.5 4 9 0 2-.5 3.8-1.3 5.2l-1.2-1a7.6 7.6 0 001-4.2c0-2.6-1-5-2.5-6.7C10.5 5.9 9.5 8.4 9.5 11c0 1.5.35 2.9 1 4.2l-1.2 1C8.5 14.8 8 13 8 11c0-3.5 1.5-7 4-9z"/><path d="M9 17.5c-1.7.2-3 1.6-3 3.5 1.9 0 3.3-1.3 3.5-3l-.5-.5z"/><path d="M15 17.5l-.5.5c.2 1.7 1.6 3 3.5 3 0-1.9-1.3-3.3-3-3.5z"/><circle cx="12" cy="11" r="1.4"/></svg>הצעת ההשקה - מחזור המייסדים</p>
+    <h2 class="center animate d1">מאפס למשקיע בשוק ההון תוך 3 שעות</h2>
+    <p class="col-narrow center animate d1" style="opacity:.85;">אם אתם אנשי קבע (או פשוט רוצים להתחיל להשקיע בצורה נכונה), בניתי עבורכם תוכנית דיגיטלית שתיקח אתכם שלב אחר שלב - בלי ידע קודם, בלי מושגים מסובכים ובלי לבזבז חודשים על סרטונים ביוטיוב.</p>
+    <p class="col-narrow center animate d2" style="opacity:.85;">המטרה פשוטה: בסיום התוכנית אתם לא רק תבינו השקעות. אתם תהיו משקיעים. יהיה לכם:</p>
 
-    <div class="checklist">
+    <div class="checklist animate d2">
       <ul>
         <li>קרן חירום מסודרת</li>
         <li>חשבון מסחר פתוח</li>
@@ -264,7 +286,7 @@
     </div>
 
     <div class="forwho">
-      <div class="box">
+      <div class="box animate d3">
         <h3 style="font-size:19px;color:var(--gold);">למי התוכנית מתאימה?</h3>
         <ul>
           <li>לאנשי קבע שרוצים להתחיל להשקיע אבל לא יודעים מאיפה להתחיל</li>
@@ -273,7 +295,7 @@
           <li>גם אם מעולם לא השקעתם שקל</li>
         </ul>
       </div>
-      <div class="box">
+      <div class="box animate d3">
         <h3 style="font-size:19px;opacity:.6;">ולמי היא לא מתאימה?</h3>
         <ul>
           <li>למי שמחפש להתעשר מהר</li>
@@ -284,29 +306,29 @@
       </div>
     </div>
 
-    <h3 style="margin-top:56px;text-align:center;">מה תקבלו בתוכנית?</h3>
+    <h3 style="margin-top:56px;text-align:center;" class="animate d3">מה תקבלו בתוכנית?</h3>
     <div class="mod-grid">
-      <div class="mod-card">
+      <div class="mod-card animate d4">
         <div class="mod-num">מודול 1</div>
         <h3 style="font-size:20px;">בונים את הראש של משקיע</h3>
         <p>לפני שמשקיעים כסף, בונים את צורת החשיבה. נגבש את תפיסת ההשקעות שלכם, נזהה את המחסומים שמעכבים את רוב האנשים ונבנה את המיינדסט שיאפשר לכם להתמיד בדרך לחופש כלכלי.</p>
       </div>
-      <div class="mod-card">
+      <div class="mod-card animate d4">
         <div class="mod-num">מודול 2</div>
         <h3 style="font-size:20px;">המושגים שבאמת חייבים להכיר</h3>
         <p>בלי שיעורי כלכלה. בלי תיאוריה מיותרת. רק המושגים החשובים שבאמת ישפיעו על הכסף שלכם ויעזרו לכם להימנע מטעויות שעשויות לעלות עשרות ואף מאות אלפי שקלים לאורך החיים.</p>
       </div>
-      <div class="mod-card">
+      <div class="mod-card animate d5">
         <div class="mod-num">מודול 3</div>
         <h3 style="font-size:20px;">ההשקעה הראשונה שלכם</h3>
         <p>פותחים קרן חירום. מבינים איך היא משתלבת בתוכנית הכלכלית שלכם. ומבצעים את הצעד הראשון בעולם ההשקעות.</p>
       </div>
-      <div class="mod-card">
+      <div class="mod-card animate d5">
         <div class="mod-num">מודול 4</div>
         <h3 style="font-size:20px;">בונים מערכת השקעות לכל החיים</h3>
         <p>ביחד נפתח חשבון מסחר. נבנה אסטרטגיית השקעות שמתאימה לכם. תדעו בדיוק במה להשקיע, כמה להשקיע ומתי להשקיע. בסיום המודול כבר תהיו משקיעים בפועל.</p>
       </div>
-      <div class="mod-card">
+      <div class="mod-card animate d5">
         <div class="mod-num">מודול 5</div>
         <h3 style="font-size:20px;">ממשיכים קדימה</h3>
         <p>איך ממשיכים לנהל את הכסף שלכם גם בעוד שנה, חמש שנים ועשר שנים - בפשטות ובביטחון.</p>
@@ -321,7 +343,7 @@
     </div>
     <p class="center" style="opacity:.7;font-size:15px;margin-top:16px;">וכל עדכון עתידי של התוכנית יתווסף לחשבון שלכם ללא תשלום נוסף.</p>
 
-    <div class="why-block col-narrow">
+    <div class="why-block col-narrow animate d5">
       <h3 style="text-align:center;font-size:24px;">למה דווקא התוכנית הזאת?</h3>
       <p>כי גם אני הייתי איש קבע. אני מכיר את המסלול, את ההטבות, את ההתלבטויות ואת הטעויות שרוב אנשי הקבע עושים.</p>
       <p>במקום ללמוד עשרות שעות מיוטיוב ולנסות להבין לבד מה נכון עבורכם, בניתי תוכנית אחת שמרכזת את כל מה שצריך - בצורה פשוטה, ברורה ופרקטית. בלי רעש. בלי תיאוריה מיותרת. רק מה שבאמת צריך כדי להתחיל.</p>
@@ -338,97 +360,97 @@
 <!-- PRICE -->
 <section class="band band-gold cut-top">
   <div class="inner center">
-    <div class="eyebrow" style="font-size:13px;font-weight:700;letter-spacing:1px;margin-bottom:8px;">המחיר הרשמי לאחר ההשקה: 697 ₪</div>
-    <p style="font-weight:700;font-size:20px;">אבל... אתם הראשונים שמצטרפים לתוכנית.</p>
-    <p style="max-width:560px;margin:0 auto 24px;">אני רוצה לבנות יחד איתכם את המחזור הראשון, לקבל מכם פידבק ולשפר את התוכנית לאורך הדרך. לכן, במקום 697 ₪ - היום תוכלו להצטרף ב-497 ₪ בלבד.</p>
-    <div><span class="price-old-strike">697 ₪</span><span class="price-huge">497 ₪</span></div>
-    <div class="cashback-pill">
+    <div class="eyebrow animate" style="font-size:13px;font-weight:700;letter-spacing:1px;margin-bottom:8px;">המחיר הרשמי לאחר ההשקה: 697 ₪</div>
+    <p class="animate d1" style="font-weight:700;font-size:20px;">אבל... אתם הראשונים שמצטרפים לתוכנית.</p>
+    <p class="animate d1" style="max-width:560px;margin:0 auto 24px;">אני רוצה לבנות יחד איתכם את המחזור הראשון, לקבל מכם פידבק ולשפר את התוכנית לאורך הדרך. לכן, במקום 697 ₪ - היום תוכלו להצטרף ב-497 ₪ בלבד.</p>
+    <div class="animate d2"><span class="price-old-strike">697 ₪</span><span class="price-huge">497 ₪</span></div>
+    <div class="cashback-pill animate d3">
       <p style="margin-bottom:6px;font-weight:600;">בנוסף - אם תבחרו לפתוח את חשבון המסחר דרך הקישור שלי ותעמדו בתנאי ההטבה:</p>
       <p style="margin-bottom:0;font-size:14px;">✓ אנשי קבע עשויים להיות זכאים להחזר של 500 ₪<br>✓ מי שאינו איש קבע עשוי להיות זכאי להחזר של 200 ₪</p>
       <p style="margin-bottom:0;font-size:13px;margin-top:8px;opacity:.8;">שתכלס, במתמטיקה פשוטה - זה כבר החזר כספי מלא על כל התוכנית הדיגיטלית.</p>
     </div>
-    <p style="max-width:560px;margin:24px auto 0;font-weight:500;">ההחלטה היא שלכם. בעוד שלוש שעות מהיום אתם יכולים עדיין לחשוב על להתחיל להשקיע... או שכבר תהיה לכם תוכנית מסודרת, חשבון מסחר פתוח וההשקעה הראשונה שלכם מאחוריכם.</p>
-    <div style="margin-top:24px;"><a href="#faq" class="btn pill-dark">אני רוצה להתחיל</a></div>
+    <p class="animate d4" style="max-width:560px;margin:24px auto 0;font-weight:500;">ההחלטה היא שלכם. בעוד שלוש שעות מהיום אתם יכולים עדיין לחשוב על להתחיל להשקיע... או שכבר תהיה לכם תוכנית מסודרת, חשבון מסחר פתוח וההשקעה הראשונה שלכם מאחוריכם.</p>
+    <div class="animate d5" style="margin-top:24px;"><div class="cta-ring"><a href="#faq" class="btn pill-dark">אני רוצה להתחיל</a></div></div>
   </div>
 </section>
 
 <!-- HOW IT WORKS -->
 <section class="band band-cream cut-both">
   <div class="inner">
-    <h2 class="center">ככה זה עובד</h2>
+    <h2 class="center animate">ככה זה עובד</h2>
     <div class="timeline">
-      <div class="tl-chip"><span class="n">1</span><span class="label">תלחצו על הכפתור כאן למטה</span></div>
-      <div class="tl-chip"><span class="n">2</span><span class="label">תמלאו שם, מייל וטלפון - 30 שניות</span></div>
-      <div class="tl-chip"><span class="n">3</span><span class="label">תאשרו תשלום מאובטח</span></div>
-      <div class="tl-chip"><span class="n">4</span><span class="label">תוך שתי דקות יגיע למייל שלכם קישור עם גישה מלאה</span></div>
+      <div class="tl-chip animate d1"><span class="n">1</span><span class="label">תלחצו על הכפתור כאן למטה</span></div>
+      <div class="tl-chip animate d2"><span class="n">2</span><span class="label">תמלאו שם, מייל וטלפון - 30 שניות</span></div>
+      <div class="tl-chip animate d3"><span class="n">3</span><span class="label">תאשרו תשלום מאובטח</span></div>
+      <div class="tl-chip animate d4"><span class="n">4</span><span class="label">תוך שתי דקות יגיע למייל שלכם קישור עם גישה מלאה</span></div>
     </div>
-    <p class="center" style="margin-top:24px;opacity:.75;">שיעור ראשון: 15 דקות. יש בו צעד אחד.</p>
-    <div class="center"><a href="#offer" class="btn pill-gold" style="margin-top:8px;">אני רוצה להתחיל</a></div>
+    <p class="center animate d5" style="margin-top:24px;opacity:.75;">שיעור ראשון: 15 דקות. יש בו צעד אחד.</p>
+    <div class="center animate d5"><a href="#offer" class="btn pill-gold" style="margin-top:8px;">אני רוצה להתחיל</a></div>
   </div>
 </section>
 
 <!-- GUARANTEE -->
 <section class="band band-dark cut-top">
   <div class="inner center col-narrow">
-    <h2>30 ימי אחריות</h2>
-    <p style="opacity:.85;">לפני שהתוכנית הזאת הפכה לדיגיטלית, ליוויתי באופן אישי עשרות אנשי קבע בתהליך הזה. ראיתי בדיוק איפה אנשים חוששים להתחיל, איפה הם נתקעים ואיך עוזרים להם לעבור את זה. הניסיון הזה הוא מה שהפך בסופו של דבר לתוכנית שאתם עומדים לקבל. בגלל זה אני עומד מאחוריה בלב שלם.</p>
-    <p style="opacity:.85;">יש לכם 30 יום לעבור על התוכנית, ליישם את השלבים המרכזיים ולהחליט אם היא מתאימה לכם. אם תרגישו שהתוכנית לא סיפקה לכם את הערך שהבטחתי, פשוט שלחו לי הודעה בתוך 30 יום - ואחזיר לכם את כספכם.</p>
-    <div class="signature">שחר לוי</div>
+    <h2 class="animate">30 ימי אחריות</h2>
+    <p class="animate d1" style="opacity:.85;">לפני שהתוכנית הזאת הפכה לדיגיטלית, ליוויתי באופן אישי עשרות אנשי קבע בתהליך הזה. ראיתי בדיוק איפה אנשים חוששים להתחיל, איפה הם נתקעים ואיך עוזרים להם לעבור את זה. הניסיון הזה הוא מה שהפך בסופו של דבר לתוכנית שאתם עומדים לקבל. בגלל זה אני עומד מאחוריה בלב שלם.</p>
+    <p class="animate d1" style="opacity:.85;">יש לכם 30 יום לעבור על התוכנית, ליישם את השלבים המרכזיים ולהחליט אם היא מתאימה לכם. אם תרגישו שהתוכנית לא סיפקה לכם את הערך שהבטחתי, פשוט שלחו לי הודעה בתוך 30 יום - ואחזיר לכם את כספכם.</p>
+    <div class="signature animate d2">שחר לוי</div>
 
-    <h3 style="margin-top:56px;font-size:24px;">למה המחיר לא יישאר לנצח?</h3>
-    <p style="opacity:.8;">כנראה שכבר ראיתם דפי מכירה עם טיימר שסופר לאחור או הודעות כמו "נשארו רק 3 מקומות". אני בחרתי לעשות את זה אחרת. אני לא רוצה שתקנו מתוך לחץ לא אמיתי. אני רוצה שתקנו כי אתם מבינים שהתוכנית הזאת יכולה לחסוך לכם חודשים של דחיינות ולעזור לכם להתחיל להשקיע בצורה נכונה.</p>
-    <p style="opacity:.8;">לכן התוכנית מושקת היום במחיר של 497 ₪. לא כי זה המחיר האמיתי שלה, אלא כי בשלב הזה חשוב לי יותר לצבור תוצאות, סיפורי הצלחה ופידבק מאשר למקסם את הרווח מכל מכירה.</p>
-    <p style="opacity:.8;">ככל שיותר אנשים יעברו את התוכנית, יצליחו ליישם אותה וישתפו בתוצאות שלהם - הערך של התוכנית יעלה, וגם המחיר שלה. לכן מחיר ההשקה הוא 497 ₪, ולאחר שאסיים את שלב ההשקה ואצבור מספיק סיפורי הצלחה ועדויות מהמחזורים הראשונים, המחיר ייעלה ל-697 ₪.</p>
-    <p style="opacity:.85;font-weight:500;">אם אתם מרגישים שהתוכנית מתאימה לכם, אני ממליץ להצטרף עכשיו וליהנות ממחיר ההשקה ומהגישה לכל העדכונים העתידיים ללא עלות נוספת.</p>
+    <h3 class="animate d2" style="margin-top:56px;font-size:24px;">למה המחיר לא יישאר לנצח?</h3>
+    <p class="animate d3" style="opacity:.8;">כנראה שכבר ראיתם דפי מכירה עם טיימר שסופר לאחור או הודעות כמו "נשארו רק 3 מקומות". אני בחרתי לעשות את זה אחרת. אני לא רוצה שתקנו מתוך לחץ לא אמיתי. אני רוצה שתקנו כי אתם מבינים שהתוכנית הזאת יכולה לחסוך לכם חודשים של דחיינות ולעזור לכם להתחיל להשקיע בצורה נכונה.</p>
+    <p class="animate d3" style="opacity:.8;">לכן התוכנית מושקת היום במחיר של 497 ₪. לא כי זה המחיר האמיתי שלה, אלא כי בשלב הזה חשוב לי יותר לצבור תוצאות, סיפורי הצלחה ופידבק מאשר למקסם את הרווח מכל מכירה.</p>
+    <p class="animate d4" style="opacity:.8;">ככל שיותר אנשים יעברו את התוכנית, יצליחו ליישם אותה וישתפו בתוצאות שלהם - הערך של התוכנית יעלה, וגם המחיר שלה. לכן מחיר ההשקה הוא 497 ₪, ולאחר שאסיים את שלב ההשקה ואצבור מספיק סיפורי הצלחה ועדויות מהמחזורים הראשונים, המחיר ייעלה ל-697 ₪.</p>
+    <p class="animate d4" style="opacity:.85;font-weight:500;">אם אתם מרגישים שהתוכנית מתאימה לכם, אני ממליץ להצטרף עכשיו וליהנות ממחיר ההשקה ומהגישה לכל העדכונים העתידיים ללא עלות נוספת.</p>
   </div>
 </section>
 
 <!-- FAQ -->
 <section id="faq" class="band band-cream">
   <div class="inner">
-    <h2 class="center">השאלות שאתה שואל ולא אומר בקול</h2>
+    <h2 class="center animate">השאלות שאתה שואל ולא אומר בקול</h2>
     <div class="faq">
-      <div class="faq-item">
+      <div class="faq-item animate d1">
         <button class="faq-q"><span>איך מקבלים גישה לתוכנית?</span><span class="plus">+</span></button>
         <div class="faq-a"><p>מיד לאחר השלמת הרכישה תקבלו גישה מלאה לאזור האישי שלכם, שבו מחכים לכם כל השיעורים, הבונוסים והעדכונים העתידיים. אפשר להתחיל כבר היום, בקצב שלכם, מכל מחשב או טלפון.</p></div>
       </div>
-      <div class="faq-item">
+      <div class="faq-item animate d1">
         <button class="faq-q"><span>האם אפשר לשלם בתשלומים?</span><span class="plus">+</span></button>
         <div class="faq-a"><p>כן. אפשר להצטרף גם ב-3 תשלומים. כל הפרטים יופיעו בעמוד התשלום. המטרה שלי היא שהמחיר לא יהיה הסיבה שבגללה תדחו את ההחלטה להתחיל להשקיע.</p></div>
       </div>
-      <div class="faq-item">
+      <div class="faq-item animate d2">
         <button class="faq-q"><span>אני לא מבין כלום בהשקעות. זה בכלל מתאים לי?</span><span class="plus">+</span></button>
         <div class="faq-a"><p>בדיוק בשביל זה בניתי את התוכנית. אני מניח שאתם מתחילים מאפס. כל שלב מוסבר בפשטות, עם שיתוף מסך מלא והדרכה צעד אחר צעד. אתם לא צריכים שום ידע מוקדם. רק נכונות להתחיל.</p></div>
       </div>
-      <div class="faq-item">
+      <div class="faq-item animate d2">
         <button class="faq-q"><span>כמה כסף צריך כדי להתחיל להשקיע?</span><span class="plus">+</span></button>
         <div class="faq-a"><p>כדי לפתוח חשבון מסחר עצמאי ולהתחיל להשקיע, נדרש סכום מינימלי של 5,000 ₪. אם עדיין אין לכם את הסכום הזה, תוכלו ללמוד את כל התהליך ולהתחיל ליישם ברגע שתגיעו אליו.</p></div>
       </div>
-      <div class="faq-item">
+      <div class="faq-item animate d3">
         <button class="faq-q"><span>אין לי זמן. אני בקושי בבית.</span><span class="plus">+</span></button>
         <div class="faq-a"><p>גם אני הייתי איש קבע. אני יודע איך נראים ימים שמתחילים מוקדם ונגמרים מאוחר. בגלל זה בניתי תוכנית שלוקחת בערך 3 שעות בסך הכול. אחרי שתסיימו אותה, תדעו בדיוק מה לעשות, ובניהול השוטף תצטרכו להקדיש בערך 10 דקות בחודש. המטרה היא לא להוסיף לכם עוד משימה ליומן - המטרה היא לבנות מערכת שתעבוד בשבילכם גם כשאתם עסוקים.</p></div>
       </div>
-      <div class="faq-item">
+      <div class="faq-item animate d3">
         <button class="faq-q"><span>מה אם אני אעשה טעות ואפסיד כסף?</span><span class="plus">+</span></button>
         <div class="faq-a"><p>זו בדיוק הסיבה שרוב האנשים לא מתחילים. לא בגלל שאין להם כסף, אלא בגלל שהם מפחדים לטעות. בתוכנית לא לומדים לנחש מניות או "להכות את השוק". לומדים תהליך פשוט, מסודר ומבוסס, כדי שתדעו בדיוק מה לעשות בכל שלב, במקום לקבל החלטות מתוך לחץ או חוסר ודאות.</p></div>
       </div>
-      <div class="faq-item">
+      <div class="faq-item animate d4">
         <button class="faq-q"><span>מה קורה אם השוק יורד אחרי שאני מתחיל?</span><span class="plus">+</span></button>
         <div class="faq-a"><p>השוק ירד בעבר, והוא גם ירד בעתיד. זו לא השאלה - השאלה היא איך מגיבים כשהוא יורד. בתוכנית נלמד למה ירידות הן חלק טבעי מהשקעה לטווח ארוך, ואיך להימנע מהטעות שהכי הרבה משקיעים עושים - למכור מתוך פחד. המטרה היא לבנות תוכנית שתוכלו להתמיד בה לאורך שנים, גם בתקופות פחות נעימות.</p></div>
       </div>
-      <div class="faq-item">
+      <div class="faq-item animate d4">
         <button class="faq-q"><span>אני רק בן 22. אולי יש לי עוד זמן להתחיל?</span><span class="plus">+</span></button>
         <div class="faq-a"><p>דווקא בגלל זה כדאי להתחיל עכשיו. בהשקעות, הזמן הוא אחד הנכסים החשובים ביותר. כל שנה שבה אתם דוחים את ההתחלה היא שנה שבה הכסף שלכם לא עובד בשבילכם. המטרה של התוכנית היא לא להפוך אתכם למומחי השקעות - המטרה היא לגרום לכם להתחיל, בזמן שבו לזמן יש את ההשפעה הגדולה ביותר.</p></div>
       </div>
-      <div class="faq-item">
+      <div class="faq-item animate d5">
         <button class="faq-q"><span>למה דווקא אתה?</span><span class="plus">+</span></button>
         <div class="faq-a"><p>כי הייתי בדיוק במקום שבו אתם נמצאים. גם אני הייתי איש קבע. גם אצלי הכסף ישב חודשים בעו"ש כי לא ידעתי איך להתחיל. במשך חודשים למדתי, ניסיתי, טעיתי ובניתי לעצמי שיטה פשוטה. אחר כך ליוויתי באופן אישי כ-20 אנשי קבע בתהליך הזה. רק אחרי שראיתי מה באמת עובד, בניתי את התוכנית הדיגיטלית. אני לא מלמד תיאוריה - אני מלמד את התהליך שהייתי רוצה שמישהו ילמד אותי כשאני התחלתי.</p></div>
       </div>
-      <div class="faq-item">
+      <div class="faq-item animate d5">
         <button class="faq-q"><span>למה לא פשוט ללמוד לבד ביוטיוב או ב-ChatGPT?</span><span class="plus">+</span></button>
         <div class="faq-a"><p>אפשר. גם אני למדתי הרבה לבד. אבל הבעיה היא לא למצוא מידע - הבעיה היא לדעת מה נכון, באיזה סדר לפעול ואיך לעבור מ"לדעת" ל"לעשות". במקום לקפוץ בין עשרות סרטונים, מאמרים ותשובות, תקבלו תהליך אחד מסודר שלוקח אתכם מאפס ועד להשקעה הראשונה.</p></div>
       </div>
-      <div class="faq-item">
+      <div class="faq-item animate d5">
         <button class="faq-q"><span>מה אם אני אתחרט?</span><span class="plus">+</span></button>
         <div class="faq-a"><p>בגלל זה יש לכם 30 ימי אחריות. עברו על התוכנית, יישמו את השלבים המרכזיים ובדקו אם היא באמת מתאימה לכם. אם תרגישו שהיא לא סיפקה את הערך שהבטחתי, פשוט שלחו לי הודעה בתוך 30 יום ואחזיר לכם את כספכם. אני עומד מאחורי התוכנית הזאת בלב שלם.</p></div>
       </div>
@@ -439,43 +461,43 @@
 <!-- CHOICE -->
 <section class="choice-band choice-1">
   <div class="inner center col-narrow">
-    <p style="opacity:.7;font-weight:700;letter-spacing:.5px;">יש לך שלוש אפשרויות</p>
-    <h3>אפשרות 1 - לא לעשות כלום</h3>
-    <p>הכסף ממשיך לשבת בעו"ש. האינפלציה ממשיכה לשחוק את כוח הקנייה שלו. עוד חודש הופך לעוד שנה. ובעוד כמה שנים, כנראה תסתכל אחורה ותשאל את עצמך: "למה לא התחלתי קודם?"</p>
+    <p class="animate" style="opacity:.7;font-weight:700;letter-spacing:.5px;">יש לך שלוש אפשרויות</p>
+    <h3 class="animate d1">אפשרות 1 - לא לעשות כלום</h3>
+    <p class="animate d2">הכסף ממשיך לשבת בעו"ש. האינפלציה ממשיכה לשחוק את כוח הקנייה שלו. עוד חודש הופך לעוד שנה. ובעוד כמה שנים, כנראה תסתכל אחורה ותשאל את עצמך: "למה לא התחלתי קודם?"</p>
   </div>
 </section>
 <section class="choice-band choice-2">
   <div class="inner center col-narrow">
-    <h3>אפשרות 2 - ללמוד הכול לבד</h3>
-    <p>אפשר. באמת שאפשר. היום כמעט כל המידע נמצא ביוטיוב, בפודקאסטים וב-ChatGPT. גם אני למדתי ככה בתחילת הדרך.</p>
-    <p>אבל יש מחיר ללמידה לבד: סרטון אחד אומר דבר אחד. כתבה אחרת אומרת בדיוק את ההפך. ואז מתחילים להתלבט, לדחות, ולנסות להבין מי צודק. מה שאפשר ללמוד בתהליך מסודר תוך כמה שעות, עלול לקחת חודשים של ניסוי וטעייה.</p>
+    <h3 class="animate">אפשרות 2 - ללמוד הכול לבד</h3>
+    <p class="animate d1">אפשר. באמת שאפשר. היום כמעט כל המידע נמצא ביוטיוב, בפודקאסטים וב-ChatGPT. גם אני למדתי ככה בתחילת הדרך.</p>
+    <p class="animate d2">אבל יש מחיר ללמידה לבד: סרטון אחד אומר דבר אחד. כתבה אחרת אומרת בדיוק את ההפך. ואז מתחילים להתלבט, לדחות, ולנסות להבין מי צודק. מה שאפשר ללמוד בתהליך מסודר תוך כמה שעות, עלול לקחת חודשים של ניסוי וטעייה.</p>
   </div>
 </section>
 <section class="choice-band choice-3">
   <div class="inner center col-narrow">
-    <h3>אפשרות 3 - להצטרף לתוכנית</h3>
-    <p>במקום לחפש תשובות בעשרות מקומות שונים, תקבלו תהליך אחד, מסודר וברור. בתוך כ-3 שעות:</p>
-    <ul>
+    <h3 class="animate">אפשרות 3 - להצטרף לתוכנית</h3>
+    <p class="animate d1">במקום לחפש תשובות בעשרות מקומות שונים, תקבלו תהליך אחד, מסודר וברור. בתוך כ-3 שעות:</p>
+    <ul class="animate d2">
       <li>תבנו קרן חירום</li>
       <li>תפתחו חשבון מסחר</li>
       <li>תבצעו את ההשקעה הראשונה שלכם</li>
       <li>תצאו עם אסטרטגיית השקעה ברורה לשנים קדימה</li>
     </ul>
-    <p>ומאותו רגע... הכסף שלכם כבר לא יישב בעו"ש ויחכה. תהיה לכם מערכת פשוטה שתאפשר לכם להמשיך להשקיע בצורה עקבית גם בעתיד.</p>
-    <p style="font-weight:600;">ההחלטה היא שלכם. אבל אם אתם יודעים שהגיע הזמן להתחיל - אני מזמין אתכם להצטרף אליי.</p>
-    <a href="#offer" class="btn pill-dark">אני בוחר באפשרות השלישית</a>
+    <p class="animate d3">ומאותו רגע... הכסף שלכם כבר לא יישב בעו"ש ויחכה. תהיה לכם מערכת פשוטה שתאפשר לכם להמשיך להשקיע בצורה עקבית גם בעתיד.</p>
+    <p class="animate d4" style="font-weight:600;">ההחלטה היא שלכם. אבל אם אתם יודעים שהגיע הזמן להתחיל - אני מזמין אתכם להצטרף אליי.</p>
+    <div class="cta-ring animate d5"><a href="#offer" class="btn pill-dark">אני בוחר באפשרות השלישית</a></div>
   </div>
 </section>
 
 <!-- PERSONAL NOTE -->
 <section class="band band-cream">
   <div class="inner col-narrow">
-    <h2 class="center">מילה אישית ממני</h2>
-    <p>אם הגעת עד לכאן, כנראה שיש סיבה. כנראה שאתה יודע שכסף שיושב בעו"ש לא באמת עובד בשבילך. ואתה גם יודע שמתישהו תצטרך להתחיל להשקיע. השאלה היא רק אם זה יהיה היום או בעוד שנה.</p>
-    <p>אני לא יכול להבטיח לך שהשוק תמיד יעלה. ואני גם לא יכול להבטיח שלא יהיו ירידות בדרך. מה שאני כן יכול להבטיח, זה שהתוכנית הזאת תיתן לך דרך פשוטה, ברורה ומעשית להתחיל - בלי לנחש, בלי לקפוץ בין עשרות סרטונים ובלי לדחות את זה שוב.</p>
-    <p>גם אני הייתי בדיוק במקום הזה. היה לי כסף. הייתה לי מוטיבציה. אבל לא היה לי מושג מאיפה מתחילים. בגלל זה בניתי את התוכנית הזאת.</p>
-    <p>אם החלטת שהגיע הזמן לגרום לכסף שלך להתחיל לעבוד בשבילך, אשמח ללוות אותך בדרך.</p>
-    <div class="signature">נתראה בפנים, שחר</div>
+    <h2 class="center animate">מילה אישית ממני</h2>
+    <p class="animate d1">אם הגעת עד לכאן, כנראה שיש סיבה. כנראה שאתה יודע שכסף שיושב בעו"ש לא באמת עובד בשבילך. ואתה גם יודע שמתישהו תצטרך להתחיל להשקיע. השאלה היא רק אם זה יהיה היום או בעוד שנה.</p>
+    <p class="animate d2">אני לא יכול להבטיח לך שהשוק תמיד יעלה. ואני גם לא יכול להבטיח שלא יהיו ירידות בדרך. מה שאני כן יכול להבטיח, זה שהתוכנית הזאת תיתן לך דרך פשוטה, ברורה ומעשית להתחיל - בלי לנחש, בלי לקפוץ בין עשרות סרטונים ובלי לדחות את זה שוב.</p>
+    <p class="animate d3">גם אני הייתי בדיוק במקום הזה. היה לי כסף. הייתה לי מוטיבציה. אבל לא היה לי מושג מאיפה מתחילים. בגלל זה בניתי את התוכנית הזאת.</p>
+    <p class="animate d4">אם החלטת שהגיע הזמן לגרום לכסף שלך להתחיל לעבוד בשבילך, אשמח ללוות אותך בדרך.</p>
+    <div class="signature animate d5">נתראה בפנים, שחר</div>
   </div>
 </section>
 
@@ -488,6 +510,10 @@
   document.querySelectorAll('.faq-q').forEach(function(btn){
     btn.addEventListener('click', function(){ btn.parentElement.classList.toggle('open'); });
   });
+  var revealObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: .12 });
+  document.querySelectorAll('.animate').forEach(function(el){ revealObserver.observe(el); });
 </script>
 </body>
 </html>
