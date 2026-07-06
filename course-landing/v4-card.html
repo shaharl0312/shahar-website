@@ -149,6 +149,13 @@
   .forwho .box{background:#fff;border-radius:20px;padding:28px;box-shadow:0 10px 30px rgba(0,0,0,.05);color:var(--anthracite);}
   .forwho h3{color:var(--anthracite);}
   .forwho li{font-size:16px;color:#5a5a55;}
+  .forwho .box-yes{border-top:4px solid #2f8f5b;}
+  .forwho .box-no{border-top:4px solid #c0453f;}
+  .forwho .box-yes h3{color:#2f8f5b;}
+  .forwho .box-no h3{color:#c0453f;}
+  .forwho .box-yes li,.forwho .box-no li{position:relative;padding-right:26px;}
+  .forwho .box-yes li::before{content:"\2713";position:absolute;right:0;top:0;color:#2f8f5b;font-weight:700;}
+  .forwho .box-no li::before{content:"\2715";position:absolute;right:0;top:0;color:#c0453f;font-weight:700;}
 
   .why-block{background:rgba(255,255,255,.06);border-radius:20px;padding:32px;margin-top:40px;}
   .why-block p{opacity:.85;}
@@ -286,8 +293,8 @@
     </div>
 
     <div class="forwho">
-      <div class="box animate d3">
-        <h3 style="font-size:19px;color:var(--gold);">למי התוכנית מתאימה?</h3>
+      <div class="box box-yes animate d3">
+        <h3 style="font-size:19px;">למי התוכנית מתאימה?</h3>
         <ul>
           <li>לאנשי קבע שרוצים להתחיל להשקיע אבל לא יודעים מאיפה להתחיל</li>
           <li>למי שהכסף שלו יושב בעו"ש והוא יודע שהוא חייב לעשות איתו משהו</li>
@@ -295,8 +302,8 @@
           <li>גם אם מעולם לא השקעתם שקל</li>
         </ul>
       </div>
-      <div class="box animate d3">
-        <h3 style="font-size:19px;opacity:.6;">ולמי היא לא מתאימה?</h3>
+      <div class="box box-no animate d3">
+        <h3 style="font-size:19px;">ולמי היא לא מתאימה?</h3>
         <ul>
           <li>למי שמחפש להתעשר מהר</li>
           <li>למי שמחפש המלצות על מניות חמות או מסחר יומי</li>
