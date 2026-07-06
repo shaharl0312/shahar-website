@@ -44,5 +44,11 @@ mkdir -p _infra/dist/video && cp funnel-hadracha/video.html _infra/dist/video/in
 # Course sales page (course-landing variants)
 mkdir -p _infra/dist/course && cp course-landing/v4-card.html _infra/dist/course/index.html
 
+# Hadracha guide opt-in
+mkdir -p _infra/dist/guide-v3 && cp funnel-hadracha/hadracha-guide-v3.html _infra/dist/guide-v3/index.html
+
+# Erosion calculator (checking-account inflation quiz)
+mkdir -p _infra/dist/erosion-calculator && cp erosion-calculator/index.html _infra/dist/erosion-calculator/index.html
+
 echo "build-ok-$(date +%s)" > _infra/dist/buildinfo.txt
 echo "=== BUILD COMPLETE ===" && ls _infra/dist/
