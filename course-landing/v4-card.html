@@ -9,6 +9,8 @@
 <meta name="robots" content="index, follow" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://iframe.mediadelivery.net" />
+<link rel="preconnect" href="https://video.bunnycdn.com" />
 <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
   :root{
@@ -109,6 +111,11 @@
   .hero p.sub{opacity:.85;max-width:520px;}
   .hero p.sub strong{color:var(--gold);}
 
+  /* free training video block */
+  .video-eyebrow{color:var(--gold);font-weight:700;letter-spacing:1px;font-size:14px;margin-bottom:20px;}
+  .video-frame{position:relative;padding-top:56.25%;border-radius:16px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.4);}
+  .video-frame iframe{position:absolute;top:0;right:0;width:100%;height:100%;border:0;}
+
   /* story */
   .story-grid{display:grid;grid-template-columns:280px 1fr;gap:48px;align-items:start;}
   @media (max-width:900px){.story-grid{grid-template-columns:1fr;}}
@@ -206,8 +213,24 @@
   <a href="#offer" class="btn pill-cta" style="padding:10px 22px;font-size:14px;">אני רוצה להתחיל</a>
 </nav>
 
+<!-- FREE TRAINING VIDEO -->
+<section class="band band-dark" style="padding-top:140px;padding-bottom:56px;">
+  <div class="inner col-narrow center">
+    <div class="video-eyebrow">ההדרכה החינמית</div>
+    <div class="video-frame">
+      <iframe
+        src="https://iframe.mediadelivery.net/embed/680034/d4a6ae59-f54b-4379-a6bd-2f31473781df"
+        loading="lazy"
+        allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
+        allowfullscreen
+        title="ההדרכה החינמית"
+      ></iframe>
+    </div>
+  </div>
+</section>
+
 <!-- HERO -->
-<section class="band band-dark hero cut-bottom" style="padding-top:140px;">
+<section class="band band-dark hero cut-bottom" style="padding-top:56px;">
   <div class="inner hero-grid">
     <div>
       <h1>יש לך כסף שיושב בעובר ושב<br>ולא עושה כלום.<br>ואתה יודע שזה לא נכון.</h1>
