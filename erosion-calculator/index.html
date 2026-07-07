@@ -19,14 +19,19 @@
   --cream-2:#efece3;
   --navy:#1B3A6B;
   --text-dark:#2D2D2D;
-  --muted-dark:rgba(45,45,45,.62);
-  --muted-light:rgba(247,245,240,.72);
+  --muted-dark:rgba(45,45,45,.74);
+  --muted-light:rgba(247,245,240,.8);
   --border-light:rgba(45,45,45,.14);
   --border-dark:rgba(255,255,255,.12);
   --ease:280ms cubic-bezier(.2,.7,.3,1);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important;}
+}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
 body{font-family:'Assistant',sans-serif;background:var(--cream);color:var(--text-dark);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.75;min-height:100vh;}
 strong{font-weight:800;}
 
@@ -57,19 +62,22 @@ h3{font-size:clamp(19px,2.2vw,23px);font-weight:800;margin:34px 0 14px;}
 .intro-note:last-of-type{margin-bottom:36px;}
 
 .q-block{margin-bottom:44px;}
-.q-label{font-weight:700;margin-bottom:8px;font-size:clamp(18px,2vw,21px);}
+.q-label{display:block;font-weight:700;margin-bottom:8px;font-size:clamp(18px,2vw,21px);}
 .q-help{font-size:14.5px;color:var(--muted-dark);margin-bottom:18px;}
 
-.amount-field{display:flex;align-items:center;gap:10px;border-bottom:2px solid var(--border-light);padding-bottom:14px;}
+.amount-field{display:flex;align-items:center;gap:10px;border-bottom:2px solid var(--border-light);padding-bottom:14px;transition:border-color var(--ease);}
+.amount-field:focus-within{border-color:var(--gold);}
+.amount-field input:focus{outline:none;}
 .amount-field span{font-size:clamp(24px,3vw,30px);font-weight:800;color:var(--gold);}
 .amount-field input{border:none;background:none;outline:none;font-family:inherit;font-size:clamp(24px,3vw,30px);font-weight:800;color:inherit;width:100%;}
 .amount-field input::placeholder{color:var(--muted-dark);font-weight:600;opacity:.4;}
 .field-example{font-size:13px;color:var(--muted-dark);margin-top:8px;}
 
 .opt-list{display:flex;flex-direction:column;}
-.opt{display:flex;align-items:center;gap:16px;padding:16px 4px;border-bottom:1px solid var(--border-light);cursor:pointer;transition:padding-right var(--ease),color var(--ease);text-align:right;}
+.opt{display:flex;align-items:center;gap:16px;min-height:44px;padding:16px 4px;border-bottom:1px solid var(--border-light);cursor:pointer;transition:padding-right var(--ease),color var(--ease);text-align:right;border-radius:8px;}
 .opt:last-child{border-bottom:none;}
 .opt:hover{padding-right:8px;}
+.opt:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
 .opt .dot{flex-shrink:0;width:20px;height:20px;border-radius:50%;border:2px solid var(--border-light);position:relative;transition:border-color var(--ease);}
 .opt .dot::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--gold);opacity:0;transition:opacity var(--ease);}
 .opt.selected .dot{border-color:var(--gold);}
@@ -89,7 +97,8 @@ h3{font-size:clamp(19px,2.2vw,23px);font-weight:800;margin:34px 0 14px;}
 .rule72 .tag{font-size:12px;letter-spacing:.15em;color:var(--gold-l);text-transform:uppercase;font-weight:700;margin-bottom:10px;display:block;}
 
 .basket-list{display:flex;flex-wrap:wrap;gap:10px 22px;margin:18px 0 26px;padding:0;list-style:none;}
-.basket-list li{font-size:15px;color:var(--muted-light);}
+.basket-list li{font-size:15px;color:var(--muted-light);position:relative;padding-right:14px;}
+.basket-list li::before{content:'';position:absolute;right:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--gold);}
 
 .result-note{font-size:13px;color:var(--muted-light);margin-top:18px;opacity:.7;}
 .cta-personal{font-size:clamp(17px,2vw,20px);font-weight:700;color:#fff;margin-bottom:26px;}
@@ -119,53 +128,53 @@ h3{font-size:clamp(19px,2.2vw,23px);font-weight:800;margin:34px 0 14px;}
     <p class="intro-note">זה לא מבחן. אין תשובות נכונות או לא נכונות. רק נסו לענות בכנות.</p>
 
     <div class="q-block">
-      <p class="q-label">1. כמה כסף יושב אצלכם כרגע בעו"ש?</p>
+      <label class="q-label" for="q1">1. כמה כסף יושב אצלכם כרגע בעו"ש?</label>
       <p class="q-help">הכניסו את הסכום הכולל שנמצא כרגע בחשבון העו"ש שלכם.</p>
       <div class="amount-field">
-        <span>₪</span>
-        <input type="text" inputmode="numeric" id="q1" placeholder="0" />
+        <span aria-hidden="true">₪</span>
+        <input type="text" inputmode="numeric" id="q1" placeholder="0" aria-label="סכום בעו&quot;ש בשקלים" />
       </div>
       <p class="field-example">לדוגמה: 40,000 ₪</p>
     </div>
 
     <div class="q-block">
-      <p class="q-label">2. מתוך הסכום הזה, כמה כסף אתם לא מתכננים להשתמש בו ב־12 החודשים הקרובים?</p>
+      <label class="q-label" for="q2">2. מתוך הסכום הזה, כמה כסף אתם לא מתכננים להשתמש בו ב־12 החודשים הקרובים?</label>
       <p class="q-help">לא כל הכסף בעו"ש מיועד להשקעה. תחשבו רק על הכסף שאין לכם צורך בו בזמן הקרוב.</p>
       <div class="amount-field">
-        <span>₪</span>
-        <input type="text" inputmode="numeric" id="q2" placeholder="0" />
+        <span aria-hidden="true">₪</span>
+        <input type="text" inputmode="numeric" id="q2" placeholder="0" aria-label="סכום שלא בשימוש בשנה הקרובה בשקלים" />
       </div>
       <p class="field-example">לדוגמה: 25,000 ₪</p>
     </div>
 
     <div class="q-block">
-      <p class="q-label">3. כמה זמן הכסף הזה כבר יושב בעו"ש?</p>
-      <div class="opt-list" data-group="q3">
-        <div class="opt selected" data-value="lt6m"><span class="dot"></span><span class="opt-text">פחות מחצי שנה</span></div>
-        <div class="opt" data-value="6-12m"><span class="dot"></span><span class="opt-text">בין חצי שנה לשנה</span></div>
-        <div class="opt" data-value="1-2y"><span class="dot"></span><span class="opt-text">בין שנה לשנתיים</span></div>
-        <div class="opt" data-value="2y+"><span class="dot"></span><span class="opt-text">יותר משנתיים</span></div>
+      <p class="q-label" id="q3-label">3. כמה זמן הכסף הזה כבר יושב בעו"ש?</p>
+      <div class="opt-list" data-group="q3" role="radiogroup" aria-labelledby="q3-label">
+        <div class="opt selected" data-value="lt6m" role="radio" aria-checked="true" tabindex="0"><span class="dot"></span><span class="opt-text">פחות מחצי שנה</span></div>
+        <div class="opt" data-value="6-12m" role="radio" aria-checked="false" tabindex="-1"><span class="dot"></span><span class="opt-text">בין חצי שנה לשנה</span></div>
+        <div class="opt" data-value="1-2y" role="radio" aria-checked="false" tabindex="-1"><span class="dot"></span><span class="opt-text">בין שנה לשנתיים</span></div>
+        <div class="opt" data-value="2y+" role="radio" aria-checked="false" tabindex="-1"><span class="dot"></span><span class="opt-text">יותר משנתיים</span></div>
       </div>
     </div>
 
     <div class="q-block">
-      <p class="q-label">4. אם לא הייתם עושים שום דבר, כמה זמן לדעתכם הכסף הזה עוד היה נשאר בעו"ש?</p>
-      <div class="opt-list" data-group="q4">
-        <div class="opt selected" data-value="1"><span class="dot"></span><span class="opt-text">שנה</span></div>
-        <div class="opt" data-value="3"><span class="dot"></span><span class="opt-text">3 שנים</span></div>
-        <div class="opt" data-value="5"><span class="dot"></span><span class="opt-text">5 שנים</span></div>
-        <div class="opt" data-value="10"><span class="dot"></span><span class="opt-text">10 שנים או יותר</span></div>
+      <p class="q-label" id="q4-label">4. אם לא הייתם עושים שום דבר, כמה זמן לדעתכם הכסף הזה עוד היה נשאר בעו"ש?</p>
+      <div class="opt-list" data-group="q4" role="radiogroup" aria-labelledby="q4-label">
+        <div class="opt selected" data-value="1" role="radio" aria-checked="true" tabindex="0"><span class="dot"></span><span class="opt-text">שנה</span></div>
+        <div class="opt" data-value="3" role="radio" aria-checked="false" tabindex="-1"><span class="dot"></span><span class="opt-text">3 שנים</span></div>
+        <div class="opt" data-value="5" role="radio" aria-checked="false" tabindex="-1"><span class="dot"></span><span class="opt-text">5 שנים</span></div>
+        <div class="opt" data-value="10" role="radio" aria-checked="false" tabindex="-1"><span class="dot"></span><span class="opt-text">10 שנים או יותר</span></div>
       </div>
     </div>
 
     <div class="q-block">
-      <p class="q-label">5. מה הכי עוצר אתכם היום מלהתחיל להשקיע?</p>
-      <div class="opt-list" data-group="q5">
-        <div class="opt selected" data-value="fear"><span class="dot"></span><span class="opt-text">אני מפחד להפסיד כסף</span></div>
-        <div class="opt" data-value="howto"><span class="dot"></span><span class="opt-text">אני לא יודע איך מתחילים</span></div>
-        <div class="opt" data-value="time"><span class="dot"></span><span class="opt-text">אין לי זמן להתעסק בזה</span></div>
-        <div class="opt" data-value="learn"><span class="dot"></span><span class="opt-text">אני רוצה ללמוד עוד לפני שאני מתחיל</span></div>
-        <div class="opt" data-value="other"><span class="dot"></span><span class="opt-text">משהו אחר</span></div>
+      <p class="q-label" id="q5-label">5. מה הכי עוצר אתכם היום מלהתחיל להשקיע?</p>
+      <div class="opt-list" data-group="q5" role="radiogroup" aria-labelledby="q5-label">
+        <div class="opt selected" data-value="fear" role="radio" aria-checked="true" tabindex="0"><span class="dot"></span><span class="opt-text">אני מפחד להפסיד כסף</span></div>
+        <div class="opt" data-value="howto" role="radio" aria-checked="false" tabindex="-1"><span class="dot"></span><span class="opt-text">אני לא יודע איך מתחילים</span></div>
+        <div class="opt" data-value="time" role="radio" aria-checked="false" tabindex="-1"><span class="dot"></span><span class="opt-text">אין לי זמן להתעסק בזה</span></div>
+        <div class="opt" data-value="learn" role="radio" aria-checked="false" tabindex="-1"><span class="dot"></span><span class="opt-text">אני רוצה ללמוד עוד לפני שאני מתחיל</span></div>
+        <div class="opt" data-value="other" role="radio" aria-checked="false" tabindex="-1"><span class="dot"></span><span class="opt-text">משהו אחר</span></div>
       </div>
     </div>
 
@@ -193,14 +202,14 @@ h3{font-size:clamp(19px,2.2vw,23px);font-weight:800;margin:34px 0 14px;}
       <h3>איך בכלל יודעים אם יש אינפלציה?</h3>
       <p class="edu-line">בכל חודש מפרסמת הלשכה המרכזית לסטטיסטיקה את <b>מדד המחירים לצרכן</b>. אפשר לחשוב עליו כמו על "עגלה" שמכילה מאות מוצרים ושירותים שמשפחה ממוצעת בישראל צורכת, לדוגמה:</p>
       <ul class="basket-list">
-        <li>🛒 מזון</li>
-        <li>🏠 שכר דירה</li>
-        <li>⚡ חשמל ומים</li>
-        <li>🚗 דלק ותחבורה</li>
-        <li>📱 תקשורת</li>
-        <li>👕 ביגוד</li>
-        <li>🎓 חינוך</li>
-        <li>🏥 בריאות</li>
+        <li>מזון</li>
+        <li>שכר דירה</li>
+        <li>חשמל ומים</li>
+        <li>דלק ותחבורה</li>
+        <li>תקשורת</li>
+        <li>ביגוד</li>
+        <li>חינוך</li>
+        <li>בריאות</li>
       </ul>
       <p class="edu-line">אם בממוצע העגלה הזאת התייקרה ב־3% לעומת השנה שעברה - אומרים שהאינפלציה השנתית הייתה כ־3%.</p>
 
@@ -224,7 +233,7 @@ h3{font-size:clamp(19px,2.2vw,23px);font-weight:800;margin:34px 0 14px;}
   <section class="section dark" style="padding-top:0;">
     <div class="panel center">
       <p class="sub" style="margin-bottom:36px;">עכשיו בואו נראה מה המשמעות של זה עבור הכסף שלכם.</p>
-      <div class="calc-box" id="calcBox">
+      <div class="calc-box" id="calcBox" role="status" aria-live="polite">
         <span class="calc-text" id="calcText">מחשב...</span>
       </div>
 
@@ -298,17 +307,42 @@ function fmt(n){ return '₪' + Math.round(n).toLocaleString('he-IL'); }
 // radio groups (all default to the first option already selected)
 document.querySelectorAll('.opt-list').forEach(function(list){
   var group = list.getAttribute('data-group');
-  var opts = list.querySelectorAll('.opt');
-  opts.forEach(function(opt){
-    opt.addEventListener('click', function(){
-      opts.forEach(function(o){ o.classList.remove('selected'); });
-      opt.classList.add('selected');
-      state[group] = opt.getAttribute('data-value');
+  var opts = Array.prototype.slice.call(list.querySelectorAll('.opt'));
+
+  function select(opt){
+    opts.forEach(function(o){
+      o.classList.remove('selected');
+      o.setAttribute('aria-checked','false');
+      o.setAttribute('tabindex','-1');
+    });
+    opt.classList.add('selected');
+    opt.setAttribute('aria-checked','true');
+    opt.setAttribute('tabindex','0');
+    opt.focus();
+    state[group] = opt.getAttribute('data-value');
+  }
+
+  opts.forEach(function(opt, idx){
+    opt.addEventListener('click', function(){ select(opt); });
+    opt.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        select(opt);
+      } else if(e.key === 'ArrowDown' || e.key === 'ArrowRight'){
+        e.preventDefault();
+        select(opts[(idx + 1) % opts.length]);
+      } else if(e.key === 'ArrowUp' || e.key === 'ArrowLeft'){
+        e.preventDefault();
+        select(opts[(idx - 1 + opts.length) % opts.length]);
+      }
     });
   });
 });
 
+var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 function playCalcAnimation(callback){
+  if(prefersReducedMotion){ callback(); return; }
   var steps = ['מחשב...','בודק...','משווה...','סיימנו.'];
   var el = document.getElementById('calcText');
   var i = 0;
@@ -342,7 +376,7 @@ document.getElementById('showResult').addEventListener('click', function(){
 
   var resultArea = document.getElementById('resultArea');
   resultArea.style.display = 'block';
-  resultArea.scrollIntoView({ behavior: 'smooth' });
+  resultArea.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
 
   playCalcAnimation(function(){
     document.getElementById('calcBox').style.display = 'none';
