@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>תודה - שחר לוי</title>
+  <title>ברוכים הבאים | שחר לוי</title>
   <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" href="/logo.png" />
   <!-- Facebook Pixel -->
   <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -19,158 +21,439 @@
   <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=3199947373426233&ev=Lead&noscript=1"/></noscript>
   <!-- End Facebook Pixel -->
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --gold: #C9A84C;
-      --dark: #2D2D2D;
+      --gold-l: #e6cd8a;
+      --anthracite: #0d0d0d;
       --cream: #F7F5F0;
+      --cream-2: #efece3;
+      --text-dark: #2D2D2D;
+      --muted-dark: rgba(45, 45, 45, .62);
+      --muted-light: rgba(247, 245, 240, .72);
+      --border-light: rgba(45, 45, 45, .1);
+      --ease: 280ms cubic-bezier(.2, .7, .3, 1);
     }
 
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: 'Assistant', sans-serif;
       background: var(--cream);
-      color: var(--dark);
-      min-height: 100dvh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 56px 24px 60px;
+      color: var(--text-dark);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.7;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    strong { font-weight: 800; }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .22em;
+      color: var(--gold-l);
+      margin-bottom: 22px;
+      text-transform: uppercase;
+      border: 1px solid rgba(201, 168, 76, .35);
+      border-radius: 999px;
+      padding: 7px 18px;
+      background: rgba(201, 168, 76, .06);
+    }
+
+    .eyebrow .dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin-left: 8px;
+      animation: pulseDot 1.8s infinite;
+    }
+
+    @keyframes pulseDot { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
+
+    h1, h2, h3 { font-weight: 800; letter-spacing: -.02em; color: var(--text-dark); }
+
+    h1 { font-size: clamp(30px, 5.4vw, 54px); line-height: 1.15; margin-bottom: 20px; }
+    h2 { font-size: clamp(25px, 3.8vw, 38px); line-height: 1.2; margin-bottom: 16px; }
+    h3 { font-size: clamp(18px, 2vw, 21px); line-height: 1.4; margin-bottom: 10px; }
+    p { font-size: clamp(16px, 1.7vw, 18px); margin-bottom: 14px; }
+
+    .lead { font-size: clamp(17px, 1.9vw, 20px); line-height: 1.8; }
+
+    .gold-grad {
+      background: linear-gradient(120deg, var(--gold) 10%, var(--gold-l) 60%, #fff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .dark .gold-grad {
+      background: linear-gradient(120deg, var(--gold-l) 0%, #fff 60%, var(--gold-l) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section { position: relative; padding: 90px 24px; z-index: 1; }
+    @media (max-width:768px) { .section { padding: 56px 20px; } }
+
+    .narrow { max-width: 640px; margin: 0 auto; }
+    .center { text-align: center; }
+
+    .dark {
+      background: radial-gradient(ellipse at 50% -10%, #161616 0%, var(--anthracite) 55%);
+      color: #fff;
+      overflow: hidden;
+    }
+    .dark h1, .dark h2, .dark h3 { color: #fff; }
+    .dark p { color: var(--muted-light); }
+
+    .glow { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0; }
+    .glow-a { top: -15%; right: -10%; width: 480px; height: 480px; background: radial-gradient(circle, rgba(201, 168, 76, .20), transparent 65%); }
+    .glow-b { bottom: -15%; left: -10%; width: 480px; height: 480px; background: radial-gradient(circle, rgba(27, 58, 107, .28), transparent 65%); }
+
+    .grid-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    .dark .narrow { position: relative; z-index: 1; }
+
+    .cream { background: var(--cream); }
+    .cream-alt { background: linear-gradient(180deg, var(--cream) 0%, var(--cream-2) 100%); }
+
+    .btn {
+      display: inline-block;
+      font-weight: 800;
+      font-size: clamp(16px, 1.8vw, 18px);
+      padding: 18px 38px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: transform var(--ease), box-shadow var(--ease);
+      border: none;
+      letter-spacing: .01em;
+      width: 100%;
       text-align: center;
     }
 
-    lottie-player {
-      margin: 0 auto 20px;
+    .btn-gold {
+      background: linear-gradient(120deg, var(--gold) 0%, var(--gold-l) 100%);
+      color: #000;
+      box-shadow: 0 0 40px 12px rgba(201, 168, 76, .24), inset 0 1px 0 rgba(255, 255, 255, .35);
+    }
+    .btn-gold:hover { transform: translateY(-2px) scale(1.01); box-shadow: 0 0 50px 15px rgba(201, 168, 76, .38); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1.5px solid var(--gold);
+    }
+    .dark .btn-outline { color: var(--gold-l); border-color: var(--gold-l); }
+
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--gold-l); outline-offset: 3px; border-radius: 8px; }
+
+    nav {
+      position: fixed;
+      top: 0; right: 0; left: 0;
+      z-index: 200;
+      padding: 16px 26px;
+    }
+    nav img { height: 40px; }
+
+    .animate { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+    .animate.visible { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: .08s } .d2 { transition-delay: .16s } .d3 { transition-delay: .24s }
+
+    /* HERO */
+    .hero { padding: 150px 24px 70px; text-align: center; }
+    .hero .lead { max-width: 560px; margin: 0 auto 8px; color: var(--muted-light); }
+
+    .story-line { font-size: clamp(20px, 2.6vw, 28px); font-weight: 700; color: #fff; line-height: 1.6; margin-top: 28px; }
+    .story-line .soft { font-weight: 400; color: var(--muted-light); font-size: clamp(17px, 1.9vw, 20px); display: block; margin-top: 6px; }
+
+    .next-note { margin-top: 30px; color: var(--muted-light); font-size: 15px; }
+
+    /* STEP CARDS */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    @media (max-width:768px) { .steps-grid { grid-template-columns: 1fr; } }
+
+    .step-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 34px 28px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .06);
+      border-top: 4px solid var(--gold);
+      text-align: right;
+      display: flex;
+      flex-direction: column;
     }
 
-    h1 {
-      font-size: clamp(30px, 7vw, 44px);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      margin-bottom: 12px;
+    .step-num {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: var(--anthracite);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 16px;
+      margin-bottom: 18px;
     }
 
-    .subtitle {
-      font-size: 17px;
-      color: #666;
-      margin-bottom: 40px;
-      line-height: 1.6;
+    .step-card p { color: var(--muted-dark); font-size: 15.5px; flex-grow: 1; }
+
+    /* JOIN TOGETHER SECTION */
+    .future-box {
+      margin-top: 30px;
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(201, 168, 76, .35);
+      border-radius: 20px;
+      padding: 32px 28px;
+      text-align: right;
+    }
+    .future-box p { font-size: clamp(16px, 1.8vw, 18px); color: #fff; margin-bottom: 8px; }
+    .future-box p:last-child { margin-bottom: 0; }
+
+    /* QUALIFY FORM */
+    .qualify-box {
+      margin-top: 32px;
+      text-align: right;
     }
 
-    .photo {
-      width: 100px;
-      height: 100px;
+    .qualify-box .q-label {
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 16px;
+      font-size: 16px;
+    }
+
+    .radio-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px; }
+
+    .radio-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 14px;
+      padding: 16px 18px;
+      cursor: pointer;
+      transition: border-color .2s, background .2s;
+    }
+    .radio-option:hover { border-color: rgba(201, 168, 76, .5); }
+    .radio-option.selected { border-color: var(--gold); background: rgba(201, 168, 76, .08); }
+
+    .radio-option input { accent-color: var(--gold); width: 18px; height: 18px; flex-shrink: 0; }
+    .radio-option span { font-size: 15px; color: var(--muted-light); }
+    .radio-option.selected span { color: #fff; }
+
+    .other-input {
+      width: 100%;
+      margin-top: -2px;
+      margin-bottom: 18px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, .15);
+      background: rgba(255, 255, 255, .04);
+      color: #fff;
+      font-family: inherit;
+      font-size: 15px;
+      display: none;
+    }
+    .other-input.visible { display: block; }
+    .other-input::placeholder { color: var(--muted-light); }
+
+    .qualify-confirm {
+      display: none;
+      text-align: center;
+      padding: 24px 0;
+    }
+    .qualify-confirm.visible { display: block; }
+    .qualify-confirm p { color: #fff; font-weight: 700; font-size: 17px; margin-bottom: 0; }
+
+    /* SIGNATURE */
+    .photo-round {
+      width: 84px; height: 84px;
       border-radius: 50%;
       object-fit: cover;
       object-position: center top;
       border: 3px solid var(--gold);
-      margin-bottom: 16px;
+      margin: 0 auto 16px;
     }
-
-    .shahar-name {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--dark);
-      margin-bottom: 6px;
-    }
-
-    .shahar-role {
-      font-size: 13px;
-      color: #888;
-      margin-bottom: 40px;
-    }
-
-    .next-steps {
-      background: #fff;
-      border-radius: 16px;
-      padding: 28px;
-      max-width: 380px;
-      width: 100%;
-      text-align: right;
-      margin-bottom: 32px;
-      border: 1px solid rgba(0,0,0,0.06);
-    }
-
-    .next-steps h3 {
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 18px;
-    }
-
-    .step {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 14px;
-    }
-
-    .step:last-child { margin-bottom: 0; }
-
-    .step-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--gold);
-      flex-shrink: 0;
-      margin-top: 6px;
-    }
-
-    .step p {
-      font-size: 15px;
-      color: #444;
-      line-height: 1.5;
-    }
+    .signature { margin-top: 10px; font-size: 18px; font-weight: 800; color: var(--gold); }
 
     .back {
+      display: inline-block;
+      margin-top: 24px;
       font-size: 13px;
       color: #aaa;
-      text-decoration: none;
       border-bottom: 1px solid #ddd;
       padding-bottom: 2px;
       transition: color .2s;
     }
     .back:hover { color: var(--dark); }
+
+    footer { background: var(--anthracite); padding: 36px 24px; text-align: center; color: var(--muted-light); }
+    footer img { height: 30px; margin: 0 auto 12px; }
+    footer p { font-size: 12.5px; margin-bottom: 0; }
+
+    @media (prefers-reduced-motion:reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
   </style>
 </head>
+
 <body>
 
-  <lottie-player
-    src="https://assets5.lottiefiles.com/packages/lf20_jbrw3hcz.json"
-    background="transparent"
-    speed="1"
-    style="width:140px;height:140px;"
-    autoplay>
-  </lottie-player>
+  <nav><img src="/logo.png" alt="שחר לוי" /></nav>
 
-  <h1>קיבלנו אותך!</h1>
-  <p class="subtitle">שחר יחזור אליך בהקדם.</p>
-
-  <img src="/shahar_headshot.png" alt="שחר לוי" class="photo" />
-  <p class="shahar-name">שחר לוי</p>
-  <p class="shahar-role">מלווה פיננסי לקצינים בקבע</p>
-
-  <div class="next-steps">
-    <h3>מה קורה עכשיו?</h3>
-    <div class="step">
-      <div class="step-dot"></div>
-      <p>שחר יראה את הפרטים שלך וייצור איתך קשר בהקדם.</p>
+  <section class="hero dark">
+    <div class="glow glow-a"></div>
+    <div class="glow glow-b"></div>
+    <div class="grid-overlay"></div>
+    <div class="narrow animate">
+      <span class="eyebrow"><span class="dot"></span>ברוכים הבאים</span>
+      <h1>עשיתם עכשיו את הצעד הראשון<br>בדרך <span class="gold-grad">להפוך למשקיעים</span></h1>
+      <p class="lead">קודם כל, תודה שבחרתם להצטרף. אני באמת מעריך את האמון שנתתם בי, ואני הולך לעשות כל מה שאני יכול כדי
+        לעזור לכם להגיע למטרה שלשמה הצטרפתם.</p>
+      <p class="story-line">לא לסיים קורס.<br><span class="soft">אלא לבצע את ההשקעה הראשונה שלכם.</span></p>
+      <p class="next-note">בעוד מספר דקות תקבלו למייל את כל פרטי הגישה לתוכנית. בינתיים, יש שני דברים שכדאי לעשות כבר
+        עכשיו.</p>
     </div>
-    <div class="step">
-      <div class="step-dot"></div>
-      <p>נקבע פגישת היכרות בזום.</p>
-    </div>
-    <div class="step">
-      <div class="step-dot"></div>
-      <p>ביחד נבנה תכנית השקעה פשוטה ומותאמת לך.</p>
-    </div>
-  </div>
+  </section>
 
-  <a href="/" class="back">חזרה לדף הראשי</a>
+  <section class="section cream">
+    <div class="narrow center animate" style="margin-bottom:36px;">
+      <span class="eyebrow" style="color:var(--gold);">שני דברים לפני שממשיכים</span>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card animate d1">
+        <div class="step-num">1</div>
+        <h3>הצטרפו לקהילת הווטסאפ</h3>
+        <p>פתחתי קהילת ווטסאפ שקטה בשם "מתחילים להשקיע". שם אני משתף תכנים חדשים, מחשבות, עדכונים ודברים שלא תמיד
+          מגיעים במייל. אני שולח בדרך כלל הודעה אחת או שתיים בשבוע בלבד.</p>
+        <a href="#" class="btn btn-outline" style="margin-top:18px;">הצטרפות לקהילה</a>
+      </div>
+      <div class="step-card animate d2">
+        <div class="step-num">2</div>
+        <h3>התחילו את התוכנית</h3>
+        <p>אין צורך לראות את כל התוכנית ביום הראשון. להפך. ההמלצה שלי היא להתחיל מהשיעור הראשון ולהתקדם בקצב שלכם. כל
+          שלב נבנה כך שיוביל אתכם באופן טבעי לשלב הבא. המטרה היא לא לצבור עוד ידע. המטרה היא להגיע להשקעה הראשונה
+          שלכם.</p>
+        <a href="#" class="btn btn-gold" style="margin-top:18px;">כניסה לתוכנית</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark" id="together">
+    <div class="glow glow-a"></div>
+    <div class="grid-overlay"></div>
+    <div class="narrow animate">
+      <span class="eyebrow"><span class="dot"></span>מסלול ההשקעה הראשונה</span>
+      <h2>רוצים לעבור את הדרך יחד איתי?</h2>
+      <p>התוכנית נבנתה כך שכל אחד יוכל לעבור אותה באופן עצמאי.<br>אבל יש אנשים שמעדיפים לעבור את הדרך יחד איתי.<br>בדיוק
+        בשבילם יצרתי את מסלול ההשקעה הראשונה.</p>
+
+      <div class="future-box">
+        <p>במסלול הזה אנחנו עובדים יחד באופן אישי.</p>
+        <p>בונים תוכנית שמתאימה לכם.</p>
+        <p>עוברים שלב אחר שלב.</p>
+        <p>ומתקדמים יחד עד שההשקעה הראשונה כבר מאחוריכם.</p>
+      </div>
+
+      <p style="margin-top:24px;">אני פותח מספר מצומצם של מקומות בכל חודש, כדי שאוכל לתת יחס אישי לכל אחד. אם זה מעניין
+        אתכם, השאירו כאן את הפרטים. אני אחזור אליכם לשיחה קצרה ונבדוק יחד האם המסלול הזה באמת מתאים לכם.</p>
+
+      <div class="qualify-box" id="qualify-form">
+        <p class="q-label">מה הסיבה העיקרית שבגלל תרצו לעבור את התהליך יחד איתי?</p>
+        <form id="reason-form">
+          <div class="radio-list">
+            <label class="radio-option"><input type="radio" name="reason" value="ליווי אישי"><span>אני רוצה שמישהו
+                יעבור איתי את התהליך.</span></label>
+            <label class="radio-option"><input type="radio" name="reason" value="פחד מטעויות"><span>אני מפחד לעשות
+                טעויות.</span></label>
+            <label class="radio-option"><input type="radio" name="reason" value="קיצור דרך"><span>אני רוצה לקצר את
+                הדרך.</span></label>
+            <label class="radio-option"><input type="radio" name="reason" value="ביטחון"><span>אני רוצה ביטחון לפני
+                שאני מתחיל.</span></label>
+            <label class="radio-option"><input type="radio" name="reason" value="אחר"><span>אחר.</span></label>
+          </div>
+          <input type="text" class="other-input" id="other-input" placeholder="ספרו לי במילים שלכם..." />
+          <button type="submit" class="btn btn-gold">שלח</button>
+        </form>
+        <div class="qualify-confirm" id="qualify-confirm">
+          <p>תודה! קיבלתי את התשובה שלך - אחזור אליך בקרוב לשיחה קצרה.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cream">
+    <div class="narrow center animate">
+      <img src="/shahar_headshot.png" alt="שחר לוי" class="photo-round" />
+      <p style="max-width:480px;margin:0 auto;color:var(--muted-dark);">מאחל לכם המון הצלחה.</p>
+      <p class="signature">נתראה בתוך התוכנית,<br>שחר</p>
+      <a href="/" class="back">חזרה לדף הראשי</a>
+    </div>
+  </section>
+
+  <footer>
+    <img src="/logo.png" alt="שחר לוי" />
+    <p>© שחר לוי · השקעות ללוחמים</p>
+  </footer>
+
+  <script>
+    (function () {
+      var options = document.querySelectorAll('.radio-option');
+      var otherInput = document.getElementById('other-input');
+      options.forEach(function (opt) {
+        opt.addEventListener('click', function () {
+          options.forEach(function (o) { o.classList.remove('selected'); });
+          opt.classList.add('selected');
+          var input = opt.querySelector('input');
+          otherInput.classList.toggle('visible', input.value === 'אחר');
+        });
+      });
+
+      var form = document.getElementById('reason-form');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var selected = form.querySelector('input[name="reason"]:checked');
+        if (!selected) return;
+        var reason = selected.value === 'אחר' && otherInput.value.trim() ? otherInput.value.trim() : selected.value;
+        if (typeof window.fbq === 'function') {
+          try { window.fbq('trackCustom', 'JoinTogetherReason', { reason: reason }); } catch (err) { }
+        }
+        document.getElementById('reason-form').style.display = 'none';
+        document.getElementById('qualify-confirm').classList.add('visible');
+      });
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: .12 });
+      document.querySelectorAll('.animate').forEach(function (el) { observer.observe(el); });
+    })();
+  </script>
 
 </body>
+
 </html>
