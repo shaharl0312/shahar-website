@@ -32,58 +32,47 @@ strong{font-weight:800;}
 
 .logo{height:40px;position:fixed;top:16px;left:16px;z-index:200;}
 
-.progress-track{position:fixed;top:0;right:0;left:0;height:3px;background:rgba(45,45,45,.08);z-index:150;}
-.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-l));width:0%;transition:width .5s var(--ease);}
+.section{position:relative;padding:110px 24px;z-index:1;}
+@media (max-width:768px){.section{padding:80px 20px 64px;}}
+.section.dark{background:radial-gradient(ellipse at 50% -10%,#161616 0%,var(--anthracite) 60%);color:#fff;overflow:hidden;}
+.section.dark .glow{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0;}
+.section.dark .glow-a{top:-15%;right:-10%;width:520px;height:520px;background:radial-gradient(circle,rgba(201,168,76,.22),transparent 65%);}
+.section.dark .glow-b{bottom:-15%;left:-10%;width:520px;height:520px;background:radial-gradient(circle,rgba(27,58,107,.3),transparent 65%);}
+.section.dark h2,.section.dark h3{color:#fff;}
+.section.dark p{color:var(--muted-light);}
 
-.stage{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 24px 80px;}
-.stage.dark{background:radial-gradient(ellipse at 50% -10%,#161616 0%,var(--anthracite) 60%);color:#fff;position:relative;overflow:hidden;}
-.stage.dark .glow{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0;}
-.stage.dark .glow-a{top:-15%;right:-10%;width:520px;height:520px;background:radial-gradient(circle,rgba(201,168,76,.22),transparent 65%);}
-.stage.dark .glow-b{bottom:-15%;left:-10%;width:520px;height:520px;background:radial-gradient(circle,rgba(27,58,107,.3),transparent 65%);}
-.stage.dark h2,.stage.dark h3{color:#fff;}
-.stage.dark p{color:var(--muted-light);}
-
-.panel{max-width:640px;width:100%;position:relative;z-index:1;}
+.panel{max-width:640px;width:100%;margin:0 auto;position:relative;z-index:1;}
 .panel.center{text-align:center;}
 
-.step{display:none;animation:fadeUp .5s var(--ease);}
-.step.active{display:block;}
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
-
 .eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.2em;color:var(--gold);margin-bottom:22px;text-transform:uppercase;}
-.stage.dark .eyebrow{color:var(--gold-l);}
+.section.dark .eyebrow{color:var(--gold-l);}
 
 h2{font-size:clamp(24px,4vw,34px);font-weight:800;letter-spacing:-.01em;line-height:1.35;margin-bottom:14px;}
 .sub{font-size:clamp(15px,1.6vw,17px);color:var(--muted-dark);margin-bottom:36px;}
-.stage.dark .sub{color:var(--muted-light);}
+.section.dark .sub{color:var(--muted-light);}
 
-.amount-field{display:flex;align-items:center;gap:10px;border-bottom:2px solid var(--border-light);padding-bottom:14px;margin-bottom:44px;}
-.stage.dark .amount-field{border-color:var(--border-dark);}
-.amount-field span{font-size:clamp(26px,3.6vw,34px);font-weight:800;color:var(--gold);}
-.amount-field input{border:none;background:none;outline:none;font-family:inherit;font-size:clamp(26px,3.6vw,34px);font-weight:800;color:inherit;width:100%;}
+.q-block{margin-bottom:48px;}
+.q-label{font-weight:700;margin-bottom:20px;font-size:clamp(18px,2vw,21px);}
+
+.amount-field{display:flex;align-items:center;gap:10px;border-bottom:2px solid var(--border-light);padding-bottom:14px;}
+.amount-field span{font-size:clamp(24px,3vw,30px);font-weight:800;color:var(--gold);}
+.amount-field input{border:none;background:none;outline:none;font-family:inherit;font-size:clamp(24px,3vw,30px);font-weight:800;color:inherit;width:100%;}
 .amount-field input::placeholder{color:var(--muted-dark);font-weight:600;opacity:.4;}
-.stage.dark .amount-field input::placeholder{color:var(--muted-light);opacity:.4;}
 
-.opt-list{display:flex;flex-direction:column;margin-bottom:40px;}
-.opt{display:flex;align-items:center;gap:16px;padding:20px 4px;border-bottom:1px solid var(--border-light);cursor:pointer;transition:padding-right var(--ease),color var(--ease);text-align:right;}
-.stage.dark .opt{border-color:var(--border-dark);}
+.opt-list{display:flex;flex-direction:column;}
+.opt{display:flex;align-items:center;gap:16px;padding:16px 4px;border-bottom:1px solid var(--border-light);cursor:pointer;transition:padding-right var(--ease),color var(--ease);text-align:right;}
 .opt:last-child{border-bottom:none;}
 .opt:hover{padding-right:8px;}
 .opt .dot{flex-shrink:0;width:20px;height:20px;border-radius:50%;border:2px solid var(--border-light);position:relative;transition:border-color var(--ease);}
-.stage.dark .opt .dot{border-color:var(--border-dark);}
 .opt .dot::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--gold);opacity:0;transition:opacity var(--ease);}
 .opt.selected .dot{border-color:var(--gold);}
 .opt.selected .dot::after{opacity:1;}
 .opt-text{font-size:clamp(16px,1.8vw,18.5px);font-weight:600;}
 .opt.selected .opt-text{color:var(--gold);}
-.stage.dark .opt.selected .opt-text{color:var(--gold-l);}
 
 .btn{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:clamp(16px,1.8vw,18px);padding:18px 40px;border-radius:999px;cursor:pointer;font-family:inherit;transition:transform var(--ease),box-shadow var(--ease),opacity var(--ease);border:none;background:linear-gradient(120deg,var(--gold) 0%,var(--gold-l) 100%);color:#000;box-shadow:0 0 40px 10px rgba(201,168,76,.22);}
 .btn:hover{transform:translateY(-2px);box-shadow:0 0 50px 14px rgba(201,168,76,.34);}
-.btn:disabled{opacity:.35;cursor:not-allowed;transform:none;box-shadow:none;}
-.btn-row{display:flex;align-items:center;gap:20px;}
-.back-link{font-size:14px;color:var(--muted-dark);cursor:pointer;font-weight:600;}
-.stage.dark .back-link{color:var(--muted-light);}
+.btn-wrap{text-align:center;margin-top:20px;}
 
 .gold-num{font-size:clamp(42px,7vw,72px);font-weight:900;line-height:1;background:linear-gradient(120deg,var(--gold) 10%,var(--gold-l) 60%,#fff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:18px 0 22px;}
 
@@ -93,200 +82,147 @@ h2{font-size:clamp(24px,4vw,34px);font-weight:800;letter-spacing:-.01em;line-hei
 .rule72 .tag{font-size:12px;letter-spacing:.15em;color:var(--gold-l);text-transform:uppercase;font-weight:700;margin-bottom:10px;display:block;}
 
 .result-note{font-size:13px;color:var(--muted-light);margin-top:18px;opacity:.7;}
-
 .cta-personal{font-size:clamp(17px,2vw,20px);font-weight:700;color:#fff;margin-bottom:22px;}
 
-footer-note{display:none;}
+#resultArea{display:none;}
 </style>
 </head>
 <body>
 
 <img src="/logo.png" alt="שחר לוי" class="logo" />
-<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
 
-<!-- STEP 0 -->
-<section class="stage cream" id="stage-0">
-  <div class="panel step active" data-step="0">
+<!-- ALL QUESTIONS ON ONE SCREEN -->
+<section class="section cream">
+  <div class="panel">
     <span class="eyebrow">בדיקה קצרה · פחות מדקה</span>
     <h2>גלו בכמה הכסף שלכם נשחק בעו"ש</h2>
-    <p class="sub">חמש שאלות פשוטות. זה ייקח פחות מדקה.</p>
-    <p style="font-weight:700;margin-bottom:36px;">כמה כסף יושב אצלכם כרגע בעו"ש?</p>
-    <div class="amount-field">
-      <span>₪</span>
-      <input type="text" inputmode="numeric" id="q1" placeholder="לדוגמה 40,000" />
-    </div>
-    <button class="btn" id="next0" disabled>המשך</button>
-  </div>
-</section>
+    <p class="sub">חמש שאלות פשוטות. עונים על כולן ולוחצים על הכפתור בסוף.</p>
 
-<!-- STEP 1 -->
-<section class="stage cream" id="stage-1" style="display:none;">
-  <div class="panel step" data-step="1">
-    <span class="eyebrow">שאלה 2 מתוך 5</span>
-    <p style="font-weight:700;margin-bottom:36px;font-size:clamp(19px,2.2vw,23px);">מתוך הסכום הזה, כמה כסף אתם לא מתכננים להשתמש בו בשנה הקרובה?</p>
-    <div class="amount-field">
-      <span>₪</span>
-      <input type="text" inputmode="numeric" id="q2" placeholder="לדוגמה 25,000" />
+    <div class="q-block">
+      <p class="q-label">1. כמה כסף יושב אצלכם כרגע בעו"ש?</p>
+      <div class="amount-field">
+        <span>₪</span>
+        <input type="text" inputmode="numeric" id="q1" placeholder="לדוגמה 40,000" />
+      </div>
     </div>
-    <div class="btn-row">
-      <button class="btn" id="next1" disabled>המשך</button>
-      <span class="back-link" data-back="0">חזרה</span>
-    </div>
-  </div>
-</section>
 
-<!-- STEP 2 -->
-<section class="stage cream" id="stage-2" style="display:none;">
-  <div class="panel step" data-step="2">
-    <span class="eyebrow">שאלה 3 מתוך 5</span>
-    <p style="font-weight:700;margin-bottom:16px;font-size:clamp(19px,2.2vw,23px);">כמה זמן הכסף הזה כבר יושב בעו"ש?</p>
-    <div class="opt-list" data-group="q3">
-      <div class="opt" data-value="lt6m"><span class="dot"></span><span class="opt-text">פחות מחצי שנה</span></div>
-      <div class="opt" data-value="6-12m"><span class="dot"></span><span class="opt-text">6–12 חודשים</span></div>
-      <div class="opt" data-value="1-2y"><span class="dot"></span><span class="opt-text">שנה–שנתיים</span></div>
-      <div class="opt" data-value="2y+"><span class="dot"></span><span class="opt-text">יותר משנתיים</span></div>
+    <div class="q-block">
+      <p class="q-label">2. מתוך הסכום הזה, כמה כסף אתם לא מתכננים להשתמש בו בשנה הקרובה?</p>
+      <div class="amount-field">
+        <span>₪</span>
+        <input type="text" inputmode="numeric" id="q2" placeholder="לדוגמה 25,000" />
+      </div>
     </div>
-    <div class="btn-row">
-      <button class="btn" id="next2" disabled>המשך</button>
-      <span class="back-link" data-back="1">חזרה</span>
-    </div>
-  </div>
-</section>
 
-<!-- STEP 3 -->
-<section class="stage cream" id="stage-3" style="display:none;">
-  <div class="panel step" data-step="3">
-    <span class="eyebrow">שאלה 4 מתוך 5</span>
-    <p style="font-weight:700;margin-bottom:16px;font-size:clamp(19px,2.2vw,23px);">אם לא הייתם עושים שום דבר, כמה שנים לדעתכם הכסף הזה עוד היה נשאר שם?</p>
-    <div class="opt-list" data-group="q4">
-      <div class="opt" data-value="1"><span class="dot"></span><span class="opt-text">שנה</span></div>
-      <div class="opt" data-value="3"><span class="dot"></span><span class="opt-text">3 שנים</span></div>
-      <div class="opt" data-value="5"><span class="dot"></span><span class="opt-text">5 שנים</span></div>
-      <div class="opt" data-value="10"><span class="dot"></span><span class="opt-text">10+ שנים</span></div>
+    <div class="q-block">
+      <p class="q-label">3. כמה זמן הכסף הזה כבר יושב בעו"ש?</p>
+      <div class="opt-list" data-group="q3">
+        <div class="opt selected" data-value="lt6m"><span class="dot"></span><span class="opt-text">פחות מחצי שנה</span></div>
+        <div class="opt" data-value="6-12m"><span class="dot"></span><span class="opt-text">6–12 חודשים</span></div>
+        <div class="opt" data-value="1-2y"><span class="dot"></span><span class="opt-text">שנה–שנתיים</span></div>
+        <div class="opt" data-value="2y+"><span class="dot"></span><span class="opt-text">יותר משנתיים</span></div>
+      </div>
     </div>
-    <div class="btn-row">
-      <button class="btn" id="next3" disabled>המשך</button>
-      <span class="back-link" data-back="2">חזרה</span>
+
+    <div class="q-block">
+      <p class="q-label">4. אם לא הייתם עושים שום דבר, כמה שנים לדעתכם הכסף הזה עוד היה נשאר שם?</p>
+      <div class="opt-list" data-group="q4">
+        <div class="opt selected" data-value="1"><span class="dot"></span><span class="opt-text">שנה</span></div>
+        <div class="opt" data-value="3"><span class="dot"></span><span class="opt-text">3 שנים</span></div>
+        <div class="opt" data-value="5"><span class="dot"></span><span class="opt-text">5 שנים</span></div>
+        <div class="opt" data-value="10"><span class="dot"></span><span class="opt-text">10+ שנים</span></div>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <p class="q-label">5. מה הכי עוצר אתכם היום?</p>
+      <div class="opt-list" data-group="q5">
+        <div class="opt selected" data-value="fear"><span class="dot"></span><span class="opt-text">אני מפחד להפסיד</span></div>
+        <div class="opt" data-value="howto"><span class="dot"></span><span class="opt-text">אני לא יודע איך מתחילים</span></div>
+        <div class="opt" data-value="time"><span class="dot"></span><span class="opt-text">אין לי זמן</span></div>
+        <div class="opt" data-value="learn"><span class="dot"></span><span class="opt-text">אני רוצה ללמוד עוד</span></div>
+        <div class="opt" data-value="other"><span class="dot"></span><span class="opt-text">משהו אחר</span></div>
+      </div>
+    </div>
+
+    <div class="btn-wrap">
+      <button class="btn" id="showResult">גלו את התוצאה שלי</button>
     </div>
   </div>
 </section>
 
-<!-- STEP 4 -->
-<section class="stage cream" id="stage-4" style="display:none;">
-  <div class="panel step" data-step="4">
-    <span class="eyebrow">שאלה 5 מתוך 5</span>
-    <p style="font-weight:700;margin-bottom:16px;font-size:clamp(19px,2.2vw,23px);">מה הכי עוצר אתכם היום?</p>
-    <div class="opt-list" data-group="q5">
-      <div class="opt" data-value="fear"><span class="dot"></span><span class="opt-text">אני מפחד להפסיד</span></div>
-      <div class="opt" data-value="howto"><span class="dot"></span><span class="opt-text">אני לא יודע איך מתחילים</span></div>
-      <div class="opt" data-value="time"><span class="dot"></span><span class="opt-text">אין לי זמן</span></div>
-      <div class="opt" data-value="learn"><span class="dot"></span><span class="opt-text">אני רוצה ללמוד עוד</span></div>
-      <div class="opt" data-value="other"><span class="dot"></span><span class="opt-text">משהו אחר</span></div>
-    </div>
-    <div class="btn-row">
-      <button class="btn" id="next4" disabled>המשך</button>
-      <span class="back-link" data-back="3">חזרה</span>
-    </div>
-  </div>
-</section>
+<!-- RESULT AREA: education + result + surprise question + CTA, all revealed together -->
+<div id="resultArea">
 
-<!-- STEP 5: EDUCATION -->
-<section class="stage dark" id="stage-5" style="display:none;">
-  <div class="glow glow-a"></div><div class="glow glow-b"></div>
-  <div class="panel step" data-step="5">
-    <span class="eyebrow">לפני התוצאה</span>
-    <h2>שתי מילים על אינפלציה, לפני שנראה לכם מספר</h2>
-    <p class="edu-line">אינפלציה היא בעצם קצב העלייה הממוצע של המחירים במשק - מה שמשרד האוצר עוקב אחריו כל חודש דרך <b>מדד המחירים לצרכן</b>. כשהמחירים עולים, אותם ₪100 שיושבים בעו"ש שלכם - קונים פחות ממה שקנו לפני שנה.</p>
-    <p class="edu-line">זה לא קורה בבת אחת, ולכן קשה להרגיש את זה. אבל זה קורה כל שנה, גם כשלא רואים את זה בדף החשבון.</p>
-    <div class="rule72">
-      <span class="tag">כלל אצבע פשוט - חוק ה־72</span>
-      <p class="edu-line">אם רוצים לדעת תוך כמה שנים כוח הקנייה של סכום מסוים יורד בחצי, מחלקים 72 בקצב האינפלציה השנתי.</p>
-      <p class="edu-line">בקצב אינפלציה ממוצע של כ־3% בשנה: <b>72 ÷ 3 = 24 שנה</b> - זה הזמן שלוקח לכסף שיושב בלי לזוז, לאבד חצי מכוח הקנייה שלו.</p>
-      <p class="edu-line" style="margin-bottom:0;">זו לא תחזית מדויקת, אלא דרך פשוטה להעריך בראש כמה זמן ה"המתנה" הזו באמת עולה לכם.</p>
+  <section class="section dark">
+    <div class="glow glow-a"></div><div class="glow glow-b"></div>
+    <div class="panel">
+      <span class="eyebrow">לפני התוצאה</span>
+      <h2>שתי מילים על אינפלציה, לפני שנראה לכם מספר</h2>
+      <p class="edu-line">אינפלציה היא בעצם קצב העלייה הממוצע של המחירים במשק - מה שמשרד האוצר עוקב אחריו כל חודש דרך <b>מדד המחירים לצרכן</b>. כשהמחירים עולים, אותם ₪100 שיושבים בעו"ש שלכם - קונים פחות ממה שקנו לפני שנה.</p>
+      <p class="edu-line">זה לא קורה בבת אחת, ולכן קשה להרגיש את זה. אבל זה קורה כל שנה, גם כשלא רואים את זה בדף החשבון.</p>
+      <div class="rule72">
+        <span class="tag">כלל אצבע פשוט - חוק ה־72</span>
+        <p class="edu-line">אם רוצים לדעת תוך כמה שנים כוח הקנייה של סכום מסוים יורד בחצי, מחלקים 72 בקצב האינפלציה השנתי.</p>
+        <p class="edu-line">בקצב אינפלציה ממוצע של כ־3% בשנה: <b>72 ÷ 3 = 24 שנה</b> - זה הזמן שלוקח לכסף שיושב בלי לזוז, לאבד חצי מכוח הקנייה שלו.</p>
+        <p class="edu-line" style="margin-bottom:0;">זו לא תחזית מדויקת, אלא דרך פשוטה להעריך בראש כמה זמן ה"המתנה" הזו באמת עולה לכם.</p>
+      </div>
     </div>
-    <div class="btn-row" style="margin-top:36px;">
-      <button class="btn" id="next5">המשך לתוצאה שלכם</button>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- STEP 6: RESULT -->
-<section class="stage dark" id="stage-6" style="display:none;">
-  <div class="glow glow-a"></div><div class="glow glow-b"></div>
-  <div class="panel center step" data-step="6">
-    <span class="eyebrow">לפי מה שסיפרתם</span>
-    <h2 id="resultIntro">נראה שיש לכם כסף שיכול להתחיל לעבוד בשבילכם, אבל כרגע הוא פשוט מחכה.</h2>
-    <p class="sub" id="resultDuration"></p>
-    <p style="margin-top:20px;">אם האינפלציה תהיה בממוצע 3% בשנה...</p>
-    <p class="gold-num" id="resultNumber">₪0</p>
-    <p>כוח הקנייה של הכסף הזה עשוי להישחק בסכום הזה, לאורך התקופה שבחרתם.</p>
-    <p class="result-note">(זוהי המחשה בלבד, לא תחזית. שיעור האינפלציה בפועל משתנה משנה לשנה.)</p>
-    <div class="btn-row" style="justify-content:center;margin-top:36px;">
-      <button class="btn" id="next6">המשך</button>
+  <section class="section dark" style="padding-top:0;">
+    <div class="panel center">
+      <span class="eyebrow">לפי מה שסיפרתם</span>
+      <h2>נראה שיש לכם כסף שיכול להתחיל לעבוד בשבילכם, אבל כרגע הוא פשוט מחכה</h2>
+      <p class="sub" id="resultDuration"></p>
+      <p style="margin-top:20px;">אם האינפלציה תהיה בממוצע 3% בשנה...</p>
+      <p class="gold-num" id="resultNumber">₪0</p>
+      <p>כוח הקנייה של הכסף הזה עשוי להישחק בסכום הזה, לאורך התקופה שבחרתם.</p>
+      <p class="result-note">(זוהי המחשה בלבד, לא תחזית. שיעור האינפלציה בפועל משתנה משנה לשנה.)</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- STEP 7: SURPRISE QUESTION -->
-<section class="stage cream" id="stage-7" style="display:none;">
-  <div class="panel step" data-step="7">
-    <span class="eyebrow">שאלה אחרונה</span>
-    <p style="font-weight:700;margin-bottom:16px;font-size:clamp(19px,2.2vw,23px);">מה הכי הפתיע אתכם?</p>
-    <div class="opt-list" data-group="q6">
-      <div class="opt" data-value="amount"><span class="dot"></span><span class="opt-text">כמה כסף נשחק</span></div>
-      <div class="opt" data-value="notall"><span class="dot"></span><span class="opt-text">שלא צריך להשקיע את כל הכסף</span></div>
-      <div class="opt" data-value="delay"><span class="dot"></span><span class="opt-text">כמה זמן אני כבר דוחה את זה</span></div>
-      <div class="opt" data-value="dontknow"><span class="dot"></span><span class="opt-text">שאני בכלל לא יודע מאיפה להתחיל</span></div>
+  <section class="section cream">
+    <div class="panel">
+      <span class="eyebrow" style="color:var(--gold);">שאלה אחרונה</span>
+      <p class="q-label" style="font-size:clamp(19px,2.2vw,23px);">מה הכי הפתיע אתכם?</p>
+      <div class="opt-list" data-group="q6">
+        <div class="opt" data-value="amount"><span class="dot"></span><span class="opt-text">כמה כסף נשחק</span></div>
+        <div class="opt" data-value="notall"><span class="dot"></span><span class="opt-text">שלא צריך להשקיע את כל הכסף</span></div>
+        <div class="opt" data-value="delay"><span class="dot"></span><span class="opt-text">כמה זמן אני כבר דוחה את זה</span></div>
+        <div class="opt" data-value="dontknow"><span class="dot"></span><span class="opt-text">שאני בכלל לא יודע מאיפה להתחיל</span></div>
+      </div>
     </div>
-    <div class="btn-row">
-      <button class="btn" id="next7" disabled>המשך</button>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- STEP 8: CTA -->
-<section class="stage dark" id="stage-8" style="display:none;">
-  <div class="glow glow-a"></div><div class="glow glow-b"></div>
-  <div class="panel center step" data-step="8">
-    <span class="eyebrow">אז מה עכשיו</span>
-    <p class="cta-personal" id="ctaPersonal"></p>
-    <h2>החדשות הטובות הן שלא צריך להיות מומחה כדי להתחיל</h2>
-    <p class="sub">בניתי תוכנית שלוקחת אנשי קבע מאפס - להשקעה הראשונה שלהם, בכ־3 שעות.</p>
-    <a href="/course/" class="btn">אני רוצה לראות איך עושים את זה</a>
-  </div>
-</section>
+  <section class="section dark">
+    <div class="glow glow-a"></div><div class="glow glow-b"></div>
+    <div class="panel center">
+      <span class="eyebrow">אז מה עכשיו</span>
+      <p class="cta-personal" id="ctaPersonal" style="display:none;"></p>
+      <h2>החדשות הטובות הן שלא צריך להיות מומחה כדי להתחיל</h2>
+      <p class="sub">בניתי תוכנית שלוקחת אנשי קבע מאפס - להשקעה הראשונה שלהם, בכ־3 שעות.</p>
+      <a href="/course/" class="btn">אני רוצה לראות איך עושים את זה</a>
+    </div>
+  </section>
+
+</div>
 
 <script>
-var state = { q1:0, q2:0, q3:null, q4:null, q5:null, q6:null };
-var totalSteps = 8;
+var state = { q3:'lt6m', q4:'1', q5:'fear', q6:null };
 
 function fmt(n){ return '₪' + Math.round(n).toLocaleString('he-IL'); }
-function parseNum(v){ return parseInt((v||'').replace(/[^\d]/g,''),10) || 0; }
 
-function setProgress(step){
-  var pct = Math.min(step, totalSteps) / totalSteps * 100;
-  document.getElementById('progressFill').style.width = pct + '%';
-}
-
-function goTo(step){
-  document.querySelectorAll('.stage').forEach(function(s){ s.style.display = 'none'; });
-  document.getElementById('stage-' + step).style.display = 'flex';
-  setProgress(step);
-  window.scrollTo(0,0);
-}
-
-// numeric inputs
+// numeric inputs: format with thousands separators as you type
 ['q1','q2'].forEach(function(id){
   var input = document.getElementById(id);
   input.addEventListener('input', function(){
     var digits = input.value.replace(/[^\d]/g,'');
-    state[id] = parseInt(digits,10) || 0;
     input.value = digits ? Number(digits).toLocaleString('he-IL') : '';
-    document.getElementById('next' + (id === 'q1' ? '0' : '1')).disabled = state[id] <= 0;
   });
 });
 
-// radio groups
+// radio groups (all default to the first option already selected)
 document.querySelectorAll('.opt-list').forEach(function(list){
   var group = list.getAttribute('data-group');
   var opts = list.querySelectorAll('.opt');
@@ -295,36 +231,12 @@ document.querySelectorAll('.opt-list').forEach(function(list){
       opts.forEach(function(o){ o.classList.remove('selected'); });
       opt.classList.add('selected');
       state[group] = opt.getAttribute('data-value');
-      var stepMap = { q3:'2', q4:'3', q5:'4', q6:'7' };
-      document.getElementById('next' + stepMap[group]).disabled = false;
+      if(group === 'q6'){ buildCta(); }
     });
   });
 });
 
-document.getElementById('next0').addEventListener('click', function(){ goTo(1); });
-document.getElementById('next1').addEventListener('click', function(){ goTo(2); });
-document.getElementById('next2').addEventListener('click', function(){ goTo(3); });
-document.getElementById('next3').addEventListener('click', function(){ goTo(4); });
-document.getElementById('next4').addEventListener('click', function(){ goTo(5); });
-document.getElementById('next5').addEventListener('click', function(){ buildResult(); goTo(6); });
-document.getElementById('next6').addEventListener('click', function(){ goTo(7); });
-document.getElementById('next7').addEventListener('click', function(){ buildCta(); goTo(8); });
-
-document.querySelectorAll('.back-link').forEach(function(link){
-  link.addEventListener('click', function(){ goTo(parseInt(link.getAttribute('data-back'),10)); });
-});
-
 var durationLabels = { 'lt6m':'פחות מחצי שנה', '6-12m':'כ־6 עד 12 חודשים', '1-2y':'שנה עד שנתיים', '2y+':'יותר משנתיים' };
-
-function buildResult(){
-  var years = parseInt(state.q4,10) || 1;
-  var erosion = state.q2 * (1 - 1/Math.pow(1.03, years));
-  document.getElementById('resultNumber').textContent = fmt(erosion);
-  var durLabel = durationLabels[state.q3] || '';
-  if(durLabel){
-    document.getElementById('resultDuration').textContent = 'הכסף הזה כבר יושב שם ' + durLabel + ' - ולפי מה שסיפרתם, כנראה שהוא ימשיך לשבת שם עוד ' + years + (years === 1 ? ' שנה' : ' שנים') + ' אם לא יקרה שום דבר.';
-  }
-}
 
 var ctaLines = {
   fear:'אם הפחד להפסיד הוא מה שעוצר אתכם - זה הגיוני. בדיוק בגלל זה התוכנית מתחילה מהבסיס, בלי לדלג על אף שלב.',
@@ -336,11 +248,28 @@ var ctaLines = {
 
 function buildCta(){
   var line = ctaLines[state.q5] || '';
-  document.getElementById('ctaPersonal').textContent = line;
-  document.getElementById('ctaPersonal').style.display = line ? 'block' : 'none';
+  var el = document.getElementById('ctaPersonal');
+  el.textContent = line;
+  el.style.display = line ? 'block' : 'none';
 }
 
-setProgress(0);
+document.getElementById('showResult').addEventListener('click', function(){
+  var amount = parseInt((document.getElementById('q1').value||'').replace(/[^\d]/g,''),10) || 0;
+  var available = parseInt((document.getElementById('q2').value||'').replace(/[^\d]/g,''),10) || 0;
+  if(available <= 0){ available = amount; }
+  var years = parseInt(state.q4,10) || 1;
+  var erosion = available * (1 - 1/Math.pow(1.03, years));
+
+  document.getElementById('resultNumber').textContent = fmt(erosion);
+  var durLabel = durationLabels[state.q3] || '';
+  document.getElementById('resultDuration').textContent = durLabel ? ('הכסף הזה כבר יושב שם ' + durLabel + ' - ולפי מה שסיפרתם, כנראה שהוא ימשיך לשבת שם עוד ' + years + (years === 1 ? ' שנה' : ' שנים') + ' אם לא יקרה שום דבר.') : '';
+
+  buildCta();
+
+  var resultArea = document.getElementById('resultArea');
+  resultArea.style.display = 'block';
+  resultArea.scrollIntoView({ behavior: 'smooth' });
+});
 </script>
 </body>
 </html>
