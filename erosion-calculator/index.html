@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>גלו בכמה הכסף שלכם נשחק בעו"ש | שחר לוי</title>
+<title>גלו בכמה כוח הקנייה של הכסף שלכם נשחק בעו"ש | שחר לוי</title>
 <link rel="icon" type="image/png" href="/logo.png" />
 <meta name="description" content="בדיקה קצרה שמראה לכם בכמה כוח הקנייה של הכסף שיושב בעו&quot;ש שלכם נשחק עם הזמן, ולמה." />
 <meta name="robots" content="noindex, nofollow" />
@@ -27,13 +27,13 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:'Assistant',sans-serif;background:var(--cream);color:var(--text-dark);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.7;min-height:100vh;}
+body{font-family:'Assistant',sans-serif;background:var(--cream);color:var(--text-dark);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.75;min-height:100vh;}
 strong{font-weight:800;}
 
 .logo{height:40px;position:fixed;top:16px;left:16px;z-index:200;}
 
-.section{position:relative;padding:110px 24px;z-index:1;}
-@media (max-width:768px){.section{padding:80px 20px 64px;}}
+.section{position:relative;padding:100px 24px;z-index:1;}
+@media (max-width:768px){.section{padding:72px 20px;}}
 .section.dark{background:radial-gradient(ellipse at 50% -10%,#161616 0%,var(--anthracite) 60%);color:#fff;overflow:hidden;}
 .section.dark .glow{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0;}
 .section.dark .glow-a{top:-15%;right:-10%;width:520px;height:520px;background:radial-gradient(circle,rgba(201,168,76,.22),transparent 65%);}
@@ -48,16 +48,23 @@ strong{font-weight:800;}
 .section.dark .eyebrow{color:var(--gold-l);}
 
 h2{font-size:clamp(24px,4vw,34px);font-weight:800;letter-spacing:-.01em;line-height:1.35;margin-bottom:14px;}
-.sub{font-size:clamp(15px,1.6vw,17px);color:var(--muted-dark);margin-bottom:36px;}
+h3{font-size:clamp(19px,2.2vw,23px);font-weight:800;margin:34px 0 14px;}
+.section.dark h3{color:var(--gold-l);}
+.sub{font-size:clamp(15px,1.6vw,17px);color:var(--muted-dark);margin-bottom:20px;}
 .section.dark .sub{color:var(--muted-light);}
 
-.q-block{margin-bottom:48px;}
-.q-label{font-weight:700;margin-bottom:20px;font-size:clamp(18px,2vw,21px);}
+.intro-note{font-size:clamp(15px,1.6vw,16.5px);color:var(--muted-dark);margin-bottom:14px;}
+.intro-note:last-of-type{margin-bottom:36px;}
+
+.q-block{margin-bottom:44px;}
+.q-label{font-weight:700;margin-bottom:8px;font-size:clamp(18px,2vw,21px);}
+.q-help{font-size:14.5px;color:var(--muted-dark);margin-bottom:18px;}
 
 .amount-field{display:flex;align-items:center;gap:10px;border-bottom:2px solid var(--border-light);padding-bottom:14px;}
 .amount-field span{font-size:clamp(24px,3vw,30px);font-weight:800;color:var(--gold);}
 .amount-field input{border:none;background:none;outline:none;font-family:inherit;font-size:clamp(24px,3vw,30px);font-weight:800;color:inherit;width:100%;}
 .amount-field input::placeholder{color:var(--muted-dark);font-weight:600;opacity:.4;}
+.field-example{font-size:13px;color:var(--muted-dark);margin-top:8px;}
 
 .opt-list{display:flex;flex-direction:column;}
 .opt{display:flex;align-items:center;gap:16px;padding:16px 4px;border-bottom:1px solid var(--border-light);cursor:pointer;transition:padding-right var(--ease),color var(--ease);text-align:right;}
@@ -81,10 +88,19 @@ h2{font-size:clamp(24px,4vw,34px);font-weight:800;letter-spacing:-.01em;line-hei
 .rule72{margin-top:32px;padding-top:28px;border-top:1px solid var(--border-dark);}
 .rule72 .tag{font-size:12px;letter-spacing:.15em;color:var(--gold-l);text-transform:uppercase;font-weight:700;margin-bottom:10px;display:block;}
 
+.basket-list{display:flex;flex-wrap:wrap;gap:10px 22px;margin:18px 0 26px;padding:0;list-style:none;}
+.basket-list li{font-size:15px;color:var(--muted-light);}
+
 .result-note{font-size:13px;color:var(--muted-light);margin-top:18px;opacity:.7;}
-.cta-personal{font-size:clamp(17px,2vw,20px);font-weight:700;color:#fff;margin-bottom:22px;}
+.cta-personal{font-size:clamp(17px,2vw,20px);font-weight:700;color:#fff;margin-bottom:26px;}
 
 #resultArea{display:none;}
+
+.calc-box{text-align:center;min-height:60px;}
+.calc-text{font-size:clamp(20px,2.6vw,26px);font-weight:800;color:var(--gold-l);letter-spacing:.02em;}
+#narrativeResult{display:none;}
+
+.quote-line{font-style:normal;font-weight:700;color:#fff;margin-bottom:20px;}
 </style>
 </head>
 <body>
@@ -95,52 +111,60 @@ h2{font-size:clamp(24px,4vw,34px);font-weight:800;letter-spacing:-.01em;line-hei
 <section class="section cream">
   <div class="panel">
     <span class="eyebrow">בדיקה קצרה · פחות מדקה</span>
-    <h2>גלו בכמה הכסף שלכם נשחק בעו"ש</h2>
-    <p class="sub">חמש שאלות פשוטות. עונים על כולן ולוחצים על הכפתור בסוף.</p>
+    <h2>גלו בכמה כוח הקנייה של הכסף שלכם נשחק בעו"ש</h2>
+    <p class="sub">זה ייקח פחות מדקה.</p>
+
+    <p class="intro-note">לפני שמתחילים, חשוב לי להבהיר משהו. המטרה של הבדיקה הזאת היא לא להפחיד אתכם. היא גם לא נועדה לשכנע אתכם להשקיע.</p>
+    <p class="intro-note">המטרה שלה היא פשוט לעזור לכם להבין מה באמת קורה לכסף שיושב בעו"ש לאורך זמן. בסוף הבדיקה תראו הערכה פשוטה של כמה כוח הקנייה של הכסף שלכם עשוי להישחק אם הוא פשוט ימשיך לשבת שם.</p>
+    <p class="intro-note">זה לא מבחן. אין תשובות נכונות או לא נכונות. רק נסו לענות בכנות.</p>
 
     <div class="q-block">
       <p class="q-label">1. כמה כסף יושב אצלכם כרגע בעו"ש?</p>
+      <p class="q-help">הכניסו את הסכום הכולל שנמצא כרגע בחשבון העו"ש שלכם.</p>
       <div class="amount-field">
         <span>₪</span>
-        <input type="text" inputmode="numeric" id="q1" placeholder="לדוגמה 40,000" />
+        <input type="text" inputmode="numeric" id="q1" placeholder="0" />
       </div>
+      <p class="field-example">לדוגמה: 40,000 ₪</p>
     </div>
 
     <div class="q-block">
-      <p class="q-label">2. מתוך הסכום הזה, כמה כסף אתם לא מתכננים להשתמש בו בשנה הקרובה?</p>
+      <p class="q-label">2. מתוך הסכום הזה, כמה כסף אתם לא מתכננים להשתמש בו ב־12 החודשים הקרובים?</p>
+      <p class="q-help">לא כל הכסף בעו"ש מיועד להשקעה. תחשבו רק על הכסף שאין לכם צורך בו בזמן הקרוב.</p>
       <div class="amount-field">
         <span>₪</span>
-        <input type="text" inputmode="numeric" id="q2" placeholder="לדוגמה 25,000" />
+        <input type="text" inputmode="numeric" id="q2" placeholder="0" />
       </div>
+      <p class="field-example">לדוגמה: 25,000 ₪</p>
     </div>
 
     <div class="q-block">
       <p class="q-label">3. כמה זמן הכסף הזה כבר יושב בעו"ש?</p>
       <div class="opt-list" data-group="q3">
         <div class="opt selected" data-value="lt6m"><span class="dot"></span><span class="opt-text">פחות מחצי שנה</span></div>
-        <div class="opt" data-value="6-12m"><span class="dot"></span><span class="opt-text">6–12 חודשים</span></div>
-        <div class="opt" data-value="1-2y"><span class="dot"></span><span class="opt-text">שנה–שנתיים</span></div>
+        <div class="opt" data-value="6-12m"><span class="dot"></span><span class="opt-text">בין חצי שנה לשנה</span></div>
+        <div class="opt" data-value="1-2y"><span class="dot"></span><span class="opt-text">בין שנה לשנתיים</span></div>
         <div class="opt" data-value="2y+"><span class="dot"></span><span class="opt-text">יותר משנתיים</span></div>
       </div>
     </div>
 
     <div class="q-block">
-      <p class="q-label">4. אם לא הייתם עושים שום דבר, כמה שנים לדעתכם הכסף הזה עוד היה נשאר שם?</p>
+      <p class="q-label">4. אם לא הייתם עושים שום דבר, כמה זמן לדעתכם הכסף הזה עוד היה נשאר בעו"ש?</p>
       <div class="opt-list" data-group="q4">
         <div class="opt selected" data-value="1"><span class="dot"></span><span class="opt-text">שנה</span></div>
         <div class="opt" data-value="3"><span class="dot"></span><span class="opt-text">3 שנים</span></div>
         <div class="opt" data-value="5"><span class="dot"></span><span class="opt-text">5 שנים</span></div>
-        <div class="opt" data-value="10"><span class="dot"></span><span class="opt-text">10+ שנים</span></div>
+        <div class="opt" data-value="10"><span class="dot"></span><span class="opt-text">10 שנים או יותר</span></div>
       </div>
     </div>
 
     <div class="q-block">
-      <p class="q-label">5. מה הכי עוצר אתכם היום?</p>
+      <p class="q-label">5. מה הכי עוצר אתכם היום מלהתחיל להשקיע?</p>
       <div class="opt-list" data-group="q5">
-        <div class="opt selected" data-value="fear"><span class="dot"></span><span class="opt-text">אני מפחד להפסיד</span></div>
+        <div class="opt selected" data-value="fear"><span class="dot"></span><span class="opt-text">אני מפחד להפסיד כסף</span></div>
         <div class="opt" data-value="howto"><span class="dot"></span><span class="opt-text">אני לא יודע איך מתחילים</span></div>
-        <div class="opt" data-value="time"><span class="dot"></span><span class="opt-text">אין לי זמן</span></div>
-        <div class="opt" data-value="learn"><span class="dot"></span><span class="opt-text">אני רוצה ללמוד עוד</span></div>
+        <div class="opt" data-value="time"><span class="dot"></span><span class="opt-text">אין לי זמן להתעסק בזה</span></div>
+        <div class="opt" data-value="learn"><span class="dot"></span><span class="opt-text">אני רוצה ללמוד עוד לפני שאני מתחיל</span></div>
         <div class="opt" data-value="other"><span class="dot"></span><span class="opt-text">משהו אחר</span></div>
       </div>
     </div>
@@ -151,65 +175,114 @@ h2{font-size:clamp(24px,4vw,34px);font-weight:800;letter-spacing:-.01em;line-hei
   </div>
 </section>
 
-<!-- RESULT AREA: education + result + surprise question + CTA, all revealed together -->
+<!-- RESULT AREA -->
 <div id="resultArea">
 
+  <!-- EDUCATION -->
   <section class="section dark">
     <div class="glow glow-a"></div><div class="glow glow-b"></div>
     <div class="panel">
-      <span class="eyebrow">לפני התוצאה</span>
-      <h2>שתי מילים על אינפלציה, לפני שנראה לכם מספר</h2>
-      <p class="edu-line">אינפלציה היא בעצם קצב העלייה הממוצע של המחירים במשק - מה שמשרד האוצר עוקב אחריו כל חודש דרך <b>מדד המחירים לצרכן</b>. כשהמחירים עולים, אותם ₪100 שיושבים בעו"ש שלכם - קונים פחות ממה שקנו לפני שנה.</p>
-      <p class="edu-line">זה לא קורה בבת אחת, ולכן קשה להרגיש את זה. אבל זה קורה כל שנה, גם כשלא רואים את זה בדף החשבון.</p>
+      <span class="eyebrow">רגע לפני שנראה לכם את התוצאה</span>
+      <h2>יש מושג אחד שכדאי להכיר לפני שממשיכים</h2>
+
+      <h3>מה זאת בכלל אינפלציה?</h3>
+      <p class="edu-line">אינפלציה היא העלייה המתמשכת במחירים לאורך זמן.</p>
+      <p class="edu-line">במילים פשוטות? אם לפני כמה שנים יכולתם למלא עגלת קניות ב־500 ₪, והיום אותה עגלה עולה 550 ₪ - זאת אינפלציה.</p>
+      <p class="edu-line">הכסף שלכם לא נעלם. אבל הוא פשוט קונה פחות. לכן גם אם הסכום בעו"ש נשאר בדיוק אותו הדבר, כוח הקנייה שלו נשחק עם הזמן.</p>
+
+      <h3>איך בכלל יודעים אם יש אינפלציה?</h3>
+      <p class="edu-line">בכל חודש מפרסמת הלשכה המרכזית לסטטיסטיקה את <b>מדד המחירים לצרכן</b>. אפשר לחשוב עליו כמו על "עגלה" שמכילה מאות מוצרים ושירותים שמשפחה ממוצעת בישראל צורכת, לדוגמה:</p>
+      <ul class="basket-list">
+        <li>🛒 מזון</li>
+        <li>🏠 שכר דירה</li>
+        <li>⚡ חשמל ומים</li>
+        <li>🚗 דלק ותחבורה</li>
+        <li>📱 תקשורת</li>
+        <li>👕 ביגוד</li>
+        <li>🎓 חינוך</li>
+        <li>🏥 בריאות</li>
+      </ul>
+      <p class="edu-line">אם בממוצע העגלה הזאת התייקרה ב־3% לעומת השנה שעברה - אומרים שהאינפלציה השנתית הייתה כ־3%.</p>
+
+      <h3>למה זה חשוב לכם?</h3>
+      <p class="edu-line">כי הכסף שיושב בעו"ש לא מתעדכן יחד עם המחירים. אם המחירים עולים ב־3%, אבל הכסף שלכם נשאר בדיוק אותו סכום - בפועל הוא קונה קצת פחות ממה שקנה לפני שנה.</p>
+      <p class="edu-line">וזאת בדיוק הסיבה שאנשים אומרים "פעם הכול היה הרבה יותר זול." לא כי הכסף השתנה - אלא כי כוח הקנייה שלו השתנה.</p>
+
+      <h3>האם אפשר לדעת מה תהיה האינפלציה בעתיד?</h3>
+      <p class="edu-line">לא. אף אחד לא יודע. בדיוק בגלל זה השתמשנו במחשבון בהערכה של 3% בשנה. זאת לא תחזית - זאת רק דרך פשוטה להמחיש מה עלול לקרות אם המחירים ימשיכו לעלות בקצב דומה לאורך זמן.</p>
+
       <div class="rule72">
-        <span class="tag">כלל אצבע פשוט - חוק ה־72</span>
-        <p class="edu-line">אם רוצים לדעת תוך כמה שנים כוח הקנייה של סכום מסוים יורד בחצי, מחלקים 72 בקצב האינפלציה השנתי.</p>
-        <p class="edu-line">בקצב אינפלציה ממוצע של כ־3% בשנה: <b>72 ÷ 3 = 24 שנה</b> - זה הזמן שלוקח לכסף שיושב בלי לזוז, לאבד חצי מכוח הקנייה שלו.</p>
-        <p class="edu-line" style="margin-bottom:0;">זו לא תחזית מדויקת, אלא דרך פשוטה להעריך בראש כמה זמן ה"המתנה" הזו באמת עולה לכם.</p>
+        <span class="tag">עוד משהו קטן ומעניין - חוק ה־72</span>
+        <p class="edu-line">יש כלל אצבע מפורסם שנקרא חוק ה־72. הוא מאפשר להעריך תוך כמה זמן כוח הקנייה של הכסף ייחתך בערך בחצי. פשוט מחלקים: <b>72 ÷ שיעור האינפלציה</b>.</p>
+        <p class="edu-line">לדוגמה, אם האינפלציה הממוצעת היא 3% בשנה: <b>72 ÷ 3 = 24</b>. כלומר, בקצב כזה, בעוד כ־24 שנים אותו סכום כסף צפוי לקנות בערך חצי ממה שהוא קונה היום.</p>
+        <p class="edu-line" style="margin-bottom:0;">זאת כמובן הערכה בלבד, אבל היא ממחישה עד כמה הזמן משפיע על הכסף.</p>
       </div>
     </div>
   </section>
 
+  <!-- CALCULATING + RESULT -->
   <section class="section dark" style="padding-top:0;">
     <div class="panel center">
-      <span class="eyebrow">לפי מה שסיפרתם</span>
-      <h2>נראה שיש לכם כסף שיכול להתחיל לעבוד בשבילכם, אבל כרגע הוא פשוט מחכה</h2>
-      <p class="sub" id="resultDuration"></p>
-      <p style="margin-top:20px;">אם האינפלציה תהיה בממוצע 3% בשנה...</p>
-      <p class="gold-num" id="resultNumber">₪0</p>
-      <p>כוח הקנייה של הכסף הזה עשוי להישחק בסכום הזה, לאורך התקופה שבחרתם.</p>
-      <p class="result-note">(זוהי המחשה בלבד, לא תחזית. שיעור האינפלציה בפועל משתנה משנה לשנה.)</p>
-    </div>
-  </section>
+      <p class="sub" style="margin-bottom:36px;">עכשיו בואו נראה מה המשמעות של זה עבור הכסף שלכם.</p>
+      <div class="calc-box" id="calcBox">
+        <span class="calc-text" id="calcText">מחשב...</span>
+      </div>
 
-  <section class="section cream">
-    <div class="panel">
-      <span class="eyebrow" style="color:var(--gold);">שאלה אחרונה</span>
-      <p class="q-label" style="font-size:clamp(19px,2.2vw,23px);">מה הכי הפתיע אתכם?</p>
-      <div class="opt-list" data-group="q6">
-        <div class="opt" data-value="amount"><span class="dot"></span><span class="opt-text">כמה כסף נשחק</span></div>
-        <div class="opt" data-value="notall"><span class="dot"></span><span class="opt-text">שלא צריך להשקיע את כל הכסף</span></div>
-        <div class="opt" data-value="delay"><span class="dot"></span><span class="opt-text">כמה זמן אני כבר דוחה את זה</span></div>
-        <div class="opt" data-value="dontknow"><span class="dot"></span><span class="opt-text">שאני בכלל לא יודע מאיפה להתחיל</span></div>
+      <div id="narrativeResult">
+        <span class="eyebrow">לפי התשובות שלכם</span>
+        <p class="edu-line">יש לכם כיום <b id="resAmount">₪0</b> שיושבים בעו"ש ואינם מיועדים לשימוש בשנה הקרובה.</p>
+        <p class="edu-line">לפי מה שסיפרתם, יש סיכוי טוב שהכסף הזה ימשיך לשבת שם לפחות <b id="resYears"></b> אם לא תעשו איתו שום דבר. וזה בדיוק המקום שבו הזמן מתחיל לעבוד נגדכם.</p>
+
+        <p class="sub" style="margin-top:30px;">אם האינפלציה תהיה בממוצע 3% בשנה, כוח הקנייה של הכסף שלכם עשוי להישחק בכ־</p>
+        <p class="gold-num" id="resultNumber">₪0</p>
+        <p class="result-note" style="margin-bottom:36px;">חשוב לדעת: זו המחשה בלבד, לא תחזית. שיעור האינפלציה בפועל משתנה משנה לשנה.</p>
+
+        <h3>מה זה אומר בפועל?</h3>
+        <p class="edu-line">זה לא אומר שייעלמו לכם <span id="resultNumber2">₪0</span> מחשבון הבנק. אם יש לכם היום <span id="resAmount2">₪0</span>, כנראה שגם בעוד <span id="resYears2"></span> עדיין תראו מספר דומה בחשבון (בהנחה שלא תשתמשו בכסף).</p>
+        <p class="edu-line">אבל - עם אותו סכום כסף תוכלו לקנות פחות. במילים אחרות, הכסף נשאר אותו כסף. אבל הערך שלו נשחק.</p>
+
+        <p class="quote-line">"המשכורת שלי עלתה... אבל משום מה הכול מרגיש יקר יותר."</p>
+        <p class="edu-line">לא כי הם מרוויחים פחות. אלא כי עם הזמן כוח הקנייה של הכסף משתנה.</p>
+
+        <h3>החדשות הטובות</h3>
+        <p class="edu-line">אינפלציה היא לא בעיה שאפשר לעצור. אבל אפשר להחליט איך הכסף שלכם יתנהג בזמן שהיא מתרחשת. אפשר להשאיר אותו בעו"ש, ואפשר לגרום לו להתחיל לעבוד.</p>
       </div>
     </div>
   </section>
 
-  <section class="section dark">
+  <!-- PERSONALIZED + CLOSING + CTA -->
+  <section class="section dark" id="ctaSection" style="display:none;">
     <div class="glow glow-a"></div><div class="glow glow-b"></div>
     <div class="panel center">
-      <span class="eyebrow">אז מה עכשיו</span>
-      <p class="cta-personal" id="ctaPersonal" style="display:none;"></p>
-      <h2>החדשות הטובות הן שלא צריך להיות מומחה כדי להתחיל</h2>
-      <p class="sub">בניתי תוכנית שלוקחת אנשי קבע מאפס - להשקעה הראשונה שלהם, בכ־3 שעות.</p>
-      <a href="/course/" class="btn">אני רוצה לראות איך עושים את זה</a>
+      <span class="eyebrow">לפי התשובות שלכם</span>
+      <p id="ctaPersonal" style="font-size:clamp(16px,1.8vw,18.5px);margin-bottom:30px;"></p>
+
+      <h3 style="margin-top:0;">עוד מחשבה אחת לפני שממשיכים...</h3>
+      <p class="edu-line">אולי הסכום שקיבלתם נראה לכם קטן. אולי הוא אפילו לא הרשים אתכם. אבל חשוב לזכור משהו.</p>
+      <p class="edu-line">השאלה היא לא כמה כסף נשחק השנה. השאלה היא כמה שנים עוד תיתנו לזה להמשיך לקרות. כי הזמן עובד בכל מקרה - הבחירה היחידה היא האם הוא יעבוד נגדכם, או בשבילכם.</p>
+
+      <p class="edu-line">אם הגעתם עד לכאן, כנראה שאתם כבר מבינים שהבעיה היא לא שאין לכם כסף. הבעיה היא שהכסף שכבר חסכתם עדיין לא התחיל לעבוד בשבילכם.</p>
+      <p class="edu-line" style="margin-bottom:36px;">בדיוק בשביל זה בניתי את התוכנית - לא כדי להפוך אתכם למומחי שוק ההון, אלא כדי לקחת אתכם מאפס מוחלט ועד להשקעה הראשונה שלכם. שלב אחרי שלב. בלי ניחושים. בלי מידע סותר. ובקצב שמתאים לכם.</p>
+
+      <a href="/course/" class="btn">אני רוצה להתחיל לגרום לכסף שלי לעבוד</a>
     </div>
   </section>
 
 </div>
 
 <script>
-var state = { q3:'lt6m', q4:'1', q5:'fear', q6:null };
+var state = { q3:'lt6m', q4:'1', q5:'fear' };
+
+var yearsLabels = { '1':'שנה', '3':'3 שנים', '5':'5 שנים', '10':'10 שנים או יותר' };
+var durationLabels = { 'lt6m':'פחות מחצי שנה', '6-12m':'בין חצי שנה לשנה', '1-2y':'בין שנה לשנתיים', '2y+':'יותר משנתיים' };
+
+var ctaLines = {
+  fear:'זה החשש הנפוץ ביותר שאני שומע. וגם אני הרגשתי בדיוק אותו הדבר כשהתחלתי. בגלל זה התוכנית לא מלמדת איך "להכות את השוק". היא מלמדת איך להתחיל בצורה פשוטה, מסודרת ולטווח ארוך.',
+  howto:'זאת בדיוק הסיבה שבניתי את התוכנית. היא לא מניחה שום ידע מוקדם. אני מראה כל שלב, כולל שיתוף מסך, כך שלא תצטרכו לנחש מה עושים.',
+  time:'גם אני הייתי איש קבע. אני יודע בדיוק איך נראה יום עמוס. לכן בניתי את התוכנית כך שאפשר להשלים אותה בכ־3 שעות, בקצב שלכם. ואחרי שמקימים את המערכת, ניהול ההשקעות לוקח בערך 10 דקות בחודש.',
+  learn:'אין שום דבר רע בללמוד. גם אני עשיתי את זה. אבל למדתי בדרך הקשה שיש הבדל בין לצרוך עוד מידע - לבין להתחיל לפעול. המטרה של התוכנית היא לא שתדעו יותר. המטרה היא שתעשו את ההשקעה הראשונה שלכם.',
+  other:'מה שבטוח זה שהצעד הראשון הוא תמיד הכי קשה. בדיוק בשביל זה בניתי תהליך פשוט שלוקח אתכם צעד אחרי צעד, מאיפה שאתם נמצאים היום.'
+};
 
 function fmt(n){ return '₪' + Math.round(n).toLocaleString('he-IL'); }
 
@@ -231,26 +304,24 @@ document.querySelectorAll('.opt-list').forEach(function(list){
       opts.forEach(function(o){ o.classList.remove('selected'); });
       opt.classList.add('selected');
       state[group] = opt.getAttribute('data-value');
-      if(group === 'q6'){ buildCta(); }
     });
   });
 });
 
-var durationLabels = { 'lt6m':'פחות מחצי שנה', '6-12m':'כ־6 עד 12 חודשים', '1-2y':'שנה עד שנתיים', '2y+':'יותר משנתיים' };
-
-var ctaLines = {
-  fear:'אם הפחד להפסיד הוא מה שעוצר אתכם - זה הגיוני. בדיוק בגלל זה התוכנית מתחילה מהבסיס, בלי לדלג על אף שלב.',
-  howto:'אם לא ידעתם מאיפה בכלל להתחיל - זה בדיוק מה שהתוכנית בנויה לפתור, שלב אחרי שלב.',
-  time:'אם אין לכם זמן - התוכנית בנויה בדיוק בשביל זה: כ־3 שעות בסך הכול, בקצב שלכם.',
-  learn:'אם אתם רוצים ללמוד עוד לפני שמתחילים - התוכנית נותנת לכם בדיוק את מה שצריך לדעת, בלי מידע מיותר.',
-  other:''
-};
-
-function buildCta(){
-  var line = ctaLines[state.q5] || '';
-  var el = document.getElementById('ctaPersonal');
-  el.textContent = line;
-  el.style.display = line ? 'block' : 'none';
+function playCalcAnimation(callback){
+  var steps = ['מחשב...','בודק...','משווה...','סיימנו.'];
+  var el = document.getElementById('calcText');
+  var i = 0;
+  el.textContent = steps[0];
+  var interval = setInterval(function(){
+    i++;
+    if(i < steps.length){
+      el.textContent = steps[i];
+    } else {
+      clearInterval(interval);
+      setTimeout(callback, 500);
+    }
+  }, 650);
 }
 
 document.getElementById('showResult').addEventListener('click', function(){
@@ -259,16 +330,25 @@ document.getElementById('showResult').addEventListener('click', function(){
   if(available <= 0){ available = amount; }
   var years = parseInt(state.q4,10) || 1;
   var erosion = available * (1 - 1/Math.pow(1.03, years));
+  var yearsLabel = yearsLabels[state.q4] || (years + ' שנים');
 
+  document.getElementById('resAmount').textContent = fmt(available);
+  document.getElementById('resAmount2').textContent = fmt(available);
+  document.getElementById('resYears').textContent = yearsLabel;
+  document.getElementById('resYears2').textContent = yearsLabel;
   document.getElementById('resultNumber').textContent = fmt(erosion);
-  var durLabel = durationLabels[state.q3] || '';
-  document.getElementById('resultDuration').textContent = durLabel ? ('הכסף הזה כבר יושב שם ' + durLabel + ' - ולפי מה שסיפרתם, כנראה שהוא ימשיך לשבת שם עוד ' + years + (years === 1 ? ' שנה' : ' שנים') + ' אם לא יקרה שום דבר.') : '';
-
-  buildCta();
+  document.getElementById('resultNumber2').textContent = fmt(erosion);
+  document.getElementById('ctaPersonal').textContent = ctaLines[state.q5] || ctaLines.other;
 
   var resultArea = document.getElementById('resultArea');
   resultArea.style.display = 'block';
   resultArea.scrollIntoView({ behavior: 'smooth' });
+
+  playCalcAnimation(function(){
+    document.getElementById('calcBox').style.display = 'none';
+    document.getElementById('narrativeResult').style.display = 'block';
+    document.getElementById('ctaSection').style.display = 'block';
+  });
 });
 </script>
 </body>
