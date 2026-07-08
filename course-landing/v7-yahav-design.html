@@ -836,23 +836,25 @@
       margin-bottom: 0;
     }
 
-    /* PROOF */
+    /* PROOF - masonry columns so tall screenshots never get cropped */
     .proof-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
+      columns: 3 220px;
+      column-gap: 16px;
       margin: 36px 0;
     }
 
     @media (max-width:768px) {
       .proof-grid {
-        grid-template-columns: repeat(2, 1fr);
+        columns: 2 160px;
       }
     }
 
     .proof-grid img {
+      width: 100%;
       border-radius: 14px;
       box-shadow: 0 10px 28px rgba(0, 0, 0, .08);
+      margin-bottom: 16px;
+      break-inside: avoid;
     }
 
     .proof-badge {
@@ -1601,10 +1603,11 @@
         אלא כי סוף סוף הייתה להם דרך ברורה לפעול.</p>
       <img src="/testimonials/badge-100-v2.png" alt="100% המלצה" class="proof-badge" />
       <div class="proof-grid">
-        <img src="/testimonials/wts-1.jpg" alt="הודעת תודה מבוגר תוכנית שהתחיל להשקיע" loading="lazy" />
-        <img src="/testimonials/wts-3.jpg" alt="הודעת תודה מבוגר תוכנית שהתחיל להשקיע" loading="lazy" />
-        <img src="/testimonials/wts-4.jpg" alt="הודעת תודה מבוגר תוכנית שהתחיל להשקיע" loading="lazy" />
-        <img src="/testimonials/wts-5.jpg" alt="הודעת תודה מבוגר תוכנית שהתחיל להשקיע" loading="lazy" />
+        <img src="/testimonials/wts-3.jpg" alt="עדות: התגברות על הפחד מהצעד הראשון בהשקעות" loading="lazy" />
+        <img src="/testimonials/wts-2.jpg" alt="עדות: התגברות על דחיינות והתחלת ההשקעה" loading="lazy" />
+        <img src="/testimonials/wts-10.jpg" alt="עדות: ליווי אישי ופרקטי בכניסה להשקעות" loading="lazy" />
+        <img src="/testimonials/wts-1.jpg" alt="עדות: זמינות וסבלנות לשאלות לאורך התהליך" loading="lazy" />
+        <img src="/testimonials/wts-9.jpg" alt="עדות: תהליך מלא מהחלטה ועד ביצוע ההשקעה הראשונה" loading="lazy" />
       </div>
       <p style="font-weight:700;">אם הם הצליחו להתחיל מאפס, אין שום סיבה שגם אתם לא.</p>
     </div>
