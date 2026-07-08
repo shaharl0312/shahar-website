@@ -1107,23 +1107,45 @@
       max-width: 400px;
     }
 
-    .cashback-box {
+    .cashback-hero {
       margin-top: 30px;
-      background: rgba(27, 58, 107, .18);
-      border: 1px solid rgba(27, 58, 107, .5);
-      border-radius: 16px;
-      padding: 20px 22px;
-      text-align: right;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-l) 100%);
+      border-radius: 18px;
+      padding: 26px 28px;
+      text-align: center;
+      box-shadow: 0 16px 40px rgba(201, 168, 76, .38);
     }
 
-    .cashback-box p {
-      font-size: 14.5px;
-      color: var(--muted-light);
-      margin-bottom: 6px;
+    .cashback-hero .cashback-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(45, 45, 45, .65);
+      background: rgba(255, 255, 255, .35);
+      border-radius: 999px;
+      padding: 5px 14px;
+      margin-bottom: 12px;
     }
 
-    .cashback-box p:last-child {
+    .cashback-hero .cashback-headline {
+      font-size: clamp(19px, 2.4vw, 24px);
+      font-weight: 900;
+      color: var(--anthracite);
+      line-height: 1.35;
+      margin-bottom: 10px;
+    }
+
+    .cashback-hero .cashback-headline strong {
+      font-size: 1.15em;
+    }
+
+    .cashback-hero .cashback-detail {
+      font-size: 13px;
+      color: rgba(45, 45, 45, .75);
       margin-bottom: 0;
+      line-height: 1.7;
     }
 
     /* FORK - decision-point timeline */
@@ -1720,10 +1742,13 @@
             <a href="https://secure.cardcom.solutions/EA/EA5/Vir6Q9LbVEatLxw4sN0dxg/PaymentSP" class="btn btn-gold"
               id="checkout-btn">כן, אני רוצה להתחיל להשקיע</a>
           </div>
-          <div class="cashback-box">
-            <p><strong style="color:#fff;">אנשי קבע:</strong> פתיחת חשבון מסחר דרך הקישור בתוכנית ועמידה בתנאי ההטבה
-              מזכה בהחזר של 500 ₪.</p>
-            <p>לא אנשי קבע? הטבה של 200 ₪, בכפוף לתנאי ההטבה.</p>
+          <div class="cashback-hero">
+            <span class="cashback-tag">בונוס לאנשי קבע</span>
+            <p class="cashback-headline">התוכנית עולה לכם <strong>497 ₪</strong>.<br>ההחזר על פתיחת חשבון מסחר הוא
+              <strong>500 ₪</strong>.<br>כלומר, אתם לא רק מקבלים את התוכנית בחינם - אתם יוצאים עם <strong>3 ₪
+                ברווח</strong>.</p>
+            <p class="cashback-detail">בכפוף לפתיחת חשבון מסחר דרך הקישור בתוכנית ועמידה בתנאי ההטבה. לא אנשי קבע?
+              הטבה של 200 ₪, בכפוף לתנאי ההטבה.</p>
           </div>
         </div>
       </div>
