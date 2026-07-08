@@ -38,8 +38,8 @@ cp my-app/ribit-derebit/index.html _infra/dist/my-app/ribit-derebit/index.html
 mkdir -p _infra/dist/go && cp optin/optin.html _infra/dist/go/index.html
 
 # Course funnel - free guide squeeze page + video delivery page
-mkdir -p "_infra/dist/הדרכה" && cp funnel-hadracha/optin.html "_infra/dist/הדרכה/index.html"
-mkdir -p _infra/dist/video && cp funnel-hadracha/video.html _infra/dist/video/index.html
+mkdir -p "_infra/dist/הדרכה" && cp funnel-hadracha/optin-v2.html "_infra/dist/הדרכה/index.html"
+mkdir -p _infra/dist/video && cp funnel-hadracha/video-v2.html _infra/dist/video/index.html
 
 # Course sales page (course-landing variants)
 mkdir -p _infra/dist/course && cp course-landing/v7-yahav-design.html _infra/dist/course/index.html

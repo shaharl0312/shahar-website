@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ההדרכה שלך מוכנה - שחר לוי</title>
+<link rel="icon" type="image/png" href="/logo.png" />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '3199947373426233');
+fbq('track', 'PageView');
+fbq('track', 'ViewContent', { content_name: 'video-thank-you' });
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=3199947373426233&ev=PageView&noscript=1" /></noscript>
+
+<style>
+:root{
+  --gold:#C9A84C;
+  --gold-l:#e6cd8a;
+  --anthracite:#0d0d0d;
+  --muted-light:rgba(247,245,240,.72);
+  --ease:280ms cubic-bezier(.2,.7,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Assistant',sans-serif;
+  background:radial-gradient(ellipse at 50% -10%,#161616 0%,var(--anthracite) 55%);
+  color:#fff;
+  min-height:100dvh;
+  display:flex;flex-direction:column;align-items:center;
+  padding:100px 20px 60px;
+  text-align:center;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+.logo{position:fixed;top:16px;right:16px;height:40px;z-index:10;}
+
+.wrap{max-width:720px;width:100%;position:relative;z-index:1;}
+
+.badge{
+  display:inline-block;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold-l);border:1px solid rgba(201,168,76,.35);border-radius:999px;
+  padding:7px 18px;background:rgba(201,168,76,.06);margin-bottom:22px;
+}
+
+h1{font-size:clamp(28px,5.5vw,42px);font-weight:800;letter-spacing:-.02em;line-height:1.2;margin-bottom:12px;}
+
+.subtitle{font-size:clamp(15px,1.8vw,18px);color:var(--muted-light);margin-bottom:32px;line-height:1.7;}
+
+.video-wrap{max-width:720px;margin:0 auto 36px;border-radius:20px;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.09);}
+.video-frame{position:relative;aspect-ratio:16/9;background:#000;}
+.video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+
+.cta-btn{
+  display:inline-block;background:linear-gradient(120deg,var(--gold) 0%,var(--gold-l) 100%);color:var(--anthracite);
+  font-size:clamp(16px,1.9vw,18px);font-weight:800;padding:19px 42px;border-radius:100px;
+  box-shadow:0 0 50px 15px rgba(201,168,76,.28),inset 0 1px 0 rgba(255,255,255,.35);
+  transition:transform var(--ease),box-shadow var(--ease);margin-bottom:14px;cursor:pointer;
+}
+.cta-btn:hover{transform:translateY(-3px) scale(1.015);box-shadow:0 0 60px 18px rgba(201,168,76,.42);}
+.cta-sub{font-size:13px;color:var(--muted-light);margin-bottom:48px;}
+
+.whoami-photo{width:88px;height:88px;border-radius:50%;overflow:hidden;border:3px solid var(--gold);margin:0 auto 14px;}
+.whoami-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+.whoami-name{font-size:15px;font-weight:700;color:#fff;margin-bottom:4px;}
+.whoami-role{font-size:13px;color:var(--gold-l);}
+
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold-l);outline-offset:3px;border-radius:8px;}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important;}}
+</style>
+</head>
+<body>
+
+<img class="logo" src="/logo.png" alt="שחר לוי" />
+
+<div class="wrap">
+  <span class="badge">ההדרכה שלך מוכנה</span>
+  <h1>איך לבנות תיק השקעות פסיבי</h1>
+  <p class="subtitle">15 דקות. תפסו כוס קפה, ותעקבו אחריי שלב אחר שלב.</p>
+
+  <div class="video-wrap">
+    <div class="video-frame">
+      <iframe id="vsl-player"
+        src="https://player.mediadelivery.net/embed/680034/d4a6ae59-f54b-4379-a6bd-2f31473781df?autoplay=false"
+        loading="lazy"
+        allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+        allowfullscreen title="ההדרכה - איך לבנות תיק השקעות פסיבי"></iframe>
+    </div>
+  </div>
+
+  <!--
+    CTA target: currently points to a placeholder WhatsApp number.
+    Replace 972500000000 with the real number before this page goes live.
+  -->
+  <a class="cta-btn" id="cta-btn" href="https://wa.me/972500000000?text=ראיתי%20את%20ההדרכה%20ורוצה%20לדעת%20עוד" target="_blank" rel="noopener">רוצה לדעת איך זה עובד אצלי - לחצו כאן</a>
+  <p class="cta-sub">אענה לכל הודעה אישית</p>
+
+  <div class="whoami-photo"><img src="/shahar_headshot.png" alt="שחר לוי" /></div>
+  <div class="whoami-name">שחר לוי</div>
+  <div class="whoami-role">ליווי פיננסי לאנשי קבע</div>
+</div>
+
+<script src="https://assets.mediadelivery.net/playerjs/playerjs-latest.min.js"></script>
+<script>
+(function(){
+  function safeFbq(){ if (typeof window.fbq === 'function') { try { window.fbq.apply(window, arguments); } catch(e){} } }
+  var milestonesFired = {};
+  var iframe = document.getElementById('vsl-player');
+  if (iframe && window.playerjs) {
+    var player = new playerjs.Player(iframe);
+    player.on('ready', function(){
+      player.on('timeupdate', function(data){
+        if (!data || !data.duration) return;
+        var pct = (data.seconds / data.duration) * 100;
+        [25,50,75,95].forEach(function(m){
+          if (pct >= m && !milestonesFired[m]) {
+            milestonesFired[m] = true;
+            safeFbq('trackCustom', 'VideoProgress' + m, { content_name: 'video-thank-you' });
+          }
+        });
+      });
+      player.on('ended', function(){
+        safeFbq('trackCustom', 'VideoWatchedFull', { content_name: 'video-thank-you' });
+      });
+    });
+  }
+  var ctaBtn = document.getElementById('cta-btn');
+  if (ctaBtn) {
+    ctaBtn.addEventListener('click', function(){
+      safeFbq('trackCustom', 'CTA_VideoToContact');
+    });
+  }
+})();
+</script>
+</body>
+</html>
