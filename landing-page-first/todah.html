@@ -16,7 +16,12 @@
     document,'script','https://connect.facebook.net/en_US/fbevents.js');
     fbq('init','3199947373426233');
     fbq('track','PageView');
-    fbq('track','Lead');
+    var __dealId = new URLSearchParams(window.location.search).get('internaldealNumber');
+    if (__dealId) {
+      fbq('track','Purchase', { value: 497, currency: 'ILS' });
+    } else {
+      fbq('track','Lead');
+    }
   </script>
   <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=3199947373426233&ev=Lead&noscript=1"/></noscript>
@@ -364,6 +369,19 @@
     }
     .popup-no:hover { color: var(--dark); }
 
+    .guidance-error {
+      display: none;
+      margin-top: 14px;
+      padding: 13px 16px;
+      border-radius: 12px;
+      background: #fdeeee;
+      border: 1px solid rgba(200, 60, 60, .25);
+      color: #a33;
+      font-size: 14px;
+      text-align: center;
+    }
+    .guidance-error.visible { display: block; }
+
   </style>
 </head>
 
@@ -438,6 +456,7 @@
         </div>
         <input type="text" class="other-input" id="other-input" placeholder="ספרו לי במילים שלכם..." />
         <button type="submit" class="btn btn-gold">שלח</button>
+        <p class="guidance-error" id="guidance-error-inline">משהו השתבש בשליחה. נסו שוב, או שלחו לי הודעה בווטסאפ ואטפל בזה ידנית.</p>
       </form>
     </div>
 
@@ -457,6 +476,7 @@
           <button type="button" class="btn btn-gold" id="popup-yes">כן, מעניין אותי</button>
           <button type="button" class="popup-no" id="popup-no">לא תודה</button>
         </div>
+        <p class="guidance-error" id="guidance-error-popup">משהו השתבש בשליחה. נסו שוב, או שלחו לי הודעה בווטסאפ ואטפל בזה ידנית.</p>
       </div>
     </div>
   </div>
@@ -488,12 +508,20 @@
           try { window.fbq('trackCustom', 'JoinTogetherReason', { reason: reason }); } catch (err) { }
         }
 
+        var errorEl = document.getElementById('guidance-error-inline');
+        errorEl.classList.remove('visible');
+
         fetch('/api/personal-guidance', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ dealId: dealId, reason: reason })
-        }).catch(function (err) { console.error('personal-guidance submit failed', err); })
-          .finally(function () { window.location.href = '/liuy-confirmation/'; });
+        }).then(function (res) {
+          if (!res.ok) throw new Error('personal-guidance responded with ' + res.status);
+          window.location.href = '/liuy-confirmation/';
+        }).catch(function (err) {
+          console.error('personal-guidance submit failed', err);
+          errorEl.classList.add('visible');
+        });
       });
 
       var popup = document.getElementById('guidance-popup');
@@ -517,12 +545,20 @@
           try { window.fbq('trackCustom', 'JoinTogetherReason', { reason: 'פופאפ - מעוניין בליווי אישי' }); } catch (err) { }
         }
 
+        var popupErrorEl = document.getElementById('guidance-error-popup');
+        popupErrorEl.classList.remove('visible');
+
         fetch('/api/personal-guidance', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ dealId: dealId, reason: 'מעוניין בליווי אישי' })
-        }).catch(function (err) { console.error('personal-guidance submit failed', err); })
-          .finally(function () { window.location.href = '/liuy-confirmation/'; });
+        }).then(function (res) {
+          if (!res.ok) throw new Error('personal-guidance responded with ' + res.status);
+          window.location.href = '/liuy-confirmation/';
+        }).catch(function (err) {
+          console.error('personal-guidance submit failed', err);
+          popupErrorEl.classList.add('visible');
+        });
       });
     })();
   </script>
