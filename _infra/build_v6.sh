@@ -36,7 +36,7 @@ mkdir -p _infra/dist/my-app/ribit-derebit
 cp my-app/ribit-derebit/index.html _infra/dist/my-app/ribit-derebit/index.html
 
 # Course funnel - free guide squeeze page + video delivery page
-mkdir -p "_infra/dist/הדרכה" && cp funnel-hadracha/optin-v2.html "_infra/dist/הדרכה/index.html"
+mkdir -p _infra/dist/guide && cp funnel-hadracha/optin-v2.html _infra/dist/guide/index.html
 mkdir -p _infra/dist/video && cp funnel-hadracha/video-v2.html _infra/dist/video/index.html
 
 # Course sales page (course-landing variants) - v8 is primary
