@@ -37,5 +37,9 @@ cp my-app/ribit-derebit/index.html _infra/dist/my-app/ribit-derebit/index.html
 # Optin / campaign page
 mkdir -p _infra/dist/go && cp optin/optin.html _infra/dist/go/index.html
 
+# Course funnel - free guide squeeze page + video delivery page
+mkdir -p "_infra/dist/הדרכה" && cp funnel-hadracha/optin-v2.html "_infra/dist/הדרכה/index.html"
+mkdir -p _infra/dist/video && cp funnel-hadracha/video-v2.html _infra/dist/video/index.html
+
 echo "build-ok-$(date +%s)" > _infra/dist/buildinfo.txt
 echo "=== BUILD COMPLETE ===" && ls _infra/dist/
