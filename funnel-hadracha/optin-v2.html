@@ -131,6 +131,23 @@ nav img{height:38px;}
 footer{background:var(--anthracite);padding:36px 24px;text-align:center;color:var(--muted-light);}
 footer img{height:32px;margin:0 auto 12px;}
 footer p{font-size:13px;margin-bottom:0;}
+.footer-links{display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
+.footer-links a,.footer-cookie-btn{font-size:13px;color:var(--muted-light);text-decoration:none;background:none;border:none;cursor:pointer;padding:0;font-family:inherit;transition:color var(--ease);}
+.footer-links a:hover,.footer-cookie-btn:hover{color:var(--gold);}
+.footer-sep{color:var(--muted-light);font-size:11px;opacity:.35;user-select:none;}
+
+/* COOKIE BANNER */
+.cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:900;background:rgba(20,20,20,.97);border-top:1px solid rgba(255,255,255,.1);backdrop-filter:blur(14px);box-shadow:0 -8px 36px rgba(0,0,0,.45);transform:translateY(100%);transition:transform .32s cubic-bezier(.4,0,.2,1);}
+.cookie-banner.visible{transform:translateY(0);}
+.cookie-inner{max-width:900px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.cookie-text{font-size:14px;color:var(--muted-light);flex:1;min-width:200px;line-height:1.6;}
+.cookie-text a{color:var(--gold-l);text-decoration:underline;text-underline-offset:3px;}
+.cookie-btns{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.cookie-btn-accept{background:var(--gold);color:var(--anthracite);font-weight:700;font-size:14px;padding:9px 20px;border-radius:8px;border:none;cursor:pointer;transition:background var(--ease),transform var(--ease);}
+.cookie-btn-accept:hover{background:var(--gold-l);transform:translateY(-1px);}
+.cookie-btn-reject{background:none;border:1px solid rgba(255,255,255,.2);color:var(--muted-light);font-size:14px;font-weight:600;padding:9px 18px;border-radius:8px;cursor:pointer;transition:border-color var(--ease),color var(--ease);}
+.cookie-btn-reject:hover{border-color:#fff;color:#fff;}
+@media (max-width:768px){.cookie-inner{flex-direction:column;align-items:flex-start;}.cookie-btns{width:100%;}}
 </style>
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -233,8 +250,30 @@ fbq('track', 'PageView');
 
 <footer>
   <img src="/logo.png" alt="שחר לוי" />
+  <nav class="footer-links" aria-label="קישורי מדיניות">
+    <a href="/privacy-policy.html">מדיניות פרטיות</a>
+    <span class="footer-sep" aria-hidden="true">|</span>
+    <a href="/terms.html">תנאי שימוש</a>
+    <span class="footer-sep" aria-hidden="true">|</span>
+    <a href="/accessibility.html">הצהרת נגישות</a>
+    <span class="footer-sep" aria-hidden="true">|</span>
+    <button class="footer-cookie-btn" onclick="openCookieBanner()" type="button">הגדרות עוגיות</button>
+  </nav>
   <p>© שחר לוי · השקעות ללוחמים</p>
 </footer>
+
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-modal="true" aria-label="הגדרות עוגיות">
+  <div class="cookie-inner">
+    <p class="cookie-text">
+      אתר זה משתמש בעוגיות כדי לשפר את חוויית הגלישה שלכם.
+      <a href="/privacy-policy.html">מדיניות עוגיות מלאה</a>
+    </p>
+    <div class="cookie-btns">
+      <button class="cookie-btn-accept" onclick="acceptCookies()" type="button">אישור הכל</button>
+      <button class="cookie-btn-reject" onclick="rejectCookies()" type="button">דחייה</button>
+    </div>
+  </div>
+</div>
 
 <script>
 function isValidEmail(v) {
@@ -319,6 +358,35 @@ var observer = new IntersectionObserver(function(entries){
   entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); });
 }, {threshold:.12});
 document.querySelectorAll('.animate').forEach(function(el){ observer.observe(el); });
+
+// Cookie banner
+var cookieBanner = document.getElementById('cookieBanner');
+
+function openCookieBanner() {
+  cookieBanner.classList.add('visible');
+}
+
+function closeCookieBanner() {
+  cookieBanner.classList.remove('visible');
+}
+
+function acceptCookies() {
+  localStorage.setItem('cookies', 'accepted');
+  closeCookieBanner();
+}
+
+function rejectCookies() {
+  localStorage.setItem('cookies', 'rejected');
+  closeCookieBanner();
+}
+
+if (!localStorage.getItem('cookies')) {
+  openCookieBanner();
+}
+
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape' && cookieBanner.classList.contains('visible')) closeCookieBanner();
+});
 </script>
 </body>
 </html>
