@@ -895,18 +895,19 @@
       margin-bottom: 0;
     }
 
-    /* PROOF TICKER - outlined-text marquee, same mechanism as pelegdror.com */
+    /* PROOF TICKER - real testimonial screenshots in an endless film-strip, framed like pelegdror.com's ticker */
     .proof-ticker {
       overflow: hidden;
       border-top: 1px solid rgba(247, 245, 240, .12);
       border-bottom: 1px solid rgba(247, 245, 240, .12);
-      padding: 22px 0;
+      padding: 28px 0;
     }
 
     .proof-ticker-track {
       display: flex;
+      gap: 16px;
       width: max-content;
-      animation: proof-ticker-scroll 34s linear infinite;
+      animation: proof-ticker-scroll 100s linear infinite;
     }
 
     .proof-ticker:hover .proof-ticker-track {
@@ -919,22 +920,37 @@
 
     .proof-ticker-set {
       display: flex;
+      gap: 16px;
+    }
+
+    .proof-item {
+      flex: 0 0 auto;
+      width: 260px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 10px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, .3);
+      display: flex;
       align-items: center;
-      white-space: nowrap;
     }
 
-    .proof-ticker-set span {
-      font-size: clamp(28px, 4.2vw, 56px);
-      font-weight: 700;
-      color: transparent;
-      -webkit-text-stroke: 1.3px rgba(247, 245, 240, .38);
-      padding: 0 22px;
+    .proof-item img {
+      width: 100%;
+      height: auto;
+      max-height: 230px;
+      object-fit: contain;
+      border-radius: 10px;
+      display: block;
     }
 
-    .proof-ticker-set i {
-      font-style: normal;
-      font-size: clamp(16px, 2vw, 26px);
-      color: var(--gold, #C9A84C);
+    @media (max-width:768px) {
+      .proof-item {
+        width: 200px;
+      }
+
+      .proof-item img {
+        max-height: 180px;
+      }
     }
 
     /* WHY ME */
@@ -1721,22 +1737,48 @@
     <div class="proof-ticker">
       <div class="proof-ticker-track">
         <div class="proof-ticker-set">
-          <span>עשרות אנשי קבע כבר עשו את הצעד</span><i>&#10022;</i>
-          <span>מהתלבטות להשקעה הראשונה</span><i>&#10022;</i>
-          <span>ליווי אישי לאורך כל הדרך</span><i>&#10022;</i>
-          <span>זמינות וסבלנות לכל שאלה</span><i>&#10022;</i>
-          <span>מפחד לביטחון מלא</span><i>&#10022;</i>
-          <span>בלי רקע בשוק ההון</span><i>&#10022;</i>
-          <span>תמיכה אמיתית, לא עוד קורס</span><i>&#10022;</i>
+          <div class="proof-item"><img src="/testimonials/wts-3.jpg" alt="עדות: התגברות על הפחד מהצעד הראשון בהשקעות" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-2.jpg" alt="עדות: התגברות על דחיינות והתחלת ההשקעה" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-10.jpg" alt="עדות: ליווי אישי ופרקטי בכניסה להשקעות" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-1.jpg" alt="עדות: זמינות וסבלנות לשאלות לאורך התהליך" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-9.jpg" alt="עדות: תהליך מלא מהחלטה ועד ביצוע ההשקעה הראשונה" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-4.jpg" alt="עדות לקוח" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-5.jpg" alt="עדות לקוח" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-6.jpg" alt="עדות לקוח" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-7.jpg" alt="עדות לקוח" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-8.jpg" alt="עדות: תהליך עמוק ומשמעותי של לקוחה" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-6.jpg" alt="" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-9.jpg" alt="" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-2.jpg" alt="" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-5.jpg" alt="" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-8.jpg" alt="" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-1.jpg" alt="" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-7.jpg" alt="" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-10.jpg" alt="" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-3.jpg" alt="" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-4.jpg" alt="" /></div>
         </div>
         <div class="proof-ticker-set" aria-hidden="true">
-          <span>עשרות אנשי קבע כבר עשו את הצעד</span><i>&#10022;</i>
-          <span>מהתלבטות להשקעה הראשונה</span><i>&#10022;</i>
-          <span>ליווי אישי לאורך כל הדרך</span><i>&#10022;</i>
-          <span>זמינות וסבלנות לכל שאלה</span><i>&#10022;</i>
-          <span>מפחד לביטחון מלא</span><i>&#10022;</i>
-          <span>בלי רקע בשוק ההון</span><i>&#10022;</i>
-          <span>תמיכה אמיתית, לא עוד קורס</span><i>&#10022;</i>
+          <div class="proof-item"><img src="/testimonials/wts-3.jpg" alt="" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-2.jpg" alt="" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-10.jpg" alt="" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-1.jpg" alt="" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-9.jpg" alt="" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-4.jpg" alt="" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-5.jpg" alt="" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-6.jpg" alt="" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-7.jpg" alt="" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-8.jpg" alt="" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-6.jpg" alt="" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-9.jpg" alt="" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-2.jpg" alt="" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-5.jpg" alt="" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-8.jpg" alt="" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-1.jpg" alt="" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-7.jpg" alt="" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-10.jpg" alt="" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-3.jpg" alt="" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-4.jpg" alt="" /></div>
         </div>
       </div>
     </div>
