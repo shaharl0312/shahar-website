@@ -498,11 +498,7 @@
       }
 
       .proof-track {
-        animation-duration: 54s !important;
-      }
-
-      .proof-track.reverse {
-        animation-duration: 62s !important;
+        animation-duration: 70s !important;
       }
     }
 
@@ -899,13 +895,10 @@
       margin-bottom: 0;
     }
 
-    /* PROOF - endless auto-scrolling marquee wall, two rows moving in opposite directions */
+    /* PROOF - single-row endless film-strip marquee, like a scrolling ticker */
     .proof-marquee {
       overflow: hidden;
       margin: 36px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
       -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
       mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
     }
@@ -914,12 +907,7 @@
       display: flex;
       gap: 16px;
       width: max-content;
-      animation: proof-scroll 54s linear infinite;
-    }
-
-    .proof-track.reverse {
-      animation-direction: reverse;
-      animation-duration: 62s;
+      animation: proof-scroll 70s linear infinite;
     }
 
     .proof-marquee:hover .proof-track {
@@ -1740,18 +1728,16 @@
         אלא כי סוף סוף הייתה להם דרך ברורה לפעול.</p>
       <div class="proof-marquee">
         <div class="proof-track">
-          <div class="proof-item"><img src="/testimonials/wts-3.jpg" alt="עדות: התגברות על הפחד מהצעד הראשון בהשקעות"
-              /></div>
-          <div class="proof-item"><img src="/testimonials/wts-2.jpg" alt="עדות: התגברות על דחיינות והתחלת ההשקעה"
-              /></div>
-          <div class="proof-item"><img src="/testimonials/wts-10.jpg" alt="עדות: ליווי אישי ופרקטי בכניסה להשקעות"
-              /></div>
-          <div class="proof-item"><img src="/testimonials/wts-1.jpg" alt="עדות: זמינות וסבלנות לשאלות לאורך התהליך"
-              /></div>
-          <div class="proof-item"><img src="/testimonials/wts-9.jpg"
-              alt="עדות: תהליך מלא מהחלטה ועד ביצוע ההשקעה הראשונה" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-3.jpg" alt="עדות: התגברות על הפחד מהצעד הראשון בהשקעות" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-2.jpg" alt="עדות: התגברות על דחיינות והתחלת ההשקעה" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-10.jpg" alt="עדות: ליווי אישי ופרקטי בכניסה להשקעות" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-1.jpg" alt="עדות: זמינות וסבלנות לשאלות לאורך התהליך" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-9.jpg" alt="עדות: תהליך מלא מהחלטה ועד ביצוע ההשקעה הראשונה" /></div>
           <div class="proof-item"><img src="/testimonials/wts-4.jpg" alt="עדות לקוח" /></div>
           <div class="proof-item"><img src="/testimonials/wts-5.jpg" alt="עדות לקוח" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-6.jpg" alt="עדות לקוח" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-7.jpg" alt="עדות לקוח" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-8.jpg" alt="עדות: תהליך עמוק ומשמעותי של לקוחה" /></div>
           <!-- duplicate set for seamless loop -->
           <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-3.jpg" alt="" /></div>
           <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-2.jpg" alt="" /></div>
@@ -1760,28 +1746,9 @@
           <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-9.jpg" alt="" /></div>
           <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-4.jpg" alt="" /></div>
           <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-5.jpg" alt="" /></div>
-        </div>
-        <div class="proof-track reverse">
-          <div class="proof-item"><img src="/testimonials/wts-6.jpg" alt="עדות לקוח" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-7.jpg" alt="עדות לקוח" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-8.jpg" alt="עדות: תהליך עמוק ומשמעותי של לקוחה"
-              /></div>
-          <div class="proof-item"><img src="/testimonials/wts-10.jpg" alt="עדות: ליווי אישי ופרקטי בכניסה להשקעות"
-              /></div>
-          <div class="proof-item"><img src="/testimonials/wts-2.jpg" alt="עדות: התגברות על דחיינות והתחלת ההשקעה"
-              /></div>
-          <div class="proof-item"><img src="/testimonials/wts-3.jpg" alt="עדות: התגברות על הפחד מהצעד הראשון בהשקעות"
-              /></div>
-          <div class="proof-item"><img src="/testimonials/wts-1.jpg" alt="עדות: זמינות וסבלנות לשאלות לאורך התהליך"
-              /></div>
-          <!-- duplicate set for seamless loop -->
           <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-6.jpg" alt="" /></div>
           <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-7.jpg" alt="" /></div>
           <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-8.jpg" alt="" /></div>
-          <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-10.jpg" alt="" /></div>
-          <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-2.jpg" alt="" /></div>
-          <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-3.jpg" alt="" /></div>
-          <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-1.jpg" alt="" /></div>
         </div>
       </div>
       <p style="font-weight:700;">אם הם הצליחו להתחיל מאפס, אין שום סיבה שגם אתם לא.</p>
