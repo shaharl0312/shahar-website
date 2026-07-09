@@ -404,8 +404,9 @@
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         var selected = form.querySelector('input[name="reason"]:checked');
-        if (!selected) return;
-        var reason = selected.value === 'אחר' && otherInput.value.trim() ? otherInput.value.trim() : selected.value;
+        var reason = selected && selected.value === 'אחר' && otherInput.value.trim()
+          ? otherInput.value.trim()
+          : (selected ? selected.value : null);
 
         if (typeof window.fbq === 'function') {
           try { window.fbq('trackCustom', 'JoinTogetherReason', { reason: reason }); } catch (err) { }
