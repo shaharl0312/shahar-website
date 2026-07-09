@@ -236,9 +236,6 @@ fbq('track', 'PageView');
 </footer>
 
 <script>
-var SB_URL  = 'https://hbpapywofrvbcalrwwhq.supabase.co';
-var SB_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhicGFweXdvZnJ2YmNhbHJ3d2hxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwODUwOTUsImV4cCI6MjA5NTY2MTA5NX0.aIvUbNrDTNKeuU4vdIUmBYIitl9t1IbTJo4Ajsz7p2I';
-
 function isValidEmail(v) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 }
@@ -297,15 +294,10 @@ async function submitLead() {
   btn.textContent = 'שולח...';
 
   try {
-    var res = await fetch(SB_URL + '/rest/v1/leads', {
+    var res = await fetch('/api/ravmesser-lead', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'apikey': SB_ANON,
-        'Authorization': 'Bearer ' + SB_ANON,
-        'Prefer': 'return=minimal'
-      },
-      body: JSON.stringify({ full_name: name, email: email, phone: phone })
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, email: email, phone: phone })
     });
     if (res.ok) {
       if (typeof fbq === 'function') { fbq('track', 'Lead', { content_name: 'optin-v2' }); }
