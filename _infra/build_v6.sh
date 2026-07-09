@@ -43,6 +43,7 @@ mkdir -p _infra/dist/video && cp funnel-hadracha/video-v2.html _infra/dist/video
 
 # Course sales page (course-landing variants)
 mkdir -p _infra/dist/course && cp course-landing/v7-yahav-design.html _infra/dist/course/index.html
+mkdir -p _infra/dist/course-v8 && cp course-landing/v8-yahav-design.html _infra/dist/course-v8/index.html
 
 # Hadracha guide opt-in
 mkdir -p _infra/dist/guide-v3 && cp funnel-hadracha/hadracha-guide-v3.html _infra/dist/guide-v3/index.html
