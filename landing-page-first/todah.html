@@ -277,14 +277,6 @@
     }
     .other-input.visible { display: block; }
 
-    .qualify-confirm {
-      display: none;
-      text-align: center;
-      padding: 10px 0 4px;
-    }
-    .qualify-confirm.visible { display: block; }
-    .qualify-confirm p { color: var(--dark); font-weight: 700; font-size: 15px; margin-bottom: 0; }
-
     /* SIGNATURE */
     .closing {
       margin-top: 48px;
@@ -298,6 +290,79 @@
       font-weight: 700;
       color: var(--dark);
     }
+
+    /* GUIDANCE POPUP */
+    .popup-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .25s ease;
+    }
+    .popup-overlay.visible { opacity: 1; pointer-events: auto; }
+
+    .popup-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 32px 26px;
+      max-width: 380px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      transform: translateY(12px) scale(.97);
+      transition: transform .25s ease;
+    }
+    .popup-overlay.visible .popup-card { transform: translateY(0) scale(1); }
+
+    .popup-close {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: none;
+      border: none;
+      font-size: 18px;
+      color: #999;
+      cursor: pointer;
+      line-height: 1;
+      padding: 4px;
+    }
+    .popup-close:hover { color: var(--dark); }
+
+    .popup-card h3 {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+
+    .popup-card p {
+      font-size: 15px;
+      color: #555;
+      margin-bottom: 22px;
+    }
+
+    .popup-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .popup-no {
+      background: none;
+      border: none;
+      color: #999;
+      font-size: 14px;
+      font-family: inherit;
+      cursor: pointer;
+      padding: 6px;
+    }
+    .popup-no:hover { color: var(--dark); }
 
   </style>
 </head>
@@ -374,14 +439,25 @@
         <input type="text" class="other-input" id="other-input" placeholder="ספרו לי במילים שלכם..." />
         <button type="submit" class="btn btn-gold">שלח</button>
       </form>
-      <div class="qualify-confirm" id="qualify-confirm">
-        <p>תודה! קיבלתי את התשובה שלך - אחזור אליך בקרוב לשיחה קצרה.</p>
-      </div>
     </div>
 
     <div class="closing">
       <p>מאחל לכם המון הצלחה.</p>
       <p class="signature">נתראה בתוך התוכנית,<br>שחר</p>
+    </div>
+  </div>
+
+  <div class="popup-overlay" id="guidance-popup">
+    <div class="popup-card">
+      <button type="button" class="popup-close" id="popup-close" aria-label="סגור">✕</button>
+      <div id="popup-ask">
+        <h3>רוצים שנעבור את הדרך יחד?</h3>
+        <p>אני פותח מספר מצומצם של מקומות בכל חודש לליווי אישי. מעניין אתכם שאחזור אליכם לשיחה קצרה?</p>
+        <div class="popup-actions">
+          <button type="button" class="btn btn-gold" id="popup-yes">כן, מעניין אותי</button>
+          <button type="button" class="popup-no" id="popup-no">לא תודה</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -416,10 +492,37 @@
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ dealId: dealId, reason: reason })
-        }).catch(function (err) { console.error('personal-guidance submit failed', err); });
+        }).catch(function (err) { console.error('personal-guidance submit failed', err); })
+          .finally(function () { window.location.href = '/liuy-confirmation/'; });
+      });
 
-        form.style.display = 'none';
-        document.getElementById('qualify-confirm').classList.add('visible');
+      var popup = document.getElementById('guidance-popup');
+      var popupTimer = setTimeout(function () {
+        popup.classList.add('visible');
+      }, 4000);
+
+      function closePopup() {
+        clearTimeout(popupTimer);
+        popup.classList.remove('visible');
+      }
+
+      document.getElementById('popup-close').addEventListener('click', closePopup);
+      document.getElementById('popup-no').addEventListener('click', closePopup);
+      popup.addEventListener('click', function (e) {
+        if (e.target === popup) closePopup();
+      });
+
+      document.getElementById('popup-yes').addEventListener('click', function () {
+        if (typeof window.fbq === 'function') {
+          try { window.fbq('trackCustom', 'JoinTogetherReason', { reason: 'פופאפ - מעוניין בליווי אישי' }); } catch (err) { }
+        }
+
+        fetch('/api/personal-guidance', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ dealId: dealId, reason: 'מעוניין בליווי אישי' })
+        }).catch(function (err) { console.error('personal-guidance submit failed', err); })
+          .finally(function () { window.location.href = '/liuy-confirmation/'; });
       });
     })();
   </script>

@@ -8,6 +8,7 @@ cp -r landing-page-first/. _infra/dist/
 rm -rf _infra/dist/_archive
 cp landing-page-first/index.html _infra/dist/index.html
 mkdir -p _infra/dist/todah && cp landing-page-first/todah.html _infra/dist/todah/index.html
+mkdir -p _infra/dist/liuy-confirmation && cp landing-page-first/liuy-confirmation.html _infra/dist/liuy-confirmation/index.html
 
 # ETF app — exclude _archive
 mkdir -p _infra/dist/etf-app
