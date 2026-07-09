@@ -53,5 +53,8 @@ mkdir -p _infra/dist/guide-v3 && cp funnel-hadracha/hadracha-guide-v3.html _infr
 # Erosion calculator (checking-account inflation quiz)
 mkdir -p _infra/dist/erosion-calculator && cp erosion-calculator/index.html _infra/dist/erosion-calculator/index.html
 
+# Bank money guide (why banks want your cash to stay with them)
+mkdir -p _infra/dist/bank-money && cp funnel-hadracha/bank-money-guide.html _infra/dist/bank-money/index.html
+
 echo "build-ok-$(date +%s)" > _infra/dist/buildinfo.txt
 echo "=== BUILD COMPLETE ===" && ls _infra/dist/
