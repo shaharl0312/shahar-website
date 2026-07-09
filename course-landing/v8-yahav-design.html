@@ -502,6 +502,23 @@
       }
     }
 
+    .skip-to-checkout {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 18px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gold);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      opacity: .85;
+    }
+
+    .skip-to-checkout:hover {
+      opacity: 1;
+    }
+
     .cta-note {
       margin-top: 18px;
       font-size: 13px;
@@ -1569,6 +1586,12 @@
         <li>ולמה אתם לא צריכים להיות מומחים גדולים כדי להתחיל</li>
       </ul>
       <p style="margin-top:26px;color:var(--muted-light);">בסיום הסרטון תמצאו מתחתיו את כל הפרטים על התוכנית המלאה.</p>
+      <a href="https://secure.cardcom.solutions/EA/EA5/Vir6Q9LbVEatLxw4sN0dxg/PaymentSP" class="checkout-btn skip-to-checkout">כבר החלטתם? עברו ישר לרכישה
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
+          aria-hidden="true">
+          <path d="M19 12H5M12 19l-7-7 7-7" />
+        </svg>
+      </a>
     </div>
   </section>
 
@@ -1896,8 +1919,8 @@
             <li>30 ימי אחריות</li>
           </ul>
           <div class="cta-ring">
-            <a href="https://secure.cardcom.solutions/EA/EA5/Vir6Q9LbVEatLxw4sN0dxg/PaymentSP" class="btn btn-gold"
-              id="checkout-btn">כן, אני רוצה להתחיל להשקיע</a>
+            <a href="https://secure.cardcom.solutions/EA/EA5/Vir6Q9LbVEatLxw4sN0dxg/PaymentSP"
+              class="btn btn-gold checkout-btn">כן, אני רוצה להתחיל להשקיע</a>
           </div>
           <div class="cashback-text">
             <span class="cashback-tag">בונוס לאנשי קבע</span>
@@ -1944,7 +1967,8 @@
       </div>
       <p style="margin-top:30px;font-weight:700;">ההחלטה מתחילה בלחיצה אחת.</p>
       <div class="cta-ring" style="margin-top:10px;">
-        <a href="#pricing" class="btn btn-gold">כן, אני רוצה להתחיל להשקיע</a>
+        <a href="https://secure.cardcom.solutions/EA/EA5/Vir6Q9LbVEatLxw4sN0dxg/PaymentSP"
+          class="btn btn-gold checkout-btn">כן, אני רוצה להתחיל להשקיע</a>
       </div>
     </div>
   </section>
@@ -2088,7 +2112,8 @@
         מהר, אלא בשביל לבנות לעצמו ולמשפחה שלו עתיד כלכלי בטוח יותר.</p>
       <p class="lead">אם החלטתם שהגיע הזמן לעשות את הצעד הראשון, אשמח ללוות אתכם בדרך.</p>
       <div class="cta-ring">
-        <a href="#pricing" class="btn btn-gold">כן, אני רוצה להתחיל להשקיע</a>
+        <a href="https://secure.cardcom.solutions/EA/EA5/Vir6Q9LbVEatLxw4sN0dxg/PaymentSP"
+          class="btn btn-gold checkout-btn">כן, אני רוצה להתחיל להשקיע</a>
       </div>
       <p class="signature">נתראה בתוך התוכנית<br>שחר</p>
     </div>
@@ -2163,7 +2188,7 @@
       }
       var utmQuery = new URLSearchParams(utm).toString();
       if (utmQuery) {
-        document.querySelectorAll('#checkout-btn').forEach(function (a) {
+        document.querySelectorAll('.checkout-btn').forEach(function (a) {
           var sep = a.getAttribute('href').indexOf('?') > -1 ? '&' : '?';
           a.setAttribute('href', a.getAttribute('href') + sep + utmQuery);
         });
@@ -2237,14 +2262,13 @@
       }, 1000);
 
       /* --- CTA click tracking --- */
-      var checkoutBtn = document.getElementById('checkout-btn');
-      if (checkoutBtn) {
+      document.querySelectorAll('.checkout-btn').forEach(function (checkoutBtn) {
         checkoutBtn.addEventListener('click', function () {
           state.ctaClicked = true;
           safeFbq('track', 'InitiateCheckout');
           reportScore('checkout_click');
         });
-      }
+      });
 
       window.addEventListener('beforeunload', function () { reportScore('page_exit'); });
 
