@@ -502,26 +502,6 @@
       }
     }
 
-    .skip-to-checkout {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 18px;
-      padding: 12px 26px;
-      border: 1.5px solid rgba(201, 168, 76, .55);
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--gold);
-      background: rgba(201, 168, 76, .06);
-      transition: background .2s, border-color .2s;
-    }
-
-    .skip-to-checkout:hover {
-      background: rgba(201, 168, 76, .14);
-      border-color: var(--gold);
-    }
-
     .cta-note {
       margin-top: 18px;
       font-size: 13px;
@@ -1589,12 +1569,10 @@
         <li>ולמה אתם לא צריכים להיות מומחים גדולים כדי להתחיל</li>
       </ul>
       <p style="margin-top:26px;color:var(--muted-light);">בסיום הסרטון תמצאו מתחתיו את כל הפרטים על התוכנית המלאה.</p>
-      <a href="https://secure.cardcom.solutions/EA/EA5/Vir6Q9LbVEatLxw4sN0dxg/PaymentSP" class="checkout-btn skip-to-checkout">כבר החלטתם? עברו ישר לרכישה
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
-          aria-hidden="true">
-          <path d="M19 12H5M12 19l-7-7 7-7" />
-        </svg>
-      </a>
+      <div class="cta-ring" style="margin-top:18px;">
+        <a href="https://secure.cardcom.solutions/EA/EA5/Vir6Q9LbVEatLxw4sN0dxg/PaymentSP"
+          class="btn btn-gold checkout-btn">כבר החלטתם? עברו ישר לרכישה</a>
+      </div>
     </div>
   </section>
 
