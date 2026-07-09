@@ -41,9 +41,10 @@ mkdir -p _infra/dist/go && cp optin/optin.html _infra/dist/go/index.html
 mkdir -p "_infra/dist/הדרכה" && cp funnel-hadracha/optin-v2.html "_infra/dist/הדרכה/index.html"
 mkdir -p _infra/dist/video && cp funnel-hadracha/video-v2.html _infra/dist/video/index.html
 
-# Course sales page (course-landing variants)
-mkdir -p _infra/dist/course && cp course-landing/v7-yahav-design.html _infra/dist/course/index.html
+# Course sales page (course-landing variants) - v8 is primary
+mkdir -p _infra/dist/course && cp course-landing/v8-yahav-design.html _infra/dist/course/index.html
 mkdir -p _infra/dist/course-v8 && cp course-landing/v8-yahav-design.html _infra/dist/course-v8/index.html
+mkdir -p _infra/dist/course-v7 && cp course-landing/v7-yahav-design.html _infra/dist/course-v7/index.html
 
 # Hadracha guide opt-in
 mkdir -p _infra/dist/guide-v3 && cp funnel-hadracha/hadracha-guide-v3.html _infra/dist/guide-v3/index.html
