@@ -148,6 +148,18 @@ footer p{font-size:13px;margin-bottom:0;}
 .cookie-btn-reject{background:none;border:1px solid rgba(255,255,255,.2);color:var(--muted-light);font-size:14px;font-weight:600;padding:9px 18px;border-radius:8px;cursor:pointer;transition:border-color var(--ease),color var(--ease);}
 .cookie-btn-reject:hover{border-color:#fff;color:#fff;}
 @media (max-width:768px){.cookie-inner{flex-direction:column;align-items:flex-start;}.cookie-btns{width:100%;}}
+
+/* EXIT INTENT POPUP */
+.exit-overlay{position:fixed;inset:0;z-index:950;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .25s ease;}
+.exit-overlay.visible{opacity:1;pointer-events:auto;}
+.exit-popup{position:relative;max-width:420px;width:100%;background:var(--anthracite);border:1px solid rgba(201,168,76,.35);border-radius:24px;padding:36px 30px 30px;text-align:right;transform:translateY(16px);transition:transform .25s ease;max-height:90vh;overflow-y:auto;}
+.exit-overlay.visible .exit-popup{transform:translateY(0);}
+.exit-popup-close{position:absolute;top:14px;left:14px;background:none;border:none;color:var(--muted-light);font-size:24px;line-height:1;cursor:pointer;padding:6px;}
+.exit-popup-close:hover{color:#fff;}
+.exit-popup h3{color:#fff;}
+.exit-popup .exit-sub{color:var(--muted-light);font-size:14.5px;margin-bottom:20px;}
+.exit-decline{display:block;width:100%;text-align:center;margin-top:14px;font-size:13px;color:var(--muted-light);text-decoration:underline;text-underline-offset:3px;cursor:pointer;background:none;border:none;font-family:inherit;}
+.exit-decline:hover{color:#fff;}
 </style>
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -273,6 +285,35 @@ fbq('track', 'PageView');
   </div>
 </div>
 
+<div class="exit-overlay" id="exitOverlay">
+  <div class="exit-popup" role="dialog" aria-modal="true" aria-label="השאירו פרטים לפני שאתם עוזבים">
+    <button class="exit-popup-close" onclick="closeExitPopup()" type="button" aria-label="סגור">&times;</button>
+    <h3>רגע לפני שאתם עוזבים...</h3>
+    <p class="exit-sub">אתם ממש קרובים - השאירו פרטים ותקבלו גישה מיידית להדרכה החינמית.</p>
+    <p class="form-err" id="exitErrMsg" role="alert" aria-live="assertive">משהו השתבש - נסו שוב</p>
+    <div class="form-field">
+      <label for="exitName">שם</label>
+      <input type="text" id="exitName" placeholder="שם מלא" autocomplete="name" required aria-required="true"
+        aria-describedby="exitNameErr" />
+      <p class="field-err" id="exitNameErr" role="alert">נא להזין שם מלא</p>
+    </div>
+    <div class="form-field">
+      <label for="exitEmail">מייל</label>
+      <input type="email" id="exitEmail" placeholder="אימייל" autocomplete="email" inputmode="email" required
+        aria-required="true" aria-describedby="exitEmailErr" />
+      <p class="field-err" id="exitEmailErr" role="alert">נא להזין אימייל תקין</p>
+    </div>
+    <div class="form-field">
+      <label for="exitPhone">טלפון</label>
+      <input type="tel" id="exitPhone" placeholder="מספר טלפון" autocomplete="tel" inputmode="tel" required
+        aria-required="true" aria-describedby="exitPhoneErr" />
+      <p class="field-err" id="exitPhoneErr" role="alert">נא להזין מספר טלפון תקין</p>
+    </div>
+    <button type="button" class="btn-submit" id="exitSubmitBtn" onclick="submitExitLead()">כן, שלח לי את ההדרכה</button>
+    <button type="button" class="exit-decline" onclick="closeExitPopup()">לא תודה, אני אשאר בלי</button>
+  </div>
+</div>
+
 <script>
 function isValidEmail(v) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
@@ -284,21 +325,26 @@ var fieldValidators = {
   phone: function (v) { return v.trim().replace(/\D/g, '').length >= 9; }
 };
 
-function validateField(id) {
-  var el = document.getElementById(id);
-  var errEl = document.getElementById(id + 'Err');
-  var ok = fieldValidators[id](el.value);
+function validateInput(key, el, errEl) {
+  var ok = fieldValidators[key](el.value);
   el.style.borderColor = ok ? '' : '#f87171';
   el.setAttribute('aria-invalid', ok ? 'false' : 'true');
   errEl.style.display = ok ? 'none' : 'block';
   return ok;
 }
 
-['name', 'email', 'phone'].forEach(function (id) {
-  var el = document.getElementById(id);
-  el.addEventListener('blur', function () { if (el.value.trim()) validateField(id); });
-});
+function bindValidation(ids) {
+  ['name', 'email', 'phone'].forEach(function (key) {
+    var el = document.getElementById(ids[key]);
+    var errEl = document.getElementById(ids[key] + 'Err');
+    el.addEventListener('blur', function () { if (el.value.trim()) validateInput(key, el, errEl); });
+  });
+}
 
+bindValidation({ name: 'name', email: 'email', phone: 'phone' });
+bindValidation({ name: 'exitName', email: 'exitEmail', phone: 'exitPhone' });
+
+var leadSubmitted = false;
 var formStarted = false;
 ['name', 'email', 'phone'].forEach(function (id) {
   document.getElementById(id).addEventListener('focus', function () {
@@ -309,25 +355,30 @@ var formStarted = false;
   });
 });
 
-async function submitLead() {
-  var btn = document.getElementById('submitBtn');
-  var errMsg = document.getElementById('errMsg');
-  var nameEl = document.getElementById('name');
-  var emailEl = document.getElementById('email');
-  var phoneEl = document.getElementById('phone');
-  var name = nameEl.value.trim();
-  var email = emailEl.value.trim();
-  var phone = phoneEl.value.trim();
+async function submitForm(ids, btn, errMsg, contentName) {
+  var els = {
+    name: document.getElementById(ids.name),
+    email: document.getElementById(ids.email),
+    phone: document.getElementById(ids.phone)
+  };
+  var name = els.name.value.trim();
+  var email = els.email.value.trim();
+  var phone = els.phone.value.trim();
 
   errMsg.style.display = 'none';
 
-  var results = { name: validateField('name'), email: validateField('email'), phone: validateField('phone') };
-  var firstErrorEl = !results.name ? nameEl : !results.email ? emailEl : !results.phone ? phoneEl : null;
+  var results = {
+    name: validateInput('name', els.name, document.getElementById(ids.name + 'Err')),
+    email: validateInput('email', els.email, document.getElementById(ids.email + 'Err')),
+    phone: validateInput('phone', els.phone, document.getElementById(ids.phone + 'Err'))
+  };
+  var firstErrorEl = !results.name ? els.name : !results.email ? els.email : !results.phone ? els.phone : null;
   if (firstErrorEl) {
     firstErrorEl.focus();
     return;
   }
 
+  var originalText = btn.textContent;
   btn.disabled = true;
   btn.textContent = 'שולח...';
 
@@ -338,7 +389,8 @@ async function submitLead() {
       body: JSON.stringify({ name: name, email: email, phone: phone })
     });
     if (res.ok) {
-      if (typeof fbq === 'function') { fbq('track', 'Lead', { content_name: 'optin-v2' }); }
+      leadSubmitted = true;
+      if (typeof fbq === 'function') { fbq('track', 'Lead', { content_name: contentName }); }
       var utmQuery = window.location.search && window.location.search.indexOf('utm_') > -1 ? window.location.search : '';
       var redirectUrl = 'https://shaharfinance.com/video/' + utmQuery;
       setTimeout(function () { window.location.href = redirectUrl; }, 250);
@@ -348,8 +400,26 @@ async function submitLead() {
   } catch (_) {
     errMsg.style.display = 'block';
     btn.disabled = false;
-    btn.textContent = 'שלח לי את ההדרכה';
+    btn.textContent = originalText;
   }
+}
+
+function submitLead() {
+  return submitForm(
+    { name: 'name', email: 'email', phone: 'phone' },
+    document.getElementById('submitBtn'),
+    document.getElementById('errMsg'),
+    'optin-v2'
+  );
+}
+
+function submitExitLead() {
+  return submitForm(
+    { name: 'exitName', email: 'exitEmail', phone: 'exitPhone' },
+    document.getElementById('exitSubmitBtn'),
+    document.getElementById('exitErrMsg'),
+    'optin-v2-exit'
+  );
 }
 
 var observer = new IntersectionObserver(function(entries){
@@ -384,6 +454,52 @@ if (!localStorage.getItem('cookies')) {
 
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape' && cookieBanner.classList.contains('visible')) closeCookieBanner();
+});
+
+// Exit intent popup
+var exitOverlay = document.getElementById('exitOverlay');
+var exitPopupShown = false;
+var pageLoadTime = Date.now();
+var MIN_TIME_ON_PAGE_MS = 4000;
+
+function showExitPopup() {
+  if (exitPopupShown || leadSubmitted) return;
+  if (sessionStorage.getItem('exitPopupShown')) return;
+  if (Date.now() - pageLoadTime < MIN_TIME_ON_PAGE_MS) return;
+
+  exitPopupShown = true;
+  sessionStorage.setItem('exitPopupShown', '1');
+  exitOverlay.classList.add('visible');
+  if (typeof fbq === 'function') { fbq('trackCustom', 'exit_intent_shown', { content_name: 'optin-v2' }); }
+  document.getElementById('exitName').focus();
+}
+
+function closeExitPopup() {
+  exitOverlay.classList.remove('visible');
+}
+
+// Desktop: cursor leaving toward the browser chrome (top of viewport)
+document.addEventListener('mouseout', function (e) {
+  if (!e.relatedTarget && e.clientY < 10) showExitPopup();
+});
+
+// Mobile fallback: no exit intent event exists, so use a fast scroll back
+// toward the top after the visitor has scrolled down, as a "about to leave" signal
+var lastScrollY = window.scrollY;
+var scrolledPastHero = false;
+window.addEventListener('scroll', function () {
+  var currentY = window.scrollY;
+  if (currentY > 400) scrolledPastHero = true;
+  if (scrolledPastHero && currentY < 150 && lastScrollY - currentY > 40) showExitPopup();
+  lastScrollY = currentY;
+}, { passive: true });
+
+exitOverlay.addEventListener('click', function (e) {
+  if (e.target === exitOverlay) closeExitPopup();
+});
+
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape' && exitOverlay.classList.contains('visible')) closeExitPopup();
 });
 </script>
 </body>
