@@ -30,7 +30,9 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&display=swap" />
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+<noscript><link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet" /></noscript>
 <style>
 :root{
   --gold:#C9A84C;
@@ -241,7 +243,7 @@ fbq('track', 'PageView');
   <div class="glow glow-a"></div><div class="grid-overlay"></div>
   <div class="narrow animate">
     <div class="whoami">
-      <div class="whoami-photo"><img src="/shahar_headshot.png" alt="שחר לוי" /></div>
+      <div class="whoami-photo"><img src="/shahar_headshot.png" alt="שחר לוי" loading="lazy" /></div>
       <div>
         <div class="whoami-name">שחר לוי</div>
         <div class="whoami-role">קצין לוחם בקבע לשעבר</div>
