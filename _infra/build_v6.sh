@@ -36,7 +36,7 @@ mkdir -p _infra/dist/my-app/ribit-derebit
 cp my-app/ribit-derebit/index.html _infra/dist/my-app/ribit-derebit/index.html
 
 # Course funnel - free guide squeeze page + video delivery page
-mkdir -p "_infra/dist/הדרכה" && cp funnel-hadracha/optin-v2.html "_infra/dist/הדרכה/index.html"
+mkdir -p _infra/dist/guide && cp funnel-hadracha/optin-v2.html _infra/dist/guide/index.html
 mkdir -p _infra/dist/video && cp funnel-hadracha/video-v2.html _infra/dist/video/index.html
 
 # Course sales page (course-landing variants) - v8 is primary
@@ -52,6 +52,9 @@ mkdir -p _infra/dist/erosion-calculator && cp erosion-calculator/index.html _inf
 
 # Bank money guide (why banks want your cash to stay with them)
 mkdir -p _infra/dist/bank-money && cp funnel-hadracha/bank-money-guide.html _infra/dist/bank-money/index.html
+
+# Funnel health-check dashboard
+mkdir -p _infra/dist/health-check && cp health-check/index.html health-check/data.json _infra/dist/health-check/
 
 echo "build-ok-$(date +%s)" > _infra/dist/buildinfo.txt
 echo "=== BUILD COMPLETE ===" && ls _infra/dist/

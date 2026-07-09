@@ -1,0 +1,48 @@
+{
+  "checkedAt": "2026-07-09T14:37:56.892Z",
+  "overallStatus": "ok",
+  "checks": [
+    {
+      "name": "דף קורס (v8)",
+      "url": "https://shaharfinance.com/course/",
+      "pass": true,
+      "httpStatus": 200,
+      "details": "עולה תקין ופיקסל נמצא"
+    },
+    {
+      "name": "דף קורס ישן (v7)",
+      "url": "https://shaharfinance.com/course-v7/",
+      "pass": true,
+      "httpStatus": 200,
+      "details": "עולה תקין ופיקסל נמצא"
+    },
+    {
+      "name": "דף תודה",
+      "url": "https://shaharfinance.com/todah/",
+      "pass": true,
+      "httpStatus": 200,
+      "details": "עולה תקין ופיקסל נמצא"
+    },
+    {
+      "name": "אישור ליווי",
+      "url": "https://shaharfinance.com/liuy-confirmation/",
+      "pass": true,
+      "httpStatus": 200,
+      "details": "עולה תקין ופיקסל נמצא"
+    },
+    {
+      "name": "API ליווי אישי (personal-guidance)",
+      "url": "https://shaharfinance.com/api/personal-guidance",
+      "pass": true,
+      "httpStatus": 400,
+      "details": "ה-endpoint מגיב כצפוי"
+    },
+    {
+      "name": "API ליד מדריך חינם (ravmesser-lead)",
+      "url": "https://shaharfinance.com/api/ravmesser-lead",
+      "pass": true,
+      "httpStatus": 400,
+      "details": "ה-endpoint מגיב כצפוי"
+    }
+  ]
+}
