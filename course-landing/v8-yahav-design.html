@@ -1507,6 +1507,404 @@
       color: rgba(255, 255, 255, .25);
     }
 
+    .footer-cookie-btn {
+      background: none;
+      border: none;
+      color: var(--muted-light);
+      font-family: inherit;
+      font-size: inherit;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color .2s;
+    }
+
+    .footer-cookie-btn:hover {
+      color: var(--gold-l);
+    }
+
+    /* COOKIE BANNER */
+    .cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9998;
+      background: rgba(45, 45, 45, .97);
+      border-top: 1px solid rgba(247, 245, 240, .12);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 -8px 36px rgba(0, 0, 0, .35);
+      transform: translateY(100%);
+      transition: transform .32s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    .cookie-banner.visible {
+      transform: translateY(0);
+    }
+
+    .cookie-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .cookie-text {
+      font-size: 14px;
+      color: var(--muted-light);
+      flex: 1;
+      min-width: 200px;
+      line-height: 1.6;
+    }
+
+    .cookie-text a {
+      color: var(--gold);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .cookie-btns {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .cookie-btn-accept {
+      background: var(--gold);
+      color: var(--anthracite);
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 9px 20px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background .2s, transform .2s;
+    }
+
+    .cookie-btn-accept:hover {
+      background: var(--gold-l);
+      transform: translateY(-1px);
+    }
+
+    .cookie-btn-reject {
+      background: none;
+      border: 1px solid rgba(247, 245, 240, .3);
+      color: var(--muted-light);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 9px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: border-color .2s, color .2s;
+    }
+
+    .cookie-btn-reject:hover {
+      border-color: var(--muted-light);
+      color: #fff;
+    }
+
+    .cookie-btn-settings {
+      background: none;
+      border: none;
+      color: var(--muted-light);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 9px 6px;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color .2s;
+    }
+
+    .cookie-btn-settings:hover {
+      color: #fff;
+    }
+
+    @media (max-width:768px) {
+      .cookie-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .cookie-btns {
+        width: 100%;
+      }
+    }
+
+    /* COOKIE SHEET */
+    .ck-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .55);
+      z-index: 10090;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .28s ease, visibility .28s ease;
+    }
+
+    .ck-backdrop.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .ck-sheet {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 360px;
+      max-width: 94vw;
+      background: var(--anthracite);
+      border-left: 1px solid rgba(247, 245, 240, .12);
+      z-index: 10100;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform .3s cubic-bezier(.4, 0, .2, 1);
+      overflow-y: auto;
+    }
+
+    .ck-sheet.open {
+      transform: translateX(0);
+    }
+
+    .ck-sheet-head {
+      padding: 22px 22px 16px;
+      border-bottom: 1px solid rgba(247, 245, 240, .12);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .ck-sheet-head h3 {
+      font-size: 17px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .ck-sheet-head p {
+      font-size: 13px;
+      color: var(--muted-light);
+      margin-top: 4px;
+      line-height: 1.55;
+    }
+
+    .ck-sheet-close {
+      background: none;
+      border: none;
+      color: var(--muted-light);
+      font-size: 18px;
+      cursor: pointer;
+      line-height: 1;
+      padding: 4px 8px;
+      border-radius: 6px;
+      flex-shrink: 0;
+      transition: color .2s;
+    }
+
+    .ck-sheet-close:hover {
+      color: #fff;
+    }
+
+    .ck-categories {
+      padding: 8px 0;
+      flex: 1;
+    }
+
+    .ck-cat {
+      padding: 16px 22px;
+      border-bottom: 1px solid rgba(247, 245, 240, .08);
+    }
+
+    .ck-cat-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .ck-cat-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .ck-cat-desc {
+      font-size: 13px;
+      color: var(--muted-light);
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+
+    .ck-toggle-wrap {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .ck-toggle-input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .ck-toggle-track {
+      display: block;
+      width: 44px;
+      height: 26px;
+      background: rgba(255, 255, 255, .12);
+      border-radius: 999px;
+      position: relative;
+      cursor: pointer;
+      transition: background .2s;
+    }
+
+    .ck-toggle-input:checked~.ck-toggle-track {
+      background: var(--gold);
+    }
+
+    .ck-toggle-thumb {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform .2s;
+    }
+
+    .ck-toggle-input:checked~.ck-toggle-track .ck-toggle-thumb {
+      transform: translateX(18px);
+    }
+
+    .ck-always-on {
+      font-size: 11px;
+      color: var(--gold);
+      font-weight: 600;
+      letter-spacing: .06em;
+    }
+
+    .ck-sheet-foot {
+      padding: 18px 22px;
+      border-top: 1px solid rgba(247, 245, 240, .12);
+    }
+
+    /* EXIT-INTENT POPUP */
+    .exit-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .6);
+      z-index: 10190;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .25s ease, visibility .25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .exit-backdrop.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .exit-popup {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+      background: var(--cream);
+      border: 1px solid var(--gold);
+      border-radius: 22px;
+      padding: 40px 34px;
+      text-align: center;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, .4);
+      transform: translateY(18px) scale(.97);
+      opacity: 0;
+      transition: transform .3s cubic-bezier(.4, 0, .2, 1), opacity .3s ease;
+    }
+
+    .exit-backdrop.open .exit-popup {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+
+    .exit-popup-close {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(45, 45, 45, .06);
+      color: var(--text-dark);
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .exit-popup-close:hover {
+      background: rgba(45, 45, 45, .12);
+    }
+
+    .exit-popup h3 {
+      font-size: clamp(22px, 2.6vw, 27px);
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 14px;
+    }
+
+    .exit-popup p {
+      font-size: 15.5px;
+      line-height: 1.7;
+      color: var(--muted-dark);
+      margin-bottom: 10px;
+    }
+
+    .exit-popup .exit-guarantee {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 14px 0 22px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(201, 168, 76, .1);
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .exit-popup .btn {
+      width: 100%;
+    }
+
+    .exit-popup-decline {
+      display: block;
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--muted-dark);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+    }
+
     /* ACCESSIBILITY WIDGET */
     .a11y-widget {
       position: fixed;
@@ -2217,15 +2615,81 @@
   </section>
 
   <footer>
-    <p>© שחר לוי · השקעות ללוחמים</p>
     <div class="footer-links">
       <a href="/privacy-policy.html">מדיניות פרטיות</a>
       <span class="sep">·</span>
       <a href="/terms.html">תנאי שימוש</a>
       <span class="sep">·</span>
       <a href="/accessibility.html">הצהרת נגישות</a>
+      <span class="sep">·</span>
+      <button class="footer-cookie-btn" onclick="openCookieSheet()" type="button">הגדרות עוגיות</button>
     </div>
   </footer>
+
+  <!-- COOKIE SHEET -->
+  <div class="ck-backdrop" id="ckBackdrop"></div>
+  <div class="ck-sheet" id="ckSheet" role="dialog" aria-modal="true" aria-label="העדפות עוגיות">
+    <div class="ck-sheet-head">
+      <div>
+        <h3>העדפות עוגיות</h3>
+        <p>בחר אילו עוגיות לאפשר. עוגיות חיוניות תמיד פעילות.</p>
+      </div>
+      <button class="ck-sheet-close" id="ckSheetClose" aria-label="סגור">✕</button>
+    </div>
+    <div class="ck-categories">
+      <div class="ck-cat">
+        <div class="ck-cat-row">
+          <span class="ck-cat-name">עוגיות חיוניות</span>
+          <span class="ck-always-on">תמיד פעיל</span>
+        </div>
+        <p class="ck-cat-desc">נדרשות לתפקוד הבסיסי של האתר.</p>
+      </div>
+      <div class="ck-cat">
+        <div class="ck-cat-row">
+          <span class="ck-cat-name">אנליטיקס ושיווק</span>
+          <label class="ck-toggle-wrap" aria-label="אנליטיקס ושיווק">
+            <input type="checkbox" class="ck-toggle-input" id="ck-analytics" />
+            <span class="ck-toggle-track"><span class="ck-toggle-thumb"></span></span>
+          </label>
+        </div>
+        <p class="ck-cat-desc">Meta Pixel - עוזר לשפר את האתר ולמדוד פרסום.</p>
+      </div>
+    </div>
+    <div class="ck-sheet-foot">
+      <button class="btn btn-gold" onclick="saveCookiePrefs()" style="width:100%;">שמור העדפות</button>
+    </div>
+  </div>
+
+  <!-- COOKIE BANNER -->
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-modal="true" aria-label="הגדרות עוגיות">
+    <div class="cookie-inner">
+      <p class="cookie-text">
+        אתר זה משתמש בעוגיות כדי לשפר את חוויית הגלישה שלכם.
+        <a href="/privacy-policy.html">מדיניות עוגיות מלאה</a>
+      </p>
+      <div class="cookie-btns">
+        <button class="cookie-btn-accept" onclick="acceptCookies()" type="button">אישור הכל</button>
+        <button class="cookie-btn-reject" onclick="rejectCookies()" type="button">דחייה</button>
+        <button class="cookie-btn-settings" onclick="openCookieSheet()" type="button">הגדרות</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXIT-INTENT POPUP -->
+  <div class="exit-backdrop" id="exitBackdrop" role="dialog" aria-modal="true" aria-label="לפני שאתם עוזבים">
+    <div class="exit-popup">
+      <button class="exit-popup-close" id="exitPopupClose" aria-label="סגור">✕</button>
+      <h3>רגע לפני שאתם עוזבים...</h3>
+      <p>הכסף שלכם ימשיך לשבת בעו"ש ולהישחק מאינפלציה - גם אם תסגרו את הדף הזה.</p>
+      <p>אם מה שעצר אתכם הוא החשש "מה אם זה לא בשבילי" - יש לכם 30 יום לבדוק את התוכנית בלי שום סיכון.</p>
+      <span class="exit-guarantee">✓ 30 יום אחריות מלאה להחזר כספי</span>
+      <div class="cta-ring" style="display:block;">
+        <a href="https://secure.cardcom.solutions/EA/EA5/Vir6Q9LbVEatLxw4sN0dxg/PaymentSP"
+          class="btn btn-gold checkout-btn">כן, אני רוצה להתחיל להשקיע</a>
+      </div>
+      <button class="exit-popup-decline" id="exitPopupDecline" type="button">לא תודה, אני אחשוב על זה</button>
+    </div>
+  </div>
 
   <script>
     document.querySelectorAll('.faq-q').forEach(function (btn) {
@@ -2512,6 +2976,126 @@
       });
 
       loadState();
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var banner = document.getElementById('cookieBanner');
+      var ckSheet = document.getElementById('ckSheet');
+      var ckBackdrop = document.getElementById('ckBackdrop');
+
+      function getPrefs() {
+        try { return JSON.parse(localStorage.getItem('cookie-consent') || 'null'); } catch (e) { return null; }
+      }
+      function savePrefs(analytics) {
+        localStorage.setItem('cookie-consent', JSON.stringify({ essential: true, analytics: analytics, timestamp: new Date().toISOString() }));
+      }
+
+      function openCookieBanner() {
+        banner.classList.add('visible');
+      }
+      function closeCookieBanner() {
+        banner.classList.remove('visible');
+      }
+      window.acceptCookies = function () {
+        savePrefs(true);
+        closeCookieBanner();
+      };
+      window.rejectCookies = function () {
+        savePrefs(false);
+        closeCookieBanner();
+      };
+
+      window.openCookieSheet = function () {
+        var prefs = getPrefs();
+        document.getElementById('ck-analytics').checked = prefs ? !!prefs.analytics : true;
+        ckSheet.classList.add('open');
+        ckBackdrop.classList.add('open');
+        closeCookieBanner();
+      };
+      function closeCookieSheet() {
+        ckSheet.classList.remove('open');
+        ckBackdrop.classList.remove('open');
+      }
+      window.saveCookiePrefs = function () {
+        var analytics = document.getElementById('ck-analytics').checked;
+        savePrefs(analytics);
+        closeCookieSheet();
+      };
+
+      document.getElementById('ckSheetClose').addEventListener('click', closeCookieSheet);
+      ckBackdrop.addEventListener('click', closeCookieSheet);
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          if (ckSheet.classList.contains('open')) closeCookieSheet();
+          else if (banner.classList.contains('visible')) closeCookieBanner();
+        }
+      });
+
+      if (!getPrefs()) {
+        setTimeout(openCookieBanner, 1200);
+      }
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var backdrop = document.getElementById('exitBackdrop');
+      var closeBtn = document.getElementById('exitPopupClose');
+      var declineBtn = document.getElementById('exitPopupDecline');
+      var shown = false;
+      var pageLoadTime = Date.now();
+      var MIN_TIME_MS = 12000;
+
+      function alreadyClickedCheckout() {
+        try { return !!(window.getLeadScore && window.getLeadScore().ctaClicked); } catch (e) { return false; }
+      }
+
+      function canShow() {
+        if (shown) return false;
+        if (sessionStorage.getItem('exit_popup_shown')) return false;
+        if (Date.now() - pageLoadTime < MIN_TIME_MS) return false;
+        if (alreadyClickedCheckout()) return false;
+        return true;
+      }
+
+      function showExitPopup() {
+        if (!canShow()) return;
+        shown = true;
+        sessionStorage.setItem('exit_popup_shown', '1');
+        backdrop.classList.add('open');
+      }
+
+      function hideExitPopup() {
+        backdrop.classList.remove('open');
+      }
+
+      closeBtn.addEventListener('click', hideExitPopup);
+      declineBtn.addEventListener('click', hideExitPopup);
+      backdrop.addEventListener('click', function (e) {
+        if (e.target === backdrop) hideExitPopup();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && backdrop.classList.contains('open')) hideExitPopup();
+      });
+
+      /* Desktop: cursor leaving toward the top of the viewport */
+      document.addEventListener('mouseout', function (e) {
+        if (!e.relatedTarget && e.clientY <= 0) showExitPopup();
+      });
+
+      /* Mobile: no cursor to track, use the back-button trick instead */
+      if (/Mobi|Android/i.test(navigator.userAgent)) {
+        history.pushState({ exitGuard: true }, '');
+        window.addEventListener('popstate', function () {
+          if (canShow()) {
+            showExitPopup();
+            history.pushState({ exitGuard: true }, '');
+          }
+        });
+      }
     })();
   </script>
 </body>
