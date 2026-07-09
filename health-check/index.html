@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>בדיקת בריאות הפאנל | שחר לוי</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" href="/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --dark: #2D2D2D;
+      --cream: #F7F5F0;
+      --cream-2: #efece3;
+      --ok: #2e7d32;
+      --bad: #a33;
+    }
+
+    * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Assistant', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    nav { padding: 20px 26px; }
+    nav img { height: 40px; }
+
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 10px 24px 80px;
+    }
+
+    h1 {
+      font-size: clamp(22px, 4vw, 28px);
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      color: #666;
+      font-size: 14.5px;
+      margin-bottom: 28px;
+    }
+
+    .status-banner {
+      border-radius: 16px;
+      padding: 20px 22px;
+      margin-bottom: 24px;
+      font-weight: 700;
+      font-size: 17px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .status-banner.ok { background: #eaf5ea; color: var(--ok); }
+    .status-banner.issues { background: #fdeeee; color: var(--bad); }
+    .status-banner.loading { background: var(--cream-2); color: #888; font-weight: 500; }
+
+    .checks {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .check-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 18px 20px;
+      border: 1px solid rgba(0,0,0,.06);
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .check-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 800;
+      flex-shrink: 0;
+      color: #fff;
+    }
+
+    .check-icon.pass { background: var(--ok); }
+    .check-icon.fail { background: var(--bad); }
+
+    .check-body h3 {
+      font-size: 15.5px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .check-body p {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 2px;
+    }
+
+    .check-body .url {
+      font-size: 12.5px;
+      color: #999;
+      direction: ltr;
+      text-align: right;
+      word-break: break-all;
+    }
+
+    .meta {
+      margin-top: 32px;
+      font-size: 13px;
+      color: #999;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav><img src="/logo.png" alt="שחר לוי" /></nav>
+
+  <div class="wrap">
+    <h1>בדיקת בריאות הפאנל</h1>
+    <p class="subtitle">בדיקה אוטומטית יומית של דפי הפאנל, הפיקסלים וה-API</p>
+
+    <div class="status-banner loading" id="status-banner">טוען...</div>
+    <div class="checks" id="checks"></div>
+    <p class="meta" id="meta"></p>
+  </div>
+
+  <script>
+    fetch('./data.json?_=' + Date.now())
+      .then(function (r) { return r.json(); })
+      .then(render)
+      .catch(function (err) {
+        document.getElementById('status-banner').textContent = 'לא הצלחתי לטעון את תוצאות הבדיקה: ' + err.message;
+      });
+
+    function render(data) {
+      var banner = document.getElementById('status-banner');
+      banner.className = 'status-banner ' + (data.overallStatus === 'ok' ? 'ok' : 'issues');
+      banner.textContent = data.overallStatus === 'ok'
+        ? 'הכל תקין - כל הבדיקות עברו'
+        : 'נמצאו בעיות - יש בדיקה שנכשלה';
+
+      var list = document.getElementById('checks');
+      list.innerHTML = '';
+      data.checks.forEach(function (c) {
+        var card = document.createElement('div');
+        card.className = 'check-card';
+        card.innerHTML =
+          '<div class="check-icon ' + (c.pass ? 'pass' : 'fail') + '">' + (c.pass ? '✓' : '✕') + '</div>' +
+          '<div class="check-body">' +
+            '<h3>' + c.name + '</h3>' +
+            '<p>' + c.details + '</p>' +
+            '<p class="url">' + c.url + '</p>' +
+          '</div>';
+        list.appendChild(card);
+      });
+
+      var checkedAt = new Date(data.checkedAt);
+      document.getElementById('meta').textContent = 'בדיקה אחרונה: ' + checkedAt.toLocaleString('he-IL');
+    }
+  </script>
+
+</body>
+
+</html>

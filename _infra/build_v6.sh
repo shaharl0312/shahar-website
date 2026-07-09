@@ -53,5 +53,8 @@ mkdir -p _infra/dist/erosion-calculator && cp erosion-calculator/index.html _inf
 # Bank money guide (why banks want your cash to stay with them)
 mkdir -p _infra/dist/bank-money && cp funnel-hadracha/bank-money-guide.html _infra/dist/bank-money/index.html
 
+# Funnel health-check dashboard
+mkdir -p _infra/dist/health-check && cp health-check/index.html health-check/data.json _infra/dist/health-check/
+
 echo "build-ok-$(date +%s)" > _infra/dist/buildinfo.txt
 echo "=== BUILD COMPLETE ===" && ls _infra/dist/
