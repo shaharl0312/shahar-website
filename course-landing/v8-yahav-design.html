@@ -895,59 +895,46 @@
       margin-bottom: 0;
     }
 
-    /* PROOF - single-row endless film-strip marquee, like a scrolling ticker */
-    .proof-marquee {
+    /* PROOF TICKER - outlined-text marquee, same mechanism as pelegdror.com */
+    .proof-ticker {
       overflow: hidden;
-      margin: 36px 0;
-      -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-      mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+      border-top: 1px solid rgba(247, 245, 240, .12);
+      border-bottom: 1px solid rgba(247, 245, 240, .12);
+      padding: 22px 0;
     }
 
-    .proof-track {
+    .proof-ticker-track {
       display: flex;
-      gap: 16px;
       width: max-content;
-      animation: proof-scroll 70s linear infinite;
+      animation: proof-ticker-scroll 34s linear infinite;
     }
 
-    .proof-marquee:hover .proof-track {
+    .proof-ticker:hover .proof-ticker-track {
       animation-play-state: paused;
     }
 
-    @keyframes proof-scroll {
-      from { transform: translateX(0); }
+    @keyframes proof-ticker-scroll {
       to { transform: translateX(-50%); }
     }
 
-    .proof-item {
-      flex: 0 0 auto;
-      width: 300px;
-      background: #fff;
-      border-radius: 16px;
-      padding: 10px;
-      box-shadow: 0 10px 28px rgba(0, 0, 0, .08);
+    .proof-ticker-set {
       display: flex;
       align-items: center;
+      white-space: nowrap;
     }
 
-    .proof-item img {
-      width: 100%;
-      height: auto;
-      max-height: 260px;
-      object-fit: contain;
-      border-radius: 10px;
-      display: block;
+    .proof-ticker-set span {
+      font-size: clamp(28px, 4.2vw, 56px);
+      font-weight: 700;
+      color: transparent;
+      -webkit-text-stroke: 1.3px rgba(247, 245, 240, .38);
+      padding: 0 22px;
     }
 
-    @media (max-width:768px) {
-      .proof-item {
-        width: 82vw;
-        max-width: 320px;
-      }
-
-      .proof-item img {
-        max-height: 220px;
-      }
+    .proof-ticker-set i {
+      font-style: normal;
+      font-size: clamp(16px, 2vw, 26px);
+      color: var(--gold, #C9A84C);
     }
 
     /* WHY ME */
@@ -1726,32 +1713,32 @@
       <p style="max-width:680px;margin:0 auto 30px;color:var(--muted-dark);">חלקם פחדו להפסיד. חלקם חשבו שהם לא מבינים
         מספיק. וחלקם פשוט דחו את ההחלטה שוב ושוב. היום, הם כבר אחרי ההשקעה הראשונה שלהם - לא כי הם הפכו למומחי שוק ההון,
         אלא כי סוף סוף הייתה להם דרך ברורה לפעול.</p>
-      <div class="proof-marquee">
-        <div class="proof-track">
-          <div class="proof-item"><img src="/testimonials/wts-3.jpg" alt="עדות: התגברות על הפחד מהצעד הראשון בהשקעות" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-2.jpg" alt="עדות: התגברות על דחיינות והתחלת ההשקעה" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-10.jpg" alt="עדות: ליווי אישי ופרקטי בכניסה להשקעות" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-1.jpg" alt="עדות: זמינות וסבלנות לשאלות לאורך התהליך" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-9.jpg" alt="עדות: תהליך מלא מהחלטה ועד ביצוע ההשקעה הראשונה" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-4.jpg" alt="עדות לקוח" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-5.jpg" alt="עדות לקוח" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-6.jpg" alt="עדות לקוח" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-7.jpg" alt="עדות לקוח" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-8.jpg" alt="עדות: תהליך עמוק ומשמעותי של לקוחה" /></div>
-          <!-- duplicate set for seamless loop -->
-          <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-3.jpg" alt="" /></div>
-          <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-2.jpg" alt="" /></div>
-          <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-10.jpg" alt="" /></div>
-          <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-1.jpg" alt="" /></div>
-          <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-9.jpg" alt="" /></div>
-          <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-4.jpg" alt="" /></div>
-          <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-5.jpg" alt="" /></div>
-          <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-6.jpg" alt="" /></div>
-          <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-7.jpg" alt="" /></div>
-          <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-8.jpg" alt="" /></div>
+      <p style="font-weight:700;">אם הם הצליחו להתחיל מאפס, אין שום סיבה שגם אתם לא.</p>
+    </div>
+  </section>
+
+  <section class="dark" style="padding:0;">
+    <div class="proof-ticker">
+      <div class="proof-ticker-track">
+        <div class="proof-ticker-set">
+          <span>עשרות אנשי קבע כבר עשו את הצעד</span><i>&#10022;</i>
+          <span>מהתלבטות להשקעה הראשונה</span><i>&#10022;</i>
+          <span>ליווי אישי לאורך כל הדרך</span><i>&#10022;</i>
+          <span>זמינות וסבלנות לכל שאלה</span><i>&#10022;</i>
+          <span>מפחד לביטחון מלא</span><i>&#10022;</i>
+          <span>בלי רקע בשוק ההון</span><i>&#10022;</i>
+          <span>תמיכה אמיתית, לא עוד קורס</span><i>&#10022;</i>
+        </div>
+        <div class="proof-ticker-set" aria-hidden="true">
+          <span>עשרות אנשי קבע כבר עשו את הצעד</span><i>&#10022;</i>
+          <span>מהתלבטות להשקעה הראשונה</span><i>&#10022;</i>
+          <span>ליווי אישי לאורך כל הדרך</span><i>&#10022;</i>
+          <span>זמינות וסבלנות לכל שאלה</span><i>&#10022;</i>
+          <span>מפחד לביטחון מלא</span><i>&#10022;</i>
+          <span>בלי רקע בשוק ההון</span><i>&#10022;</i>
+          <span>תמיכה אמיתית, לא עוד קורס</span><i>&#10022;</i>
         </div>
       </div>
-      <p style="font-weight:700;">אם הם הצליחו להתחיל מאפס, אין שום סיבה שגם אתם לא.</p>
     </div>
   </section>
 
