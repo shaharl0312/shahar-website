@@ -4,6 +4,40 @@ const ALLOWED_ORIGINS = [
 ];
 
 const RAVMESSER_BASE_URL = 'https://graph.responder.live/v2';
+const CARDCOM_BASE_URL = 'https://secure.cardcom.solutions';
+
+function formatCardcomDate(d) {
+  const dd = String(d.getDate()).padStart(2, '0');
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  return `${dd}${mm}${d.getFullYear()}`;
+}
+
+async function findCardcomTransaction(dealId) {
+  const toDate = new Date();
+  const fromDate = new Date();
+  fromDate.setDate(fromDate.getDate() - 7);
+
+  const response = await fetch(`${CARDCOM_BASE_URL}/api/v11/Transactions/ListTransactions`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      ApiName: process.env.CARDCOM_API_NAME,
+      ApiPassword: process.env.CARDCOM_API_PASSWORD,
+      FromDate: formatCardcomDate(fromDate),
+      ToDate: formatCardcomDate(toDate),
+      Page: 1,
+      Page_size: 500
+    })
+  });
+
+  const data = await response.json();
+  if (data.ResponseCode !== 0) {
+    throw new Error(data.Description || 'Cardcom ListTransactions failed');
+  }
+
+  const transactions = data.Tranzactions || [];
+  return transactions.find((t) => String(t.InternalDealNumber) === String(dealId)) || null;
+}
 
 async function getRavMesserToken() {
   const response = await fetch(`${RAVMESSER_BASE_URL}/oauth/token`, {
@@ -36,19 +70,29 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const { full_name, phone, reason } = req.body || {};
+  const { dealId, reason } = req.body || {};
 
-  if (!full_name || typeof full_name !== 'string' || full_name.trim().length < 2) {
-    return res.status(400).json({ error: 'Missing full_name' });
-  }
-  if (!phone || typeof phone !== 'string' || phone.trim().length < 9) {
-    return res.status(400).json({ error: 'Missing phone' });
+  if (!dealId) {
+    return res.status(400).json({ error: 'Missing dealId' });
   }
 
   const listId = Number(process.env.RAVMESSER_PERSONAL_GUIDANCE_LIST_ID);
-  const [first, ...rest] = full_name.trim().split(/\s+/);
 
   try {
+    const transaction = await findCardcomTransaction(dealId);
+    if (!transaction) {
+      return res.status(404).json({ error: 'Transaction not found' });
+    }
+
+    const fullName = (transaction.CardOwnerName || '').trim();
+    const phone = (transaction.CardOwnerPhone || '').trim();
+    const email = (transaction.CardOwnerEmail || '').trim();
+
+    if (!phone && !email) {
+      return res.status(422).json({ error: 'Transaction has no contact details' });
+    }
+
+    const [first, ...rest] = fullName ? fullName.split(/\s+/) : [];
     const token = await getRavMesserToken();
 
     const response = await fetch(`${RAVMESSER_BASE_URL}/subscribers`, {
@@ -59,9 +103,10 @@ export default async function handler(req, res) {
         'Accept': 'application/json'
       },
       body: JSON.stringify({
-        phone: phone.trim(),
-        first,
-        last: rest.join(' ') || undefined,
+        phone: phone || undefined,
+        email: email || undefined,
+        first: first || undefined,
+        last: rest.length ? rest.join(' ') : undefined,
         list_ids: [listId],
         tags_names: reason && typeof reason === 'string' ? [reason.trim()] : undefined
       })

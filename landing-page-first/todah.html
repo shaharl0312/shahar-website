@@ -372,8 +372,6 @@
           <label class="radio-option"><input type="radio" name="reason" value="אחר"><span>אחר.</span></label>
         </div>
         <input type="text" class="other-input" id="other-input" placeholder="ספרו לי במילים שלכם..." />
-        <input type="text" class="other-input visible" id="full-name-input" placeholder="שם מלא" required />
-        <input type="tel" class="other-input visible" id="phone-input" placeholder="טלפון" required />
         <button type="submit" class="btn btn-gold">שלח</button>
       </form>
       <div class="qualify-confirm" id="qualify-confirm">
@@ -400,15 +398,14 @@
         });
       });
 
+      var dealId = new URLSearchParams(window.location.search).get('internaldealNumber');
+
       var form = document.getElementById('reason-form');
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         var selected = form.querySelector('input[name="reason"]:checked');
         if (!selected) return;
         var reason = selected.value === 'אחר' && otherInput.value.trim() ? otherInput.value.trim() : selected.value;
-        var fullName = document.getElementById('full-name-input').value.trim();
-        var phone = document.getElementById('phone-input').value.trim();
-        if (!fullName || !phone) return;
 
         if (typeof window.fbq === 'function') {
           try { window.fbq('trackCustom', 'JoinTogetherReason', { reason: reason }); } catch (err) { }
@@ -417,7 +414,7 @@
         fetch('/api/personal-guidance', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ full_name: fullName, phone: phone, reason: reason })
+          body: JSON.stringify({ dealId: dealId, reason: reason })
         }).catch(function (err) { console.error('personal-guidance submit failed', err); });
 
         form.style.display = 'none';
