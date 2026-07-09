@@ -505,18 +505,21 @@
     .skip-to-checkout {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       margin-top: 18px;
+      padding: 12px 26px;
+      border: 1.5px solid rgba(201, 168, 76, .55);
+      border-radius: 999px;
       font-size: 14px;
       font-weight: 600;
       color: var(--gold);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      opacity: .85;
+      background: rgba(201, 168, 76, .06);
+      transition: background .2s, border-color .2s;
     }
 
     .skip-to-checkout:hover {
-      opacity: 1;
+      background: rgba(201, 168, 76, .14);
+      border-color: var(--gold);
     }
 
     .cta-note {
