@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>גלו בכמה כוח הקנייה של הכסף שלכם נשחק בעו"ש | שחר לוי</title>
+<link rel="icon" type="image/png" href="/logo.png" />
+<meta name="description" content="בדיקה קצרה שמראה לכם בכמה כוח הקנייה של הכסף שיושב בעו&quot;ש שלכם נשחק עם הזמן, ולמה." />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --gold:#C9A84C;
+  --gold-l:#e6cd8a;
+  --anthracite:#0d0d0d;
+  --cream:#F7F5F0;
+  --cream-2:#efece3;
+  --navy:#1B3A6B;
+  --text-dark:#2D2D2D;
+  --muted-dark:rgba(45,45,45,.74);
+  --muted-light:rgba(247,245,240,.8);
+  --border-light:rgba(45,45,45,.14);
+  --border-dark:rgba(255,255,255,.12);
+  --ease:280ms cubic-bezier(.2,.7,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important;}
+}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+body{font-family:'Assistant',sans-serif;background:var(--cream);color:var(--text-dark);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.75;min-height:100vh;}
+strong{font-weight:800;}
+
+.logo{height:40px;position:fixed;top:16px;left:16px;z-index:200;}
+
+.section{position:relative;padding:100px 24px;z-index:1;}
+@media (max-width:768px){.section{padding:72px 20px;}}
+.section.dark{background:radial-gradient(ellipse at 50% -10%,#161616 0%,var(--anthracite) 60%);color:#fff;overflow:hidden;}
+.section.dark .glow{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0;}
+.section.dark .glow-a{top:-15%;right:-10%;width:520px;height:520px;background:radial-gradient(circle,rgba(201,168,76,.22),transparent 65%);}
+.section.dark .glow-b{bottom:-15%;left:-10%;width:520px;height:520px;background:radial-gradient(circle,rgba(27,58,107,.3),transparent 65%);}
+.section.dark h2,.section.dark h3{color:#fff;}
+.section.dark p{color:var(--muted-light);}
+
+.panel{max-width:640px;width:100%;margin:0 auto;position:relative;z-index:1;}
+.panel.center{text-align:center;}
+
+.eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.2em;color:var(--gold);margin-bottom:22px;text-transform:uppercase;}
+.section.dark .eyebrow{color:var(--gold-l);}
+
+h2{font-size:clamp(24px,4vw,34px);font-weight:800;letter-spacing:-.01em;line-height:1.35;margin-bottom:14px;}
+h3{font-size:clamp(19px,2.2vw,23px);font-weight:800;margin:34px 0 14px;}
+.section.dark h3{color:var(--gold-l);}
+.sub{font-size:clamp(15px,1.6vw,17px);color:var(--muted-dark);margin-bottom:20px;}
+.section.dark .sub{color:var(--muted-light);}
+
+.intro-note{font-size:clamp(15px,1.6vw,16.5px);color:var(--muted-dark);margin-bottom:14px;}
+.intro-note:last-of-type{margin-bottom:36px;}
+
+.q-block{margin-bottom:44px;}
+.q-label{display:block;font-weight:700;margin-bottom:8px;font-size:clamp(18px,2vw,21px);}
+.q-help{font-size:14.5px;color:var(--muted-dark);margin-bottom:18px;}
+
+.amount-field{display:flex;align-items:center;gap:10px;border-bottom:2px solid var(--border-light);padding-bottom:14px;transition:border-color var(--ease);}
+.amount-field:focus-within{border-color:var(--gold);}
+.amount-field input:focus{outline:none;}
+.amount-field span{font-size:clamp(24px,3vw,30px);font-weight:800;color:var(--gold);}
+.amount-field input{border:none;background:none;outline:none;font-family:inherit;font-size:clamp(24px,3vw,30px);font-weight:800;color:inherit;width:100%;}
+.amount-field input::placeholder{color:var(--muted-dark);font-weight:600;opacity:.4;}
+.field-example{font-size:13px;color:var(--muted-dark);margin-top:8px;}
+
+.opt-list{display:flex;flex-direction:column;}
+.opt{display:flex;align-items:center;gap:16px;min-height:44px;padding:16px 4px;border-bottom:1px solid var(--border-light);cursor:pointer;transition:padding-right var(--ease),color var(--ease);text-align:right;border-radius:8px;}
+.opt:last-child{border-bottom:none;}
+.opt:hover{padding-right:8px;}
+.opt:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+.opt .dot{flex-shrink:0;width:20px;height:20px;border-radius:50%;border:2px solid var(--border-light);position:relative;transition:border-color var(--ease);}
+.opt .dot::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--gold);opacity:0;transition:opacity var(--ease);}
+.opt.selected .dot{border-color:var(--gold);}
+.opt.selected .dot::after{opacity:1;}
+.opt-text{font-size:clamp(16px,1.8vw,18.5px);font-weight:600;}
+.opt.selected .opt-text{color:var(--gold);}
+
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:clamp(16px,1.8vw,18px);padding:18px 40px;border-radius:999px;cursor:pointer;font-family:inherit;transition:transform var(--ease),box-shadow var(--ease),opacity var(--ease);border:none;background:linear-gradient(120deg,var(--gold) 0%,var(--gold-l) 100%);color:#000;box-shadow:0 0 40px 10px rgba(201,168,76,.22);}
+.btn:hover{transform:translateY(-2px);box-shadow:0 0 50px 14px rgba(201,168,76,.34);}
+.btn-wrap{text-align:center;margin-top:20px;}
+
+.gold-num{font-size:clamp(42px,7vw,72px);font-weight:900;line-height:1;background:linear-gradient(120deg,var(--gold) 10%,var(--gold-l) 60%,#fff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:18px 0 22px;}
+
+.edu-line{margin-bottom:20px;font-size:clamp(16px,1.8vw,18.5px);}
+.edu-line b{color:var(--gold-l);}
+.rule72{margin-top:32px;padding-top:28px;border-top:1px solid var(--border-dark);}
+.rule72 .tag{font-size:12px;letter-spacing:.15em;color:var(--gold-l);text-transform:uppercase;font-weight:700;margin-bottom:10px;display:block;}
+
+.basket-list{display:flex;flex-wrap:wrap;gap:10px 22px;margin:18px 0 26px;padding:0;list-style:none;}
+.basket-list li{font-size:15px;color:var(--muted-light);position:relative;padding-right:14px;}
+.basket-list li::before{content:'';position:absolute;right:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--gold);}
+
+.result-note{font-size:13px;color:var(--muted-light);margin-top:18px;opacity:.7;}
+.cta-personal{font-size:clamp(17px,2vw,20px);font-weight:700;color:#fff;margin-bottom:26px;}
+
+#resultArea{display:none;}
+
+.calc-box{text-align:center;min-height:60px;}
+.calc-text{font-size:clamp(20px,2.6vw,26px);font-weight:800;color:var(--gold-l);letter-spacing:.02em;}
+#narrativeResult{display:none;}
+
+.quote-line{font-style:normal;font-weight:700;color:#fff;margin-bottom:20px;}
+</style>
+</head>
+<body>
+
+<img src="/logo.png" alt="שחר לוי" class="logo" />
+
+<!-- ALL QUESTIONS ON ONE SCREEN -->
+<section class="section cream">
+  <div class="panel">
+    <span class="eyebrow">בדיקה קצרה · פחות מדקה</span>
+    <h2>גלו בכמה כוח הקנייה של הכסף שלכם נשחק בעו"ש</h2>
+    <p class="sub">זה ייקח פחות מדקה.</p>
+
+    <p class="intro-note">לפני שמתחילים, חשוב לי להבהיר משהו. המטרה של הבדיקה הזאת היא לא להפחיד אתכם. היא גם לא נועדה לשכנע אתכם להשקיע.</p>
+    <p class="intro-note">המטרה שלה היא פשוט לעזור לכם להבין מה באמת קורה לכסף שיושב בעו"ש לאורך זמן. בסוף הבדיקה תראו הערכה פשוטה של כמה כוח הקנייה של הכסף שלכם עשוי להישחק אם הוא פשוט ימשיך לשבת שם.</p>
+    <p class="intro-note">זה לא מבחן. אין תשובות נכונות או לא נכונות. רק נסו לענות בכנות.</p>
+
+    <div class="q-block">
+      <label class="q-label" for="q1">1. כמה כסף יושב אצלכם כרגע בעו"ש?</label>
+      <p class="q-help">הכניסו את הסכום הכולל שנמצא כרגע בחשבון העו"ש שלכם.</p>
+      <div class="amount-field">
+        <span aria-hidden="true">₪</span>
+        <input type="text" inputmode="numeric" id="q1" placeholder="0" aria-label="סכום בעו&quot;ש בשקלים" />
+      </div>
+      <p class="field-example">לדוגמה: 40,000 ₪</p>
+    </div>
+
+    <div class="q-block">
+      <label class="q-label" for="q2">2. מתוך הסכום הזה, כמה כסף אתם לא מתכננים להשתמש בו ב־12 החודשים הקרובים?</label>
+      <p class="q-help">לא כל הכסף בעו"ש מיועד להשקעה. תחשבו רק על הכסף שאין לכם צורך בו בזמן הקרוב.</p>
+      <div class="amount-field">
+        <span aria-hidden="true">₪</span>
+        <input type="text" inputmode="numeric" id="q2" placeholder="0" aria-label="סכום שלא בשימוש בשנה הקרובה בשקלים" />
+      </div>
+      <p class="field-example">לדוגמה: 25,000 ₪</p>
+    </div>
+
+    <div class="q-block">
+      <p class="q-label" id="q3-label">3. כמה זמן הכסף הזה כבר יושב בעו"ש?</p>
+      <div class="opt-list" data-group="q3" role="radiogroup" aria-labelledby="q3-label">
+        <div class="opt selected" data-value="lt6m" role="radio" aria-checked="true" tabindex="0"><span class="dot"></span><span class="opt-text">פחות מחצי שנה</span></div>
+        <div class="opt" data-value="6-12m" role="radio" aria-checked="false" tabindex="-1"><span class="dot"></span><span class="opt-text">בין חצי שנה לשנה</span></div>
+        <div class="opt" data-value="1-2y" role="radio" aria-checked="false" tabindex="-1"><span class="dot"></span><span class="opt-text">בין שנה לשנתיים</span></div>
+        <div class="opt" data-value="2y+" role="radio" aria-checked="false" tabindex="-1"><span class="dot"></span><span class="opt-text">יותר משנתיים</span></div>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <p class="q-label" id="q4-label">4. אם לא הייתם עושים שום דבר, כמה זמן לדעתכם הכסף הזה עוד היה נשאר בעו"ש?</p>
+      <div class="opt-list" data-group="q4" role="radiogroup" aria-labelledby="q4-label">
+        <div class="opt selected" data-value="1" role="radio" aria-checked="true" tabindex="0"><span class="dot"></span><span class="opt-text">שנה</span></div>
+        <div class="opt" data-value="3" role="radio" aria-checked="false" tabindex="-1"><span class="dot"></span><span class="opt-text">3 שנים</span></div>
+        <div class="opt" data-value="5" role="radio" aria-checked="false" tabindex="-1"><span class="dot"></span><span class="opt-text">5 שנים</span></div>
+        <div class="opt" data-value="10" role="radio" aria-checked="false" tabindex="-1"><span class="dot"></span><span class="opt-text">10 שנים או יותר</span></div>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <p class="q-label" id="q5-label">5. מה הכי עוצר אתכם היום מלהתחיל להשקיע?</p>
+      <div class="opt-list" data-group="q5" role="radiogroup" aria-labelledby="q5-label">
+        <div class="opt selected" data-value="fear" role="radio" aria-checked="true" tabindex="0"><span class="dot"></span><span class="opt-text">אני מפחד להפסיד כסף</span></div>
+        <div class="opt" data-value="howto" role="radio" aria-checked="false" tabindex="-1"><span class="dot"></span><span class="opt-text">אני לא יודע איך מתחילים</span></div>
+        <div class="opt" data-value="time" role="radio" aria-checked="false" tabindex="-1"><span class="dot"></span><span class="opt-text">אין לי זמן להתעסק בזה</span></div>
+        <div class="opt" data-value="learn" role="radio" aria-checked="false" tabindex="-1"><span class="dot"></span><span class="opt-text">אני רוצה ללמוד עוד לפני שאני מתחיל</span></div>
+        <div class="opt" data-value="other" role="radio" aria-checked="false" tabindex="-1"><span class="dot"></span><span class="opt-text">משהו אחר</span></div>
+      </div>
+    </div>
+
+    <div class="btn-wrap">
+      <button class="btn" id="showResult">גלו את התוצאה שלי</button>
+    </div>
+  </div>
+</section>
+
+<!-- RESULT AREA -->
+<div id="resultArea">
+
+  <!-- EDUCATION -->
+  <section class="section dark">
+    <div class="glow glow-a"></div><div class="glow glow-b"></div>
+    <div class="panel">
+      <span class="eyebrow">רגע לפני שנראה לכם את התוצאה</span>
+      <h2>יש מושג אחד שכדאי להכיר לפני שממשיכים</h2>
+
+      <h3>מה זאת בכלל אינפלציה?</h3>
+      <p class="edu-line">אינפלציה היא העלייה המתמשכת במחירים לאורך זמן.</p>
+      <p class="edu-line">במילים פשוטות? אם לפני כמה שנים יכולתם למלא עגלת קניות ב־500 ₪, והיום אותה עגלה עולה 550 ₪ - זאת אינפלציה.</p>
+      <p class="edu-line">הכסף שלכם לא נעלם. אבל הוא פשוט קונה פחות. לכן גם אם הסכום בעו"ש נשאר בדיוק אותו הדבר, כוח הקנייה שלו נשחק עם הזמן.</p>
+
+      <h3>איך בכלל יודעים אם יש אינפלציה?</h3>
+      <p class="edu-line">בכל חודש מפרסמת הלשכה המרכזית לסטטיסטיקה את <b>מדד המחירים לצרכן</b>. אפשר לחשוב עליו כמו על "עגלה" שמכילה מאות מוצרים ושירותים שמשפחה ממוצעת בישראל צורכת, לדוגמה:</p>
+      <ul class="basket-list">
+        <li>מזון</li>
+        <li>שכר דירה</li>
+        <li>חשמל ומים</li>
+        <li>דלק ותחבורה</li>
+        <li>תקשורת</li>
+        <li>ביגוד</li>
+        <li>חינוך</li>
+        <li>בריאות</li>
+      </ul>
+      <p class="edu-line">אם בממוצע העגלה הזאת התייקרה ב־3% לעומת השנה שעברה - אומרים שהאינפלציה השנתית הייתה כ־3%.</p>
+
+      <h3>למה זה חשוב לכם?</h3>
+      <p class="edu-line">כי הכסף שיושב בעו"ש לא מתעדכן יחד עם המחירים. אם המחירים עולים ב־3%, אבל הכסף שלכם נשאר בדיוק אותו סכום - בפועל הוא קונה קצת פחות ממה שקנה לפני שנה.</p>
+      <p class="edu-line">וזאת בדיוק הסיבה שאנשים אומרים "פעם הכול היה הרבה יותר זול." לא כי הכסף השתנה - אלא כי כוח הקנייה שלו השתנה.</p>
+
+      <h3>האם אפשר לדעת מה תהיה האינפלציה בעתיד?</h3>
+      <p class="edu-line">לא. אף אחד לא יודע. בדיוק בגלל זה השתמשנו במחשבון בהערכה של 3% בשנה. זאת לא תחזית - זאת רק דרך פשוטה להמחיש מה עלול לקרות אם המחירים ימשיכו לעלות בקצב דומה לאורך זמן.</p>
+
+      <div class="rule72">
+        <span class="tag">עוד משהו קטן ומעניין - חוק ה־72</span>
+        <p class="edu-line">יש כלל אצבע מפורסם שנקרא חוק ה־72. הוא מאפשר להעריך תוך כמה זמן כוח הקנייה של הכסף ייחתך בערך בחצי. פשוט מחלקים: <b>72 ÷ שיעור האינפלציה</b>.</p>
+        <p class="edu-line">לדוגמה, אם האינפלציה הממוצעת היא 3% בשנה: <b>72 ÷ 3 = 24</b>. כלומר, בקצב כזה, בעוד כ־24 שנים אותו סכום כסף צפוי לקנות בערך חצי ממה שהוא קונה היום.</p>
+        <p class="edu-line" style="margin-bottom:0;">זאת כמובן הערכה בלבד, אבל היא ממחישה עד כמה הזמן משפיע על הכסף.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULATING + RESULT -->
+  <section class="section dark" style="padding-top:0;">
+    <div class="panel center">
+      <p class="sub" style="margin-bottom:36px;">עכשיו בואו נראה מה המשמעות של זה עבור הכסף שלכם.</p>
+      <div class="calc-box" id="calcBox" role="status" aria-live="polite">
+        <span class="calc-text" id="calcText">מחשב...</span>
+      </div>
+
+      <div id="narrativeResult">
+        <span class="eyebrow">לפי התשובות שלכם</span>
+        <p class="edu-line">יש לכם כיום <b id="resAmount">₪0</b> שיושבים בעו"ש ואינם מיועדים לשימוש בשנה הקרובה.</p>
+        <p class="edu-line">לפי מה שסיפרתם, יש סיכוי טוב שהכסף הזה ימשיך לשבת שם לפחות <b id="resYears"></b> אם לא תעשו איתו שום דבר. וזה בדיוק המקום שבו הזמן מתחיל לעבוד נגדכם.</p>
+
+        <p class="sub" style="margin-top:30px;">אם האינפלציה תהיה בממוצע 3% בשנה, כוח הקנייה של הכסף שלכם עשוי להישחק בכ־</p>
+        <p class="gold-num" id="resultNumber">₪0</p>
+        <p class="result-note" style="margin-bottom:36px;">חשוב לדעת: זו המחשה בלבד, לא תחזית. שיעור האינפלציה בפועל משתנה משנה לשנה.</p>
+
+        <h3>מה זה אומר בפועל?</h3>
+        <p class="edu-line">זה לא אומר שייעלמו לכם <span id="resultNumber2">₪0</span> מחשבון הבנק. אם יש לכם היום <span id="resAmount2">₪0</span>, כנראה שגם בעוד <span id="resYears2"></span> עדיין תראו מספר דומה בחשבון (בהנחה שלא תשתמשו בכסף).</p>
+        <p class="edu-line">אבל - עם אותו סכום כסף תוכלו לקנות פחות. במילים אחרות, הכסף נשאר אותו כסף. אבל הערך שלו נשחק.</p>
+
+        <p class="quote-line">"המשכורת שלי עלתה... אבל משום מה הכול מרגיש יקר יותר."</p>
+        <p class="edu-line">לא כי הם מרוויחים פחות. אלא כי עם הזמן כוח הקנייה של הכסף משתנה.</p>
+
+        <h3>החדשות הטובות</h3>
+        <p class="edu-line">אינפלציה היא לא בעיה שאפשר לעצור. אבל אפשר להחליט איך הכסף שלכם יתנהג בזמן שהיא מתרחשת. אפשר להשאיר אותו בעו"ש, ואפשר לגרום לו להתחיל לעבוד.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERSONALIZED + CLOSING + CTA -->
+  <section class="section dark" id="ctaSection" style="display:none;">
+    <div class="glow glow-a"></div><div class="glow glow-b"></div>
+    <div class="panel center">
+      <span class="eyebrow">לפי התשובות שלכם</span>
+      <p id="ctaPersonal" style="font-size:clamp(16px,1.8vw,18.5px);margin-bottom:30px;"></p>
+
+      <h3 style="margin-top:0;">עוד מחשבה אחת לפני שממשיכים...</h3>
+      <p class="edu-line">אולי הסכום שקיבלתם נראה לכם קטן. אולי הוא אפילו לא הרשים אתכם. אבל חשוב לזכור משהו.</p>
+      <p class="edu-line">השאלה היא לא כמה כסף נשחק השנה. השאלה היא כמה שנים עוד תיתנו לזה להמשיך לקרות. כי הזמן עובד בכל מקרה - הבחירה היחידה היא האם הוא יעבוד נגדכם, או בשבילכם.</p>
+
+      <p class="edu-line">אם הגעתם עד לכאן, כנראה שאתם כבר מבינים שהבעיה היא לא שאין לכם כסף. הבעיה היא שהכסף שכבר חסכתם עדיין לא התחיל לעבוד בשבילכם.</p>
+      <p class="edu-line" style="margin-bottom:36px;">בדיוק בשביל זה בניתי את התוכנית - לא כדי להפוך אתכם למומחי שוק ההון, אלא כדי לקחת אתכם מאפס מוחלט ועד להשקעה הראשונה שלכם. שלב אחרי שלב. בלי ניחושים. בלי מידע סותר. ובקצב שמתאים לכם.</p>
+
+      <a href="/course/" class="btn">אני רוצה להתחיל לגרום לכסף שלי לעבוד</a>
+    </div>
+  </section>
+
+</div>
+
+<script>
+var state = { q3:'lt6m', q4:'1', q5:'fear' };
+
+var yearsLabels = { '1':'שנה', '3':'3 שנים', '5':'5 שנים', '10':'10 שנים או יותר' };
+var durationLabels = { 'lt6m':'פחות מחצי שנה', '6-12m':'בין חצי שנה לשנה', '1-2y':'בין שנה לשנתיים', '2y+':'יותר משנתיים' };
+
+var ctaLines = {
+  fear:'זה החשש הנפוץ ביותר שאני שומע. וגם אני הרגשתי בדיוק אותו הדבר כשהתחלתי. בגלל זה התוכנית לא מלמדת איך "להכות את השוק". היא מלמדת איך להתחיל בצורה פשוטה, מסודרת ולטווח ארוך.',
+  howto:'זאת בדיוק הסיבה שבניתי את התוכנית. היא לא מניחה שום ידע מוקדם. אני מראה כל שלב, כולל שיתוף מסך, כך שלא תצטרכו לנחש מה עושים.',
+  time:'גם אני הייתי איש קבע. אני יודע בדיוק איך נראה יום עמוס. לכן בניתי את התוכנית כך שאפשר להשלים אותה בכ־3 שעות, בקצב שלכם. ואחרי שמקימים את המערכת, ניהול ההשקעות לוקח בערך 10 דקות בחודש.',
+  learn:'אין שום דבר רע בללמוד. גם אני עשיתי את זה. אבל למדתי בדרך הקשה שיש הבדל בין לצרוך עוד מידע - לבין להתחיל לפעול. המטרה של התוכנית היא לא שתדעו יותר. המטרה היא שתעשו את ההשקעה הראשונה שלכם.',
+  other:'מה שבטוח זה שהצעד הראשון הוא תמיד הכי קשה. בדיוק בשביל זה בניתי תהליך פשוט שלוקח אתכם צעד אחרי צעד, מאיפה שאתם נמצאים היום.'
+};
+
+function fmt(n){ return '₪' + Math.round(n).toLocaleString('he-IL'); }
+
+// numeric inputs: format with thousands separators as you type
+['q1','q2'].forEach(function(id){
+  var input = document.getElementById(id);
+  input.addEventListener('input', function(){
+    var digits = input.value.replace(/[^\d]/g,'');
+    input.value = digits ? Number(digits).toLocaleString('he-IL') : '';
+  });
+});
+
+// radio groups (all default to the first option already selected)
+document.querySelectorAll('.opt-list').forEach(function(list){
+  var group = list.getAttribute('data-group');
+  var opts = Array.prototype.slice.call(list.querySelectorAll('.opt'));
+
+  function select(opt){
+    opts.forEach(function(o){
+      o.classList.remove('selected');
+      o.setAttribute('aria-checked','false');
+      o.setAttribute('tabindex','-1');
+    });
+    opt.classList.add('selected');
+    opt.setAttribute('aria-checked','true');
+    opt.setAttribute('tabindex','0');
+    opt.focus();
+    state[group] = opt.getAttribute('data-value');
+  }
+
+  opts.forEach(function(opt, idx){
+    opt.addEventListener('click', function(){ select(opt); });
+    opt.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        select(opt);
+      } else if(e.key === 'ArrowDown' || e.key === 'ArrowRight'){
+        e.preventDefault();
+        select(opts[(idx + 1) % opts.length]);
+      } else if(e.key === 'ArrowUp' || e.key === 'ArrowLeft'){
+        e.preventDefault();
+        select(opts[(idx - 1 + opts.length) % opts.length]);
+      }
+    });
+  });
+});
+
+var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function playCalcAnimation(callback){
+  if(prefersReducedMotion){ callback(); return; }
+  var steps = ['מחשב...','בודק...','משווה...','סיימנו.'];
+  var el = document.getElementById('calcText');
+  var i = 0;
+  el.textContent = steps[0];
+  var interval = setInterval(function(){
+    i++;
+    if(i < steps.length){
+      el.textContent = steps[i];
+    } else {
+      clearInterval(interval);
+      setTimeout(callback, 500);
+    }
+  }, 650);
+}
+
+document.getElementById('showResult').addEventListener('click', function(){
+  var amount = parseInt((document.getElementById('q1').value||'').replace(/[^\d]/g,''),10) || 0;
+  var available = parseInt((document.getElementById('q2').value||'').replace(/[^\d]/g,''),10) || 0;
+  if(available <= 0){ available = amount; }
+  var years = parseInt(state.q4,10) || 1;
+  var erosion = available * (1 - 1/Math.pow(1.03, years));
+  var yearsLabel = yearsLabels[state.q4] || (years + ' שנים');
+
+  document.getElementById('resAmount').textContent = fmt(available);
+  document.getElementById('resAmount2').textContent = fmt(available);
+  document.getElementById('resYears').textContent = yearsLabel;
+  document.getElementById('resYears2').textContent = yearsLabel;
+  document.getElementById('resultNumber').textContent = fmt(erosion);
+  document.getElementById('resultNumber2').textContent = fmt(erosion);
+  document.getElementById('ctaPersonal').textContent = ctaLines[state.q5] || ctaLines.other;
+
+  var resultArea = document.getElementById('resultArea');
+  resultArea.style.display = 'block';
+  resultArea.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+
+  playCalcAnimation(function(){
+    document.getElementById('calcBox').style.display = 'none';
+    document.getElementById('narrativeResult').style.display = 'block';
+    document.getElementById('ctaSection').style.display = 'block';
+  });
+});
+</script>
+</body>
+</html>

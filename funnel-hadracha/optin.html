@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>איך לבנות תיק השקעות פסיבי - הדרכה חינמית | שחר לוי</title>
+  <meta name="description" content="הדרכה חינמית בוידאו לקציני קבע - איך להפוך כסף שיושב בעו&quot;ש לתיק השקעות שעובד בשבילך." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
+
+  <!-- Facebook Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','3199947373426233');
+    fbq('track','PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=3199947373426233&ev=PageView&noscript=1"/></noscript>
+  <!-- End Facebook Pixel -->
+
+  <style>
+    :root {
+      --bg:      #09090b;
+      --gold:    #C9A84C;
+      --gold-l:  #d8bc6e;
+      --gold-g:  rgba(201,168,76,.12);
+      --gold-b:  rgba(201,168,76,.25);
+      --text-1:  #f2f3f5;
+      --text-2:  #9ca3af;
+      --text-3:  #5c636e;
+      --border:  rgba(255,255,255,.065);
+      --ease:    240ms ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Noto Sans Hebrew', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text-2);
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 24px;
+      direction: rtl;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .bg-glow {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% -10%, rgba(201,168,76,.13) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 10% 90%,  rgba(27,58,107,.14)  0%, transparent 55%),
+        radial-gradient(ellipse 40% 40% at 90% 90%,  rgba(27,58,107,.10)  0%, transparent 55%);
+    }
+    .bg-grid {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,.022) 1px, transparent 1px);
+      background-size: 56px 56px;
+    }
+
+    @keyframes fadeUp  { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+
+    .card {
+      position: relative; z-index: 1;
+      max-width: 440px; width: 100%;
+      text-align: center;
+    }
+
+    .photo {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 3px solid var(--gold);
+      margin: 0 auto 10px;
+      display: block;
+      animation: fadeUp .6s ease both;
+    }
+
+    .shahar-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-1);
+      animation: fadeUp .6s .05s ease both;
+    }
+
+    .shahar-role {
+      font-size: 12px;
+      color: var(--text-3);
+      margin-bottom: 22px;
+      animation: fadeUp .6s .05s ease both;
+    }
+
+    .eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 14px;
+      animation: fadeUp .6s .08s ease both;
+    }
+
+    h1 {
+      font-size: clamp(26px, 5.6vw, 42px);
+      font-weight: 800; line-height: 1.22;
+      letter-spacing: -.02em;
+      color: var(--text-1);
+      margin-bottom: 18px;
+      animation: fadeUp .6s .1s ease both;
+    }
+
+    h2 {
+      font-size: clamp(16px, 3vw, 19px);
+      font-weight: 600; line-height: 1.5;
+      color: var(--text-2);
+      margin-bottom: 28px;
+      animation: fadeUp .6s .2s ease both;
+    }
+
+    .form {
+      margin-top: 8px;
+      display: flex; flex-direction: column; gap: 12px;
+      animation: fadeUp .6s .35s ease both;
+    }
+
+    input {
+      width: 100%;
+      padding: 16px 20px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-size: 16px;
+      color: var(--text-1);
+      text-align: right;
+      font-family: 'Noto Sans Hebrew', sans-serif;
+      min-height: 52px;
+      transition: border-color var(--ease), background var(--ease);
+    }
+    input::placeholder { color: var(--text-3); }
+    input:focus { outline: none; border-color: var(--gold-b); background: rgba(255,255,255,.07); }
+
+    .btn-submit {
+      display: block; width: 100%;
+      background: var(--gold); color: #08080a;
+      font-family: 'Noto Sans Hebrew', sans-serif;
+      font-size: 18px; font-weight: 700;
+      padding: 18px 24px; border-radius: 12px;
+      min-height: 56px;
+      border: none; cursor: pointer; margin-top: 4px;
+      box-shadow: 0 4px 24px rgba(201,168,76,.3);
+      transition: background var(--ease), transform var(--ease), box-shadow var(--ease);
+    }
+    .btn-submit:hover  { background: var(--gold-l); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(201,168,76,.4); }
+    .btn-submit:active { transform: translateY(0); }
+    .btn-submit:disabled { opacity: .55; cursor: not-allowed; transform: none; }
+
+    .err, .field-err {
+      color: #f87171;
+      font-size: 13px;
+      display: none;
+      text-align: right;
+      margin-top: -4px;
+    }
+
+    .trust {
+      margin-top: 18px;
+      font-size: 12px;
+      color: var(--text-3);
+      animation: fadeUp .6s .5s ease both;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-glow"></div>
+  <div class="bg-grid"></div>
+
+  <div class="card">
+    <img class="photo" src="/shahar_headshot.png" alt="שחר לוי" />
+    <div class="shahar-name">שחר לוי</div>
+    <div class="shahar-role">ליווי פיננסי לאנשי קבע</div>
+
+    <p class="eyebrow">הדרכה חינמית בוידאו</p>
+
+    <h1>יש לך כסף שיושב בעו"ש<br>ולא עושה כלום</h1>
+
+    <h2>15 דקות, ואתה יודע בדיוק מה לעשות עם הכסף שיושב לך בעו"ש</h2>
+
+    <form class="form" id="leadForm" novalidate>
+      <input type="text"  id="name"  placeholder="שם מלא"     autocomplete="name"  />
+      <p class="field-err" id="nameErr">נא להזין שם מלא</p>
+
+      <input type="email" id="email" placeholder="אימייל"     autocomplete="email" inputmode="email" />
+      <p class="field-err" id="emailErr">נא להזין אימייל תקין</p>
+
+      <input type="tel"   id="phone" placeholder="מספר טלפון" autocomplete="tel"   inputmode="tel"   />
+      <p class="field-err" id="phoneErr">נא להזין מספר טלפון תקין</p>
+
+      <p class="err" id="errMsg">משהו השתבש - נסו שוב</p>
+      <button type="button" class="btn-submit" id="submitBtn" onclick="submitLead()">כן, תראה לי איך</button>
+    </form>
+
+    <p class="trust">הפרטים שלך לא יועברו לאף גורם חיצוני</p>
+  </div>
+
+  <script>
+    var SB_URL  = 'https://hbpapywofrvbcalrwwhq.supabase.co';
+    var SB_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhicGFweXdvZnJ2YmNhbHJ3d2hxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwODUwOTUsImV4cCI6MjA5NTY2MTA5NX0.aIvUbNrDTNKeuU4vdIUmBYIitl9t1IbTJo4Ajsz7p2I';
+
+    function isValidEmail(v) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+    }
+
+    document.getElementById('leadForm').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        submitLead();
+      }
+    });
+
+    async function submitLead() {
+      var btn     = document.getElementById('submitBtn');
+      var errMsg  = document.getElementById('errMsg');
+      var nameEl  = document.getElementById('name');
+      var emailEl = document.getElementById('email');
+      var phoneEl = document.getElementById('phone');
+      var name    = nameEl.value.trim();
+      var email   = emailEl.value.trim();
+      var phone   = phoneEl.value.trim();
+
+      [nameEl, emailEl, phoneEl].forEach(function (el) { el.style.borderColor = ''; });
+      ['errMsg', 'nameErr', 'emailErr', 'phoneErr'].forEach(function (id) {
+        document.getElementById(id).style.display = 'none';
+      });
+
+      var hasError = false;
+      var firstErrorEl = null;
+
+      if (!name || name.length < 2) {
+        nameEl.style.borderColor = '#f87171';
+        document.getElementById('nameErr').style.display = 'block';
+        firstErrorEl = firstErrorEl || nameEl;
+        hasError = true;
+      }
+      if (!email || !isValidEmail(email)) {
+        emailEl.style.borderColor = '#f87171';
+        document.getElementById('emailErr').style.display = 'block';
+        firstErrorEl = firstErrorEl || emailEl;
+        hasError = true;
+      }
+      if (!phone || phone.replace(/\D/g, '').length < 9) {
+        phoneEl.style.borderColor = '#f87171';
+        document.getElementById('phoneErr').style.display = 'block';
+        firstErrorEl = firstErrorEl || phoneEl;
+        hasError = true;
+      }
+      if (hasError) {
+        if (firstErrorEl) firstErrorEl.focus();
+        return;
+      }
+
+      btn.disabled    = true;
+      btn.textContent = 'שולח...';
+
+      try {
+        var res = await fetch(SB_URL + '/rest/v1/leads', {
+          method:  'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey':        SB_ANON,
+            'Authorization': 'Bearer ' + SB_ANON,
+            'Prefer':        'return=minimal'
+          },
+          body: JSON.stringify({ full_name: name, email: email, phone: phone })
+        });
+        if (res.ok) {
+          window.location.href = 'https://shaharfinance.com/video/';
+        } else {
+          throw new Error();
+        }
+      } catch (_) {
+        errMsg.style.display = 'block';
+        btn.disabled         = false;
+        btn.textContent      = 'כן, תראה לי איך';
+      }
+    }
+  </script>
+</body>
+</html>
