@@ -80,6 +80,7 @@ p{font-size:clamp(16px,1.6vw,18px);margin-bottom:14px;}
 .dark .glow{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;z-index:0;}
 .dark .glow-a{top:-15%;right:-10%;width:520px;height:520px;background:radial-gradient(circle,rgba(201,168,76,.16),transparent 65%);}
 .dark .glow-b{bottom:-15%;left:-10%;width:520px;height:520px;background:radial-gradient(circle,rgba(27,58,107,.22),transparent 65%);}
+.dark .grid-overlay{position:absolute;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:48px 48px;}
 .dark .inner,.dark .narrow{position:relative;z-index:1;}
 
 .cream{background:var(--cream);}
@@ -179,7 +180,8 @@ fbq('track', 'PageView');
 </nav>
 
 <section class="hero dark" id="optin-form">
-  <div class="glow glow-a"></div><div class="glow glow-b"></div>  <div class="narrow animate">
+  <div class="glow glow-a"></div><div class="glow glow-b"></div><div class="grid-overlay"></div>
+  <div class="narrow animate">
     <span class="eyebrow"><span class="dot"></span>הדרכה חינמית · 10 דקות</span>
     <h1>לפני שאתם משאירים עוד <span class="gold-grad">חודש</span> את הכסף שלכם בעו"ש, צפו בהדרכה החינמית הזאת</h1>
     <p class="lead">כך תוכלו להתחיל להשקיע בצורה פשוטה גם אם אין לכם שום ידע קודם – בהדרכה חינמית של 10 דקות המיועדת במיוחד לאנשי קבע.</p>
@@ -238,7 +240,8 @@ fbq('track', 'PageView');
 </section>
 
 <section class="section dark">
-  <div class="glow glow-a"></div>  <div class="narrow animate">
+  <div class="glow glow-a"></div><div class="grid-overlay"></div>
+  <div class="narrow animate">
     <div class="whoami">
       <div class="whoami-photo"><img src="/shahar_headshot.png" alt="שחר לוי" loading="lazy" /></div>
       <div>
