@@ -394,7 +394,7 @@ async function submitForm(ids, btn, errMsg, contentName) {
       leadSubmitted = true;
       if (typeof fbq === 'function') { fbq('track', 'Lead', { content_name: contentName }); }
       var utmQuery = window.location.search && window.location.search.indexOf('utm_') > -1 ? window.location.search : '';
-      var redirectUrl = 'https://shaharfinance.com/video/' + utmQuery;
+      var redirectUrl = 'https://shaharfinance.com/course/' + utmQuery;
       setTimeout(function () { window.location.href = redirectUrl; }, 250);
     } else {
       throw new Error();
