@@ -12,19 +12,19 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:       #2D2D2D;
-      --surface:  #363636;
-      --text:     #F2EFE8;
-      --text2:    #9E9E9E;
-      --text3:    #6B6B6B;
+      --bg:       #F7F5F0;
+      --surface:  #FFFFFF;
+      --text:     #2D2D2D;
+      --text2:    #6B6B6B;
+      --text3:    #9E9E9E;
       --gold:     #C9A84C;
       --gold-bg:  rgba(201,168,76,.14);
       --gold-dim: rgba(201,168,76,.08);
-      --row-bg:   #3D3D3D;
-      --inp-bg:   #FFFFFF;
-      --border:   #4A4A4A;
-      --sh:       0 8px 40px rgba(0,0,0,.5), 0 1px 4px rgba(0,0,0,.2);
-      --sh-sm:    0 2px 12px rgba(0,0,0,.3);
+      --row-bg:   #F0EDE7;
+      --inp-bg:   #F0EDE7;
+      --border:   #E0DAD2;
+      --sh:       0 8px 40px rgba(0,0,0,.08), 0 1px 4px rgba(0,0,0,.04);
+      --sh-sm:    0 2px 12px rgba(0,0,0,.05);
       --r:        14px;
       --t:        .18s ease;
     }
@@ -43,7 +43,7 @@
     /* Header */
     .hdr {
       position: sticky; top: 0; z-index: 20;
-      background: #222222;
+      background: rgba(247,245,240,.9);
       border-bottom: 1px solid var(--border);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
@@ -51,19 +51,9 @@
     .hdr-in {
       max-width: 720px; margin: 0 auto;
       padding: 0 20px; height: 60px;
-      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      display: flex; align-items: center;
     }
-    .hdr-logo-wrap {
-      background: #F7F5F0; border-radius: 8px;
-      padding: 3px 7px; display: flex; align-items: center; flex-shrink: 0;
-    }
-    .hdr-logo { height: 38px; display: block; }
-    .hdr-back {
-      font-size: 13px; color: var(--text2);
-      display: flex; align-items: center; gap: 6px;
-      transition: color var(--t);
-    }
-    .hdr-back:hover { color: var(--text); }
+    .hdr-logo { height: 34px; display: block; }
 
     /* Main */
     .main {
@@ -102,18 +92,10 @@
     .panel {
       background: #FFFFFF;
       border-radius: 22px;
-      box-shadow: 0 8px 40px rgba(0,0,0,.09), 0 1px 4px rgba(0,0,0,.04);
+      box-shadow: 0 8px 40px rgba(0,0,0,.06), 0 1px 4px rgba(0,0,0,.03);
       padding: 36px 32px;
       margin-bottom: 40px;
-      --inp-bg: #F0EDE7;
-      --row-bg: #EDEAE3;
-      --border: #E0DAD2;
     }
-    .panel .lbl { color: #6B7280; }
-    .panel .amt { color: #1A1A1A; }
-    .panel .row-final .lbl { color: #1A1A1A; font-weight: 500; }
-    .panel .row-final .amt { color: var(--gold); }
-    .panel .field label { color: #6B7280; }
 
     /* Fields */
     .field { margin-bottom: 18px; }
@@ -293,10 +275,7 @@
 
   <header class="hdr">
     <div class="hdr-in">
-      <div class="hdr-logo-wrap">
-        <img src="/logo.png" alt="ליווי השקעות ללוחמים" class="hdr-logo">
-      </div>
-      <a href="/warriors-hub/mifgash-1/" class="hdr-back">חזרה למפגש 1</a>
+      <img src="/logo.png" alt="ליווי השקעות ללוחמים" class="hdr-logo">
     </div>
   </header>
 
@@ -468,7 +447,7 @@
               rtl: true,
               labels: {
                 font: { family: 'Heebo', size: 13 },
-                color: '#9E9E9E',
+                color: '#6B6B6B',
                 padding: 20,
                 usePointStyle: true,
                 pointStyleWidth: 16,
@@ -476,9 +455,9 @@
             },
             tooltip: {
               rtl: true,
-              backgroundColor: '#363636',
+              backgroundColor: '#2D2D2D',
               titleColor: '#F2EFE8',
-              bodyColor: '#9E9E9E',
+              bodyColor: '#C9C9C9',
               borderColor: '#4A4A4A',
               borderWidth: 1,
               titleFont: { family: 'Heebo' },
@@ -488,14 +467,14 @@
           },
           scales: {
             x: {
-              grid: { color: '#4A4A4A' },
-              ticks: { font: { family: 'Heebo', size: 12 }, color: '#9E9E9E' },
+              grid: { color: '#E0DAD2' },
+              ticks: { font: { family: 'Heebo', size: 12 }, color: '#6B6B6B' },
             },
             y: {
-              grid: { color: '#4A4A4A' },
+              grid: { color: '#E0DAD2' },
               ticks: {
                 font: { family: 'Heebo', size: 12 },
-                color: '#9E9E9E',
+                color: '#6B6B6B',
                 callback: v => v >= 1000000
                   ? '₪' + (v / 1000000).toFixed(1) + 'M'
                   : v >= 1000 ? '₪' + (v / 1000).toFixed(0) + 'K' : '₪' + v,
