@@ -189,6 +189,13 @@
       line-height: 1.8;
     }
 
+    .hero-subtitle {
+      font-size: clamp(20px, 2.6vw, 28px);
+      line-height: 1.4;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
     .gold-grad {
       background: linear-gradient(120deg, var(--gold) 10%, var(--gold-l) 60%, #fff 100%);
       -webkit-background-clip: text;
@@ -1491,9 +1498,8 @@
     <div class="glow glow-b"></div>
     <div class="grid-overlay"></div>
     <div class="inner animate">
-      <h1>בעוד <span class="gold-grad">10 דקות</span> מהיום, אתם תדעו בדיוק איך להתחיל להשקיע</h1>
-      <p class="lead">אם אתם אנשי קבע ויש לכם כסף שיושב בעו"ש, הכנתי עבורכם הדרכה קצרה שתראה לכם איך לעבור מאפס מוחלט –
-        לתוכנית פעולה ברורה.</p>
+      <h1>יש לכם <span class="gold-grad">כסף</span> שיושב בעו"ש?</h1>
+      <p class="hero-subtitle">ב-10 הדקות הבאות תבינו מה הצעדים הראשונים כדי לגרום לו להתחיל לעבוד בשבילכם.</p>
 
       <div class="video-wrap">
         <div class="video-frame">
@@ -1532,6 +1538,12 @@
 
   <section class="section cream">
     <div class="narrow center animate">
+      <div class="proof-grid">
+        <div class="proof-item"><img src="/testimonials/wts-6.jpg" alt="עדות: הפסקתי לדחות והתחלתי להשקיע - כמה קל זה היה בפועל"
+            loading="lazy" /></div>
+        <div class="proof-item"><img src="/testimonials/wts-10.jpg" alt="עדות: ליווי אישי ופרקטי בכניסה להשקעות"
+            loading="lazy" /></div>
+      </div>
       <p class="story-quote">
         <span>אם סיימתם לראות את הסרטון, כנראה שהבנתם דבר אחד.</span><br>
         <span class="soft">לדחות את ההחלטה להתחיל להשקיע... זו גם החלטה.</span>
@@ -1550,7 +1562,14 @@
       <p class="reveal-desc">אני לא מלמד אתכם איך להרוויח יותר כסף. אני מלמד אתכם איך להפסיק לתת לזמן לעבוד נגדכם,
         ולהתחיל לגרום לו לעבוד בשבילכם.<br><br>אם תבחרו להצטרף לתוכנית, לא תקבלו עוד קורס על השקעות. תקבלו תהליך פשוט,
         ברור ומעשי שייקח אתכם מאפס – לתיק השקעות פעיל ולאסטרטגיית השקעה שתלווה אתכם לשנים קדימה.</p>
-      <p style="font-weight:700;color:#fff;margin-bottom:18px;">בסיום התוכנית יהיה לכם:</p>
+      <div class="proof-grid">
+        <div class="proof-item"><img src="/testimonials/wts-3.jpg" alt="עדות: יצא מהתלבטות ארוכה סביב ההשקעות"
+            loading="lazy" /></div>
+        <div class="proof-item"><img src="/testimonials/wts-7.jpg" alt="עדות: נכנס בביטחון לתחום שהיה זר לגמרי"
+            loading="lazy" /></div>
+      </div>
+      <p style="font-weight:700;color:#fff;font-size:1.15em;margin-bottom:6px;">בעוד כ-3 שעות תוכלו להיות במקום אחר לגמרי.</p>
+      <p style="color:var(--muted-light);margin-bottom:18px;">במקום כסף שמחכה בעו"ש... תהיה לכם:</p>
       <ul class="feature-list">
         <li class="fadeup-ready" style="--delay:0s"><span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 8-4-.5-7-3.5-7-8V6z"/></svg></span><span><strong>קרן חירום מסודרת</strong></span></li>
         <li class="fadeup-ready" style="--delay:.08s"><span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10l9-5 9 5M4 10v8h16v-8M9 18v-5h6v5"/></svg></span><span><strong>חשבון מסחר פתוח</strong></span></li>
@@ -1558,7 +1577,7 @@
         <li class="fadeup-ready" style="--delay:.24s"><span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span><span><strong>אסטרטגיית השקעה ברורה</strong> – כמה להשקיע, במה להשקיע ומתי</span></li>
         <li class="fadeup-ready" style="--delay:.32s"><span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span><span><strong>הביטחון לנהל את הכסף שלכם לבד</strong>, בלי להיות תלויים באף אחד</span></li>
       </ul>
-      <p style="margin-top:24px;">כל זה בתוכנית אחת שאפשר להשלים בכ־3 שעות, בקצב שלכם.</p>
+      <p style="margin-top:24px;">כל זה בתוכנית אחת, בקצב שלכם.</p>
       <p style="font-weight:700;color:#fff;">המטרה שלי היא לא שתסיימו את התוכנית עם יותר ידע. המטרה שלי היא שתסיימו אותה
         כמשקיעים.</p>
     </div>
@@ -1670,18 +1689,6 @@
       <p style="max-width:680px;margin:0 auto 30px;color:var(--muted-dark);">חלקם פחדו להפסיד. חלקם חשבו שהם לא מבינים
         מספיק. וחלקם פשוט דחו את ההחלטה שוב ושוב. היום, הם כבר אחרי ההשקעה הראשונה שלהם - לא כי הם הפכו למומחי שוק ההון,
         אלא כי סוף סוף הייתה להם דרך ברורה לפעול.</p>
-      <div class="proof-grid">
-        <div class="proof-item"><img src="/testimonials/wts-3.jpg" alt="עדות: התגברות על הפחד מהצעד הראשון בהשקעות"
-            loading="lazy" /></div>
-        <div class="proof-item"><img src="/testimonials/wts-2.jpg" alt="עדות: התגברות על דחיינות והתחלת ההשקעה"
-            loading="lazy" /></div>
-        <div class="proof-item"><img src="/testimonials/wts-10.jpg" alt="עדות: ליווי אישי ופרקטי בכניסה להשקעות"
-            loading="lazy" /></div>
-        <div class="proof-item"><img src="/testimonials/wts-1.jpg" alt="עדות: זמינות וסבלנות לשאלות לאורך התהליך"
-            loading="lazy" /></div>
-        <div class="proof-item"><img src="/testimonials/wts-9.jpg"
-            alt="עדות: תהליך מלא מהחלטה ועד ביצוע ההשקעה הראשונה" loading="lazy" /></div>
-      </div>
       <p style="font-weight:700;">אם הם הצליחו להתחיל מאפס, אין שום סיבה שגם אתם לא.</p>
     </div>
   </section>
@@ -1751,6 +1758,12 @@
     <div class="glow glow-b"></div>
     <div class="grid-overlay"></div>
     <div class="narrow center animate">
+      <div class="proof-grid">
+        <div class="proof-item"><img src="/testimonials/wts-4.jpg" alt="עדות: תודה על הזמן, שיעורים קלילים ופרקטיים"
+            loading="lazy" /></div>
+        <div class="proof-item"><img src="/testimonials/wts-5.jpg" alt="עדות: ידע לענות על כל שאלה, ברמה הכי טובה"
+            loading="lazy" /></div>
+      </div>
       <h2>ההחלטה היחידה שנשארה היא האם להתחיל עכשיו או להמשיך לדחות</h2>
       <div class="bridge-box">
         <p>אם הגעתם עד לכאן, כנראה שאתם כבר יודעים שהכסף שלכם לא צריך להמשיך לשבת בעו"ש. השאלה היחידה היא האם תעשו עם זה
@@ -1802,8 +1815,27 @@
     </div>
   </section>
 
+  <section class="section cream">
+    <div class="narrow center animate">
+      <div class="proof-grid">
+        <div class="proof-item"><img src="/testimonials/wts-8.jpg" alt="עדות: החומר בתוכנית מעולה, שווה את הכל"
+            loading="lazy" /></div>
+        <div class="proof-item"><img src="/testimonials/wts-2.jpg" alt="עדות: פתח לי דלת שלמה לעולם ההשקעות"
+            loading="lazy" /></div>
+        <div class="proof-item"><img src="/testimonials/wts-11.jpg" alt="עדות: ליווי אישי ופרקטי שלא רגיל בעולם הזה"
+            loading="lazy" /></div>
+      </div>
+    </div>
+  </section>
+
   <section class="section cream-alt">
     <div class="inner center animate">
+      <div class="proof-grid">
+        <div class="proof-item"><img src="/testimonials/wts-1.jpg" alt="עדות: התגברות על הפחד מהצעד הראשון בהשקעות"
+            loading="lazy" /></div>
+        <div class="proof-item"><img src="/testimonials/wts-9.jpg" alt="עדות: תהליך מלא מהחלטה ועד ביצוע ההשקעה הראשונה"
+            loading="lazy" /></div>
+      </div>
       <h2>בעוד שבוע מהיום תוכלו להיות באחת משתי נקודות</h2>
       <div class="path-timeline">
         <span class="path-node"><span class="dot"></span>היום</span>
