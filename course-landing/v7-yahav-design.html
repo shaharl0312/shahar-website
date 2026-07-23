@@ -768,104 +768,360 @@
       margin-bottom: 0;
     }
 
-    /* CURRICULUM ACCORDION */
-    .curriculum-list {
-      max-width: 900px;
-      margin: 44px auto 0;
+    /* CURRICULUM JOURNEY (scroll-linked stations) */
+    .cj-section {
+      overflow: visible;
+    }
+
+    .cjmap {
+      position: relative;
+      height: 500vh;
+      margin-top: 24px;
+    }
+
+    .cjmap-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      height: 100dvh;
+      overflow: hidden;
+      contain: paint;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+    }
+
+    .cjmap-line {
       position: relative;
-      z-index: 1;
+      height: 6px;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, .09);
+      width: min(1000px, calc(100% - 48px));
+      margin: 64px auto 0;
+      flex: 0 0 auto;
+      z-index: 5;
     }
 
-    .curriculum-item {
-      border: 1px solid rgba(201, 168, 76, .35);
-      border-radius: 16px;
-      overflow: hidden;
-      background: rgba(255, 255, 255, .02);
-      transition: border-color .3s;
+    .cjmap-line i {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 0%;
+      border-radius: 4px;
+      background: linear-gradient(270deg, var(--gold), var(--gold-l));
+      box-shadow: 0 0 14px rgba(201, 168, 76, .6);
     }
 
-    .curriculum-item.open {
-      border-color: var(--gold);
+    .cjmap-stations {
+      position: absolute;
+      inset: 0;
     }
 
-    .curriculum-head {
-      width: 100%;
-      background: none;
-      border: none;
+    .cj-st {
+      position: absolute;
+      top: 50%;
+      transform: translate(50%, -50%);
+      text-align: center;
       cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      padding: 22px 26px;
-      font-family: inherit;
     }
 
-    .curriculum-head .head-right {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .curriculum-head .num {
-      flex-shrink: 0;
-      width: 34px;
-      height: 34px;
+    .cj-med {
+      width: 62px;
+      height: 62px;
       border-radius: 50%;
-      background: var(--gold);
-      color: var(--anthracite);
+      margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 900;
-      font-size: 15px;
+      background: #0d0d0d;
+      border: 2.5px solid rgba(255, 255, 255, .16);
+      transition: all .45s ease;
     }
 
-    .curriculum-head .title {
-      font-weight: 800;
-      font-size: clamp(16px, 1.8vw, 19px);
-      color: #fff;
-      text-align: right;
+    .cj-med svg {
+      width: 22px;
+      height: 22px;
+      color: rgba(255, 255, 255, .45);
+      transition: color .45s ease;
     }
 
-    .curriculum-head .head-left {
+    .cj-st .lbl {
+      position: absolute;
+      top: calc(100% + 12px);
+      right: 50%;
+      transform: translateX(50%);
+      white-space: nowrap;
+      font-size: 12.5px;
+      letter-spacing: .04em;
+      color: rgba(247, 245, 240, .5);
+      font-weight: 600;
+      transition: color .45s;
+    }
+
+    .cj-st.lit .cj-med {
+      border-color: var(--st, var(--gold));
+      box-shadow: 0 0 0 5px color-mix(in srgb, var(--st, var(--gold)) 14%, transparent), 0 0 22px color-mix(in srgb, var(--st, var(--gold)) 45%, transparent);
+    }
+
+    .cj-st.lit .cj-med svg {
+      color: var(--st, var(--gold));
+    }
+
+    .cj-st.lit .lbl {
+      color: var(--st, var(--gold-l));
+    }
+
+    .cj-st:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 4px;
+      border-radius: 8px;
+    }
+
+    .cjstage {
+      position: relative;
+      flex: 1;
+    }
+
+    .cjscene {
+      position: absolute;
+      inset: 0;
       display: flex;
       align-items: center;
-      gap: 8px;
-      color: var(--gold-l);
-      font-size: 13.5px;
-      font-weight: 600;
-      white-space: nowrap;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
     }
 
-    .curriculum-head .arrow {
+    .cjmap:not(.cjmob) .cjscene {
+      will-change: transform, opacity;
+    }
+
+    .cjscene .medallion {
+      display: none;
+    }
+
+    .cjscene .aura {
+      position: absolute;
+      inset: -20%;
+      background: radial-gradient(ellipse 60% 55% at 50% 46%, color-mix(in srgb, var(--st, var(--gold)) 16%, transparent), transparent 70%);
+    }
+
+    .cjscene .bignum {
+      position: absolute;
+      top: 2%;
+      right: 50%;
+      transform: translateX(50%);
+      font-weight: 900;
+      font-size: clamp(180px, 34vh, 360px);
+      line-height: 1;
+      color: color-mix(in srgb, var(--st, var(--gold)) 7%, transparent);
+      -webkit-text-stroke: 2px color-mix(in srgb, var(--st, var(--gold)) 40%, transparent);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .cjscene .inner {
+      position: relative;
+      max-width: 720px;
+      padding: 0 clamp(22px, 5vw, 60px);
+      text-align: center;
+    }
+
+    .cj-when {
       display: inline-flex;
-      color: var(--gold);
-      transition: transform .3s;
+      align-items: center;
+      gap: 8px;
+      font-size: clamp(12px, 1.4vw, 14px);
+      letter-spacing: .06em;
+      font-weight: 700;
+      color: var(--st, var(--gold-l));
+      border: 1.5px solid color-mix(in srgb, var(--st, var(--gold-l)) 42%, transparent);
+      padding: 7px 18px;
+      border-radius: 100px;
+      margin-bottom: clamp(16px, 3vh, 26px);
+      background: color-mix(in srgb, var(--st, var(--gold-l)) 8%, transparent);
+      backdrop-filter: blur(4px);
     }
 
-    .curriculum-item.open .curriculum-head .arrow {
-      transform: rotate(180deg);
+    .cj-title {
+      font-weight: 800;
+      font-size: clamp(26px, 4vw, 42px);
+      line-height: 1.15;
+      color: #fff;
+      margin-bottom: clamp(12px, 2.4vh, 22px);
     }
 
-    .curriculum-body {
-      max-height: 0;
+    .cj-title .accent {
+      color: var(--st, var(--gold));
+    }
+
+    .cj-text {
+      font-size: clamp(15px, 1.8vw, 18px);
+      line-height: 1.75;
+      color: rgba(247, 245, 240, .82);
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .cjmap-hint {
+      position: absolute;
+      bottom: 20px;
+      right: 50%;
+      transform: translateX(50%);
+      font-size: 11px;
+      color: rgba(247, 245, 240, .35);
+      letter-spacing: .1em;
+      z-index: 5;
+    }
+
+    @media (max-width:720px) {
+      .cjmap-line {
+        margin-top: 44px;
+        width: calc(100% - 32px);
+      }
+
+      .cj-med {
+        width: 46px;
+        height: 46px;
+      }
+
+      .cj-med svg {
+        width: 17px;
+        height: 17px;
+      }
+
+      .cj-st .lbl {
+        display: none;
+      }
+    }
+
+    /* reduced motion: static stacked scenes */
+    .cjmap.static {
+      height: auto;
+    }
+
+    .cjmap.static .cjmap-sticky {
+      position: relative;
+      height: auto;
+      display: block;
+    }
+
+    .cjmap.static .cjstage {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .cjmap.static .cjscene {
+      position: relative;
+      opacity: 1;
+      pointer-events: auto;
+      padding: 48px 0;
+    }
+
+    .cjmap.static .cjscene .bignum {
+      display: none;
+    }
+
+    .cjmap.static .cjmap-hint {
+      display: none;
+    }
+
+    /* mobile journey (<=768px, class added by JS): stacked scene cards along a spine - no scroll-jacking */
+    .cjmap.cjmob {
+      height: auto;
+    }
+
+    .cjmap.cjmob .cjmap-sticky {
+      position: relative;
+      top: auto;
+      height: auto;
+      display: block;
+      padding: 0 4px 4px;
+    }
+
+    .cjmap.cjmob .cjmap-line {
+      margin: 20px auto 0;
+    }
+
+    .cjmap.cjmob .cjstage {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 56px 0 8px;
+      position: relative;
+    }
+
+    .cjmap.cjmob .cjstage::before {
+      content: '';
+      position: absolute;
+      top: 6px;
+      bottom: 6px;
+      right: 50%;
+      width: 2px;
+      margin-right: -1px;
+      background: linear-gradient(180deg, #1B3A6B 4%, #d9bd6e 28%, var(--gold) 52%, #b8933d 74%, var(--gold-l) 96%);
+      opacity: .35;
+    }
+
+    .cjmap.cjmob .cjscene {
+      position: relative;
+      inset: auto;
+      display: block;
+      opacity: 1;
+      pointer-events: auto;
+      transform: none;
+      padding: 28px 18px 30px;
+      border-radius: 20px;
       overflow: hidden;
-      transition: max-height .45s ease;
+      border: 1px solid color-mix(in srgb, var(--st, var(--gold)) 30%, rgba(255, 255, 255, .05));
+      background: linear-gradient(180deg, color-mix(in srgb, var(--st, var(--gold)) 9%, #0d0d0d), #0a0a0a);
     }
 
-    .curriculum-item.open .curriculum-body {
-      max-height: 300px;
+    .cjmap.cjmob .cjscene .medallion {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      background: #0d0d0d;
+      border: 2px solid color-mix(in srgb, var(--st, var(--gold)) 60%, transparent);
+      box-shadow: 0 0 0 5px color-mix(in srgb, var(--st, var(--gold)) 12%, transparent), 0 0 20px color-mix(in srgb, var(--st, var(--gold)) 38%, transparent);
     }
 
-    .curriculum-body-text {
-      padding: 0 26px 24px;
-      color: var(--muted-light);
-      font-size: clamp(14.5px, 1.6vw, 16.5px);
-      line-height: 1.8;
+    .cjmap.cjmob .cjscene .medallion svg {
+      width: 20px;
+      height: 20px;
+      color: var(--st, var(--gold));
+    }
+
+    .cjmap.cjmob .cjscene .bignum {
+      display: block;
+      position: absolute;
+      top: -6px;
+      left: 2px;
+      right: auto;
+      transform: none;
+      font-size: 82px;
+    }
+
+    .cjmap.cjmob .cjscene .inner {
+      transform: none;
+      padding: 0 2px;
+      max-width: 460px;
+      margin: 0 auto;
+    }
+
+    .cjmap.cjmob .cj-title {
+      font-size: clamp(24px, 7vw, 30px);
+    }
+
+    .cjmap.cjmob .cjmap-hint {
+      display: none;
     }
 
     /* FUTURE lines */
@@ -1583,79 +1839,144 @@
     </div>
   </section>
 
-  <section class="section dark">
-    <div class="glow glow-a"></div>
-    <div class="grid-overlay"></div>
+  <section class="section dark cj-section">
     <div class="inner center animate">
       <h2>הדרך שלכם להפוך למשקיעים</h2>
       <p class="lead" style="max-width:600px;margin:0 auto;">בניתי את התוכנית כך שכל שלב מוביל באופן טבעי לשלב הבא. לא
         צריך לנחש. לא צריך לקפוץ בין סרטונים. ולא צריך להבין הכול לפני שמתחילים.</p>
     </div>
-    <div class="curriculum-list">
-      <div class="curriculum-item open animate d1">
-        <button class="curriculum-head" aria-expanded="true">
-          <span class="head-right"><span class="num">1</span><span class="title">בונים את צורת החשיבה של
-              משקיע</span></span>
-          <span class="head-left"><span>שיעורים 1-5</span><span class="arrow"><svg viewBox="0 0 12 8" width="12"
-                height="8" fill="currentColor" aria-hidden="true">
-                <path d="M0 0h12L6 8z" />
-              </svg></span></span>
-        </button>
-        <div class="curriculum-body">
-          <p class="curriculum-body-text">לפני שמשקיעים כסף, צריך להבין איך חושבים נכון על כסף. נבנה את הגישה שתעזור לכם
-            להתמיד גם בעוד שנה, חמש שנים ועשר שנים.</p>
+    <div class="cjmap" id="cjmap">
+      <div class="cjmap-sticky">
+        <div class="cjmap-line">
+          <i id="cjmapFill"></i>
+          <div class="cjmap-stations">
+            <div class="cj-st" style="--st:#1B3A6B;right:6%" data-scene="0" tabindex="0" role="button"
+              aria-label="שלב 1: בונים את צורת החשיבה של משקיע">
+              <div class="cj-med"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="8" />
+                  <circle cx="12" cy="12" r="3.5" />
+                  <circle cx="12" cy="12" r=".6" fill="currentColor" />
+                </svg></div>
+              <span class="lbl">צורת חשיבה</span>
+            </div>
+            <div class="cj-st" style="--st:#d9bd6e;right:28%" data-scene="1" tabindex="0" role="button"
+              aria-label="שלב 2: מבינים את השפה">
+              <div class="cj-med"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 5h16v11H9l-4 4V5z" />
+                </svg></div>
+              <span class="lbl">מבינים שפה</span>
+            </div>
+            <div class="cj-st" style="--st:#C9A84C;right:50%" data-scene="2" tabindex="0" role="button"
+              aria-label="שלב 3: עושים את הצעד הראשון">
+              <div class="cj-med"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M6 3v18M6 4h12l-3 4 3 4H6" />
+                </svg></div>
+              <span class="lbl">צעד ראשון</span>
+            </div>
+            <div class="cj-st" style="--st:#b8933d;right:72%" data-scene="3" tabindex="0" role="button"
+              aria-label="שלב 4: בונים מערכת השקעות">
+              <div class="cj-med"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="3" />
+                  <path
+                    d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" />
+                </svg></div>
+              <span class="lbl">בונים מערכת</span>
+            </div>
+            <div class="cj-st" style="--st:#e6cd8a;right:94%" data-scene="4" tabindex="0" role="button"
+              aria-label="שלב 5: ממשיכים קדימה">
+              <div class="cj-med"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 12h16M13 6l6 6-6 6" />
+                </svg></div>
+              <span class="lbl">ממשיכים קדימה</span>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="curriculum-item animate d2">
-        <button class="curriculum-head" aria-expanded="false">
-          <span class="head-right"><span class="num">2</span><span class="title">מבינים את השפה</span></span>
-          <span class="head-left"><span>שיעורים 6-9</span><span class="arrow"><svg viewBox="0 0 12 8" width="12"
-                height="8" fill="currentColor" aria-hidden="true">
-                <path d="M0 0h12L6 8z" />
-              </svg></span></span>
-        </button>
-        <div class="curriculum-body">
-          <p class="curriculum-body-text">כל המושגים שבאמת צריך להכיר. בלי שיעורי כלכלה. בלי מושגים מסובכים. רק מה
-            שיעזור לכם לקבל החלטות נכונות ולהימנע מטעויות יקרות.</p>
+
+        <div class="cjstage" id="cjstage">
+          <div class="cjscene" style="--st:#1B3A6B">
+            <div class="aura"></div>
+            <div class="bignum">01</div>
+            <div class="medallion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="8" />
+                <circle cx="12" cy="12" r="3.5" />
+                <circle cx="12" cy="12" r=".6" fill="currentColor" />
+              </svg></div>
+            <div class="inner">
+              <span class="cj-when">שיעורים 1-5</span>
+              <h3 class="cj-title">בונים את צורת החשיבה <span class="accent">של משקיע</span></h3>
+              <p class="cj-text">לפני שמשקיעים כסף, צריך להבין איך חושבים נכון על כסף. נבנה את הגישה שתעזור לכם להתמיד
+                גם בעוד שנה, חמש שנים ועשר שנים.</p>
+            </div>
+          </div>
+
+          <div class="cjscene" style="--st:#d9bd6e">
+            <div class="aura"></div>
+            <div class="bignum">02</div>
+            <div class="medallion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 5h16v11H9l-4 4V5z" />
+              </svg></div>
+            <div class="inner">
+              <span class="cj-when">שיעורים 6-9</span>
+              <h3 class="cj-title">מבינים את <span class="accent">השפה</span></h3>
+              <p class="cj-text">כל המושגים שבאמת צריך להכיר. בלי שיעורי כלכלה. בלי מושגים מסובכים. רק מה שיעזור לכם
+                לקבל החלטות נכונות ולהימנע מטעויות יקרות.</p>
+            </div>
+          </div>
+
+          <div class="cjscene" style="--st:#C9A84C">
+            <div class="aura"></div>
+            <div class="bignum">03</div>
+            <div class="medallion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6 3v18M6 4h12l-3 4 3 4H6" />
+              </svg></div>
+            <div class="inner">
+              <span class="cj-when">שיעורים 10-15</span>
+              <h3 class="cj-title">עושים את <span class="accent">הצעד הראשון</span></h3>
+              <p class="cj-text">נבנה קרן חירום, נבין את התפקיד שלה ונבצע את הצעד הראשון בעולם ההשקעות.</p>
+            </div>
+          </div>
+
+          <div class="cjscene" style="--st:#b8933d">
+            <div class="aura"></div>
+            <div class="bignum">04</div>
+            <div class="medallion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="3" />
+                <path
+                  d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" />
+              </svg></div>
+            <div class="inner">
+              <span class="cj-when">שיעורים 16-21</span>
+              <h3 class="cj-title">בונים <span class="accent">מערכת השקעות</span></h3>
+              <p class="cj-text">נפתח יחד חשבון מסחר. נבחר את אסטרטגיית ההשקעה שמתאימה לכם. ותבצעו את ההשקעה הראשונה
+                שלכם.</p>
+            </div>
+          </div>
+
+          <div class="cjscene" style="--st:#e6cd8a">
+            <div class="aura"></div>
+            <div class="bignum">05</div>
+            <div class="medallion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 12h16M13 6l6 6-6 6" />
+              </svg></div>
+            <div class="inner">
+              <span class="cj-when">שיעורים 22-26</span>
+              <h3 class="cj-title">ממשיכים <span class="accent">קדימה</span></h3>
+              <p class="cj-text">איך ממשיכים מכאן בצורה פשוטה. כמה להשקיע. מתי להשקיע. ואיך להפוך את ההשקעות לחלק קבוע
+                מהחיים שלכם.</p>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="curriculum-item animate d3">
-        <button class="curriculum-head" aria-expanded="false">
-          <span class="head-right"><span class="num">3</span><span class="title">עושים את הצעד הראשון</span></span>
-          <span class="head-left"><span>שיעורים 10-15</span><span class="arrow"><svg viewBox="0 0 12 8" width="12"
-                height="8" fill="currentColor" aria-hidden="true">
-                <path d="M0 0h12L6 8z" />
-              </svg></span></span>
-        </button>
-        <div class="curriculum-body">
-          <p class="curriculum-body-text">נבנה קרן חירום, נבין את התפקיד שלה ונבצע את הצעד הראשון בעולם ההשקעות.</p>
-        </div>
-      </div>
-      <div class="curriculum-item animate d4">
-        <button class="curriculum-head" aria-expanded="false">
-          <span class="head-right"><span class="num">4</span><span class="title">בונים מערכת השקעות</span></span>
-          <span class="head-left"><span>שיעורים 16-21</span><span class="arrow"><svg viewBox="0 0 12 8" width="12"
-                height="8" fill="currentColor" aria-hidden="true">
-                <path d="M0 0h12L6 8z" />
-              </svg></span></span>
-        </button>
-        <div class="curriculum-body">
-          <p class="curriculum-body-text">נפתח יחד חשבון מסחר. נבחר את אסטרטגיית ההשקעה שמתאימה לכם. ותבצעו את ההשקעה
-            הראשונה שלכם.</p>
-        </div>
-      </div>
-      <div class="curriculum-item animate d5">
-        <button class="curriculum-head" aria-expanded="false">
-          <span class="head-right"><span class="num">5</span><span class="title">ממשיכים קדימה</span></span>
-          <span class="head-left"><span>שיעורים 22-26</span><span class="arrow"><svg viewBox="0 0 12 8" width="12"
-                height="8" fill="currentColor" aria-hidden="true">
-                <path d="M0 0h12L6 8z" />
-              </svg></span></span>
-        </button>
-        <div class="curriculum-body">
-          <p class="curriculum-body-text">איך ממשיכים מכאן בצורה פשוטה. כמה להשקיע. מתי להשקיע. ואיך להפוך את ההשקעות
-            לחלק קבוע מהחיים שלכם.</p>
-        </div>
+        <p class="cjmap-hint">↕ גללו - המסע ממשיך איתכם</p>
       </div>
     </div>
   </section>
@@ -2001,14 +2322,94 @@
         if (!isOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
       });
     });
-    document.querySelectorAll('.curriculum-head').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var item = btn.closest('.curriculum-item');
-        var isOpen = item.classList.contains('open');
-        document.querySelectorAll('.curriculum-item.open').forEach(function (el) { el.classList.remove('open'); el.querySelector('.curriculum-head').setAttribute('aria-expanded', 'false'); });
-        if (!isOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+    /* curriculum journey: scroll-linked stations, one scene owns the stage at a time */
+    (function () {
+      var map = document.getElementById('cjmap');
+      if (!map) return;
+      var scenes = [].slice.call(map.querySelectorAll('.cjscene'));
+      var stations = [].slice.call(map.querySelectorAll('.cj-st'));
+      var fill = document.getElementById('cjmapFill');
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (window.matchMedia('(max-width: 768px)').matches) {
+        map.classList.add('cjmob');
+        stations.forEach(function (st) { st.classList.add('lit'); });
+        if (fill) fill.style.width = '100%';
+        stations.forEach(function (st) {
+          function go() {
+            var i = Number(st.dataset.scene) || 0;
+            if (scenes[i]) scenes[i].scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' });
+          }
+          st.addEventListener('click', go);
+          st.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+        });
+        return;
+      }
+
+      if (reduced) {
+        map.classList.add('static');
+        stations.forEach(function (st) { st.classList.add('lit'); });
+        if (fill) fill.style.width = '100%';
+        return;
+      }
+
+      var n = scenes.length;
+      var starts = [];
+      for (var i = 0; i <= n; i++) starts.push(i / n);
+      var FADE = 0.22;
+
+      function update() {
+        var rect = map.getBoundingClientRect();
+        var vh = window.innerHeight;
+        var total = rect.height - vh;
+        var p = Math.max(0, Math.min(1, -rect.top / total));
+        if (fill) fill.style.width = (p * 100) + '%';
+
+        scenes.forEach(function (sc, i) {
+          var s0 = starts[i], s1 = starts[i + 1];
+          var seg = s1 - s0;
+          var t = (p - s0) / seg;
+          var isLast = (i === scenes.length - 1);
+          var op = 0, ty = 40, scale = 0.965;
+          if (t >= 0 && (t <= 1 || isLast)) {
+            var fin = Math.min(1, t / FADE);
+            var fout = isLast ? 1 : Math.min(1, (1 - t) / FADE);
+            op = Math.min(fin, fout);
+            ty = (1 - fin) * 44 - (1 - fout) * 34;
+            scale = 0.965 + 0.035 * Math.min(fin, 1) - 0.02 * (1 - fout);
+          } else if (t < 0 && i === 0) { op = p <= 0.001 ? 1 : Math.max(0, 1 + t / FADE); ty = 0; scale = 1; }
+          sc.style.opacity = op;
+          sc.style.transform = 'translate3d(0,' + ty + 'px,0) scale(' + scale + ')';
+          sc.style.pointerEvents = op > 0.5 ? 'auto' : 'none';
+        });
+
+        var active = 0;
+        for (var i2 = 0; i2 < starts.length - 1; i2++) { if (p >= starts[i2] - 0.001) active = i2; }
+        stations.forEach(function (st, i3) { st.classList.toggle('lit', i3 <= active); });
+      }
+
+      var ticking = false;
+      function onScroll() {
+        if (ticking) return; ticking = true;
+        requestAnimationFrame(function () { update(); ticking = false; });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      update();
+
+      stations.forEach(function (st) {
+        function go() {
+          var i = Number(st.dataset.scene) || 0;
+          var rect = map.getBoundingClientRect();
+          var mapTop = rect.top + window.scrollY;
+          var total = rect.height - window.innerHeight;
+          var target = mapTop + total * (starts[i] + (starts[i + 1] - starts[i]) * 0.5);
+          window.scrollTo({ top: target, behavior: 'smooth' });
+        }
+        st.addEventListener('click', go);
+        st.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
       });
-    });
+    })();
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: .12 });
