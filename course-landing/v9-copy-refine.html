@@ -1087,20 +1087,41 @@
       }
     }
 
-    /* GROWTH EXAMPLES GRID */
-    .growth-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      max-width: 1000px;
+    /* GROWTH EXAMPLES - compact stat rows */
+    .stat-row-card {
+      max-width: 480px;
       margin: 0 auto;
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid var(--border-light);
+      overflow: hidden;
     }
 
-    @media (max-width:768px) {
-      .growth-grid {
-        grid-template-columns: 1fr;
-        max-width: 420px;
-      }
+    .stat-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .stat-row:last-child {
+      border-bottom: none;
+    }
+
+    .stat-row-label {
+      font-size: 13px;
+      color: var(--muted-dark);
+      line-height: 1.4;
+    }
+
+    .stat-row-value {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--gold);
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     /* HORIZONTAL STEP TIMELINE */
@@ -2360,40 +2381,20 @@
       <h2 style="margin-top:24px;">ועכשיו נשארה רק שאלה אחת</h2>
       <h2 style="margin-top:36px;">אם כולנו יודעים שכדאי להשקיע <span class="gold-grad">למה רוב האנשים עדיין לא מתחילים?</span></h2>
       <p class="lead" style="max-width:640px;margin:0 auto;">רוב האנשים חושבים שהם עדיין לא התחילו להשקיע כי אין להם מספיק ידע</p>
-      <div class="staccato" style="margin-top:14px;">
-        <p style="max-width:640px;margin-left:auto;margin-right:auto;color:var(--muted-light);">אבל אחרי שליוויתי עשרות אנשים בתחילת הדרך, גיליתי שזה כמעט אף פעם לא הסיפור</p>
-        <p style="max-width:640px;margin-left:auto;margin-right:auto;color:var(--muted-light);">הבעיה היא לא חוסר ידע</p>
-        <p style="max-width:640px;margin-left:auto;margin-right:auto;color:var(--muted-light);">הבעיה היא שאין נקודת התחלה ברורה</p>
-        <p style="max-width:640px;margin-left:auto;margin-right:auto;color:var(--muted-light);">יש אינסוף סרטונים ביוטיוב</p>
-        <p style="max-width:640px;margin-left:auto;margin-right:auto;color:var(--muted-light);">אינסוף פודקאסטים</p>
-        <p style="max-width:640px;margin-left:auto;margin-right:auto;color:var(--muted-light);">אינסוף כתבות</p>
-        <p style="max-width:640px;margin-left:auto;margin-right:auto;color:var(--muted-light);">וכל אחד אומר משהו אחר</p>
-      </div>
+      <p style="max-width:640px;margin:14px auto 0;color:var(--muted-light);">אבל אחרי שליוויתי עשרות אנשים בתחילת הדרך, גיליתי שזה כמעט אף פעם לא הסיפור. הבעיה היא לא חוסר ידע - הבעיה היא שאין נקודת התחלה ברורה.</p>
+      <p style="max-width:640px;margin:14px auto 0;color:var(--muted-light);">יש אינסוף סרטונים ביוטיוב, אינסוף פודקאסטים, אינסוף כתבות - וכל אחד אומר משהו אחר.</p>
       <p style="max-width:640px;margin:22px auto 0;font-weight:700;color:#fff;">אז במקום להתחיל... דוחים</p>
       <p style="max-width:640px;margin:10px auto 0;color:var(--muted-light);font-style:italic;">"אני אלמד עוד קצת" &nbsp;·&nbsp; "אני אתחיל חודש הבא" &nbsp;·&nbsp; "אני רק רוצה להבין עוד דבר אחד"</p>
-      <div class="staccato" style="margin-top:22px;">
-        <p style="max-width:640px;margin-left:auto;margin-right:auto;">ובינתיים הזמן עובר</p>
-        <p style="max-width:640px;margin-left:auto;margin-right:auto;">והכסף ממשיך לשבת בעו"ש</p>
-      </div>
+      <p style="max-width:640px;margin:22px auto 0;">ובינתיים הזמן עובר, והכסף ממשיך לשבת בעו"ש.</p>
     </div>
   </section>
 
   <section class="section cream">
     <div class="narrow animate">
       <h2 class="center">אבל האמת היא שלהתחיל להשקיע <span class="gold-grad">לא חייב להיות מסובך</span></h2>
-      <div class="staccato">
-        <p style="color:var(--muted-dark);">אתם לא צריכים לבחור מניות</p>
-        <p style="color:var(--muted-dark);">אתם לא צריכים לנסות לנחש מה יקרה מחר בשוק</p>
-        <p style="color:var(--muted-dark);">ואתם לא צריכים להפוך למומחים בשוק ההון בשביל להתחיל</p>
-      </div>
-      <div class="staccato">
-        <p style="color:var(--muted-dark);">מה שרוב האנשים באמת צריכים הוא דרך פשוטה</p>
-        <p style="color:var(--muted-dark);">כזו שמסבירה להם מה לעשות, באיזה סדר, ואיך לבצע את הצעד הראשון בלי להרגיש שהם קופצים למים</p>
-      </div>
-      <div class="staccato">
-        <p style="font-weight:700;">וזו בדיוק הדרך שאני בחרתי לעצמי</p>
-        <p style="font-weight:700;">וזו גם הדרך שאני מלמד היום</p>
-      </div>
+      <p style="color:var(--muted-dark);">אתם לא צריכים לבחור מניות, לא צריכים לנסות לנחש מה יקרה מחר בשוק, ולא צריכים להפוך למומחים בשוק ההון בשביל להתחיל.</p>
+      <p style="color:var(--muted-dark);">מה שרוב האנשים באמת צריכים הוא דרך פשוטה - כזו שמסבירה להם מה לעשות, באיזה סדר, ואיך לבצע את הצעד הראשון בלי להרגיש שהם קופצים למים.</p>
+      <p style="font-weight:700;">וזו בדיוק הדרך שאני בחרתי לעצמי - וזו גם הדרך שאני מלמד היום.</p>
     </div>
   </section>
 
@@ -2402,59 +2403,36 @@
     <div class="grid-overlay"></div>
     <div class="narrow animate">
       <h2 class="center">הדרך שבחרתי הייתה <span class="gold-grad">הרבה יותר פשוטה</span> ממה שחשבתי</h2>
-      <div class="staccato">
-        <p>אחרי חודשים של סרטונים, פודקאסטים וכתבות, הבנתי משהו חשוב</p>
-      </div>
+      <p>אחרי חודשים של סרטונים, פודקאסטים וכתבות, הבנתי משהו חשוב.</p>
       <div class="staccato">
         <p>לא צריך לדעת לחזות מה יקרה מחר בשוק</p>
         <p>לא צריך לבחור את המניה הבאה שתעשה 200%</p>
         <p>ולא צריך לשבת מול גרפים כל היום</p>
       </div>
-      <div class="staccato">
-        <p>הבנתי שיש דרך פשוטה יותר</p>
-        <p>במקום לנסות לנצח את השוק, אפשר פשוט להשקיע במדדים רחבים, לאורך זמן, ולהתמיד</p>
-      </div>
-      <div class="staccato">
-        <p style="font-weight:700;color:#fff;">זאת לא הדרך הכי נוצצת</p>
-        <p style="font-weight:700;color:#fff;">אבל היא אחת הדרכים הפשוטות ביותר להתחיל ולהתמיד לאורך זמן</p>
-      </div>
+      <p>הבנתי שיש דרך פשוטה יותר: במקום לנסות לנצח את השוק, אפשר פשוט להשקיע במדדים רחבים, לאורך זמן, ולהתמיד.</p>
+      <p style="font-weight:700;color:#fff;">זאת לא הדרך הכי נוצצת - אבל היא אחת הדרכים הפשוטות ביותר להתחיל ולהתמיד לאורך זמן.</p>
     </div>
   </section>
 
   <section class="section cream">
     <div class="narrow animate">
       <h2 class="center">למה התוכנית הזאת נבנתה <span class="gold-grad">במיוחד לאנשי קבע?</span></h2>
+      <p style="color:var(--muted-dark);">גם אני חשבתי שאני אתחיל כשיהיה לי יותר זמן. אבל הזמן הזה אף פעם לא באמת הגיע - תמיד הייתה עוד תקופה עמוסה.</p>
       <div class="staccato">
-        <p style="color:var(--muted-dark);">גם אני חשבתי שאני אתחיל כשיהיה לי יותר זמן</p>
-        <p style="color:var(--muted-dark);">אבל הזמן הזה אף פעם לא באמת הגיע</p>
-        <p style="color:var(--muted-dark);">תמיד הייתה עוד תקופה עמוסה</p>
         <p style="color:var(--muted-dark);">עוד תרגיל</p>
         <p style="color:var(--muted-dark);">עוד קורס</p>
         <p style="color:var(--muted-dark);">עוד משימה</p>
-        <p style="color:var(--muted-dark);">ובינתיים, הכסף פשוט המשיך לשבת בעו"ש</p>
       </div>
+      <p style="color:var(--muted-dark);">ובינתיים, הכסף פשוט המשיך לשבת בעו"ש.</p>
+      <p style="color:var(--muted-dark);">רק אחרי שהתחלתי להשקיע בעצמי, הבנתי שהבעיה אף פעם לא הייתה חוסר זמן - והיא גם לא הייתה חוסר ידע. הייתה חסרה לי דרך פשוטה וברורה להתחיל.</p>
+      <p style="color:var(--muted-dark);">אחרי שעברתי את הדרך הזאת בעצמי, התחלתי לעזור גם לחברים מהצבא, ולאט לאט לעוד ועוד אנשי קבע. ושוב ושוב שמעתי את אותם המשפטים:</p>
       <div class="staccato">
-        <p style="color:var(--muted-dark);">רק אחרי שהתחלתי להשקיע בעצמי, הבנתי שהבעיה אף פעם לא הייתה חוסר זמן</p>
-        <p style="color:var(--muted-dark);">והיא גם לא הייתה חוסר ידע</p>
-        <p style="color:var(--muted-dark);">הייתה חסרה לי דרך פשוטה וברורה להתחיל</p>
-      </div>
-      <div class="staccato">
-        <p style="color:var(--muted-dark);">אחרי שעברתי את הדרך הזאת בעצמי, התחלתי לעזור גם לחברים מהצבא</p>
-        <p style="color:var(--muted-dark);">ולאט לאט לעוד ועוד אנשי קבע</p>
-        <p style="color:var(--muted-dark);">ושוב ושוב שמעתי את אותם המשפטים</p>
         <p style="color:var(--muted-dark);">"אני לא מבין מספיק"</p>
         <p style="color:var(--muted-dark);">"אני מפחד לעשות טעות"</p>
         <p style="color:var(--muted-dark);">"אני אתחיל חודש הבא"</p>
       </div>
-      <div class="staccato">
-        <p style="color:var(--muted-dark);">באותו רגע הבנתי שהבעיה היא לא שאנשים לא רוצים להשקיע</p>
-        <p style="color:var(--muted-dark);">הבעיה היא שאף אחד לא מראה להם איך להתחיל, שלב אחרי שלב</p>
-      </div>
-      <div class="staccato">
-        <p style="font-weight:700;">בגלל זה בניתי את התוכנית הזאת</p>
-        <p style="font-weight:700;">לא כדי ללמד אנשים להיות מומחי שוק ההון</p>
-        <p style="font-weight:700;">אלא כדי לעזור להם להגיע להשקעה הראשונה שלהם בצורה פשוטה, מסודרת, ובקצב שלהם</p>
-      </div>
+      <p style="color:var(--muted-dark);">באותו רגע הבנתי שהבעיה היא לא שאנשים לא רוצים להשקיע - הבעיה היא שאף אחד לא מראה להם איך להתחיל, שלב אחרי שלב.</p>
+      <p style="font-weight:700;">בגלל זה בניתי את התוכנית הזאת - לא כדי ללמד אנשים להיות מומחי שוק ההון, אלא כדי לעזור להם להגיע להשקעה הראשונה שלהם בצורה פשוטה, מסודרת, ובקצב שלהם.</p>
     </div>
   </section>
 
@@ -2767,24 +2745,18 @@
       </div>
       <p style="max-width:600px;margin:14px auto 26px;">כדי להמחיש את הכוח של הזמן, הנה כמה דוגמאות:</p>
     </div>
-    <div class="growth-grid">
-      <div class="animate d1" style="background:#fff;border-radius:16px;border-bottom:4px solid var(--gold);padding:26px 22px;text-align:center;">
-        <p style="color:var(--muted-dark);font-size:14px;font-weight:700;margin-bottom:10px;">💰 השקעה חד-פעמית</p>
-        <p style="color:var(--text-dark);font-size:14px;margin-bottom:10px;">אם לפני 10 שנים הייתם משקיעים 10,000 ₪
-          במדד S&amp;P 500 ומשאירים אותם מושקעים, היום הם היו שווים בערך</p>
-        <p class="gold-grad" style="font-size:28px;font-weight:800;background:linear-gradient(120deg,var(--gold) 0%,var(--gold-l) 50%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">40,600 ₪</p>
+    <div class="stat-row-card animate">
+      <div class="stat-row">
+        <span class="stat-row-label">💰 השקעה חד-פעמית של 10,000 ₪, לפני 10 שנים</span>
+        <strong class="stat-row-value">40,600 ₪</strong>
       </div>
-      <div class="animate d2" style="background:#fff;border-radius:16px;border-bottom:4px solid var(--gold);padding:26px 22px;text-align:center;">
-        <p style="color:var(--muted-dark);font-size:14px;font-weight:700;margin-bottom:10px;">📅 השקעה חודשית</p>
-        <p style="color:var(--text-dark);font-size:14px;margin-bottom:10px;">אם לפני 10 שנים הייתם מתחילים להשקיע רק
-          500 ₪ בכל חודש, היום כבר היה עומד לרשותכם סכום של כ-</p>
-        <p class="gold-grad" style="font-size:28px;font-weight:800;background:linear-gradient(120deg,var(--gold) 0%,var(--gold-l) 50%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">121,800 ₪</p>
+      <div class="stat-row">
+        <span class="stat-row-label">📅 500 ₪ בחודש, במשך 10 שנים</span>
+        <strong class="stat-row-value">121,800 ₪</strong>
       </div>
-      <div class="animate d3" style="background:#fff;border-radius:16px;border-bottom:4px solid var(--gold);padding:26px 22px;text-align:center;">
-        <p style="color:var(--muted-dark);font-size:14px;font-weight:700;margin-bottom:10px;">🚀 ומה אם תתחילו היום?</p>
-        <p style="color:var(--text-dark);font-size:14px;margin-bottom:10px;">אם תתחילו להשקיע 500 ₪ בכל חודש, ובהנחה
-          של תשואה שנתית ממוצעת של 10%, בעוד 20 שנה יעמדו לרשותכם כ-</p>
-        <p class="gold-grad" style="font-size:28px;font-weight:800;background:linear-gradient(120deg,var(--gold) 0%,var(--gold-l) 50%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">379,684 ₪</p>
+      <div class="stat-row">
+        <span class="stat-row-label">🚀 500 ₪ בחודש, מהיום ועוד 20 שנה</span>
+        <strong class="stat-row-value">379,684 ₪</strong>
       </div>
     </div>
     <div class="narrow center animate" style="margin-top:22px;">
