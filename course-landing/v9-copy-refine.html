@@ -1093,6 +1093,216 @@
       }
     }
 
+    /* HORIZONTAL STEP TIMELINE */
+    .step-timeline {
+      max-width: 960px;
+      margin: 40px auto 0;
+      position: relative;
+    }
+
+    .step-timeline-track {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      position: relative;
+      gap: 8px;
+    }
+
+    .step-timeline-track::before {
+      content: '';
+      position: absolute;
+      top: 21px;
+      right: 6%;
+      left: 6%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold) 0%, rgba(201, 168, 76, .15) 100%);
+      z-index: 0;
+    }
+
+    .step-node {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      text-align: center;
+    }
+
+    .step-node .dot {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--anthracite);
+      border: 2px solid var(--gold);
+      color: var(--gold-l);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+
+    .step-node.active .dot {
+      background: var(--gold);
+      color: var(--anthracite);
+      box-shadow: 0 0 0 6px rgba(201, 168, 76, .18);
+    }
+
+    .step-node .label {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--muted-light);
+      line-height: 1.4;
+      max-width: 110px;
+    }
+
+    .step-node.active .label {
+      color: #fff;
+    }
+
+    @media (max-width:768px) {
+      .step-timeline-track {
+        flex-wrap: wrap;
+        row-gap: 24px;
+      }
+
+      .step-timeline-track::before {
+        display: none;
+      }
+
+      .step-node {
+        flex: 0 0 33.33%;
+      }
+    }
+
+    /* FIT TRANSFORMATION TABLE (before / after) */
+    .fit-table {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      max-width: 800px;
+      margin: 36px auto 0;
+    }
+
+    @media (max-width:640px) {
+      .fit-table {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .fit-col {
+      border-radius: 16px;
+      padding: 24px 22px;
+      background: rgba(255, 255, 255, .03);
+      border: 1px solid rgba(255, 255, 255, .08);
+    }
+
+    .fit-col.before {
+      border-top: 4px solid #c0524a;
+    }
+
+    .fit-col.after {
+      border-top: 4px solid var(--gold);
+    }
+
+    .fit-col-label {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .fit-col.before .fit-col-label {
+      color: #c0524a;
+    }
+
+    .fit-col.after .fit-col-label {
+      color: var(--gold-l);
+    }
+
+    .fit-col ul {
+      list-style: none;
+    }
+
+    .fit-col li {
+      font-size: 14.5px;
+      color: var(--muted-light);
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .06);
+    }
+
+    .fit-col li:last-child {
+      border-bottom: none;
+    }
+
+    /* WHY-ME PHOTO + STATS */
+    .whyme-stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 36px;
+      align-items: center;
+      max-width: 900px;
+      margin: 40px auto 0;
+    }
+
+    @media (max-width:768px) {
+      .whyme-stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .whyme-photo {
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .whyme-photo img {
+      width: 100%;
+      display: block;
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 45%);
+      mask-image: linear-gradient(90deg, transparent 0%, #000 45%);
+    }
+
+    @media (max-width:768px) {
+      .whyme-photo img {
+        -webkit-mask-image: none;
+        mask-image: none;
+      }
+    }
+
+    .whyme-stat-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .whyme-stat-card {
+      background: rgba(255, 255, 255, .03);
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: 14px;
+      padding: 18px 22px;
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+    }
+
+    .whyme-stat-card .num {
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--gold-l);
+      flex-shrink: 0;
+    }
+
+    .whyme-stat-card .desc {
+      font-size: 14.5px;
+      color: var(--muted-light);
+      line-height: 1.5;
+    }
+
     .bonus-card {
       background: rgba(255, 255, 255, .03);
       border: 1px solid rgba(255, 255, 255, .08);
@@ -2202,6 +2412,37 @@
   </section>
 
   <section class="section dark">
+    <div class="glow glow-a"></div>
+    <div class="grid-overlay"></div>
+    <div class="narrow center animate">
+      <h2>המעבר <span class="gold-grad">שקורה בתוכנית</span></h2>
+      <p class="lead" style="max-width:600px;margin:0 auto;">אותו כסף. שני מצבים אפשריים.</p>
+    </div>
+    <div class="fit-table">
+      <div class="fit-col before">
+        <div class="fit-col-label">היום</div>
+        <ul>
+          <li>כסף שיושב בעו"ש ולא עובד</li>
+          <li>חוסר ביטחון וידע עם כסף</li>
+          <li>הפחד לבדוק את חשבון הבנק</li>
+          <li>"לא יודע מה לעשות עם הכסף"</li>
+          <li>כסף שנשחק מאינפלציה כל חודש</li>
+        </ul>
+      </div>
+      <div class="fit-col after">
+        <div class="fit-col-label">אחרי התוכנית</div>
+        <ul>
+          <li>כסף שעובד בשבילי 24/7</li>
+          <li>שליטה וביטחון מלא</li>
+          <li>שקט נפשי, שינה טובה</li>
+          <li>מערכת שעובדת לבד</li>
+          <li>כסף שגדל לבד לאורך זמן</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
     <div class="glow glow-b"></div>
     <div class="grid-overlay"></div>
     <div class="narrow center animate">
@@ -2218,7 +2459,7 @@
 
   <section class="section cream">
     <div class="narrow animate">
-      <h2 class="center">אבל האמת היא שלהתחיל להשקיע לא חייב להיות מסובך</h2>
+      <h2 class="center">אבל האמת היא שלהתחיל להשקיע <span class="gold-navy-grad">לא חייב להיות מסובך</span></h2>
       <p style="color:var(--muted-dark);">אתם לא צריכים לבחור מניות. אתם לא צריכים לנסות לנחש מה יקרה מחר בשוק. ואתם לא צריכים להפוך למומחים בשוק ההון בשביל להתחיל.</p>
       <p style="color:var(--muted-dark);">מה שרוב האנשים באמת צריכים הוא דרך פשוטה. כזו שמסבירה להם מה לעשות, באיזה סדר, ואיך לבצע את הצעד הראשון בלי להרגיש שהם קופצים למים.</p>
       <p style="font-weight:700;">וזו בדיוק הדרך שאני בחרתי לעצמי. וזו גם הדרך שאני מלמד היום.</p>
@@ -2229,7 +2470,7 @@
     <div class="glow glow-a"></div>
     <div class="grid-overlay"></div>
     <div class="narrow animate">
-      <h2 class="center">הדרך שבחרתי הייתה הרבה יותר פשוטה ממה שחשבתי</h2>
+      <h2 class="center">הדרך שבחרתי הייתה <span class="gold-grad">הרבה יותר פשוטה</span> ממה שחשבתי</h2>
       <p>אחרי חודשים של סרטונים, פודקאסטים וכתבות, הבנתי משהו חשוב.</p>
       <p>לא צריך לדעת לחזות מה יקרה מחר בשוק. לא צריך לבחור את המניה הבאה שתעשה 200%. ולא צריך לשבת מול גרפים כל היום.</p>
       <p>הבנתי שיש דרך פשוטה יותר. במקום לנסות לנצח את השוק, אפשר פשוט להשקיע במדדים רחבים, לאורך זמן, ולהתמיד.</p>
@@ -2239,7 +2480,7 @@
 
   <section class="section cream">
     <div class="narrow animate">
-      <h2 class="center">למה התוכנית הזאת נבנתה במיוחד לאנשי קבע?</h2>
+      <h2 class="center">למה התוכנית הזאת נבנתה <span class="gold-navy-grad">במיוחד לאנשי קבע?</span></h2>
       <p style="color:var(--muted-dark);">גם אני חשבתי שאני אתחיל כשיהיה לי יותר זמן. אבל הזמן הזה אף פעם לא באמת הגיע. תמיד הייתה עוד תקופה עמוסה. עוד תרגיל. עוד קורס. עוד משימה. ובינתיים, הכסף פשוט המשיך לשבת בעו"ש.</p>
       <p style="color:var(--muted-dark);">רק אחרי שהתחלתי להשקיע בעצמי, הבנתי שהבעיה אף פעם לא הייתה חוסר זמן. והיא גם לא הייתה חוסר ידע. הייתה חסרה לי דרך פשוטה וברורה להתחיל.</p>
       <p style="color:var(--muted-dark);">אחרי שעברתי את הדרך הזאת בעצמי, התחלתי לעזור גם לחברים מהצבא. ולאט לאט לעוד ועוד אנשי קבע. ושוב ושוב שמעתי את אותם המשפטים: "אני לא מבין מספיק." "אני מפחד לעשות טעות." "אני אתחיל חודש הבא."</p>
@@ -2274,6 +2515,30 @@
       <h2>כך בנויה הדרך שלכם <span class="gold-grad">להשקעה הראשונה</span></h2>
       <p class="lead" style="max-width:600px;margin:0 auto;">בניתי את התוכנית כך שכל שלב מוביל באופן טבעי לשלב הבא. לא
         צריך לנחש. לא צריך לקפוץ בין סרטונים. ולא צריך להבין הכול לפני שמתחילים.</p>
+    </div>
+    <div class="step-timeline animate">
+      <div class="step-timeline-track">
+        <div class="step-node active">
+          <span class="dot">1</span>
+          <span class="label">משנים את הדרך שבה מסתכלים על כסף</span>
+        </div>
+        <div class="step-node">
+          <span class="dot">2</span>
+          <span class="label">מבינים את כל מה שבאמת צריך לדעת</span>
+        </div>
+        <div class="step-node">
+          <span class="dot">3</span>
+          <span class="label">מתכוננים להשקעה הראשונה</span>
+        </div>
+        <div class="step-node">
+          <span class="dot">4</span>
+          <span class="label">פותחים חשבון ומשקיעים</span>
+        </div>
+        <div class="step-node">
+          <span class="dot">5</span>
+          <span class="label">בונים שגרה שתישאר לשנים</span>
+        </div>
+      </div>
     </div>
     <div class="curriculum-list">
       <div class="curriculum-item open animate d1">
@@ -2442,7 +2707,7 @@
 
   <section class="section cream" id="pricing">
     <div class="narrow center animate">
-      <h2>אם הגעתם עד לכאן כנראה שאתם כבר יודעים מה הצעד הבא שלכם</h2>
+      <h2>אם הגעתם עד לכאן כנראה שאתם כבר יודעים <span class="gold-navy-grad">מה הצעד הבא שלכם</span></h2>
       <p class="lead" style="color:var(--muted-dark);max-width:620px;margin:0 auto 14px;">במשך תקופה ליוויתי אנשי קבע
         באופן אישי. כל ליווי כזה עלה אלפי שקלים, כי הוא כלל פגישות אישיות וליווי צמוד לאורך כל הדרך.</p>
       <p style="color:var(--muted-dark);max-width:620px;margin:0 auto 14px;">אבל עם הזמן הבנתי שרוב האנשים לא צריכים
@@ -2545,7 +2810,7 @@
 
   <section class="section cream-alt">
     <div class="inner center animate">
-      <h2>בעוד שבוע מהיום תוכלו להיות באחת משתי נקודות</h2>
+      <h2>בעוד שבוע מהיום תוכלו להיות <span class="gold-navy-grad">באחת משתי נקודות</span></h2>
       <div class="path-timeline">
         <span class="path-node"><span class="dot"></span>היום</span>
         <svg class="path-connector" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true">
@@ -2603,12 +2868,39 @@
     </div>
   </section>
 
+  <section class="section dark">
+    <div class="glow glow-a"></div>
+    <div class="grid-overlay"></div>
+    <div class="inner center animate">
+      <h2>מי <span class="gold-grad">עומד מאחורי זה</span></h2>
+    </div>
+    <div class="whyme-stats-grid animate">
+      <div class="whyme-photo">
+        <img src="/shahar_headshot.png" alt="שחר לוי" loading="lazy" />
+      </div>
+      <div class="whyme-stat-cards">
+        <div class="whyme-stat-card">
+          <span class="num">עשרות</span>
+          <span class="desc">אנשי קבע שליוויתי באופן אישי לפני שהתוכנית נולדה</span>
+        </div>
+        <div class="whyme-stat-card">
+          <span class="num">26</span>
+          <span class="desc">שיעורים קצרים ומעשיים - מאפס ועד ההשקעה הראשונה</span>
+        </div>
+        <div class="whyme-stat-card">
+          <span class="num">30</span>
+          <span class="desc">יום אחריות מלאה - בלי ויכוחים, בלי אותיות קטנות</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section cream">
     <div class="narrow animate">
       <div class="guarantee-card">
         <span class="eyebrow" style="color:var(--gold);border-color:rgba(201,168,76,.35);">יש לכם 30 יום לעבור על
           התוכנית</span>
-        <h2>אני עומד מאחורי התוכנית הזאת</h2>
+        <h2>אני עומד <span class="gold-navy-grad">מאחורי התוכנית הזאת</span></h2>
         <p style="color:var(--muted-dark);">עוד לפני שהתוכנית הדיגיטלית נולדה, ליוויתי באופן אישי עשרות אנשי קבע בתהליך
           הזה. ראיתי את אותם החששות חוזרים שוב ושוב. וראיתי גם מה קורה כשמפסיקים לדחות ופשוט מתחילים. בגלל זה אני מרגיש
           בנוח לעמוד מאחורי התוכנית.</p>
@@ -2626,7 +2918,7 @@
     <div class="glow glow-a"></div>
     <div class="grid-overlay"></div>
     <div class="narrow animate">
-      <h2 class="center">שאלות נפוצות</h2>
+      <h2 class="center"><span class="gold-grad">שאלות</span> נפוצות</h2>
       <div class="faq-list">
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false" aria-controls="faq-a-1" id="faq-q-1">האם התשלום מאובטח?<span class="plus">+</span></button>
@@ -2703,7 +2995,7 @@
     <div class="grid-overlay"></div>
     <div class="narrow animate">
       <span class="eyebrow">מילה אישית ממני</span>
-      <h2>אם הגעתם עד לכאן כנראה שמשהו בכם כבר מבין שהגיע הזמן להתחיל</h2>
+      <h2>אם הגעתם עד לכאן כנראה שמשהו בכם כבר מבין <span class="gold-grad">שהגיע הזמן להתחיל</span></h2>
       <p class="lead">יכול להיות שאתם עדיין מתלבטים. זה טבעי. גם אני הייתי שם. אבל יש דבר אחד שלמדתי בדרך: כסף אפשר תמיד
         להרוויח שוב. זמן לא. כל חודש שבו דוחים את ההחלטה להתחיל הוא חודש שלא יחזור.</p>
       <p class="lead">בניתי את התוכנית הזאת כדי להפוך את הצעד הראשון לפשוט, ברור ומעשי. לא כדי שתדעו יותר על שוק ההון -
