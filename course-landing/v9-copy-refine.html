@@ -865,106 +865,6 @@
       margin-bottom: 0;
     }
 
-    /* CURRICULUM ACCORDION */
-    .curriculum-list {
-      max-width: 900px;
-      margin: 44px auto 0;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .curriculum-item {
-      border: 1px solid rgba(201, 168, 76, .35);
-      border-radius: 16px;
-      overflow: hidden;
-      background: rgba(255, 255, 255, .02);
-      transition: border-color .3s;
-    }
-
-    .curriculum-item.open {
-      border-color: var(--gold);
-    }
-
-    .curriculum-head {
-      width: 100%;
-      background: none;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      padding: 22px 26px;
-      font-family: inherit;
-    }
-
-    .curriculum-head .head-right {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .curriculum-head .num {
-      flex-shrink: 0;
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: var(--gold);
-      color: var(--anthracite);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      font-size: 15px;
-    }
-
-    .curriculum-head .title {
-      font-weight: 800;
-      font-size: clamp(16px, 1.8vw, 19px);
-      color: #fff;
-      text-align: right;
-    }
-
-    .curriculum-head .head-left {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--gold-l);
-      font-size: 13.5px;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-
-    .curriculum-head .arrow {
-      display: inline-flex;
-      color: var(--gold);
-      transition: transform .3s;
-    }
-
-    .curriculum-item.open .curriculum-head .arrow {
-      transform: rotate(180deg);
-    }
-
-    .curriculum-body {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height .45s ease;
-    }
-
-    .curriculum-item.open .curriculum-body {
-      max-height: 300px;
-    }
-
-    .curriculum-body-text {
-      padding: 0 26px 24px;
-      color: var(--muted-light);
-      font-size: clamp(14.5px, 1.6vw, 16.5px);
-      line-height: 1.8;
-    }
-
     /* FUTURE lines */
     .future-lines p {
       font-size: clamp(16px, 1.8vw, 19px);
@@ -1189,6 +1089,50 @@
       align-items: center;
       flex: 1;
       text-align: center;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .step-node .dot {
+      transition: background .2s, color .2s, box-shadow .2s, transform .15s;
+    }
+
+    .step-node:hover .dot {
+      transform: scale(1.06);
+    }
+
+    .step-node.selected .dot {
+      background: var(--gold);
+      color: var(--anthracite);
+      box-shadow: 0 0 0 6px rgba(201, 168, 76, .28);
+    }
+
+    .step-explain {
+      max-width: 640px;
+      margin: 28px auto 0;
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: 14px;
+      padding: 0 22px;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height .3s ease, opacity .25s ease, padding .3s ease;
+    }
+
+    .step-explain.open {
+      max-height: 200px;
+      opacity: 1;
+      padding: 20px 22px;
+    }
+
+    .step-explain-text {
+      font-size: 15px;
+      color: var(--muted-light);
+      line-height: 1.7;
     }
 
     .step-node .dot {
@@ -2534,97 +2478,33 @@
     <div class="step-timeline animate">
       <div class="step-timeline-track">
         <div class="step-timeline-fill" id="stepTimelineFill"></div>
-        <div class="step-node">
+        <button class="step-node" type="button" aria-expanded="false" data-step="1">
           <span class="dot">1</span>
           <span class="label">משנים את הדרך שבה מסתכלים על כסף</span>
-        </div>
-        <div class="step-node">
+        </button>
+        <button class="step-node" type="button" aria-expanded="false" data-step="2">
           <span class="dot">2</span>
           <span class="label">מבינים את כל מה שבאמת צריך לדעת</span>
-        </div>
-        <div class="step-node">
+        </button>
+        <button class="step-node" type="button" aria-expanded="false" data-step="3">
           <span class="dot">3</span>
           <span class="label">מתכוננים להשקעה הראשונה</span>
-        </div>
-        <div class="step-node">
+        </button>
+        <button class="step-node" type="button" aria-expanded="false" data-step="4">
           <span class="dot">4</span>
           <span class="label">פותחים חשבון ומשקיעים</span>
-        </div>
-        <div class="step-node">
+        </button>
+        <button class="step-node" type="button" aria-expanded="false" data-step="5">
           <span class="dot">5</span>
           <span class="label">בונים שגרה שתישאר לשנים</span>
-        </div>
-      </div>
-    </div>
-    <div class="curriculum-list">
-      <div class="curriculum-item animate d1">
-        <button class="curriculum-head" aria-expanded="false">
-          <span class="head-right"><span class="num">1</span><span class="title">משנים את הדרך שבה אתם מסתכלים על
-              כסף</span></span>
-          <span class="head-left"><span class="arrow"><svg viewBox="0 0 12 8" width="12"
-                height="8" fill="currentColor" aria-hidden="true">
-                <path d="M0 0h12L6 8z" />
-              </svg></span></span>
         </button>
-        <div class="curriculum-body">
-          <p class="curriculum-body-text">לפני שמשקיעים שקל אחד, צריך להבין איך כסף באמת עובד לאורך זמן. בסוף השלב הזה
-            תבינו למה הזמן חשוב יותר מלנסות לבחור את ההשקעה המושלמת, ולמה רוב הטעויות קורות עוד לפני שלוחצים על כפתור
-            הקנייה.</p>
-        </div>
       </div>
-      <div class="curriculum-item animate d2">
-        <button class="curriculum-head" aria-expanded="false">
-          <span class="head-right"><span class="num">2</span><span class="title">מבינים את כל מה שבאמת צריך
-              לדעת</span></span>
-          <span class="head-left"><span class="arrow"><svg viewBox="0 0 12 8" width="12"
-                height="8" fill="currentColor" aria-hidden="true">
-                <path d="M0 0h12L6 8z" />
-              </svg></span></span>
-        </button>
-        <div class="curriculum-body">
-          <p class="curriculum-body-text">בלי להציף אתכם במונחים. בלי שיעורי כלכלה. רק הידע שבאמת יעזור לכם לקבל
-            החלטות בביטחון. בסיום השלב הזה תרגישו שאתם סוף סוף מבינים על מה כולם מדברים.</p>
-        </div>
-      </div>
-      <div class="curriculum-item animate d3">
-        <button class="curriculum-head" aria-expanded="false">
-          <span class="head-right"><span class="num">3</span><span class="title">מתכוננים להשקעה הראשונה</span></span>
-          <span class="head-left"><span class="arrow"><svg viewBox="0 0 12 8" width="12"
-                height="8" fill="currentColor" aria-hidden="true">
-                <path d="M0 0h12L6 8z" />
-              </svg></span></span>
-        </button>
-        <div class="curriculum-body">
-          <p class="curriculum-body-text">נבנה קרן חירום, נבין כמה כסף נכון להשקיע ואיך להתכונן לצעד הראשון. כך
-            שכשתגיעו לפתוח חשבון מסחר, תדעו בדיוק מה אתם עושים.</p>
-        </div>
-      </div>
-      <div class="curriculum-item animate d4">
-        <button class="curriculum-head" aria-expanded="false">
-          <span class="head-right"><span class="num">4</span><span class="title">פותחים חשבון ומשקיעים</span></span>
-          <span class="head-left"><span class="arrow"><svg viewBox="0 0 12 8" width="12"
-                height="8" fill="currentColor" aria-hidden="true">
-                <path d="M0 0h12L6 8z" />
-              </svg></span></span>
-        </button>
-        <div class="curriculum-body">
-          <p class="curriculum-body-text">נעבור יחד על פתיחת החשבון. נבחר את אסטרטגיית ההשקעה. ונבצע את ההשקעה
-            הראשונה. בסיום השלב הזה כבר תהיו משקיעים.</p>
-        </div>
-      </div>
-      <div class="curriculum-item animate d5">
-        <button class="curriculum-head" aria-expanded="false">
-          <span class="head-right"><span class="num">5</span><span class="title">בונים שגרה שתישאר אתכם
-              לשנים</span></span>
-          <span class="head-left"><span class="arrow"><svg viewBox="0 0 12 8" width="12"
-                height="8" fill="currentColor" aria-hidden="true">
-                <path d="M0 0h12L6 8z" />
-              </svg></span></span>
-        </button>
-        <div class="curriculum-body">
-          <p class="curriculum-body-text">איך ממשיכים מכאן. כמה להשקיע. מתי. ואיך הופכים את ההשקעה להרגל פשוט שלוקח
-            דקות בודדות בכל חודש.</p>
-        </div>
+      <div class="step-explain" id="stepExplain">
+        <p class="step-explain-text" data-step-text="1">לפני שמשקיעים שקל אחד, צריך להבין איך כסף באמת עובד לאורך זמן. בסוף השלב הזה תבינו למה הזמן חשוב יותר מלנסות לבחור את ההשקעה המושלמת, ולמה רוב הטעויות קורות עוד לפני שלוחצים על כפתור הקנייה.</p>
+        <p class="step-explain-text" data-step-text="2" hidden>בלי להציף אתכם במונחים. בלי שיעורי כלכלה. רק הידע שבאמת יעזור לכם לקבל החלטות בביטחון. בסיום השלב הזה תרגישו שאתם סוף סוף מבינים על מה כולם מדברים.</p>
+        <p class="step-explain-text" data-step-text="3" hidden>נבנה קרן חירום, נבין כמה כסף נכון להשקיע ואיך להתכונן לצעד הראשון. כך שכשתגיעו לפתוח חשבון מסחר, תדעו בדיוק מה אתם עושים.</p>
+        <p class="step-explain-text" data-step-text="4" hidden>נעבור יחד על פתיחת החשבון. נבחר את אסטרטגיית ההשקעה. ונבצע את ההשקעה הראשונה. בסיום השלב הזה כבר תהיו משקיעים.</p>
+        <p class="step-explain-text" data-step-text="5" hidden>איך ממשיכים מכאן. כמה להשקיע. מתי. ואיך הופכים את ההשקעה להרגל פשוט שלוקח דקות בודדות בכל חודש.</p>
       </div>
     </div>
     <div class="narrow center animate" style="margin-top:36px;">
@@ -3122,14 +3002,27 @@
         if (!isOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
       });
     });
-    document.querySelectorAll('.curriculum-head').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var item = btn.closest('.curriculum-item');
-        var isOpen = item.classList.contains('open');
-        document.querySelectorAll('.curriculum-item.open').forEach(function (el) { el.classList.remove('open'); el.querySelector('.curriculum-head').setAttribute('aria-expanded', 'false'); });
-        if (!isOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+    (function () {
+      var nodes = document.querySelectorAll('.step-node');
+      var panel = document.getElementById('stepExplain');
+      if (!nodes.length || !panel) return;
+      var texts = panel.querySelectorAll('.step-explain-text');
+      nodes.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var step = btn.getAttribute('data-step');
+          var alreadySelected = btn.classList.contains('selected');
+          nodes.forEach(function (n) { n.classList.remove('selected'); n.setAttribute('aria-expanded', 'false'); });
+          if (alreadySelected) {
+            panel.classList.remove('open');
+            return;
+          }
+          btn.classList.add('selected');
+          btn.setAttribute('aria-expanded', 'true');
+          texts.forEach(function (t) { t.hidden = t.getAttribute('data-step-text') !== step; });
+          panel.classList.add('open');
+        });
       });
-    });
+    })();
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: .12 });
