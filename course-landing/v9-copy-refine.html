@@ -939,6 +939,51 @@
       display: block;
     }
 
+    /* PERSON PHOTO - bleeds into the dark section background */
+    .person-section {
+      padding-top: 0;
+    }
+
+    .person-photo-wrap {
+      position: relative;
+      max-width: 340px;
+      margin: 0 auto;
+      z-index: 0;
+    }
+
+    .person-photo {
+      width: 100%;
+      display: block;
+      filter: grayscale(.5) contrast(1.05);
+      -webkit-mask-image: linear-gradient(to bottom, black 35%, transparent 92%);
+      mask-image: linear-gradient(to bottom, black 35%, transparent 92%);
+    }
+
+    .person-eyebrow {
+      display: block;
+      font-size: 12px;
+      letter-spacing: .2em;
+      color: var(--gold-l);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .person-content {
+      position: relative;
+      z-index: 1;
+      margin-top: -90px;
+    }
+
+    @media (max-width:520px) {
+      .person-photo-wrap {
+        max-width: 260px;
+      }
+
+      .person-content {
+        margin-top: -60px;
+      }
+    }
+
     /* WHY ME */
     .whyme-grid {
       display: grid;
@@ -2570,10 +2615,14 @@
     </div>
   </section>
 
-  <section class="section dark">
+  <section class="section dark person-section">
     <div class="glow glow-a"></div>
     <div class="grid-overlay"></div>
-    <div class="narrow animate">
+    <div class="person-photo-wrap">
+      <img src="/shahar_headshot.png" alt="שחר לוי" class="person-photo" loading="lazy" />
+    </div>
+    <div class="narrow animate person-content">
+      <span class="person-eyebrow">מי מלמד אתכם //</span>
       <h2 class="center">הדרך שבחרתי הייתה <span class="gold-grad">הרבה יותר פשוטה</span> ממה שחשבתי</h2>
       <p>אחרי חודשים של סרטונים, פודקאסטים וכתבות, הבנתי משהו חשוב.</p>
       <div class="staccato">
