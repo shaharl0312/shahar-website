@@ -910,6 +910,35 @@
       display: block;
     }
 
+    /* PROOF CAROUSEL - simple swipeable strip, for spots where a 3-column grid looks uneven */
+    .proof-carousel {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 4px 16px 14px;
+      margin: 36px -16px 0;
+      scrollbar-width: none;
+    }
+
+    .proof-carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .proof-carousel .proof-item {
+      flex: 0 0 78%;
+      max-width: 300px;
+      scroll-snap-align: center;
+      margin-bottom: 0;
+    }
+
+    .proof-carousel img {
+      width: 100%;
+      border-radius: 10px;
+      display: block;
+    }
+
     /* WHY ME */
     .whyme-grid {
       display: grid;
@@ -2757,7 +2786,7 @@
 
   <section class="section cream">
     <div class="narrow center animate">
-      <div class="proof-grid">
+      <div class="proof-carousel">
         <div class="proof-item"><img src="/testimonials/wts-8.jpg" alt="עדות: החומר בתוכנית מעולה, שווה את הכל"
             loading="lazy" /></div>
         <div class="proof-item"><img src="/testimonials/wts-2.jpg" alt="עדות: פתח דלת שלמה לעולם ההשקעות"
