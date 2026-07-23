@@ -213,11 +213,12 @@
       background-clip: text;
     }
 
-    .gold-navy-grad {
-      background: linear-gradient(120deg, var(--gold) 10%, var(--navy) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .gold-solid {
+      color: var(--gold);
+    }
+
+    .dark .gold-solid {
+      color: var(--gold-l);
     }
 
     .section {
@@ -1175,67 +1176,6 @@
       .step-node {
         flex: 0 0 33.33%;
       }
-    }
-
-    /* FIT TRANSFORMATION TABLE (before / after) */
-    .fit-table {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      max-width: 800px;
-      margin: 36px auto 0;
-    }
-
-    @media (max-width:640px) {
-      .fit-table {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .fit-col {
-      border-radius: 16px;
-      padding: 24px 22px;
-      background: rgba(255, 255, 255, .03);
-      border: 1px solid rgba(255, 255, 255, .08);
-    }
-
-    .fit-col.before {
-      border-top: 4px solid #c0524a;
-    }
-
-    .fit-col.after {
-      border-top: 4px solid var(--gold);
-    }
-
-    .fit-col-label {
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    .fit-col.before .fit-col-label {
-      color: #c0524a;
-    }
-
-    .fit-col.after .fit-col-label {
-      color: var(--gold-l);
-    }
-
-    .fit-col ul {
-      list-style: none;
-    }
-
-    .fit-col li {
-      font-size: 14.5px;
-      color: var(--muted-light);
-      padding: 9px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, .06);
-    }
-
-    .fit-col li:last-child {
-      border-bottom: none;
     }
 
     /* WHY-ME PHOTO + STATS */
@@ -2406,39 +2346,8 @@
         <span>אם סיימתם לראות את הסרטון כנראה שהבנתם דבר אחד.</span><br>
         <span class="soft">לדחות את ההחלטה להתחיל להשקיע... זו גם החלטה.</span>
       </p>
-      <h2 style="margin-top:24px;">ועכשיו נשארה רק שאלה אחת<br><span class="gold-navy-grad">איך אתם רוצים
+      <h2 style="margin-top:24px;">ועכשיו נשארה רק שאלה אחת<br><span class="gold-solid">איך אתם רוצים
           להתחיל?</span></h2>
-    </div>
-  </section>
-
-  <section class="section dark">
-    <div class="glow glow-a"></div>
-    <div class="grid-overlay"></div>
-    <div class="narrow center animate">
-      <h2>המעבר <span class="gold-grad">שקורה בתוכנית</span></h2>
-      <p class="lead" style="max-width:600px;margin:0 auto;">אותו כסף. שני מצבים אפשריים.</p>
-    </div>
-    <div class="fit-table">
-      <div class="fit-col before">
-        <div class="fit-col-label">היום</div>
-        <ul>
-          <li>כסף שיושב בעו"ש ולא עובד</li>
-          <li>חוסר ביטחון וידע עם כסף</li>
-          <li>הפחד לבדוק את חשבון הבנק</li>
-          <li>"לא יודע מה לעשות עם הכסף"</li>
-          <li>כסף שנשחק מאינפלציה כל חודש</li>
-        </ul>
-      </div>
-      <div class="fit-col after">
-        <div class="fit-col-label">אחרי התוכנית</div>
-        <ul>
-          <li>כסף שעובד בשבילי 24/7</li>
-          <li>שליטה וביטחון מלא</li>
-          <li>שקט נפשי, שינה טובה</li>
-          <li>מערכת שעובדת לבד</li>
-          <li>כסף שגדל לבד לאורך זמן</li>
-        </ul>
-      </div>
     </div>
   </section>
 
@@ -2446,7 +2355,7 @@
     <div class="glow glow-b"></div>
     <div class="grid-overlay"></div>
     <div class="narrow center animate">
-      <h2>אם כולנו יודעים שכדאי להשקיע <span class="gold-navy-grad">למה רוב האנשים עדיין לא מתחילים?</span></h2>
+      <h2>אם כולנו יודעים שכדאי להשקיע <span class="gold-grad">למה רוב האנשים עדיין לא מתחילים?</span></h2>
       <p class="lead" style="max-width:640px;margin:0 auto;">רוב האנשים חושבים שהם עדיין לא התחילו להשקיע כי אין להם מספיק ידע.</p>
       <p style="max-width:640px;margin:14px auto 0;color:var(--muted-light);">אבל אחרי שליוויתי עשרות אנשים בתחילת הדרך, גיליתי שזה כמעט אף פעם לא הסיפור.</p>
       <p style="max-width:640px;margin:14px auto 0;color:var(--muted-light);">הבעיה היא לא חוסר ידע. הבעיה היא שאין נקודת התחלה ברורה.</p>
@@ -2459,7 +2368,7 @@
 
   <section class="section cream">
     <div class="narrow animate">
-      <h2 class="center">אבל האמת היא שלהתחיל להשקיע <span class="gold-navy-grad">לא חייב להיות מסובך</span></h2>
+      <h2 class="center">אבל האמת היא שלהתחיל להשקיע <span class="gold-solid">לא חייב להיות מסובך</span></h2>
       <p style="color:var(--muted-dark);">אתם לא צריכים לבחור מניות. אתם לא צריכים לנסות לנחש מה יקרה מחר בשוק. ואתם לא צריכים להפוך למומחים בשוק ההון בשביל להתחיל.</p>
       <p style="color:var(--muted-dark);">מה שרוב האנשים באמת צריכים הוא דרך פשוטה. כזו שמסבירה להם מה לעשות, באיזה סדר, ואיך לבצע את הצעד הראשון בלי להרגיש שהם קופצים למים.</p>
       <p style="font-weight:700;">וזו בדיוק הדרך שאני בחרתי לעצמי. וזו גם הדרך שאני מלמד היום.</p>
@@ -2480,7 +2389,7 @@
 
   <section class="section cream">
     <div class="narrow animate">
-      <h2 class="center">למה התוכנית הזאת נבנתה <span class="gold-navy-grad">במיוחד לאנשי קבע?</span></h2>
+      <h2 class="center">למה התוכנית הזאת נבנתה <span class="gold-solid">במיוחד לאנשי קבע?</span></h2>
       <p style="color:var(--muted-dark);">גם אני חשבתי שאני אתחיל כשיהיה לי יותר זמן. אבל הזמן הזה אף פעם לא באמת הגיע. תמיד הייתה עוד תקופה עמוסה. עוד תרגיל. עוד קורס. עוד משימה. ובינתיים, הכסף פשוט המשיך לשבת בעו"ש.</p>
       <p style="color:var(--muted-dark);">רק אחרי שהתחלתי להשקיע בעצמי, הבנתי שהבעיה אף פעם לא הייתה חוסר זמן. והיא גם לא הייתה חוסר ידע. הייתה חסרה לי דרך פשוטה וברורה להתחיל.</p>
       <p style="color:var(--muted-dark);">אחרי שעברתי את הדרך הזאת בעצמי, התחלתי לעזור גם לחברים מהצבא. ולאט לאט לעוד ועוד אנשי קבע. ושוב ושוב שמעתי את אותם המשפטים: "אני לא מבין מספיק." "אני מפחד לעשות טעות." "אני אתחיל חודש הבא."</p>
@@ -2707,7 +2616,7 @@
 
   <section class="section cream" id="pricing">
     <div class="narrow center animate">
-      <h2>אם הגעתם עד לכאן כנראה שאתם כבר יודעים <span class="gold-navy-grad">מה הצעד הבא שלכם</span></h2>
+      <h2>אם הגעתם עד לכאן כנראה שאתם כבר יודעים <span class="gold-solid">מה הצעד הבא שלכם</span></h2>
       <p class="lead" style="color:var(--muted-dark);max-width:620px;margin:0 auto 14px;">במשך תקופה ליוויתי אנשי קבע
         באופן אישי. כל ליווי כזה עלה אלפי שקלים, כי הוא כלל פגישות אישיות וליווי צמוד לאורך כל הדרך.</p>
       <p style="color:var(--muted-dark);max-width:620px;margin:0 auto 14px;">אבל עם הזמן הבנתי שרוב האנשים לא צריכים
@@ -2756,7 +2665,7 @@
     <div class="glow glow-b"></div>
     <div class="grid-overlay"></div>
     <div class="narrow center animate">
-      <h2>אבל יש <span class="gold-navy-grad">עוד מחיר</span> שרוב האנשים לא חושבים עליו</h2>
+      <h2>אבל יש <span class="gold-grad">עוד מחיר</span> שרוב האנשים לא חושבים עליו</h2>
       <p class="lead" style="max-width:600px;margin:0 auto;">לא המחיר של התוכנית. המחיר של להמשיך לחכות.</p>
       <p style="max-width:600px;margin:14px auto 0;color:var(--muted-light);">אם הגעתם עד לכאן, כנראה שאתם כבר מבינים
         שהכסף שלכם לא צריך להמשיך לשבת בעו"ש. ובכל זאת, קל מאוד להגיד לעצמכם: "אני אתחיל חודש הבא."</p>
@@ -2779,19 +2688,19 @@
         <p style="color:var(--muted-dark);font-size:14px;font-weight:700;margin-bottom:10px;">💰 השקעה חד-פעמית</p>
         <p style="color:var(--text-dark);font-size:14px;margin-bottom:10px;">אם לפני 10 שנים הייתם משקיעים 10,000 ₪
           במדד S&amp;P 500 ומשאירים אותם מושקעים, היום הם היו שווים בערך</p>
-        <p class="gold-navy-grad" style="font-size:28px;font-weight:800;">40,600 ₪</p>
+        <p class="gold-solid" style="font-size:28px;font-weight:800;">40,600 ₪</p>
       </div>
       <div class="animate d2" style="background:#fff;border-radius:16px;border-bottom:4px solid var(--gold);padding:26px 22px;text-align:center;">
         <p style="color:var(--muted-dark);font-size:14px;font-weight:700;margin-bottom:10px;">📅 השקעה חודשית</p>
         <p style="color:var(--text-dark);font-size:14px;margin-bottom:10px;">אם לפני 10 שנים הייתם מתחילים להשקיע רק
           500 ₪ בכל חודש, היום כבר היה עומד לרשותכם סכום של כ-</p>
-        <p class="gold-navy-grad" style="font-size:28px;font-weight:800;">121,800 ₪</p>
+        <p class="gold-solid" style="font-size:28px;font-weight:800;">121,800 ₪</p>
       </div>
       <div class="animate d3" style="background:#fff;border-radius:16px;border-bottom:4px solid var(--gold);padding:26px 22px;text-align:center;">
         <p style="color:var(--muted-dark);font-size:14px;font-weight:700;margin-bottom:10px;">🚀 ומה אם תתחילו היום?</p>
         <p style="color:var(--text-dark);font-size:14px;margin-bottom:10px;">אם תתחילו להשקיע 500 ₪ בכל חודש, ובהנחה
           של תשואה שנתית ממוצעת של 10%, בעוד 20 שנה יעמדו לרשותכם כ-</p>
-        <p class="gold-navy-grad" style="font-size:28px;font-weight:800;">379,684 ₪</p>
+        <p class="gold-solid" style="font-size:28px;font-weight:800;">379,684 ₪</p>
       </div>
     </div>
     <div class="narrow center animate" style="margin-top:22px;">
@@ -2810,7 +2719,7 @@
 
   <section class="section cream-alt">
     <div class="inner center animate">
-      <h2>בעוד שבוע מהיום תוכלו להיות <span class="gold-navy-grad">באחת משתי נקודות</span></h2>
+      <h2>בעוד שבוע מהיום תוכלו להיות <span class="gold-solid">באחת משתי נקודות</span></h2>
       <div class="path-timeline">
         <span class="path-node"><span class="dot"></span>היום</span>
         <svg class="path-connector" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true">
@@ -2900,7 +2809,7 @@
       <div class="guarantee-card">
         <span class="eyebrow" style="color:var(--gold);border-color:rgba(201,168,76,.35);">יש לכם 30 יום לעבור על
           התוכנית</span>
-        <h2>אני עומד <span class="gold-navy-grad">מאחורי התוכנית הזאת</span></h2>
+        <h2>אני עומד <span class="gold-solid">מאחורי התוכנית הזאת</span></h2>
         <p style="color:var(--muted-dark);">עוד לפני שהתוכנית הדיגיטלית נולדה, ליוויתי באופן אישי עשרות אנשי קבע בתהליך
           הזה. ראיתי את אותם החששות חוזרים שוב ושוב. וראיתי גם מה קורה כשמפסיקים לדחות ופשוט מתחילים. בגלל זה אני מרגיש
           בנוח לעמוד מאחורי התוכנית.</p>
