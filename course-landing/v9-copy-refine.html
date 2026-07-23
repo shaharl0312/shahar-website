@@ -525,6 +525,23 @@
       border-radius: 8px;
     }
 
+    .page-progress {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 3px;
+      z-index: 300;
+      background: rgba(255, 255, 255, .06);
+    }
+
+    .page-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--gold) 0%, var(--gold-l) 100%);
+      transition: width .1s linear;
+    }
+
     nav {
       position: fixed;
       top: 0;
@@ -1146,8 +1163,22 @@
       right: 6%;
       left: 6%;
       height: 2px;
-      background: linear-gradient(90deg, var(--gold) 0%, rgba(201, 168, 76, .15) 100%);
+      background: rgba(201, 168, 76, .18);
       z-index: 0;
+    }
+
+    .step-timeline-fill {
+      position: absolute;
+      top: 21px;
+      right: 6%;
+      height: 2px;
+      width: var(--fill-pct, 0%);
+      max-width: 88%;
+      background: var(--gold);
+      border-radius: 2px;
+      z-index: 0;
+      transition: width .2s ease-out, height .2s ease-out;
+      box-shadow: 0 0 8px rgba(201, 168, 76, .5);
     }
 
     .step-node {
@@ -1194,17 +1225,52 @@
     }
 
     @media (max-width:768px) {
+      .step-timeline {
+        max-width: 340px;
+      }
+
       .step-timeline-track {
-        flex-wrap: wrap;
-        row-gap: 24px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
       }
 
       .step-timeline-track::before {
-        display: none;
+        top: 0;
+        bottom: 22px;
+        right: 21px;
+        left: auto;
+        width: 2px;
+        height: auto;
+      }
+
+      .step-timeline-fill {
+        top: 0;
+        right: 21px;
+        left: auto;
+        width: 2px;
+        height: var(--fill-pct, 0%);
+        max-width: none;
+        max-height: 88%;
       }
 
       .step-node {
-        flex: 0 0 33.33%;
+        flex-direction: row;
+        align-items: center;
+        text-align: right;
+        justify-content: flex-start;
+        gap: 16px;
+        padding: 10px 0;
+      }
+
+      .step-node .dot {
+        margin-bottom: 0;
+        flex-shrink: 0;
+      }
+
+      .step-node .label {
+        max-width: none;
+        text-align: right;
       }
     }
 
@@ -2310,6 +2376,8 @@
 
 <body>
 
+  <div class="page-progress"><div class="page-progress-fill" id="pageProgressFill"></div></div>
+
   <nav>
     <img src="/logo.png" alt="שחר לוי" />
     <a href="#pricing" class="nav-cta">
@@ -2465,7 +2533,8 @@
     </div>
     <div class="step-timeline animate">
       <div class="step-timeline-track">
-        <div class="step-node active">
+        <div class="step-timeline-fill" id="stepTimelineFill"></div>
+        <div class="step-node">
           <span class="dot">1</span>
           <span class="label">משנים את הדרך שבה מסתכלים על כסף</span>
         </div>
@@ -2492,7 +2561,7 @@
         <button class="curriculum-head" aria-expanded="true">
           <span class="head-right"><span class="num">1</span><span class="title">משנים את הדרך שבה אתם מסתכלים על
               כסף</span></span>
-          <span class="head-left"><span>שיעורים 1-5</span><span class="arrow"><svg viewBox="0 0 12 8" width="12"
+          <span class="head-left"><span class="arrow"><svg viewBox="0 0 12 8" width="12"
                 height="8" fill="currentColor" aria-hidden="true">
                 <path d="M0 0h12L6 8z" />
               </svg></span></span>
@@ -2507,7 +2576,7 @@
         <button class="curriculum-head" aria-expanded="false">
           <span class="head-right"><span class="num">2</span><span class="title">מבינים את כל מה שבאמת צריך
               לדעת</span></span>
-          <span class="head-left"><span>שיעורים 6-9</span><span class="arrow"><svg viewBox="0 0 12 8" width="12"
+          <span class="head-left"><span class="arrow"><svg viewBox="0 0 12 8" width="12"
                 height="8" fill="currentColor" aria-hidden="true">
                 <path d="M0 0h12L6 8z" />
               </svg></span></span>
@@ -2520,7 +2589,7 @@
       <div class="curriculum-item animate d3">
         <button class="curriculum-head" aria-expanded="false">
           <span class="head-right"><span class="num">3</span><span class="title">מתכוננים להשקעה הראשונה</span></span>
-          <span class="head-left"><span>שיעורים 10-15</span><span class="arrow"><svg viewBox="0 0 12 8" width="12"
+          <span class="head-left"><span class="arrow"><svg viewBox="0 0 12 8" width="12"
                 height="8" fill="currentColor" aria-hidden="true">
                 <path d="M0 0h12L6 8z" />
               </svg></span></span>
@@ -2533,7 +2602,7 @@
       <div class="curriculum-item animate d4">
         <button class="curriculum-head" aria-expanded="false">
           <span class="head-right"><span class="num">4</span><span class="title">פותחים חשבון ומשקיעים</span></span>
-          <span class="head-left"><span>שיעורים 16-21</span><span class="arrow"><svg viewBox="0 0 12 8" width="12"
+          <span class="head-left"><span class="arrow"><svg viewBox="0 0 12 8" width="12"
                 height="8" fill="currentColor" aria-hidden="true">
                 <path d="M0 0h12L6 8z" />
               </svg></span></span>
@@ -2547,7 +2616,7 @@
         <button class="curriculum-head" aria-expanded="false">
           <span class="head-right"><span class="num">5</span><span class="title">בונים שגרה שתישאר אתכם
               לשנים</span></span>
-          <span class="head-left"><span>שיעורים 22-26</span><span class="arrow"><svg viewBox="0 0 12 8" width="12"
+          <span class="head-left"><span class="arrow"><svg viewBox="0 0 12 8" width="12"
                 height="8" fill="currentColor" aria-hidden="true">
                 <path d="M0 0h12L6 8z" />
               </svg></span></span>
@@ -3108,6 +3177,44 @@
     } else {
       document.querySelectorAll('.fadeup-ready').forEach(function (el) { el.style.opacity = '1'; el.style.transform = 'none'; });
     }
+
+    /* page-wide reading progress bar */
+    (function () {
+      var fill = document.getElementById('pageProgressFill');
+      if (!fill) return;
+      function update() {
+        var h = document.documentElement.scrollHeight - window.innerHeight;
+        var pct = h > 0 ? (window.scrollY / h) * 100 : 0;
+        fill.style.width = pct + '%';
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    })();
+
+    /* step-timeline: cute scroll-linked path progress */
+    (function () {
+      var wrap = document.querySelector('.step-timeline');
+      var fill = document.getElementById('stepTimelineFill');
+      if (!wrap || !fill) return;
+      var nodes = wrap.querySelectorAll('.step-node');
+      function update() {
+        var rect = wrap.getBoundingClientRect();
+        var vh = window.innerHeight;
+        var start = vh * 0.85;
+        var end = vh * 0.25;
+        var progress = (start - rect.top) / (start - end + rect.height);
+        progress = Math.max(0, Math.min(1, progress));
+        fill.style.setProperty('--fill-pct', (progress * 100) + '%');
+        var activeCount = Math.round(progress * nodes.length);
+        nodes.forEach(function (n, i) {
+          n.classList.toggle('active', i < activeCount);
+        });
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    })();
   </script>
 
   <script>
