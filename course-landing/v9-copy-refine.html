@@ -1560,12 +1560,6 @@
       align-items: stretch;
     }
 
-    @media (max-width:768px) {
-      .fork-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
     .fork-card {
       border-radius: 20px;
       padding: 30px 24px 34px;
@@ -1588,6 +1582,33 @@
       height: 18px;
       stroke-width: 2.5;
       fill: none;
+    }
+
+    @media (max-width:600px) {
+      .fork-grid {
+        gap: 10px;
+      }
+
+      .fork-card {
+        padding: 18px 10px 20px;
+        border-radius: 14px;
+      }
+
+      .fork-icon {
+        width: 30px;
+        height: 30px;
+        margin-bottom: 10px;
+      }
+
+      .fork-icon svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      .fork-card p {
+        font-size: 14px;
+        line-height: 1.4;
+      }
     }
 
     .fork-card.no {
@@ -2729,8 +2750,8 @@
         <span class="path-node"><span class="dot"></span>היום</span>
         <svg class="path-connector" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true">
           <path d="M50,0 L50,14" />
-          <path d="M50,14 L18,40" />
-          <path d="M50,14 L82,40" />
+          <path d="M50,14 L24,40" />
+          <path d="M50,14 L76,40" />
         </svg>
         <div class="fork-grid">
           <div class="fork-card no">
