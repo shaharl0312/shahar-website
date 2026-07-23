@@ -88,8 +88,6 @@
 
     html {
       scroll-behavior: smooth;
-      overflow-x: hidden;
-      max-width: 100%;
     }
 
     body {
@@ -500,10 +498,6 @@
         animation: none;
         background: var(--gold);
       }
-
-      .proof-track {
-        animation-duration: 70s !important;
-      }
     }
 
     .cta-note {
@@ -888,63 +882,32 @@
       margin-bottom: 0;
     }
 
-    /* PROOF TICKER - real testimonial screenshots in an endless film-strip, framed like pelegdror.com's ticker */
-    .proof-ticker {
-      overflow: hidden;
-      border-top: 1px solid rgba(247, 245, 240, .12);
-      border-bottom: 1px solid rgba(247, 245, 240, .12);
-      padding: 28px 0;
-      direction: ltr;
+    /* PROOF GRID - discrete testimonial screenshots placed at key decision points */
+    .proof-grid {
+      columns: 3 220px;
+      column-gap: 16px;
+      margin: 36px 0;
     }
 
-    .proof-ticker-track {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      width: max-content;
-      animation: proof-ticker-scroll 100s linear infinite;
-    }
-
-    .proof-ticker:hover .proof-ticker-track {
-      animation-play-state: paused;
-    }
-
-    @keyframes proof-ticker-scroll {
-      to { transform: translateX(-50%); }
-    }
-
-    .proof-ticker-set {
-      display: flex;
-      align-items: center;
-      gap: 16px;
+    @media (max-width:768px) {
+      .proof-grid {
+        columns: 2 160px;
+      }
     }
 
     .proof-item {
-      flex: 0 0 auto;
-      width: 260px;
+      break-inside: avoid;
+      margin-bottom: 16px;
       background: #fff;
       border-radius: 16px;
       padding: 10px;
       box-shadow: 0 10px 28px rgba(0, 0, 0, .3);
     }
 
-    .proof-item img {
+    .proof-grid img {
       width: 100%;
-      height: auto;
-      max-height: 230px;
-      object-fit: contain;
       border-radius: 10px;
       display: block;
-    }
-
-    @media (max-width:768px) {
-      .proof-item {
-        width: 200px;
-      }
-
-      .proof-item img {
-        max-height: 180px;
-      }
     }
 
     /* WHY ME */
@@ -1041,181 +1004,254 @@
       flex-shrink: 0;
     }
 
-    /* HORIZONTAL STEP TIMELINE */
-    .step-timeline {
-      max-width: 960px;
-      margin: 40px auto 0;
+    /* CURRICULUM JOURNEY (scroll-linked stations, unified desktop+mobile) */
+    .cj-section {
+      overflow: visible;
+    }
+
+    .cjmap {
       position: relative;
+      height: 500vh;
+      margin-top: 24px;
     }
 
-    .step-timeline-track {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      position: relative;
-      gap: 8px;
-    }
-
-    .step-timeline-track::before {
-      content: '';
-      position: absolute;
-      top: 21px;
-      right: 6%;
-      left: 6%;
-      height: 2px;
-      background: rgba(201, 168, 76, .18);
-      z-index: 0;
-    }
-
-    .step-timeline-fill {
-      position: absolute;
-      top: 21px;
-      right: 6%;
-      height: 2px;
-      width: var(--fill-pct, 0%);
-      max-width: 88%;
-      background: var(--gold);
-      border-radius: 2px;
-      z-index: 0;
-      transition: width .2s ease-out, height .2s ease-out;
-      box-shadow: 0 0 8px rgba(201, 168, 76, .5);
-    }
-
-    .step-node {
-      position: relative;
-      z-index: 1;
+    .cjmap-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      height: 100dvh;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      flex: 1;
+    }
+
+    .cjmap-line {
+      position: relative;
+      height: 6px;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, .09);
+      width: min(1000px, calc(100% - 48px));
+      margin: 64px auto 0;
+      flex: 0 0 auto;
+      z-index: 5;
+    }
+
+    .cjmap-line i {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 0%;
+      border-radius: 4px;
+      background: linear-gradient(270deg, var(--gold), var(--gold-l));
+      box-shadow: 0 0 14px rgba(201, 168, 76, .6);
+    }
+
+    .cjmap-stations {
+      position: absolute;
+      inset: 0;
+    }
+
+    .cj-st {
+      position: absolute;
+      top: 50%;
+      transform: translate(50%, -50%);
       text-align: center;
-      background: none;
-      border: none;
-      padding: 0;
       cursor: pointer;
-      font-family: inherit;
     }
 
-    .step-node .dot {
-      transition: background .2s, color .2s, box-shadow .2s, transform .15s;
-    }
-
-    .step-node:hover .dot {
-      transform: scale(1.06);
-    }
-
-    .step-node.selected .dot {
-      background: var(--gold);
-      color: var(--anthracite);
-      box-shadow: 0 0 0 6px rgba(201, 168, 76, .28);
-    }
-
-    .step-explain {
-      max-width: 640px;
-      margin: 28px auto 0;
-      background: rgba(255, 255, 255, .04);
-      border: 1px solid rgba(255, 255, 255, .1);
-      border-radius: 14px;
-      padding: 0 22px;
-      max-height: 0;
-      overflow: hidden;
-      opacity: 0;
-      transition: max-height .3s ease, opacity .25s ease, padding .3s ease;
-    }
-
-    .step-explain.open {
-      max-height: 200px;
-      opacity: 1;
-      padding: 20px 22px;
-    }
-
-    .step-explain-text {
-      font-size: 15px;
-      color: var(--muted-light);
-      line-height: 1.7;
-    }
-
-    .step-node .dot {
-      width: 44px;
-      height: 44px;
+    .cj-med {
+      width: 56px;
+      height: 56px;
       border-radius: 50%;
-      background: var(--anthracite);
-      border: 2px solid var(--gold);
-      color: var(--gold-l);
+      margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 800;
-      font-size: 15px;
-      margin-bottom: 12px;
+      background: #0d0d0d;
+      border: 2.5px solid rgba(255, 255, 255, .16);
+      transition: all .45s ease;
     }
 
-    .step-node.active .dot {
-      background: var(--gold);
-      color: var(--anthracite);
-      box-shadow: 0 0 0 6px rgba(201, 168, 76, .18);
+    .cj-med svg {
+      width: 20px;
+      height: 20px;
+      color: rgba(255, 255, 255, .45);
+      transition: color .45s ease;
     }
 
-    .step-node .label {
-      font-size: 12.5px;
+    .cj-st .lbl {
+      position: absolute;
+      top: calc(100% + 12px);
+      right: 50%;
+      transform: translateX(50%);
+      white-space: nowrap;
+      font-size: 12px;
+      letter-spacing: .04em;
+      color: rgba(247, 245, 240, .5);
+      font-weight: 600;
+      transition: color .45s;
+    }
+
+    .cj-st.lit .cj-med {
+      border-color: var(--st, var(--gold));
+      box-shadow: 0 0 0 5px color-mix(in srgb, var(--st, var(--gold)) 14%, transparent), 0 0 22px color-mix(in srgb, var(--st, var(--gold)) 45%, transparent);
+    }
+
+    .cj-st.lit .cj-med svg {
+      color: var(--st, var(--gold));
+    }
+
+    .cj-st.lit .lbl {
+      color: var(--st, var(--gold-l));
+    }
+
+    .cj-st:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 4px;
+      border-radius: 8px;
+    }
+
+    .cjstage {
+      position: relative;
+      flex: 1;
+    }
+
+    .cjscene {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .cjscene .aura {
+      position: absolute;
+      inset: -20%;
+      background: radial-gradient(ellipse 60% 55% at 50% 46%, color-mix(in srgb, var(--st, var(--gold)) 16%, transparent), transparent 70%);
+    }
+
+    .cjscene .bignum {
+      position: absolute;
+      top: 2%;
+      right: 50%;
+      transform: translateX(50%);
+      font-weight: 900;
+      font-size: clamp(140px, 30vh, 360px);
+      line-height: 1;
+      color: color-mix(in srgb, var(--st, var(--gold)) 7%, transparent);
+      -webkit-text-stroke: 2px color-mix(in srgb, var(--st, var(--gold)) 40%, transparent);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .cjscene .inner {
+      position: relative;
+      max-width: 720px;
+      padding: 0 clamp(22px, 5vw, 60px);
+      text-align: center;
+    }
+
+    .cj-when {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: clamp(12px, 1.4vw, 14px);
+      letter-spacing: .06em;
       font-weight: 700;
-      color: var(--muted-light);
-      line-height: 1.4;
-      max-width: 110px;
+      color: var(--st, var(--gold-l));
+      border: 1.5px solid color-mix(in srgb, var(--st, var(--gold-l)) 42%, transparent);
+      padding: 7px 18px;
+      border-radius: 100px;
+      margin-bottom: clamp(14px, 3vh, 26px);
+      background: color-mix(in srgb, var(--st, var(--gold-l)) 8%, transparent);
+      backdrop-filter: blur(4px);
     }
 
-    .step-node.active .label {
+    .cj-title {
+      font-weight: 800;
+      font-size: clamp(24px, 4.6vw, 42px);
+      line-height: 1.18;
       color: #fff;
+      margin-bottom: clamp(12px, 2.4vh, 22px);
     }
 
-    @media (max-width:768px) {
-      .step-timeline {
-        max-width: 340px;
+    .cj-title .accent {
+      color: var(--st, var(--gold));
+    }
+
+    .cj-text {
+      font-size: clamp(14.5px, 1.8vw, 18px);
+      line-height: 1.7;
+      color: rgba(247, 245, 240, .82);
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .cjmap-hint {
+      position: absolute;
+      bottom: 20px;
+      right: 50%;
+      transform: translateX(50%);
+      font-size: 11px;
+      color: rgba(247, 245, 240, .35);
+      letter-spacing: .1em;
+      z-index: 5;
+    }
+
+    @media (max-width:720px) {
+      .cjmap-line {
+        margin-top: 44px;
+        width: calc(100% - 32px);
       }
 
-      .step-timeline-track {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
+      .cj-med {
+        width: 42px;
+        height: 42px;
       }
 
-      .step-timeline-track::before {
-        top: 0;
-        bottom: 22px;
-        right: 21px;
-        left: auto;
-        width: 2px;
-        height: auto;
+      .cj-med svg {
+        width: 15px;
+        height: 15px;
       }
 
-      .step-timeline-fill {
-        top: 0;
-        right: 21px;
-        left: auto;
-        width: 2px;
-        height: var(--fill-pct, 0%);
-        max-width: none;
-        max-height: 88%;
+      .cj-st .lbl {
+        display: none;
       }
+    }
 
-      .step-node {
-        flex-direction: row;
-        align-items: center;
-        text-align: right;
-        justify-content: flex-start;
-        gap: 16px;
-        padding: 10px 0;
-      }
+    /* reduced motion / no-js fallback: static stacked scenes */
+    .cjmap.static {
+      height: auto;
+    }
 
-      .step-node .dot {
-        margin-bottom: 0;
-        flex-shrink: 0;
-      }
+    .cjmap.static .cjmap-sticky {
+      position: relative;
+      height: auto;
+      display: block;
+    }
 
-      .step-node .label {
-        max-width: none;
-        text-align: right;
-      }
+    .cjmap.static .cjstage {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .cjmap.static .cjscene {
+      position: relative;
+      opacity: 1;
+      pointer-events: auto;
+      padding: 48px 0;
+    }
+
+    .cjmap.static .cjscene .bignum {
+      display: none;
+    }
+
+    .cjmap.static .cjmap-hint {
+      display: none;
     }
 
     /* WHY-ME PHOTO + STATS */
@@ -2407,6 +2443,12 @@
     <div class="glow glow-b"></div>
     <div class="grid-overlay"></div>
     <div class="narrow center animate">
+      <div class="proof-grid">
+        <div class="proof-item"><img src="/testimonials/wts-6.jpg" alt="עדות: הפסיק לדחות והתחיל להשקיע - כמה קל זה היה בפועל"
+            loading="lazy" /></div>
+        <div class="proof-item"><img src="/testimonials/wts-10.jpg" alt="עדות: ליווי אישי ופרקטי בכניסה להשקעות"
+            loading="lazy" /></div>
+      </div>
       <p class="story-quote" style="color:#fff;">
         <span>אם סיימתם לראות את הסרטון כנראה שהבנתם דבר אחד.</span><br>
         <span class="soft" style="color:var(--muted-light);">לדחות את ההחלטה להתחיל להשקיע... זו גם החלטה.</span>
@@ -2473,6 +2515,12 @@
     <div class="glow glow-a"></div>
     <div class="grid-overlay"></div>
     <div class="narrow animate">
+      <div class="proof-grid">
+        <div class="proof-item"><img src="/testimonials/wts-3.jpg" alt="עדות: יצא מהתלבטות ארוכה סביב ההשקעות"
+            loading="lazy" /></div>
+        <div class="proof-item"><img src="/testimonials/wts-7.jpg" alt="עדות: נכנס בביטחון לתחום שהיה זר לגמרי"
+            loading="lazy" /></div>
+      </div>
       <p style="color:var(--muted-light);font-weight:600;">בעוד כ-3 שעות מהיום, אתם יכולים להיות</p>
       <p class="reveal-name gold-grad">אחרי ההשקעה<br>הראשונה שלכם</p>
       <p class="reveal-desc">אני לא מלמד אתכם איך לנחש את השוק. אני מלמד אתכם איך להתחיל.<br><br>אם תצטרפו לתוכנית, תקבלו
@@ -2488,46 +2536,128 @@
     </div>
   </section>
 
-  <section class="section dark">
-    <div class="glow glow-a"></div>
-    <div class="grid-overlay"></div>
+  <section class="section dark cj-section">
     <div class="inner center animate">
       <h2>כך בנויה הדרך שלכם <span class="gold-grad">להשקעה הראשונה</span></h2>
       <p class="lead" style="max-width:600px;margin:0 auto;">בניתי את התוכנית כך שכל שלב מוביל באופן טבעי לשלב הבא. לא
         צריך לנחש. לא צריך לקפוץ בין סרטונים. ולא צריך להבין הכול לפני שמתחילים.</p>
     </div>
-    <div class="step-timeline animate">
-      <div class="step-timeline-track">
-        <div class="step-timeline-fill" id="stepTimelineFill"></div>
-        <button class="step-node" type="button" aria-expanded="false" data-step="1">
-          <span class="dot">1</span>
-          <span class="label">משנים את הדרך שבה מסתכלים על כסף</span>
-        </button>
-        <button class="step-node" type="button" aria-expanded="false" data-step="2">
-          <span class="dot">2</span>
-          <span class="label">מבינים את כל מה שבאמת צריך לדעת</span>
-        </button>
-        <button class="step-node" type="button" aria-expanded="false" data-step="3">
-          <span class="dot">3</span>
-          <span class="label">מתכוננים להשקעה הראשונה</span>
-        </button>
-        <button class="step-node" type="button" aria-expanded="false" data-step="4">
-          <span class="dot">4</span>
-          <span class="label">פותחים חשבון ומשקיעים</span>
-        </button>
-        <button class="step-node" type="button" aria-expanded="false" data-step="5">
-          <span class="dot">5</span>
-          <span class="label">בונים שגרה שתישאר לשנים</span>
-        </button>
-      </div>
-      <div class="step-explain" id="stepExplain">
-        <p class="step-explain-text" data-step-text="1">לפני שמשקיעים שקל אחד, צריך להבין איך כסף באמת עובד לאורך זמן. בסוף השלב הזה תבינו למה הזמן חשוב יותר מלנסות לבחור את ההשקעה המושלמת, ולמה רוב הטעויות קורות עוד לפני שלוחצים על כפתור הקנייה.</p>
-        <p class="step-explain-text" data-step-text="2" hidden>בלי להציף אתכם במונחים. בלי שיעורי כלכלה. רק הידע שבאמת יעזור לכם לקבל החלטות בביטחון. בסיום השלב הזה תרגישו שאתם סוף סוף מבינים על מה כולם מדברים.</p>
-        <p class="step-explain-text" data-step-text="3" hidden>נבנה קרן חירום, נבין כמה כסף נכון להשקיע ואיך להתכונן לצעד הראשון. כך שכשתגיעו לפתוח חשבון מסחר, תדעו בדיוק מה אתם עושים.</p>
-        <p class="step-explain-text" data-step-text="4" hidden>נעבור יחד על פתיחת החשבון. נבחר את אסטרטגיית ההשקעה. ונבצע את ההשקעה הראשונה. בסיום השלב הזה כבר תהיו משקיעים.</p>
-        <p class="step-explain-text" data-step-text="5" hidden>איך ממשיכים מכאן. כמה להשקיע. מתי. ואיך הופכים את ההשקעה להרגל פשוט שלוקח דקות בודדות בכל חודש.</p>
+
+    <div class="cjmap" id="cjmap">
+      <div class="cjmap-sticky">
+        <div class="cjmap-line">
+          <i id="cjmapFill"></i>
+          <div class="cjmap-stations">
+            <div class="cj-st" style="--st:#1B3A6B;right:6%" data-scene="0" tabindex="0" role="button"
+              aria-label="שלב 1: משנים את הדרך שבה מסתכלים על כסף">
+              <div class="cj-med"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="8" />
+                  <circle cx="12" cy="12" r="3.5" />
+                  <circle cx="12" cy="12" r=".6" fill="currentColor" />
+                </svg></div>
+              <span class="lbl">צורת חשיבה</span>
+            </div>
+            <div class="cj-st" style="--st:#d9bd6e;right:28%" data-scene="1" tabindex="0" role="button"
+              aria-label="שלב 2: מבינים את כל מה שבאמת צריך לדעת">
+              <div class="cj-med"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 5h16v11H9l-4 4V5z" />
+                </svg></div>
+              <span class="lbl">מבינים מונחים</span>
+            </div>
+            <div class="cj-st" style="--st:#C9A84C;right:50%" data-scene="2" tabindex="0" role="button"
+              aria-label="שלב 3: מתכוננים להשקעה הראשונה">
+              <div class="cj-med"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M6 3v18M6 4h12l-3 4 3 4H6" />
+                </svg></div>
+              <span class="lbl">מתכוננים</span>
+            </div>
+            <div class="cj-st" style="--st:#b8933d;right:72%" data-scene="3" tabindex="0" role="button"
+              aria-label="שלב 4: פותחים חשבון ומשקיעים">
+              <div class="cj-med"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3 17l6-6 4 4 8-8" />
+                  <path d="M15 7h6v6" />
+                </svg></div>
+              <span class="lbl">משקיעים</span>
+            </div>
+            <div class="cj-st" style="--st:#e6cd8a;right:94%" data-scene="4" tabindex="0" role="button"
+              aria-label="שלב 5: בונים שגרה שתישאר לשנים">
+              <div class="cj-med"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 4v6h6" />
+                  <path d="M20 20v-6h-6" />
+                  <path d="M4 10a8 8 0 0 1 14-5" />
+                  <path d="M20 14a8 8 0 0 1-14 5" />
+                </svg></div>
+              <span class="lbl">שגרה קבועה</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cjstage" id="cjstage">
+          <div class="cjscene" style="--st:#1B3A6B">
+            <div class="aura"></div>
+            <div class="bignum">01</div>
+            <div class="inner">
+              <span class="cj-when">שלב 1 מתוך 5</span>
+              <h3 class="cj-title">משנים את הדרך <span class="accent">שבה מסתכלים על כסף</span></h3>
+              <p class="cj-text">לפני שמשקיעים שקל אחד, צריך להבין איך כסף באמת עובד לאורך זמן. בסוף השלב הזה תבינו למה
+                הזמן חשוב יותר מלנסות לבחור את ההשקעה המושלמת, ולמה רוב הטעויות קורות עוד לפני שלוחצים על כפתור
+                הקנייה.</p>
+            </div>
+          </div>
+
+          <div class="cjscene" style="--st:#d9bd6e">
+            <div class="aura"></div>
+            <div class="bignum">02</div>
+            <div class="inner">
+              <span class="cj-when">שלב 2 מתוך 5</span>
+              <h3 class="cj-title">מבינים את כל מה <span class="accent">שבאמת צריך לדעת</span></h3>
+              <p class="cj-text">בלי להציף אתכם במונחים. בלי שיעורי כלכלה. רק הידע שבאמת יעזור לכם לקבל החלטות בביטחון.
+                בסיום השלב הזה תרגישו שאתם סוף סוף מבינים על מה כולם מדברים.</p>
+            </div>
+          </div>
+
+          <div class="cjscene" style="--st:#C9A84C">
+            <div class="aura"></div>
+            <div class="bignum">03</div>
+            <div class="inner">
+              <span class="cj-when">שלב 3 מתוך 5</span>
+              <h3 class="cj-title">מתכוננים <span class="accent">להשקעה הראשונה</span></h3>
+              <p class="cj-text">נבנה קרן חירום, נבין כמה כסף נכון להשקיע ואיך להתכונן לצעד הראשון. כך שכשתגיעו לפתוח
+                חשבון מסחר, תדעו בדיוק מה אתם עושים.</p>
+            </div>
+          </div>
+
+          <div class="cjscene" style="--st:#b8933d">
+            <div class="aura"></div>
+            <div class="bignum">04</div>
+            <div class="inner">
+              <span class="cj-when">שלב 4 מתוך 5</span>
+              <h3 class="cj-title">פותחים חשבון <span class="accent">ומשקיעים</span></h3>
+              <p class="cj-text">נעבור יחד על פתיחת החשבון. נבחר את אסטרטגיית ההשקעה. ונבצע את ההשקעה הראשונה. בסיום
+                השלב הזה כבר תהיו משקיעים.</p>
+            </div>
+          </div>
+
+          <div class="cjscene" style="--st:#e6cd8a">
+            <div class="aura"></div>
+            <div class="bignum">05</div>
+            <div class="inner">
+              <span class="cj-when">שלב 5 מתוך 5</span>
+              <h3 class="cj-title">בונים שגרה <span class="accent">שתישאר לשנים</span></h3>
+              <p class="cj-text">איך ממשיכים מכאן. כמה להשקיע. מתי. ואיך הופכים את ההשקעה להרגל פשוט שלוקח דקות בודדות
+                בכל חודש.</p>
+            </div>
+          </div>
+        </div>
+        <p class="cjmap-hint">↕ גללו - המסע ממשיך איתכם</p>
       </div>
     </div>
+
     <div class="narrow center animate" style="margin-top:36px;">
       <p style="font-weight:700;color:#fff;">המטרה שלי היא לא שתצאו מהתוכנית עם יותר ידע.</p>
       <p style="color:var(--muted-light);margin-top:4px;">המטרה שלי היא שתצאו ממנה עם תוכנית פעולה ברורה, ועם ההשקעה
@@ -2535,60 +2665,6 @@
     </div>
   </section>
 
-  <section class="dark" style="padding:0;">
-    <div class="proof-ticker">
-      <div class="proof-ticker-track">
-        <div class="proof-ticker-set">
-          <div class="proof-item"><img src="/testimonials/wts-1.jpg" alt="עדות לקוח מרוצה" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-2.jpg" alt="עדות לקוח מרוצה" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-3.jpg" alt="עדות לקוח מרוצה" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-4.jpg" alt="עדות לקוח מרוצה" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-5.jpg" alt="עדות לקוח מרוצה" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-6.jpg" alt="עדות לקוח מרוצה" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-7.jpg" alt="עדות לקוח מרוצה" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-8.jpg" alt="עדות לקוח מרוצה" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-9.jpg" alt="עדות לקוח מרוצה" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-10.jpg" alt="עדות לקוח מרוצה" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-11.jpg" alt="עדות לקוח מרוצה" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-6.jpg" alt="" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-9.jpg" alt="" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-2.jpg" alt="" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-5.jpg" alt="" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-8.jpg" alt="" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-11.jpg" alt="" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-1.jpg" alt="" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-7.jpg" alt="" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-10.jpg" alt="" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-3.jpg" alt="" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-4.jpg" alt="" /></div>
-        </div>
-        <div class="proof-ticker-set" aria-hidden="true">
-          <div class="proof-item"><img src="/testimonials/wts-1.jpg" alt="" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-2.jpg" alt="" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-3.jpg" alt="" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-4.jpg" alt="" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-5.jpg" alt="" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-6.jpg" alt="" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-7.jpg" alt="" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-8.jpg" alt="" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-9.jpg" alt="" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-10.jpg" alt="" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-11.jpg" alt="" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-6.jpg" alt="" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-9.jpg" alt="" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-2.jpg" alt="" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-5.jpg" alt="" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-8.jpg" alt="" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-11.jpg" alt="" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-1.jpg" alt="" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-7.jpg" alt="" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-10.jpg" alt="" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-3.jpg" alt="" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-4.jpg" alt="" /></div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section class="section dark">
     <div class="glow glow-a"></div>
@@ -2624,6 +2700,12 @@
 
   <section class="section cream" id="pricing">
     <div class="narrow center animate">
+      <div class="proof-grid">
+        <div class="proof-item"><img src="/testimonials/wts-4.jpg" alt="עדות: תודה על הזמן, שיעורים קלילים ופרקטיים"
+            loading="lazy" /></div>
+        <div class="proof-item"><img src="/testimonials/wts-5.jpg" alt="עדות: ידע לענות על כל שאלה, ברמה הכי טובה"
+            loading="lazy" /></div>
+      </div>
       <h2>אם הגעתם עד לכאן כנראה שאתם כבר יודעים <span class="gold-grad">מה הצעד הבא שלכם</span></h2>
       <div class="staccato">
         <p style="color:var(--muted-dark);max-width:620px;margin-left:auto;margin-right:auto;">במשך תקופה ליוויתי אנשי קבע באופן אישי</p>
@@ -2670,6 +2752,19 @@
       <p style="margin-top:24px;font-size:17px;color:var(--muted-dark);">בחרתי להשיק את התוכנית במחיר הזה כדי לאפשר
         לכמה שיותר אנשי קבע להתחיל להשקיע כבר עכשיו. בהמשך, ככל שהתוכנית תמשיך לצבור תוצאות ועדויות, מחיר ההצטרפות
         יתעדכן.</p>
+    </div>
+  </section>
+
+  <section class="section cream">
+    <div class="narrow center animate">
+      <div class="proof-grid">
+        <div class="proof-item"><img src="/testimonials/wts-8.jpg" alt="עדות: החומר בתוכנית מעולה, שווה את הכל"
+            loading="lazy" /></div>
+        <div class="proof-item"><img src="/testimonials/wts-2.jpg" alt="עדות: פתח דלת שלמה לעולם ההשקעות"
+            loading="lazy" /></div>
+        <div class="proof-item"><img src="/testimonials/wts-11.jpg" alt="עדות: ליווי אישי ופרקטי שלא רגיל בעולם הזה"
+            loading="lazy" /></div>
+      </div>
     </div>
   </section>
 
@@ -2745,6 +2840,12 @@
 
   <section class="section cream-alt">
     <div class="inner center animate">
+      <div class="proof-grid">
+        <div class="proof-item"><img src="/testimonials/wts-1.jpg" alt="עדות: התגברות על הפחד מהצעד הראשון בהשקעות"
+            loading="lazy" /></div>
+        <div class="proof-item"><img src="/testimonials/wts-9.jpg" alt="עדות: תהליך מלא מהחלטה ועד ביצוע ההשקעה הראשונה"
+            loading="lazy" /></div>
+      </div>
       <h2>בעוד שבוע מהיום תוכלו להיות <span class="gold-grad">באחת משתי נקודות</span></h2>
       <div class="path-timeline">
         <span class="path-node"><span class="dot"></span>היום</span>
@@ -3023,27 +3124,6 @@
         if (!isOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
       });
     });
-    (function () {
-      var nodes = document.querySelectorAll('.step-node');
-      var panel = document.getElementById('stepExplain');
-      if (!nodes.length || !panel) return;
-      var texts = panel.querySelectorAll('.step-explain-text');
-      nodes.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          var step = btn.getAttribute('data-step');
-          var alreadySelected = btn.classList.contains('selected');
-          nodes.forEach(function (n) { n.classList.remove('selected'); n.setAttribute('aria-expanded', 'false'); });
-          if (alreadySelected) {
-            panel.classList.remove('open');
-            return;
-          }
-          btn.classList.add('selected');
-          btn.setAttribute('aria-expanded', 'true');
-          texts.forEach(function (t) { t.hidden = t.getAttribute('data-step-text') !== step; });
-          panel.classList.add('open');
-        });
-      });
-    })();
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: .12 });
@@ -3078,28 +3158,78 @@
       update();
     })();
 
-    /* step-timeline: cute scroll-linked path progress */
+    /* curriculum journey: scroll-linked stations, one scene owns the stage at a time (same pinned behavior on every screen size) */
     (function () {
-      var wrap = document.querySelector('.step-timeline');
-      var fill = document.getElementById('stepTimelineFill');
-      if (!wrap || !fill) return;
-      var nodes = wrap.querySelectorAll('.step-node');
-      function update() {
-        var rect = wrap.getBoundingClientRect();
-        var vh = window.innerHeight;
-        var start = vh * 0.85;
-        var end = vh * 0.25;
-        var progress = (start - rect.top) / (start - end + rect.height);
-        progress = Math.max(0, Math.min(1, progress));
-        fill.style.setProperty('--fill-pct', (progress * 100) + '%');
-        var activeCount = Math.round(progress * nodes.length);
-        nodes.forEach(function (n, i) {
-          n.classList.toggle('active', i < activeCount);
-        });
+      var map = document.getElementById('cjmap');
+      if (!map) return;
+      var scenes = [].slice.call(map.querySelectorAll('.cjscene'));
+      var stations = [].slice.call(map.querySelectorAll('.cj-st'));
+      var fill = document.getElementById('cjmapFill');
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (reduced) {
+        map.classList.add('static');
+        stations.forEach(function (st) { st.classList.add('lit'); });
+        if (fill) fill.style.width = '100%';
+        return;
       }
-      window.addEventListener('scroll', update, { passive: true });
-      window.addEventListener('resize', update);
+
+      var n = scenes.length;
+      var starts = [];
+      for (var i = 0; i <= n; i++) starts.push(i / n);
+      var FADE = 0.22;
+
+      function update() {
+        var rect = map.getBoundingClientRect();
+        var vh = window.innerHeight;
+        var total = rect.height - vh;
+        var p = Math.max(0, Math.min(1, -rect.top / total));
+        if (fill) fill.style.width = (p * 100) + '%';
+
+        scenes.forEach(function (sc, i) {
+          var s0 = starts[i], s1 = starts[i + 1];
+          var seg = s1 - s0;
+          var t = (p - s0) / seg;
+          var isLast = (i === scenes.length - 1);
+          var op = 0, ty = 40, scale = 0.965;
+          if (t >= 0 && (t <= 1 || isLast)) {
+            var fin = Math.min(1, t / FADE);
+            var fout = isLast ? 1 : Math.min(1, (1 - t) / FADE);
+            op = Math.min(fin, fout);
+            ty = (1 - fin) * 44 - (1 - fout) * 34;
+            scale = 0.965 + 0.035 * Math.min(fin, 1) - 0.02 * (1 - fout);
+          } else if (t < 0 && i === 0) { op = p <= 0.001 ? 1 : Math.max(0, 1 + t / FADE); ty = 0; scale = 1; }
+          sc.style.opacity = op;
+          sc.style.transform = 'translate3d(0,' + ty + 'px,0) scale(' + scale + ')';
+          sc.style.pointerEvents = op > 0.5 ? 'auto' : 'none';
+        });
+
+        var active = 0;
+        for (var i2 = 0; i2 < starts.length - 1; i2++) { if (p >= starts[i2] - 0.001) active = i2; }
+        stations.forEach(function (st, i3) { st.classList.toggle('lit', i3 <= active); });
+      }
+
+      var ticking = false;
+      function onScroll() {
+        if (ticking) return; ticking = true;
+        requestAnimationFrame(function () { update(); ticking = false; });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
       update();
+
+      stations.forEach(function (st) {
+        function go() {
+          var i = Number(st.dataset.scene) || 0;
+          var rect = map.getBoundingClientRect();
+          var mapTop = rect.top + window.scrollY;
+          var total = rect.height - window.innerHeight;
+          var target = mapTop + total * (starts[i] + (starts[i + 1] - starts[i]) * 0.5);
+          window.scrollTo({ top: target, behavior: 'smooth' });
+        }
+        st.addEventListener('click', go);
+        st.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+      });
     })();
   </script>
 
