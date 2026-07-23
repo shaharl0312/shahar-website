@@ -44,6 +44,7 @@ mkdir -p _infra/dist/course && cp course-landing/v8-yahav-design.html _infra/dis
 mkdir -p _infra/dist/course-v8 && cp course-landing/v8-yahav-design.html _infra/dist/course-v8/index.html
 mkdir -p _infra/dist/course-v7 && cp course-landing/v7-yahav-design.html _infra/dist/course-v7/index.html
 mkdir -p _infra/dist/course-v9 && cp course-landing/v9-copy-refine.html _infra/dist/course-v9/index.html
+mkdir -p _infra/dist/course-landing && cp course-landing/video-cover.jpg _infra/dist/course-landing/video-cover.jpg
 
 # Erosion calculator (checking-account inflation quiz)
 mkdir -p _infra/dist/erosion-calculator && cp erosion-calculator/index.html _infra/dist/erosion-calculator/index.html

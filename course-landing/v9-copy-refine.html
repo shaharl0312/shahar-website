@@ -213,6 +213,13 @@
       background-clip: text;
     }
 
+    .gold-navy-grad {
+      background: linear-gradient(120deg, var(--gold) 10%, var(--navy) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
     .section {
       position: relative;
       padding: 110px 24px;
@@ -665,6 +672,38 @@
       height: 26px;
       fill: var(--anthracite);
       margin-right: -4px;
+    }
+
+    .video-cover {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      cursor: pointer;
+      border: none;
+      padding: 0;
+    }
+
+    .video-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .video-cover .play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: transform .2s;
+    }
+
+    .video-cover:hover .play-btn {
+      transform: translate(-50%, -50%) scale(1.08);
+    }
+
+    .video-cover.hidden {
+      display: none;
     }
 
     .video-badge {
@@ -2104,7 +2143,7 @@
     <div class="glow glow-b"></div>
     <div class="grid-overlay"></div>
     <div class="inner animate">
-      <h1>בעוד <span class="gold-grad">10 דקות</span> מהיום, אתם תדעו בדיוק איך להתחיל להשקיע</h1>
+      <h1>בעוד <span class="gold-grad">10 דקות</span> מהיום אתם תדעו בדיוק איך להתחיל להשקיע</h1>
       <p class="lead">אם אתם אנשי קבע ויש לכם כסף שיושב בעו"ש, הכנתי עבורכם הדרכה קצרה שתראה לכם איך לעבור מאפס מוחלט לתוכנית פעולה ברורה.</p>
 
       <div class="video-wrap">
@@ -2118,6 +2157,12 @@
             loading="lazy" style="border:none;position:absolute;inset:0;width:100%;height:100%;"
             allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen
             title="סרטון VSL"></iframe>
+          <button class="video-cover" id="videoCover" type="button" aria-label="הפעל את הסרטון">
+            <img src="/course-landing/video-cover.jpg" alt="סרטון: יש לכם מעל 20,000 ש״ח בעו״ש?" loading="lazy" />
+            <span class="play-btn"><svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M8 5v14l11-7z" />
+              </svg></span>
+          </button>
         </div>
       </div>
       <div class="video-meta">
@@ -2148,12 +2193,11 @@
   <section class="section cream">
     <div class="narrow center animate">
       <p class="story-quote">
-        <span>אם סיימתם לראות את הסרטון, כנראה שהבנתם דבר אחד.</span><br>
+        <span>אם סיימתם לראות את הסרטון כנראה שהבנתם דבר אחד.</span><br>
         <span class="soft">לדחות את ההחלטה להתחיל להשקיע... זו גם החלטה.</span>
       </p>
-      <h2 style="margin-top:24px;">ועכשיו נשארה רק שאלה אחת.<br><span class="gold-grad"
-          style="background:linear-gradient(120deg,var(--gold) 10%,var(--navy) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">איך
-          אתם רוצים להתחיל?</span></h2>
+      <h2 style="margin-top:24px;">ועכשיו נשארה רק שאלה אחת<br><span class="gold-navy-grad">איך אתם רוצים
+          להתחיל?</span></h2>
     </div>
   </section>
 
@@ -2161,7 +2205,7 @@
     <div class="glow glow-b"></div>
     <div class="grid-overlay"></div>
     <div class="narrow center animate">
-      <h2>אם כולנו יודעים שכדאי להשקיע - למה רוב האנשים עדיין לא מתחילים?</h2>
+      <h2>אם כולנו יודעים שכדאי להשקיע <span class="gold-navy-grad">למה רוב האנשים עדיין לא מתחילים?</span></h2>
       <p class="lead" style="max-width:640px;margin:0 auto;">רוב האנשים חושבים שהם עדיין לא התחילו להשקיע כי אין להם מספיק ידע.</p>
       <p style="max-width:640px;margin:14px auto 0;color:var(--muted-light);">אבל אחרי שליוויתי עשרות אנשים בתחילת הדרך, גיליתי שזה כמעט אף פעם לא הסיפור.</p>
       <p style="max-width:640px;margin:14px auto 0;color:var(--muted-light);">הבעיה היא לא חוסר ידע. הבעיה היא שאין נקודת התחלה ברורה.</p>
@@ -2227,7 +2271,7 @@
     <div class="glow glow-a"></div>
     <div class="grid-overlay"></div>
     <div class="inner center animate">
-      <h2>כך בנויה הדרך שלכם להשקעה הראשונה</h2>
+      <h2>כך בנויה הדרך שלכם <span class="gold-grad">להשקעה הראשונה</span></h2>
       <p class="lead" style="max-width:600px;margin:0 auto;">בניתי את התוכנית כך שכל שלב מוביל באופן טבעי לשלב הבא. לא
         צריך לנחש. לא צריך לקפוץ בין סרטונים. ולא צריך להבין הכול לפני שמתחילים.</p>
     </div>
@@ -2398,7 +2442,7 @@
 
   <section class="section cream" id="pricing">
     <div class="narrow center animate">
-      <h2>אם הגעתם עד לכאן, כנראה שאתם כבר יודעים מה הצעד הבא שלכם</h2>
+      <h2>אם הגעתם עד לכאן כנראה שאתם כבר יודעים מה הצעד הבא שלכם</h2>
       <p class="lead" style="color:var(--muted-dark);max-width:620px;margin:0 auto 14px;">במשך תקופה ליוויתי אנשי קבע
         באופן אישי. כל ליווי כזה עלה אלפי שקלים, כי הוא כלל פגישות אישיות וליווי צמוד לאורך כל הדרך.</p>
       <p style="color:var(--muted-dark);max-width:620px;margin:0 auto 14px;">אבל עם הזמן הבנתי שרוב האנשים לא צריכים
@@ -2447,7 +2491,7 @@
     <div class="glow glow-b"></div>
     <div class="grid-overlay"></div>
     <div class="narrow center animate">
-      <h2>אבל יש עוד מחיר שרוב האנשים לא חושבים עליו</h2>
+      <h2>אבל יש <span class="gold-navy-grad">עוד מחיר</span> שרוב האנשים לא חושבים עליו</h2>
       <p class="lead" style="max-width:600px;margin:0 auto;">לא המחיר של התוכנית. המחיר של להמשיך לחכות.</p>
       <p style="max-width:600px;margin:14px auto 0;color:var(--muted-light);">אם הגעתם עד לכאן, כנראה שאתם כבר מבינים
         שהכסף שלכם לא צריך להמשיך לשבת בעו"ש. ובכל זאת, קל מאוד להגיד לעצמכם: "אני אתחיל חודש הבא."</p>
@@ -2470,19 +2514,19 @@
         <p style="color:var(--muted-dark);font-size:14px;font-weight:700;margin-bottom:10px;">💰 השקעה חד-פעמית</p>
         <p style="color:var(--text-dark);font-size:14px;margin-bottom:10px;">אם לפני 10 שנים הייתם משקיעים 10,000 ₪
           במדד S&amp;P 500 ומשאירים אותם מושקעים, היום הם היו שווים בערך</p>
-        <p class="gold-grad" style="font-size:28px;font-weight:800;background:linear-gradient(120deg,var(--gold) 10%,var(--navy) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">40,600 ₪</p>
+        <p class="gold-navy-grad" style="font-size:28px;font-weight:800;">40,600 ₪</p>
       </div>
       <div class="animate d2" style="background:#fff;border-radius:16px;border-bottom:4px solid var(--gold);padding:26px 22px;text-align:center;">
         <p style="color:var(--muted-dark);font-size:14px;font-weight:700;margin-bottom:10px;">📅 השקעה חודשית</p>
         <p style="color:var(--text-dark);font-size:14px;margin-bottom:10px;">אם לפני 10 שנים הייתם מתחילים להשקיע רק
           500 ₪ בכל חודש, היום כבר היה עומד לרשותכם סכום של כ-</p>
-        <p class="gold-grad" style="font-size:28px;font-weight:800;background:linear-gradient(120deg,var(--gold) 10%,var(--navy) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">121,800 ₪</p>
+        <p class="gold-navy-grad" style="font-size:28px;font-weight:800;">121,800 ₪</p>
       </div>
       <div class="animate d3" style="background:#fff;border-radius:16px;border-bottom:4px solid var(--gold);padding:26px 22px;text-align:center;">
         <p style="color:var(--muted-dark);font-size:14px;font-weight:700;margin-bottom:10px;">🚀 ומה אם תתחילו היום?</p>
         <p style="color:var(--text-dark);font-size:14px;margin-bottom:10px;">אם תתחילו להשקיע 500 ₪ בכל חודש, ובהנחה
           של תשואה שנתית ממוצעת של 10%, בעוד 20 שנה יעמדו לרשותכם כ-</p>
-        <p class="gold-grad" style="font-size:28px;font-weight:800;background:linear-gradient(120deg,var(--gold) 10%,var(--navy) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">379,684 ₪</p>
+        <p class="gold-navy-grad" style="font-size:28px;font-weight:800;">379,684 ₪</p>
       </div>
     </div>
     <div class="narrow center animate" style="margin-top:22px;">
@@ -2538,7 +2582,7 @@
     <div class="glow glow-a"></div>
     <div class="grid-overlay"></div>
     <div class="wide center animate">
-      <h2>האם התוכנית הזאת מתאימה לכם?</h2>
+      <h2>האם התוכנית הזאת <span class="gold-grad">מתאימה לכם?</span></h2>
       <p class="lead" style="max-width:640px;margin:0 auto 30px;">התוכנית הזאת נבנתה במיוחד עבורכם אם...</p>
       <ul class="checklist">
         <li>אתם אנשי קבע</li>
@@ -2659,7 +2703,7 @@
     <div class="grid-overlay"></div>
     <div class="narrow animate">
       <span class="eyebrow">מילה אישית ממני</span>
-      <h2>אם הגעתם עד לכאן, כנראה שמשהו בכם כבר מבין שהגיע הזמן להתחיל</h2>
+      <h2>אם הגעתם עד לכאן כנראה שמשהו בכם כבר מבין שהגיע הזמן להתחיל</h2>
       <p class="lead">יכול להיות שאתם עדיין מתלבטים. זה טבעי. גם אני הייתי שם. אבל יש דבר אחד שלמדתי בדרך: כסף אפשר תמיד
         להרוויח שוב. זמן לא. כל חודש שבו דוחים את ההחלטה להתחיל הוא חודש שלא יחזור.</p>
       <p class="lead">בניתי את התוכנית הזאת כדי להפוך את הצעד הראשון לפשוט, ברור ומעשי. לא כדי שתדעו יותר על שוק ההון -
@@ -2846,8 +2890,9 @@
 
       /* --- Video tracking via Bunny Stream player.js --- */
       var iframe = document.getElementById('vsl-player');
+      var player;
       if (iframe && window.playerjs) {
-        var player = new playerjs.Player(iframe);
+        player = new playerjs.Player(iframe);
         player.on('ready', function () {
           player.on('timeupdate', function (data) {
             if (!data || !data.duration) return;
@@ -2867,6 +2912,16 @@
             safeFbq('trackCustom', 'VideoWatchedFull');
             reportScore('video_ended');
           });
+        });
+      }
+
+      /* --- Cover image: click to hide and start playback --- */
+      var videoCover = document.getElementById('videoCover');
+      if (videoCover) {
+        videoCover.addEventListener('click', function () {
+          videoCover.classList.add('hidden');
+          try { if (player) player.play(); } catch (e) { }
+          safeFbq('trackCustom', 'VideoCoverClicked');
         });
       }
 
