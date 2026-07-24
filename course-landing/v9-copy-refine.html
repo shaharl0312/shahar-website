@@ -1099,21 +1099,18 @@
       display: inline-block;
       max-width: 100%;
       margin-top: 14px;
-      padding: 9px 20px;
-      border-radius: 20px;
-      background: rgba(201, 168, 76, .14);
-      border: 1px solid rgba(201, 168, 76, .35);
       font-size: 13px;
       font-weight: 400;
       line-height: 1.6;
       color: var(--muted-light);
     }
 
-    .stat-card-profit svg {
+    .profit-arrow-lottie {
       display: inline-block;
+      width: 18px;
+      height: 18px;
       vertical-align: middle;
       margin-inline-end: 4px;
-      flex-shrink: 0;
     }
 
     .stat-card-profit strong {
@@ -1940,8 +1937,18 @@
 
     .final-cta .lead {
       max-width: 660px;
-      margin: 0 auto 40px;
+      margin: 0 auto 18px;
       color: var(--muted-light);
+    }
+
+    .final-cta .final-cta-body {
+      text-align: right;
+    }
+
+    .final-cta .final-cta-beat {
+      text-align: center;
+      font-weight: 700;
+      color: #fff;
     }
 
     .signature {
@@ -2955,33 +2962,24 @@
           <p class="stat-card-title">השקעה חד-פעמית<br><span class="stat-card-sub">10,000 ₪, לפני 10 שנים</span></p>
         </div>
         <div class="stat-card-value">40,600<span class="stat-card-cur">₪</span></div>
-        <div class="stat-card-profit"><svg viewBox="0 0 24 24" width="14" height="14" fill="none"
-            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-            aria-hidden="true">
-            <path d="M4 12h16M13 6l6 6-6 6" />
-          </svg> מתוכם <strong>30,600 ₪</strong> רווח נקי, בלי לגעת בכסף</div>
+        <div class="stat-card-profit"><span class="profit-arrow-lottie"></span> מתוכם <strong>30,600 ₪</strong> רווח
+          נקי, בלי לגעת בכסף</div>
       </div>
       <div class="stat-card">
         <div class="stat-card-info">
           <p class="stat-card-title">הפקדה חודשית<br><span class="stat-card-sub">500 ₪ בחודש, במשך 10 שנים</span></p>
         </div>
         <div class="stat-card-value">121,800<span class="stat-card-cur">₪</span></div>
-        <div class="stat-card-profit"><svg viewBox="0 0 24 24" width="14" height="14" fill="none"
-            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-            aria-hidden="true">
-            <path d="M4 12h16M13 6l6 6-6 6" />
-          </svg> הפקדתם <strong>60,000 ₪</strong> - קיבלתם עוד <strong>61,800 ₪</strong> בחינם</div>
+        <div class="stat-card-profit"><span class="profit-arrow-lottie"></span> הפקדתם <strong>60,000 ₪</strong> -
+          קיבלתם עוד <strong>61,800 ₪</strong> בחינם</div>
       </div>
       <div class="stat-card">
         <div class="stat-card-info">
           <p class="stat-card-title">טווח ארוך<br><span class="stat-card-sub">500 ₪ בחודש, מהיום ועוד 20 שנה</span></p>
         </div>
         <div class="stat-card-value">379,684<span class="stat-card-cur">₪</span></div>
-        <div class="stat-card-profit"><svg viewBox="0 0 24 24" width="14" height="14" fill="none"
-            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-            aria-hidden="true">
-            <path d="M4 12h16M13 6l6 6-6 6" />
-          </svg> הפקדתם <strong>120,000 ₪</strong> - קיבלתם עוד <strong>259,684 ₪</strong> בחינם</div>
+        <div class="stat-card-profit"><span class="profit-arrow-lottie"></span> הפקדתם <strong>120,000 ₪</strong> -
+          קיבלתם עוד <strong>259,684 ₪</strong> בחינם</div>
       </div>
       </div>
     </div>
@@ -3171,22 +3169,14 @@
     <div class="narrow animate">
       <span class="eyebrow">מילה אישית ממני</span>
       <h2>אם הגעתם עד לכאן כנראה שמשהו בכם כבר מבין <span class="gold-grad">שהגיע הזמן להתחיל</span></h2>
-      <div class="staccato">
-        <p class="lead">יכול להיות שאתם עדיין מתלבטים</p>
-        <p class="lead">זה טבעי</p>
-        <p class="lead">גם אני הייתי שם</p>
-        <p class="lead">אבל יש דבר אחד שלמדתי בדרך: כסף אפשר תמיד להרוויח שוב</p>
-        <p class="lead">זמן לא</p>
-        <p class="lead">כל חודש שבו דוחים את ההחלטה להתחיל הוא חודש שלא יחזור</p>
-      </div>
-      <div class="staccato">
-        <p class="lead">בניתי את התוכנית הזאת כדי להפוך את הצעד הראשון לפשוט, ברור ומעשי</p>
-        <p class="lead">לא כדי שתדעו יותר על שוק ההון - אלא כדי שתפסיקו לדחות ותתחילו</p>
-      </div>
-      <div class="staccato">
-        <p class="lead">אני באמת מאמין שכל אדם שמצליח לחסוך כסף בגיל צעיר ראוי לדעת איך לגרום לו לעבוד</p>
-        <p class="lead">לא בשביל להתעשר מהר, אלא בשביל לבנות לעצמו ולמשפחה שלו עתיד כלכלי בטוח יותר</p>
-      </div>
+      <p class="lead final-cta-body">יכול להיות שאתם עדיין מתלבטים - זה טבעי, גם אני הייתי שם. אבל יש דבר אחד שלמדתי
+        בדרך.</p>
+      <p class="lead final-cta-beat">כסף אפשר תמיד להרוויח שוב. זמן - לא.</p>
+      <p class="lead final-cta-body">כל חודש שבו דוחים את ההחלטה להתחיל הוא חודש שלא יחזור.</p>
+      <p class="lead final-cta-body">בניתי את התוכנית הזאת כדי להפוך את הצעד הראשון לפשוט, ברור ומעשי - לא כדי שתדעו
+        יותר על שוק ההון, אלא כדי שתפסיקו לדחות ותתחילו.</p>
+      <p class="lead final-cta-body">אני באמת מאמין שכל אדם שמצליח לחסוך כסף בגיל צעיר ראוי לדעת איך לגרום לו לעבוד -
+        לא בשביל להתעשר מהר, אלא בשביל לבנות לעצמו ולמשפחה שלו עתיד כלכלי בטוח יותר.</p>
       <p class="lead">אם החלטתם שהגיע הזמן לעשות את הצעד הראשון, אשמח ללוות אתכם בדרך</p>
       <div class="cta-ring">
         <a href="https://secure.cardcom.solutions/EA/EA5/Vir6Q9LbVEatLxw4sN0dxg/PaymentSP"
@@ -3769,6 +3759,56 @@
           }
         });
       }
+    })();
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+  <script>
+    (function () {
+      var els = document.querySelectorAll('.profit-arrow-lottie');
+      if (!els.length || typeof lottie === 'undefined') return;
+      var ease = { i: { x: [0.42, 0.42, 0.42], y: [1, 1, 1] }, o: { x: [0.58, 0.58, 0.58], y: [0, 0, 0] } };
+      var arrowData = {
+        v: '5.5.7', fr: 30, ip: 0, op: 60, w: 24, h: 24, nm: 'arrow', ddd: 0, assets: [],
+        layers: [{
+          ddd: 0, ind: 1, ty: 4, nm: 'arrow', sr: 1,
+          ks: {
+            o: { a: 0, k: 100 },
+            r: { a: 0, k: 0 },
+            p: { a: 0, k: [12, 12, 0] },
+            a: { a: 0, k: [0, 0, 0] },
+            s: { a: 0, k: [100, 100, 100] }
+          },
+          ao: 0,
+          shapes: [{
+            ty: 'gr',
+            it: [
+              { ty: 'sh', ks: { a: 0, k: { i: [[0, 0], [0, 0]], o: [[0, 0], [0, 0]], v: [[-7, 0], [3, 0]], c: false } } },
+              { ty: 'sh', ks: { a: 0, k: { i: [[0, 0], [0, 0], [0, 0]], o: [[0, 0], [0, 0], [0, 0]], v: [[-3, -5], [3, 0], [-3, 5]], c: false } } },
+              { ty: 'st', c: { a: 0, k: [0.9, 0.8, 0.54, 1] }, o: { a: 0, k: 100 }, w: { a: 0, k: 2.4 }, lc: 2, lj: 2 },
+              {
+                ty: 'tr',
+                p: { a: 0, k: [0, 0] },
+                a: { a: 0, k: [0, 0] },
+                s: {
+                  a: 1, k: [
+                    Object.assign({ t: 0, s: [85, 85, 100] }, ease),
+                    Object.assign({ t: 30, s: [115, 115, 100] }, ease),
+                    { t: 60, s: [85, 85, 100] }
+                  ]
+                },
+                r: { a: 0, k: 0 },
+                o: { a: 0, k: 100 }
+              }
+            ],
+            nm: 'arrowGroup'
+          }],
+          ip: 0, op: 60, st: 0, bm: 0
+        }]
+      };
+      els.forEach(function (el) {
+        lottie.loadAnimation({ container: el, renderer: 'svg', loop: true, autoplay: true, animationData: arrowData });
+      });
     })();
   </script>
 </body>
