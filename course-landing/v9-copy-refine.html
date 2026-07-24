@@ -910,35 +910,39 @@
       display: block;
     }
 
-    /* PROOF CAROUSEL - simple swipeable strip, for spots where a 3-column grid looks uneven */
+    /* PROOF CAROUSEL - exactly 3 real cards, rotates via transform (never touches page scroll) */
     .proof-carousel {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
+      overflow: hidden;
       padding: 4px 16px 14px;
-      margin: 36px -16px 0;
-      scrollbar-width: none;
+      margin: 36px 0 0;
       cursor: grab;
       user-select: none;
     }
 
     .proof-carousel.dragging {
       cursor: grabbing;
-      scroll-snap-type: none;
     }
 
-    .proof-carousel::-webkit-scrollbar {
-      display: none;
+    .proof-carousel-track {
+      display: flex;
+      align-items: center;
+      will-change: transform;
+    }
+
+    .proof-carousel-track.animating {
+      transition: transform .4s ease;
     }
 
     .proof-carousel .proof-item {
-      flex: 0 0 78%;
-      max-width: 300px;
-      scroll-snap-align: center;
+      flex: 0 0 100%;
+      display: flex;
+      justify-content: center;
       margin-bottom: 0;
+    }
+
+    .proof-carousel .proof-item>* {
+      max-width: 300px;
+      width: 100%;
     }
 
     .proof-carousel img {
@@ -2929,18 +2933,14 @@
   <section class="section cream">
     <div class="narrow center animate">
       <div class="proof-carousel" id="proofCarousel">
-        <div class="proof-item"><img src="/testimonials/wts-8.jpg" alt="עדות: החומר בתוכנית מעולה, שווה את הכל"
-            loading="lazy" /></div>
-        <div class="proof-item"><img src="/testimonials/wts-2.jpg" alt="עדות: פתח דלת שלמה לעולם ההשקעות"
-            loading="lazy" /></div>
-        <div class="proof-item"><img src="/testimonials/wts-11.jpg" alt="עדות: ליווי אישי ופרקטי שלא רגיל בעולם הזה"
-            loading="lazy" /></div>
-        <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-8.jpg" alt="" loading="lazy" /></div>
-        <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-2.jpg" alt="" loading="lazy" /></div>
-        <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-11.jpg" alt="" loading="lazy" /></div>
-        <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-8.jpg" alt="" loading="lazy" /></div>
-        <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-2.jpg" alt="" loading="lazy" /></div>
-        <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-11.jpg" alt="" loading="lazy" /></div>
+        <div class="proof-carousel-track" id="proofCarouselTrack">
+          <div class="proof-item"><img src="/testimonials/wts-8.jpg" alt="עדות: החומר בתוכנית מעולה, שווה את הכל"
+              loading="lazy" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-2.jpg" alt="עדות: פתח דלת שלמה לעולם ההשקעות"
+              loading="lazy" /></div>
+          <div class="proof-item"><img src="/testimonials/wts-11.jpg" alt="עדות: ליווי אישי ופרקטי שלא רגיל בעולם הזה"
+              loading="lazy" /></div>
+        </div>
       </div>
     </div>
   </section>
@@ -3837,90 +3837,125 @@
   </script>
 
   <script>
-    /* proof carousel: auto-rotates forever, pauses on manual drag/swipe, resumes after */
+    /* proof carousel: exactly 3 real cards, rotates forever via transform (never touches page scroll),
+       pauses only while its own section is on screen and while the user is dragging it.
+       Invariant: at rest, transform:translateX(0) always shows the track's current first child centered
+       (each .proof-item is exactly one container-width wide). Advancing forward shows the 2nd child
+       (already in place, no DOM change needed) then moves it to be the new first child once the slide
+       finishes. Going backward first moves the last child to the front (so it's "in place" to slide
+       into view), compensating the resting transform by -itemWidth so nothing visually jumps, then
+       animates back to 0. */
     (function () {
-      var track = document.getElementById('proofCarousel');
-      if (!track) return;
-      var realItems = track.querySelectorAll('.proof-item:not([aria-hidden])');
-      var allItems = track.querySelectorAll('.proof-item');
-      var realCount = realItems.length;
-      if (!realCount) return;
-      var index = 0;
+      var wrap = document.getElementById('proofCarousel');
+      var track = document.getElementById('proofCarouselTrack');
+      if (!wrap || !track) return;
+      var itemWidth = 0;
       var autoplayTimer = null;
-      var resumeTimer = null;
+      var inView = false;
 
-      function goTo(i, smooth) {
-        var item = allItems[i];
-        if (!item) return;
-        item.scrollIntoView({ behavior: smooth ? 'smooth' : 'instant', inline: 'center', block: 'nearest' });
+      function measure() {
+        itemWidth = wrap.getBoundingClientRect().width;
       }
+      measure();
+      window.addEventListener('resize', measure);
 
-      function tick() {
-        index++;
-        goTo(index, true);
-        if (index >= realCount * 2) {
-          window.setTimeout(function () {
-            index -= realCount;
-            goTo(index, false);
-          }, 550);
-        }
+      function setTransform(x, animate) {
+        track.classList.toggle('animating', !!animate);
+        track.style.transform = 'translateX(' + x + 'px)';
+      }
+      setTransform(0, false);
+
+      function advance() {
+        setTransform(-itemWidth, true);
+        window.setTimeout(function () {
+          track.appendChild(track.firstElementChild);
+          setTransform(0, false);
+        }, 400);
       }
 
       function startAutoplay() {
         stopAutoplay();
-        autoplayTimer = window.setInterval(tick, 3200);
+        autoplayTimer = window.setInterval(function () { if (inView) advance(); }, 3200);
       }
-
       function stopAutoplay() {
         if (autoplayTimer) { window.clearInterval(autoplayTimer); autoplayTimer = null; }
       }
 
-      function pauseThenResume() {
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) { inView = e.isIntersecting; });
+        }, { threshold: .2 }).observe(wrap);
+      } else {
+        inView = true;
+      }
+      startAutoplay();
+
+      /* drag with mouse or touch */
+      var dragging = false, dragStartX = 0, dragDx = 0, prepared = null, moved = false;
+      var resumeTimer = null;
+
+      function onDown(e) {
+        dragging = true; moved = false; prepared = null; dragDx = 0;
+        dragStartX = e.clientX;
+        wrap.classList.add('dragging');
         stopAutoplay();
         if (resumeTimer) window.clearTimeout(resumeTimer);
-        resumeTimer = window.setTimeout(function () {
-          /* re-sync index to whichever item is currently centered */
-          var trackRect = track.getBoundingClientRect();
-          var center = trackRect.left + trackRect.width / 2;
-          var closest = 0, closestDist = Infinity;
-          allItems.forEach(function (item, i) {
-            var r = item.getBoundingClientRect();
-            var d = Math.abs((r.left + r.width / 2) - center);
-            if (d < closestDist) { closestDist = d; closest = i; }
-          });
-          index = closest;
-          startAutoplay();
-        }, 2600);
+      }
+      function onMove(e) {
+        if (!dragging) return;
+        dragDx = e.clientX - dragStartX;
+        if (Math.abs(dragDx) > 3) moved = true;
+        if (!prepared) {
+          if (dragDx < 0) {
+            prepared = 'forward';
+          } else if (dragDx > 0) {
+            prepared = 'backward';
+            track.insertBefore(track.lastElementChild, track.firstElementChild);
+            setTransform(-itemWidth, false);
+          } else { return; }
+        }
+        var base = prepared === 'backward' ? -itemWidth : 0;
+        setTransform(base + dragDx, false);
+      }
+      function onUp() {
+        if (!dragging) return;
+        dragging = false;
+        wrap.classList.remove('dragging');
+        var threshold = itemWidth * 0.22;
+        if (prepared === 'forward') {
+          if (dragDx < -threshold) {
+            setTransform(-itemWidth, true);
+            window.setTimeout(function () {
+              track.appendChild(track.firstElementChild);
+              setTransform(0, false);
+            }, 400);
+          } else {
+            setTransform(0, true);
+          }
+        } else if (prepared === 'backward') {
+          if (dragDx > threshold) {
+            /* complete: the prepended item is already the first child, transform 0 shows it centered */
+            setTransform(0, true);
+          } else {
+            /* cancel: animate back to the prepare baseline (shows the original item, unchanged),
+               then undo the temporary prepend so the rest-state invariant (transform 0 = first
+               child centered) holds again for the next gesture/autoplay tick */
+            setTransform(-itemWidth, true);
+            window.setTimeout(function () {
+              track.appendChild(track.firstElementChild);
+              setTransform(0, false);
+            }, 400);
+          }
+        }
+        resumeTimer = window.setTimeout(startAutoplay, 2200);
       }
 
-      /* mouse drag-to-scroll (touch already scrolls natively) */
-      var isDown = false, startX = 0, startScroll = 0, dragged = false;
-      track.addEventListener('pointerdown', function (e) {
-        if (e.pointerType === 'touch') return;
-        isDown = true; dragged = false;
-        track.classList.add('dragging');
-        startX = e.clientX;
-        startScroll = track.scrollLeft;
-        pauseThenResume();
-      });
-      window.addEventListener('pointermove', function (e) {
-        if (!isDown) return;
-        var dx = e.clientX - startX;
-        if (Math.abs(dx) > 3) dragged = true;
-        track.scrollLeft = startScroll - dx;
-      });
-      window.addEventListener('pointerup', function () {
-        if (!isDown) return;
-        isDown = false;
-        track.classList.remove('dragging');
-      });
-      track.addEventListener('click', function (e) {
-        if (dragged) { e.preventDefault(); e.stopPropagation(); }
+      wrap.addEventListener('pointerdown', onDown);
+      window.addEventListener('pointermove', onMove);
+      window.addEventListener('pointerup', onUp);
+      wrap.addEventListener('click', function (e) {
+        if (moved) { e.preventDefault(); e.stopPropagation(); }
       }, true);
-      track.addEventListener('touchstart', pauseThenResume, { passive: true });
-      track.addEventListener('wheel', pauseThenResume, { passive: true });
-
-      startAutoplay();
     })();
   </script>
 </body>
