@@ -913,7 +913,7 @@
     /* PROOF CAROUSEL - exactly 3 real cards, rotates via transform (never touches page scroll) */
     .proof-carousel {
       overflow: hidden;
-      padding: 4px 16px 14px;
+      padding: 4px 0 14px;
       margin: 36px 0 0;
       cursor: grab;
       user-select: none;
@@ -3854,7 +3854,8 @@
       var inView = false;
 
       function measure() {
-        itemWidth = wrap.getBoundingClientRect().width;
+        var item = track.querySelector('.proof-item');
+        itemWidth = item ? item.getBoundingClientRect().width : wrap.getBoundingClientRect().width;
       }
       measure();
       window.addEventListener('resize', measure);
