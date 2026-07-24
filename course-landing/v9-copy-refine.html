@@ -1064,29 +1064,12 @@
       margin-bottom: 20px;
     }
 
-    .stat-card-icon {
-      flex-shrink: 0;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--gold), var(--navy));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .stat-card-icon svg {
-      width: 19px;
-      height: 19px;
-      color: #fff;
-    }
-
     .stat-card-title {
       font-weight: 800;
       font-size: 15px;
       color: #fff;
       line-height: 1.4;
-      text-align: right;
+      text-align: center;
     }
 
     .stat-card-sub {
@@ -1113,27 +1096,42 @@
     }
 
     .stat-card-profit {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      display: inline-block;
+      max-width: 100%;
       margin-top: 14px;
-      padding: 7px 18px;
-      border-radius: 100px;
+      padding: 9px 20px;
+      border-radius: 20px;
       background: rgba(201, 168, 76, .14);
       border: 1px solid rgba(201, 168, 76, .35);
       font-size: 13px;
       font-weight: 400;
+      line-height: 1.6;
       color: var(--muted-light);
+    }
+
+    .stat-card-profit svg {
+      display: inline-block;
+      vertical-align: middle;
+      margin-inline-end: 4px;
+      flex-shrink: 0;
     }
 
     .stat-card-profit strong {
       font-weight: 700;
-      color: var(--gold-l);
+      background: linear-gradient(120deg, var(--gold-l) 0%, #fff 60%, var(--gold-l) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     @media (max-width:520px) {
       .stat-card {
         padding: 24px 18px;
+      }
+
+      .stat-card-profit {
+        white-space: normal;
+        text-align: center;
       }
     }
 
@@ -2954,11 +2952,6 @@
     <div class="stat-cards animate">
       <div class="stat-card">
         <div class="stat-card-info">
-          <div class="stat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="2" y="6" width="20" height="12" rx="2" />
-              <circle cx="12" cy="12" r="3" />
-            </svg></div>
           <p class="stat-card-title">השקעה חד-פעמית<br><span class="stat-card-sub">10,000 ₪, לפני 10 שנים</span></p>
         </div>
         <div class="stat-card-value">40,600<span class="stat-card-cur">₪</span></div>
@@ -2970,11 +2963,6 @@
       </div>
       <div class="stat-card">
         <div class="stat-card-info">
-          <div class="stat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="3" y="5" width="18" height="16" rx="2" />
-              <path d="M3 9h18M8 3v4M16 3v4" />
-            </svg></div>
           <p class="stat-card-title">הפקדה חודשית<br><span class="stat-card-sub">500 ₪ בחודש, במשך 10 שנים</span></p>
         </div>
         <div class="stat-card-value">121,800<span class="stat-card-cur">₪</span></div>
@@ -2986,11 +2974,6 @@
       </div>
       <div class="stat-card">
         <div class="stat-card-info">
-          <div class="stat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M3 17l6-6 4 4 8-8" />
-              <path d="M15 7h6v6" />
-            </svg></div>
           <p class="stat-card-title">טווח ארוך<br><span class="stat-card-sub">500 ₪ בחודש, מהיום ועוד 20 שנה</span></p>
         </div>
         <div class="stat-card-value">379,684<span class="stat-card-cur">₪</span></div>
