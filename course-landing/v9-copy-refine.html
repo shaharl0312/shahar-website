@@ -917,6 +917,7 @@
       margin: 36px 0 0;
       cursor: grab;
       user-select: none;
+      touch-action: pan-y;
     }
 
     .proof-carousel.dragging {
@@ -3905,7 +3906,7 @@
       function onMove(e) {
         if (!dragging) return;
         dragDx = e.clientX - dragStartX;
-        if (Math.abs(dragDx) > 3) moved = true;
+        if (Math.abs(dragDx) > 3) { moved = true; e.preventDefault(); }
         if (!prepared) {
           if (dragDx < 0) {
             prepared = 'forward';
@@ -3951,9 +3952,24 @@
         resumeTimer = window.setTimeout(startAutoplay, 2200);
       }
 
+      function onCancel() {
+        /* the browser aborted the gesture (e.g. it decided to take over for native scrolling) -
+           never try to "complete" here, just snap back to a valid rest state so nothing gets
+           stuck and autoplay can resume */
+        if (!dragging) return;
+        dragging = false;
+        wrap.classList.remove('dragging');
+        if (prepared === 'backward') {
+          track.appendChild(track.firstElementChild);
+        }
+        setTransform(0, false);
+        resumeTimer = window.setTimeout(startAutoplay, 2200);
+      }
+
       wrap.addEventListener('pointerdown', onDown);
       window.addEventListener('pointermove', onMove);
       window.addEventListener('pointerup', onUp);
+      window.addEventListener('pointercancel', onCancel);
       wrap.addEventListener('click', function (e) {
         if (moved) { e.preventDefault(); e.stopPropagation(); }
       }, true);
