@@ -927,6 +927,7 @@
     .proof-carousel-track {
       display: flex;
       align-items: center;
+      gap: 14px;
       will-change: transform;
     }
 
@@ -935,15 +936,9 @@
     }
 
     .proof-carousel .proof-item {
-      flex: 0 0 100%;
-      display: flex;
-      justify-content: center;
-      margin-bottom: 0;
-    }
-
-    .proof-carousel .proof-item>* {
+      flex: 0 0 78%;
       max-width: 300px;
-      width: 100%;
+      margin-bottom: 0;
     }
 
     .proof-carousel img {
@@ -3840,23 +3835,29 @@
   <script>
     /* proof carousel: exactly 3 real cards, rotates forever via transform (never touches page scroll),
        pauses only while its own section is on screen and while the user is dragging it.
-       Invariant: at rest, transform:translateX(0) always shows the track's current first child centered
-       (each .proof-item is exactly one container-width wide). Advancing forward shows the 2nd child
-       (already in place, no DOM change needed) then moves it to be the new first child once the slide
-       finishes. Going backward first moves the last child to the front (so it's "in place" to slide
-       into view), compensating the resting transform by -itemWidth so nothing visually jumps, then
-       animates back to 0. */
+       Each card is narrower than the container (peeks of neighbors show on both sides), so the
+       resting position isn't translateX(0) - it's `rest`, the offset that centers the track's
+       current first child within the container. Invariant: at rest, transform:translateX(rest)
+       always shows the first child centered. Advancing forward shows the 2nd child (already in
+       place, no DOM change needed) then moves it to be the new first child once the slide
+       finishes. Going backward first moves the last child to the front (so it's "in place" to
+       slide into view), compensating the resting transform by -step so nothing visually jumps,
+       then animates back to rest. */
     (function () {
       var wrap = document.getElementById('proofCarousel');
       var track = document.getElementById('proofCarouselTrack');
       if (!wrap || !track) return;
-      var itemWidth = 0;
+      var itemWidth = 0, gap = 0, step = 0, rest = 0;
       var autoplayTimer = null;
       var inView = false;
 
       function measure() {
         var item = track.querySelector('.proof-item');
-        itemWidth = item ? item.getBoundingClientRect().width : wrap.getBoundingClientRect().width;
+        if (!item) return;
+        itemWidth = item.getBoundingClientRect().width;
+        gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+        step = itemWidth + gap;
+        rest = (wrap.getBoundingClientRect().width - itemWidth) / 2;
       }
       measure();
       window.addEventListener('resize', measure);
@@ -3865,13 +3866,13 @@
         track.classList.toggle('animating', !!animate);
         track.style.transform = 'translateX(' + x + 'px)';
       }
-      setTransform(0, false);
+      setTransform(rest, false);
 
       function advance() {
-        setTransform(-itemWidth, true);
+        setTransform(rest - step, true);
         window.setTimeout(function () {
           track.appendChild(track.firstElementChild);
-          setTransform(0, false);
+          setTransform(rest, false);
         }, 400);
       }
 
@@ -3913,10 +3914,10 @@
           } else if (dragDx > 0) {
             prepared = 'backward';
             track.insertBefore(track.lastElementChild, track.firstElementChild);
-            setTransform(-itemWidth, false);
+            setTransform(rest - step, false);
           } else { return; }
         }
-        var base = prepared === 'backward' ? -itemWidth : 0;
+        var base = prepared === 'backward' ? rest - step : rest;
         setTransform(base + dragDx, false);
       }
       function onUp() {
@@ -3926,26 +3927,26 @@
         var threshold = itemWidth * 0.22;
         if (prepared === 'forward') {
           if (dragDx < -threshold) {
-            setTransform(-itemWidth, true);
+            setTransform(rest - step, true);
             window.setTimeout(function () {
               track.appendChild(track.firstElementChild);
-              setTransform(0, false);
+              setTransform(rest, false);
             }, 400);
           } else {
-            setTransform(0, true);
+            setTransform(rest, true);
           }
         } else if (prepared === 'backward') {
           if (dragDx > threshold) {
-            /* complete: the prepended item is already the first child, transform 0 shows it centered */
-            setTransform(0, true);
+            /* complete: the prepended item is already the first child, transform `rest` shows it centered */
+            setTransform(rest, true);
           } else {
             /* cancel: animate back to the prepare baseline (shows the original item, unchanged),
-               then undo the temporary prepend so the rest-state invariant (transform 0 = first
+               then undo the temporary prepend so the rest-state invariant (transform `rest` = first
                child centered) holds again for the next gesture/autoplay tick */
-            setTransform(-itemWidth, true);
+            setTransform(rest - step, true);
             window.setTimeout(function () {
               track.appendChild(track.firstElementChild);
-              setTransform(0, false);
+              setTransform(rest, false);
             }, 400);
           }
         }
@@ -3962,7 +3963,7 @@
         if (prepared === 'backward') {
           track.appendChild(track.firstElementChild);
         }
-        setTransform(0, false);
+        setTransform(rest, false);
         resumeTimer = window.setTimeout(startAutoplay, 2200);
       }
 
