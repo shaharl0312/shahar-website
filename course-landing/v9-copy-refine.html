@@ -913,6 +913,7 @@
     /* PROOF CAROUSEL - simple swipeable strip, for spots where a 3-column grid looks uneven */
     .proof-carousel {
       display: flex;
+      align-items: center;
       gap: 14px;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
@@ -920,6 +921,13 @@
       padding: 4px 16px 14px;
       margin: 36px -16px 0;
       scrollbar-width: none;
+      cursor: grab;
+      user-select: none;
+    }
+
+    .proof-carousel.dragging {
+      cursor: grabbing;
+      scroll-snap-type: none;
     }
 
     .proof-carousel::-webkit-scrollbar {
@@ -1267,7 +1275,7 @@
       right: 50%;
       transform: translateX(50%);
       font-weight: 900;
-      font-size: clamp(140px, 30vh, 360px);
+      font-size: clamp(90px, 18vh, 240px);
       line-height: 1;
       color: color-mix(in srgb, var(--st, var(--gold)) 7%, transparent);
       -webkit-text-stroke: 2px color-mix(in srgb, var(--st, var(--gold)) 40%, transparent);
@@ -1291,19 +1299,19 @@
       font-weight: 700;
       color: var(--st, var(--gold-l));
       border: 1.5px solid color-mix(in srgb, var(--st, var(--gold-l)) 42%, transparent);
-      padding: 7px 18px;
+      padding: 6px 16px;
       border-radius: 100px;
-      margin-bottom: clamp(14px, 3vh, 26px);
+      margin-bottom: clamp(10px, 2vh, 18px);
       background: color-mix(in srgb, var(--st, var(--gold-l)) 8%, transparent);
       backdrop-filter: blur(4px);
     }
 
     .cj-title {
       font-weight: 800;
-      font-size: clamp(24px, 4.6vw, 42px);
-      line-height: 1.18;
+      font-size: clamp(20px, 3.8vw, 36px);
+      line-height: 1.16;
       color: #fff;
-      margin-bottom: clamp(12px, 2.4vh, 22px);
+      margin-bottom: clamp(8px, 1.8vh, 16px);
     }
 
     .cj-title .accent {
@@ -1311,21 +1319,29 @@
     }
 
     .cj-text {
-      font-size: clamp(14.5px, 1.8vw, 18px);
-      line-height: 1.7;
+      font-size: clamp(13.5px, 1.6vw, 17px);
+      line-height: 1.6;
       color: rgba(247, 245, 240, .82);
       max-width: 620px;
       margin: 0 auto;
     }
 
-    .cj-mockup {
+    .cj-persistent-mockup {
+      flex: 0 0 auto;
+      display: flex;
+      justify-content: center;
+      padding: 6px clamp(20px, 5vw, 60px) 10px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cj-persistent-mockup img {
       display: block;
-      margin: clamp(16px, 3vh, 30px) auto 0;
-      max-height: 28vh;
-      max-width: min(100%, 420px);
+      max-height: 15vh;
+      max-width: min(100%, 380px);
       width: auto;
-      border-radius: 14px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, .4);
+      border-radius: 12px;
+      box-shadow: 0 16px 34px rgba(0, 0, 0, .4);
     }
 
     .cjmap-hint {
@@ -2802,12 +2818,12 @@
               <h3 class="cj-title">בונים שגרה <span class="accent">שתישאר לשנים</span></h3>
               <p class="cj-text">איך ממשיכים מכאן. כמה להשקיע. מתי. ואיך הופכים את ההשקעה להרגל פשוט שלוקח דקות בודדות
                 בכל חודש.</p>
-              <img src="/course-landing/offer-mockup.jpg" alt="התוכנית מאפס למשקיע - במחשב, בטאבלט ובנייד"
-                loading="lazy" class="cj-mockup" />
             </div>
           </div>
         </div>
-        <p class="cjmap-hint">↕ גללו - המסע ממשיך איתכם</p>
+        <div class="cj-persistent-mockup">
+          <img src="/course-landing/offer-mockup.jpg" alt="התוכנית מאפס למשקיע - במחשב, בטאבלט ובנייד" loading="lazy" />
+        </div>
       </div>
     </div>
 
@@ -2910,13 +2926,19 @@
 
   <section class="section cream">
     <div class="narrow center animate">
-      <div class="proof-carousel">
+      <div class="proof-carousel" id="proofCarousel">
         <div class="proof-item"><img src="/testimonials/wts-8.jpg" alt="עדות: החומר בתוכנית מעולה, שווה את הכל"
             loading="lazy" /></div>
         <div class="proof-item"><img src="/testimonials/wts-2.jpg" alt="עדות: פתח דלת שלמה לעולם ההשקעות"
             loading="lazy" /></div>
         <div class="proof-item"><img src="/testimonials/wts-11.jpg" alt="עדות: ליווי אישי ופרקטי שלא רגיל בעולם הזה"
             loading="lazy" /></div>
+        <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-8.jpg" alt="" loading="lazy" /></div>
+        <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-2.jpg" alt="" loading="lazy" /></div>
+        <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-11.jpg" alt="" loading="lazy" /></div>
+        <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-8.jpg" alt="" loading="lazy" /></div>
+        <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-2.jpg" alt="" loading="lazy" /></div>
+        <div class="proof-item" aria-hidden="true"><img src="/testimonials/wts-11.jpg" alt="" loading="lazy" /></div>
       </div>
     </div>
   </section>
@@ -2970,16 +2992,16 @@
           <p class="stat-card-title">הפקדה חודשית<br><span class="stat-card-sub">500 ₪ בחודש, במשך 10 שנים</span></p>
         </div>
         <div class="stat-card-value">121,800<span class="stat-card-cur">₪</span></div>
-        <div class="stat-card-profit"><span class="profit-arrow-lottie"></span> הפקדתם <strong>60,000 ₪</strong> -
-          קיבלתם עוד <strong>61,800 ₪</strong> בחינם</div>
+        <div class="stat-card-profit"><span class="profit-arrow-lottie"></span> הפקדתם <strong>60,000 ₪</strong>,
+          וקיבלתם עוד <strong>61,800 ₪</strong> בחינם</div>
       </div>
       <div class="stat-card">
         <div class="stat-card-info">
           <p class="stat-card-title">טווח ארוך<br><span class="stat-card-sub">500 ₪ בחודש, מהיום ועוד 20 שנה</span></p>
         </div>
         <div class="stat-card-value">379,684<span class="stat-card-cur">₪</span></div>
-        <div class="stat-card-profit"><span class="profit-arrow-lottie"></span> הפקדתם <strong>120,000 ₪</strong> -
-          קיבלתם עוד <strong>259,684 ₪</strong> בחינם</div>
+        <div class="stat-card-profit"><span class="profit-arrow-lottie"></span> הפקדתם <strong>120,000 ₪</strong>,
+          וקיבלתם עוד <strong>259,684 ₪</strong> בחינם</div>
       </div>
       </div>
     </div>
@@ -3169,13 +3191,13 @@
     <div class="narrow animate">
       <span class="eyebrow">מילה אישית ממני</span>
       <h2>אם הגעתם עד לכאן כנראה שמשהו בכם כבר מבין <span class="gold-grad">שהגיע הזמן להתחיל</span></h2>
-      <p class="lead final-cta-body">יכול להיות שאתם עדיין מתלבטים - זה טבעי, גם אני הייתי שם. אבל יש דבר אחד שלמדתי
+      <p class="lead final-cta-body">יכול להיות שאתם עדיין מתלבטים. זה טבעי, גם אני הייתי שם. אבל יש דבר אחד שלמדתי
         בדרך.</p>
-      <p class="lead final-cta-beat">כסף אפשר תמיד להרוויח שוב. זמן - לא.</p>
+      <p class="lead final-cta-beat">כסף אפשר תמיד להרוויח שוב. זמן לא.</p>
       <p class="lead final-cta-body">כל חודש שבו דוחים את ההחלטה להתחיל הוא חודש שלא יחזור.</p>
-      <p class="lead final-cta-body">בניתי את התוכנית הזאת כדי להפוך את הצעד הראשון לפשוט, ברור ומעשי - לא כדי שתדעו
+      <p class="lead final-cta-body">בניתי את התוכנית הזאת כדי להפוך את הצעד הראשון לפשוט, ברור ומעשי. לא כדי שתדעו
         יותר על שוק ההון, אלא כדי שתפסיקו לדחות ותתחילו.</p>
-      <p class="lead final-cta-body">אני באמת מאמין שכל אדם שמצליח לחסוך כסף בגיל צעיר ראוי לדעת איך לגרום לו לעבוד -
+      <p class="lead final-cta-body">אני באמת מאמין שכל אדם שמצליח לחסוך כסף בגיל צעיר ראוי לדעת איך לגרום לו לעבוד.
         לא בשביל להתעשר מהר, אלא בשביל לבנות לעצמו ולמשפחה שלו עתיד כלכלי בטוח יותר.</p>
       <p class="lead">אם החלטתם שהגיע הזמן לעשות את הצעד הראשון, אשמח ללוות אתכם בדרך</p>
       <div class="cta-ring">
@@ -3809,6 +3831,94 @@
       els.forEach(function (el) {
         lottie.loadAnimation({ container: el, renderer: 'svg', loop: true, autoplay: true, animationData: arrowData });
       });
+    })();
+  </script>
+
+  <script>
+    /* proof carousel: auto-rotates forever, pauses on manual drag/swipe, resumes after */
+    (function () {
+      var track = document.getElementById('proofCarousel');
+      if (!track) return;
+      var realItems = track.querySelectorAll('.proof-item:not([aria-hidden])');
+      var allItems = track.querySelectorAll('.proof-item');
+      var realCount = realItems.length;
+      if (!realCount) return;
+      var index = 0;
+      var autoplayTimer = null;
+      var resumeTimer = null;
+
+      function goTo(i, smooth) {
+        var item = allItems[i];
+        if (!item) return;
+        item.scrollIntoView({ behavior: smooth ? 'smooth' : 'instant', inline: 'center', block: 'nearest' });
+      }
+
+      function tick() {
+        index++;
+        goTo(index, true);
+        if (index >= realCount * 2) {
+          window.setTimeout(function () {
+            index -= realCount;
+            goTo(index, false);
+          }, 550);
+        }
+      }
+
+      function startAutoplay() {
+        stopAutoplay();
+        autoplayTimer = window.setInterval(tick, 3200);
+      }
+
+      function stopAutoplay() {
+        if (autoplayTimer) { window.clearInterval(autoplayTimer); autoplayTimer = null; }
+      }
+
+      function pauseThenResume() {
+        stopAutoplay();
+        if (resumeTimer) window.clearTimeout(resumeTimer);
+        resumeTimer = window.setTimeout(function () {
+          /* re-sync index to whichever item is currently centered */
+          var trackRect = track.getBoundingClientRect();
+          var center = trackRect.left + trackRect.width / 2;
+          var closest = 0, closestDist = Infinity;
+          allItems.forEach(function (item, i) {
+            var r = item.getBoundingClientRect();
+            var d = Math.abs((r.left + r.width / 2) - center);
+            if (d < closestDist) { closestDist = d; closest = i; }
+          });
+          index = closest;
+          startAutoplay();
+        }, 2600);
+      }
+
+      /* mouse drag-to-scroll (touch already scrolls natively) */
+      var isDown = false, startX = 0, startScroll = 0, dragged = false;
+      track.addEventListener('pointerdown', function (e) {
+        if (e.pointerType === 'touch') return;
+        isDown = true; dragged = false;
+        track.classList.add('dragging');
+        startX = e.clientX;
+        startScroll = track.scrollLeft;
+        pauseThenResume();
+      });
+      window.addEventListener('pointermove', function (e) {
+        if (!isDown) return;
+        var dx = e.clientX - startX;
+        if (Math.abs(dx) > 3) dragged = true;
+        track.scrollLeft = startScroll - dx;
+      });
+      window.addEventListener('pointerup', function () {
+        if (!isDown) return;
+        isDown = false;
+        track.classList.remove('dragging');
+      });
+      track.addEventListener('click', function (e) {
+        if (dragged) { e.preventDefault(); e.stopPropagation(); }
+      }, true);
+      track.addEventListener('touchstart', pauseThenResume, { passive: true });
+      track.addEventListener('wheel', pauseThenResume, { passive: true });
+
+      startAutoplay();
     })();
   </script>
 </body>
