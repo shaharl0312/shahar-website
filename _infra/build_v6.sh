@@ -40,10 +40,12 @@ mkdir -p _infra/dist/guide && cp funnel-hadracha/optin-v2.html _infra/dist/guide
 cp -r funnel-hadracha/assets _infra/dist/guide/assets
 mkdir -p _infra/dist/video && cp funnel-hadracha/video-v2.html _infra/dist/video/index.html
 
-# Course sales page (course-landing variants) - v8 is primary
-mkdir -p _infra/dist/course && cp course-landing/v8-yahav-design.html _infra/dist/course/index.html
+# Course sales page (course-landing variants) - v9 is primary
+mkdir -p _infra/dist/course && cp course-landing/v9-copy-refine.html _infra/dist/course/index.html
+mkdir -p _infra/dist/course-v9 && cp course-landing/v9-copy-refine.html _infra/dist/course-v9/index.html
 mkdir -p _infra/dist/course-v8 && cp course-landing/v8-yahav-design.html _infra/dist/course-v8/index.html
 mkdir -p _infra/dist/course-v7 && cp course-landing/v7-yahav-design.html _infra/dist/course-v7/index.html
+mkdir -p _infra/dist/course-landing && cp course-landing/video-cover.jpg course-landing/offer-mockup.jpg _infra/dist/course-landing/
 
 # Erosion calculator (checking-account inflation quiz)
 mkdir -p _infra/dist/erosion-calculator && cp erosion-calculator/index.html _infra/dist/erosion-calculator/index.html
