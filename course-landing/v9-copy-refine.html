@@ -910,43 +910,6 @@
       display: block;
     }
 
-    /* PROOF CAROUSEL - exactly 3 real cards, rotates via transform (never touches page scroll) */
-    .proof-carousel {
-      overflow: hidden;
-      padding: 4px 0 14px;
-      margin: 36px 0 0;
-      cursor: grab;
-      user-select: none;
-      touch-action: pan-y;
-    }
-
-    .proof-carousel.dragging {
-      cursor: grabbing;
-    }
-
-    .proof-carousel-track {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      will-change: transform;
-    }
-
-    .proof-carousel-track.animating {
-      transition: transform .4s ease;
-    }
-
-    .proof-carousel .proof-item {
-      flex: 0 0 78%;
-      max-width: 300px;
-      margin-bottom: 0;
-    }
-
-    .proof-carousel img {
-      width: 100%;
-      border-radius: 10px;
-      display: block;
-    }
-
     /* PERSON PHOTO - bleeds into the dark section background */
     .person-section {
       padding-top: 0;
@@ -2981,13 +2944,11 @@
   <section class="section cream">
     <div class="narrow center animate">
       <p style="color:var(--muted-dark);">ומה אומרים מי שהחליטו לעשות את הצעד הראשון</p>
-      <div class="proof-carousel" id="proofCarousel">
-        <div class="proof-carousel-track" id="proofCarouselTrack">
-          <div class="proof-item"><img src="/testimonials/wts-2.jpg" alt="עדות: פתח דלת שלמה לעולם ההשקעות"
-              loading="lazy" /></div>
-          <div class="proof-item"><img src="/testimonials/wts-11.jpg" alt="עדות: ליווי אישי ופרקטי שלא רגיל בעולם הזה"
-              loading="lazy" /></div>
-        </div>
+      <div class="proof-grid">
+        <div class="proof-item"><img src="/testimonials/wts-2.jpg" alt="עדות: פתח דלת שלמה לעולם ההשקעות"
+            loading="lazy" /></div>
+        <div class="proof-item"><img src="/testimonials/wts-11.jpg" alt="עדות: ליווי אישי ופרקטי שלא רגיל בעולם הזה"
+            loading="lazy" /></div>
       </div>
     </div>
   </section>
@@ -4002,168 +3963,6 @@
     })();
   </script>
 
-  <script>
-    /* proof carousel: exactly 3 real cards, rotates forever via transform (never touches page scroll),
-       pauses only while its own section is on screen and while the user is dragging it.
-       Each card is narrower than the container (peeks of neighbors show on both sides), so the
-       resting position isn't translateX(0) - it's `rest`, the offset that centers the track's
-       current first child within the container. Invariant: at rest, transform:translateX(rest)
-       always shows the first child centered. Advancing forward shows the 2nd child (already in
-       place, no DOM change needed) then moves it to be the new first child once the slide
-       finishes. Going backward first moves the last child to the front (so it's "in place" to
-       slide into view), compensating the resting transform by -step so nothing visually jumps,
-       then animates back to rest. */
-    (function () {
-      var wrap = document.getElementById('proofCarousel');
-      var track = document.getElementById('proofCarouselTrack');
-      if (!wrap || !track) return;
-      var itemWidth = 0, gap = 0, step = 0, rest = 0;
-      var autoplayTimer = null;
-      var advanceTimer = null;
-      var inView = false;
-
-      function measure() {
-        var item = track.querySelector('.proof-item');
-        if (!item) return;
-        itemWidth = item.getBoundingClientRect().width;
-        gap = parseFloat(getComputedStyle(track).columnGap) || 0;
-        step = itemWidth + gap;
-        rest = (wrap.getBoundingClientRect().width - itemWidth) / 2;
-      }
-      measure();
-      window.addEventListener('resize', measure);
-
-      function setTransform(x, animate) {
-        track.classList.toggle('animating', !!animate);
-        track.style.transform = 'translateX(' + x + 'px)';
-      }
-      setTransform(rest, false);
-
-      function advance() {
-        if (advanceTimer) return;
-        setTransform(rest - step, true);
-        advanceTimer = window.setTimeout(function () {
-          track.appendChild(track.firstElementChild);
-          setTransform(rest, false);
-          advanceTimer = null;
-        }, 400);
-      }
-
-      function finishPendingAdvance() {
-        /* if a drag starts while an autoplay advance is mid-flight, its setTimeout
-           would otherwise fire later and yank the DOM out from under the drag,
-           permanently breaking the rest-state invariant (the carousel visually
-           freezes/misaligns). Finish it synchronously first so dragging always
-           starts from a clean rest state. */
-        if (advanceTimer) {
-          window.clearTimeout(advanceTimer);
-          advanceTimer = null;
-          track.appendChild(track.firstElementChild);
-          setTransform(rest, false);
-        }
-      }
-
-      function startAutoplay() {
-        stopAutoplay();
-        autoplayTimer = window.setInterval(function () { if (inView) advance(); }, 3200);
-      }
-      function stopAutoplay() {
-        if (autoplayTimer) { window.clearInterval(autoplayTimer); autoplayTimer = null; }
-      }
-
-      if ('IntersectionObserver' in window) {
-        new IntersectionObserver(function (entries) {
-          entries.forEach(function (e) { inView = e.isIntersecting; });
-        }, { threshold: .2 }).observe(wrap);
-      } else {
-        inView = true;
-      }
-      startAutoplay();
-
-      /* drag with mouse or touch */
-      var dragging = false, dragStartX = 0, dragDx = 0, prepared = null, moved = false;
-      var resumeTimer = null;
-
-      function onDown(e) {
-        stopAutoplay();
-        finishPendingAdvance();
-        dragging = true; moved = false; prepared = null; dragDx = 0;
-        dragStartX = e.clientX;
-        wrap.classList.add('dragging');
-        if (resumeTimer) window.clearTimeout(resumeTimer);
-      }
-      function onMove(e) {
-        if (!dragging) return;
-        dragDx = e.clientX - dragStartX;
-        if (Math.abs(dragDx) > 3) { moved = true; e.preventDefault(); }
-        if (!prepared) {
-          if (dragDx < 0) {
-            prepared = 'forward';
-          } else if (dragDx > 0) {
-            prepared = 'backward';
-            track.insertBefore(track.lastElementChild, track.firstElementChild);
-            setTransform(rest - step, false);
-          } else { return; }
-        }
-        var base = prepared === 'backward' ? rest - step : rest;
-        setTransform(base + dragDx, false);
-      }
-      function onUp() {
-        if (!dragging) return;
-        dragging = false;
-        wrap.classList.remove('dragging');
-        var threshold = itemWidth * 0.22;
-        if (prepared === 'forward') {
-          if (dragDx < -threshold) {
-            setTransform(rest - step, true);
-            window.setTimeout(function () {
-              track.appendChild(track.firstElementChild);
-              setTransform(rest, false);
-            }, 400);
-          } else {
-            setTransform(rest, true);
-          }
-        } else if (prepared === 'backward') {
-          if (dragDx > threshold) {
-            /* complete: the prepended item is already the first child, transform `rest` shows it centered */
-            setTransform(rest, true);
-          } else {
-            /* cancel: animate back to the prepare baseline (shows the original item, unchanged),
-               then undo the temporary prepend so the rest-state invariant (transform `rest` = first
-               child centered) holds again for the next gesture/autoplay tick */
-            setTransform(rest - step, true);
-            window.setTimeout(function () {
-              track.appendChild(track.firstElementChild);
-              setTransform(rest, false);
-            }, 400);
-          }
-        }
-        resumeTimer = window.setTimeout(startAutoplay, 2200);
-      }
-
-      function onCancel() {
-        /* the browser aborted the gesture (e.g. it decided to take over for native scrolling) -
-           never try to "complete" here, just snap back to a valid rest state so nothing gets
-           stuck and autoplay can resume */
-        if (!dragging) return;
-        dragging = false;
-        wrap.classList.remove('dragging');
-        if (prepared === 'backward') {
-          track.appendChild(track.firstElementChild);
-        }
-        setTransform(rest, false);
-        resumeTimer = window.setTimeout(startAutoplay, 2200);
-      }
-
-      wrap.addEventListener('pointerdown', onDown);
-      window.addEventListener('pointermove', onMove);
-      window.addEventListener('pointerup', onUp);
-      window.addEventListener('pointercancel', onCancel);
-      wrap.addEventListener('click', function (e) {
-        if (moved) { e.preventDefault(); e.stopPropagation(); }
-      }, true);
-    })();
-  </script>
 </body>
 
 </html>
