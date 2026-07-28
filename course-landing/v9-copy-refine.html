@@ -3896,6 +3896,7 @@
       if (!wrap || !track) return;
       var itemWidth = 0, gap = 0, step = 0, rest = 0;
       var autoplayTimer = null;
+      var advanceTimer = null;
       var inView = false;
 
       function measure() {
@@ -3916,11 +3917,27 @@
       setTransform(rest, false);
 
       function advance() {
+        if (advanceTimer) return;
         setTransform(rest - step, true);
-        window.setTimeout(function () {
+        advanceTimer = window.setTimeout(function () {
           track.appendChild(track.firstElementChild);
           setTransform(rest, false);
+          advanceTimer = null;
         }, 400);
+      }
+
+      function finishPendingAdvance() {
+        /* if a drag starts while an autoplay advance is mid-flight, its setTimeout
+           would otherwise fire later and yank the DOM out from under the drag,
+           permanently breaking the rest-state invariant (the carousel visually
+           freezes/misaligns). Finish it synchronously first so dragging always
+           starts from a clean rest state. */
+        if (advanceTimer) {
+          window.clearTimeout(advanceTimer);
+          advanceTimer = null;
+          track.appendChild(track.firstElementChild);
+          setTransform(rest, false);
+        }
       }
 
       function startAutoplay() {
@@ -3945,10 +3962,11 @@
       var resumeTimer = null;
 
       function onDown(e) {
+        stopAutoplay();
+        finishPendingAdvance();
         dragging = true; moved = false; prepared = null; dragDx = 0;
         dragStartX = e.clientX;
         wrap.classList.add('dragging');
-        stopAutoplay();
         if (resumeTimer) window.clearTimeout(resumeTimer);
       }
       function onMove(e) {
