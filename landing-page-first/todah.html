@@ -277,6 +277,24 @@
     }
     .other-input.visible { display: block; }
 
+    .contact-fields {
+      display: grid;
+      gap: 10px;
+      margin: 16px 0;
+    }
+
+    .contact-fields input {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 0, 0, .1);
+      background: var(--cream);
+      color: var(--dark);
+      font-family: inherit;
+      font-size: 14.5px;
+      box-sizing: border-box;
+    }
+
     /* SIGNATURE */
     .closing {
       margin-top: 48px;
@@ -450,6 +468,11 @@
           <label class="radio-option"><input type="radio" name="reason" value="אחר"><span>אחר.</span></label>
         </div>
         <input type="text" class="other-input" id="other-input" placeholder="ספרו לי במילים שלכם..." />
+        <div class="contact-fields">
+          <input type="text" id="contact-name" placeholder="שם מלא" required />
+          <input type="tel" id="contact-phone" placeholder="טלפון" required />
+          <input type="email" id="contact-email" placeholder="אימייל" required />
+        </div>
         <button type="submit" class="btn btn-gold">שלח</button>
         <p class="guidance-error" id="guidance-error-inline">משהו השתבש בשליחה. נסו שוב, או שלחו לי הודעה בווטסאפ ואטפל בזה ידנית.</p>
       </form>
@@ -471,7 +494,6 @@
           <button type="button" class="btn btn-gold" id="popup-yes">כן, מעניין אותי</button>
           <button type="button" class="popup-no" id="popup-no">לא תודה</button>
         </div>
-        <p class="guidance-error" id="guidance-error-popup">משהו השתבש בשליחה. נסו שוב, או שלחו לי הודעה בווטסאפ ואטפל בזה ידנית.</p>
       </div>
     </div>
   </div>
@@ -489,8 +511,6 @@
         });
       });
 
-      var dealId = new URLSearchParams(window.location.search).get('internaldealNumber');
-
       var form = document.getElementById('reason-form');
       form.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -498,6 +518,10 @@
         var reason = selected && selected.value === 'אחר' && otherInput.value.trim()
           ? otherInput.value.trim()
           : (selected ? selected.value : null);
+
+        var name = document.getElementById('contact-name').value.trim();
+        var phone = document.getElementById('contact-phone').value.trim();
+        var email = document.getElementById('contact-email').value.trim();
 
         if (typeof window.fbq === 'function') {
           try { window.fbq('trackCustom', 'JoinTogetherReason', { reason: reason }); } catch (err) { }
@@ -509,7 +533,7 @@
         fetch('/api/personal-guidance', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ dealId: dealId, reason: reason })
+          body: JSON.stringify({ name: name, phone: phone, email: email, reason: reason })
         }).then(function (res) {
           if (!res.ok) throw new Error('personal-guidance responded with ' + res.status);
           window.location.href = '/liuy-confirmation/';
@@ -539,21 +563,8 @@
         if (typeof window.fbq === 'function') {
           try { window.fbq('trackCustom', 'JoinTogetherReason', { reason: 'פופאפ - מעוניין בליווי אישי' }); } catch (err) { }
         }
-
-        var popupErrorEl = document.getElementById('guidance-error-popup');
-        popupErrorEl.classList.remove('visible');
-
-        fetch('/api/personal-guidance', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ dealId: dealId, reason: 'מעוניין בליווי אישי' })
-        }).then(function (res) {
-          if (!res.ok) throw new Error('personal-guidance responded with ' + res.status);
-          window.location.href = '/liuy-confirmation/';
-        }).catch(function (err) {
-          console.error('personal-guidance submit failed', err);
-          popupErrorEl.classList.add('visible');
-        });
+        closePopup();
+        document.getElementById('together').scrollIntoView({ behavior: 'smooth' });
       });
     })();
   </script>
