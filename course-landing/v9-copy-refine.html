@@ -1121,6 +1121,11 @@
       margin-inline-end: 4px;
     }
 
+    .stat-icon-lottie {
+      display: inline-block;
+      flex: 0 0 auto;
+    }
+
     .stat-card-profit strong {
       font-weight: 700;
       background: linear-gradient(120deg, var(--gold-l) 0%, #fff 60%, var(--gold-l) 100%);
@@ -3027,7 +3032,7 @@
     <div class="stat-cards animate">
       <div class="stat-card">
         <div class="stat-card-info">
-          <span class="profit-arrow-lottie" style="width:28px;height:28px;"></span>
+          <span class="stat-icon-lottie stat-icon-lump" style="width:28px;height:28px;"></span>
           <p class="stat-card-title">השקעה חד-פעמית<br><span class="stat-card-sub">10,000 ₪, לפני 10 שנים</span></p>
         </div>
         <div class="stat-card-value">40,600<span class="stat-card-cur">₪</span></div>
@@ -3036,7 +3041,7 @@
       </div>
       <div class="stat-card">
         <div class="stat-card-info">
-          <span class="profit-arrow-lottie" style="width:28px;height:28px;"></span>
+          <span class="stat-icon-lottie stat-icon-monthly" style="width:28px;height:28px;"></span>
           <p class="stat-card-title">הפקדה חודשית<br><span class="stat-card-sub">500 ₪ בחודש, במשך 10 שנים</span></p>
         </div>
         <div class="stat-card-value">121,800<span class="stat-card-cur">₪</span></div>
@@ -3045,7 +3050,7 @@
       </div>
       <div class="stat-card">
         <div class="stat-card-info">
-          <span class="profit-arrow-lottie" style="width:28px;height:28px;"></span>
+          <span class="stat-icon-lottie stat-icon-longterm" style="width:28px;height:28px;"></span>
           <p class="stat-card-title">טווח ארוך<br><span class="stat-card-sub">500 ₪ בחודש, מהיום ועוד 20 שנה</span></p>
         </div>
         <div class="stat-card-value">379,684<span class="stat-card-cur">₪</span></div>
@@ -3878,6 +3883,122 @@
       els.forEach(function (el) {
         lottie.loadAnimation({ container: el, renderer: 'svg', loop: true, autoplay: true, animationData: arrowData });
       });
+    })();
+
+    /* stat-card header icons: one distinct animation per card, matching what the card is actually about
+       (a single coin for the one-time lump sum, three repeating dots for the monthly deposit, an
+       up-trend arrow for long-term growth) instead of reusing the same generic arrow three times. */
+    (function () {
+      if (typeof lottie === 'undefined') return;
+      var ease = { i: { x: [0.42, 0.42, 0.42], y: [1, 1, 1] }, o: { x: [0.58, 0.58, 0.58], y: [0, 0, 0] } };
+      var gold = [0.79, 0.66, 0.30, 1];
+
+      var coinData = {
+        v: '5.5.7', fr: 30, ip: 0, op: 60, w: 24, h: 24, nm: 'coin', ddd: 0, assets: [],
+        layers: [{
+          ddd: 0, ind: 1, ty: 4, nm: 'coin', sr: 1,
+          ks: {
+            o: { a: 0, k: 100 }, r: { a: 0, k: 0 }, p: { a: 0, k: [12, 12, 0] },
+            a: { a: 0, k: [0, 0, 0] }, s: { a: 0, k: [100, 100, 100] }
+          },
+          ao: 0,
+          shapes: [{
+            ty: 'gr',
+            it: [
+              { ty: 'el', p: { a: 0, k: [0, 0] }, s: { a: 0, k: [16, 16] } },
+              { ty: 'st', c: { a: 0, k: gold }, o: { a: 0, k: 100 }, w: { a: 0, k: 2.2 } },
+              {
+                ty: 'tr', p: { a: 0, k: [0, 0] }, a: { a: 0, k: [0, 0] }, r: { a: 0, k: 0 }, o: { a: 0, k: 100 },
+                s: {
+                  a: 1, k: [
+                    Object.assign({ t: 0, s: [85, 85, 100] }, ease),
+                    Object.assign({ t: 30, s: [115, 115, 100] }, ease),
+                    { t: 60, s: [85, 85, 100] }
+                  ]
+                }
+              }
+            ],
+            nm: 'coinGroup'
+          }],
+          ip: 0, op: 60, st: 0, bm: 0
+        }]
+      };
+
+      var dotsData = {
+        v: '5.5.7', fr: 30, ip: 0, op: 75, w: 24, h: 24, nm: 'dots', ddd: 0, assets: [],
+        layers: [{
+          ddd: 0, ind: 1, ty: 4, nm: 'dots', sr: 1,
+          ks: {
+            o: { a: 0, k: 100 }, r: { a: 0, k: 0 }, p: { a: 0, k: [12, 12, 0] },
+            a: { a: 0, k: [0, 0, 0] }, s: { a: 0, k: [100, 100, 100] }
+          },
+          ao: 0,
+          shapes: [0, 1, 2].map(function (i) {
+            var x = (i - 1) * 7;
+            var delay = i * 15;
+            return {
+              ty: 'gr',
+              it: [
+                { ty: 'el', p: { a: 0, k: [x, 0] }, s: { a: 0, k: [6, 6] } },
+                { ty: 'fl', c: { a: 0, k: gold }, o: { a: 0, k: 100 } },
+                {
+                  ty: 'tr', p: { a: 0, k: [0, 0] }, a: { a: 0, k: [0, 0] }, s: { a: 0, k: [100, 100, 100] }, r: { a: 0, k: 0 },
+                  o: {
+                    a: 1, k: [
+                      Object.assign({ t: delay, s: [35] }, ease),
+                      Object.assign({ t: delay + 15, s: [100] }, ease),
+                      { t: delay + 45, s: [35] }
+                    ]
+                  }
+                }
+              ],
+              nm: 'dot' + i
+            };
+          }),
+          ip: 0, op: 75, st: 0, bm: 0
+        }]
+      };
+
+      var arrowData = {
+        v: '5.5.7', fr: 30, ip: 0, op: 60, w: 24, h: 24, nm: 'arrow', ddd: 0, assets: [],
+        layers: [{
+          ddd: 0, ind: 1, ty: 4, nm: 'arrow', sr: 1,
+          ks: {
+            o: { a: 0, k: 100 }, r: { a: 0, k: 0 }, p: { a: 0, k: [12, 12, 0] },
+            a: { a: 0, k: [0, 0, 0] }, s: { a: 0, k: [100, 100, 100] }
+          },
+          ao: 0,
+          shapes: [{
+            ty: 'gr',
+            it: [
+              { ty: 'sh', ks: { a: 0, k: { i: [[0, 0], [0, 0]], o: [[0, 0], [0, 0]], v: [[-7, 4], [7, -4]], c: false } } },
+              { ty: 'sh', ks: { a: 0, k: { i: [[0, 0], [0, 0], [0, 0]], o: [[0, 0], [0, 0], [0, 0]], v: [[1, -7], [7, -4], [4, 2]], c: false } } },
+              { ty: 'st', c: { a: 0, k: gold }, o: { a: 0, k: 100 }, w: { a: 0, k: 2.4 }, lc: 2, lj: 2 },
+              {
+                ty: 'tr', p: { a: 0, k: [0, 0] }, a: { a: 0, k: [0, 0] }, r: { a: 0, k: 0 }, o: { a: 0, k: 100 },
+                s: {
+                  a: 1, k: [
+                    Object.assign({ t: 0, s: [85, 85, 100] }, ease),
+                    Object.assign({ t: 30, s: [115, 115, 100] }, ease),
+                    { t: 60, s: [85, 85, 100] }
+                  ]
+                }
+              }
+            ],
+            nm: 'arrowGroup'
+          }],
+          ip: 0, op: 60, st: 0, bm: 0
+        }]
+      };
+
+      function loadInto(selector, data) {
+        document.querySelectorAll(selector).forEach(function (el) {
+          lottie.loadAnimation({ container: el, renderer: 'svg', loop: true, autoplay: true, animationData: data });
+        });
+      }
+      loadInto('.stat-icon-lump', coinData);
+      loadInto('.stat-icon-monthly', dotsData);
+      loadInto('.stat-icon-longterm', arrowData);
     })();
   </script>
 
