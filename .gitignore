@@ -8,3 +8,4 @@ _infra/dist/
 .DS_Store
 *.log
 .worktrees/
+.vercel

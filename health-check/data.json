@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-07-09T14:37:56.892Z",
+  "checkedAt": "2026-07-09T20:14:40.834Z",
   "overallStatus": "ok",
   "checks": [
     {
@@ -43,6 +43,18 @@
       "pass": true,
       "httpStatus": 400,
       "details": "ה-endpoint מגיב כצפוי"
+    },
+    {
+      "name": "רב-מסר - אימות חיבור",
+      "pass": true,
+      "details": "האימות מול רב-מסר תקין (הטוקן עדיין בתוקף)",
+      "url": "https://shahar-finance-staging.vercel.app/api/health-check-internal"
+    },
+    {
+      "name": "קארדקום - אימות חיבור",
+      "pass": true,
+      "details": "האימות מול קארדקום תקין",
+      "url": "https://shahar-finance-staging.vercel.app/api/health-check-internal"
     }
   ]
 }

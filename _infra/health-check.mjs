@@ -4,6 +4,10 @@
 // cloud agent set up for this purpose.
 
 const BASE = 'https://shaharfinance.com';
+// api/health-check-internal.js only exists on the staging deployment (never merged to
+// master) - it reuses the same real Rav-Messer/Cardcom credentials since those env vars
+// are set on both Preview and Production in Vercel.
+const STAGING_BASE = 'https://shahar-finance-staging.vercel.app';
 const PIXEL_ID = '3199947373426233';
 
 const PAGES = [
@@ -74,10 +78,49 @@ async function checkApi(api) {
   }
 }
 
+async function checkInternalAuth() {
+  const secret = process.env.HEALTH_CHECK_SECRET;
+  if (!secret) {
+    return [{
+      name: 'אימות אישורי רב-מסר/קארדקום',
+      url: STAGING_BASE + '/api/health-check-internal',
+      pass: false,
+      httpStatus: null,
+      details: 'HEALTH_CHECK_SECRET לא מוגדר בסביבה שמריצה את הבדיקה - דילוג על בדיקת האימות',
+    }];
+  }
+  try {
+    const res = await fetch(STAGING_BASE + '/api/health-check-internal', {
+      method: 'POST',
+      headers: { 'x-health-check-secret': secret },
+    });
+    const data = await res.json();
+    if (!res.ok || !Array.isArray(data.checks)) {
+      return [{
+        name: 'אימות אישורי רב-מסר/קארדקום',
+        url: STAGING_BASE + '/api/health-check-internal',
+        pass: false,
+        httpStatus: res.status,
+        details: 'ה-endpoint הפנימי החזיר תשובה לא תקינה',
+      }];
+    }
+    return data.checks.map((c) => ({ ...c, url: STAGING_BASE + '/api/health-check-internal' }));
+  } catch (err) {
+    return [{
+      name: 'אימות אישורי רב-מסר/קארדקום',
+      url: STAGING_BASE + '/api/health-check-internal',
+      pass: false,
+      httpStatus: null,
+      details: `שגיאת רשת: ${err.message}`,
+    }];
+  }
+}
+
 async function main() {
   const checks = [];
   for (const page of PAGES) checks.push(await checkPage(page));
   for (const api of APIS) checks.push(await checkApi(api));
+  checks.push(...(await checkInternalAuth()));
 
   const overallStatus = checks.every((c) => c.pass) ? 'ok' : 'issues';
 
