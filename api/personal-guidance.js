@@ -36,10 +36,10 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const { name, phone, email, reason } = req.body || {};
+  const { name, phone } = req.body || {};
 
-  if (!phone && !email) {
-    return res.status(400).json({ error: 'Missing phone or email' });
+  if (!phone) {
+    return res.status(400).json({ error: 'Missing phone' });
   }
 
   const listId = Number(process.env.RAVMESSER_PERSONAL_GUIDANCE_LIST_ID);
@@ -48,8 +48,8 @@ export default async function handler(req, res) {
   try {
     const token = await getRavMesserToken();
 
-    // Rav Messer matches existing subscribers by phone/email and updates them in place -
-    // this adds the guidance list + tags without removing them from any list they're
+    // Rav Messer matches existing subscribers by phone and updates them in place -
+    // this adds the guidance list + tag without removing them from any list they're
     // already on (e.g. the course-purchasers list), so Shahar doesn't call them twice.
     const response = await fetch(`${RAVMESSER_BASE_URL}/subscribers`, {
       method: 'POST',
@@ -59,12 +59,11 @@ export default async function handler(req, res) {
         'Accept': 'application/json'
       },
       body: JSON.stringify({
-        phone: phone || undefined,
-        email: email || undefined,
+        phone: phone,
         first: first || undefined,
         last: rest.length ? rest.join(' ') : undefined,
         list_ids: [listId],
-        tags_names: ['ביקש ליווי'].concat(reason && typeof reason === 'string' ? [reason.trim()] : [])
+        tags_names: ['ביקש ליווי']
       })
     });
 
