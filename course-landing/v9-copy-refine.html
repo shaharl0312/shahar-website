@@ -60,7 +60,11 @@
   }
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet" />
+    rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet" />
+  </noscript>
   <style>
     :root {
       --gold: #C9A84C;
@@ -687,6 +691,7 @@
       padding: 0;
     }
 
+    .video-cover picture,
     .video-cover img {
       width: 100%;
       height: 100%;
@@ -1304,6 +1309,7 @@
       z-index: 2;
     }
 
+    .cj-persistent-mockup picture,
     .cj-persistent-mockup img {
       display: block;
       max-height: 26vh;
@@ -2532,7 +2538,11 @@
             allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen
             title="סרטון VSL"></iframe>
           <button class="video-cover" id="videoCover" type="button" aria-label="הפעל את הסרטון">
-            <img src="/course-landing/video-cover.jpg" alt="סרטון: יש לכם מעל 20,000 ש״ח בעו״ש?" loading="lazy" />
+            <picture>
+              <source srcset="/course-landing/video-cover.webp" type="image/webp" />
+              <img src="/course-landing/video-cover.jpg" alt="סרטון: יש לכם מעל 20,000 ש״ח בעו״ש?"
+                fetchpriority="high" width="1520" height="855" />
+            </picture>
             <span class="play-btn"><svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M8 5v14l11-7z" />
               </svg></span>
@@ -2787,8 +2797,11 @@
           </div>
         </div>
         <div class="cj-persistent-mockup">
-          <img src="/course-landing/offer-mockup.jpg" alt="התוכנית מאפס למשקיע - במחשב, בטאבלט ובנייד" width="1536"
-            height="1024" />
+          <picture>
+            <source srcset="/course-landing/offer-mockup.webp" type="image/webp" />
+            <img src="/course-landing/offer-mockup.jpg" alt="התוכנית מאפס למשקיע - במחשב, בטאבלט ובנייד" width="920"
+              height="613" />
+          </picture>
         </div>
       </div>
     </div>
