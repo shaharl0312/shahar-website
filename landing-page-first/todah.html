@@ -235,37 +235,14 @@
     }
 
     /* QUALIFY FORM */
-    .q-label {
-      font-weight: 700;
-      color: var(--dark);
-      margin: 24px 0 14px;
-      font-size: 15px;
-      text-align: center;
+    .contact-fields {
+      display: grid;
+      gap: 10px;
+      margin: 16px 0;
     }
 
-    .radio-list { display: flex; flex-direction: column; gap: 9px; margin-bottom: 16px; }
-
-    .radio-option {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      background: var(--cream);
-      border: 1px solid rgba(0, 0, 0, .08);
-      border-radius: 12px;
-      padding: 13px 16px;
-      cursor: pointer;
-      transition: border-color .2s, background .2s;
-    }
-    .radio-option:hover { border-color: rgba(201, 168, 76, .5); }
-    .radio-option.selected { border-color: var(--gold); background: #fdf9ee; }
-
-    .radio-option input { accent-color: var(--gold); width: 17px; height: 17px; flex-shrink: 0; }
-    .radio-option span { font-size: 14.5px; color: #444; }
-
-    .other-input {
+    .contact-fields input {
       width: 100%;
-      margin-top: -4px;
-      margin-bottom: 16px;
       padding: 12px 14px;
       border-radius: 10px;
       border: 1px solid rgba(0, 0, 0, .1);
@@ -273,9 +250,10 @@
       color: var(--dark);
       font-family: inherit;
       font-size: 14.5px;
-      display: none;
+      text-align: right;
+      direction: rtl;
+      box-sizing: border-box;
     }
-    .other-input.visible { display: block; }
 
     /* SIGNATURE */
     .closing {
@@ -436,20 +414,11 @@
       <p>אני פותח מספר מצומצם של מקומות בכל חודש, כדי שאוכל לתת יחס אישי לכל אחד. אם זה מעניין אתכם, השאירו כאן את
         הפרטים. אני אחזור אליכם לשיחה קצרה ונבדוק יחד האם המסלול הזה באמת מתאים לכם.</p>
 
-      <p class="q-label">מה הסיבה העיקרית שבגלל תרצו לעבור את התהליך יחד איתי?</p>
       <form id="reason-form">
-        <div class="radio-list">
-          <label class="radio-option"><input type="radio" name="reason" value="ליווי אישי"><span>אני רוצה שמישהו
-              יעבור איתי את התהליך.</span></label>
-          <label class="radio-option"><input type="radio" name="reason" value="פחד מטעויות"><span>אני מפחד לעשות
-              טעויות.</span></label>
-          <label class="radio-option"><input type="radio" name="reason" value="קיצור דרך"><span>אני רוצה לקצר את
-              הדרך.</span></label>
-          <label class="radio-option"><input type="radio" name="reason" value="ביטחון"><span>אני רוצה ביטחון לפני
-              שאני מתחיל.</span></label>
-          <label class="radio-option"><input type="radio" name="reason" value="אחר"><span>אחר.</span></label>
+        <div class="contact-fields">
+          <input type="text" id="contact-name" placeholder="שם מלא" required />
+          <input type="tel" id="contact-phone" placeholder="טלפון" required />
         </div>
-        <input type="text" class="other-input" id="other-input" placeholder="ספרו לי במילים שלכם..." />
         <button type="submit" class="btn btn-gold">שלח</button>
         <p class="guidance-error" id="guidance-error-inline">משהו השתבש בשליחה. נסו שוב, או שלחו לי הודעה בווטסאפ ואטפל בזה ידנית.</p>
       </form>
@@ -471,36 +440,21 @@
           <button type="button" class="btn btn-gold" id="popup-yes">כן, מעניין אותי</button>
           <button type="button" class="popup-no" id="popup-no">לא תודה</button>
         </div>
-        <p class="guidance-error" id="guidance-error-popup">משהו השתבש בשליחה. נסו שוב, או שלחו לי הודעה בווטסאפ ואטפל בזה ידנית.</p>
       </div>
     </div>
   </div>
 
   <script>
     (function () {
-      var options = document.querySelectorAll('.radio-option');
-      var otherInput = document.getElementById('other-input');
-      options.forEach(function (opt) {
-        opt.addEventListener('click', function () {
-          options.forEach(function (o) { o.classList.remove('selected'); });
-          opt.classList.add('selected');
-          var input = opt.querySelector('input');
-          otherInput.classList.toggle('visible', input.value === 'אחר');
-        });
-      });
-
-      var dealId = new URLSearchParams(window.location.search).get('internaldealNumber');
-
       var form = document.getElementById('reason-form');
       form.addEventListener('submit', function (e) {
         e.preventDefault();
-        var selected = form.querySelector('input[name="reason"]:checked');
-        var reason = selected && selected.value === 'אחר' && otherInput.value.trim()
-          ? otherInput.value.trim()
-          : (selected ? selected.value : null);
+
+        var name = document.getElementById('contact-name').value.trim();
+        var phone = document.getElementById('contact-phone').value.trim();
 
         if (typeof window.fbq === 'function') {
-          try { window.fbq('trackCustom', 'JoinTogetherReason', { reason: reason }); } catch (err) { }
+          try { window.fbq('trackCustom', 'JoinTogetherReason'); } catch (err) { }
         }
 
         var errorEl = document.getElementById('guidance-error-inline');
@@ -509,7 +463,7 @@
         fetch('/api/personal-guidance', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ dealId: dealId, reason: reason })
+          body: JSON.stringify({ name: name, phone: phone })
         }).then(function (res) {
           if (!res.ok) throw new Error('personal-guidance responded with ' + res.status);
           window.location.href = '/liuy-confirmation/';
@@ -539,21 +493,8 @@
         if (typeof window.fbq === 'function') {
           try { window.fbq('trackCustom', 'JoinTogetherReason', { reason: 'פופאפ - מעוניין בליווי אישי' }); } catch (err) { }
         }
-
-        var popupErrorEl = document.getElementById('guidance-error-popup');
-        popupErrorEl.classList.remove('visible');
-
-        fetch('/api/personal-guidance', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ dealId: dealId, reason: 'מעוניין בליווי אישי' })
-        }).then(function (res) {
-          if (!res.ok) throw new Error('personal-guidance responded with ' + res.status);
-          window.location.href = '/liuy-confirmation/';
-        }).catch(function (err) {
-          console.error('personal-guidance submit failed', err);
-          popupErrorEl.classList.add('visible');
-        });
+        closePopup();
+        document.getElementById('together').scrollIntoView({ behavior: 'smooth' });
       });
     })();
   </script>
