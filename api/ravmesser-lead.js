@@ -19,7 +19,7 @@ async function getAccessToken() {
     })
   });
   const data = await res.json();
-  if (!data.status) throw new Error(data.message || 'Rav Messer auth failed');
+  if (!data.status) throw new Error(`Rav Messer auth failed (http ${res.status}): ${JSON.stringify(data)}`);
   return data.token;
 }
 
