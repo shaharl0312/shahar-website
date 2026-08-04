@@ -889,20 +889,13 @@
 
     /* PROOF GRID - discrete testimonial screenshots placed at key decision points */
     .proof-grid {
-      columns: 3 220px;
-      column-gap: 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
       margin: 36px 0;
     }
 
-    @media (max-width:768px) {
-      .proof-grid {
-        columns: 2 160px;
-      }
-    }
-
     .proof-item {
-      break-inside: avoid;
-      margin-bottom: 16px;
       background: #fff;
       border-radius: 16px;
       padding: 10px;
