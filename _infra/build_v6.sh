@@ -56,5 +56,8 @@ mkdir -p _infra/dist/bank-money && cp funnel-hadracha/bank-money-guide.html _inf
 # Funnel health-check dashboard
 mkdir -p _infra/dist/health-check && cp health-check/index.html health-check/data.json _infra/dist/health-check/
 
+# Social assets (Flux-generated carousel images, public source for Canva import)
+mkdir -p _infra/dist/social-assets && cp -r social-assets/. _infra/dist/social-assets/
+
 echo "build-ok-$(date +%s)" > _infra/dist/buildinfo.txt
 echo "=== BUILD COMPLETE ===" && ls _infra/dist/
