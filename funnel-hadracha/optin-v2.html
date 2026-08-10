@@ -180,6 +180,32 @@ footer p{font-size:13px;margin-bottom:0;}
 .exit-popup .exit-sub{color:var(--muted-light);font-size:14.5px;margin-bottom:20px;}
 .exit-decline{display:block;width:100%;text-align:center;margin-top:14px;font-size:13px;color:var(--muted-light);text-decoration:underline;text-underline-offset:3px;cursor:pointer;background:none;border:none;font-family:inherit;}
 .exit-decline:hover{color:#fff;}
+
+/* ACCESSIBILITY WIDGET */
+.a11y-fab{position:fixed;bottom:20px;left:20px;z-index:960;width:52px;height:52px;border-radius:50%;background:var(--gold);color:var(--anthracite);border:none;box-shadow:0 6px 20px rgba(0,0,0,.35);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform var(--ease);}
+.a11y-fab:hover{transform:translateY(-2px);}
+.a11y-panel{position:fixed;bottom:82px;left:20px;z-index:961;width:290px;max-width:calc(100vw - 40px);background:#fff;border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.35);overflow:hidden;font-family:inherit;direction:rtl;text-align:right;color:var(--anthracite);}
+.a11y-panel[hidden]{display:none;}
+.a11y-panel-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:var(--anthracite);color:#fff;}
+.a11y-panel-head h3{font-size:15px;font-weight:800;margin:0;color:#fff;}
+.a11y-panel-head button{background:none;border:none;color:#fff;font-size:16px;cursor:pointer;padding:2px 6px;}
+.a11y-panel-body{padding:12px 14px;display:flex;flex-direction:column;gap:8px;}
+.a11y-row{display:flex;align-items:center;justify-content:space-between;font-size:13.5px;font-weight:600;color:var(--anthracite);padding:6px 0;}
+.a11y-btns{display:flex;gap:6px;}
+.a11y-btns button{width:30px;height:30px;border-radius:8px;border:1px solid rgba(0,0,0,.12);background:var(--cream);font-size:12px;font-weight:800;cursor:pointer;color:var(--anthracite);}
+.a11y-toggle-row{width:100%;text-align:right;padding:10px 12px;border-radius:10px;border:1px solid rgba(0,0,0,.1);background:var(--cream);font-size:13.5px;font-weight:600;color:var(--anthracite);cursor:pointer;font-family:inherit;}
+.a11y-toggle-row[aria-pressed="true"]{background:var(--gold);color:#fff;border-color:var(--gold);}
+.a11y-reset-all{margin-top:4px;width:100%;text-align:center;padding:9px;border-radius:10px;border:none;background:transparent;color:#a33;font-size:12.5px;font-weight:600;cursor:pointer;text-decoration:underline;font-family:inherit;}
+.a11y-panel-foot{padding:10px 16px 16px;text-align:center;border-top:1px solid rgba(0,0,0,.08);}
+.a11y-panel-foot a{font-size:12.5px;color:var(--gold);text-decoration:underline;}
+
+html.a11y-contrast body{background:#000 !important;color:#fff !important;}
+html.a11y-contrast a{color:#ffe27a !important;}
+html.a11y-grayscale body{filter:grayscale(1);}
+html.a11y-underline a{text-decoration:underline !important;}
+html.a11y-readable body{font-family:Arial, Helvetica, sans-serif !important;}
+html.a11y-font-md body{zoom:1.15;}
+html.a11y-font-lg body{zoom:1.3;}
 </style>
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -375,6 +401,106 @@ fbq('track', 'PageView');
     <button type="button" class="exit-decline" onclick="closeExitPopup()">לא תודה, אני אשאר בלי</button>
   </div>
 </div>
+
+<button id="a11yToggle" type="button" class="a11y-fab" aria-label="פתיחת תפריט נגישות" aria-haspopup="true" aria-expanded="false">
+  <svg viewBox="0 0 24 24" width="26" height="26" fill="none" aria-hidden="true">
+    <circle cx="12" cy="4.2" r="2.2" fill="currentColor"/>
+    <path d="M4 8.5c2.5 1 5.2 1.5 8 1.5s5.5-.5 8-1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M12 10v5m0 0l-3 7m3-7l3 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M9 13.2l-2 2M15 13.2l2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+</button>
+
+<div id="a11yPanel" class="a11y-panel" role="dialog" aria-modal="true" aria-label="הגדרות נגישות" hidden>
+  <div class="a11y-panel-head">
+    <h3>הגדרות נגישות</h3>
+    <button type="button" id="a11yClose" aria-label="סגור">✕</button>
+  </div>
+  <div class="a11y-panel-body">
+    <div class="a11y-row">
+      <span>גודל טקסט</span>
+      <div class="a11y-btns">
+        <button type="button" data-a11y="font-dec" aria-label="הקטן טקסט">א-</button>
+        <button type="button" data-a11y="font-reset" aria-label="איפוס גודל טקסט">איפוס</button>
+        <button type="button" data-a11y="font-inc" aria-label="הגדל טקסט">א+</button>
+      </div>
+    </div>
+    <button type="button" class="a11y-toggle-row" data-a11y="contrast" aria-pressed="false">ניגודיות גבוהה</button>
+    <button type="button" class="a11y-toggle-row" data-a11y="grayscale" aria-pressed="false">גווני אפור</button>
+    <button type="button" class="a11y-toggle-row" data-a11y="underline" aria-pressed="false">הדגשת קישורים</button>
+    <button type="button" class="a11y-toggle-row" data-a11y="readable" aria-pressed="false">גופן קריא</button>
+    <button type="button" class="a11y-reset-all" id="a11yResetAll">איפוס כל ההגדרות</button>
+  </div>
+  <div class="a11y-panel-foot">
+    <a href="/accessibility.html">הצהרת נגישות מלאה</a>
+  </div>
+</div>
+
+<script>
+(function () {
+  var KEY = 'a11y-prefs-v1';
+  var root = document.documentElement;
+  var toggle = document.getElementById('a11yToggle');
+  var panel = document.getElementById('a11yPanel');
+  var closeBtn = document.getElementById('a11yClose');
+  var state = { contrast: false, grayscale: false, underline: false, readable: false, font: 'normal' };
+
+  function load() {
+    try { var s = JSON.parse(localStorage.getItem(KEY) || 'null'); if (s) state = Object.assign(state, s); } catch (e) {}
+  }
+  function apply() {
+    root.classList.toggle('a11y-contrast', state.contrast);
+    root.classList.toggle('a11y-grayscale', state.grayscale);
+    root.classList.toggle('a11y-underline', state.underline);
+    root.classList.toggle('a11y-readable', state.readable);
+    root.classList.remove('a11y-font-md', 'a11y-font-lg');
+    if (state.font === 'md') root.classList.add('a11y-font-md');
+    if (state.font === 'lg') root.classList.add('a11y-font-lg');
+    document.querySelectorAll('.a11y-toggle-row').forEach(function (btn) {
+      var key = btn.getAttribute('data-a11y');
+      if (key in state) btn.setAttribute('aria-pressed', state[key] ? 'true' : 'false');
+    });
+  }
+  function save() { localStorage.setItem(KEY, JSON.stringify(state)); }
+
+  load(); apply();
+
+  toggle.addEventListener('click', function () {
+    var willOpen = panel.hasAttribute('hidden');
+    if (willOpen) { panel.removeAttribute('hidden'); toggle.setAttribute('aria-expanded', 'true'); }
+    else { panel.setAttribute('hidden', ''); toggle.setAttribute('aria-expanded', 'false'); }
+  });
+  closeBtn.addEventListener('click', function () {
+    panel.setAttribute('hidden', ''); toggle.setAttribute('aria-expanded', 'false'); toggle.focus();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !panel.hasAttribute('hidden')) {
+      panel.setAttribute('hidden', ''); toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+  document.addEventListener('click', function (e) {
+    if (!panel.hasAttribute('hidden') && !panel.contains(e.target) && e.target !== toggle) {
+      panel.setAttribute('hidden', ''); toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  document.querySelectorAll('[data-a11y]').forEach(function (el) {
+    el.addEventListener('click', function () {
+      var key = el.getAttribute('data-a11y');
+      if (key === 'font-inc') { state.font = state.font === 'normal' ? 'md' : 'lg'; }
+      else if (key === 'font-dec') { state.font = state.font === 'lg' ? 'md' : 'normal'; }
+      else if (key === 'font-reset') { state.font = 'normal'; }
+      else if (key in state) { state[key] = !state[key]; }
+      apply(); save();
+    });
+  });
+
+  document.getElementById('a11yResetAll').addEventListener('click', function () {
+    state = { contrast: false, grayscale: false, underline: false, readable: false, font: 'normal' };
+    apply(); save();
+  });
+})();
+</script>
 
 <script>
 function isValidEmail(v) {
