@@ -505,6 +505,26 @@ fbq('track', 'PageView');
 </script>
 
 <script>
+/* ===== ad ref capture =====
+   Reads ?ref= from the URL (Meta ads carry ref={{ad.id}}), caches it in
+   sessionStorage so it survives the exit-intent form still being on the
+   same page load, and validates against a strict whitelist before it's
+   ever sent anywhere - this value round-trips through the lead API into
+   Rav Messer, so it must never carry anything but a plain id/slug. */
+var CAPTURED_REF = (function () {
+  var REF_PATTERN = /^[A-Za-z0-9_-]{1,50}$/;
+  var fromUrl = new URLSearchParams(window.location.search).get('ref');
+  if (fromUrl && REF_PATTERN.test(fromUrl)) {
+    try { sessionStorage.setItem('shahar_ref', fromUrl); } catch (e) {}
+    return fromUrl;
+  }
+  try {
+    var cached = sessionStorage.getItem('shahar_ref');
+    if (cached && REF_PATTERN.test(cached)) return cached;
+  } catch (e) {}
+  return '';
+})();
+
 function isValidEmail(v) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 }
@@ -576,7 +596,7 @@ async function submitForm(ids, btn, errMsg, contentName) {
     var res = await fetch('/api/ravmesser-lead', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: name, email: email, phone: phone })
+      body: JSON.stringify({ name: name, email: email, phone: phone, ref: CAPTURED_REF || undefined })
     });
     if (res.ok) {
       leadSubmitted = true;

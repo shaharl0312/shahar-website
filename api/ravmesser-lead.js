@@ -5,6 +5,8 @@ const ALLOWED_ORIGINS = [
 ];
 
 const RAV_BASE = 'https://graph.responder.live/v2';
+const AD_REF_FIELD_ID = '103765'; // Rav Messer account-wide personal field "ad_ref"
+const REF_PATTERN = /^[A-Za-z0-9_-]{1,50}$/;
 
 async function getAccessToken() {
   const res = await fetch(`${RAV_BASE}/oauth/token`, {
@@ -34,7 +36,7 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const { name, email, phone } = req.body || {};
+  const { name, email, phone, ref } = req.body || {};
 
   if (!name || typeof name !== 'string' || name.trim().length < 2) {
     return res.status(400).json({ error: 'Missing name' });
@@ -42,6 +44,11 @@ export default async function handler(req, res) {
   if (!email && !phone) {
     return res.status(400).json({ error: 'Missing email or phone' });
   }
+
+  // ref is fully client-controlled (this endpoint is public) - never let a
+  // malformed or malicious value block a real lead or reach Rav Messer
+  // unvalidated. Silently drop anything that doesn't match the whitelist.
+  const safeRef = typeof ref === 'string' && REF_PATTERN.test(ref) ? ref : null;
 
   const listId = Number(process.env.RAVMESSER_FREE_GUIDE_LIST_ID);
   const [first, ...rest] = name.trim().split(/\s+/);
@@ -60,7 +67,8 @@ export default async function handler(req, res) {
         phone: phone ? phone.trim() : undefined,
         first,
         last: rest.join(' ') || undefined,
-        list_ids: [listId]
+        list_ids: [listId],
+        personal_fields: safeRef ? { [AD_REF_FIELD_ID]: safeRef } : undefined
       })
     });
 
