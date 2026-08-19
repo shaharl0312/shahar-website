@@ -9,3 +9,4 @@ _infra/dist/
 *.log
 .worktrees/
 .vercel
+.claude/settings.local.json

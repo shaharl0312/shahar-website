@@ -1,86 +1,56 @@
-# CLAUDE.md - shahar-website
+---
+title: Website
+---
 
-Financial coaching website for career military officers (קצינים בקבע).
-Deployed on Vercel via git push or `vercel --prod --yes`.
+# אתר - shaharfinance.com
 
-## Brand Colors
-| Role | Hex |
-|------|-----|
-| Gold (primary CTA) | `#C9A84C` |
-| Anthracite (text/dark bg) | `#2D2D2D` |
-| Cream (page background) | `#F7F5F0` |
-| Deep blue (use sparingly) | `#1B3A6B` |
+אתר הליווי הפיננסי לקצינים בקבע. סטטי, נבנה בסקריפט shell ומתפרסם ב-Vercel.
 
-## Project Structure
+## סקילים
+
+| מתי                 | סקיל                                                       |
+| ------------------- | ---------------------------------------------------------- |
+| כל עריכה באתר       | `/shahar-website-edit` - **תמיד קודם.** עובד staging-first |
+| בניית דף נחיתה חדש  | `/landing-page` ואז `/landing-page-copy`                   |
+| לפני העלאה לפרודקשן | `/vercel-deploy` - צ'קליסט לפני דפלוי                      |
+| עיצוב               | `[[core/design-refs]]` - 70 פירוקי מותגים                  |
+
+## מבנה
 
 ```
-shahar-website/
-├── landing-page-first/    # Main landing page → deployed at /
-├── etf-app/               # ETF comparison tool → deployed at /etf-app/
-├── agreement/             # Client contract signing → deployed at /agreement/
-├── side-projects/
-│   ├── schoolslide/       # School presentation → deployed at /schoolslide/
-│   └── tzofim/            # Tzofim project → deployed at /tzofim/
-├── api/                   # Vercel serverless functions
-├── dist/                  # Build output (auto-generated, do not edit manually)
-├── build_v2.sh            # Current build script
-└── vercel.json            # Vercel config (buildCommand points to build_v2.sh)
+website/
+├── landing-page-first/   → /            דף נחיתה ראשי + todah.html
+├── etf-app/              → /etf-app/    כלי השוואת ETF
+├── agreement/            → /agreement/  חתימת הסכם לקוח
+├── funnel-hadracha/      → /guide/      משפך ההדרכה החינמית (optin)
+├── warriors-hub/         → /warriors-hub/mifgash-1..3
+├── erosion-calculator/   מחשבון שחיקת כסף
+├── my-app/ribit-derebit/ מחשבון ריבית דריבית
+├── course-landing/       וריאנטים של דף הקורס
+├── side-projects/        schoolslide, tzofim
+├── api/                  פונקציות Vercel (submit-lead)
+└── _infra/build.sh       סקריפט הבנייה. הפלט ל-_infra/dist (לא לערוך ידנית)
 ```
 
-## Current Production Files
-
-Edit these files directly - no versioning needed, git tracks history.
-
-| עמוד | קובץ לעריכה |
-|------|-------------|
-| דף נחיתה ראשי (/) | `landing-page-first/index.html` |
-| תודה (/todah/) | `landing-page-first/todah.html` |
-| ETF app (/etf-app/) | `etf-app/index.html` |
-| הסכם (/agreement/) | `agreement/index.html` |
-| מפגש 1 (/warriors-hub/mifgash-1/) | `warriors-hub/mifgash-1.html` |
-| מפגש 2 (/warriors-hub/mifgash-2/) | `warriors-hub/mifgash-2.html` |
-| מפגש 3 (/warriors-hub/mifgash-3/) | `warriors-hub/mifgash-3.html` |
-| מחשבון ריבית | `my-app/ribit-derebit/index.html` |
-
-## Build & Deploy
+## דפלוי
 
 ```sh
-git add <file> && git commit -m "..." && git push   # deploys automatically
+git add <file> && git commit -m "..." && git push
 ```
 
-Vercel auto-deploys on every push to master. No need to run `vercel --prod` manually.
+Vercel בונה אוטומטית בכל פוש. `vercel.json` מריץ `sh _infra/build.sh` ומגיש מ-`_infra/dist`.
+דף חדש = תיקייה + `index.html` בתוכה, ואז הוספה ל-`build.sh`.
 
-## Branch Workflow
+| ענף       | כתובת                             | תפקיד                         |
+| --------- | --------------------------------- | ----------------------------- |
+| `staging` | shahar-finance-staging.vercel.app | בודקים כאן קודם               |
+| `master`  | shaharfinance.com                 | פרודקשן. ממזגים רק כששחר מאשר |
 
-Two permanent environments:
+## שים לב
 
-| Branch | URL | Purpose |
-|--------|-----|---------|
-| `master` | shaharfinance.com | Production - only merge here when ready |
-| `staging` | shahar-finance-staging.vercel.app | Staging - test everything here first |
+- `_infra/dist/` נוצר אוטומטית. לעולם לא לערוך שם.
+- אין קבצי גרסאות. הקובץ החי הוא תמיד `index.html`. הגיט הוא ההיסטוריה.
+- ב-`funnel-hadracha` יש `optin.html` + `optin-v2.html` - **לא ברור מי החי**, לשאול את שחר לפני שנוגעים. `video.html`/`video-v2.html` נמחקו (2026-08-19, לא בשימוש).
 
-Normal workflow:
-1. Claude edits files on `staging` branch, commits, pushes automatically
-2. User checks shahar-finance-staging.vercel.app
-3. User says "תעלה" → Claude merges staging to master → shaharfinance.com updates
-
-## Editing Rules
-
-- Always work on `staging` branch by default.
-- Edit files directly - no versioned copies (no index_v5.html etc.)
-- git history = version history. Every commit is a restore point.
-- Auto-push to `staging` after every change - no approval needed.
-- NEVER merge to master or push master without explicit user approval.
-
-## Page Layout Defaults
-
-Every new page must include the logo in the top-left corner (small, ~40-48px height), unless the user says otherwise. Example:
-
-```html
-<img src="/logo.png" alt="השקעות ללוחמים" style="height:44px;position:fixed;top:16px;left:16px;z-index:100;" />
-```
-
-Adjust position/size to fit the page design, but always top-left, always small.
-
-## API
-- [api/send-notification.js](api/send-notification.js) - Vercel serverless function for push notifications
+## קשור
+[[core/brand/colors]] · [[core/design-refs/README]] · [[projects/dashboard/CLAUDE]] · [[projects/campaign/CLAUDE]]
