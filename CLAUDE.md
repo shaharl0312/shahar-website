@@ -50,7 +50,7 @@ Vercel בונה אוטומטית בכל פוש. `vercel.json` מריץ `sh _infr
 
 - `_infra/dist/` נוצר אוטומטית. לעולם לא לערוך שם.
 - אין קבצי גרסאות. הקובץ החי הוא תמיד `index.html`. הגיט הוא ההיסטוריה.
-- ב-`funnel-hadracha` יש `optin.html` + `optin-v2.html` - **לא ברור מי החי**, לשאול את שחר לפני שנוגעים. `video.html`/`video-v2.html` נמחקו (2026-08-19, לא בשימוש).
+- `funnel-hadracha/optin-v2.html` הוא דף ה-opt-in החי (`/guide/`). `optin.html` ו-`video.html`/`video-v2.html` נמחקו (2026-08-19, אושר על ידי שחר - לא בשימוש).
 
 ## קשור
 [[core/brand/colors]] · [[core/design-refs/README]] · [[projects/dashboard/CLAUDE]] · [[projects/campaign/CLAUDE]]
