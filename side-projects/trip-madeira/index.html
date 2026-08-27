@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<title>פראג ומיידרה, 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --gold:      #C9A84C;
+    --gold-l:    #b3903a;
+    --gold-g:    rgba(201,168,76,.1);
+    --gold-b:    rgba(201,168,76,.35);
+    --dark:      #ffffff;
+    --dark-2:    #fbfaf6;
+    --bg-3:      #f7f6f0;
+    --bg-3h:     #f0efe6;
+    --navy:      #C9A84C;
+    --navy-g:    rgba(201,168,76,.1);
+    --navy-b:    rgba(201,168,76,.35);
+    --navy-tint: #b3903a;
+    --text:      #04471f;
+    --text-muted:#5b6a5f;
+    --text-dim:  #93a096;
+    --border:    rgba(28,36,32,.1);
+    --border-s:  rgba(28,36,32,.18);
+    --green:     #046A38;
+    --green-g:   rgba(4,106,56,.08);
+    --green-b:   rgba(4,106,56,.3);
+    --red:       #DA020E;
+    --red-g:     rgba(218,2,14,.07);
+    --red-b:     rgba(218,2,14,.28);
+    --r-s:8px; --r-m:12px; --r-l:16px; --r-xl:22px;
+    --ease:240ms ease;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;background:var(--dark);}
+  body{
+    font-family:'Noto Sans Hebrew',system-ui,sans-serif;
+    background:var(--dark); color:var(--text-muted);
+    font-size:17px; line-height:1.7; direction:rtl; text-align:right;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  a:focus-visible,summary:focus-visible{outline:2px solid var(--gold); outline-offset:3px; border-radius:4px;}
+  h1,h2,h3{color:var(--text); font-weight:700; text-wrap:balance;}
+  h1{font-size:clamp(30px,5.2vw,52px); line-height:1.13; letter-spacing:-.5px;}
+  h2{font-size:clamp(22px,3.4vw,32px); line-height:1.22; letter-spacing:-.3px;}
+  h3{font-size:16px;}
+  p{color:var(--text-muted); max-width:66ch;}
+  .ltr{direction:ltr;unicode-bidi:isolate;font-variant-numeric:tabular-nums; font-family:'Plus Jakarta Sans',sans-serif;}
+  @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;} html{scroll-behavior:auto;}}
+
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  .sec{padding:64px 0;border-bottom:1px solid var(--border);}
+  .sec:last-of-type{border-bottom:none;}
+  .section-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:20px;}
+  .section-head .tag{font-size:12.5px;color:var(--text-dim);font-weight:500;}
+
+  .div-bar{width:44px;height:3px;background:linear-gradient(90deg,var(--gold),transparent);border-radius:2px;margin:16px 0 0;}
+
+  /* ── HERO ── */
+  header.hero{
+    position:relative; overflow:hidden;
+    padding:88px 0 56px;
+    background:var(--dark);
+  }
+  .hero-bg{
+    position:absolute; inset:0; pointer-events:none;
+    background:
+      radial-gradient(ellipse 70% 55% at 15% -10%, var(--green-g) 0%, transparent 58%),
+      radial-gradient(ellipse 50% 50% at 95% 10%, var(--red-g) 0%, transparent 55%);
+  }
+  header.hero .wrap{position:relative; z-index:1; padding:0 24px;}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--gold-g);border:1px solid var(--gold-b);color:var(--gold);font-size:12.5px;font-weight:600;padding:6px 16px;border-radius:40px;margin-bottom:22px;}
+  .eyebrow-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;}
+  .subtitle{color:var(--text-muted);font-size:17px;max-width:62ch;margin-top:16px;}
+  .stat-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;}
+  .stat{background:var(--bg-3);border:1px solid var(--border);border-radius:var(--r-m);padding:14px 18px;min-width:96px;transition:transform var(--ease),border-color var(--ease),background var(--ease);}
+  .stat:hover{transform:translateY(-3px);background:var(--bg-3h);border-color:var(--border-s);}
+  .stat .n{font-family:'Plus Jakarta Sans',sans-serif;font-size:23px;font-weight:800;color:var(--gold);display:block;}
+  .stat .l{font-size:12px;color:var(--text-dim);}
+
+  /* ── ALERTS ── */
+  .alert{display:flex;gap:14px;align-items:flex-start;background:var(--bg-3);border:1px solid var(--border);border-radius:var(--r-m);padding:16px 18px;margin-bottom:10px;}
+  .alert.fix{border-inline-start:3px solid var(--green);}
+  .alert.check{border-inline-start:3px solid var(--red);}
+  .alert .tag{flex:none;font-size:11px;font-weight:800;letter-spacing:.04em;border-radius:999px;padding:4px 10px;white-space:nowrap;}
+  .alert.fix .tag{color:var(--green);background:var(--green-g);border:1px solid var(--green-b);}
+  .alert.check .tag{color:var(--red);background:var(--red-g);border:1px solid var(--red-b);}
+  .alert p{color:var(--text-muted);font-size:14.5px;}
+  .alert p b{color:var(--text);}
+
+  /* ── VERDICT / CALLOUT ── */
+  .verdict{display:flex;gap:14px;background:var(--green-g);border:1px solid var(--green-b);border-right:4px solid var(--green);border-radius:var(--r-m);padding:22px 24px;margin-bottom:22px;}
+  .verdict .mark{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:22px;color:var(--green);flex-shrink:0;}
+  .callout{display:flex;gap:14px;background:var(--red-g);border:1px solid var(--red-b);border-right:4px solid var(--red);border-radius:var(--r-m);padding:22px 24px;margin:22px 0;}
+  .callout .mark{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:22px;color:var(--red);flex-shrink:0;}
+  .callout h3,.verdict h3{margin-bottom:6px; color:var(--text);}
+  .verdict p,.callout p{color:var(--text-muted);}
+
+  /* ── TIMELINE ── */
+  .timeline{display:flex;border-radius:var(--r-l);overflow:hidden;border:1px solid var(--border-s);}
+  .tl-seg{padding:16px 12px;position:relative;}
+  .tl-seg .place{font-weight:800;font-size:14.5px;color:#fff;}
+  .tl-seg .dates{font-size:11.5px;color:rgba(255,255,255,.82);margin-top:2px;}
+  .tl-seg .nights{font-size:11px;color:rgba(255,255,255,.7);margin-top:8px;}
+  .tl-seg.c1{background:linear-gradient(160deg,#2f9463,var(--green));flex:2;}
+  .tl-seg.c2{background:linear-gradient(160deg,#e4cd8f,var(--gold));flex:5;}
+  .tl-seg.c2 .place{color:#241d10;}
+  .tl-seg.c2 .dates{color:rgba(36,29,16,.75);}
+  .tl-seg.c2 .nights{color:rgba(36,29,16,.62);}
+  .tl-seg.c3{background:linear-gradient(160deg,#e2565f,var(--red));flex:2;}
+  .tl-seg.c4{background:linear-gradient(160deg,var(--green),#023f22);flex:6;}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;font-size:12.5px;color:var(--text-dim);}
+  .legend span{display:inline-flex;align-items:center;gap:6px;}
+  .legend i{width:10px;height:10px;border-radius:3px;display:inline-block;}
+
+  .table-scroll{overflow-x:auto;border-radius:12px;border:1px solid var(--border);}
+  table{width:100%;border-collapse:collapse;background:var(--bg-3);font-size:15px;}
+  th,td{padding:11px 14px;text-align:right;border-bottom:1px solid var(--border);white-space:nowrap;}
+  thead th{background:var(--bg-3h);font-weight:600;font-size:12.5px;color:var(--text-dim);}
+  tbody tr:last-child td{border-bottom:none;}
+  td.num,th.num{font-variant-numeric:tabular-nums;}
+  tfoot td{font-weight:700;background:var(--bg-3h);border-top:2px solid var(--border-s);color:var(--text);}
+
+  /* ── NAV ── */
+  .locnav{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:12px 0;}
+  .locnav .row{display:flex;gap:8px;overflow-x:auto;}
+  .locnav a{flex:none;font-size:13px;font-weight:700;color:var(--text-muted);background:var(--bg-3);border:1px solid var(--border);padding:8px 15px;border-radius:999px;white-space:nowrap;transition:transform var(--ease),color var(--ease),border-color var(--ease);min-height:36px;display:inline-flex;align-items:center;}
+  .locnav a:hover{color:var(--gold);border-color:var(--gold-b);transform:translateY(-2px);}
+
+  /* ── LEG ── */
+  .loc{scroll-margin-top:70px;}
+  .leg{background:var(--dark-2);border:1px solid var(--border);border-radius:16px;padding:30px;}
+  .leg-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:4px;}
+  .leg-dates{font-size:13px;color:var(--gold);font-weight:600;background:var(--gold-g);border:1px solid var(--gold-b);padding:6px 12px;border-radius:999px;white-space:nowrap;}
+  .leg-note{color:var(--text-muted);margin:10px 0 24px;}
+  .eyebrow-idx{font-size:12.5px;color:var(--text-dim);font-weight:600;margin-bottom:6px;letter-spacing:.03em;}
+
+  h3.subhead{font-family:'Noto Sans Hebrew',sans-serif;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);margin:30px 0 14px;}
+  h3.subhead:first-of-type{margin-top:0;}
+
+  /* ── HOTEL CARDS (live search) ── */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;}
+  a.card{border:1px solid var(--border);border-radius:12px;padding:17px;background:var(--bg-3);display:flex;flex-direction:column;gap:7px;text-decoration:none;color:inherit;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease,background .15s ease;}
+  a.card:hover,a.card:focus-visible{transform:translateY(-3px);border-color:var(--gold-b);background:var(--bg-3h);box-shadow:0 14px 32px -16px rgba(201,168,76,.35);}
+  a.card.pick{border-color:var(--gold-b);background:var(--gold-g);}
+  .badge{align-self:flex-start;font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--gold);color:#0a0a0b;}
+  a.card:not(.pick) .badge{background:var(--bg-3h);color:var(--text-dim);}
+  .card h4{font-family:'Noto Sans Hebrew';font-weight:700;font-size:15.5px;margin:0;color:var(--text);}
+  .card .place{font-size:12.5px;color:var(--text-dim);}
+  .card .meta{font-size:13px;color:var(--text-muted);}
+  .price-row{display:flex;align-items:baseline;gap:8px;margin-top:auto;padding-top:10px;border-top:1px dashed var(--border);}
+  .price-row .total{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:18px;color:var(--gold);}
+  .price-row .per-night{font-size:12.5px;color:var(--text-dim);}
+  .rating{font-size:13px;color:var(--gold-l);font-weight:600;font-variant-numeric:tabular-nums;}
+  .rating span{color:var(--text-dim);font-weight:400;}
+  .platform{font-size:11.5px;color:var(--navy-tint);font-weight:600;display:flex;align-items:center;gap:4px;}
+  .platform .arrow{transition:transform .15s ease;}
+  a.card:hover .platform .arrow{transform:translateX(-3px);}
+  .search-link{display:inline-block;margin-top:16px;font-size:13.5px;font-weight:600;color:var(--gold);}
+  .search-link:hover{color:var(--gold-l);}
+  .caveat-card{border:1px dashed var(--red-b);border-radius:12px;padding:14px 16px;background:var(--red-g);font-size:13px;color:var(--text);margin-top:12px;}
+
+  /* ── DAYS ── */
+  .days{display:grid;gap:9px;margin-top:2px;}
+  .day{background:var(--bg-3);border:1px solid var(--border);border-radius:var(--r-l);overflow:hidden;}
+  .day>summary{list-style:none;cursor:pointer;padding:14px 17px;display:flex;align-items:center;gap:13px;transition:background var(--ease);}
+  .day>summary:hover{background:var(--bg-3h);}
+  .day>summary::-webkit-details-marker{display:none;}
+  .day .datebadge{flex:none;background:var(--bg-3h);border:1px solid var(--border-s);color:var(--text);border-radius:var(--r-s);padding:5px 10px;font-size:12px;font-weight:800;text-align:center;min-width:44px;font-family:'Plus Jakarta Sans',sans-serif;}
+  .day .datebadge .dow{display:block;font-size:9.5px;font-weight:600;color:var(--text-dim);}
+  .day .title{font-weight:700;font-size:14.5px;color:var(--text);flex:1;}
+  .day .chev{color:var(--text-dim);transition:transform .15s ease;flex:none;}
+  .day[open] .chev{transform:rotate(90deg);color:var(--gold);}
+  .day .body{padding:0 17px 18px;border-top:1px solid var(--border);}
+  .blocks{display:grid;gap:10px;margin-top:14px;}
+  .block{display:flex;gap:13px;}
+  .block .when{flex:none;width:50px;font-size:11.5px;font-weight:800;color:var(--text-dim);padding-top:2px;}
+  .block .what{font-size:14px;color:var(--text-muted);}
+  .block .what ul{margin:4px 0 0;padding-inline-start:18px;list-style:disc;}
+  .block .what li{margin:2px 0;}
+
+  .hikebox{margin-top:13px;background:var(--dark-2);border:1px solid var(--border);border-radius:var(--r-m);padding:13px 15px;font-size:13px;color:var(--text-muted);}
+  .hikebox .row{display:flex;gap:13px;flex-wrap:wrap;margin-bottom:7px;}
+  .hikebox .stat2 b{color:var(--text);}
+  .status{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:800;border-radius:999px;padding:3px 10px;}
+  .status.open{background:var(--green-g);color:var(--green);border:1px solid var(--green-b);}
+  .status.partial{background:var(--red-g);color:var(--red);border:1px solid var(--red-b);}
+
+  footer{padding:46px 0 64px;color:var(--text-dim);font-size:13px;text-align:center;}
+  footer p{margin:6px auto 0;max-width:60ch;}
+
+  @media(max-width:600px){ .leg{padding:20px;} header.hero{padding:44px 16px 32px;} }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap">
+    <span class="eyebrow"><span class="eyebrow-dot"></span>מסלול מאומת + חיפוש לינה חי</span>
+    <h1>פראג ומיידרה</h1>
+    <p class="subtitle">16 ימים, ארבעה מבוגרים, <span class="ltr">15–30.9.2026</span>. השלד נבדק מול מצב השבילים, המעבורת ומזג האוויר, ולצידו חיפוש לינה חי ב-Airbnb וב-Booking לכל אחת מארבע התחנות — כל כרטיס מקושר ישירות לדף ההזמנה עם התאריכים כבר מוזנים.</p>
+    <div class="stat-row">
+      <div class="stat"><span class="n ltr">16</span><span class="l">ימים</span></div>
+      <div class="stat"><span class="n ltr">15</span><span class="l">לילות</span></div>
+      <div class="stat"><span class="n ltr">4</span><span class="l">תחנות</span></div>
+      <div class="stat"><span class="n ltr">4</span><span class="l">נוסעים</span></div>
+      <div class="stat"><span class="n ltr">3</span><span class="l">טרקים עיקריים</span></div>
+      <div class="stat"><span class="n ltr">1</span><span class="l">מעבורת</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="section-head"><h2>האם זה תכנון טוב?</h2><span class="tag">חוות דעת עצמאית</span></div>
+    <div class="div-bar" style="margin-bottom:22px;"></div>
+
+    <div class="verdict">
+      <div class="mark">✓</div>
+      <div>
+        <h3>כן — ואחרי התיקונים שכבר הוכנסו, זה מסלול מוצלח במיוחד למשפחה שלכם.</h3>
+        <p>חלוקת 2/5/2/6 הלילות נכונה חשבונית, וההיגיון מאחוריה טוב: אין נסיעות מיותרות בין בסיסים, כל יום נחיתה או המראה נשאר "ריק" בכוונה, וששת הלילות במערב האי בסוף הטיול הם באמת הבלם המתאים אחרי שבוע וחצי אינטנסיבי. גם ההחלטה להחליף רכב שכור במעבורת+טיסה קצרה לפורטו סנטו הגיונית — זה חוסך לוגיסטיקה מיותרת של החזרת רכב-חניה-לקיחת רכב מחדש עבור שני לילות בלבד.</p>
+      </div>
+    </div>
+
+    <p>שני דברים חשוב לדעת לפני שסוגרים לינה. ראשית, גיל הילדים — בן 23 ובת 16 — אומר שבכל תחנה כדאי להעדיף דירת שני חדרי שינה על פני חדר מלון כפול: בבדיקה זה כמעט תמיד גם יותר זול לארבעה, וגם נותן לכל אחד פינה משלו. שנית, הפריט היחיד שעדיין תלוי הוא לוח הזמנים המדויק של Porto Santo Line ל-22/9 — האתר הרשמי עדיין לא חושף את לוח ספטמבר 2026, ולכן אל תסגרו לינה בפורטו סנטו ללא ביטול חינם עד שמאמתים את שעת ההפלגה, או תכננו מראש את חלופת הטיסה של Binter (כ-14 טיסות בשבוע, כ-25 דקות, גיבוי זמין ונוח).</p>
+
+    <div class="callout">
+      <div class="mark">!</div>
+      <div>
+        <h3>שתי נקודות נוספות</h3>
+        <p>ספטמבר נוח במיידרה (ימים באמצע ה-20°C, ים כ-23°C), אבל גם בתוך העונה שבה שיירי סופות אטלנטיות מדי פעם משבשים מעבורות — סיבה נוספת לא לנעול לינה בלתי ניתנת לביטול בפורטו סנטו. וכדאי לוודא שביטוח הרכב השכור כולל כיסוי מלא לכבישי ההרים הצרים (Pico do Arieiro, סנטנה, ריביירו פריו) — לא מסוכן, אבל שונה משכירות "רגילה", ושווה לבדוק מול חברת ההשכרה מראש.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="section-head"><h2>תיקונים ודברים לאמת</h2><span class="tag">מהבדיקה מול המקור</span></div>
+    <div class="div-bar" style="margin-bottom:22px;"></div>
+    <div class="alert fix"><span class="tag">תוקן</span><p>פרק א' נכתב בטעות "ליסבון" — כל התיאור שם הוא בפועל <b>פראג</b>.</p></div>
+    <div class="alert fix"><span class="tag">תוקן</span><p><span class="ltr">15–30/9</span> הם 16 ימים / 15 לילות. חלוקה: <b>2 פראג · 5 פונשל · 2 פורטו סנטו · 6 קלהטה/פונטה דו סול</b> — שישה לילות במערב נותנים יום בטן-גב אמיתי במקום עוד יום נהיגה.</p></div>
+    <div class="alert fix"><span class="tag">תוקן</span><p><span class="ltr">Pico do Arieiro</span> (<span class="ltr">1,818</span> מ') <b>אינו</b> הפסגה הגבוהה במדיירה — <span class="ltr">Pico Ruivo</span> גבוה ממנו (<span class="ltr">1,862</span> מ').</p></div>
+    <div class="alert fix"><span class="tag">תוקן</span><p>שביל <span class="ltr">PR1</span> בין הפסגות פתוח כרגע רק עד <span class="ltr">Pedra Rija</span> — לא בנוי יום שלם על מעבר <span class="ltr">Arieiro→Ruivo</span> המלא.</p></div>
+    <div class="alert fix"><span class="tag">תוקן</span><p>הקטע <span class="ltr">Caldeirão Verde → Caldeirão do Inferno</span> (<span class="ltr">PR9</span>) סגור זמנית — מתוכנן רק עד <span class="ltr">Caldeirão Verde</span> וחזרה.</p></div>
+    <div class="alert check"><span class="tag">לאמת</span><p>לוח הפלגות <span class="ltr">Porto Santo Line</span> לספטמבר 2026 עדיין לא פורסם — לאמת את תאריך ה-<span class="ltr">22/9</span> לפני נעילת לינה בפורטו סנטו שאי אפשר לבטל.</p></div>
+    <div class="alert check"><span class="tag">לאמת</span><p>זמינות מסלולי <span class="ltr">PR1</span> ו-<span class="ltr">PR9</span> קרוב יותר למועד הטיול — שניהם פתוחים חלקית נכון להיום.</p></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="section-head"><h2>לוח הזמנים</h2><span class="tag">15 לילות, 4 תחנות</span></div>
+    <div class="div-bar" style="margin-bottom:22px;"></div>
+    <div class="timeline">
+      <div class="tl-seg c1"><div class="place">פראג</div><div class="dates ltr">15–17/9</div><div class="nights">2 לילות</div></div>
+      <div class="tl-seg c2"><div class="place">פונשל</div><div class="dates ltr">17–22/9</div><div class="nights">5 לילות</div></div>
+      <div class="tl-seg c3"><div class="place">פורטו סנטו</div><div class="dates ltr">22–24/9</div><div class="nights">2 לילות</div></div>
+      <div class="tl-seg c4"><div class="place">קלהטה</div><div class="dates ltr">24–30/9</div><div class="nights">6 לילות</div></div>
+    </div>
+    <div class="legend">
+      <span><i style="background:var(--green)"></i>פראג</span>
+      <span><i style="background:var(--gold)"></i>פונשל, מיידרה</span>
+      <span><i style="background:var(--red)"></i>פורטו סנטו</span>
+      <span><i style="background:#023f22"></i>קלהטה / פונטה דו סול</span>
+    </div>
+  </div>
+</section>
+
+<nav class="locnav">
+  <div class="wrap row">
+    <a href="#prague">פראג</a>
+    <a href="#funchal">פונשל</a>
+    <a href="#portosanto">פורטו סנטו</a>
+    <a href="#calheta">קלהטה</a>
+  </div>
+</nav>
+
+<!-- ============ PRAGUE ============ -->
+<section class="sec loc" id="prague">
+  <div class="wrap">
+    <div class="leg">
+      <p class="eyebrow-idx">תחנה 1 מתוך 4</p>
+      <div class="leg-head"><h2>פראג</h2><div class="leg-dates ltr">15–17/9 · 2 לילות</div></div>
+      <p class="leg-note">יום נחיתה קליל ויום מלא אחד — מספיק כדי לתפוס את העיר העתיקה והטירה בלי לדחוס אטרקציות ביום שאחרי טיסה. לילה אחד ממש נחוץ כאן, כך שדירה קרובה ל-Prague 1 / Nové Město חשובה יותר מגודלה. לחצו על כל כרטיס כדי לעבור ישירות לדף ההזמנה עם התאריכים והאורחים מוזנים:</p>
+
+      <h3 class="subhead">איפה לישון — חיפוש חי</h3>
+      <div class="cards">
+        <a class="card pick" href="https://www.airbnb.com/rooms/47871117?check_in=2026-09-15&check_out=2026-09-17&adults=4" target="_blank" rel="noopener">
+          <span class="badge">הבחירה שלי</span>
+          <h4>Royal Apartment Prague nr. 21</h4>
+          <div class="place">by Michal&amp;Friends · מפוזר במרכז פראג</div>
+          <div class="meta">2 חדרי שינה · 5 מיטות · 1.5 חדרי רחצה</div>
+          <div class="rating">4.93 ★ <span>(277 ביקורות · Guest Favorite)</span></div>
+          <div class="price-row"><span class="total">₪803 סה"כ</span><span class="per-night">≈ €232 · ≈ €116 ללילה</span></div>
+          <div class="platform">Airbnb <span class="arrow">←</span></div>
+        </a>
+        <a class="card" href="https://www.airbnb.com/rooms/23855809?check_in=2026-09-15&check_out=2026-09-17&adults=4" target="_blank" rel="noopener">
+          <span class="badge">הכי מרכזי</span>
+          <h4>Cozy New Stylish Apartment</h4>
+          <div class="place">Old Town center · ממש בעיר העתיקה</div>
+          <div class="meta">2 חדרי שינה · 4 מיטות · חדר רחצה 1</div>
+          <div class="rating">4.89 ★ <span>(513 ביקורות · Guest Favorite)</span></div>
+          <div class="price-row"><span class="total">₪914 סה"כ</span><span class="per-night">≈ €264 · ≈ €132 ללילה</span></div>
+          <div class="platform">Airbnb <span class="arrow">←</span></div>
+        </a>
+        <a class="card" href="https://www.airbnb.com/rooms/1269758818455422016?check_in=2026-09-15&check_out=2026-09-17&adults=4" target="_blank" rel="noopener">
+          <span class="badge">חסכוני</span>
+          <h4>Apartment with Private Parking</h4>
+          <div class="place">Prague 4 · כ-20 דק' מהמרכז</div>
+          <div class="meta">2 חדרי שינה · 3 מיטות · Superhost</div>
+          <div class="rating">4.79 ★ <span>(80 ביקורות)</span></div>
+          <div class="price-row"><span class="total">₪410 סה"כ</span><span class="per-night">≈ €118 · ≈ €59 ללילה</span></div>
+          <div class="platform">Airbnb <span class="arrow">←</span></div>
+        </a>
+      </div>
+      <a class="search-link" href="https://www.airbnb.com/s/Prague--Czech-Republic/homes?checkin=2026-09-15&checkout=2026-09-17&adults=4&min_bedrooms=2" target="_blank" rel="noopener">לפתוח את כל תוצאות החיפוש בפראג ←</a>
+
+      <h3 class="subhead">הימים</h3>
+      <div class="days">
+        <details class="day" open>
+          <summary><span class="datebadge"><span class="dow">ג'</span><span class="ltr">15/9</span></span><span class="title">נחיתה והתאקלמות</span><span class="chev">›</span></summary>
+          <div class="body">
+            <div class="blocks">
+              <div class="block"><span class="when">אחה"צ</span><span class="what">נחיתה → מלון → מנוחה קצרה</span></div>
+              <div class="block"><span class="when">ערב</span><span class="what"><ul><li>כיכר העיר העתיקה ו-Astronomical Clock</li><li>הליכה ברחובות ה-Old Town</li><li>ארוחת ערב</li><li>אם יש כוח — גיחה קצרה ל-Charles Bridge בלילה</li></ul></span></div>
+            </div>
+          </div>
+        </details>
+        <details class="day">
+          <summary><span class="datebadge"><span class="dow">ד'</span><span class="ltr">16/9</span></span><span class="title">יום מלא — הטירה והעיר העתיקה</span><span class="chev">›</span></summary>
+          <div class="body">
+            <div class="blocks">
+              <div class="block"><span class="when">בוקר</span><span class="what">Prague Castle · St. Vitus Cathedral · ירידה דרך Mala Strana</span></div>
+              <div class="block"><span class="when">צהריים</span><span class="what">ארוחה באזור Kampa / Mala Strana</span></div>
+              <div class="block"><span class="when">אחה"צ</span><span class="what">Charles Bridge · Old Town · קצת קניות לנערה בת 16</span></div>
+              <div class="block"><span class="when">ערב</span><span class="what">ארוחת ערב טובה — ואפשר להשאיר לצעירים שעה-שעתיים עצמאיות במרכז</span></div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FUNCHAL ============ -->
+<section class="sec loc" id="funchal">
+  <div class="wrap">
+    <div class="leg">
+      <p class="eyebrow-idx">תחנה 2 מתוך 4</p>
+      <div class="leg-head"><h2>פונשל, מיידרה</h2><div class="leg-dates ltr">17–22/9 · 5 לילות</div></div>
+      <p class="leg-note">בסיס לטרקים העיקריים של האי. רכב נלקח כבר עם ההגעה, אבל לא בשימוש בערב הראשון. זו גם התחנה היקרה ביותר בטיול — Zona Velha (העיר העתיקה) ו-Santa Maria/Sé נותנות את שילוב המחיר-מיקום הכי טוב, הליכה לים ולמסעדות בלי צורך ברכב בערב.</p>
+
+      <h3 class="subhead">איפה לישון — חיפוש חי</h3>
+      <div class="cards">
+        <a class="card pick" href="https://www.airbnb.com/rooms/1008117992154657165?check_in=2026-09-17&check_out=2026-09-22&adults=4" target="_blank" rel="noopener">
+          <span class="badge">הבחירה שלי</span>
+          <h4>Old Zone Apartment - 2º B</h4>
+          <div class="place">Zona Velha · העיר העתיקה</div>
+          <div class="meta">2 חדרי שינה · 3 מיטות · חדר רחצה 1</div>
+          <div class="rating">4.89 ★ <span>(98 ביקורות · Guest Favorite)</span></div>
+          <div class="price-row"><span class="total">₪2,402 סה"כ</span><span class="per-night">≈ €694 · ≈ €139 ללילה</span></div>
+          <div class="platform">Airbnb <span class="arrow">←</span></div>
+        </a>
+        <a class="card" href="https://www.booking.com/hotel/pt/ferreiros-184.en-gb.html?checkin=2026-09-17&checkout=2026-09-22&group_adults=4&no_rooms=1" target="_blank" rel="noopener">
+          <span class="badge">הכי הרבה ביקורות</span>
+          <h4>Ferreiros 184</h4>
+          <div class="place">São Pedro · 400 מ' מהמרכז</div>
+          <div class="meta">2 חדרי שינה · 3 מיטות · 50 מ"ר · ציון 9.2</div>
+          <div class="rating">9.2/10 <span>(169 ביקורות)</span></div>
+          <div class="price-row"><span class="total">₪2,845 סה"כ</span><span class="per-night">≈ €822 · ≈ €164 ללילה</span></div>
+          <div class="platform">Booking.com <span class="arrow">←</span></div>
+        </a>
+        <a class="card" href="https://www.airbnb.com/rooms/22996809?check_in=2026-09-17&check_out=2026-09-22&adults=4" target="_blank" rel="noopener">
+          <span class="badge">הכי מרווח</span>
+          <h4>Casa Primavera</h4>
+          <div class="place">דופלקס משופץ · מרכז העיר</div>
+          <div class="meta">2 חדרי שינה · 4 מיטות · 2 חדרי רחצה</div>
+          <div class="rating">4.83 ★ <span>(232 ביקורות)</span></div>
+          <div class="price-row"><span class="total">₪2,627 סה"כ</span><span class="per-night">≈ €759 · ≈ €152 ללילה</span></div>
+          <div class="platform">Airbnb <span class="arrow">←</span></div>
+        </a>
+        <a class="card" href="https://www.airbnb.com/rooms/1037022166689009190?check_in=2026-09-17&check_out=2026-09-22&adults=4" target="_blank" rel="noopener">
+          <span class="badge">אם רוצים לפנק</span>
+          <h4>FabricaX — Center | Ocean</h4>
+          <div class="place">מרכז + נוף ים · שילוב נדיר</div>
+          <div class="meta">2 חדרי שינה · 2 מיטות · 2 חדרי רחצה</div>
+          <div class="rating">4.96 ★ <span>(51 ביקורות · Guest Favorite)</span></div>
+          <div class="price-row"><span class="total">₪3,790 סה"כ</span><span class="per-night">≈ €1,094 · ≈ €219 ללילה</span></div>
+          <div class="platform">Airbnb <span class="arrow">←</span></div>
+        </a>
+      </div>
+      <a class="search-link" href="https://www.airbnb.com/s/Funchal--Portugal/homes?checkin=2026-09-17&checkout=2026-09-22&adults=4&min_bedrooms=2" target="_blank" rel="noopener">לפתוח את כל תוצאות החיפוש בפונשל ←</a>
+
+      <h3 class="subhead">הימים</h3>
+      <div class="days">
+        <details class="day">
+          <summary><span class="datebadge"><span class="dow">ה'</span><span class="ltr">17/9</span></span><span class="title">הגעה למדיירה</span><span class="chev">›</span></summary>
+          <div class="body">
+            <div class="blocks">
+              <div class="block"><span class="when">יום</span><span class="what">טיסה פראג → מדיירה · איסוף רכב בנמל התעופה</span></div>
+              <div class="block"><span class="when">ערב</span><span class="what"><ul><li>מלון</li><li>Old Town ו-Rua de Santa Maria</li><li>מסעדה / בר</li></ul></span></div>
+            </div>
+          </div>
+        </details>
+        <details class="day">
+          <summary><span class="datebadge"><span class="dow">ו'</span><span class="ltr">18/9</span></span><span class="title">Ponta de São Lourenço</span><span class="chev">›</span></summary>
+          <div class="body">
+            <div class="blocks">
+              <div class="block"><span class="when">בוקר</span><span class="what">נסיעה מזרחה → Baía d'Abra → מסלול PR8</span></div>
+              <div class="block"><span class="when">אחה"צ</span><span class="what">Machico · ארוחה קלה · Praia de Machico · חזרה לפונשל</span></div>
+            </div>
+            <div class="hikebox">
+              <div class="row">
+                <span class="status open">● פתוח</span>
+                <span class="stat2">מסלול <b class="ltr">PR8</b></span>
+                <span class="stat2">כ-<b class="ltr">6 ק"מ</b> הלוך-חזור</span>
+                <span class="stat2">כ-<b class="ltr">2:30</b> שעות</span>
+                <span class="stat2">קושי <b>בינוני</b></span>
+              </div>
+              יום שלא לוותר עליו — נוף שונה לגמרי מהחלק הירוק של האי.
+            </div>
+          </div>
+        </details>
+        <details class="day">
+          <summary><span class="datebadge"><span class="dow">ש'</span><span class="ltr">19/9</span></span><span class="title">Pico do Arieiro + Santana — יום נופי</span><span class="chev">›</span></summary>
+          <div class="body">
+            <div class="blocks">
+              <div class="block"><span class="when">בוקר</span><span class="what">נסיעה מוקדמת ל-Pico do Arieiro · תצפיות · הליכה קצרה לפי מצב השביל</span></div>
+              <div class="block"><span class="when">צהריים</span><span class="what">Santana — בתים מסורתיים · עצירה לארוחה</span></div>
+              <div class="block"><span class="when">אחה"צ</span><span class="what">חזרה דרך Ribeiro Frio / Faial, לפי מזג האוויר</span></div>
+            </div>
+            <div class="hikebox">
+              <div class="row">
+                <span class="status partial">● חלקית פתוח</span>
+                <span class="stat2">מסלול <b class="ltr">PR1</b> פתוח רק עד <b class="ltr">Pedra Rija</b></span>
+              </div>
+              לא בונים יום הליכה מלא על הטרק — זהו יום תצפיות ונוף יותר משהו יום הליכה.
+            </div>
+          </div>
+        </details>
+        <details class="day">
+          <summary><span class="datebadge"><span class="dow">א'</span><span class="ltr">20/9</span></span><span class="title">Caldeirão Verde — היום הירוק</span><span class="chev">›</span></summary>
+          <div class="body">
+            <div class="blocks">
+              <div class="block"><span class="when">יום</span><span class="what">הליכה במסלול <span class="ltr">PR9</span> עד Caldeirão Verde וחזרה</span></div>
+              <div class="block"><span class="when">ערב</span><span class="what">ארוחת ערב רגועה בפונשל</span></div>
+            </div>
+            <div class="hikebox">
+              <div class="row">
+                <span class="status partial">● קטע סגור</span>
+                <span class="stat2">מסלול <b class="ltr">PR9</b></span>
+                <span class="stat2">קושי <b>בינוני</b></span>
+              </div>
+              הגרסה המלאה עד <span class="ltr">Caldeirão do Inferno</span> היא כ-<span class="ltr">17.4 ק"מ</span> וכ-<span class="ltr">6.5</span> שעות, אבל הקטע שאחרי Caldeirão Verde סגור זמנית — לא הופכים את זה ליום הליכה אקסטרימי.
+            </div>
+          </div>
+        </details>
+        <details class="day">
+          <summary><span class="datebadge"><span class="dow">ב'</span><span class="ltr">21/9</span></span><span class="title">יום קליל — פונשל וים</span><span class="chev">›</span></summary>
+          <div class="body">
+            <div class="blocks">
+              <div class="block"><span class="when">בוקר</span><span class="what">רכבל ל-Monte · Monte Palace או הגנים</span></div>
+              <div class="block"><span class="when">צהריים</span><span class="what">ארוחה בעיר</span></div>
+              <div class="block"><span class="when">אחה"צ</span><span class="what">חוף / בריכה במלון · אולי Cabo Girão אם נשאר כוח</span></div>
+              <div class="block"><span class="when">ערב</span><span class="what">ערב אחרון בפונשל</span></div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PORTO SANTO ============ -->
+<section class="sec loc" id="portosanto">
+  <div class="wrap">
+    <div class="leg">
+      <p class="eyebrow-idx">תחנה 3 מתוך 4</p>
+      <div class="leg-head"><h2>פורטו סנטו</h2><div class="leg-dates ltr">22–24/9 · 2 לילות</div></div>
+      <p class="leg-note">מעבורת בהלוך, טיסה קצרה בחזור — בלי רכב שכור. חוף של כ-9 ק"מ הוא כל הסיפור כאן. שני לילות בלבד, אז עדיפות למיקום הליכתי ב-Vila Baleira / Barroca על פני גודל.</p>
+
+      <div class="alert check" style="margin-top:0;margin-bottom:24px;">
+        <span class="tag">למה כך</span>
+        <p>לא לוקחים רכב שכור לאי. במקום זה: מעבורת <span class="ltr">22/9</span> מפונשל, וטיסת <span class="ltr">Binter</span> קצרה (כ-<span class="ltr">25–30</span> דקות) בחזרה ב-<span class="ltr">24/9</span>. חוסך רכב שכור → חניה → החזרה → המתנה בנמל → לקיחת רכב מחדש. <b>לפני תשלום סופי — לוודא את שעת המעבורת של 22/9</b> (ראו למעלה).</p>
+      </div>
+
+      <h3 class="subhead">איפה לישון — חיפוש חי</h3>
+      <div class="cards">
+        <a class="card pick" href="https://www.airbnb.com/rooms/694259986305536008?check_in=2026-09-22&check_out=2026-09-24&adults=4" target="_blank" rel="noopener">
+          <span class="badge">הבחירה שלי</span>
+          <h4>Apartment Near the Center</h4>
+          <div class="place">Barroca · הליכה לחוף ולעיר</div>
+          <div class="meta">2 חדרי שינה · 2 מיטות זוגיות · חדר רחצה 1</div>
+          <div class="rating">4.88 ★ <span>(125 ביקורות · Guest Favorite)</span></div>
+          <div class="price-row"><span class="total">₪1,245 סה"כ</span><span class="per-night">≈ €360 · ≈ €180 ללילה</span></div>
+          <div class="platform">Airbnb <span class="arrow">←</span></div>
+        </a>
+        <a class="card" href="https://www.airbnb.com/rooms/23519846?check_in=2026-09-22&check_out=2026-09-24&adults=4" target="_blank" rel="noopener">
+          <span class="badge">הציון הגבוה ביותר</span>
+          <h4>Slowing Villas — Villa Oceano</h4>
+          <div class="place">Vila Baleira · ממש במרכז הכפר</div>
+          <div class="meta">2 חדרי שינה · 3 מיטות · 2 חדרי רחצה</div>
+          <div class="rating">5.0 ★ <span>(19 ביקורות · Guest Favorite)</span></div>
+          <div class="price-row"><span class="total">₪1,408 סה"כ</span><span class="per-night">≈ €407 · ≈ €203 ללילה</span></div>
+          <div class="platform">Airbnb <span class="arrow">←</span></div>
+        </a>
+        <a class="card" href="https://www.airbnb.com/rooms/1749305522381366268?check_in=2026-09-22&check_out=2026-09-24&adults=4" target="_blank" rel="noopener">
+          <span class="badge">חסכוני (בלי ביקורות עדיין)</span>
+          <h4>Garden Family Apartment</h4>
+          <div class="place">Vila Baleira · Superhost, מקום חדש</div>
+          <div class="meta">2 חדרי שינה · 5 מיטות · חדר רחצה 1</div>
+          <div class="rating">Superhost <span>· ללא ביקורות עדיין</span></div>
+          <div class="price-row"><span class="total">₪809 סה"כ</span><span class="per-night">≈ €234 · ≈ €117 ללילה</span></div>
+          <div class="platform">Airbnb <span class="arrow">←</span></div>
+        </a>
+      </div>
+      <a class="search-link" href="https://www.airbnb.com/s/Porto-Santo--Portugal/homes?checkin=2026-09-22&checkout=2026-09-24&adults=4" target="_blank" rel="noopener">לפתוח את כל תוצאות החיפוש בפורטו סנטו ←</a>
+      <div class="caveat-card">שימו לב: <b>Hotel Porto Santo &amp; Spa</b> יפה מאוד אבל לא ברשימת החיפוש החי כאן — אם בודקים אותו בנפרד, לוודא חלוקת חדרים, כי חלק מהסוגים מיועדים לזוג + ילד ולא לארבעה מבוגרים.</div>
+
+      <h3 class="subhead">הימים</h3>
+      <div class="days">
+        <details class="day">
+          <summary><span class="datebadge"><span class="dow">ג'</span><span class="ltr">22/9</span></span><span class="title">מעבורת והתאקלמות — רק חוף</span><span class="chev">›</span></summary>
+          <div class="body">
+            <div class="blocks">
+              <div class="block"><span class="when">בוקר</span><span class="what">מעבורת מפונשל · הגעה · צ'ק-אין</span></div>
+              <div class="block"><span class="when">אחה"צ</span><span class="what">רק חוף — לא לתכנן "טיול באי" ביום הזה. החוף המרכזי משתרע על כ-9 ק"מ.</span></div>
+              <div class="block"><span class="when">ערב</span><span class="what">Vila Baleira · מסעדה · הליכה על החוף</span></div>
+            </div>
+          </div>
+        </details>
+        <details class="day">
+          <summary><span class="datebadge"><span class="dow">ד'</span><span class="ltr">23/9</span></span><span class="title">חוף בבוקר, סיבוב באי אחה"צ</span><span class="chev">›</span></summary>
+          <div class="body">
+            <div class="blocks">
+              <div class="block"><span class="when">בוקר</span><span class="what">בוקר רגוע בחוף</span></div>
+              <div class="block"><span class="when">אחה"צ</span><span class="what">סיבוב באי: Miradouro da Portela · Pico do Castelo · נקודות תצפית · חזרה לחוף</span></div>
+            </div>
+            <div class="hikebox">פורטו סנטו יבשה ושטוחה בהרבה ממדיירה — ים + חופים + רוגע, לא טבע דרמטי. בספטמבר טמפרטורות ממוצעות באמצע ה-<span class="ltr">20°C</span>, ים סביב <span class="ltr">23°C</span>.</div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CALHETA ============ -->
+<section class="sec loc" id="calheta">
+  <div class="wrap">
+    <div class="leg">
+      <p class="eyebrow-idx">תחנה 4 מתוך 4</p>
+      <div class="leg-head"><h2>קלהטה / ארקו דה קלהטה</h2><div class="leg-dates ltr">24–30/9 · 6 לילות</div></div>
+      <p class="leg-note">טיסת <span class="ltr">Binter</span> קצרה חזרה למדיירה, ואז נסיעה מערבה. שישה לילות — הכי ארוך בטיול — נותנים גם ימי בטן-גב אמיתיים וגם בסיס נוח לנסיעות יום ברכב. כאן דווקא כדאי לשלם קצת יותר תמורת בריכה/מרפסת/נוף: יש רכב, אין צורך בהליכתיות. Estreito da Calheta ו-Arco da Calheta נותנים נסיעה קצרה גם לחוף קלהטה וגם לכפר פונטה דו סול.</p>
+
+      <h3 class="subhead">איפה לישון — חיפוש חי</h3>
+      <div class="cards">
+        <a class="card pick" href="https://www.airbnb.com/rooms/48182171?check_in=2026-09-24&check_out=2026-09-30&adults=4" target="_blank" rel="noopener">
+          <span class="badge">הבחירה שלי</span>
+          <h4>Villa Pinheira I</h4>
+          <div class="place">Estreito da Calheta · נוף ים, מודרני</div>
+          <div class="meta">2 חדרי שינה · 3 מיטות · Superhost</div>
+          <div class="rating">4.89 ★ <span>(54 ביקורות)</span></div>
+          <div class="price-row"><span class="total">₪3,030 סה"כ</span><span class="per-night">≈ €875 · ≈ €146 ללילה</span></div>
+          <div class="platform">Airbnb <span class="arrow">←</span></div>
+        </a>
+        <a class="card" href="https://www.airbnb.com/rooms/1120812168341112813?check_in=2026-09-24&check_out=2026-09-30&adults=4" target="_blank" rel="noopener">
+          <span class="badge">הציון הגבוה ביותר</span>
+          <h4>Casa Sol &amp; Maré 1</h4>
+          <div class="place">Arco da Calheta</div>
+          <div class="meta">2 חדרי שינה · חדר רחצה 1</div>
+          <div class="rating">4.97 ★ <span>(77 ביקורות · Guest Favorite)</span></div>
+          <div class="price-row"><span class="total">₪3,289 סה"כ</span><span class="per-night">≈ €950 · ≈ €158 ללילה</span></div>
+          <div class="platform">Airbnb <span class="arrow">←</span></div>
+        </a>
+        <a class="card" href="https://www.airbnb.com/rooms/1731395838381899600?check_in=2026-09-24&check_out=2026-09-30&adults=4" target="_blank" rel="noopener">
+          <span class="badge">2 חדרי רחצה מלאים</span>
+          <h4>Villa Castanho III</h4>
+          <div class="place">Estreito da Calheta · Superhost, מקום חדש</div>
+          <div class="meta">2 חדרי שינה · 2 מיטות זוגיות · 2 חדרי רחצה</div>
+          <div class="rating">Superhost <span>· ללא ביקורות עדיין</span></div>
+          <div class="price-row"><span class="total">₪3,435 סה"כ</span><span class="per-night">≈ €992 · ≈ €165 ללילה</span></div>
+          <div class="platform">Airbnb <span class="arrow">←</span></div>
+        </a>
+        <a class="card" href="https://www.airbnb.com/rooms/13463072?check_in=2026-09-24&check_out=2026-09-30&adults=4" target="_blank" rel="noopener">
+          <span class="badge">אם רוצים לפנק — 3 חדרי שינה</span>
+          <h4>Casa Cro | Ocean View</h4>
+          <div class="place">Arco da Calheta · חדר לכל אחד</div>
+          <div class="meta">3 חדרי שינה · 4 מיטות · 2.5 חדרי רחצה</div>
+          <div class="rating">4.94 ★ <span>(201 ביקורות · Guest Favorite)</span></div>
+          <div class="price-row"><span class="total">₪4,950 סה"כ</span><span class="per-night">≈ €1,430 · ≈ €238 ללילה</span></div>
+          <div class="platform">Airbnb <span class="arrow">←</span></div>
+        </a>
+      </div>
+      <a class="search-link" href="https://www.airbnb.com/s/Calheta--Madeira--Portugal/homes?checkin=2026-09-24&checkout=2026-09-30&adults=4&min_bedrooms=2" target="_blank" rel="noopener">לפתוח את כל תוצאות החיפוש בקלהטה ←</a>
+
+      <h3 class="subhead">הימים</h3>
+      <div class="alert check" style="margin-top:2px;">
+        <span class="tag">פתוח</span>
+        <p>יום-יום מפורט לששת הלילות האלה עוד לא נסגר — בין <b>Ponta do Sol</b> (כפר, מסעדות, שקיעות) לבין <b>Calheta</b> (חוף ונוחות), עם רכב זמין לנסיעות יום. משלימים ברגע שמחליטים על כיוון.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="border-bottom:none;">
+  <div class="wrap">
+    <div class="section-head"><h2>לפני שסוגרים הזמנות</h2><span class="tag">רשימת בדיקה</span></div>
+    <div class="div-bar" style="margin-bottom:22px;"></div>
+    <p>המחירים נשלפו בזמן אמת מ-Airbnb ו-Booking.com לתאריכים ולמספר האורחים המדויקים (4 מבוגרים), והומרו משקלים ליורו לפי שער של כ-3.46 ₪ ליורו — הם ישתנו במידה מסוימת עד ההזמנה בפועל, ולכן הם אינדיקציה להשוואה ולא מחיר סופי מובטח. כל כרטיס מקושר ישירות לדף הנכס הספציפי; שווה לוודא בעצמכם את מדיניות הביטול המדויקת, את קומת הדירה (בעיר העתיקה של פונשל יש גם דירות ללא מעלית), ואת מרחק ההליכה בפועל לים או למרכז.</p>
+    <p>שני פריטים שעדיין טעונים אימות לפני נעילת תשלום שאינו ניתן לביטול: שעת המעבורת של Porto Santo Line ל-22/9, וזמינות מסלולי ה-PR1 וה-PR9 קרוב יותר למועד הטיול.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>נבנה מתוך בדיקת המסלול מול מצב השבילים, המעבורת ומזג האוויר הצפוי לספטמבר 2026, ומחירי לינה שנבדקו בזמן אמת · אוגוסט 2026.</p>
+  </div>
+</footer>
+
+</body>
+</html>
