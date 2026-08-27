@@ -24,6 +24,7 @@ cp agreement/index.html _infra/dist/agreement/index.html
 # Side projects
 mkdir -p _infra/dist/tzofim && cp -r side-projects/tzofim/. _infra/dist/tzofim/
 mkdir -p _infra/dist/schoolslide && cp -r side-projects/schoolslide/. _infra/dist/schoolslide/
+mkdir -p _infra/dist/trip-madeira && cp -r side-projects/trip-madeira/. _infra/dist/trip-madeira/
 
 # Warriors hub
 mkdir -p _infra/dist/warriors-hub/mifgash-1 _infra/dist/warriors-hub/mifgash-2 _infra/dist/warriors-hub/mifgash-3
