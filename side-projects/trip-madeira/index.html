@@ -10,28 +10,28 @@
 <style>
   :root{
     --gold:      #C9A84C;
-    --gold-l:    #d8bc6e;
-    --gold-g:    rgba(201,168,76,.12);
-    --gold-b:    rgba(201,168,76,.28);
-    --dark:      #09090b;
-    --dark-2:    #111114;
-    --bg-3:      rgba(255,255,255,.04);
-    --bg-3h:     rgba(255,255,255,.07);
-    --navy:      #1B3A6B;
-    --navy-g:    rgba(27,58,107,.22);
-    --navy-b:    rgba(27,58,107,.5);
-    --navy-tint: #9db4dd;
-    --text:      #f2f3f5;
-    --text-muted:#9ca3af;
-    --text-dim:  #5c636e;
-    --border:    rgba(255,255,255,.075);
-    --border-s:  rgba(255,255,255,.13);
-    --green:     #22c55e;
-    --green-g:   rgba(34,197,94,.1);
-    --green-b:   rgba(34,197,94,.28);
-    --red:       #ef4444;
-    --red-g:     rgba(239,68,68,.1);
-    --red-b:     rgba(239,68,68,.3);
+    --gold-l:    #b3903a;
+    --gold-g:    rgba(201,168,76,.1);
+    --gold-b:    rgba(201,168,76,.35);
+    --dark:      #ffffff;
+    --dark-2:    #fbfaf6;
+    --bg-3:      #f7f6f0;
+    --bg-3h:     #f0efe6;
+    --navy:      #C9A84C;
+    --navy-g:    rgba(201,168,76,.1);
+    --navy-b:    rgba(201,168,76,.35);
+    --navy-tint: #b3903a;
+    --text:      #1c2420;
+    --text-muted:#5b6a5f;
+    --text-dim:  #93a096;
+    --border:    rgba(28,36,32,.1);
+    --border-s:  rgba(28,36,32,.18);
+    --green:     #046A38;
+    --green-g:   rgba(4,106,56,.08);
+    --green-b:   rgba(4,106,56,.3);
+    --red:       #DA020E;
+    --red-g:     rgba(218,2,14,.07);
+    --red-b:     rgba(218,2,14,.28);
     --r-s:8px; --r-m:12px; --r-l:16px; --r-xl:22px;
     --ease:240ms ease;
   }
@@ -71,8 +71,8 @@
   .hero-bg{
     position:absolute; inset:0; pointer-events:none;
     background:
-      radial-gradient(ellipse 70% 55% at 18% -10%, rgba(201,168,76,.11) 0%, transparent 58%),
-      radial-gradient(ellipse 50% 50% at 92% 15%, var(--navy-g) 0%, transparent 55%);
+      radial-gradient(ellipse 70% 55% at 15% -10%, var(--green-g) 0%, transparent 58%),
+      radial-gradient(ellipse 50% 50% at 95% 10%, var(--red-g) 0%, transparent 55%);
   }
   header.hero .wrap{position:relative; z-index:1; padding:0 24px;}
   .eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--gold-g);border:1px solid var(--gold-b);color:var(--gold);font-size:12.5px;font-weight:600;padding:6px 16px;border-radius:40px;margin-bottom:22px;}
@@ -97,21 +97,24 @@
   /* ── VERDICT / CALLOUT ── */
   .verdict{display:flex;gap:14px;background:var(--green-g);border:1px solid var(--green-b);border-right:4px solid var(--green);border-radius:var(--r-m);padding:22px 24px;margin-bottom:22px;}
   .verdict .mark{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:22px;color:var(--green);flex-shrink:0;}
-  .callout{display:flex;gap:14px;background:var(--navy-g);border:1px solid var(--navy-b);border-right:4px solid var(--gold);border-radius:var(--r-m);padding:22px 24px;margin:22px 0;}
-  .callout .mark{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:22px;color:var(--gold);flex-shrink:0;}
+  .callout{display:flex;gap:14px;background:var(--red-g);border:1px solid var(--red-b);border-right:4px solid var(--red);border-radius:var(--r-m);padding:22px 24px;margin:22px 0;}
+  .callout .mark{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:22px;color:var(--red);flex-shrink:0;}
   .callout h3,.verdict h3{margin-bottom:6px; color:var(--text);}
-  .verdict p,.callout p{color:#c2cbd5;}
+  .verdict p,.callout p{color:var(--text-muted);}
 
   /* ── TIMELINE ── */
   .timeline{display:flex;border-radius:var(--r-l);overflow:hidden;border:1px solid var(--border-s);}
   .tl-seg{padding:16px 12px;position:relative;}
-  .tl-seg .place{font-weight:800;font-size:14.5px;color:#0a0a0b;}
-  .tl-seg .dates{font-size:11.5px;color:rgba(10,10,11,.7);margin-top:2px;}
-  .tl-seg .nights{font-size:11px;color:rgba(10,10,11,.6);margin-top:8px;}
-  .tl-seg.c1{background:linear-gradient(160deg,#e4cd8f,var(--gold));flex:2;}
-  .tl-seg.c2{background:linear-gradient(160deg,var(--gold-l),#b5923a);flex:5;}
-  .tl-seg.c3{background:linear-gradient(160deg,#8fa8d6,var(--navy-tint));flex:2;}
-  .tl-seg.c4{background:linear-gradient(160deg,var(--navy-tint),#6f89bd);flex:6;}
+  .tl-seg .place{font-weight:800;font-size:14.5px;color:#fff;}
+  .tl-seg .dates{font-size:11.5px;color:rgba(255,255,255,.82);margin-top:2px;}
+  .tl-seg .nights{font-size:11px;color:rgba(255,255,255,.7);margin-top:8px;}
+  .tl-seg.c1{background:linear-gradient(160deg,#2f9463,var(--green));flex:2;}
+  .tl-seg.c2{background:linear-gradient(160deg,#e4cd8f,var(--gold));flex:5;}
+  .tl-seg.c2 .place{color:#241d10;}
+  .tl-seg.c2 .dates{color:rgba(36,29,16,.75);}
+  .tl-seg.c2 .nights{color:rgba(36,29,16,.62);}
+  .tl-seg.c3{background:linear-gradient(160deg,#e2565f,var(--red));flex:2;}
+  .tl-seg.c4{background:linear-gradient(160deg,var(--green),#023f22);flex:6;}
   .legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;font-size:12.5px;color:var(--text-dim);}
   .legend span{display:inline-flex;align-items:center;gap:6px;}
   .legend i{width:10px;height:10px;border-radius:3px;display:inline-block;}
@@ -125,7 +128,7 @@
   tfoot td{font-weight:700;background:var(--bg-3h);border-top:2px solid var(--border-s);color:var(--text);}
 
   /* ── NAV ── */
-  .locnav{position:sticky;top:0;z-index:5;background:rgba(9,9,11,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:12px 0;}
+  .locnav{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:12px 0;}
   .locnav .row{display:flex;gap:8px;overflow-x:auto;}
   .locnav a{flex:none;font-size:13px;font-weight:700;color:var(--text-muted);background:var(--bg-3);border:1px solid var(--border);padding:8px 15px;border-radius:999px;white-space:nowrap;transition:transform var(--ease),color var(--ease),border-color var(--ease);min-height:36px;display:inline-flex;align-items:center;}
   .locnav a:hover{color:var(--gold);border-color:var(--gold-b);transform:translateY(-2px);}
@@ -264,10 +267,10 @@
       <div class="tl-seg c4"><div class="place">קלהטה</div><div class="dates ltr">24–30/9</div><div class="nights">6 לילות</div></div>
     </div>
     <div class="legend">
-      <span><i style="background:var(--gold)"></i>פראג</span>
-      <span><i style="background:var(--gold-l)"></i>פונשל, מיידרה</span>
-      <span><i style="background:#8fa8d6"></i>פורטו סנטו</span>
-      <span><i style="background:var(--navy-tint)"></i>קלהטה / פונטה דו סול</span>
+      <span><i style="background:var(--green)"></i>פראג</span>
+      <span><i style="background:var(--gold)"></i>פונשל, מיידרה</span>
+      <span><i style="background:var(--red)"></i>פורטו סנטו</span>
+      <span><i style="background:#023f22"></i>קלהטה / פונטה דו סול</span>
     </div>
   </div>
 </section>
