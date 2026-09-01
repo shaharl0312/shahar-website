@@ -1,5 +1,5 @@
 {
-  "buildCommand": "sh _infra/build_v6.sh",
+  "buildCommand": "sh _infra/build.sh",
   "outputDirectory": "_infra/dist",
   "trailingSlash": true,
   "headers": [
