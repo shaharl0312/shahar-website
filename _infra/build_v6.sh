@@ -40,6 +40,10 @@ cp my-app/ribit-derebit/index.html _infra/dist/my-app/ribit-derebit/index.html
 mkdir -p _infra/dist/guide && cp funnel-hadracha/optin-v2.html _infra/dist/guide/index.html
 cp -r funnel-hadracha/assets _infra/dist/guide/assets
 
+# Course funnel - free guide squeeze page, discharged-soldiers campaign variant
+mkdir -p _infra/dist/guide-hayalim && cp funnel-hadracha/optin-hayalim.html _infra/dist/guide-hayalim/index.html
+cp -r funnel-hadracha/assets _infra/dist/guide-hayalim/assets
+
 # Course sales page (course-landing variants) - v9 is primary
 mkdir -p _infra/dist/course && cp course-landing/v9-copy-refine.html _infra/dist/course/index.html
 mkdir -p _infra/dist/course-v9 && cp course-landing/v9-copy-refine.html _infra/dist/course-v9/index.html
