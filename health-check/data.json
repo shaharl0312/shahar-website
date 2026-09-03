@@ -10,13 +10,6 @@
       "details": "עולה תקין ופיקסל נמצא"
     },
     {
-      "name": "דף קורס ישן (v7)",
-      "url": "https://shaharfinance.com/course-v7/",
-      "pass": true,
-      "httpStatus": 200,
-      "details": "עולה תקין ופיקסל נמצא"
-    },
-    {
       "name": "דף תודה",
       "url": "https://shaharfinance.com/todah/",
       "pass": true,
