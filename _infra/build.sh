@@ -21,6 +21,10 @@ cp -r agreement/. _infra/dist/agreement/
 rm -rf _infra/dist/agreement/_archive
 cp agreement/index.html _infra/dist/agreement/index.html
 
+# Agreement — single meeting variant
+mkdir -p _infra/dist/agreement-one-meeting
+cp -r agreement-one-meeting/. _infra/dist/agreement-one-meeting/
+
 # Side projects
 mkdir -p _infra/dist/tzofim && cp -r side-projects/tzofim/. _infra/dist/tzofim/
 mkdir -p _infra/dist/schoolslide && cp -r side-projects/schoolslide/. _infra/dist/schoolslide/
