@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>הסכם לפגישת ייעוץ בודדת — שחר פייננס</title>
+  <link rel="icon" type="image/png" href="/logo.png" />
+  <script src="./shahar-signature.js" onerror="window.SHAHAR_SIGNATURE=null"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #F7F5F0; color: #2D2D2D; min-height: 100vh; padding: 2rem 1rem 4rem; }
+    .page { max-width: 720px; margin: 0 auto; }
+    header { text-align: center; margin-bottom: 2rem; }
+    header img { height: 68px; margin-bottom: 1rem; }
+    header h1 { font-size: 1.6rem; font-weight: 700; }
+    header p { color: #999; margin-top: 0.3rem; font-size: 0.88rem; }
+    .card { background: white; border-radius: 16px; padding: 1.8rem; margin-bottom: 1.2rem; box-shadow: 0 2px 14px rgba(0,0,0,0.06); }
+    .name-label { display: block; font-weight: 600; font-size: 0.85rem; color: #666; margin-bottom: 0.5rem; }
+    #clientName { width: 100%; padding: 0.85rem 1rem; border: 2px solid #e0ddd7; border-radius: 10px; font-size: 1.05rem; font-family: inherit; color: #2D2D2D; outline: none; transition: border-color 0.2s; background: #FAFAF8; }
+    #clientName:focus { border-color: #C9A84C; background: white; }
+    .agreement-scroll { max-height: 400px; overflow-y: auto; padding-left: 0.3rem; }
+    .agreement-scroll::-webkit-scrollbar { width: 4px; }
+    .agreement-scroll::-webkit-scrollbar-thumb { background: #C9A84C; border-radius: 2px; }
+    .intro-block { background: #F7F5F0; border-right: 3px solid #C9A84C; padding: 1rem 1.2rem; border-radius: 0 8px 8px 0; margin-bottom: 1.4rem; line-height: 1.8; font-size: 0.93rem; }
+    .gold { color: #C9A84C; font-weight: 700; }
+    .section { margin-bottom: 1.3rem; }
+    .section h2 { font-size: 0.92rem; font-weight: 700; margin-bottom: 0.7rem; padding-bottom: 0.35rem; border-bottom: 1px solid #f0ede8; color: #2D2D2D; }
+    .section p { font-size: 0.9rem; line-height: 1.85; color: #444; margin-bottom: 0.65rem; }
+    .section strong { color: #2D2D2D; }
+    .price-badge { background: #C9A84C; color: white; padding: 1px 7px; border-radius: 4px; font-weight: 700; }
+    .sig-label { font-weight: 700; font-size: 0.9rem; color: #555; margin-bottom: 0.7rem; }
+    .sig-wrap { border: 2px dashed #C9A84C; border-radius: 10px; background: #FAFAF8; position: relative; margin-bottom: 0.5rem; }
+    #clientSigCanvas { display: block; width: 100%; height: 150px; cursor: crosshair; border-radius: 8px; touch-action: none; }
+    .sig-placeholder { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #ccc; font-size: 0.88rem; pointer-events: none; }
+    .clear-sig { background: none; border: none; color: #bbb; font-size: 0.8rem; cursor: pointer; padding: 0.2rem 0; }
+    .clear-sig:hover { color: #999; }
+    #signBtn { width: 100%; padding: 1.1rem; background: #C9A84C; color: white; border: none; border-radius: 12px; font-size: 1.05rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: opacity 0.2s, transform 0.1s; }
+    #signBtn:hover { opacity: 0.9; }
+    #signBtn:active { transform: scale(0.99); }
+    #signBtn:disabled { opacity: 0.45; cursor: not-allowed; }
+    .fine-print { text-align: center; color: #bbb; font-size: 0.78rem; margin-top: 0.8rem; }
+    #loadingOverlay { display: none; position: fixed; inset: 0; background: rgba(247,245,240,0.92); align-items: center; justify-content: center; flex-direction: column; z-index: 200; gap: 1rem; }
+    #loadingOverlay.on { display: flex; }
+    .spinner { width: 42px; height: 42px; border: 3px solid #e0ddd7; border-top-color: #C9A84C; border-radius: 50%; animation: spin 0.75s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    #successCard { display: none; max-width: 720px; margin: 2rem auto; }
+    .success-body { text-align: center; padding: 2.5rem 1rem; }
+    .check-circle { width: 70px; height: 70px; background: #C9A84C; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.2rem; font-size: 2rem; color: white; }
+    .success-body h2 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+    .success-body p { color: #777; line-height: 1.7; font-size: 0.92rem; }
+  </style>
+</head>
+<body>
+
+<div id="loadingOverlay">
+  <div class="spinner"></div>
+  <p style="color:#999;font-size:0.9rem">מייצר את ה-PDF...</p>
+</div>
+
+<div class="page" id="mainPage">
+  <header>
+    <h1>הסכם לפגישת ייעוץ בודדת</h1>
+    <p>קרא את ההסכם ולאחר מכן חתום דיגיטלית</p>
+  </header>
+
+  <div class="card">
+    <label class="name-label" for="clientName">שם מלא</label>
+    <input id="clientName" type="text" placeholder="הכנס את שמך המלא" oninput="onNameChange()">
+  </div>
+
+  <div class="card">
+    <div class="agreement-scroll">
+      <div class="intro-block">
+        הסכם לפגישת ייעוץ בודדת: שחר לוי - שחר פייננס &amp; <span class="gold" id="nameInTitle">___________</span><br><br>
+        שלום, איזה כיף שמתחילים! המטרה של הפגישה שלנו היא לתת לך תמונה ברורה וכלים ראשוניים לבנות לעצמך עתיד כלכלי חכם בשוק ההון, בצורה פשוטה ופסיבית.
+      </div>
+      <div class="section">
+        <h2>1. מה כוללת הפגישה?</h2>
+        <p><strong>פגישת ייעוץ אישית אחת (אחד על אחד):</strong> הפגישה תתקיים בזום או במפגש פיזי, באורך ובתוכן שיתואמו מראש. נעבור על עקרונות ההשקעה הפסיבית, מושגי יסוד, ונבנה יחד תמונת מצב וכיוון להמשך.</p>
+        <p><strong>ליווי מוגבל בוואטסאפ:</strong> זמינות לשאלות המשך הקשורות ישירות לתוכן הפגישה, עד שבוע ממועד קיומה.</p>
+        <p>הפגישה הבודדת אינה כוללת ליווי שוטף, ביצוע פעולות משותף במערכת המסחר, או גישה לקורס הדיגיטלי - אלה חלק מחבילת הליווי המלאה בלבד.</p>
+      </div>
+      <div class="section">
+        <h2>2. הבהרה קריטית</h2>
+        <p>חשוב לי שנתואם על התפקיד שלי בתהליך:</p>
+        <p><strong>אני מדריך, לא יועץ:</strong> אני לא בעל רישיון לייעוץ השקעות לפי חוק. אני מלמד אותך איך לבחור ואיך המערכת עובדת, אך ההחלטה הסופית על כל קנייה, מכירה או סכום השקעה היא שלך בלבד.</p>
+        <p><strong>אחריות על הכסף:</strong> שוק ההון כרוך בסיכון ויכול לעלות וגם לרדת. כל רווח או הפסד הם באחריותך המלאה. אני לא מבטיח תשואות, אלא מעניק לך את הידע המקצועי לפעול בצורה חכמה.</p>
+      </div>
+      <div class="section">
+        <h2>3. תנאי תשלום וביטולים</h2>
+        <p><strong>תשלום:</strong> עלות הפגישה משולמת מראש, לפני קיומה.</p>
+        <p><strong>ביטול ושינוי מועד:</strong> ניתן לבטל או לדחות את הפגישה ללא עלות עד 24 שעות לפני המועד שנקבע, ולקבל החזר מלא. ביטול בפחות מ-24 שעות מראש, או אי-הגעה, אינם מזכים בהחזר.</p>
+        <p><strong>לאחר קיום הפגישה:</strong> משעה שהפגישה התקיימה, השירות נחשב כניתן במלואו ואינו ניתן לביטול או להחזר.</p>
+      </div>
+      <div class="section">
+        <h2>4. זכויות יוצרים ופרטיות</h2>
+        <p><strong>הכלים שלי:</strong> כל דפי ההסבר, המצגות או הטבלאות שאשלח לך הם לשימושך האישי בלבד. חל איסור להעביר, לשכפל או להפיץ אותם (זכויות היוצרים שייכות לשחר לוי).</p>
+        <p><strong>סודיות:</strong> כל המידע הכלכלי והאישי שתשתף איתי במהלך המפגשים יישאר בינינו בלבד ולא יועבר לשום גורם אחר.</p>
+      </div>
+      <div class="section">
+        <h2>5. שונות</h2>
+        <p>הסכם זה ממצה את כל ההבנות שבין הצדדים וגובר על כל סיכום קודם בעל פה.</p>
+        <p>במקרה של מחלוקת, סמכות השיפוט הבלעדית תהיה בבתי המשפט במחוז תל אביב/מרכז.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <p class="sig-label">חתימת המשתתף</p>
+    <div class="sig-wrap">
+      <canvas id="clientSigCanvas"></canvas>
+      <span class="sig-placeholder" id="sigHint">חתום כאן באצבע או בעכבר</span>
+    </div>
+    <button class="clear-sig" onclick="clearSig()">&#10005; נקה חתימה</button>
+  </div>
+
+  <button id="signBtn" onclick="signAgreement()">חתום &#8592;</button>
+  <p class="fine-print">בלחיצה על "חתום" אתה מאשר שקראת והסכמת לכל תנאי ההסכם</p>
+</div>
+
+<div class="card" id="successCard">
+  <div class="success-body">
+    <div class="check-circle">&#10003;</div>
+    <h2>ההסכם נחתם בהצלחה!</h2>
+    <p>ה-PDF הורד למכשיר שלך.<br>שחר קיבל עדכון ויצור איתך קשר בקרוב.</p>
+  </div>
+</div>
+
+<script>
+  const LOGO_B64 = null;
+
+  function onNameChange() {
+    const v = document.getElementById('clientName').value || '___________';
+    document.getElementById('nameInTitle').textContent = v;
+    document.getElementById('nameInGreeting').textContent = v;
+  }
+
+  const canvas = document.getElementById('clientSigCanvas');
+  const ctx = canvas.getContext('2d');
+  let drawing = false, signed = false, lx = 0, ly = 0;
+
+  function fitCanvas() {
+    const w = canvas.parentElement.clientWidth;
+    if (canvas.width === w) return;
+    if (signed) return;
+    canvas.width = w;
+    canvas.height = 150;
+    ctx.strokeStyle = '#2D2D2D';
+    ctx.lineWidth = 2.5;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+  }
+  fitCanvas();
+  let resizeTimer;
+  window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(fitCanvas, 200); });
+
+  function pos(e) {
+    const r = canvas.getBoundingClientRect();
+    const sx = canvas.width / r.width, sy = canvas.height / r.height;
+    if (e.touches) return { x: (e.touches[0].clientX - r.left) * sx, y: (e.touches[0].clientY - r.top) * sy };
+    return { x: (e.clientX - r.left) * sx, y: (e.clientY - r.top) * sy };
+  }
+  function startDraw(e) { drawing = true; const p = pos(e); lx = p.x; ly = p.y; document.getElementById('sigHint').style.display = 'none'; }
+  function draw(e) { if (!drawing) return; const p = pos(e); ctx.beginPath(); ctx.moveTo(lx, ly); ctx.lineTo(p.x, p.y); ctx.stroke(); lx = p.x; ly = p.y; signed = true; }
+  function endDraw() { drawing = false; }
+  canvas.addEventListener('mousedown', startDraw);
+  canvas.addEventListener('mousemove', draw);
+  canvas.addEventListener('mouseup', endDraw);
+  canvas.addEventListener('mouseleave', endDraw);
+  canvas.addEventListener('touchstart', e => { e.preventDefault(); startDraw(e); }, { passive: false });
+  canvas.addEventListener('touchmove', e => { e.preventDefault(); draw(e); }, { passive: false });
+  canvas.addEventListener('touchend', endDraw);
+
+  function clearSig() { ctx.clearRect(0, 0, canvas.width, canvas.height); signed = false; document.getElementById('sigHint').style.display = 'flex'; }
+
+  function escapeName(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+  async function signAgreement() {
+    const name = document.getElementById('clientName').value.trim();
+    if (!name) { alert('נא להכניס שם מלא'); document.getElementById('clientName').focus(); return; }
+    if (!signed) { alert('נא לחתום בשטח החתימה'); return; }
+    const overlay = document.getElementById('loadingOverlay');
+    overlay.classList.add('on');
+    document.getElementById('signBtn').disabled = true;
+    try {
+      await buildPDF(name);
+      notifyEmail(name);
+      document.getElementById('mainPage').style.display = 'none';
+      document.getElementById('successCard').style.display = 'block';
+    } catch (err) {
+      console.error(err);
+      alert('אירעה שגיאה. נסה שוב.');
+      document.getElementById('signBtn').disabled = false;
+    } finally {
+      overlay.classList.remove('on');
+    }
+  }
+
+  async function buildPDF(name) {
+    const safeName = escapeName(name);
+    const dateStr = new Date().toLocaleDateString('he-IL', { year: 'numeric', month: 'long', day: 'numeric' });
+    const clientSigB64 = canvas.toDataURL('image/png');
+    const shaharSigB64 = window.SHAHAR_SIGNATURE || null;
+
+    const shaharSigHTML = shaharSigB64
+      ? `<img src="${shaharSigB64}" style="height:62px;display:block;margin:0 auto 4px;max-width:180px;width:100%;object-fit:contain;border-bottom:1px solid #ddd">`
+      : `<div style="height:62px;border-bottom:1px solid #ddd"></div>`;
+
+    const el = document.createElement('div');
+    el.style.cssText = 'position:absolute;left:-9999px;top:0;width:794px;background:#fff;font-family:Arial,sans-serif;color:#2D2D2D;font-size:13px;line-height:1.75;direction:rtl;padding:42px 50px;box-sizing:border-box';
+
+    el.innerHTML = `
+      <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid #C9A84C;padding-bottom:14px;margin-bottom:18px;direction:ltr">
+        <div style="text-align:right;direction:rtl">
+          <div style="font-size:16px;font-weight:700">הסכם לפגישת ייעוץ בודדת</div>
+          <div style="font-size:10px;color:#999;margin-top:3px">תאריך: ${dateStr}</div>
+        </div>
+      </div>
+      <div style="background:#F7F5F0;border-right:3px solid #C9A84C;padding:10px 14px;border-radius:0 6px 6px 0;margin-bottom:14px;font-size:12.5px">
+        הסכם לפגישת ייעוץ בודדת: שחר לוי - שחר פייננס &amp; <strong style="color:#C9A84C">${safeName}</strong><br><br>
+        שלום, איזה כיף שמתחילים! המטרה של הפגישה שלנו היא לתת לך תמונה ברורה וכלים ראשוניים לבנות לעצמך עתיד כלכלי חכם בשוק ההון, בצורה פשוטה ופסיבית.
+      </div>
+      <div style="margin-bottom:12px">
+        <div style="font-size:13px;font-weight:700;margin-bottom:6px;padding-bottom:4px;border-bottom:1px solid #eee">1. מה כוללת הפגישה?</div>
+        <p style="font-size:12px;color:#444;margin-bottom:4px"><strong>פגישת ייעוץ אישית אחת (אחד על אחד):</strong> הפגישה תתקיים בזום או במפגש פיזי, באורך ובתוכן שיתואמו מראש. נעבור על עקרונות ההשקעה הפסיבית, מושגי יסוד, ונבנה יחד תמונת מצב וכיוון להמשך.</p>
+        <p style="font-size:12px;color:#444;margin-bottom:4px"><strong>ליווי מוגבל בוואטסאפ:</strong> זמינות לשאלות המשך הקשורות ישירות לתוכן הפגישה, עד שבוע ממועד קיומה.</p>
+        <p style="font-size:12px;color:#444;margin-bottom:4px">הפגישה הבודדת אינה כוללת ליווי שוטף, ביצוע פעולות משותף במערכת המסחר, או גישה לקורס הדיגיטלי - אלה חלק מחבילת הליווי המלאה בלבד.</p>
+      </div>
+      <div style="margin-bottom:12px">
+        <div style="font-size:13px;font-weight:700;margin-bottom:6px;padding-bottom:4px;border-bottom:1px solid #eee">2. הבהרה קריטית</div>
+        <p style="font-size:12px;color:#444;margin-bottom:4px">חשוב לי שנתואם על התפקיד שלי בתהליך:</p>
+        <p style="font-size:12px;color:#444;margin-bottom:4px"><strong>אני מדריך, לא יועץ:</strong> אני לא בעל רישיון לייעוץ השקעות לפי חוק. אני מלמד אותך איך לבחור ואיך המערכת עובדת, אך ההחלטה הסופית על כל קנייה, מכירה או סכום השקעה היא שלך בלבד.</p>
+        <p style="font-size:12px;color:#444;margin-bottom:4px"><strong>אחריות על הכסף:</strong> שוק ההון כרוך בסיכון ויכול לעלות וגם לרדת. כל רווח או הפסד הם באחריותך המלאה. אני לא מבטיח תשואות, אלא מעניק לך את הידע המקצועי לפעול בצורה חכמה.</p>
+      </div>
+      <div style="margin-bottom:12px">
+        <div style="font-size:13px;font-weight:700;margin-bottom:6px;padding-bottom:4px;border-bottom:1px solid #eee">3. תנאי תשלום וביטולים</div>
+        <p style="font-size:12px;color:#444;margin-bottom:4px"><strong>תשלום:</strong> עלות הפגישה משולמת מראש, לפני קיומה.</p>
+        <p style="font-size:12px;color:#444;margin-bottom:4px"><strong>ביטול ושינוי מועד:</strong> ניתן לבטל או לדחות את הפגישה ללא עלות עד 24 שעות לפני המועד שנקבע, ולקבל החזר מלא. ביטול בפחות מ-24 שעות מראש, או אי-הגעה, אינם מזכים בהחזר.</p>
+        <p style="font-size:12px;color:#444;margin-bottom:4px"><strong>לאחר קיום הפגישה:</strong> משעה שהפגישה התקיימה, השירות נחשב כניתן במלואו ואינו ניתן לביטול או להחזר.</p>
+      </div>
+      <div style="margin-bottom:12px">
+        <div style="font-size:13px;font-weight:700;margin-bottom:6px;padding-bottom:4px;border-bottom:1px solid #eee">4. זכויות יוצרים ופרטיות</div>
+        <p style="font-size:12px;color:#444;margin-bottom:4px"><strong>הכלים שלי:</strong> כל דפי ההסבר, המצגות או הטבלאות שאשלח לך הם לשימושך האישי בלבד. חל איסור להעביר, לשכפל או להפיץ אותם (זכויות היוצרים שייכות לשחר לוי).</p>
+        <p style="font-size:12px;color:#444;margin-bottom:4px"><strong>סודיות:</strong> כל המידע הכלכלי והאישי שתשתף איתי במהלך המפגשים יישאר בינינו בלבד ולא יועבר לשום גורם אחר.</p>
+      </div>
+      <div style="margin-bottom:12px">
+        <div style="font-size:13px;font-weight:700;margin-bottom:6px;padding-bottom:4px;border-bottom:1px solid #eee">5. שונות</div>
+        <p style="font-size:12px;color:#444;margin-bottom:4px">הסכם זה ממצה את כל ההבנות שבין הצדדים וגובר על כל סיכום קודם בעל פה.</p>
+        <p style="font-size:12px;color:#444;margin-bottom:4px">במקרה של מחלוקת, סמכות השיפוט הבלעדית תהיה בבתי המשפט במחוז תל אביב/מרכז.</p>
+      </div>
+      <div style="margin-top:22px;border-top:1px solid #eee;padding-top:16px;display:flex">
+        <div style="flex:1;text-align:center;padding:0 10px">
+          <div style="font-size:11px;font-weight:700;margin-bottom:8px">חתימת המשתתף</div>
+          <img src="${clientSigB64}" style="height:62px;display:block;margin:0 auto 4px;max-width:200px;width:100%;object-fit:contain;border-bottom:1px solid #ddd">
+          <div style="font-size:10px;color:#777">${safeName}</div>
+        </div>
+        <div style="flex:1;text-align:center;padding:0 10px">
+          <div style="font-size:11px;font-weight:700;margin-bottom:8px">חתימת שחר לוי</div>
+          ${shaharSigHTML}
+          <div style="font-size:10px;color:#777">שחר לוי</div>
+        </div>
+      </div>
+      <div style="margin-top:16px;text-align:center;color:#ccc;font-size:9px;border-top:1px solid #f0f0f0;padding-top:10px">מסמך זה נחתם דיגיטלית • shaharfinance.com</div>
+    `;
+
+    document.body.appendChild(el);
+
+    try {
+      const cvs = await html2canvas(el, {
+        scale: 2,
+        useCORS: false,
+        allowTaint: false,
+        backgroundColor: '#ffffff',
+        logging: false
+      });
+
+      const imgData = cvs.toDataURL('image/jpeg', 0.92);
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+      const pw = doc.internal.pageSize.getWidth();
+      const ph = doc.internal.pageSize.getHeight();
+      const imgW = pw;
+      const imgH = (cvs.height * imgW) / cvs.width;
+
+      let heightLeft = imgH;
+      let pos = 0;
+      doc.addImage(imgData, 'JPEG', 0, pos, imgW, imgH);
+      heightLeft -= ph;
+      while (heightLeft > 0) {
+        doc.addPage();
+        pos -= ph;
+        doc.addImage(imgData, 'JPEG', 0, pos, imgW, imgH);
+        heightLeft -= ph;
+      }
+
+      doc.save('\u05D4\u05E1\u05DB\u05DD-' + name + '.pdf');
+    } finally {
+      document.body.removeChild(el);
+    }
+  }
+
+  async function notifyEmail(name) {
+    const now = new Date().toLocaleString('he-IL');
+    try {
+      await fetch('/api/send-notification', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, date: now })
+      });
+    } catch (e) { /* fail silently */ }
+  }
+</script>
+</body>
+</html>
