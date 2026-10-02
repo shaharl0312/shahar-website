@@ -63,6 +63,7 @@ Vercel בונה אוטומטית בכל פוש. `vercel.json` מריץ `sh _infr
 - `_infra/dist/` נוצר אוטומטית. לעולם לא לערוך שם.
 - אין קבצי גרסאות. הקובץ החי הוא תמיד `index.html`. הגיט הוא ההיסטוריה.
 - `funnel/funnel-hadracha/optin-v2.html` הוא דף ה-opt-in החי (`/guide/`, קהל רחב). `funnel/funnel-hadracha/optin-hayalim.html` (`/guide-hayalim/`) הוא וריאנט ייעודי לקמפיין חיילים משוחררים - קופי נפרד, אותה תשתית טכנית. `optin.html` ו-`video.html`/`video-v2.html` נמחקו (2026-08-19, אושר על ידי שחר - לא בשימוש).
+- **ה-remote של גיט (`git remote -v`) חושף GitHub PAT בטקסט גלוי בתוך ה-URL** (`https://ghp_...@github.com/...`). לא תוקן עדיין - מומלץ לסובב את הטוקן ב-GitHub ולהגדיר remote מחדש בלי טוקן בתוך ה-URL (ר' [[core/env]] לאן שמקומם האמיתי).
 
 ## קשור
 [[projects/website/status|status]] · [[core/brand/colors]] · [[core/design-refs/README]] · [[projects/dashboard/CLAUDE]] · [[projects/campaign/CLAUDE]]
