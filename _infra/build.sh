@@ -59,6 +59,11 @@ mkdir -p _infra/dist/erosion-calculator && cp funnel/erosion-calculator/index.ht
 # Bank money guide (why banks want your cash to stay with them)
 mkdir -p _infra/dist/bank-money && cp funnel/funnel-hadracha/bank-money-guide.html _infra/dist/bank-money/index.html
 
+# Guides (SEO content section)
+mkdir -p _infra/dist/guides/keren-kaspit
+cp content/guides/index.html _infra/dist/guides/index.html
+cp content/guides/keren-kaspit/index.html _infra/dist/guides/keren-kaspit/index.html
+
 # Funnel health-check dashboard
 mkdir -p _infra/dist/health-check && cp health-check/index.html health-check/data.json _infra/dist/health-check/
 
