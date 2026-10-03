@@ -2,6 +2,10 @@
   "buildCommand": "sh _infra/build.sh",
   "outputDirectory": "_infra/dist",
   "trailingSlash": true,
+  "redirects": [
+    { "source": "/bank-money", "destination": "/guides/bank-money/", "permanent": true },
+    { "source": "/bank-money/", "destination": "/guides/bank-money/", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*)\\.(png|jpg|jpeg|webp|svg|ico)",

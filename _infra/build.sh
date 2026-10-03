@@ -17,13 +17,13 @@ rm -rf _infra/dist/etf-app/_archive
 
 # Agreement — exclude _archive
 mkdir -p _infra/dist/agreement
-cp -r funnel/agreement/. _infra/dist/agreement/
+cp -r client-services/agreement/. _infra/dist/agreement/
 rm -rf _infra/dist/agreement/_archive
-cp funnel/agreement/index.html _infra/dist/agreement/index.html
+cp client-services/agreement/index.html _infra/dist/agreement/index.html
 
 # Agreement — single meeting variant
 mkdir -p _infra/dist/agreement-one-meeting
-cp -r funnel/agreement-one-meeting/. _infra/dist/agreement-one-meeting/
+cp -r client-services/agreement-one-meeting/. _infra/dist/agreement-one-meeting/
 
 # Side projects
 mkdir -p _infra/dist/tzofim && cp -r misc/side-projects/tzofim/. _infra/dist/tzofim/
@@ -54,15 +54,13 @@ mkdir -p _infra/dist/course-v9 && cp funnel/course-landing/v9-copy-refine.html _
 mkdir -p _infra/dist/course-landing && cp funnel/course-landing/video-cover.jpg funnel/course-landing/offer-mockup.jpg funnel/course-landing/video-cover.webp funnel/course-landing/offer-mockup.webp _infra/dist/course-landing/
 
 # Erosion calculator (checking-account inflation quiz)
-mkdir -p _infra/dist/erosion-calculator && cp funnel/erosion-calculator/index.html _infra/dist/erosion-calculator/index.html
-
-# Bank money guide (why banks want your cash to stay with them)
-mkdir -p _infra/dist/bank-money && cp funnel/funnel-hadracha/bank-money-guide.html _infra/dist/bank-money/index.html
+mkdir -p _infra/dist/erosion-calculator && cp tools/erosion-calculator/index.html _infra/dist/erosion-calculator/index.html
 
 # Guides (SEO content section)
-mkdir -p _infra/dist/guides/keren-kaspit
+mkdir -p _infra/dist/guides/keren-kaspit _infra/dist/guides/bank-money
 cp content/guides/index.html _infra/dist/guides/index.html
 cp content/guides/keren-kaspit/index.html _infra/dist/guides/keren-kaspit/index.html
+cp content/guides/bank-money/index.html _infra/dist/guides/bank-money/index.html
 
 # Funnel health-check dashboard
 mkdir -p _infra/dist/health-check && cp health-check/index.html health-check/data.json _infra/dist/health-check/

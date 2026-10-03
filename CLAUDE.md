@@ -8,7 +8,7 @@ updated: 2026-09-12
 
 # אתר - shaharfinance.com
 
-אתר הליווי הפיננסי לקצינים בקבע. סטטי, נבנה בסקריפט shell ומתפרסם ב-Vercel.
+אתר הליווי הפיננסי של שחר לוי. סטטי, נבנה בסקריפט shell ומתפרסם ב-Vercel.
 
 ## סקילים
 
@@ -28,21 +28,25 @@ updated: 2026-09-12
 website/
 ├── funnel/                        המשפך הקריטי - הכנסה/לידים
 │   ├── landing-page-first/        → /            דף נחיתה ראשי + todah.html
-│   ├── funnel-hadracha/           → /guide/, /guide-hayalim/, /bank-money/
-│   ├── course-landing/            → /course/, /course-v9/
-│   ├── erosion-calculator/        → /erosion-calculator/
+│   ├── funnel-hadracha/           → /guide/, /guide-hayalim/
+│   └── course-landing/            → /course/, /course-v9/
+├── content/guides/                → /guides/, /guides/<slug>/   מדריכים (SEO, עמוד web)
+├── client-services/
+│   ├── warriors-hub/              → /warriors-hub/mifgash-1..3   ליווי ללקוחות קיימים
 │   ├── agreement/                 → /agreement/
 │   └── agreement-one-meeting/     → /agreement-one-meeting/
-├── client-services/
-│   └── warriors-hub/              → /warriors-hub/mifgash-1..3   ליווי ללקוחות קיימים
 ├── tools/
 │   ├── etf-app/                   → /etf-app/          כלי השוואת ETF
-│   └── my-app/ribit-derebit/      → /my-app/ribit-derebit/  מחשבון ריבית דריבית
+│   ├── my-app/ribit-derebit/      → /my-app/ribit-derebit/  מחשבון ריבית דריבית
+│   └── erosion-calculator/        → /erosion-calculator/
 ├── misc/
 │   └── side-projects/             → /schoolslide/, /tzofim/, /trip-madeira/  לא עסקי
 ├── api/                            פונקציות Vercel (submit-lead)
 └── _infra/build.sh                סקריפט הבנייה. הפלט ל-_infra/dist (לא לערוך ידנית)
 ```
+
+`/bank-money/` הישן מפנה (redirect קבוע ב-`vercel.json`) ל-`/guides/bank-money/` - המדריך עבר
+לקטגוריית המדריכים, ה-URL החדש הוא הקנוני.
 
 ## דפלוי
 
