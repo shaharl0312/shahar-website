@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>קרן כספית - המדריך המלא | שחר לוי</title>
+<meta name="description" content="מה זה קרן כספית, איך היא שונה מחיסכון בנקאי, איך פותחים אחת תוך 10 דקות, וכמה זה שווה בפועל - מדריך מלא ועדכני.">
+<link rel="canonical" href="https://shaharfinance.com/guides/keren-kaspit/">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="קרן כספית - המדריך המלא">
+<meta property="og:description" content="מה זה קרן כספית, איך היא שונה מחיסכון בנקאי, ואיך פותחים אחת תוך 10 דקות - מדריך מלא ועדכני.">
+<meta property="og:url" content="https://shaharfinance.com/guides/keren-kaspit/">
+<meta property="og:locale" content="he_IL">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --gold: #C9A84C;
+    --ink: #2D2D2D;
+    --cream: #F7F5F0;
+    --muted: #6B6660;
+    --rule: #E3DED4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { overflow-x: hidden; width: 100%; }
+
+  body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+    font-family: 'Heebo', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  /* ---- Top bar ---- */
+  .topbar {
+    border-bottom: 1px solid var(--rule);
+    padding: 20px 24px;
+  }
+  .topbar-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand {
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+  }
+  .back-link {
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .back-link:hover { color: var(--ink); }
+
+  /* ---- Article header ---- */
+  .article-header {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 56px 24px 32px;
+  }
+  .kicker {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+    background: rgba(201,168,76,0.12);
+    padding: 5px 12px;
+    border-radius: 3px;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(32px, 5vw, 44px);
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 18px;
+  }
+  .lede {
+    font-size: 19px;
+    font-weight: 400;
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 600px;
+  }
+  .meta-row {
+    display: flex;
+    gap: 16px;
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* ---- Article body ---- */
+  .article-body {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  section.block { margin-top: 56px; }
+  section.block:first-child { margin-top: 0; }
+
+  .section-num {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    font-size: 26px;
+    font-weight: 900;
+    line-height: 1.3;
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 28px 0 10px;
+  }
+
+  p {
+    font-size: 17px;
+    color: #3D3D3D;
+    line-height: 1.85;
+    margin-bottom: 18px;
+  }
+
+  p strong { font-weight: 700; color: var(--ink); }
+
+  /* ---- Pull quote / callout ---- */
+  .callout {
+    margin: 32px 0;
+    padding: 24px 28px;
+    background: #ffffff;
+    border-right: 3px solid var(--gold);
+    border-radius: 4px;
+  }
+  .callout-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .callout p { font-size: 15px; margin-bottom: 0; color: #3D3D3D; }
+
+  .tip {
+    font-size: 14px;
+    color: var(--muted);
+    border-right: 2px solid var(--rule);
+    padding-right: 14px;
+    margin: 20px 0;
+  }
+
+  /* ---- Checklist ---- */
+  .checklist {
+    list-style: none;
+    margin: 20px 0;
+  }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 16px;
+    color: #3D3D3D;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+    margin-top: 9px;
+  }
+
+  hr.rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 56px 0;
+  }
+
+  /* ---- Closing CTA (text only, no photo) ---- */
+  .closing {
+    margin-top: 64px;
+    padding-top: 36px;
+    border-top: 2px solid var(--ink);
+  }
+  .closing h3 {
+    font-size: 21px;
+    font-weight: 900;
+    margin: 0 0 12px;
+  }
+  .closing p {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 560px;
+  }
+  .closing-link {
+    display: inline-block;
+    margin-top: 18px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 3px;
+  }
+  .closing-link:hover { color: var(--gold); }
+
+  footer.site-footer {
+    text-align: center;
+    padding: 32px 24px;
+    font-size: 13px;
+    color: var(--muted);
+    border-top: 1px solid var(--rule);
+  }
+
+  @media (max-width: 480px) {
+    .article-header { padding: 40px 20px 24px; }
+    .article-body { padding: 0 20px 60px; }
+    .lede { font-size: 17px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="/">שחר לוי</a>
+    <a class="back-link" href="/guides/">כל המדריכים ←</a>
+  </div>
+</div>
+
+<header class="article-header">
+  <span class="kicker">מדריך פיננסי</span>
+  <h1>קרן כספית - המדריך המלא</h1>
+  <p class="lede">
+    כל שקל שיושב בעו"ש מאבד ערך בשקט, כל חודש. קרן כספית היא הדרך הפשוטה ביותר לגרום לכסף
+    לעבוד - כמעט בלי סיכון, בלי זמן, ובלי ידע פיננסי מתקדם.
+  </p>
+  <div class="meta-row">
+    <span>עדכון אחרון: אוקטובר 2026</span>
+    <span>·</span>
+    <span>5 דקות קריאה</span>
+  </div>
+</header>
+
+<main class="article-body">
+
+  <section class="block">
+    <div class="section-num">01</div>
+    <h2>מה זה קרן כספית?</h2>
+    <p>
+      אתם יודעים את התחושה שיש לכם 40,000 ש"ח בחשבון, ובסוף השנה הם עדיין 40,000 ש"ח? זה
+      לא חיסכון - זה הפסד שקט. האינפלציה מוחקת כ-2%-3% מהערך הריאלי שלהם בשנה, ואתם לא
+      מרגישים כלום.
+    </p>
+    <p>
+      קרן כספית היא מוצר השקעה שמשקיע את הכסף שלכם באגרות חוב קצרות מועד ובפיקדונות
+      בנקאיים. התשואה שלה עוקבת בעיקר אחרי ריבית בנק ישראל, פחות דמי ניהול קטנים. הכסף
+      נשאר נזיל לחלוטין - ניתן למשוך בכל יום עסקים, בלי קנסות ובלי המתנה.
+    </p>
+    <div class="tip">
+      הריבית בקרן כספית משתנה עם ריבית בנק ישראל - אין "מספר קבוע". בדקו תמיד את התשואה
+      העדכנית של הקרן הספציפית לפני פתיחה, לא את המספר שראיתם במאמר ישן.
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="section-num">02</div>
+    <h2>לעומת הבנק - ההפרש שמצטבר</h2>
+
+    <h3>הריבית - המספרים בפועל</h3>
+    <p>
+      חשבון עו"ש בבנק נותן בפועל קרוב ל-0%. פיקדון שנתי נותן בדרך כלל כ-1%-2%, כשהכסף נעול
+      לשנה שלמה. קרן כספית שקלית, בהתאם לריבית בנק ישראל הנוכחית, עומדת כיום על טווח של
+      כ-2.5%-4% בשנה - והכסף פתוח בכל רגע. על יתרה של 50,000 ש"ח, ההפרש מול עו"ש יכול
+      להגיע לכמה מאות עד כ-1,500-2,000 ש"ח בשנה, בלי שעשיתם שום דבר.
+    </p>
+
+    <h3>נזילות - הכסף פנוי תמיד</h3>
+    <p>
+      בפיקדון בנקאי הכסף נעול לתקופה קבועה - פדיון מוקדם גורר קנס. בקרן כספית אפשר לפדות
+      את כל הסכום ולקבל אותו ביום העסקים הבא, בלי קנסות, בלי אישורים ובלי שיחה עם נציג.
+      תשואה גבוהה יותר וגמישות מלאה, בו זמנית.
+    </p>
+
+    <div class="callout">
+      <div class="callout-label">דוגמה מספרית</div>
+      <p>
+        מישהו עם 80,000 ש"ח בעו"ש שעבר לקרן כספית עם תשואה שנתית של כ-3% ירוויח כ-2,400
+        ש"ח בשנה. אותו סכום בעו"ש בבנק מניב כמעט אפס. ההפרש - אלפי שקלים נטו בלי לגעת
+        בכסף פעם אחת. (הדוגמה לפי תשואה טיפוסית נוכחית - בדקו את התשואה המעודכנת של הקרן
+        שבה אתם מתעניינים.)
+      </p>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="section-num">03</div>
+    <h2>איך פותחים - שלושה שלבים</h2>
+
+    <h3>בוחרים איפה</h3>
+    <p>
+      קרן כספית נפתחת בדרך כלל הכי משתלם דרך הבנק שלכם, ולא דרך בית השקעות - ברוב הבנקים
+      יש פטור מעמלות קנייה ומכירה על קרנות כספיות, כך שנכנסים ויוצאים בלי לשלם עמלה בכל
+      פעם (חלק מבתי ההשקעות מציעים תנאים דומים - שווה להשוות).
+    </p>
+
+    <h3>הפתיחה בפועל</h3>
+    <p>
+      נכנסים לאפליקציית הבנק, עוברים לאזור "שוק ההון" (לפעמים צריך אפליקציה נפרדת לכך),
+      מחפשים "קרן כספית שקלית", בוחרים קרן עם דמי ניהול נמוכים (בדרך כלל 0.1%-0.3% בשנה)
+      ולוחצים "רכישה". מעבירים את הסכום מהעו"ש - ביום העסקים הבא הכסף כבר בפנים.
+    </p>
+
+    <div class="tip">
+      כלל קרן חירום: חודשיים של הוצאות שוטפות - בעו"ש, נזיל לגמרי. עוד 3-4 חודשים - בקרן
+      כספית, מרוויחים ריבית ועדיין נגישים תוך יום עסקים.
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="section-num">04</div>
+    <h2>מס ועלויות - מה צריך לדעת</h2>
+    <p>
+      על רווחים מקרן כספית שקלית משלמים 25% מס רווח הון, אך רק על הרווח הריאלי - כלומר
+      הרווח שמעבר לאינפלציה. אם הקרן הרוויחה 4% והאינפלציה הייתה 2.5%, המס מחושב רק על
+      ה-1.5% שנותרו. זה מקטין משמעותית את נטל המס בפועל לעומת פיקדון בנקאי, שממוסה 15% על
+      הרווח הנומינלי המלא. דמי הניהול מנוכים אוטומטית, בלי צורך בפעולה מצדכם.
+    </p>
+  </section>
+
+  <section class="block">
+    <div class="section-num">05</div>
+    <h2>למי זה מתאים?</h2>
+    <ul class="checklist">
+      <li><span class="dot"></span> יש לכם כסף שיושב בעו"ש יותר מחודש ולא עושה כלום</li>
+      <li><span class="dot"></span> אתם חוסכים לטווח של 6-24 חודשים - לרכב, לחתונה, לשיפוץ</li>
+      <li><span class="dot"></span> יש לכם קרן חירום שאמורה להיות נגישה - אבל יושבת בבנק בלי תשואה</li>
+      <li><span class="dot"></span> אתם רוצים להתחיל להשקיע אבל עדיין לא מוכנים לסיכון של שוק המניות</li>
+      <li><span class="dot"></span> יש לכם הכנסה קבועה, ואתם רוצים שהכסף לא ישב בחינם בינתיים</li>
+    </ul>
+
+    <div class="callout">
+      <div class="callout-label">השורה התחתונה</div>
+      <p>
+        קרן כספית לא נועדה להחליף השקעה לטווח ארוך - היא נועדה לבטל את הנזק שגורם כסף
+        שיושב בלי לעשות כלום. זה אחד הצעדים הפשוטים ביותר שאפשר לעשות היום כדי שהכסף יעבוד
+        בשבילכם.
+      </p>
+    </div>
+  </section>
+
+  <div class="closing">
+    <h3>רוצים לבנות ביטחון כלכלי אמיתי?</h3>
+    <p>
+      אני מלווה אנשים לבנות תשתית פיננסית נכונה - מקרן כספית ועד השקעה פסיבית בשוק ההון.
+      בלי ידע מוקדם, בלי זמן רב, עם מסלול ברור ומותאם אישית.
+    </p>
+    <a class="closing-link" href="https://instagram.com/shahar.levy1" target="_blank" rel="noopener">דברו איתי - @shahar.levy1 ←</a>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  © שחר לוי · <a href="/guides/">כל המדריכים</a>
+</footer>
+
+</body>
+</html>

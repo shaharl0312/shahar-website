@@ -11,8 +11,8 @@ const STAGING_BASE = 'https://shahar-finance-staging.vercel.app';
 const PIXEL_ID = '3199947373426233';
 
 const PAGES = [
-  { name: 'דף קורס (v8)', path: '/course/', requirePixel: true },
-  { name: 'דף קורס ישן (v7)', path: '/course-v7/', requirePixel: true },
+  { name: 'דף קורס (v9)', path: '/course/', requirePixel: true },
+  { name: 'דף קורס (v9, נתיב ישיר)', path: '/course-v9/', requirePixel: true },
   { name: 'דף תודה', path: '/todah/', requirePixel: true },
   { name: 'אישור ליווי', path: '/liuy-confirmation/', requirePixel: true },
 ];
