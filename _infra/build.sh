@@ -57,10 +57,11 @@ mkdir -p _infra/dist/course-landing && cp funnel/course-landing/video-cover.jpg 
 mkdir -p _infra/dist/erosion-calculator && cp tools/erosion-calculator/index.html _infra/dist/erosion-calculator/index.html
 
 # Guides (SEO content section)
-mkdir -p _infra/dist/guides/keren-kaspit _infra/dist/guides/bank-money
+mkdir -p _infra/dist/guides/keren-kaspit _infra/dist/guides/bank-money _infra/dist/guides/us-bonds
 cp content/guides/index.html _infra/dist/guides/index.html
 cp content/guides/keren-kaspit/index.html _infra/dist/guides/keren-kaspit/index.html
 cp content/guides/bank-money/index.html _infra/dist/guides/bank-money/index.html
+cp content/guides/us-bonds/index.html _infra/dist/guides/us-bonds/index.html
 
 # Funnel health-check dashboard
 mkdir -p _infra/dist/health-check && cp health-check/index.html health-check/data.json _infra/dist/health-check/

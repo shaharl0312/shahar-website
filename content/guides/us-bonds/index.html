@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>כולם מדברים על האג"ח האמריקאי. מה זה אומר על הכסף שלך? | שחר לוי</title>
+  <meta name="description" content="התשואה על האג&quot;ח האמריקאי ל-10 שנים עברה את ה-5%. מה קרה, למה זה קורה, ומה זה אומר בפועל על מי שמשקיע לטווח ארוך." />
+  <link rel="canonical" href="https://shaharfinance.com/guides/us-bonds/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="כולם מדברים על האג&quot;ח האמריקאי. מה זה אומר על הכסף שלך?" />
+  <meta property="og:url" content="https://shaharfinance.com/guides/us-bonds/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css?family=Assistant:400,500,600,700,800,900&subset=hebrew&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { overflow-x: hidden; width: 100%; }
+    body {
+      width: 100%; position: relative;
+      background: #ffffff;
+      color: #1e1e1e;
+      font-family: 'Assistant', -apple-system, sans-serif;
+      direction: rtl;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .logo { position: fixed; top: 16px; left: 16px; height: 40px; z-index: 100; }
+
+    .narrow { max-width: 620px; margin: 0 auto; padding: 0 24px; }
+
+    /* ---------- scroll reveal ---------- */
+    .anim {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .anim.in { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      .anim { transition: none !important; opacity: 1 !important; transform: none !important; }
+    }
+
+    /* ---------- hero ---------- */
+    .hero {
+      min-height: 72vh;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center;
+      padding: 100px 24px 50px;
+      position: relative;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 600px 400px at 50% 30%, rgba(201,168,76,.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .eyebrow {
+      display: inline-block;
+      font-size: .75rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+      color: #c9a84c;
+      margin-bottom: 24px;
+      position: relative; z-index: 1;
+    }
+    .hero h1 {
+      font-size: clamp(1.85rem, 5.5vw, 3.4rem);
+      font-weight: 900; line-height: 1.2; letter-spacing: -.02em;
+      color: #1e1e1e;
+      max-width: 780px;
+      margin: 0 0 24px;
+      position: relative; z-index: 1;
+    }
+    .hero h1 .gold-grad {
+      background: linear-gradient(135deg, #b8941e 0%, #c9a84c 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero .sub {
+      font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+      line-height: 1.7; color: #555;
+      max-width: 560px;
+      margin: 0 auto 20px;
+      position: relative; z-index: 1;
+    }
+    .read-time {
+      font-size: .85rem; color: #666; font-weight: 500;
+      position: relative; z-index: 1;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(201,168,76,.35) 50%, transparent 100%);
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    /* ---------- story flow ---------- */
+    .story { padding: 64px 0 40px; }
+    .story p {
+      font-size: clamp(1.05rem, 1.7vw, 1.2rem);
+      line-height: 1.95;
+      color: #333;
+      margin-bottom: 30px;
+    }
+    .story p .gold { color: #b8941e; font-weight: 700; }
+    .story p .lift { color: #1e1e1e; font-weight: 700; }
+
+    .story h2 {
+      font-size: clamp(1.35rem, 2.6vw, 1.7rem);
+      font-weight: 800; color: #1e1e1e; line-height: 1.35;
+      margin: 52px 0 22px;
+    }
+    .story a { color: #b8941e; font-weight: 700; }
+    .disclaimer { font-size: .8rem !important; color: #888 !important; line-height: 1.7 !important; font-style: italic; }
+
+    /* ---------- closing card ---------- */
+    .closer {
+      background: linear-gradient(135deg, rgba(201,168,76,.06) 0%, rgba(201,168,76,.01) 100%);
+      border-right: 3px solid #c9a84c;
+      border-radius: 4px;
+      padding: clamp(28px, 5vw, 40px);
+      text-align: right;
+      margin: 20px 0 60px;
+    }
+    .closer p { font-size: clamp(1.05rem, 1.8vw, 1.2rem); line-height: 1.85; color: #1e1e1e; font-style: italic; margin: 0; }
+    .closer p + p { margin-top: 16px; }
+    .closer .gold { color: #b8941e; font-weight: 700; font-style: normal; }
+
+    /* ---------- final cta ---------- */
+    .final { text-align: center; padding: 20px 24px 100px; }
+    .final .lead {
+      font-size: clamp(1.3rem, 2.8vw, 2rem);
+      font-weight: 800; color: #1e1e1e;
+      line-height: 1.4;
+      max-width: 640px;
+      margin: 0 auto 36px;
+    }
+    .cta {
+      display: inline-block;
+      background: #c9a84c;
+      color: #000;
+      font-weight: 800;
+      font-size: clamp(1.1rem, 2vw, 1.3rem);
+      padding: 20px 52px;
+      border-radius: 8px;
+      text-decoration: none;
+      letter-spacing: -.01em;
+      box-shadow: 0 4px 24px rgba(201,168,76,.28);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .cta:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(201,168,76,.4); }
+    .cta-note { font-size: .85rem; color: #666; margin-top: 20px; }
+
+    footer { text-align: center; font-size: .8rem; color: #999; padding: 0 24px 60px; }
+
+    @media (max-width: 480px) {
+      .hero { padding: 88px 20px 40px; }
+    }
+  </style>
+</head>
+<body>
+  <img class="logo" src="/logo.png" alt="שחר לוי" />
+  <a href="/guides/" style="position:fixed; top:16px; right:16px; z-index:100; font-family:'Assistant',sans-serif; font-size:13px; color:#666; text-decoration:none;">← כל המדריכים</a>
+
+  <section class="hero">
+    <p class="eyebrow anim">עדכון שוק</p>
+    <h1 class="anim">כולם מדברים על <span class="gold-grad">האג"ח האמריקאי.</span><br>מה זה אומר על הכסף שלך?</h1>
+    <p class="read-time anim">זמן קריאה: 5 דקות</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <div class="story narrow">
+    <p class="anim">אם פתחת השבוע אתר חדשות כלכלי, כנראה נתקלת בכותרות כמו "סערה בשוק האג"ח" או "התשואות בשיא של עשרים שנה".</p>
+    <p class="anim">וזה נשמע מלחיץ. במיוחד אם התחלת להשקיע לא מזמן, או שאתה עוד מתלבט אם להתחיל.</p>
+    <p class="anim">אז בוא נעשה סדר. בלי מונחים מסובכים, בלי דרמה. מה קורה, למה זה קורה, ומה זה אומר בפועל על מישהו כמוך.</p>
+
+    <h2 class="anim">קודם כל, מה זה בכלל אג"ח?</h2>
+    <p class="anim">אג"ח זה פשוט הלוואה.</p>
+    <p class="anim">כשממשלת ארצות הברית צריכה כסף, היא לווה אותו מהציבור. אתה נותן לה כסף, והיא מתחייבת להחזיר לך אותו אחרי כמה שנים, ובדרך משלמת לך ריבית.</p>
+    <p class="anim">הריבית הזו נקראת "תשואה". כשאומרים שהתשואה על האג"ח ל-10 שנים עלתה, הכוונה היא שארצות הברית צריכה עכשיו לשלם יותר כדי שיסכימו להלוות לה.</p>
+    <p class="anim">וזה חשוב, כי האג"ח האמריקאי הוא בעצם "המחיר של הכסף" בעולם. כמעט כל ריבית אחרת, ממשכנתאות ועד הלוואות לחברות, מסתכלת עליו.</p>
+
+    <h2 class="anim">אז מה קרה?</h2>
+    <p class="anim">בשבועות האחרונים התשואה על האג"ח האמריקאי ל-10 שנים עברה את ה-5%, והגיעה לרמה הגבוהה ביותר מאז תחילת שנות ה-2000. גם האג"ח ל-30 שנה טיפס לשיא של יותר מעשרים שנה.</p>
+    <p class="anim">למה? כמה דברים קרו במקביל:</p>
+    <p class="anim"><span class="lift">האינפלציה חזרה.</span><br>בתחילת השנה היא הייתה קרובה ל-2%, ובאוגוסט כבר עמדה על 3.4%. הרבה מזה קשור למתיחות במזרח התיכון ולמחירי הנפט שקפצו.</p>
+    <p class="anim"><span class="lift">הפד העלה ריבית.</span><br>הבנק המרכזי האמריקאי העלה ריבית לראשונה מאז 2023, ורמז שאולי יש עוד העלאות בדרך.</p>
+    <p class="anim"><span class="lift">הכלכלה האמריקאית חזקה.</span><br>נתונים טובים מהצפוי נותנים לפד עוד סיבה להמשיך להדק.</p>
+    <p class="anim"><span class="lift">החוב האמריקאי.</span><br>יש דאגה כללית מהגירעון ומכמות החוב שארצות הברית ממשיכה לגייס.</p>
+    <p class="anim">כשכל זה מתחבר ביחד, המשקיעים דורשים ריבית גבוהה יותר כדי להלוות כסף. והתשואות עולות.</p>
+
+    <h2 class="anim">ולמה כולם בלחץ?</h2>
+    <p class="anim">כי לתשואות גבוהות יש השפעה על הכל.</p>
+    <p class="anim">המשכנתאות בארצות הברית עברו את ה-7%. הלוואות נהיות יקרות יותר. וגם שוק המניות מרגיש את זה, כי פתאום אפשר לקבל ריבית יפה על אג"ח בלי סיכון גדול, אז חלק מהכסף זז ממניות לשם.</p>
+    <p class="anim">ומפה מגיעות הכותרות. "השוק בסכנה", "האם זה הזמן למכור", "מה עושים עכשיו".</p>
+
+    <h2 class="anim">מה זה אומר עליך?</h2>
+    <p class="anim">פה אני רוצה לעצור רגע.</p>
+    <p class="anim">כי אם אתה בן 22, 25 או 28, עם הכנסה קבועה ותוכנית להשקיע לאורך שנים, השאלה האמיתית היא לא מה יקרה לאג"ח השבוע. השאלה היא מה אתה עושה עם הכסף שלך בעשר, עשרים ושלושים השנים הקרובות.</p>
+    <p class="anim">ובטווח הזה, יהיו עוד הרבה שבועות כאלה.</p>
+    <p class="anim">היו תקופות של ריבית גבוהה. היו מלחמות. היו משברים שנראו בזמן אמת כמו סוף העולם. ומי שהשקיע באופן קבוע, לאורך זמן, בתיק מפוזר, ולא נבהל ומכר באמצע, עבר את כולם.</p>
+    <p class="anim">זה לא אומר שאין ירידות. יש, ולפעמים הן כואבות. אבל משקיע טוב הוא לא מי שמנחש מתי השוק יעלה או ירד. <span class="gold">משקיע טוב הוא מי שנוגע בתיק כמה שפחות.</span></p>
+
+    <h2 class="anim">אז מה אני עושה עם התיק שלי?</h2>
+    <p class="anim">בדיוק אותו דבר שעשיתי לפני חודש.</p>
+    <p class="anim">אני משקיע לטווח הרחוק. לנו, כמשקיעים לטווח הרחוק, שבוע כזה לא משנה את התמונה. ולכן אני ממשיך לעשות את אותו הדבר: השקעה קבועה ופשוטה, כל חודש, בלי לשנות כלום.</p>
+    <p class="anim">ואם כבר, אני רואה את זה הפוך מהכותרות. <span class="gold">דווקא כשכולם בלחץ, זה הזמן הכי טוב להיכנס לשוק.</span></p>
+
+    <h2 class="anim">שלושה דברים ששווה לזכור עכשיו</h2>
+    <p class="anim"><span class="lift">1. ריבית גבוהה זה לא רק חדשות רעות.</span><br>אם יש לך כסף בצד, ריבית גבוהה אומרת שאפשר לקבל עליו יותר. חלק מחשבונות החיסכון בארצות הברית כבר מציעים מעל 4%. לכסף ששוכב בעו"ש בלי לעשות כלום, זו תזכורת טובה שיש לו אפשרויות.</p>
+    <p class="anim"><span class="lift">2. אם אתה משקיע כל חודש, ירידות עובדות לטובתך.</span><br>כשאתה מפקיד סכום קבוע כל חודש, בחודשים שהשוק נמוך אתה פשוט קונה יותר במחיר נמוך יותר. אתה לא צריך לתזמן כלום, זה קורה לבד.</p>
+    <p class="anim"><span class="lift">3. הכותרות נועדו להלחיץ. התוכנית שלך נועדה להרגיע.</span><br>אתרי חדשות צריכים קליקים. אתה צריך תוכנית. אם יש לך אחת, ברורה, שאתה מבין, שבוע כמו השבוע הזה הוא בסך הכל עוד שבוע.</p>
+
+    <h2 class="anim">ואם עוד לא התחלת?</h2>
+    <p class="anim">אז אני מבין את המחשבה "אולי כדאי לחכות שיירגע".</p>
+    <p class="anim">אבל אף פעם אין רגע שבו הכל רגוע. תמיד יש משהו: ריבית, בחירות, מלחמה, נפט. מי שמחכה לרגע המושלם, בדרך כלל מחכה שנים. ובזמן הזה, הכסף בעו"ש נשחק מאינפלציה שעכשיו, כמו שראינו, דווקא עולה.</p>
+    <p class="anim">היתרון הכי גדול שיש לך כצעיר הוא לא כמה כסף יש לך. זה הזמן. וכל שנה שעוברת בלי להשקיע זו שנה שבה הזמן לא עובד בשבילך.</p>
+
+    <h2 class="anim">בשורה התחתונה</h2>
+    <p class="anim">מה שקורה באג"ח האמריקאי הוא אמיתי וחשוב, ומעניין לעקוב אחריו.</p>
+  </div>
+
+  <div class="narrow">
+    <div class="closer anim">
+      <p>אבל בשביל מישהו שמשקיע לטווח ארוך, הוא לא סיבה לשנות תוכנית. <span class="gold">הוא סיבה לוודא שיש לך אחת.</span></p>
+      <p>אם אתה רוצה לבנות תוכנית כזו, פשוטה וברורה, בלי לשבת מול גרפים כל היום - <a href="https://shaharfinance.com/guide/" style="color:#b8941e; font-weight:700;">בהדרכה החינמית שלי אני מסביר איך אני עושה את זה</a>.</p>
+    </div>
+  </div>
+
+  <div class="final">
+    <a class="cta anim" href="https://shaharfinance.com/guide/">להדרכה החינמית</a>
+  </div>
+
+  <div class="narrow">
+    <p class="disclaimer" style="padding-bottom:60px; text-align:center;">הכתבה נועדה למטרות מידע בלבד ואינה מהווה ייעוץ השקעות או תחליף לייעוץ המתחשב בנתונים ובצרכים של כל אדם.</p>
+  </div>
+
+  <script>
+    (function () {
+      var items = document.querySelectorAll('.anim');
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+      items.forEach(function (el) { observer.observe(el); });
+    })();
+  </script>
+</body>
+</html>
