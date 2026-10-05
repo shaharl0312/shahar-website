@@ -7,20 +7,20 @@
   <title>מאפס למשקיע | שחר לוי</title>
   <link rel="icon" type="image/png" href="/logo.png" />
   <meta name="description"
-    content="הדרכה קצרה שתראה לכם איך לעבור מאפס מוחלט - לתוכנית פעולה ברורה. תוכנית דיגיטלית לאנשי קבע." />
-  <meta name="robots" content="noindex, follow" />
-  <link rel="canonical" href="https://shaharfinance.com/course-classic/" />
+    content="הדרכה קצרה שתראה לכם איך לעבור מאפס מוחלט - לתוכנית פעולה ברורה. שיחת היכרות חינם עם שחר לוי." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://shaharfinance.com/course/" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="he_IL" />
   <meta property="og:title" content="מאפס למשקיע | שחר לוי" />
   <meta property="og:description"
-    content="הדרכה קצרה שתראה לכם איך לעבור מאפס מוחלט - לתוכנית פעולה ברורה. תוכנית דיגיטלית לאנשי קבע." />
+    content="הדרכה קצרה שתראה לכם איך לעבור מאפס מוחלט - לתוכנית פעולה ברורה. שיחת היכרות חינם עם שחר לוי." />
   <meta property="og:url" content="https://shaharfinance.com/course/" />
   <meta property="og:image" content="https://shaharfinance.com/shahar_headshot.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="מאפס למשקיע | שחר לוי" />
   <meta name="twitter:description"
-    content="הדרכה קצרה שתראה לכם איך לעבור מאפס מוחלט - לתוכנית פעולה ברורה. תוכנית דיגיטלית לאנשי קבע." />
+    content="הדרכה קצרה שתראה לכם איך לעבור מאפס מוחלט - לתוכנית פעולה ברורה. שיחת היכרות חינם עם שחר לוי." />
   <meta name="twitter:image" content="https://shaharfinance.com/shahar_headshot.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -907,6 +907,21 @@
       border-radius: 10px;
       display: block;
     }
+
+
+    /* CALL OFFER (new funnel) */
+    .offer-card {
+      margin: 34px auto 0; max-width: 620px; padding: 30px 26px; text-align: center;
+      background: rgba(255,255,255,.04); border: 1px solid rgba(201,168,76,.45);
+      border-radius: 20px; box-shadow: 0 0 40px rgba(201,168,76,.12);
+    }
+    .offer-eyebrow { display:inline-block; font-size:13px; font-weight:700; letter-spacing:.08em; color:var(--gold-l); margin-bottom:10px; }
+    .offer-card h2 { font-size: clamp(22px,3.4vw,30px); margin-bottom: 18px; text-wrap: balance; }
+    .offer-list { text-align: right; margin: 0 auto 24px; max-width: 520px; }
+    .offer-micro { margin-top: 12px; font-size: 14px; color: var(--muted-light); }
+    .vproof-grid { display:grid; grid-template-columns: repeat(3,1fr); gap:16px; margin-top:26px; }
+    .vproof-grid video { width:100%; aspect-ratio:9/16; object-fit:cover; background:#000; border-radius:14px; box-shadow:0 10px 28px rgba(0,0,0,.35); }
+    @media (max-width:640px) { .vproof-grid { grid-template-columns: 1fr; max-width:320px; margin-left:auto; margin-right:auto; } }
 
     /* PERSON PHOTO - bleeds into the dark section background */
     .person-section {
@@ -2520,7 +2535,7 @@
     <div class="grid-overlay"></div>
     <div class="inner animate">
       <h1>בעוד <span class="gold-grad">10 דקות</span> מהיום אתם תדעו בדיוק איך להתחיל להשקיע</h1>
-      <p class="lead">אם אתם אנשי קבע ויש לכם כסף שיושב בעו"ש, הכנתי עבורכם הדרכה קצרה שתראה לכם איך לעבור מאפס מוחלט לתוכנית פעולה ברורה.</p>
+      <p class="lead">אם יש לכם כסף שיושב בעו"ש, הכנתי עבורכם הדרכה קצרה שתראה לכם איך לעבור מאפס מוחלט לתוכנית פעולה ברורה.</p>
 
       <div class="video-wrap">
         <div class="video-frame">
@@ -2557,16 +2572,41 @@
           </svg> ממליץ לצפות עד הסוף</span>
       </div>
 
-      <p style="font-weight:700;color:#fff;margin-top:36px;margin-bottom:16px;">בסרטון תלמדו:</p>
+
+      <div class="offer-card" id="call-offer">
+        <span class="offer-eyebrow">שיחת היכרות והתאמה</span>
+        <h2>רוצים לבדוק אם זה מתאים לכם? <span class="gold-grad">בואו נדבר חצי שעה</span></h2>
+        <ul class="checklist offer-list">
+          <li>נכיר, ותספרו לי איפה אתם עומדים היום עם הכסף שלכם</li>
+          <li>אשתף איך אני עובד ומה הליווי שלי כולל</li>
+          <li>נבדוק ביחד אם יש התאמה, ומה הצעד הבא אם כן</li>
+        </ul>
+        <div class="cta-ring">
+          <a href="https://calendly.com/shaharl0312/30min" target="_blank" rel="noopener" class="btn btn-gold call-btn">קבעו שיחת היכרות בחינם</a>
+        </div>
+        <p class="offer-micro">30 דקות, בלי התחייבות</p>
+      </div>
+      <p style="font-weight:700;color:#fff;margin-top:44px;margin-bottom:16px;">בסרטון תלמדו:</p>
       <ul class="checklist">
         <li>למה השארת כסף בעו"ש היא אחת ההחלטות הכלכליות היקרות ביותר</li>
         <li>למה רוב האנשים לא מתחילים להשקיע (ואיך להתגבר על הפחד)</li>
         <li>איך גם אני התחלתי מאפס כשהייתי איש קבע</li>
         <li>ולמה אתם לא צריכים להיות מומחים גדולים כדי להתחיל</li>
       </ul>
-      <p style="margin-top:26px;color:var(--muted-light);">בסיום הסרטון תמצאו מתחתיו את כל הפרטים על התוכנית המלאה.</p>
-      <a href="https://secure.cardcom.solutions/EA/EA5/Vir6Q9LbVEatLxw4sN0dxg/PaymentSP"
-        class="btn btn-gold checkout-btn" style="margin-top:18px;opacity:.88;">כן אני רוצה להתחיל להשקיע</a>
+    </div>
+  </section>
+
+  <section class="section dark vproof-section">
+    <div class="narrow center animate">
+      <h2 style="font-size:clamp(22px,3vw,30px);">שמעו אותם <span class="gold-grad">בעצמם</span></h2>
+      <div class="vproof-grid">
+        <video controls playsinline preload="none" poster="/course-landing/testimonial-videos/edut-1.jpg" src="/course-landing/testimonial-videos/edut-1.mp4" title="עדות לקוח"></video>
+        <video controls playsinline preload="none" poster="/course-landing/testimonial-videos/edut-2.jpg" src="/course-landing/testimonial-videos/edut-2.mp4" title="עדות לקוח"></video>
+        <video controls playsinline preload="none" poster="/course-landing/testimonial-videos/edut-3.jpg" src="/course-landing/testimonial-videos/edut-3.mp4" title="עדות לקוח"></video>
+      </div>
+      <div class="cta-ring" style="margin-top:34px;">
+        <a href="https://calendly.com/shaharl0312/30min" target="_blank" rel="noopener" class="btn btn-gold call-btn">קבעו שיחת היכרות בחינם</a>
+      </div>
     </div>
   </section>
 
@@ -2628,7 +2668,7 @@
 
   <section class="section cream">
     <div class="narrow animate">
-      <h2 class="center">התוכנית הזאת נבנתה <span class="gold-grad">במיוחד עבור אנשי קבע</span></h2>
+      <h2 class="center">התוכנית הזאת נבנתה <span class="gold-grad">במיוחד בשבילכם</span></h2>
       <p style="color:var(--muted-dark);">גם אני חשבתי שאני אתחיל כשיהיה לי יותר זמן. אבל הזמן הזה אף פעם לא באמת הגיע, ותמיד הייתה עוד תקופה עמוסה.</p>
       <div class="staccato">
         <p style="color:var(--muted-dark);">עוד תרגיל</p>
@@ -2637,7 +2677,7 @@
       </div>
       <p style="color:var(--muted-dark);">ובינתיים, הכסף כבר הלך לישון ונכנס לתרדמת חורף בעו"ש.</p>
       <p style="color:var(--muted-dark);">רק אחרי שהתחלתי להשקיע בעצמי, הבנתי שהבעיה אף פעם לא הייתה חוסר זמן - והיא גם לא הייתה חוסר ידע. הייתה חסרה לי דרך פשוטה וברורה להתחיל.</p>
-      <p style="color:var(--muted-dark);">אחרי שעברתי את הדרך הזאת בעצמי, התחלתי לעזור גם לחברים מהצבא, ולאט לאט לעוד ועוד אנשי קבע. ושוב ושוב שמעתי את אותם המשפטים:</p>
+      <p style="color:var(--muted-dark);">אחרי שעברתי את הדרך הזאת בעצמי, התחלתי לעזור גם לחברים מהצבא, ולאט לאט לעוד ועוד אנשים. ושוב ושוב שמעתי את אותם המשפטים:</p>
       <div class="staccato">
         <p style="color:var(--muted-dark);">"אני לא מבין מספיק"</p>
         <p style="color:var(--muted-dark);">"אני מפחד לעשות טעות"</p>
@@ -2860,83 +2900,11 @@
             loading="lazy" /></div>
       </div>
       <h2>אם הגעתם עד לכאן, כנראה שאתם כבר יודעים <span class="gold-grad">מה הצעד הבא שלכם</span></h2>
-      <div class="staccato">
-        <p style="color:var(--muted-dark);max-width:620px;margin-left:auto;margin-right:auto;">במשך תקופה ליוויתי אנשי קבע באופן אישי.</p>
-        <p style="color:var(--muted-dark);max-width:620px;margin-left:auto;margin-right:auto;">כל ליווי כזה עלה אלפי שקלים, כי הוא כלל פגישות אישיות וליווי צמוד לאורך כל הדרך.</p>
+      <p class="lead" style="max-width:620px;margin:22px auto 0;font-weight:700;color:var(--text-dark);">הדרך הכי קצרה להתחיל היא שיחה אחת איתי.</p>
+      <p style="max-width:620px;margin:10px auto 0;color:var(--muted-dark);">30 דקות שבהן נכיר, אבין איפה אתם עומדים, ונראה ביחד אם ואיך אני יכול לעזור לכם לעשות את הצעד הראשון.</p>
+      <div class="cta-ring" style="margin-top:26px;">
+        <a href="https://calendly.com/shaharl0312/30min" target="_blank" rel="noopener" class="btn btn-gold call-btn">קבעו שיחת היכרות בחינם</a>
       </div>
-      <div class="staccato">
-        <p style="color:var(--muted-dark);max-width:620px;margin-left:auto;margin-right:auto;">עם הזמן הבנתי משהו חשוב.</p>
-        <p style="color:var(--muted-dark);max-width:620px;margin-left:auto;margin-right:auto;">רוב האנשים לא צריכים עוד שעות איתי.</p>
-        <p style="color:var(--muted-dark);max-width:620px;margin-left:auto;margin-right:auto;">הם פשוט צריכים דרך ברורה - שתראה להם בדיוק איך להתחיל, באיזה סדר לפעול ואיך לבצע את ההשקעה הראשונה שלהם בביטחון.</p>
-      </div>
-      <p class="lead" style="max-width:620px;margin:22px auto 0;font-weight:700;color:var(--text-dark);">בגלל זה לקחתי
-        את כל מה שעבד בליווי האישי, זיקקתי אותו לתהליך אחד ברור, והפכתי אותו ל<span class="gold-grad">MONEY ENGINE</span>.</p>
-
-      <p style="max-width:620px;margin:30px auto 0;font-weight:700;color:var(--text-dark);">אני יודע שהתוכנית הזאת
-        שווה הרבה יותר מהמחיר שלה.</p>
-      <div class="staccato">
-        <p style="color:var(--muted-dark);max-width:620px;margin-left:auto;margin-right:auto;">לא בגלל שיש בה 26 שיעורים.</p>
-        <p style="color:var(--muted-dark);max-width:620px;margin-left:auto;margin-right:auto;">ולא בגלל שלקח לי חודשים לבנות אותה.</p>
-        <p style="color:var(--muted-dark);max-width:620px;margin-left:auto;margin-right:auto;">אלא בגלל שהחלטה אחת נכונה בתחילת הדרך יכולה להיות שווה הרבה יותר ממחיר התוכנית.</p>
-      </div>
-      <div class="staccato">
-        <p style="color:var(--muted-dark);max-width:620px;margin-left:auto;margin-right:auto;">רק בחירה נכונה של בית השקעות.</p>
-        <p style="color:var(--muted-dark);max-width:620px;margin-left:auto;margin-right:auto;">רק הימנעות מטעות אחת בדרך.</p>
-        <p style="color:var(--muted-dark);max-width:620px;margin-left:auto;margin-right:auto;">או אפילו הבנה נכונה של קרן הפנסיה וקרן ההשתלמות שלכם.</p>
-      </div>
-      <p style="max-width:620px;margin:14px auto 0;color:var(--muted-dark);">יכולות לחסוך לאורך השנים אלפי, ולעיתים
-        אפילו עשרות אלפי שקלים.</p>
-
-      <h2 style="margin-top:34px;">אז למה אני לא מוכר אותה <span class="gold-grad">באלפי שקלים?</span></h2>
-      <p style="max-width:620px;margin:10px auto 0;color:var(--muted-dark);">כי המטרה שלי היא לא למכור תוכנית יקרה.</p>
-      <p style="max-width:620px;margin:10px auto 0;color:var(--muted-dark);">המטרה שלי היא שכמה שיותר אנשי קבע
-        יפסיקו לדחות את ההחלטה להתחיל להשקיע.</p>
-      <p style="max-width:620px;margin:10px auto 0;color:var(--muted-dark);">אני מעדיף לראות עוד מאות אנשים עושים את
-        הצעד הראשון שלהם, מאשר למכור את אותה התוכנית למעט אנשים במחיר גבוה.</p>
-      <p style="max-width:620px;margin:14px auto 0;font-weight:700;color:var(--text-dark);">בגלל זה תמחרתי אותה
-        במחיר שיאפשר לכל מי שהתלבט עד היום להתחיל.</p>
-
-      <div class="price-card dark" id="pricing" style="background:var(--anthracite);margin-top:34px;scroll-margin-top:90px;">
-        <div class="glow glow-a"></div>
-        <div style="position:relative;z-index:1;">
-          <p class="price-num gold-grad">497 ₪</p>
-          <p class="price-sub">או 3 תשלומים של 166 ₪</p>
-
-          <div style="margin:26px 0;padding:0 20px;text-align:center;">
-            <p style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-l);margin-bottom:12px;">
-              בונוס: החזר כספי שיכול לכסות את כל מחיר התוכנית</p>
-            <p style="font-size:clamp(18px,2.2vw,22px);font-weight:800;color:#fff;line-height:1.6;margin-bottom:10px;">
-              אם אתם אנשי קבע, תבצעו את כל הפעולות בתוכנית ותעמדו בתנאי ההטבה, תהיו זכאים להחזר של
-              <span class="gold-grad" style="font-size:1.15em;">500 ₪</span></p>
-            <p style="font-size:16px;color:var(--muted-light);line-height:1.6;margin-bottom:0;">כלומר, במקרים רבים,
-              ההחזר שתקבלו יהיה גבוה יותר ממחיר התוכנית עצמה.</p>
-            <p style="font-size:13px;color:var(--muted-light);opacity:.75;margin-top:12px;margin-bottom:0;">גם אם
-              אינכם אנשי קבע, תוכלו ליהנות מהטבה של 200 ₪, בכפוף לתנאי ההטבה.</p>
-          </div>
-
-          <p style="font-weight:700;color:#fff;margin:26px 0 16px;">ההצטרפות לתוכנית כוללת:</p>
-          <ul class="checklist price-includes">
-            <li>תוכנית מלאה בת 26 שיעורים קצרים ומעשיים<span>שתיקח אתכם צעד אחר צעד מאפס ועד ההשקעה הראשונה, בלי לנחש מה הצעד הבא</span></li>
-            <li>סיכום מסודר לכל שיעור<span>כדי שתוכלו לחזור לעיקרי הדברים תוך דקות, בלי לצפות שוב בכל התוכן</span></li>
-            <li>שיעורי הרחבה ייעודיים לאנשי קבע<span>בנושאי פנסיה, קרן השתלמות, הטבות וזכויות</span></li>
-            <li>כל העדכונים העתידיים של התוכנית<span>ללא תשלום נוסף</span></li>
-            <li>30 ימי אחריות</li>
-          </ul>
-          <div class="cta-ring">
-            <a href="https://secure.cardcom.solutions/EA/EA5/Vir6Q9LbVEatLxw4sN0dxg/PaymentSP"
-              class="btn btn-gold checkout-btn">כן, אני רוצה להתחיל להשקיע</a>
-          </div>
-        </div>
-      </div>
-
-      <p style="max-width:600px;margin:26px auto 0;color:var(--muted-dark);">עכשיו תעצרו רגע ותחשבו על זה.</p>
-      <p style="max-width:600px;margin:10px auto 0;color:var(--muted-dark);">בפחות מ-500 ₪ אתם מקבלים את אותה השיטה
-        שליוויתי איתה עשרות אנשי קבע. שיטה שתלווה אתכם במשך שנים.</p>
-      <p style="max-width:600px;margin:10px auto 0;color:var(--muted-dark);">ואם תעמדו בתנאי ההטבה, יש סיכוי טוב
-        שתקבלו 500 ₪ בחזרה לחשבון הבנק שלכם.</p>
-      <p style="max-width:600px;margin:26px auto 0;font-weight:700;color:var(--text-dark);">עכשיו נשארה רק שאלה אחת.</p>
-      <p style="max-width:600px;margin:10px auto 0;color:var(--muted-dark);">האם אתם מוכנים לפנות לעצמכם שלוש שעות,
-        לעשות את הצעד הראשון, ולהתחיל לגרום לכסף שלכם לעבוד בשבילכם?</p>
       <p style="max-width:600px;margin:36px auto 0 auto;color:var(--muted-dark);">ומה אומרים מי שהחליטו לעשות את הצעד הראשון</p>
       <div class="proof-grid">
         <div class="proof-item"><img src="/testimonials/wts-2.jpg" alt="עדות: פתח דלת שלמה לעולם ההשקעות"
@@ -2951,9 +2919,8 @@
     <div class="glow glow-b"></div>
     <div class="grid-overlay"></div>
     <div class="narrow center animate">
-      <h2>אבל יש <span class="gold-grad">עוד מחיר</span> שרוב האנשים לא חושבים עליו</h2>
+      <h2>אבל יש <span class="gold-grad">מחיר</span> שרוב האנשים לא חושבים עליו</h2>
       <div class="staccato">
-        <p class="lead" style="max-width:600px;margin-left:auto;margin-right:auto;">לא המחיר של התוכנית</p>
         <p class="lead" style="max-width:600px;margin-left:auto;margin-right:auto;">המחיר של להמשיך לחכות</p>
       </div>
       <div class="staccato" style="margin-top:14px;">
@@ -3020,8 +2987,7 @@
       <p style="font-weight:700;color:#fff;">כי בסופו של דבר, בעוד 10 שנים, כנראה שלא תזכרו כמה עלתה התוכנית. אבל יש
         סיכוי טוב שתשמחו שלא דחיתם את ההחלטה להתחיל.</p>
       <div class="cta-ring" style="margin-top:18px;">
-        <a href="https://secure.cardcom.solutions/EA/EA5/Vir6Q9LbVEatLxw4sN0dxg/PaymentSP"
-          class="btn btn-gold checkout-btn">כן, אני רוצה להתחיל להשקיע</a>
+        <a href="https://calendly.com/shaharl0312/30min" target="_blank" rel="noopener" class="btn btn-gold call-btn">קבעו שיחת היכרות בחינם</a>
       </div>
     </div>
   </section>
@@ -3062,8 +3028,7 @@
       </div>
       <p style="margin-top:30px;font-weight:700;">ההחלטה מתחילה בלחיצה אחת.</p>
       <div class="cta-ring" style="margin-top:10px;">
-        <a href="https://secure.cardcom.solutions/EA/EA5/Vir6Q9LbVEatLxw4sN0dxg/PaymentSP"
-          class="btn btn-gold checkout-btn">כן, אני רוצה להתחיל להשקיע</a>
+        <a href="https://calendly.com/shaharl0312/30min" target="_blank" rel="noopener" class="btn btn-gold call-btn">קבעו שיחת היכרות בחינם</a>
       </div>
     </div>
   </section>
@@ -3075,7 +3040,6 @@
       <h2>האם התוכנית הזאת <span class="gold-grad">מתאימה לכם?</span></h2>
       <p class="lead" style="max-width:640px;margin:0 auto 30px;">התוכנית הזאת נבנתה במיוחד עבורכם אם...</p>
       <ul class="checklist">
-        <li>אתם אנשי קבע</li>
         <li>יש לכם לפחות 5,000 ₪ שאתם רוצים להתחיל להשקיע</li>
         <li>יש לכם כסף שיושב בעו"ש, ואתם יודעים שהוא לא אמור להישאר שם לנצח</li>
         <li>אתם מרגישים שאתם צריכים להתחיל, אבל לא יודעים מה הצעד הראשון</li>
@@ -3093,30 +3057,6 @@
     </div>
   </section>
 
-  <section class="section cream">
-    <div class="narrow animate">
-      <div class="guarantee-card">
-        <h2>יש לכם 30 יום <span class="gold-grad">לעבור על התוכנית</span></h2>
-        <div class="staccato">
-          <p style="color:var(--muted-dark);">אני עומד מאחורי התוכנית הזאת</p>
-          <p style="color:var(--muted-dark);">עוד לפני שהתוכנית הדיגיטלית נולדה, ליוויתי באופן אישי עשרות אנשי קבע בתהליך הזה</p>
-          <p style="color:var(--muted-dark);">ראיתי את אותם החששות חוזרים שוב ושוב</p>
-          <p style="color:var(--muted-dark);">וראיתי גם מה קורה כשמפסיקים לדחות ופשוט מתחילים</p>
-          <p style="color:var(--muted-dark);">בגלל זה אני מרגיש בנוח לעמוד מאחורי התוכנית</p>
-        </div>
-        <div class="staccato">
-          <p style="color:var(--muted-dark);">יש לכם 30 יום לעבור על התכנים, ליישם את השלבים המרכזיים ולבדוק אם היא באמת מספקת את הערך שהבטחתי</p>
-          <p style="color:var(--muted-dark);">אם יישמתם את השלבים המרכזיים והרגשתם שהתוכנית לא סיפקה לכם את הערך שהובטח, פנו אליי בתוך 30 יום ואחזיר לכם את כספכם</p>
-          <p style="color:var(--muted-dark);">בלי ויכוחים</p>
-          <p style="color:var(--muted-dark);">בלי אותיות קטנות</p>
-        </div>
-        <p style="color:var(--muted-dark);">כי אני מאמין שהתוכנית הזאת יכולה לעזור לכל מי שמוכן לעשות את הצעד הראשון</p>
-        <img src="/testimonials/badge-100-v2.png" alt="אחריות 30 יום להחזר כספי" class="guarantee-badge-img"
-          loading="lazy" />
-      </div>
-    </div>
-  </section>
-
   <section class="section dark">
     <div class="glow glow-a"></div>
     <div class="grid-overlay"></div>
@@ -3124,17 +3064,15 @@
       <h2 class="center"><span class="gold-grad">שאלות</span> נפוצות</h2>
       <div class="faq-list">
         <div class="faq-item">
-          <button class="faq-q" aria-expanded="false" aria-controls="faq-a-1" id="faq-q-1">האם התשלום מאובטח?<span class="plus">+</span></button>
-          <div class="faq-a" id="faq-a-1" role="region" aria-labelledby="faq-q-1">
-            <p class="faq-a-text">כן. התשלום מתבצע דרך מערכת סליקה מאובטחת, ומיד לאחר הרכישה תקבלו גישה מלאה לתוכנית.
-            </p>
+          <button class="faq-q" aria-expanded="false" aria-controls="faq-a-c1" id="faq-q-c1">מה קורה בשיחת ההיכרות?<span class="plus">+</span></button>
+          <div class="faq-a" id="faq-a-c1" role="region" aria-labelledby="faq-q-c1">
+            <p class="faq-a-text">שיחה של 30 דקות. תספרו לי איפה אתם עומדים עם הכסף, אשתף איך אני עובד, ונבדוק ביחד אם יש התאמה ומה הצעד הבא.</p>
           </div>
         </div>
         <div class="faq-item">
-          <button class="faq-q" aria-expanded="false" aria-controls="faq-a-2" id="faq-q-2">איך מקבלים גישה לתוכנית?<span class="plus">+</span></button>
-          <div class="faq-a" id="faq-a-2" role="region" aria-labelledby="faq-q-2">
-            <p class="faq-a-text">מיד לאחר הרכישה תקבלו מייל עם כל פרטי הגישה. תוכלו להתחיל לצפות מכל מחשב או טלפון,
-              בקצב שמתאים לכם.</p>
+          <button class="faq-q" aria-expanded="false" aria-controls="faq-a-c2" id="faq-q-c2">האם השיחה כרוכה בתשלום או בהתחייבות?<span class="plus">+</span></button>
+          <div class="faq-a" id="faq-a-c2" role="region" aria-labelledby="faq-q-c2">
+            <p class="faq-a-text">לא. השיחה בחינם ואין שום חובה להמשיך אחריה.</p>
           </div>
         </div>
         <div class="faq-item">
@@ -3181,14 +3119,7 @@
               בעצמכם. המטרה שלי היא שלא תהיו תלויים בי, אלא שתדעו לנהל את הכסף שלכם בביטחון.</p>
           </div>
         </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false" aria-controls="faq-a-9" id="faq-q-9">מה קורה אם אתחרט?<span class="plus">+</span></button>
-          <div class="faq-a" id="faq-a-9" role="region" aria-labelledby="faq-q-9">
-            <p class="faq-a-text">בגלל זה יש לכם 30 ימי אחריות. אם יישמתם את השלבים המרכזיים בתוכנית והרגשתם שהיא לא
-              סיפקה את הערך שהבטחתי, פנו אליי בתוך 30 יום ואחזיר לכם את כספכם.</p>
-          </div>
         </div>
-      </div>
     </div>
   </section>
 
@@ -3209,10 +3140,9 @@
         לא בשביל להתעשר מהר, אלא בשביל לבנות לעצמו ולמשפחה שלו עתיד כלכלי בטוח יותר.</p>
       <p class="lead">אם החלטתם שהגיע הזמן לעשות את הצעד הראשון, אשמח ללוות אתכם בדרך</p>
       <div class="cta-ring">
-        <a href="https://secure.cardcom.solutions/EA/EA5/Vir6Q9LbVEatLxw4sN0dxg/PaymentSP"
-          class="btn btn-gold checkout-btn">כן, אני רוצה להתחיל להשקיע</a>
+        <a href="https://calendly.com/shaharl0312/30min" target="_blank" rel="noopener" class="btn btn-gold call-btn">קבעו שיחת היכרות בחינם</a>
       </div>
-      <p class="signature">נתראה בתוך התוכנית<br>שחר לוי</p>
+      <p class="signature">נתראה בשיחה<br>שחר לוי</p>
     </div>
   </section>
 
@@ -3283,11 +3213,10 @@
       <button class="exit-popup-close" id="exitPopupClose" aria-label="סגור">✕</button>
       <h3>רגע לפני שאתם עוזבים...</h3>
       <p>הכסף שלכם ימשיך לשבת בעו"ש ולהישחק מאינפלציה - גם אם תסגרו את הדף הזה.</p>
-      <p>אם מה שעצר אתכם הוא החשש "מה אם זה לא בשבילי" - יש לכם 30 יום לבדוק את התוכנית בלי שום סיכון.</p>
-      <span class="exit-guarantee">✓ 30 יום אחריות מלאה להחזר כספי</span>
+      <p>אם מה שעצר אתכם הוא החשש "מה אם זה לא בשבילי" - בואו נדבר חצי שעה ונבדוק את זה ביחד.</p>
+      <span class="exit-guarantee">✓ שיחה בחינם, בלי התחייבות</span>
       <div class="cta-ring" style="display:block;">
-        <a href="https://secure.cardcom.solutions/EA/EA5/Vir6Q9LbVEatLxw4sN0dxg/PaymentSP"
-          class="btn btn-gold checkout-btn">כן, אני רוצה להתחיל להשקיע</a>
+        <a href="https://calendly.com/shaharl0312/30min" target="_blank" rel="noopener" class="btn btn-gold call-btn">קבעו שיחת היכרות בחינם</a>
       </div>
       <button class="exit-popup-decline" id="exitPopupDecline" type="button">לא תודה, אני אחשוב על זה</button>
     </div>
@@ -3417,7 +3346,7 @@
   <script>
     /* ===== UTM capture + passthrough =====
        Reads utm_* from the URL (or reuses whatever was captured earlier this session),
-       and appends them to the Cardcom checkout link so attribution survives the redirect. */
+       and appends them to the Calendly link so attribution survives the redirect. */
     (function () {
       var UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
       var params = new URLSearchParams(window.location.search);
@@ -3431,7 +3360,7 @@
       }
       var utmQuery = new URLSearchParams(utm).toString();
       if (utmQuery) {
-        document.querySelectorAll('.checkout-btn').forEach(function (a) {
+        document.querySelectorAll('.call-btn').forEach(function (a) {
           var sep = a.getAttribute('href').indexOf('?') > -1 ? '&' : '?';
           a.setAttribute('href', a.getAttribute('href') + sep + utmQuery);
         });
@@ -3516,11 +3445,11 @@
       }, 1000);
 
       /* --- CTA click tracking --- */
-      document.querySelectorAll('.checkout-btn').forEach(function (checkoutBtn) {
+      document.querySelectorAll('.call-btn').forEach(function (checkoutBtn) {
         checkoutBtn.addEventListener('click', function () {
           state.ctaClicked = true;
-          safeFbq('track', 'InitiateCheckout');
-          reportScore('checkout_click');
+          safeFbq('track', 'Schedule');
+          reportScore('call_click');
         });
       });
 
