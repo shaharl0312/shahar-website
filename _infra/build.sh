@@ -48,10 +48,12 @@ cp -r funnel/funnel-hadracha/assets _infra/dist/guide/assets
 mkdir -p _infra/dist/guide-hayalim && cp funnel/funnel-hadracha/optin-hayalim.html _infra/dist/guide-hayalim/index.html
 cp -r funnel/funnel-hadracha/assets _infra/dist/guide-hayalim/assets
 
-# Course sales page (v9 is the only live variant - v7/v8 retired)
-mkdir -p _infra/dist/course && cp funnel/course-landing/v9-copy-refine.html _infra/dist/course/index.html
+# /course/ = call-booking page (course-call.html). /course-classic/ and /course-v9/ = previous sales page (v9)
+mkdir -p _infra/dist/course && cp funnel/course-landing/course-call.html _infra/dist/course/index.html
+mkdir -p _infra/dist/course-classic && cp funnel/course-landing/v9-copy-refine.html _infra/dist/course-classic/index.html
 mkdir -p _infra/dist/course-v9 && cp funnel/course-landing/v9-copy-refine.html _infra/dist/course-v9/index.html
 mkdir -p _infra/dist/course-landing && cp funnel/course-landing/video-cover.jpg funnel/course-landing/offer-mockup.jpg funnel/course-landing/video-cover.webp funnel/course-landing/offer-mockup.webp _infra/dist/course-landing/
+cp -r funnel/course-landing/testimonial-videos _infra/dist/course-landing/
 
 # Erosion calculator (checking-account inflation quiz)
 mkdir -p _infra/dist/erosion-calculator && cp tools/erosion-calculator/index.html _infra/dist/erosion-calculator/index.html
