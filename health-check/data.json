@@ -1,53 +1,55 @@
 {
-  "checkedAt": "2026-07-09T20:14:40.834Z",
-  "overallStatus": "ok",
+  "checkedAt": "2026-10-06T03:08:27.725Z",
+  "overallStatus": "issues",
   "checks": [
     {
-      "name": "דף קורס (v8)",
+      "name": "דף קורס (v9)",
       "url": "https://shaharfinance.com/course/",
-      "pass": true,
-      "httpStatus": 200,
-      "details": "עולה תקין ופיקסל נמצא"
+      "pass": false,
+      "httpStatus": 403,
+      "details": "סטטוס לא תקין: 403"
+    },
+    {
+      "name": "דף קורס (v9, נתיב ישיר)",
+      "url": "https://shaharfinance.com/course-v9/",
+      "pass": false,
+      "httpStatus": 403,
+      "details": "סטטוס לא תקין: 403"
     },
     {
       "name": "דף תודה",
       "url": "https://shaharfinance.com/todah/",
-      "pass": true,
-      "httpStatus": 200,
-      "details": "עולה תקין ופיקסל נמצא"
+      "pass": false,
+      "httpStatus": 403,
+      "details": "סטטוס לא תקין: 403"
     },
     {
       "name": "אישור ליווי",
       "url": "https://shaharfinance.com/liuy-confirmation/",
-      "pass": true,
-      "httpStatus": 200,
-      "details": "עולה תקין ופיקסל נמצא"
+      "pass": false,
+      "httpStatus": 403,
+      "details": "סטטוס לא תקין: 403"
     },
     {
       "name": "API ליווי אישי (personal-guidance)",
       "url": "https://shaharfinance.com/api/personal-guidance",
-      "pass": true,
-      "httpStatus": 400,
-      "details": "ה-endpoint מגיב כצפוי"
+      "pass": false,
+      "httpStatus": 403,
+      "details": "סטטוס לא צפוי: 403 (ציפינו ל-400)"
     },
     {
       "name": "API ליד מדריך חינם (ravmesser-lead)",
       "url": "https://shaharfinance.com/api/ravmesser-lead",
-      "pass": true,
-      "httpStatus": 400,
-      "details": "ה-endpoint מגיב כצפוי"
+      "pass": false,
+      "httpStatus": 403,
+      "details": "סטטוס לא צפוי: 403 (ציפינו ל-400)"
     },
     {
-      "name": "רב-מסר - אימות חיבור",
-      "pass": true,
-      "details": "האימות מול רב-מסר תקין (הטוקן עדיין בתוקף)",
-      "url": "https://shahar-finance-staging.vercel.app/api/health-check-internal"
-    },
-    {
-      "name": "קארדקום - אימות חיבור",
-      "pass": true,
-      "details": "האימות מול קארדקום תקין",
-      "url": "https://shahar-finance-staging.vercel.app/api/health-check-internal"
+      "name": "אימות אישורי רב-מסר/קארדקום",
+      "url": "https://shahar-finance-staging.vercel.app/api/health-check-internal",
+      "pass": false,
+      "httpStatus": null,
+      "details": "שגיאת רשת: Unexpected token 'H', \"Host not i\"... is not valid JSON"
     }
   ]
 }
