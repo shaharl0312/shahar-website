@@ -86,14 +86,28 @@ h3.sec{color:#8a6d22;font-size:18px;margin:26px 0 8px}
 
 .step{display:grid;grid-template-columns:50px minmax(0,1fr);gap:4px 16px;padding:28px 0;border-top:1px solid var(--border-light)}
 .step:first-of-type{border-top:0}
-@media (max-width:560px){.step{grid-template-columns:1fr;gap:10px}}
+@media (max-width:560px){.step{grid-template-columns:34px minmax(0,1fr);gap:4px 12px;padding:24px 0}.num{width:34px!important;height:34px!important;font-size:17px!important}}
 .num{width:42px;height:42px;border-radius:50%;background:var(--gold);color:var(--anthracite);font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center}
 .step-body{min-width:0;display:flex;flex-direction:column;gap:12px}
 .step-body p{margin:0}
 .shot{cursor:zoom-in;width:100%;height:auto;border-radius:12px;border:1px solid var(--border-light);box-shadow:0 10px 28px rgba(0,0,0,.08);background:#fff}
 .shot.tall{width:auto;max-width:100%;max-height:420px;margin-inline:auto}
 .pair{display:grid;grid-template-columns:30% minmax(0,1fr);gap:12px;align-items:start}
-@media (max-width:520px){.pair{grid-template-columns:1fr}.pair .shot.menu{max-width:220px;margin-inline:auto}}
+@media (max-width:520px){.pair{grid-template-columns:1fr}.pair .shot.menu{max-width:170px;margin-inline:auto}}
+.proof{background:#fff;border:1px solid var(--border-light);border-radius:12px;padding:0 16px}
+.proof summary{cursor:pointer;list-style:none;padding:12px 0;font-size:15px;font-weight:700;color:#8a6d22;display:flex;align-items:center;gap:8px}
+.proof summary::-webkit-details-marker{display:none}
+.proof summary::before{content:'+';display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;border:1.5px solid var(--gold);font-size:14px;line-height:1}
+.proof[open] summary::before{content:'-'}
+.proof img{margin-bottom:14px;box-shadow:none}
+.explain{background:#fff;border:1px solid var(--border-light);border-radius:14px;padding:18px 20px;margin:6px 0 18px}
+.explain h4{font-size:17px;font-weight:800;margin-bottom:4px;color:var(--anthracite)}
+.explain p{font-size:16px;line-height:1.7;margin:0 0 10px}
+.explain p:last-child{margin:0}
+.who{display:grid;gap:8px;margin:6px 0 18px}
+.who div{background:#fff;border:1px solid var(--border-light);border-radius:12px;padding:12px 16px;font-size:16px;line-height:1.6;color:var(--muted-dark)}
+.who b{color:var(--anthracite)}
+.btn{display:inline-block;font-weight:800;font-size:17px;padding:16px 38px;border-radius:100px;text-decoration:none;background:linear-gradient(120deg,var(--gold) 0%,var(--gold-l) 100%);color:var(--anthracite);box-shadow:0 10px 30px rgba(201,168,76,.25)}
 
 .note{display:flex;gap:14px;background:var(--anthracite);color:var(--muted-light);border-radius:14px;padding:18px 20px;margin-top:12px}
 .note svg{flex:none;margin-top:3px}
@@ -130,7 +144,6 @@ table.days td{padding:10px 14px;border-top:1px solid var(--border-light)}
 .insight p.big{color:#fff;font-size:clamp(21px,3vw,26px);font-weight:700;line-height:1.5;margin-top:10px}
 .me{display:flex;flex-direction:column;align-items:center;gap:6px;margin:44px 0 16px}
 .me img{width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid var(--gold)}
-.handle{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:17px;padding:14px 34px;border-radius:100px;text-decoration:none;background:linear-gradient(120deg,var(--gold) 0%,var(--gold-l) 100%);color:var(--anthracite);direction:ltr}
 .disclaimer{font-size:13px;color:var(--muted-light);margin-top:32px;line-height:1.6}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -178,36 +191,47 @@ table.days td{padding:10px 14px;border-top:1px solid var(--border-light)}
 
     <h3 class="sec">מה זה</h3>
     <p>בזמן השירות משרד הביטחון שילם בשבילך ביטוח לאומי וביטוח בריאות. ביום שאחרי השחרור החובה עוברת אליך. אם אתה שכיר, המעסיק מנכה את זה מהמשכורת. אם אתה מקבל דמי אבטלה, זה מנוכה מהם. אם אתה לא עובד בכלל, אתה משלם בעצמך.</p>
+    <div class="explain">
+      <h4>על מה בעצם משלמים?</h4>
+      <p><b>ביטוח לאומי</b> זה מה שמגן עליך כשמשהו משתבש: דמי אבטלה כשאין עבודה, קצבה אם נפצעת ולא יכול לעבוד. <b>ביטוח בריאות</b> זה מה שמממן את קופת החולים שלך.</p>
+      <p>אלה שני תשלומים נפרדים, אבל משלמים אותם יחד, באותו מקום.</p>
+    </div>
 
     <h3 class="sec">למה זה חשוב לך עכשיו</h3>
     <div class="stat"><div class="big">266 <small>ש"ח לחודש</small></div><div class="txt">זה מה שמשלם מי שלא עובד ב-2026: 143 ש"ח ביטוח לאומי ו-123 ש"ח ביטוח בריאות. הפטור של חודשיים שמקבלים משוחררי סדיר <b>לא חל על משוחררי קבע.</b> החיוב מתחיל מיד.</div></div>
 
     <div class="step"><div class="num">1</div><div class="step-body">
       <h3>תבדוק כמה אתה צריך לשלם</h3>
-      <p>אם אתה לא עובד ולא מקבל דמי אבטלה, זה הסכום. כך זה מופיע באתר ביטוח לאומי:</p>
-      <img class="shot" src="/guides/discharge/screenshots/01-btl-266.png" alt="אתר ביטוח לאומי: מי שלא עובד משלם 266 ש&quot;ח בחודש" width="730" height="220" loading="lazy">
+      <p>זה תלוי במה שאתה עושה אחרי השחרור:</p>
+      <div class="who">
+        <div><b>מתחיל לעבוד כשכיר?</b> אין לך מה לעשות. המעסיק מנכה את זה מהמשכורת ומעביר לבד.</div>
+        <div><b>מקבל דמי אבטלה?</b> גם כאן זה יורד לבד, ישר מדמי האבטלה.</div>
+        <div><b>לא עובד ולא מקבל אבטלה?</b> אתה משלם בעצמך 266 ש"ח בחודש. בשבילך שאר הפרק.</div>
+      </div>
+      <details class="proof"><summary>לראות את זה באתר ביטוח לאומי</summary><img class="shot" src="/guides/discharge/screenshots/01-btl-266.png" alt="אתר ביטוח לאומי: מי שלא עובד משלם 266 ש&quot;ח בחודש" width="730" height="220" loading="lazy"></details>
     </div></div>
 
     <div class="step"><div class="num">2</div><div class="step-body">
       <h3>תיכנס לשירות האישי באתר ביטוח לאומי</h3>
       <p>הכי פשוט: כניסה עם קוד חד פעמי. תעודת זהות, טלפון, וקוד שמגיע ב-SMS.</p>
-      <img class="shot" src="/guides/discharge/screenshots/02-btl-login.png" alt="מסך הכניסה לשירות האישי בביטוח לאומי" width="1400" height="843" loading="lazy">
+      <picture><source media="(max-width:560px)" srcset="/guides/discharge/screenshots/m/02-btl-login.png"><img class="shot" src="/guides/discharge/screenshots/02-btl-login.png" alt="מסך הכניסה לשירות האישי בביטוח לאומי" width="1400" height="843" loading="lazy"></picture>
     </div></div>
 
     <div class="step"><div class="num">3</div><div class="step-body">
       <h3>תגדיר הוראת קבע לתשלום</h3>
+      <p>הוראת קבע אומרת שהתשלום יורד לבד מהאשראי כל חודש. אתה לא צריך לזכור, ולא נוצר חוב בטעות כשאתה עסוק או בחו"ל.</p>
       <p>בתפריט בצד: גבייה, ואז "עדכון הוראת קבע". שם מגדירים חיוב קבוע בכרטיס אשראי, וזה יורד לבד כל חודש.</p>
       <div class="pair">
         <img class="shot menu" src="/guides/discharge/screenshots/03-btl-menu.png" alt="התפריט בשירות האישי: גבייה, עדכון הוראת קבע" width="504" height="820" loading="lazy">
-        <img class="shot" src="/guides/discharge/screenshots/04-btl-standing-order.png" alt="מסך עדכון הוראת קבע בביטוח לאומי" width="1568" height="640" loading="lazy">
+        <picture><source media="(max-width:560px)" srcset="/guides/discharge/screenshots/m/04-btl-standing-order.png"><img class="shot" src="/guides/discharge/screenshots/04-btl-standing-order.png" alt="מסך עדכון הוראת קבע בביטוח לאומי" width="1568" height="640" loading="lazy"></picture>
       </div>
     </div></div>
 
     <div class="step"><div class="num">4</div><div class="step-body">
       <h3>טס לטיול? תסדר את זה לפני הטיסה</h3>
-      <p>גם בחו"ל ממשיכים לשלם. ביטוח לאומי עצמו ממליץ להגדיר הוראת קבע לפני שיוצאים מהארץ:</p>
-      <img class="shot" src="/guides/discharge/screenshots/05-btl-abroad.png" alt="המלצת ביטוח לאומי להגדיר הוראת קבע לפני יציאה מהארץ" width="1100" height="170" loading="lazy">
-      <p>והחדשות הטובות: משוחרר קבע פטור מתקופת המתנה בביטוח בריאות ב-24 החודשים הראשונים מהשחרור.</p>
+      <p>טיול לא עוצר את החיוב. גם כשאתה חצי שנה בדרום אמריקה, אתה עדיין תושב ישראל, והתשלום ממשיך כל חודש. אם לא תסדר את זה לפני, תחזור לחוב שחיכה לך. בגלל זה ביטוח לאומי עצמו ממליץ להגדיר הוראת קבע לפני שיוצאים מהארץ.</p>
+      <details class="proof"><summary>לראות את ההמלצה באתר ביטוח לאומי</summary><img class="shot" src="/guides/discharge/screenshots/05-btl-abroad.png" alt="המלצת ביטוח לאומי להגדיר הוראת קבע לפני יציאה מהארץ" width="1100" height="170" loading="lazy"></details>
+      <p>והחדשות הטובות: משוחרר קבע פטור מתקופת המתנה בביטוח בריאות ב-24 החודשים הראשונים מהשחרור. כלומר, מי שהיה בחו"ל הרבה זמן ולא שילם ביטוח בריאות, בדרך כלל מחכה 2 עד 6 חודשים עד שקופת החולים מכסה אותו שוב. לך זה לא קורה, כל עוד אתה בשנתיים הראשונות.</p>
     </div></div>
 
     <div class="note">
@@ -225,6 +249,15 @@ table.days td{padding:10px 14px;border-top:1px solid var(--border-light)}
 
     <h3 class="sec">מה זה</h3>
     <p>בזמן הקבע הופקד לך כסף לקרן "הראל פנסיה", בתוכנית מיוחדת לאנשי קבע. בתוכנית הזו דמי הניהול כמעט אפס. כשאתה משתחרר, צה"ל מפסיק להפקיד, והשאלה היא מה קורה לדמי הניהול האלה.</p>
+    <div class="explain">
+      <h4>רגע, מה זה קרן פנסיה?</h4>
+      <p>זה החיסכון שלך לגיל פרישה. כל חודש נכנס אליה כסף, הכסף מושקע וגדל לאורך השנים, ובגיל פרישה הוא הופך לקצבה חודשית.</p>
+      <p>יש בה גם ביטוח: אם קורה משהו ואתה לא יכול לעבוד, או למשפחה שלך אם קורה לך משהו.</p>
+    </div>
+    <div class="explain">
+      <h4>ומה זה דמי ניהול?</h4>
+      <p>זה מה שהקרן גובה ממך על ניהול הכסף. יש שני סוגים: אחוז מכל הפקדה חדשה, ואחוז מכל הסכום שכבר צברת. זה נשמע קטן, אבל זה נגבה כל שנה, עד הפרישה.</p>
+    </div>
 
     <h3 class="sec">למה זה חשוב לך עכשיו</h3>
     <p>תסתכל על ההבדל:</p>
@@ -233,10 +266,10 @@ table.days td{padding:10px 14px;border-top:1px solid var(--border-light)}
       <div><div class="l">ממוצע בשוק (אוגוסט 2026)</div><div class="v">0.144%<small>מהצבירה, ו-1.54% מההפקדה</small></div></div>
       <div><div class="l">התקרה בחוק</div><div class="v">0.5%<small>מהצבירה, ו-6% מההפקדה</small></div></div>
     </div>
-    <p>כך זה הופיע בדף של הראל לתוכנית הקבע:</p>
-    <img class="shot" src="/guides/discharge/screenshots/06-harel-fees.png" alt="דמי הניהול בתוכנית אנשי הקבע בהראל" width="1568" height="247" loading="lazy">
-    <p style="margin-top:20px">וההטבה הזו ממשיכה גם אחרי השחרור, לחצי שנה:</p>
-    <img class="shot" src="/guides/discharge/screenshots/07-harel-halfyear.png" alt="ההטבה נמשכת חצי שנה אחרי השחרור" width="1568" height="294" loading="lazy">
+    <p>בשקלים: על 100,000 ש"ח שצברת, בתוכנית של הקבע אתה משלם 1.80 ש"ח בשנה. בממוצע בשוק אותו סכום עולה 144 ש"ח בשנה, ועוד 1.54% מכל הפקדה. וככל שהחיסכון גדל, גם ההפרש גדל.</p>
+    <details class="proof"><summary>לראות את דמי הניהול בדף של הראל</summary><img class="shot" src="/guides/discharge/screenshots/06-harel-fees.png" alt="דמי הניהול בתוכנית אנשי הקבע בהראל" width="1568" height="247" loading="lazy"></details>
+    <p style="margin-top:20px">וההטבה הזו לא נעלמת ביום השחרור. היא ממשיכה עוד חצי שנה אחריו.</p>
+    <details class="proof"><summary>לראות את זה בדף של הראל</summary><img class="shot" src="/guides/discharge/screenshots/07-harel-halfyear.png" alt="ההטבה נמשכת חצי שנה אחרי השחרור" width="1568" height="294" loading="lazy"></details>
     <p style="margin-top:20px"><b>הנקודה החשובה:</b> כל עוד אתה ממשיך להפקיד לפחות 200 ש"ח בחודש, ההטבה נשמרת גם אחרי חצי השנה. לכן הצעד הנכון הוא להגדיר הוראת קבע מיד.</p>
 
     <div class="step"><div class="num">1</div><div class="step-body">
@@ -248,14 +281,15 @@ table.days td{padding:10px 14px;border-top:1px solid var(--border-light)}
     <div class="step"><div class="num">2</div><div class="step-body">
       <h3>תיכנס ל"שינוי אמצעי תשלום"</h3>
       <p>באזור האישי, תחת "הכסף שלי":</p>
-      <img class="shot" src="/guides/discharge/screenshots/09-harel-payment-tile.png" alt="האריח שינוי אמצעי תשלום באזור האישי בהראל" width="1328" height="320" loading="lazy">
+      <picture><source media="(max-width:560px)" srcset="/guides/discharge/screenshots/m/09-harel-payment-tile.png"><img class="shot" src="/guides/discharge/screenshots/09-harel-payment-tile.png" alt="האריח שינוי אמצעי תשלום באזור האישי בהראל" width="1328" height="320" loading="lazy"></picture>
     </div></div>
 
     <div class="step"><div class="num">3</div><div class="step-body">
       <h3>תבחר כרטיס אשראי, לפחות 200 ש"ח בחודש</h3>
-      <img class="shot tall" src="/guides/discharge/screenshots/10-harel-choose-card.png" alt="בחירת כרטיס אשראי כאמצעי תשלום בהראל" width="1190" height="868" loading="lazy">
-      <p>200 ש"ח זה המינימום להוראת קבע לקרן הפנסיה בהראל:</p>
-      <img class="shot" src="/guides/discharge/screenshots/11-harel-200min.png" alt="מינימום 200 ש&quot;ח להוראת קבע לקרן הפנסיה בהראל" width="1568" height="209" loading="lazy">
+      <p>מה שחשוב כאן זה שההפקדה לא נעצרת. הוראת קבע באשראי דואגת לזה לבד, גם כשאתה בטיול וגם בחודשים שאתה בין עבודות.</p>
+      <picture><source media="(max-width:560px)" srcset="/guides/discharge/screenshots/m/10-harel-choose-card.png"><img class="shot tall" src="/guides/discharge/screenshots/10-harel-choose-card.png" alt="בחירת כרטיס אשראי כאמצעי תשלום בהראל" width="1190" height="868" loading="lazy"></picture>
+      <p>200 ש"ח זה המינימום להוראת קבע לקרן הפנסיה בהראל. וזה לא כסף שהולך לאיבוד: הוא נכנס לחיסכון שלך.</p>
+      <details class="proof"><summary>לראות את המינימום באתר הראל</summary><img class="shot" src="/guides/discharge/screenshots/11-harel-200min.png" alt="מינימום 200 ש&quot;ח להוראת קבע לקרן הפנסיה בהראל" width="1568" height="209" loading="lazy"></details>
     </div></div>
 
     <div class="note">
@@ -273,9 +307,15 @@ table.days td{padding:10px 14px;border-top:1px solid var(--border-light)}
 
     <h3 class="sec">מה זה</h3>
     <p>משוחרר קבע עשוי להיות זכאי לדמי אבטלה מיד עם השחרור. חודשי הקבע נחשבים כחודשי עבודה של שכיר, וצריך 12 חודשי עבודה מתוך 18 החודשים האחרונים. אחרי כמה שנים בקבע, כנראה שיש לך את זה.</p>
+    <div class="explain">
+      <h4>איך זה עובד בפועל?</h4>
+      <p>דמי אבטלה זה כסף שביטוח לאומי משלם למי שהפסיק לעבוד ומחפש עבודה, לתקופה מוגבלת. זו לא טובה, זו זכות שצברת בשנים בקבע.</p>
+      <p>בתמורה אתה נרשם לשירות התעסוקה כמי שמחפש עבודה, ומתייצב במועדים שהם קובעים לך. ככה המדינה יודעת שאתה באמת מחפש.</p>
+    </div>
 
     <h3 class="sec">למה זה חשוב לך עכשיו</h3>
     <div class="stat"><div class="big">4,927 <small>ש"ח לחודש</small></div><div class="txt">זה מה שמקבל מי שעוד לא בן 28 והרוויח 10,000 ש"ח ברוטו (197.06 ש"ח ליום, לפי 25 ימים בחודש, נכון ל-2026). הסכום מחושב לפי 6 חודשי השכר האחרונים.</div></div>
+    <p>בפועל זה בערך חצי מהמשכורת ברוטו. ככל שהשכר גבוה יותר, האחוז קצת יורד.</p>
     <p>לכמה זמן? תלוי בגיל (עד 2 תלויים):</p>
     <table class="days">
       <tr><th>גיל</th><th>ימי זכאות</th><th>בערך</th></tr>
@@ -286,18 +326,20 @@ table.days td{padding:10px 14px;border-top:1px solid var(--border-light)}
     <div class="step"><div class="num">1</div><div class="step-body">
       <h3>תיכנס לטופס המשולב באתר gov.il</h3>
       <p>טופס אחד שגם רושם אותך לשירות התעסוקה וגם מגיש את התביעה לביטוח לאומי. בעמוד "דמי אבטלה וחזרה למעגל העבודה" לוחצים כאן:</p>
-      <img class="shot" src="/guides/discharge/screenshots/12-gov-submit.png" alt="כפתור הגשת הבקשה בעמוד דמי אבטלה ב-gov.il" width="1178" height="412" loading="lazy">
+      <picture><source media="(max-width:560px)" srcset="/guides/discharge/screenshots/m/12-gov-submit.png"><img class="shot" src="/guides/discharge/screenshots/12-gov-submit.png" alt="כפתור הגשת הבקשה בעמוד דמי אבטלה ב-gov.il" width="1178" height="412" loading="lazy"></picture>
     </div></div>
 
     <div class="step"><div class="num">2</div><div class="step-body">
       <h3>תזדהה במערכת ההזדהות הלאומית</h3>
-      <img class="shot tall" src="/guides/discharge/screenshots/13-gov-login.png" alt="מסך מערכת ההזדהות הלאומית" width="1288" height="924" loading="lazy">
+      <p>זו אותה כניסה של כל אתרי הממשלה. אם כבר נכנסת פעם לאתר ממשלתי, יש לך את זה.</p>
+      <picture><source media="(max-width:560px)" srcset="/guides/discharge/screenshots/m/13-gov-login.png"><img class="shot tall" src="/guides/discharge/screenshots/13-gov-login.png" alt="מסך מערכת ההזדהות הלאומית" width="1288" height="924" loading="lazy"></picture>
     </div></div>
 
     <div class="step"><div class="num">3</div><div class="step-body">
       <h3>תוודא שטופס 100 נשלח</h3>
+      <p>טופס 100 זה הדוח שבו המעסיק מדווח לביטוח לאומי כמה הרווחת. אצלך המעסיק הוא צה"ל. בלי הטופס הזה ביטוח לאומי לא יודע לחשב כמה מגיע לך, והתביעה נתקעת.</p>
       <p>ביטוח לאומי צריך לקבל את טופס 100 (ריכוז נתוני שכר) על 12 החודשים האחרונים. אצל משוחררי קבע הוא נמצא באתר צה"ל.</p>
-      <img class="shot" src="/guides/discharge/screenshots/14-gov-form100.png" alt="דרישת טופס 100 בטופס האבטלה" width="1076" height="240" loading="lazy">
+      <details class="proof"><summary>לראות את הדרישה ב-gov.il</summary><img class="shot" src="/guides/discharge/screenshots/14-gov-form100.png" alt="דרישת טופס 100 בטופס האבטלה" width="1076" height="240" loading="lazy"></details>
     </div></div>
 
     <div class="step"><div class="num">4</div><div class="step-body">
@@ -349,14 +391,9 @@ table.days td{padding:10px 14px;border-top:1px solid var(--border-light)}
     <div class="me">
       <img src="/shahar_headshot.png" alt="שחר לוי" width="110" height="110" loading="lazy" onerror="this.remove()">
     </div>
-    <h2 style="color:#fff">רוצה עוד דברים כאלה?</h2>
-    <p class="lead">אני מעלה טיפים פיננסיים לצעירים ולמשתחררים, בלי מילים גבוהות.</p>
-    <div style="margin-top:22px">
-      <a class="handle" href="https://www.instagram.com/shahar.levy1/" target="_blank" rel="noopener">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2D2D2D" stroke-width="2.2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1" fill="#2D2D2D"/></svg>
-        @shahar.levy1
-      </a>
-    </div>
+    <h2 style="color:#fff">סידרת את השחרור? עכשיו תורו של הכסף.</h2>
+    <p class="lead">בהדרכה החינמית שלי אני מראה מה אני עושה עם הכסף שלי, ואיך מתחילים להשקיע בצורה פשוטה.</p>
+    <div style="margin-top:22px"><a class="btn" href="/guide/">להדרכה החינמית</a></div>
     <p class="disclaimer">המידע במדריך כללי ואינו ייעוץ אישי, משפטי או פנסיוני. הסכומים והתנאים נכונים לאוקטובר 2026 ועשויים להשתנות. לפני כל החלטה כדאי לאמת מול הגוף הרלוונטי: ביטוח לאומי, הראל, שירות התעסוקה או צה"ל.</p>
   </div>
 </section>
