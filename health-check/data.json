@@ -1,55 +1,55 @@
 {
-  "checkedAt": "2026-10-06T03:08:27.725Z",
+  "checkedAt": "2026-10-13T03:09:53.328Z",
   "overallStatus": "issues",
   "checks": [
     {
       "name": "דף קורס (v9)",
       "url": "https://shaharfinance.com/course/",
       "pass": false,
-      "httpStatus": 403,
-      "details": "סטטוס לא תקין: 403"
+      "httpStatus": null,
+      "details": "שגיאת רשת: fetch failed"
     },
     {
       "name": "דף קורס (v9, נתיב ישיר)",
       "url": "https://shaharfinance.com/course-v9/",
       "pass": false,
-      "httpStatus": 403,
-      "details": "סטטוס לא תקין: 403"
+      "httpStatus": null,
+      "details": "שגיאת רשת: fetch failed"
     },
     {
       "name": "דף תודה",
       "url": "https://shaharfinance.com/todah/",
       "pass": false,
-      "httpStatus": 403,
-      "details": "סטטוס לא תקין: 403"
+      "httpStatus": null,
+      "details": "שגיאת רשת: fetch failed"
     },
     {
       "name": "אישור ליווי",
       "url": "https://shaharfinance.com/liuy-confirmation/",
       "pass": false,
-      "httpStatus": 403,
-      "details": "סטטוס לא תקין: 403"
+      "httpStatus": null,
+      "details": "שגיאת רשת: fetch failed"
     },
     {
       "name": "API ליווי אישי (personal-guidance)",
       "url": "https://shaharfinance.com/api/personal-guidance",
       "pass": false,
-      "httpStatus": 403,
-      "details": "סטטוס לא צפוי: 403 (ציפינו ל-400)"
+      "httpStatus": null,
+      "details": "שגיאת רשת: fetch failed"
     },
     {
       "name": "API ליד מדריך חינם (ravmesser-lead)",
       "url": "https://shaharfinance.com/api/ravmesser-lead",
       "pass": false,
-      "httpStatus": 403,
-      "details": "סטטוס לא צפוי: 403 (ציפינו ל-400)"
+      "httpStatus": null,
+      "details": "שגיאת רשת: fetch failed"
     },
     {
       "name": "אימות אישורי רב-מסר/קארדקום",
       "url": "https://shahar-finance-staging.vercel.app/api/health-check-internal",
       "pass": false,
       "httpStatus": null,
-      "details": "שגיאת רשת: Unexpected token 'H', \"Host not i\"... is not valid JSON"
+      "details": "שגיאת רשת: fetch failed"
     }
   ]
 }

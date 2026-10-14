@@ -64,6 +64,7 @@ cp content/guides/index.html _infra/dist/guides/index.html
 cp content/guides/keren-kaspit/index.html _infra/dist/guides/keren-kaspit/index.html
 cp content/guides/bank-money/index.html _infra/dist/guides/bank-money/index.html
 cp content/guides/us-bonds/index.html _infra/dist/guides/us-bonds/index.html
+mkdir -p _infra/dist/guides/discharge && cp content/guides/discharge/index.html _infra/dist/guides/discharge/ && cp -r content/guides/discharge/screenshots _infra/dist/guides/discharge/
 cp content/guides/flight-claude/index.html content/guides/flight-claude/search-demo.mp4 content/guides/flight-claude/search-demo.jpg content/guides/flight-claude/install-demo.mp4 content/guides/flight-claude/install-demo.jpg _infra/dist/guides/flight-claude/
 
 # Funnel health-check dashboard

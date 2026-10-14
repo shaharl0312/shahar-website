@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3 דברים שחייבים לעשות כשמשתחררים מקבע | שחר לוי</title>
+<meta name="description" content="ביטוח לאומי, פנסיה ודמי אבטלה. מה לעשות, באיזה סדר, ואיפה לוחצים.">
+<link rel="canonical" href="https://shaharfinance.com/guides/discharge/">
+<meta property="og:title" content="3 דברים שחייבים לעשות כשמשתחררים מקבע | שחר לוי"><meta property="og:type" content="article"><meta property="og:locale" content="he_IL"><meta property="og:url" content="https://shaharfinance.com/guides/discharge/"><meta property="og:description" content="ביטוח לאומי, פנסיה ודמי אבטלה. מה לעשות, באיזה סדר, ואיפה לוחצים.">
+<link rel="icon" type="image/png" href="/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<style>
+/* Same rhythm as /guides/flight-claude/ (dark hero, cream sections, gold accents). Colors from Brain/core/brand/colors.md. */
+:root{
+  --gold:#C9A84C; --gold-l:#e6cd8a; --anthracite:#2D2D2D; --cream:#F7F5F0; --cream-2:#efece3; --navy:#1B3A6B;
+  --muted-dark:rgba(45,45,45,.70); --muted-light:rgba(247,245,240,.76); --border-light:rgba(45,45,45,.12);
+  --font:'Assistant',Arial,sans-serif;
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{overflow-x:hidden;width:100%}
+body{font-family:var(--font);background:var(--cream);color:var(--anthracite);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;width:100%;position:relative}
+img{max-width:100%;display:block}
+a{color:inherit}
+a:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+b,strong{font-weight:800}
+h1,h2,h3{font-weight:800;letter-spacing:-.01em;text-wrap:balance}
+h1{font-size:clamp(30px,5vw,48px);line-height:1.2;margin-bottom:18px}
+h2{font-size:clamp(24px,3.4vw,34px);line-height:1.25;margin-bottom:16px}
+h3{font-size:clamp(19px,2vw,22px);line-height:1.4}
+p{font-size:clamp(16.5px,1.7vw,18.5px);margin-bottom:16px}
+.section{position:relative;padding:80px 20px}
+@media (max-width:768px){.section{padding:56px 18px}}
+.narrow{max-width:680px;margin:0 auto;position:relative;z-index:1}
+.center{text-align:center}
+.dark{background:var(--anthracite);color:#fff;position:relative;overflow:hidden}
+.dark p{color:var(--muted-light)}
+.dark b{color:#fff}
+.glow{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;z-index:0}
+.glow-a{top:-15%;right:-10%;width:520px;height:520px;max-width:90vw;background:radial-gradient(circle,rgba(201,168,76,.20),transparent 65%)}
+.glow-b{bottom:-15%;left:-10%;width:520px;height:520px;max-width:90vw;background:radial-gradient(circle,rgba(27,58,107,.28),transparent 65%)}
+.cream{background:var(--cream)}
+.cream-alt{background:linear-gradient(180deg,var(--cream) 0%,var(--cream-2) 100%)}
+.eyebrow-small{display:inline-flex;align-items:center;gap:11px;font-size:14px;font-weight:700;line-height:1.4;color:var(--gold-l);margin-bottom:20px}
+.eyebrow-small .bar{flex-shrink:0;width:2px;align-self:stretch;background:linear-gradient(180deg,var(--gold),transparent);border-radius:2px}
+.cream .eyebrow-small,.cream-alt .eyebrow-small{color:#8a6d22}
+.gold-grad{background:linear-gradient(120deg,var(--gold) 10%,var(--gold-l) 60%,#fff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.lead{max-width:600px;margin:0 auto 8px;font-size:clamp(17px,1.9vw,20px);line-height:1.8}
+.hero{padding:104px 20px 72px}
+.hero .center{margin-bottom:36px}
+
+/* Learn box */
+.learn{background:rgba(255,255,255,.05);border:1px solid rgba(201,168,76,.35);border-radius:18px;padding:22px 24px;text-align:right}
+.learn h3{color:#fff;font-size:18px;margin-bottom:10px}
+.learn ol{list-style:none;counter-reset:k}
+.learn li{counter-increment:k;display:flex;gap:14px;align-items:baseline;padding:10px 0;border-top:1px solid rgba(255,255,255,.08);color:var(--muted-light);font-size:16.5px;line-height:1.6}
+.learn li:first-child{border-top:0}
+.learn li::before{content:counter(k);color:var(--gold);font-weight:800;font-size:19px;min-width:14px}
+
+/* Intro */
+.story p{color:var(--muted-dark);line-height:1.95;margin-bottom:22px}
+.sign{font-weight:800;color:var(--anthracite);margin-bottom:28px}
+.map{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:520px){.map{grid-template-columns:1fr}}
+.map a{display:block;text-decoration:none;background:#fff;border:1px solid var(--border-light);border-radius:14px;padding:16px}
+.map .n{color:var(--gold);font-weight:800;font-size:30px;line-height:1}
+.map .t{font-weight:800;margin-top:6px;font-size:17px}
+.map .d{color:var(--muted-dark);font-size:14.5px;line-height:1.5;margin-top:2px}
+
+/* Chapter */
+.ch-head{display:flex;align-items:center;gap:18px;margin-bottom:22px}
+.ch-num{font-size:clamp(64px,10vw,88px);font-weight:800;color:var(--gold);line-height:.85}
+.ch-head .k{font-size:14px;color:#8a6d22;font-weight:700}
+.ch-head h2{margin:0}
+h3.sec{color:#8a6d22;font-size:18px;margin:26px 0 8px}
+.chapter p{color:var(--muted-dark)}
+.chapter p b{color:var(--anthracite)}
+.stat{display:flex;align-items:center;gap:20px;background:#fff;border-right:4px solid var(--gold);border-radius:12px;padding:18px 20px;margin:8px 0 18px}
+@media (max-width:520px){.stat{flex-direction:column;align-items:flex-start;gap:8px}}
+.stat .big{font-size:clamp(34px,6vw,44px);font-weight:800;line-height:1;white-space:nowrap;font-variant-numeric:tabular-nums}
+.stat .big small{font-size:17px;font-weight:700;color:var(--muted-dark)}
+.stat .txt{font-size:16px;line-height:1.6;color:var(--muted-dark)}
+.stat .txt b{color:var(--anthracite)}
+
+.step{display:grid;grid-template-columns:50px minmax(0,1fr);gap:4px 16px;padding:28px 0;border-top:1px solid var(--border-light)}
+.step:first-of-type{border-top:0}
+@media (max-width:560px){.step{grid-template-columns:34px minmax(0,1fr);gap:4px 12px;padding:24px 0}.num{width:34px!important;height:34px!important;font-size:17px!important}}
+.num{width:42px;height:42px;border-radius:50%;background:var(--gold);color:var(--anthracite);font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center}
+.step-body{min-width:0;display:flex;flex-direction:column;gap:12px}
+.step-body p{margin:0}
+.shot{cursor:zoom-in;width:100%;height:auto;border-radius:12px;border:1px solid var(--border-light);box-shadow:0 10px 28px rgba(0,0,0,.08);background:#fff}
+.shot.tall{width:auto;max-width:100%;max-height:420px;margin-inline:auto}
+.pair{display:grid;grid-template-columns:30% minmax(0,1fr);gap:12px;align-items:start}
+@media (max-width:520px){.pair{grid-template-columns:1fr}.pair .shot.menu{max-width:170px;margin-inline:auto}}
+.proof{background:#fff;border:1px solid var(--border-light);border-radius:12px;padding:0 16px}
+.proof summary{cursor:pointer;list-style:none;padding:12px 0;font-size:15px;font-weight:700;color:#8a6d22;display:flex;align-items:center;gap:8px}
+.proof summary::-webkit-details-marker{display:none}
+.proof summary::before{content:'+';display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;border:1.5px solid var(--gold);font-size:14px;line-height:1}
+.proof[open] summary::before{content:'-'}
+.proof img{margin-bottom:14px;box-shadow:none}
+.explain{background:#fff;border:1px solid var(--border-light);border-radius:14px;padding:18px 20px;margin:6px 0 18px}
+.explain h4{font-size:17px;font-weight:800;margin-bottom:4px;color:var(--anthracite)}
+.explain p{font-size:16px;line-height:1.7;margin:0 0 10px}
+.explain p:last-child{margin:0}
+.who{display:grid;gap:8px;margin:6px 0 18px}
+.who div{background:#fff;border:1px solid var(--border-light);border-radius:12px;padding:12px 16px;font-size:16px;line-height:1.6;color:var(--muted-dark)}
+.who b{color:var(--anthracite)}
+.btn{display:inline-block;font-weight:800;font-size:17px;padding:16px 38px;border-radius:100px;text-decoration:none;background:linear-gradient(120deg,var(--gold) 0%,var(--gold-l) 100%);color:var(--anthracite);box-shadow:0 10px 30px rgba(201,168,76,.25)}
+
+.note{display:flex;gap:14px;background:var(--anthracite);color:var(--muted-light);border-radius:14px;padding:18px 20px;margin-top:12px}
+.note svg{flex:none;margin-top:3px}
+.note h4{color:var(--gold);font-size:17px;font-weight:800;margin-bottom:4px}
+.note p{color:var(--muted-light)!important;font-size:16px;line-height:1.65;margin:0}
+
+.compare{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:6px 0 18px}
+@media (max-width:560px){.compare{grid-template-columns:1fr}}
+.compare>div{background:#fff;border:1px solid var(--border-light);border-radius:12px;padding:14px 16px}
+.compare .hl{border:2px solid var(--gold);background:rgba(201,168,76,.08)}
+.compare .l{font-size:14px;color:var(--muted-dark);font-weight:700}
+.compare .v{font-size:22px;font-weight:800;margin-top:2px;line-height:1.25;font-variant-numeric:tabular-nums}
+.compare .v small{display:block;font-size:14px;font-weight:600;color:var(--muted-dark)}
+
+table.days{width:100%;border-collapse:collapse;margin:4px 0 18px;font-size:16px;background:#fff;border-radius:12px;overflow:hidden}
+table.days th{background:var(--anthracite);color:var(--gold);font-weight:700;padding:10px 14px;text-align:right}
+table.days td{padding:10px 14px;border-top:1px solid var(--border-light)}
+
+/* Checklist */
+.phase{background:#fff;border:1px solid var(--border-light);border-radius:16px;padding:20px 22px;margin-bottom:14px}
+.phase h3{font-size:19px;margin-bottom:8px}
+.phase h3 span{color:var(--gold)}
+.phase ul{list-style:none}
+.phase li{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--border-light);font-size:16.5px;line-height:1.6}
+.phase li:first-child{border-top:0}
+.phase input{flex:none;appearance:none;-webkit-appearance:none;width:20px;height:20px;border:2px solid var(--gold);border-radius:5px;margin-top:3px;cursor:pointer;display:grid;place-content:center}
+.phase input:checked{background:var(--gold)}
+.phase input:checked::after{content:"\2713";color:var(--anthracite);font-size:13px;font-weight:800}
+.phase input:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.phase label{cursor:pointer}
+
+/* Last */
+.insight .k{color:var(--gold);font-weight:800;font-size:14px;letter-spacing:.04em}
+.insight p.big{color:#fff;font-size:clamp(21px,3vw,26px);font-weight:700;line-height:1.5;margin-top:10px}
+.me{display:flex;flex-direction:column;align-items:center;gap:6px;margin:44px 0 16px}
+.me img{width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid var(--gold)}
+.disclaimer{font-size:13px;color:var(--muted-light);margin-top:32px;line-height:1.6}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<section class="hero dark">
+  <div class="glow glow-a"></div><div class="glow glow-b"></div>
+  <div class="narrow">
+    <div class="center">
+      <span class="eyebrow-small"><span class="bar"></span>מדריך שחרור</span>
+      <h1><span class="gold-grad">3</span> דברים שחייבים לעשות כשמשתחררים מקבע</h1>
+      <p class="lead">ביטוח לאומי, פנסיה ודמי אבטלה. מה לעשות, באיזה סדר, ואיפה לוחצים.</p>
+    </div>
+    <div class="learn">
+      <h3>מה תדע בסוף המדריך</h3>
+      <ol>
+        <li>למה מהיום הראשון אחרי השחרור אתה חייב לביטוח לאומי 266 ש"ח בחודש, ואיך לסדר את זה בהוראת קבע</li>
+        <li>איך לשמור על דמי הניהול של אנשי הקבע בהראל גם אחרי השחרור</li>
+        <li>איך מגישים דמי אבטלה, ולמה חודשי הקבע נספרים לך כחודשי עבודה</li>
+        <li>מה לסדר לפני שאתה טס לטיול הגדול, כדי לא לחזור עם חוב</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="section cream">
+  <div class="narrow story">
+    <span class="eyebrow-small"><span class="bar"></span>לפני שמתחילים</span>
+    <h2>הטעות שאני עשיתי, כדי שאתה לא תעשה אותה</h2>
+    <p>כשהשתחררתי מקבע, רציתי לרוץ קדימה. פתחתי עסק כמעט מיד, והייתי בטוח שאני עושה את הצעד הנכון.</p>
+    <p>מה ששכחתי זה לעצור רגע ולחתום על דמי אבטלה לפני שמתחילים. חודשי הקבע נספרים כחודשי עבודה, אז הכסף הזה היה מגיע לי. ויתרתי עליו בלי לשים לב, ועד היום אני מתחרט.</p>
+    <p>כתבתי את המדריך הזה כדי שתעשה את זה נכון מההתחלה. שלושה דברים, צעד אחר צעד, עם צילומי מסך מהאתרים האמיתיים. תעבור עליו פעם אחת, תסמן את הצ'קליסט בסוף, ותהיה מסודר.</p>
+    <div class="sign">שחר</div>
+    <nav class="map" aria-label="פרקי המדריך">
+      <a href="#ch1"><div class="n">1</div><div class="t">ביטוח לאומי</div><div class="d">מה משלמים, ואיך לא לצבור חוב</div></a>
+      <a href="#ch2"><div class="n">2</div><div class="t">קרן הפנסיה בהראל</div><div class="d">איך שומרים על דמי הניהול של הקבע</div></a>
+      <a href="#ch3"><div class="n">3</div><div class="t">דמי אבטלה</div><div class="d">איך מגישים, כמה ולכמה זמן</div></a>
+    </nav>
+  </div>
+</section>
+
+<!-- Chapter 1 -->
+<section class="section cream-alt" id="ch1">
+  <div class="narrow chapter">
+    <div class="ch-head"><div class="ch-num">1</div><div><div class="k">הדבר הראשון</div><h2>ביטוח לאומי אחרי השחרור</h2></div></div>
+
+    <h3 class="sec">מה זה</h3>
+    <p>בזמן השירות משרד הביטחון שילם בשבילך ביטוח לאומי וביטוח בריאות. ביום שאחרי השחרור החובה עוברת אליך. אם אתה שכיר, המעסיק מנכה את זה מהמשכורת. אם אתה מקבל דמי אבטלה, זה מנוכה מהם. אם אתה לא עובד בכלל, אתה משלם בעצמך.</p>
+    <div class="explain">
+      <h4>על מה בעצם משלמים?</h4>
+      <p><b>ביטוח לאומי</b> זה מה שמגן עליך כשמשהו משתבש: דמי אבטלה כשאין עבודה, קצבה אם נפצעת ולא יכול לעבוד. <b>ביטוח בריאות</b> זה מה שמממן את קופת החולים שלך.</p>
+      <p>אלה שני תשלומים נפרדים, אבל משלמים אותם יחד, באותו מקום.</p>
+    </div>
+
+    <h3 class="sec">למה זה חשוב לך עכשיו</h3>
+    <div class="stat"><div class="big">266 <small>ש"ח לחודש</small></div><div class="txt">זה מה שמשלם מי שלא עובד ב-2026: 143 ש"ח ביטוח לאומי ו-123 ש"ח ביטוח בריאות. הפטור של חודשיים שמקבלים משוחררי סדיר <b>לא חל על משוחררי קבע.</b> החיוב מתחיל מיד.</div></div>
+
+    <div class="step"><div class="num">1</div><div class="step-body">
+      <h3>תבדוק כמה אתה צריך לשלם</h3>
+      <p>זה תלוי במה שאתה עושה אחרי השחרור:</p>
+      <div class="who">
+        <div><b>מתחיל לעבוד כשכיר?</b> אין לך מה לעשות. המעסיק מנכה את זה מהמשכורת ומעביר לבד.</div>
+        <div><b>מקבל דמי אבטלה?</b> גם כאן זה יורד לבד, ישר מדמי האבטלה.</div>
+        <div><b>לא עובד ולא מקבל אבטלה?</b> אתה משלם בעצמך 266 ש"ח בחודש. בשבילך שאר הפרק.</div>
+      </div>
+      <details class="proof"><summary>לראות את זה באתר ביטוח לאומי</summary><img class="shot" src="/guides/discharge/screenshots/01-btl-266.png" alt="אתר ביטוח לאומי: מי שלא עובד משלם 266 ש&quot;ח בחודש" width="730" height="220" loading="lazy"></details>
+    </div></div>
+
+    <div class="step"><div class="num">2</div><div class="step-body">
+      <h3>תיכנס לשירות האישי באתר ביטוח לאומי</h3>
+      <p>הכי פשוט: כניסה עם קוד חד פעמי. תעודת זהות, טלפון, וקוד שמגיע ב-SMS.</p>
+      <picture><source media="(max-width:560px)" srcset="/guides/discharge/screenshots/m/02-btl-login.png"><img class="shot" src="/guides/discharge/screenshots/02-btl-login.png" alt="מסך הכניסה לשירות האישי בביטוח לאומי" width="1400" height="843" loading="lazy"></picture>
+    </div></div>
+
+    <div class="step"><div class="num">3</div><div class="step-body">
+      <h3>תגדיר הוראת קבע לתשלום</h3>
+      <p>הוראת קבע אומרת שהתשלום יורד לבד מהאשראי כל חודש. אתה לא צריך לזכור, ולא נוצר חוב בטעות כשאתה עסוק או בחו"ל.</p>
+      <p>בתפריט בצד: גבייה, ואז "עדכון הוראת קבע". שם מגדירים חיוב קבוע בכרטיס אשראי, וזה יורד לבד כל חודש.</p>
+      <div class="pair">
+        <img class="shot menu" src="/guides/discharge/screenshots/03-btl-menu.png" alt="התפריט בשירות האישי: גבייה, עדכון הוראת קבע" width="504" height="820" loading="lazy">
+        <picture><source media="(max-width:560px)" srcset="/guides/discharge/screenshots/m/04-btl-standing-order.png"><img class="shot" src="/guides/discharge/screenshots/04-btl-standing-order.png" alt="מסך עדכון הוראת קבע בביטוח לאומי" width="1568" height="640" loading="lazy"></picture>
+      </div>
+    </div></div>
+
+    <div class="step"><div class="num">4</div><div class="step-body">
+      <h3>טס לטיול? תסדר את זה לפני הטיסה</h3>
+      <p>טיול לא עוצר את החיוב. גם כשאתה חצי שנה בדרום אמריקה, אתה עדיין תושב ישראל, והתשלום ממשיך כל חודש. אם לא תסדר את זה לפני, תחזור לחוב שחיכה לך. בגלל זה ביטוח לאומי עצמו ממליץ להגדיר הוראת קבע לפני שיוצאים מהארץ.</p>
+      <details class="proof"><summary>לראות את ההמלצה באתר ביטוח לאומי</summary><img class="shot" src="/guides/discharge/screenshots/05-btl-abroad.png" alt="המלצת ביטוח לאומי להגדיר הוראת קבע לפני יציאה מהארץ" width="1100" height="170" loading="lazy"></details>
+      <p>והחדשות הטובות: משוחרר קבע פטור מתקופת המתנה בביטוח בריאות ב-24 החודשים הראשונים מהשחרור. כלומר, מי שהיה בחו"ל הרבה זמן ולא שילם ביטוח בריאות, בדרך כלל מחכה 2 עד 6 חודשים עד שקופת החולים מכסה אותו שוב. לך זה לא קורה, כל עוד אתה בשנתיים הראשונות.</p>
+    </div></div>
+
+    <div class="note">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9.5 17h-19z"/><path d="M12 10v4.5"/><circle cx="12" cy="17.3" r=".6" fill="#C9A84C"/></svg>
+      <div><h4>שים לב</h4>
+      <p>הטעות הנפוצה היא "אני לא עובד, אז אני לא משלם". זה לא עובד ככה. החוב מצטבר עם קנסות והצמדה, ושנה בלי תשלום זה כבר 3,192 ש"ח קרן. ואם הפיגור עובר 12 חודשים, ביטוח לאומי רשאי לקצץ רבע מכל קצבה שתצטרך, כולל אבטלה ונכות. מעל 18 חודשים, חצי.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Chapter 2 -->
+<section class="section cream" id="ch2">
+  <div class="narrow chapter">
+    <div class="ch-head"><div class="ch-num">2</div><div><div class="k">הדבר השני</div><h2>קרן הפנסיה של אנשי הקבע בהראל</h2></div></div>
+
+    <h3 class="sec">מה זה</h3>
+    <p>בזמן הקבע הופקד לך כסף לקרן "הראל פנסיה", בתוכנית מיוחדת לאנשי קבע. בתוכנית הזו דמי הניהול כמעט אפס. כשאתה משתחרר, צה"ל מפסיק להפקיד, והשאלה היא מה קורה לדמי הניהול האלה.</p>
+    <div class="explain">
+      <h4>רגע, מה זה קרן פנסיה?</h4>
+      <p>זה החיסכון שלך לגיל פרישה. כל חודש נכנס אליה כסף, הכסף מושקע וגדל לאורך השנים, ובגיל פרישה הוא הופך לקצבה חודשית.</p>
+      <p>יש בה גם ביטוח: אם קורה משהו ואתה לא יכול לעבוד, או למשפחה שלך אם קורה לך משהו.</p>
+    </div>
+    <div class="explain">
+      <h4>ומה זה דמי ניהול?</h4>
+      <p>זה מה שהקרן גובה ממך על ניהול הכסף. יש שני סוגים: אחוז מכל הפקדה חדשה, ואחוז מכל הסכום שכבר צברת. זה נשמע קטן, אבל זה נגבה כל שנה, עד הפרישה.</p>
+    </div>
+
+    <h3 class="sec">למה זה חשוב לך עכשיו</h3>
+    <p>תסתכל על ההבדל:</p>
+    <div class="compare">
+      <div class="hl"><div class="l">אנשי קבע בהראל</div><div class="v">0.0018%<small>בשנה מהצבירה, 0% מההפקדה</small></div></div>
+      <div><div class="l">ממוצע בשוק (אוגוסט 2026)</div><div class="v">0.144%<small>מהצבירה, ו-1.54% מההפקדה</small></div></div>
+      <div><div class="l">התקרה בחוק</div><div class="v">0.5%<small>מהצבירה, ו-6% מההפקדה</small></div></div>
+    </div>
+    <p>בשקלים: על 100,000 ש"ח שצברת, בתוכנית של הקבע אתה משלם 1.80 ש"ח בשנה. בממוצע בשוק אותו סכום עולה 144 ש"ח בשנה, ועוד 1.54% מכל הפקדה. וככל שהחיסכון גדל, גם ההפרש גדל.</p>
+    <details class="proof"><summary>לראות את דמי הניהול בדף של הראל</summary><img class="shot" src="/guides/discharge/screenshots/06-harel-fees.png" alt="דמי הניהול בתוכנית אנשי הקבע בהראל" width="1568" height="247" loading="lazy"></details>
+    <p style="margin-top:20px">וההטבה הזו לא נעלמת ביום השחרור. היא ממשיכה עוד חצי שנה אחריו.</p>
+    <details class="proof"><summary>לראות את זה בדף של הראל</summary><img class="shot" src="/guides/discharge/screenshots/07-harel-halfyear.png" alt="ההטבה נמשכת חצי שנה אחרי השחרור" width="1568" height="294" loading="lazy"></details>
+    <p style="margin-top:20px"><b>הנקודה החשובה:</b> כל עוד אתה ממשיך להפקיד לפחות 200 ש"ח בחודש, ההטבה נשמרת גם אחרי חצי השנה. לכן הצעד הנכון הוא להגדיר הוראת קבע מיד.</p>
+
+    <div class="step"><div class="num">1</div><div class="step-body">
+      <h3>תיכנס לאזור האישי בהראל</h3>
+      <p>תעודת זהות וטלפון נייד, וקוד שמגיע אליך.</p>
+      <img class="shot tall" src="/guides/discharge/screenshots/08-harel-login.png" alt="מסך הכניסה לאזור האישי בהראל" width="1041" height="1148" loading="lazy">
+    </div></div>
+
+    <div class="step"><div class="num">2</div><div class="step-body">
+      <h3>תיכנס ל"שינוי אמצעי תשלום"</h3>
+      <p>באזור האישי, תחת "הכסף שלי":</p>
+      <picture><source media="(max-width:560px)" srcset="/guides/discharge/screenshots/m/09-harel-payment-tile.png"><img class="shot" src="/guides/discharge/screenshots/09-harel-payment-tile.png" alt="האריח שינוי אמצעי תשלום באזור האישי בהראל" width="1328" height="320" loading="lazy"></picture>
+    </div></div>
+
+    <div class="step"><div class="num">3</div><div class="step-body">
+      <h3>תבחר כרטיס אשראי, לפחות 200 ש"ח בחודש</h3>
+      <p>מה שחשוב כאן זה שההפקדה לא נעצרת. הוראת קבע באשראי דואגת לזה לבד, גם כשאתה בטיול וגם בחודשים שאתה בין עבודות.</p>
+      <picture><source media="(max-width:560px)" srcset="/guides/discharge/screenshots/m/10-harel-choose-card.png"><img class="shot tall" src="/guides/discharge/screenshots/10-harel-choose-card.png" alt="בחירת כרטיס אשראי כאמצעי תשלום בהראל" width="1190" height="868" loading="lazy"></picture>
+      <p>200 ש"ח זה המינימום להוראת קבע לקרן הפנסיה בהראל. וזה לא כסף שהולך לאיבוד: הוא נכנס לחיסכון שלך.</p>
+      <details class="proof"><summary>לראות את המינימום באתר הראל</summary><img class="shot" src="/guides/discharge/screenshots/11-harel-200min.png" alt="מינימום 200 ש&quot;ח להוראת קבע לקרן הפנסיה בהראל" width="1568" height="209" loading="lazy"></details>
+    </div></div>
+
+    <div class="note">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9.5 17h-19z"/><path d="M12 10v4.5"/><circle cx="12" cy="17.3" r=".6" fill="#C9A84C"/></svg>
+      <div><h4>שים לב</h4>
+      <p>הטעות הנפוצה היא לחכות. אם ההפקדות נעצרות, ההטבה נגמרת, וגם הכיסוי הביטוחי לנכות ולשאירים נשמר רק 5 חודשים. ומתחיל לעבוד אצל מעסיק חדש? זכותך לבקש שהוא יפקיד לאותה קרן בהראל. הוא חייב לכבד את הבחירה שלך.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Chapter 3 -->
+<section class="section cream-alt" id="ch3">
+  <div class="narrow chapter">
+    <div class="ch-head"><div class="ch-num">3</div><div><div class="k">הדבר השלישי</div><h2>דמי אבטלה אחרי שחרור מקבע</h2></div></div>
+
+    <h3 class="sec">מה זה</h3>
+    <p>משוחרר קבע עשוי להיות זכאי לדמי אבטלה מיד עם השחרור. חודשי הקבע נחשבים כחודשי עבודה של שכיר, וצריך 12 חודשי עבודה מתוך 18 החודשים האחרונים. אחרי כמה שנים בקבע, כנראה שיש לך את זה.</p>
+    <div class="explain">
+      <h4>איך זה עובד בפועל?</h4>
+      <p>דמי אבטלה זה כסף שביטוח לאומי משלם למי שהפסיק לעבוד ומחפש עבודה, לתקופה מוגבלת. זו לא טובה, זו זכות שצברת בשנים בקבע.</p>
+      <p>בתמורה אתה נרשם לשירות התעסוקה כמי שמחפש עבודה, ומתייצב במועדים שהם קובעים לך. ככה המדינה יודעת שאתה באמת מחפש.</p>
+    </div>
+
+    <h3 class="sec">למה זה חשוב לך עכשיו</h3>
+    <div class="stat"><div class="big">4,927 <small>ש"ח לחודש</small></div><div class="txt">זה מה שמקבל מי שעוד לא בן 28 והרוויח 10,000 ש"ח ברוטו (197.06 ש"ח ליום, לפי 25 ימים בחודש, נכון ל-2026). הסכום מחושב לפי 6 חודשי השכר האחרונים.</div></div>
+    <p>בפועל זה בערך חצי מהמשכורת ברוטו. ככל שהשכר גבוה יותר, האחוז קצת יורד.</p>
+    <p>לכמה זמן? תלוי בגיל (עד 2 תלויים):</p>
+    <table class="days">
+      <tr><th>גיל</th><th>ימי זכאות</th><th>בערך</th></tr>
+      <tr><td>עד 25</td><td><b>50 ימים</b></td><td>חודשיים</td></tr>
+      <tr><td>25 עד 28</td><td><b>67 ימים</b></td><td>חודשיים ושלושה שבועות</td></tr>
+    </table>
+
+    <div class="step"><div class="num">1</div><div class="step-body">
+      <h3>תיכנס לטופס המשולב באתר gov.il</h3>
+      <p>טופס אחד שגם רושם אותך לשירות התעסוקה וגם מגיש את התביעה לביטוח לאומי. בעמוד "דמי אבטלה וחזרה למעגל העבודה" לוחצים כאן:</p>
+      <picture><source media="(max-width:560px)" srcset="/guides/discharge/screenshots/m/12-gov-submit.png"><img class="shot" src="/guides/discharge/screenshots/12-gov-submit.png" alt="כפתור הגשת הבקשה בעמוד דמי אבטלה ב-gov.il" width="1178" height="412" loading="lazy"></picture>
+    </div></div>
+
+    <div class="step"><div class="num">2</div><div class="step-body">
+      <h3>תזדהה במערכת ההזדהות הלאומית</h3>
+      <p>זו אותה כניסה של כל אתרי הממשלה. אם כבר נכנסת פעם לאתר ממשלתי, יש לך את זה.</p>
+      <picture><source media="(max-width:560px)" srcset="/guides/discharge/screenshots/m/13-gov-login.png"><img class="shot tall" src="/guides/discharge/screenshots/13-gov-login.png" alt="מסך מערכת ההזדהות הלאומית" width="1288" height="924" loading="lazy"></picture>
+    </div></div>
+
+    <div class="step"><div class="num">3</div><div class="step-body">
+      <h3>תוודא שטופס 100 נשלח</h3>
+      <p>טופס 100 זה הדוח שבו המעסיק מדווח לביטוח לאומי כמה הרווחת. אצלך המעסיק הוא צה"ל. בלי הטופס הזה ביטוח לאומי לא יודע לחשב כמה מגיע לך, והתביעה נתקעת.</p>
+      <p>ביטוח לאומי צריך לקבל את טופס 100 (ריכוז נתוני שכר) על 12 החודשים האחרונים. אצל משוחררי קבע הוא נמצא באתר צה"ל.</p>
+      <details class="proof"><summary>לראות את הדרישה ב-gov.il</summary><img class="shot" src="/guides/discharge/screenshots/14-gov-form100.png" alt="דרישת טופס 100 בטופס האבטלה" width="1076" height="240" loading="lazy"></details>
+    </div></div>
+
+    <div class="step"><div class="num">4</div><div class="step-body">
+      <h3>תמלא את "טופס אבטלה אחוד" ותתייצב</h3>
+      <p>6 שלבים, מפרטים כלליים ועד הצהרות ושליחה. אחר כך מתייצבים בשירות התעסוקה בכל מועד שקובעים לך.</p>
+      <img class="shot" src="/guides/discharge/screenshots/15-gov-form-steps.png" alt="ששת השלבים של טופס אבטלה אחוד" width="1568" height="542" loading="lazy">
+    </div></div>
+
+    <div class="note">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9.5 17h-19z"/><path d="M12 10v4.5"/><circle cx="12" cy="17.3" r=".6" fill="#C9A84C"/></svg>
+      <div><h4>שים לב</h4>
+      <p>הזכאות נקבעת לפי הרישום הראשון בשירות התעסוקה. אם עברו יותר מ-3 חודשים מהשחרור ועד ה-1 בחודש שבו נרשמת, אתה עלול לאבד את הזכאות. טס לטיול מיד אחרי השחרור? תירשם לפני הטיסה. ובזמן שאתה בחו"ל ולא מתייצב, לא משלמים לך על הימים האלה.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Checklist -->
+<section class="section cream" id="checklist">
+  <div class="narrow">
+    <span class="eyebrow-small"><span class="bar"></span>תדפיס, תסמן, תסגור</span>
+    <h2>הצ'קליסט שלך</h2>
+
+    <div class="phase"><h3><span>א.</span> לפני השחרור</h3><ul>
+      <li><input type="checkbox" id="c1"><label for="c1">לוודא שיש לך גישה לשירות האישי בביטוח לאומי ולאזור האישי בהראל</label></li>
+      <li><input type="checkbox" id="c2"><label for="c2">לבדוק באתר צה"ל איפה נמצא טופס 100 שלך</label></li>
+      <li><input type="checkbox" id="c3"><label for="c3">טס לטיול? לתכנן להירשם לאבטלה ולהגדיר הוראות קבע לפני הטיסה</label></li>
+    </ul></div>
+
+    <div class="phase"><h3><span>ב.</span> בשבוע של השחרור</h3><ul>
+      <li><input type="checkbox" id="c4"><label for="c4">להגיש בקשה לדמי אבטלה בטופס המשולב ב-gov.il (רישום לשירות התעסוקה + תביעה)</label></li>
+      <li><input type="checkbox" id="c5"><label for="c5">לוודא שטופס 100 על 12 החודשים האחרונים הגיע לביטוח לאומי</label></li>
+      <li><input type="checkbox" id="c6"><label for="c6">להגדיר בהראל הוראת קבע של לפחות 200 ש"ח בחודש לקרן הפנסיה</label></li>
+    </ul></div>
+
+    <div class="phase"><h3><span>ג.</span> בחודש הראשון</h3><ul>
+      <li><input type="checkbox" id="c7"><label for="c7">לא עובד ולא מקבל אבטלה? להגדיר הוראת קבע של 266 ש"ח בחודש לביטוח לאומי</label></li>
+      <li><input type="checkbox" id="c8"><label for="c8">להתייצב בשירות התעסוקה בכל מועד שנקבע לך</label></li>
+      <li><input type="checkbox" id="c9"><label for="c9">מתחיל עבודה חדשה? לבקש מהמעסיק להפקיד לקרן הקיימת בהראל</label></li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- Last -->
+<section class="section dark insight">
+  <div class="glow glow-a"></div><div class="glow glow-b"></div>
+  <div class="narrow center">
+    <div class="k">תובנה אחת לקחת איתך</div>
+    <p class="big">השחרור הוא לא רק סוף של תפקיד. הוא היום שבו אתה מתחיל לנהל את הכסף שלך בעצמך. שלושה טפסים עכשיו חוסכים לך הרבה כסף אחר כך.</p>
+    <div class="me">
+      <img src="/shahar_headshot.png" alt="שחר לוי" width="110" height="110" loading="lazy" onerror="this.remove()">
+    </div>
+    <h2 style="color:#fff">סידרת את השחרור? עכשיו תורו של הכסף.</h2>
+    <p class="lead">בהדרכה החינמית שלי אני מראה מה אני עושה עם הכסף שלי, ואיך מתחילים להשקיע בצורה פשוטה.</p>
+    <div style="margin-top:22px"><a class="btn" href="/guide/">להדרכה החינמית</a></div>
+    <p class="disclaimer">המידע במדריך כללי ואינו ייעוץ אישי, משפטי או פנסיוני. הסכומים והתנאים נכונים לאוקטובר 2026 ועשויים להשתנות. לפני כל החלטה כדאי לאמת מול הגוף הרלוונטי: ביטוח לאומי, הראל, שירות התעסוקה או צה"ל.</p>
+  </div>
+</section>
+
+<script>
+document.querySelectorAll('img.shot').forEach(function(i){i.addEventListener('click',function(){window.open(i.src,'_blank','noopener')})});
+(function(){
+  try{
+    var k='discharge-checklist', s=JSON.parse(localStorage.getItem(k)||'{}');
+    document.querySelectorAll('.phase input').forEach(function(c){
+      c.checked=!!s[c.id];
+      c.addEventListener('change',function(){s[c.id]=c.checked;try{localStorage.setItem(k,JSON.stringify(s))}catch(e){}});
+    });
+  }catch(e){}
+})();
+</script>
+
+<script src="/legal-kit.js" defer></script>
+</body>
+</html>
