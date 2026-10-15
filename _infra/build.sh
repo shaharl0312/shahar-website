@@ -66,6 +66,10 @@ cp content/guides/bank-money/index.html _infra/dist/guides/bank-money/index.html
 cp content/guides/us-bonds/index.html _infra/dist/guides/us-bonds/index.html
 mkdir -p _infra/dist/guides/discharge && cp content/guides/discharge/index.html _infra/dist/guides/discharge/ && cp -r content/guides/discharge/screenshots _infra/dist/guides/discharge/
 cp content/guides/flight-claude/index.html content/guides/flight-claude/search-demo.mp4 content/guides/flight-claude/search-demo.jpg content/guides/flight-claude/install-demo.mp4 content/guides/flight-claude/install-demo.jpg _infra/dist/guides/flight-claude/
+mkdir -p _infra/dist/guides/og && cp content/guides/og/*.jpg _infra/dist/guides/og/
+
+# SEO site files (robots.txt, sitemap.xml, llms.txt) at the domain root
+cp content/site-files/robots.txt content/site-files/sitemap.xml content/site-files/llms.txt _infra/dist/
 
 # Funnel health-check dashboard
 mkdir -p _infra/dist/health-check && cp health-check/index.html health-check/data.json _infra/dist/health-check/
