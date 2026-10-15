@@ -25,7 +25,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    .logo { position: fixed; top: 16px; left: 16px; height: 40px; z-index: 100; }
+    .logo { position: absolute; top: 16px; left: 16px; height: 40px; z-index: 100; }
 
     .narrow { max-width: 620px; margin: 0 auto; padding: 0 24px; }
 
@@ -93,7 +93,7 @@
     }
 
     /* ---------- story flow ---------- */
-    .story { padding: 64px 0 40px; }
+    .story { padding-top: 64px; padding-bottom: 40px; }
     .story p {
       font-size: clamp(1.05rem, 1.7vw, 1.2rem);
       line-height: 1.95;
@@ -102,6 +102,23 @@
     }
     .story p .gold { color: #b8941e; font-weight: 700; }
     .story p .lift { color: #1e1e1e; font-weight: 700; }
+
+    .story h2 {
+      font-size: clamp(1.35rem, 2.6vw, 1.7rem);
+      font-weight: 800; color: #1e1e1e; line-height: 1.35;
+      margin: 52px 0 22px;
+    }
+
+    /* ---------- tl;dr ---------- */
+    .tldr {
+      background: #faf7ee;
+      border-right: 3px solid #c9a84c;
+      border-radius: 4px;
+      padding: 20px 22px;
+      margin-bottom: 44px;
+    }
+    .story .tldr .tldr-label { font-size: .75rem; line-height: 1.4; margin: 0 0 8px; font-weight: 800; letter-spacing: .15em; color: #b8941e; }
+    .story .tldr p { font-size: 1rem; line-height: 1.8; color: #1e1e1e; margin: 0; }
 
     /* ---------- closing card ---------- */
     .closer {
@@ -147,10 +164,88 @@
       .hero { padding: 88px 20px 40px; }
     }
   </style>
+
+  <!-- SEO: social preview + structured data -->
+  <meta property="article:published_time" content="2026-07-09">
+  <meta property="article:modified_time" content="2026-10-15">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta property="og:site_name" content="שחר לוי">
+  <meta property="og:locale" content="he_IL">
+  <meta property="og:description" content="איך בנק ישראל קובע כמה שווה הכסף שלכם, למה ריבית עולה ויורדת, ולמה כסף שיושב בעו&quot;ש כבר עובד - רק לא בשבילכם. מדריך קצר.">
+  <meta property="og:image" content="https://shaharfinance.com/guides/og/bank-money.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="למה הבנק כל כך רוצה שהכסף שלכם יישאר אצלו?">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://shaharfinance.com/guides/og/bank-money.jpg">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://shaharfinance.com/guides/bank-money/#article",
+      "headline": "למה הבנק כל כך רוצה שהכסף שלכם יישאר אצלו?",
+      "description": "איך בנק ישראל קובע כמה שווה הכסף שלכם, למה ריבית עולה ויורדת, ולמה כסף שיושב בעו\"ש כבר עובד - רק לא בשבילכם. מדריך קצר.",
+      "inLanguage": "he-IL",
+      "url": "https://shaharfinance.com/guides/bank-money/",
+      "mainEntityOfPage": "https://shaharfinance.com/guides/bank-money/",
+      "image": "https://shaharfinance.com/guides/og/bank-money.jpg",
+      "datePublished": "2026-07-09",
+      "dateModified": "2026-10-15",
+      "author": {
+        "@id": "https://shaharfinance.com/#shahar"
+      },
+      "publisher": {
+        "@id": "https://shaharfinance.com/#shahar"
+      },
+      "isPartOf": {
+        "@id": "https://shaharfinance.com/guides/#collection"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://shaharfinance.com/#shahar",
+      "name": "שחר לוי",
+      "alternateName": "Shahar Levi",
+      "url": "https://shaharfinance.com/",
+      "image": "https://shaharfinance.com/shahar_headshot.png",
+      "jobTitle": "מלווה פיננסי",
+      "sameAs": [
+        "https://www.instagram.com/shahar.levy1/",
+        "https://www.youtube.com/@shahar.levy1"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "שחר לוי",
+          "item": "https://shaharfinance.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "המדריכים",
+          "item": "https://shaharfinance.com/guides/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "למה הבנק כל כך רוצה שהכסף שלכם יישאר אצלו?",
+          "item": "https://shaharfinance.com/guides/bank-money/"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <img class="logo" src="/logo.png" alt="שחר לוי" />
-  <a href="/guides/" style="position:fixed; top:16px; right:16px; z-index:100; font-family:'Assistant',sans-serif; font-size:13px; color:#666; text-decoration:none;">← כל המדריכים</a>
+  <a href="/guides/" style="position:absolute; top:16px; right:16px; z-index:100; font-family:'Assistant',sans-serif; font-size:13px; color:#666; text-decoration:none;">← כל המדריכים</a>
 
   <section class="hero">
     <p class="eyebrow anim">מדריך קצר</p>
@@ -162,12 +257,19 @@
   <div class="divider"></div>
 
   <div class="story narrow">
+    <div class="tldr anim">
+      <p class="tldr-label">בקצרה</p>
+      <p>בנק הוא עסק שמוכר כסף באמצעות הלוואות, והמחיר של הכסף הוא הריבית. בנק ישראל מעלה את הריבית כדי להאט את עליית המחירים, ומוריד אותה כדי לעודד את המשק. כסף שנשאר בעו"ש לאורך שנים נשחק בהדרגה, כי המחירים ממשיכים לעלות.</p>
+    </div>
+
     <p class="anim">אם היו שואלים את רוב האנשים מה הבנק עושה עם הכסף שנמצא בחשבון שלהם, כנראה שהתשובה הייתה פשוטה: "הוא שומר עליו." וזה נכון - אבל רק חלקית. הבנק אכן שומר על הכסף שלכם, אבל הוא גם עושה איתו <span class="gold">הרבה יותר מזה.</span></p>
 
+    <h2 class="anim">מה הבנק באמת עושה עם הכסף שלכם?</h2>
     <p class="anim">כדי להבין איך המערכת הפיננסית באמת עובדת, צריך להבין דבר אחד פשוט: בנק הוא עסק. בדיוק כמו שמסעדה מוכרת אוכל וחברת סלולר מוכרת חבילות תקשורת, הבנק מוכר כסף. איך מוכרים כסף? באמצעות <span class="lift">הלוואות.</span></p>
 
     <p class="anim">כשמישהו לוקח משכנתא, הלוואה לרכב או מסגרת אשראי, הוא למעשה "שוכר" כסף ומשלם עליו מחיר. המחיר הזה נקרא ריבית. אבל מי בכלל מחליט כמה עולה כסף? כאן נכנס לתמונה <span class="gold">בנק ישראל.</span></p>
 
+    <h2 class="anim">מי קובע את הריבית, ולמה היא משתנה?</h2>
     <p class="anim">אחד התפקידים החשובים ביותר של בנק ישראל הוא לקבוע את הריבית במשק. אפשר לחשוב על הריבית כמו על מחיר הכסף - ככל שהריבית גבוהה יותר, יקר יותר ללוות כסף. ככל שהיא נמוכה יותר, זול יותר ללוות כסף. אבל למה בכלל צריך לשנות אותה? התשובה קשורה לאחד הדברים שמשפיעים על כולנו: <span class="lift">האינפלציה.</span></p>
 
     <p class="anim">דמיינו מצב שבו כמעט כולם מחליטים לקנות - יותר אנשים לוקחים משכנתאות, יותר אנשים קונים רכבים, יותר אנשים משתמשים באשראי. כשיותר מדי אנשים רוצים לקנות באותו הזמן, הביקוש עולה. וכשהביקוש עולה מהר יותר מההיצע, גם המחירים עולים. זאת אינפלציה.</p>
@@ -176,8 +278,10 @@
 
     <p class="anim">ולפעמים קורה בדיוק ההפך: אנשים מפסיקים לקנות, עסקים מוכרים פחות, המשק מתחיל להאט. במצב כזה, בנק ישראל רוצה לעודד אנשים להוציא כסף, אז הוא מוריד את הריבית. הלוואות הופכות לזולות יותר, יותר אנשים קונים, ויותר עסקים משקיעים - <span class="lift">והפעילות הכלכלית גדלה.</span></p>
 
+    <h2 class="anim">איך הבנק מרוויח מהריבית?</h2>
     <p class="anim">ואיפה הבנקים נכנסים לכל הסיפור? כאן מתחיל המודל העסקי שלהם. הבנקים לוקחים את הריבית שקובע בנק ישראל, מוסיפים עליה את המרווח שלהם, ומלווים כסף ללקוחות. אין בזה שום דבר פסול - זאת פשוט הדרך שבה בנק עובד. הוא קונה כסף במחיר מסוים <span class="gold">ומוכר אותו במחיר גבוה יותר.</span></p>
 
+    <h2 class="anim">מה זה אומר על הכסף שיושב בעו"ש?</h2>
     <p class="anim">ומה הקשר לעו"ש שלכם? כאן רוב האנשים מפספסים. הכסף שיושב אצלכם בעו"ש נראה כאילו הוא "לא עושה כלום" - אבל בפועל הוא חלק ממערכת פיננסית שלמה שבה כסף זז כל הזמן. בזמן שאתם מחכים להחליט מה לעשות איתו, המחירים במשק ממשיכים לעלות. אם הכסף נשאר באותו המקום במשך שנים, כוח הקנייה שלו נשחק בהדרגה. זאת בדיוק הסיבה שבגללה כל כך הרבה אנשים מרגישים שהכול נהיה יקר יותר - לא כי השטרות שלהם השתנו, אלא כי <span class="lift">מה שאפשר לקנות איתם השתנה.</span></p>
 
     <p class="anim">אני לא חושב שכל אחד צריך להיות כלכלן, וגם לא צריך להבין לעומק איך נקבעת כל ריבית במשק. אבל כל אדם שחוסך כסף צריך להבין עיקרון אחד פשוט: <span class="gold">כסף שלא עובד, מאבד מהערך שלו עם הזמן.</span> זאת לא סיבה להיכנס ללחץ, וזאת גם לא סיבה להתחיל להשקיע בלי להבין מה עושים - זאת פשוט סיבה <span class="lift">להתחיל ללמוד.</span></p>

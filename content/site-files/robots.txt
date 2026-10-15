@@ -1,0 +1,32 @@
+# shaharfinance.com
+User-agent: *
+Allow: /
+Disallow: /agreement/
+Disallow: /agreement-one-meeting/
+Disallow: /todah/
+Disallow: /liuy-confirmation/
+Disallow: /warriors-hub/
+Disallow: /health-check/
+Disallow: /api/
+
+# AI search crawlers - explicitly welcome on the public content
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Google-Extended
+Allow: /guides/
+Allow: /llms.txt
+Allow: /$
+Disallow: /agreement/
+Disallow: /agreement-one-meeting/
+Disallow: /todah/
+Disallow: /liuy-confirmation/
+Disallow: /warriors-hub/
+Disallow: /health-check/
+Disallow: /api/
+
+Sitemap: https://shaharfinance.com/sitemap.xml
