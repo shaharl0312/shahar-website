@@ -22,6 +22,9 @@ rm -rf _infra/dist/agreement/_archive
 cp client-services/agreement/index.html _infra/dist/agreement/index.html
 
 # Agreement — single meeting variant
+# Price quote (/quote/)
+mkdir -p _infra/dist/quote && cp client-services/quote/index.html _infra/dist/quote/index.html
+
 mkdir -p _infra/dist/agreement-one-meeting
 cp -r client-services/agreement-one-meeting/. _infra/dist/agreement-one-meeting/
 
