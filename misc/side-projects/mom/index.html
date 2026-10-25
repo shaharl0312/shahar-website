@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>צ'ק-ליסט לטיפול בהילינג</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --purple-900: #1e0f3a;
+  --purple-800: #2d1659;
+  --purple-700: #3f2080;
+  --purple-100: #ece6f7;
+  --purple-50: #f6f3fb;
+  --white: #ffffff;
+  --ink: #241640;
+  --muted: #6b5d85;
+  --line: #ddd4ee;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: "Assistant", "Noto Sans Hebrew", Arial, sans-serif;
+  background: var(--purple-50);
+  color: var(--ink);
+  line-height: 1.7;
+  font-size: 18px;
+}
+.hero {
+  background: linear-gradient(160deg, var(--purple-900), var(--purple-700));
+  color: var(--white);
+  padding: 56px 20px 72px;
+  text-align: center;
+}
+.hero h1 { margin: 0 auto 14px; font-size: clamp(30px, 6vw, 46px); font-weight: 800; max-width: 760px; line-height: 1.25; }
+.hero p { margin: 0 auto; max-width: 620px; color: #d9cdf2; font-size: 20px; }
+.progress {
+  max-width: 420px; margin: 28px auto 0;
+  background: rgba(255,255,255,.18); border-radius: 99px; height: 10px; overflow: hidden;
+}
+.progress i { display: block; height: 100%; width: 0; background: var(--white); border-radius: 99px; transition: width .3s; }
+.progress-label { margin-top: 10px; font-size: 15px; color: #d9cdf2; }
+main { max-width: 780px; margin: -36px auto 0; padding: 0 16px 56px; }
+.stage {
+  background: var(--white); border-radius: 20px; padding: 28px 24px 18px; margin-bottom: 22px;
+  box-shadow: 0 6px 24px rgba(45, 22, 89, .08);
+}
+.stage-head { display: flex; align-items: center; gap: 14px; margin-bottom: 6px; }
+.badge {
+  flex: none; width: 44px; height: 44px; border-radius: 50%;
+  background: var(--purple-800); color: var(--white);
+  display: grid; place-items: center; font-weight: 800; font-size: 20px;
+}
+.stage h2 { margin: 0; font-size: 24px; color: var(--purple-800); line-height: 1.3; }
+.goal { margin: 6px 0 18px; color: var(--muted); font-size: 17px; }
+.goal b { color: var(--purple-800); }
+.task { border-top: 1px solid var(--line); padding: 16px 0; }
+.task-title { display: flex; align-items: flex-start; gap: 12px; cursor: pointer; font-weight: 700; color: var(--purple-900); }
+.task-title input { margin-top: 8px; }
+input[type="checkbox"] {
+  appearance: none; -webkit-appearance: none; flex: none;
+  width: 24px; height: 24px; border: 2px solid var(--purple-700); border-radius: 7px; background: var(--white);
+  display: grid; place-items: center; cursor: pointer;
+}
+input[type="checkbox"]:checked { background: var(--purple-800); border-color: var(--purple-800); }
+input[type="checkbox"]:checked::after { content: ""; width: 6px; height: 12px; border: solid var(--white); border-width: 0 3px 3px 0; transform: rotate(45deg) translate(-1px, -1px); }
+input[type="checkbox"]:focus-visible { outline: 3px solid var(--purple-700); outline-offset: 2px; }
+.task.done .task-title span { color: var(--muted); text-decoration: line-through; text-decoration-thickness: 1px; }
+.task ul { margin: 10px 0 0; padding: 0 36px 0 0; }
+.task li { margin: 6px 0; }
+.task li::marker { color: var(--purple-700); }
+.bonus {
+  background: linear-gradient(160deg, var(--purple-900), var(--purple-800)); color: var(--white);
+  border-radius: 20px; padding: 28px 24px;
+}
+.bonus h2 { margin: 0 0 6px; font-size: 24px; }
+.bonus > p { margin: 0 0 18px; color: #d9cdf2; }
+.form {
+  background: var(--white); color: var(--ink); border-radius: 14px; padding: 24px 22px;
+}
+.form h3 { margin: 0 0 16px; text-align: center; font-size: 22px; color: var(--purple-800); }
+.form h4 { margin: 18px 0 8px; color: var(--purple-800); font-size: 18px; }
+.form p { margin: 8px 0; }
+.form ol { padding: 0 22px 0 0; margin: 8px 0; }
+.form li { margin: 8px 0; }
+.blank { color: var(--muted); letter-spacing: 1px; }
+.actions { margin-top: 18px; display: flex; justify-content: center; }
+.btn {
+  font: inherit; font-weight: 700; cursor: pointer; border: 0; border-radius: 99px;
+  background: var(--white); color: var(--purple-800); padding: 12px 28px;
+}
+.btn:focus-visible { outline: 3px solid var(--white); outline-offset: 3px; }
+@media (max-width: 520px) {
+  body { font-size: 17px; }
+  .stage, .bonus { padding: 22px 16px 14px; }
+  .bonus { padding-bottom: 22px; }
+}
+@media print {
+  body { background: var(--white); }
+  .hero, .stage, .bonus .intro, .actions { display: none; }
+  main { margin: 0; padding: 0; max-width: none; }
+  .bonus { background: none; padding: 0; color: var(--ink); }
+  .form { box-shadow: none; padding: 0; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <h1>צ'ק-ליסט המשימות המפורט שלך, שלב אחר שלב</h1>
+  <p>כדי שתוכל/י להתחיל לטפל בהילינג בצורה חוקית, בטוחה ומסודרת כבר בימים הקרובים.</p>
+  <div class="progress" aria-hidden="true"><i id="bar"></i></div>
+  <div class="progress-label" id="plabel" aria-live="polite"></div>
+</header>
+
+<main>
+
+  <section class="stage">
+    <div class="stage-head"><div class="badge">א</div><h2>הסדרת הפן הכספי והחוקי (במקביל לעבודה כשכיר/ה)</h2></div>
+    <p class="goal"><b>המטרה:</b> לגבות כסף מהמטופלים בצורה חוקית מבלי לפתוח עסק עצמאי.</p>
+
+    <div class="task">
+      <label class="task-title"><input type="checkbox"><span>בחירת חברה לפדיון קבלות והרשמה</span></label>
+      <ul>
+        <li>יש לבחור חברה אחת (לדוגמה: חשבונית לשכיר, החשבונית של השכיר, עצמאי שכיר, הכולל וכדומה).</li>
+        <li>נכנסים לאתר שלהם ונרשמים אונליין (ההרשמה בחינם ולוקחת כמה דקות).</li>
+      </ul>
+    </div>
+
+    <div class="task">
+      <label class="task-title"><input type="checkbox"><span>קבלת פרטי החברה</span></label>
+      <ul>
+        <li>לאחר ההרשמה, בקש/י מהתמיכה שלהם או חפש/י באזור האישי את מספר תיק הניכויים (ח"פ) של החברה. תצטרך/י את המספר הזה לשלב הבא.</li>
+      </ul>
+    </div>
+
+    <div class="task">
+      <label class="task-title"><input type="checkbox"><span>ביצוע תיאום מס באינטרנט</span></label>
+      <ul>
+        <li>נכנסים לאתר רשות המיסים (מערכת תיאום מס אונליין).</li>
+        <li>מצהירים על ההכנסה ממקום העבודה הנוכחי שלך (המעסיק הראשי) ומזינים את פרטי החברה לפדיון קבלות כמעסיק המשני.</li>
+        <li>המערכת תנפיק לך אישור דיגיטלי. את האישור הזה מעלים לאתר של חברת פדיון הקבלות כדי שלא יורידו לך מס מקסימלי מהטיפולים.</li>
+      </ul>
+    </div>
+
+    <div class="task">
+      <label class="task-title"><input type="checkbox"><span>ביצוע תיאום ביטוח לאומי</span></label>
+      <ul>
+        <li>באתר של חברת פדיון הקבלות יבקשו ממך לסמן בטופס דיגיטלי קצר ("טופס 101" או הצהרת מעסיק משני) שאת/ה עובד/ת במקום נוסף, כדי להסדיר את דמי הביטוח הלאומי.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="stage">
+    <div class="stage-head"><div class="badge">ב</div><h2>הגנה מקצועית ובטיחות (ביטוח וניירת)</h2></div>
+    <p class="goal"><b>המטרה:</b> להגן על עצמך מפני תביעות רפואיות או פציעות בקליניקה.</p>
+
+    <div class="task">
+      <label class="task-title"><input type="checkbox"><span>רכישת ביטוח אחריות מקצועית וצד ג'</span></label>
+      <ul>
+        <li>פונים לסוכנות ביטוח המתמחה ברפואה משלימה (כמו מדנס, עדיף וכד').</li>
+        <li>מציגים להם את תעודת ההסמכה שלך בהילינג.</li>
+        <li>דגש חשוב: מוודאים שהפוליסה רשומה על שמך המלא + תעודת הזהות שלך, וכוללת גם כיסוי צד ג' (למקרה של החלקה/נפילה) וגם כיסוי לטיפול מרחוק (בזום/טלפון) אם בכוונתך לטפל כך.</li>
+      </ul>
+    </div>
+
+    <div class="task">
+      <label class="task-title"><input type="checkbox"><span>הדפסת טופס הצהרת בריאות למטופלים</span></label>
+      <ul>
+        <li>יש להכין טופס מוכן (טיוטה מופיעה בהמשך) שבו המטופל מצהיר על מצבו הבריאותי וחותם שהוא מבין שהילינג הוא טיפול אנרגטי משלים.</li>
+        <li>חובה להחתים כל מטופל חדש לפני הטיפול הראשון.</li>
+      </ul>
+    </div>
+
+    <div class="task">
+      <label class="task-title"><input type="checkbox"><span>הכנת קובץ/מחברת "כרטיס מטופל"</span></label>
+      <ul>
+        <li>פתיחת קובץ וורד במחשב או קניית מחברת שבה תתעד/י בקצר קצר אחרי כל מפגש: שם המטופל, תאריך, מה נעשה בטיפול ואיך הוא הרגיש.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="stage">
+    <div class="stage-head"><div class="badge">ג</div><h2>התארגנות מול המטופלים</h2></div>
+    <p class="goal"><b>המטרה:</b> מניעת אי-נעימויות וקביעת גבולות ברורים.</p>
+
+    <div class="task">
+      <label class="task-title"><input type="checkbox"><span>קביעת תמחור ונוהל ביטולים</span></label>
+      <ul>
+        <li>החלט/י על מחיר קבוע לטיפול ומשך זמן הטיפול.</li>
+        <li>קבע/י נוהל ביטולים ברור (למשל: "ביטול בפחות מ-24 שעות מראש יחויב בחצי מחיר") ויידעי את המטופלים מראש בזמן קביעת התור.</li>
+      </ul>
+    </div>
+
+    <div class="task">
+      <label class="task-title"><input type="checkbox"><span>הכנת מרחב הטיפול (אם הטיפול פרונטלי)</span></label>
+      <ul>
+        <li>פינוי מכשולים, שטיחים רופפים או חוטי חשמל מהדרך מהדלת ועד כיסא/מיטת הטיפולים כדי למנוע מעידות.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="bonus">
+    <div class="intro">
+      <h2>בונוס: טיוטה מוכנה של "הצהרת בריאות והסכמה לטיפול"</h2>
+      <p>תוכל/י להעתיק, לערוך, להדפיס ולהחתים את המטופלים שלך:</p>
+    </div>
+
+    <div class="form">
+      <h3>טופס הצהרת בריאות והסכמה לטיפול הילינג</h3>
+
+      <h4>פרטי המטופל/ת:</h4>
+      <p>שם מלא: <span class="blank">_________________</span> &nbsp; תעודת זהות: <span class="blank">_________________</span></p>
+      <p>טלפון: <span class="blank">_________________</span> &nbsp; תאריך לידה: <span class="blank">_________________</span></p>
+
+      <h4>הצהרה בריאותית (נא לסמן ב-X):</h4>
+      <p>[ ] האם הנך סובל/ת ממחלה כרונית, בעיה רפואית או בעיה נפשית כלשהי? (כן / לא) <span class="blank">______</span></p>
+      <p>[ ] האם הנך נוטל/ת תרופות קבועות או תחת השגחה רפואית/פסיכיאטרית? (כן / לא) <span class="blank">______</span></p>
+      <p>אם כן, נא לפרט בקצרה: <span class="blank">__________________________________________________</span></p>
+
+      <h4>הסכמה והבנת מהות הטיפול:</h4>
+      <ol>
+        <li>אני מבין/ה ומאשר/ת כי טיפול בהילינג הוא טיפול אנרגטי משלים, ואינו מהווה תחליף לאבחון רפואי, טיפול רפואי קונבנציונלי או טיפול פסיכיאטרי/פסיכולוגי.</li>
+        <li>המטפל/ת אינו/ה רופא/ה ואינו/ה רושם/ת תרופות או משנה מינונים של תרופות קיימות.</li>
+        <li>ידוע לי כי עלי לדווח למטפל/ת על כל שינוי במצבי הבריאותי או הנפשי.</li>
+      </ol>
+      <p>תאריך: <span class="blank">_______________</span> &nbsp; חתימת המטופל/ת: <span class="blank">_________________</span></p>
+    </div>
+
+    <div class="actions"><button class="btn" type="button" onclick="window.print()">הדפסת הטופס</button></div>
+  </section>
+
+</main>
+
+<script>
+(function () {
+  var KEY = 'mom-healing-checklist';
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('.task input[type="checkbox"]'));
+  var bar = document.getElementById('bar');
+  var label = document.getElementById('plabel');
+  var saved = [];
+  try { saved = JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (e) {}
+
+  function render() {
+    var n = 0;
+    boxes.forEach(function (b) {
+      b.closest('.task').classList.toggle('done', b.checked);
+      if (b.checked) n++;
+    });
+    bar.style.width = (n / boxes.length * 100) + '%';
+    label.textContent = n + ' מתוך ' + boxes.length + ' משימות הושלמו';
+  }
+  boxes.forEach(function (b, i) {
+    b.checked = !!saved[i];
+    b.addEventListener('change', function () {
+      try { localStorage.setItem(KEY, JSON.stringify(boxes.map(function (x) { return x.checked; }))); } catch (e) {}
+      render();
+    });
+  });
+  render();
+})();
+</script>
+</body>
+</html>

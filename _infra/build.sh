@@ -35,6 +35,7 @@ cp -r client-services/agreement-one-meeting/. _infra/dist/agreement-one-meeting/
 mkdir -p _infra/dist/tzofim && cp -r misc/side-projects/tzofim/. _infra/dist/tzofim/
 mkdir -p _infra/dist/schoolslide && cp -r misc/side-projects/schoolslide/. _infra/dist/schoolslide/
 mkdir -p _infra/dist/trip-madeira && cp -r misc/side-projects/trip-madeira/. _infra/dist/trip-madeira/
+mkdir -p _infra/dist/mom && cp -r misc/side-projects/mom/. _infra/dist/mom/
 
 # Warriors hub
 mkdir -p _infra/dist/warriors-hub/mifgash-1 _infra/dist/warriors-hub/mifgash-2 _infra/dist/warriors-hub/mifgash-3
