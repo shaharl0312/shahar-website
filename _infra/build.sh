@@ -25,6 +25,9 @@ cp client-services/agreement/index.html _infra/dist/agreement/index.html
 # Price quote (/quote/)
 mkdir -p _infra/dist/quote && cp client-services/quote/index.html _infra/dist/quote/index.html
 
+# Client proposals (/proposals/<client>/) - private, noindex
+mkdir -p _infra/dist/proposals && cp -r client-services/proposals/. _infra/dist/proposals/
+
 mkdir -p _infra/dist/agreement-one-meeting
 cp -r client-services/agreement-one-meeting/. _infra/dist/agreement-one-meeting/
 

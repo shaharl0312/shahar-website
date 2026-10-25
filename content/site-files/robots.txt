@@ -6,6 +6,7 @@ Disallow: /agreement-one-meeting/
 Disallow: /todah/
 Disallow: /liuy-confirmation/
 Disallow: /warriors-hub/
+Disallow: /proposals/
 Disallow: /health-check/
 Disallow: /api/
 
@@ -26,6 +27,7 @@ Disallow: /agreement-one-meeting/
 Disallow: /todah/
 Disallow: /liuy-confirmation/
 Disallow: /warriors-hub/
+Disallow: /proposals/
 Disallow: /health-check/
 Disallow: /api/
 
