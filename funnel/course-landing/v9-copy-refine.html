@@ -2481,7 +2481,11 @@
       text-decoration: underline;
       cursor: pointer;
       display: block;
+      width: 100%;
       text-align: center;
+      background: none;
+      border: none;
+      font-family: inherit;
     }
 
     html.a11y-contrast {
@@ -3601,7 +3605,7 @@
       <div class="a11y-row">
         <button class="a11y-toggle-btn" id="a11y-underline-btn" style="flex:1;">הדגשת קישורים</button>
       </div>
-      <span class="a11y-reset" id="a11y-reset">איפוס הגדרות</span>
+      <button type="button" class="a11y-reset" id="a11y-reset">איפוס הגדרות</button>
     </div>
   </div>
   <script>
@@ -3613,7 +3617,7 @@
       var MAX_STEP = 4;
 
       function applyFont() {
-        html.style.fontSize = fontStep === 0 ? '' : (100 + fontStep * 10) + '%';
+        document.body.style.zoom = fontStep === 0 ? '' : String(1 + fontStep * 0.1);
         localStorage.setItem('a11y_font_step', fontStep);
       }
 
