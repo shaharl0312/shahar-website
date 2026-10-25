@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>בוט החשבוניות של מארק | שחר לוי</title>
+<link rel="icon" type="image/png" href="/logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;700;800&family=Assistant:wght@400;600;700&display=swap">
+<style>
+/* Layout: one calm reading column, a phone-chat illustration beside the steps, a checklist as the page's working part */
+:root {
+  --bg: #F7F5F0;
+  --surface: #FFFFFF;
+  --ink: #2D2D2D;
+  --muted: #6B665B;
+  --line: #E4DED0;
+  --gold: #C9A84C;
+  --gold-ink: #8A6C1F;
+  --gold-soft: #F2E8CB;
+  --navy: #1B3A6B;
+  --chat-bg: #EFEBE1;
+  --bubble-bot: #FFFFFF;
+  --bubble-me: #F1E3B8;
+  --display: "Rubik", "Arial Hebrew", Arial, sans-serif;
+  --body: "Assistant", "Arial Hebrew", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1C1B18; --surface: #262521; --ink: #F1EEE6; --muted: #A8A293; --line: #3A3831;
+    --gold: #D4B45C; --gold-ink: #DDBF6B; --gold-soft: #3A3220; --navy: #9DB4DE;
+    --chat-bg: #22211D; --bubble-bot: #302E29; --bubble-me: #4A3E1F;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1C1B18; --surface: #262521; --ink: #F1EEE6; --muted: #A8A293; --line: #3A3831;
+  --gold: #D4B45C; --gold-ink: #DDBF6B; --gold-soft: #3A3220; --navy: #9DB4DE;
+  --chat-bg: #22211D; --bubble-bot: #302E29; --bubble-me: #4A3E1F;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { overflow-x: hidden; width: 100%; }
+body {
+  margin: 0;
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 18px;
+  line-height: 1.65;
+}
+.page {
+  direction: rtl;
+  max-width: 880px;
+  margin: 0 auto;
+  padding-block: 48px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+}
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.2; }
+h2 { font-size: 1.75rem; font-weight: 700; }
+h3 { font-size: 1.1rem; font-weight: 700; }
+p { margin: 0; }
+.eyebrow {
+  font-family: var(--display);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--gold-ink);
+}
+.section { display: flex; flex-direction: column; gap: 24px; }
+.section-head { display: flex; flex-direction: column; gap: 8px; max-width: 62ch; }
+.lead { color: var(--muted); }
+
+/* Hero */
+.hero { display: flex; flex-direction: column; gap: 20px; }
+.hero h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); font-weight: 800; }
+.hero h1 .mark { color: var(--gold-ink); }
+.hero .sub { font-size: 1.2rem; max-width: 52ch; }
+.byline { display: flex; flex-wrap: wrap; gap: 8px 20px; color: var(--muted); font-size: 0.95rem; }
+.byline span { display: inline-flex; gap: 6px; }
+
+/* Pains */
+.pains { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.pain { border-top: 3px solid var(--gold); padding-top: 14px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.pain p { color: var(--muted); font-size: 1rem; }
+
+/* How it works */
+.how { display: grid; grid-template-columns: 1fr 330px; gap: 40px; align-items: start; }
+.steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+.step { display: grid; grid-template-columns: 40px 1fr; gap: 14px; }
+.step-num {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--gold-soft); color: var(--gold-ink);
+  font-family: var(--display); font-weight: 700;
+  display: grid; place-items: center;
+}
+.step p { color: var(--muted); font-size: 1rem; }
+.step strong { color: var(--ink); }
+
+.phone {
+  background: var(--chat-bg);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 14px 12px 18px;
+  display: flex; flex-direction: column; gap: 8px;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  position: sticky;
+  top: calc(env(safe-area-inset-top, 0px) + 16px);
+}
+.phone-top {
+  display: flex; align-items: center; gap: 10px;
+  padding: 4px 6px 10px; border-bottom: 1px solid var(--line); margin-bottom: 4px;
+}
+.avatar {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--gold); color: #2D2D2D;
+  display: grid; place-items: center; font-family: var(--display); font-weight: 700; font-size: 0.85rem;
+}
+.phone-top b { font-family: var(--display); font-weight: 500; display: block; font-size: 0.95rem; }
+.phone-top small { color: var(--muted); font-size: 0.8rem; }
+.msg { max-width: 85%; padding: 8px 12px; border-radius: 14px; }
+.bot { background: var(--bubble-bot); align-self: flex-start; border-start-start-radius: 4px; }
+.me { background: var(--bubble-me); align-self: flex-end; border-start-end-radius: 4px; }
+.msg .num { font-variant-numeric: tabular-nums; }
+.summary { display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; margin: 6px 0; }
+.summary dt { color: var(--muted); }
+.summary dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+.gap-note { align-self: center; color: var(--muted); font-size: 0.78rem; padding: 4px 0; }
+.example-tag { align-self: center; color: var(--muted); font-size: 0.78rem; margin-top: 4px; }
+
+/* Extras */
+.extras { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.extra { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.extra p { color: var(--muted); font-size: 1rem; }
+.status-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.chip { font-size: 0.82rem; padding: 2px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+.chip.paid { border-color: var(--gold); color: var(--gold-ink); font-weight: 700; }
+
+/* Control band */
+.control {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
+  padding: 28px; display: flex; flex-direction: column; gap: 10px;
+}
+.control h2 { font-size: 1.4rem; }
+.control p { color: var(--muted); max-width: 62ch; }
+
+/* Scope */
+.scope { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.scope-col { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.scope-col h3 { padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+.scope ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 1rem; }
+.scope li { display: grid; grid-template-columns: 18px 1fr; gap: 10px; align-items: baseline; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--gold); transform: translateY(-1px); }
+.dot.later { background: transparent; border: 2px solid var(--muted); }
+.never { color: var(--muted); }
+
+/* Checklist */
+.need-groups { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.need-group { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.need-group h3 { margin-bottom: 8px; }
+.need { display: grid; grid-template-columns: 26px 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); cursor: pointer; }
+.need:first-of-type { border-top: 0; }
+.need input { appearance: none; width: 22px; height: 22px; margin: 3px 0 0; border: 2px solid var(--gold); border-radius: 6px; display: grid; place-items: center; cursor: pointer; background: transparent; }
+.need input:checked { background: var(--gold); }
+.need input:checked::after { content: ""; width: 6px; height: 11px; border: solid #2D2D2D; border-width: 0 2.5px 2.5px 0; transform: rotate(45deg) translate(-1px, -1px); }
+.need input:focus-visible { outline: 3px solid var(--navy); outline-offset: 2px; }
+.need b { display: block; font-weight: 700; }
+.need span { color: var(--muted); font-size: 0.95rem; }
+.need:has(input:checked) b { text-decoration: line-through; text-decoration-color: var(--gold); }
+.progress { display: flex; align-items: center; gap: 12px; font-size: 0.95rem; color: var(--muted); }
+.bar { flex: 1; height: 6px; background: var(--line); border-radius: 999px; overflow: hidden; max-width: 260px; }
+.bar i { display: block; height: 100%; width: 0; background: var(--gold); transition: width .3s ease; }
+.bonus { font-size: 0.95rem; color: var(--muted); }
+.bonus b { color: var(--ink); }
+
+/* Meeting + success */
+.questions { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.questions li { padding: 14px 18px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+.success {
+  border-inline-start: 4px solid var(--gold);
+  padding: 4px 20px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.success p { font-family: var(--display); font-weight: 500; font-size: 1.35rem; line-height: 1.45; text-wrap: balance; }
+footer { color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--line); padding-top: 20px; }
+
+@media (max-width: 760px) {
+  .how { grid-template-columns: 1fr; }
+  .phone { position: static; max-width: 380px; width: 100%; justify-self: center; }
+  .pains, .extras, .scope, .need-groups { grid-template-columns: 1fr; }
+  .page { gap: 56px; padding-block: 32px 48px; }
+  body { font-size: 17px; }
+}
+@media (prefers-reduced-motion: reduce) { .bar i { transition: none; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="hero">
+    <span class="eyebrow">תוכנית עבודה · מארק · 25/10/2026</span>
+    <h1>החשבוניות של ימי הצילום, <span class="mark">בהודעת וואטסאפ אחת</span></h1>
+    <p class="sub">בוט בוואטסאפ שיודע מתי סיימת יום צילום, שואל כמה שעות עבדת, ומכין את החשבונית. אתה רק מאשר.</p>
+    <div class="byline"><span>הוכן על ידי שחר לוי</span><span>גרסה ראשונה</span></div>
+  </header>
+
+  <section class="section" aria-labelledby="pain-h">
+    <div class="section-head">
+      <span class="eyebrow">מה מציק היום</span>
+      <h2 id="pain-h">שלושה דברים שגוזלים זמן אחרי כל יום צילום</h2>
+    </div>
+    <div class="pains">
+      <div class="pain">
+        <h3>חשבונית ידנית</h3>
+        <p>השעות ביומן לא מדויקות, והמחיר משתנה לפי חברה ולפי שעות נוספות.</p>
+      </div>
+      <div class="pain">
+        <h3>הצעות מחיר שנעלמות</h3>
+        <p>המחירים נסגרים בוואטסאפ, וקשה למצוא אותם כשצריך להוציא חשבונית.</p>
+      </div>
+      <div class="pain">
+        <h3>מעקב תשלומים</h3>
+        <p>שוטף+30 או +45, ובודקים מה נכנס רק בסוף החודש.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="how-h">
+    <div class="section-head">
+      <span class="eyebrow">איך זה עובד</span>
+      <h2 id="how-h">מסוף יום הצילום ועד שהחשבונית אצל החברה</h2>
+    </div>
+    <div class="how">
+      <ol class="steps">
+        <li class="step">
+          <span class="step-num">1</span>
+          <div>
+            <h3>יום הצילום מסתיים ביומן</h3>
+            <p>הבוט שולח לך: <strong>"סיימת אצל [חברה]? כמה שעות עבדת?"</strong> הוא לא מנחש שעות מהיומן, כי שם הן לא תמיד מדויקות.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step-num">2</span>
+          <div>
+            <h3>אתה עונה במילים שלך</h3>
+            <p>"11", "עבדתי 11 שעות", "בעצם 10 וחצי". הבוט מחזיר סיכום: חברה, תאריך, שעות וסכום לפי המחיר של אותה חברה.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step-num">3</span>
+          <div>
+            <h3>מאשר, ונשמרת טיוטה</h3>
+            <p>הטיוטה נשמרת ב-Get Invoice. <strong>שום דבר לא נשלח לחברה</strong> בשלב הזה. הטיוטות של כל חברה מצטברות.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step-num">4</span>
+          <div>
+            <h3>"סיימתי פרויקט עם X"</h3>
+            <p>הבוט מראה את כל הטיוטות הפתוחות של החברה והסכום הכולל. אחרי אישור אחרון, כל החשבוניות נשלחות במייל אחד.</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="phone" aria-label="דוגמה לשיחה עם הבוט">
+        <div class="phone-top">
+          <span class="avatar">בוט</span>
+          <div><b>בוט החשבוניות</b><small>וואטסאפ</small></div>
+        </div>
+        <div class="msg bot">היי מארק, סיימת אצל הפקות דוגמה? כמה שעות עבדת?</div>
+        <div class="msg me">11 שעות</div>
+        <div class="msg bot">
+          סיכום:
+          <dl class="summary">
+            <dt>חברה</dt><dd>הפקות דוגמה</dd>
+            <dt>תאריך</dt><dd>26/10/2026</dd>
+            <dt>שעות</dt><dd>11 (כולל 1 נוספת)</dd>
+            <dt>סכום</dt><dd>₪2,400</dd>
+          </dl>
+          לשמור כטיוטה?
+        </div>
+        <div class="msg me">כן</div>
+        <div class="msg bot">נשמר. יש לך <span class="num">3</span> טיוטות פתוחות אצל הפקות דוגמה.</div>
+        <div class="gap-note">בסוף הפרויקט</div>
+        <div class="msg me">סיימתי פרויקט עם הפקות דוגמה</div>
+        <div class="msg bot"><span class="num">3</span> חשבוניות, סך הכל <span class="num">₪7,200</span>. לשלוח למייל של הפקות דוגמה?</div>
+        <div class="msg me">שלח</div>
+        <div class="msg bot">נשלחו <span class="num">3</span> חשבוניות במייל אחד.</div>
+        <div class="example-tag">דוגמה להמחשה. השמות והסכומים לא אמיתיים</div>
+      </div>
+    </div>
+
+    <div class="extras">
+      <div class="extra">
+        <h3>הצעת מחיר בוואטסאפ?</h3>
+        <p>עושים לה פורוורד לבוט. הוא מזהה חברה ומחיר, מראה לך מה הבין, ואחרי אישור מעדכן את המחיר של אותה חברה.</p>
+      </div>
+      <div class="extra">
+        <h3>כל עבודה נרשמת בשיט ההכנסות</h3>
+        <p>בכל רגע אפשר לראות מה אמור להיכנס וממי. הסטטוס מתעדכן לבד מ-Get Invoice.</p>
+        <div class="status-row"><span class="chip">טיוטה</span><span class="chip">נשלחה</span><span class="chip paid">שולמה</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="control" aria-labelledby="control-h">
+    <span class="eyebrow">אתה תמיד בשליטה</span>
+    <h2 id="control-h">שום חשבונית לא יוצאת בלי שאישרת</h2>
+    <p>חשבונית מס שיצאה עם טעות אפשר לתקן רק בחשבונית זיכוי. לכן הבוט מכין טיוטות, ואתה מחליט מתי לשלוח.</p>
+  </section>
+
+  <section class="section" aria-labelledby="scope-h">
+    <div class="section-head">
+      <span class="eyebrow">מה בגרסה הראשונה</span>
+      <h2 id="scope-h">מתחילים מהחשבוניות, ומוסיפים כשזה עובד</h2>
+    </div>
+    <div class="scope">
+      <div class="scope-col">
+        <h3>עכשיו</h3>
+        <ul>
+          <li><span class="dot"></span>שאלה בוואטסאפ בסוף כל יום צילום</li>
+          <li><span class="dot"></span>סיכום לאישור וטיוטת חשבונית</li>
+          <li><span class="dot"></span>שליחה מרוכזת בסוף פרויקט</li>
+          <li><span class="dot"></span>עדכון מחירים מהצעות מחיר</li>
+          <li><span class="dot"></span>שיט הכנסות ומעקב תשלומים</li>
+        </ul>
+      </div>
+      <div class="scope-col">
+        <h3>אחר כך</h3>
+        <ul>
+          <li><span class="dot later"></span>כמה פרויקטים במקביל באותה חברה</li>
+          <li><span class="dot later"></span>שליחה בלי אישור, אחרי שהבוט צדק כ-20 פעמים</li>
+          <li><span class="dot later"></span>חיבור לבנק</li>
+          <li><span class="dot later"></span>איסוף קבלות הוצאה ודוח לרואה החשבון</li>
+          <li class="never"><span class="dot later"></span>שמירת סיסמאות לאתרים - אף פעם</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="need-h">
+    <div class="section-head">
+      <span class="eyebrow">מה אני צריך ממך</span>
+      <h2 id="need-h">שמונה דברים, ואפשר להתחיל לבנות</h2>
+      <div class="progress"><div class="bar"><i id="bar"></i></div><span id="count">0 מתוך 8</span></div>
+    </div>
+    <div class="need-groups">
+      <div class="need-group">
+        <h3>חיבורים</h3>
+        <label class="need"><input type="checkbox" id="n1"><div><b>חשבון Base44 על שמך</b><span>שם הבוט נבנה ומתחבר לוואטסאפ. כולל העלות החודשית (כ-100 ש"ח).</span></div></label>
+        <label class="need"><input type="checkbox" id="n2"><div><b>מפתח API של Get Invoice</b><span>מוציאים אותו מהגדרות החשבון שלך.</span></div></label>
+        <label class="need"><input type="checkbox" id="n3"><div><b>חיבור למייל שלך</b><span>ממנו יישלחו החשבוניות לחברות.</span></div></label>
+        <label class="need"><input type="checkbox" id="n4"><div><b>חיבור ליומן גוגל</b><span>ואיך אתה מסמן בו יום צילום ולאיזו חברה.</span></div></label>
+        <label class="need"><input type="checkbox" id="n5"><div><b>גוגל שיטס לניהול הכנסות</b><span>הטבלה הקיימת שלך או טבלה חדשה.</span></div></label>
+      </div>
+      <div class="need-group">
+        <h3>מידע</h3>
+        <label class="need"><input type="checkbox" id="n6"><div><b>רשימת חברות</b><span>שם, איך החברה רשומה ב-Get Invoice, מייל לחשבוניות, מחיר יום.</span></div></label>
+        <label class="need"><input type="checkbox" id="n7"><div><b>שעות נוספות ותוספות לכל חברה</b><span>אחרי כמה שעות מתחילה שעה נוספת, ובכמה.</span></div></label>
+        <label class="need"><input type="checkbox" id="n8"><div><b>סוג המסמך</b><span>חשבונית מס, או חשבונית מס/קבלה.</span></div></label>
+        <p class="bonus"><b>בונוס:</b> כמה זמן לוקחת לך היום חשבונית אחת? ככה נדע כמה זמן הבוט חוסך.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="meet-h">
+    <div class="section-head">
+      <span class="eyebrow">לפגישה</span>
+      <h2 id="meet-h">שלוש החלטות קטנות שנסגור יחד</h2>
+    </div>
+    <ul class="questions">
+      <li>איך הבוט יזהה ביומן שאירוע הוא יום צילום: יומן נפרד, שם החברה בכותרת, או סימון קבוע?</li>
+      <li>מי שולח את המייל לחברה: Get Invoice עצמו, או המייל שלך עם החשבוניות מצורפות?</li>
+      <li>איך קוראים לבוט?</li>
+    </ul>
+  </section>
+
+  <section class="success" aria-label="איך נדע שזה עובד">
+    <span class="eyebrow">איך נדע שזה עובד</span>
+    <p>אחרי חודש, כל יום צילום הפך לחשבונית דרך הוואטסאפ, ולא נכנסת ל-Get Invoice כדי להפיק חשבונית ידנית אפילו פעם אחת.</p>
+  </section>
+
+  <footer>הוכן על ידי שחר לוי למארק · 25/10/2026</footer>
+</div>
+
+<script>
+(function () {
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('.need input'));
+  var KEY = 'mark-bot-needs';
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { saved = {}; }
+  function update() {
+    var done = boxes.filter(function (b) { return b.checked; }).length;
+    document.getElementById('count').textContent = done + ' מתוך ' + boxes.length;
+    document.getElementById('bar').style.width = (done / boxes.length * 100) + '%';
+  }
+  boxes.forEach(function (b) {
+    if (saved[b.id]) b.checked = true;
+    b.addEventListener('change', function () {
+      saved[b.id] = b.checked;
+      try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
+      update();
+    });
+  });
+  update();
+})();
+</script>
+<script src="/legal-kit.js" defer></script>
+</body>
+</html>
