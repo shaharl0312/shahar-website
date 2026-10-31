@@ -66,6 +66,7 @@ cp -r funnel/course-landing/testimonial-videos _infra/dist/course-landing/
 mkdir -p _infra/dist/erosion-calculator && cp tools/erosion-calculator/index.html _infra/dist/erosion-calculator/index.html
 
 # Guides (SEO content section)
+mkdir -p _infra/dist/guides/trading-account && cp content/guides/trading-account/index.html _infra/dist/guides/trading-account/ && cp -r content/guides/trading-account/screenshots _infra/dist/guides/trading-account/
 mkdir -p _infra/dist/guides/flight-claude _infra/dist/guides/keren-kaspit _infra/dist/guides/bank-money _infra/dist/guides/us-bonds
 cp content/guides/index.html _infra/dist/guides/index.html
 cp content/guides/keren-kaspit/index.html _infra/dist/guides/keren-kaspit/index.html
