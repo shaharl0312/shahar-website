@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>איך פותחים חשבון מסחר באלטשולר שחם טרייד - מדריך שלב אחרי שלב | שחר לוי</title>
+  <meta name="description" content="מדריך מלא לפתיחת חשבון מסחר עצמאי באלטשולר שחם טרייד: מה להכין, מה לענות בכל שאלה, הזיהוי הדיגיטלי, העברת הכסף ומה קורה אחרי ההרשמה." />
+  <link rel="canonical" href="https://shaharfinance.com/guides/altshuler-account/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="איך פותחים חשבון מסחר באלטשולר שחם טרייד - שלב אחרי שלב" />
+  <meta property="og:url" content="https://shaharfinance.com/guides/altshuler-account/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css?family=Assistant:400,500,600,700,800,900&subset=hebrew&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { overflow-x: hidden; width: 100%; }
+    body {
+      width: 100%; position: relative;
+      background: #ffffff;
+      color: #1e1e1e;
+      font-family: 'Assistant', -apple-system, sans-serif;
+      direction: rtl;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .narrow { max-width: 620px; margin: 0 auto; padding: 0 24px; }
+
+    /* ---------- scroll reveal ---------- */
+    .anim {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .anim.in { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      .anim { transition: none !important; opacity: 1 !important; transform: none !important; }
+    }
+
+    a:focus-visible { outline: 3px solid #1b3a6b; outline-offset: 5px; border-radius: 4px; }
+    .back-link { position: absolute; top: 12px; right: 16px; min-height: 44px; display: inline-flex; align-items: center; color: #555; font-size: .9rem; z-index: 2; text-underline-offset: 3px; }
+    .back-link:hover { color: #1e1e1e; }
+
+    /* ---------- hero ---------- */
+    .hero {
+      min-height: 360px;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center;
+      padding: 100px 24px 50px;
+      position: relative;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 600px 400px at 50% 30%, rgba(201,168,76,.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .eyebrow {
+      display: inline-block;
+      font-size: .75rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+      color: #c9a84c;
+      margin-bottom: 24px;
+      position: relative; z-index: 1;
+    }
+    .hero h1 {
+      font-size: clamp(1.85rem, 5.5vw, 3.4rem);
+      font-weight: 900; line-height: 1.2; letter-spacing: -.02em;
+      color: #1e1e1e;
+      max-width: 780px;
+      margin: 0 0 24px;
+      position: relative; z-index: 1;
+    }
+    .hero h1 .gold-grad {
+      background: linear-gradient(135deg, #8a6a16 0%, #967319 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero .sub {
+      font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+      line-height: 1.7; color: #555;
+      max-width: 560px;
+      margin: 0 auto 20px;
+      position: relative; z-index: 1;
+    }
+    .byline { font-size: .9rem; line-height: 1.6; color: #555; margin: -8px 0 12px; position: relative; z-index: 1; }
+    .read-time {
+      font-size: .85rem; color: #666; font-weight: 500;
+      position: relative; z-index: 1;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(201,168,76,.35) 50%, transparent 100%);
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    /* ---------- story flow ---------- */
+    .story { padding-top: 64px; padding-bottom: 40px; }
+    .story p {
+      font-size: clamp(1.05rem, 1.7vw, 1.2rem);
+      line-height: 1.95;
+      color: #333;
+      margin-bottom: 30px;
+    }
+    .story p .gold { color: #b8941e; font-weight: 700; }
+    .story p .lift { color: #1e1e1e; font-weight: 700; }
+
+    .story h2 {
+      font-size: clamp(1.35rem, 2.6vw, 1.7rem);
+      font-weight: 800; color: #1e1e1e; line-height: 1.35;
+      margin: 52px 0 22px;
+    }
+    .story a { color: #b8941e; font-weight: 700; }
+
+    /* ---------- tl;dr ---------- */
+    .tldr {
+      background: #faf7ee;
+      border-right: 3px solid #c9a84c;
+      border-radius: 4px;
+      padding: 20px 22px;
+      margin-bottom: 44px;
+    }
+    .story .tldr .tldr-label { font-size: .75rem; line-height: 1.4; margin: 0 0 8px; font-weight: 800; letter-spacing: .15em; color: #8a6a16; }
+    .story .tldr p { font-size: 1rem; line-height: 1.8; color: #1e1e1e; margin: 0; }
+    .disclaimer { font-size: .8rem !important; color: #888 !important; line-height: 1.7 !important; font-style: italic; }
+
+    /* ---------- closing card ---------- */
+    .closer {
+      background: linear-gradient(135deg, rgba(201,168,76,.06) 0%, rgba(201,168,76,.01) 100%);
+      border-right: 3px solid #c9a84c;
+      border-radius: 4px;
+      padding: clamp(28px, 5vw, 40px);
+      text-align: right;
+      margin: 20px 0 60px;
+    }
+    .closer p { font-size: clamp(1.05rem, 1.8vw, 1.2rem); line-height: 1.85; color: #1e1e1e; font-style: italic; margin: 0; }
+    .closer p + p { margin-top: 16px; }
+    .closer .gold { color: #b8941e; font-weight: 700; font-style: normal; }
+
+    /* ---------- final cta ---------- */
+    .final { text-align: center; padding: 20px 24px 100px; }
+    .final .lead {
+      font-size: clamp(1.3rem, 2.8vw, 2rem);
+      font-weight: 800; color: #1e1e1e;
+      line-height: 1.4;
+      max-width: 640px;
+      margin: 0 auto 36px;
+    }
+    .cta {
+      display: inline-block;
+      background: #c9a84c;
+      color: #000;
+      font-weight: 800;
+      font-size: clamp(1.1rem, 2vw, 1.3rem);
+      padding: 20px 52px;
+      border-radius: 8px;
+      text-decoration: none;
+      letter-spacing: -.01em;
+      box-shadow: 0 4px 24px rgba(201,168,76,.28);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .cta:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(201,168,76,.4); }
+    @media (prefers-reduced-motion: reduce) {
+      .cta { transition: none; }
+      .cta:hover { transform: none; }
+    }
+    .cta-note { font-size: .85rem; color: #666; margin-top: 20px; }
+
+    footer { text-align: center; font-size: .8rem; color: #999; padding: 0 24px 60px; }
+
+    @media (max-width: 480px) {
+      .hero { min-height: 0; padding: 112px 20px 44px; }
+      .story { padding-top: 36px; }
+    }
+  </style>
+
+  <!-- SEO: social preview + structured data -->
+  <meta property="article:published_time" content="2026-10-31">
+  <meta property="article:modified_time" content="2026-10-31">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta property="og:site_name" content="שחר לוי">
+  <meta property="og:locale" content="he_IL">
+  <meta property="og:description" content="מדריך מלא לפתיחת חשבון מסחר עצמאי באלטשולר שחם טרייד: מה להכין, מה לענות בכל שאלה, הזיהוי הדיגיטלי, העברת הכסף ומה קורה אחרי ההרשמה." />
+  <meta property="og:image" content="https://shaharfinance.com/guides/og/altshuler-account.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="איך פותחים חשבון מסחר באלטשולר שחם טרייד - שלב אחרי שלב" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="איך פותחים חשבון מסחר באלטשולר שחם טרייד - שלב אחרי שלב">
+  <meta name="twitter:description" content="מדריך מלא לפתיחת חשבון מסחר עצמאי באלטשולר שחם טרייד: מה להכין, מה לענות בכל שאלה, הזיהוי הדיגיטלי, העברת הכסף ומה קורה אחרי ההרשמה.">
+  <meta name="twitter:image" content="https://shaharfinance.com/guides/og/altshuler-account.jpg">
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://shaharfinance.com/guides/altshuler-account/#article",
+      "headline": "איך פותחים חשבון מסחר באלטשולר שחם טרייד - שלב אחרי שלב",
+      "description": "מדריך מלא לפתיחת חשבון מסחר עצמאי באלטשולר שחם טרייד: מה להכין, מה לענות בכל שאלה, הזיהוי הדיגיטלי, העברת הכסף ומה קורה אחרי ההרשמה.",
+      "inLanguage": "he-IL",
+      "url": "https://shaharfinance.com/guides/altshuler-account/",
+      "mainEntityOfPage": "https://shaharfinance.com/guides/altshuler-account/",
+      "image": "https://shaharfinance.com/guides/og/altshuler-account.jpg",
+      "datePublished": "2026-10-31",
+      "dateModified": "2026-10-31",
+      "author": {
+        "@id": "https://shaharfinance.com/#shahar"
+      },
+      "publisher": {
+        "@id": "https://shaharfinance.com/#shahar"
+      },
+      "isPartOf": {
+        "@id": "https://shaharfinance.com/guides/#collection"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://shaharfinance.com/#shahar",
+      "name": "שחר לוי",
+      "alternateName": "Shahar Levi",
+      "url": "https://shaharfinance.com/",
+      "image": "https://shaharfinance.com/shahar_headshot.png",
+      "jobTitle": "מלווה פיננסי",
+      "sameAs": [
+        "https://www.instagram.com/shahar.levy1/",
+        "https://www.youtube.com/@shahar.levy1"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "שחר לוי",
+          "item": "https://shaharfinance.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "המדריכים",
+          "item": "https://shaharfinance.com/guides/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "איך פותחים חשבון מסחר באלטשולר שחם טרייד",
+          "item": "https://shaharfinance.com/guides/altshuler-account/"
+        }
+      ]
+    }
+  ]
+}</script>
+<style>
+.story a{color:#8a6a16;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}.story p,.story h2{overflow-wrap:break-word}
+.story h3{font-size:1.15rem;font-weight:800;color:#1e1e1e;margin:36px 0 14px}
+.story ul.list{padding-right:22px;margin:-10px 0 30px}.story ul.list li{font-size:clamp(1.02rem,1.6vw,1.12rem);line-height:1.85;color:#333;margin-bottom:8px}
+.notice{background:#f6f6f4;border:1px solid #e3ded4;border-radius:10px;padding:14px 18px;margin:0 0 36px}.story .notice p{font-size:.95rem;line-height:1.7;color:#444;margin:0}.story .notice p+p{margin-top:6px}
+.shots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:28px 0 36px}.shots.one{grid-template-columns:minmax(0,280px);justify-content:center}
+.shots figure{margin:0}.shots img{display:block;width:100%;height:auto;border:1px solid #e3ded4;border-radius:14px;background:#111}.shots figcaption{font-size:.82rem;color:#666;margin-top:8px;line-height:1.5;text-align:center}
+.tip{background:#faf7ee;border-right:3px solid #c9a84c;border-radius:4px;padding:16px 20px;margin:0 0 32px}.story .tip p{font-size:1rem;line-height:1.8;margin:0;color:#1e1e1e}
+.open-cta{padding:38px 24px;margin:40px 0 24px;background:#2D2D2D;border-radius:18px;color:#fff;text-align:center}.story .open-cta p{color:#fff;margin-bottom:22px}.open-cta .cta{color:#2D2D2D;text-decoration:none;font-size:1.1rem;padding:16px 28px}.story .open-cta .cta-note{color:#ccc;font-size:.85rem;margin:18px 0 0;line-height:1.6}
+@media(max-width:480px){.shots{gap:10px}}
+</style>
+</head>
+<body><a href="/guides/" class="back-link">← כל המדריכים</a><header class="hero"><h1>איך פותחים חשבון מסחר<br><span class="gold-grad">באלטשולר שחם טרייד</span></h1><p class="byline">מאת שחר לוי, מלווה פיננסי · <time datetime="2026-10-31">31.10.2026</time></p><p class="read-time">זמן קריאה: 7 דקות</p></header><div class="divider"></div><main class="story narrow">
+
+<div class="notice"><p><strong>חשוב לפני שמתחילים:</strong> אני לא יועץ פיננסי. זאת דעתי בלבד, וזאת איננה המלצה לפעולה.</p><p>גילוי נאות: הקישור לפתיחת חשבון בסוף הכתבה הוא קישור שותפים, ואני מקבל תגמול על פתיחת חשבון דרכו.</p></div>
+
+<div class="tldr"><p class="tldr-label">בקצרה</p><p>פתיחת חשבון מסחר באלטשולר שחם טרייד נעשית אונליין ולוקחת 10-15 דקות. מכינים תעודת זהות או רישיון נהיגה, מקום שקט עם תאורה טובה ואת פרטי חשבון הבנק. אחרי ההרשמה מעבירים את הכסף, ותוך כמה ימים עד שבוע מגיעים שם משתמש וסיסמה ב-SMS.</p></div>
+
+<p>הרבה אנשים מחליטים שהם רוצים להתחיל להשקיע, בוחרים בית השקעות, ואז נתקעים דווקא בשלב הכי פשוט: פתיחת החשבון.</p>
+<p>אני מכיר את זה מקרוב. כשאני פתחתי חשבון, היה עליי רק חוגר, וחוגר לא מספיק לזיהוי. אמרתי לעצמי שאסיים בבית, בבית שכחתי, ואז נתקעתי על שאלה, שמרתי והמשכתי מאוחר יותר. ככה עברו חודשיים-שלושה עד שהחשבון באמת נפתח.</p>
+<p>במדריך הזה אני עובר איתך על כל המסכים בתהליך, אחד אחרי השני, עם צילומי מסך מהפתיחה שעשיתי בעצמי. ככה תדע מראש מה מחכה לך ותסיים את זה בפעם אחת.</p>
+<p>עוד לא בחרת איפה לפתוח חשבון? כתבתי על זה <a href="/guides/trading-account/">מדריך נפרד להשוואת חשבונות מסחר</a>.</p>
+
+<h2>מה צריך להכין לפני שמתחילים?</h2>
+<ul class="list">
+<li><strong>תעודת זהות או רישיון נהיגה.</strong> תעודה צבאית (חוגר) לא מספיקה.</li>
+<li><strong>10-15 דקות פנויות</strong> בלי הפרעות.</li>
+<li><strong>מקום עם תאורה טובה</strong> לצילום סלפי. לא בחוץ בלילה.</li>
+<li><strong>מקום שנוח לך לדבר בו בקול</strong>, כי באחד השלבים מקליטים הצהרה קצרה.</li>
+<li><strong>פרטי חשבון הבנק שלך</strong> - מספר בנק, סניף וחשבון.</li>
+<li><strong>הכסף שאתה מתכוון להעביר</strong>, כדי לבצע את ההעברה כבר באותו רגע.</li>
+</ul>
+<div class="tip"><p>אם משהו מהרשימה חסר לך עכשיו, עדיף לעצור, להביא אותו ולחזור. רוב מי שנתקע בתהליך נתקע בדיוק על אחד הדברים האלה.</p></div>
+
+<h2>שלב 1: כניסה ואימות טלפון</h2>
+<p>נכנסים דרך הקישור לפתיחת חשבון ולוחצים על "בואו נתחיל". מזינים מספר טלפון נייד, מקבלים קוד ב-SMS, מזינים אותו וממשיכים.</p>
+<div class="shots one"><figure><img src="screenshots/01-start.jpg" alt="מסך הפתיחה של אלטשולר שחם טרייד עם כפתור בואו נתחיל" width="600" height="1063" loading="lazy" decoding="async"><figcaption>מסך הפתיחה</figcaption></figure></div>
+
+<h2>שלב 2: ארבע שאלות סף</h2>
+<p>לפני שנכנסים לפרטים, המערכת שואלת ארבע שאלות קצרות. כאן כן חשוב לענות נכון:</p>
+<ul class="list">
+<li><strong>תושב ישראל מעל גיל 18</strong> - נכון.</li>
+<li><strong>אני לא מוגדר כ-US Person</strong> - כלומר אין לך ולא הייתה לך אזרחות אמריקאית, גרין קארד או תושבות אמריקאית. מי שכן מוגדר כ-US Person לא יכול לפתוח חשבון כאן, בגלל נושא המיסוי, וצריך לפנות לבית השקעות אמריקאי.</li>
+<li><strong>אין לי תושבות מס במדינה אחרת</strong> - נכון, אם אתה תושב ישראל בלבד.</li>
+<li><strong>החשבון ישמש לפעילות פרטית בלבד</strong> - נכון.</li>
+</ul>
+<p>אם לחצת בטעות על התשובה הלא נכונה, תופיע הודעה שאי אפשר להמשיך. יש שם אפשרות לסמן שלחצת בטעות ולחזור אחורה.</p>
+<div class="shots"><figure><img src="screenshots/02-resident.jpg" alt="שאלת סף: אני תושב ישראל מעל גיל 18" width="600" height="1063" loading="lazy" decoding="async"><figcaption>תושב ישראל מעל 18</figcaption></figure><figure><img src="screenshots/03-us-person.jpg" alt="שאלת סף: אני לא מוגדר כ-US Person" width="600" height="1063" loading="lazy" decoding="async"><figcaption>לא מוגדר כ-US Person</figcaption></figure></div>
+
+<h2>שלב 3: פרטים אישיים</h2>
+<p>תעודת זהות, שם בעברית ובאנגלית, מין, ארץ לידה, אימייל וכתובת מגורים.</p>
+<p>בסוף העמוד יש מתג "אני רוצה לקבל דיווחים תקופתיים ומסמכים ישירות למייל". <strong>תשאיר אותו דלוק.</strong> אם תכבה אותו, הדיווחים יישלחו אליך בדואר ישראל הביתה, ואין לזה שום סיבה.</p>
+<div class="shots one"><figure><img src="screenshots/04-personal-details.jpg" alt="טופס פרטים אישיים עם מתג קבלת דיווחים למייל דלוק" width="600" height="1063" loading="lazy" decoding="async"><figcaption>להשאיר את המתג של המייל דלוק</figcaption></figure></div>
+
+<h2>שלב 4: שאלות היכרות</h2>
+<p>עכשיו מגיעה סדרה של שאלות שנועדו בעיקר כדי שבית ההשקעות יכיר אותך: סטטוס תעסוקתי, גובה ההכנסה החודשית ועוד. אין פה תשובה נכונה או לא נכונה. תענה בכנות ותמשיך, לא צריך להיתקע על כל שאלה.</p>
+<div class="shots"><figure><img src="screenshots/05-employment.jpg" alt="שאלה: מה הסטטוס התעסוקתי שלך" width="600" height="1063" loading="lazy" decoding="async"><figcaption>סטטוס תעסוקתי</figcaption></figure><figure><img src="screenshots/06-income.jpg" alt="שאלה: מה גובה ההכנסות החודשיות שלך" width="600" height="1063" loading="lazy" decoding="async"><figcaption>הכנסה חודשית</figcaption></figure></div>
+
+<h3>שאלות כלליות</h3>
+<ul class="list">
+<li><strong>חשבונות נוספים של בני משפחה באלטשולר שחם טרייד</strong> - אם יש, תתבקש להזין גם את הפרטים שלהם.</li>
+<li><strong>איש ציבור בחמש השנים האחרונות</strong> - אתה או בן משפחה שגר איתך או שאתם תלויים כלכלית זה בזה. ליד השאלה יש הסבר מה נחשב תפקיד ציבורי בכיר. לרוב האנשים התשובה היא לא.</li>
+<li><strong>סירוב לקבלת שירותים מבנק</strong> - לרוב האנשים התשובה היא לא.</li>
+</ul>
+<div class="shots one"><figure><img src="screenshots/07-general-questions.jpg" alt="מסך שאלות כלליות: חשבונות של בני משפחה, איש ציבור, סירוב שירות מבנק" width="600" height="1063" loading="lazy" decoding="async"><figcaption>שאלות כלליות</figcaption></figure></div>
+
+<div class="notice"><p>תזכורת: אני לא יועץ פיננסי. זאת דעתי בלבד, וזאת איננה המלצה לפעולה.</p></div>
+
+<h2>שלב 5: מטרת החשבון, הפקדות ומשיכות</h2>
+<p><strong>מה מטרת פתיחת החשבון?</strong> מסמנים "מסחר בני"ע" - ניירות ערך. זה שם כללי שכולל מניות, אג"ח וקרנות סל. האפשרויות האחרות ברשימה (אופציות, מכירה בחסר, מסגרת אשראי) הן פעולות מורכבות יותר, ומי שמתכנן השקעה פסיבית בקרנות סל לא צריך אותן.</p>
+<p><strong>הפקדות ומשיכות</strong> - מאיפה יגיע הכסף, באיזו תדירות ובאיזה סכום, וכמה פעמים אתה צופה למשוך. גם כאן אלה שאלות היכרות. תענה לפי ההערכה שלך, בלי להתעכב על מספרים מדויקים.</p>
+<div class="shots"><figure><img src="screenshots/08-purpose.jpg" alt="שאלה: מה מטרת פתיחת החשבון, מסומן מסחר בניירות ערך" width="600" height="1063" loading="lazy" decoding="async"><figcaption>מטרת החשבון</figcaption></figure><figure><img src="screenshots/09-withdrawals.jpg" alt="שאלות על תדירות וסכום משיכות מהחשבון" width="600" height="1063" loading="lazy" decoding="async"><figcaption>משיכות מהחשבון</figcaption></figure></div>
+
+<h2>שלב 6: כתבי הצבעה - השאלה שמבלבלת את כולם</h2>
+<p>כשקונים מניה, הופכים לאחד מהבעלים של החברה. כתבי הצבעה מאפשרים לך כבעלים להשתתף בהחלטות של החברה ולהצביע באסיפות.</p>
+<p>אני בוחר שלא לקבל אותם. ההשפעה של משקיע פרטי עם כמה יחידות היא אפסית, וזה בעיקר ממלא את המייל בהודעות שלא רלוונטיות אליי. זו העדפה אישית שלי.</p>
+<div class="shots one"><figure><img src="screenshots/10-voting.jpg" alt="שאלה: לשלוח לך כתבי הצבעה, הודעות עמדה ואישורי בעלות" width="600" height="1063" loading="lazy" decoding="async"><figcaption>כתבי הצבעה</figcaption></figure></div>
+
+<h2>שלב 7: הצהרת נהנים וקוד אישי</h2>
+<p>הצהרת נהנים אומרת מי נהנה מהכסף בחשבון. אם החשבון רק שלך, מסמנים שאין נהנים נוספים ומאשרים שאתה היחיד שמשתמש בו. אם יש נהנה נוסף, תצטרך להזין גם את הפרטים שלו. בהמשך התהליך מקליטים את ההצהרה הזאת בקול.</p>
+<p>אחר כך בוחרים <strong>קוד אישי</strong>. תשמור אותו - תצטרך אותו כשתדבר עם שירות הלקוחות.</p>
+<div class="shots"><figure><img src="screenshots/11-beneficiaries.jpg" alt="מסך הצהרת נהנים" width="600" height="1063" loading="lazy" decoding="async"><figcaption>הצהרת נהנים</figcaption></figure><figure><img src="screenshots/12-personal-code.jpg" alt="מסך בחירת קוד אישי" width="600" height="1063" loading="lazy" decoding="async"><figcaption>קוד אישי - לשמור</figcaption></figure></div>
+
+<h2>שלב 8: זיהוי דיגיטלי</h2>
+<p>זה השלב שבו הכי הרבה אנשים נתקעים, ובגללו אמרתי להכין הכל מראש. הוא כולל שלושה חלקים:</p>
+<ul class="list">
+<li><strong>צילום תעודת זהות או רישיון נהיגה</strong> משני הצדדים. מאשרים למצלמה בדפדפן ועוקבים אחרי ההוראות.</li>
+<li><strong>סלפי</strong> - הפנים במרכז המסגרת, עד שהיא נצבעת בירוק.</li>
+<li><strong>הקלטת הצהרת הנהנים</strong> - אומרים בקול משפט קצר, למשל "אין נהנים בחשבון פרט אליי".</li>
+</ul>
+<div class="shots one"><figure><img src="screenshots/13-digital-id.jpg" alt="הוראות לזיהוי דיגיטלי: תעודה מזהה, תאורה טובה וסלפי" width="600" height="1063" loading="lazy" decoding="async"><figcaption>הוראות הזיהוי הדיגיטלי</figcaption></figure></div>
+
+<h2>שלב 9: חשבון בנק וחתימה</h2>
+<p>מזינים את פרטי חשבון הבנק שלך וממשיכים. בסוף מופיעים המסמכים לחתימה: הסכם פתיחת חשבון, הצהרת הנהנים ואישור הודעות שיווקיות (לא חובה לאשר). לוחצים לחתימה, מאשרים, וזהו - החשבון נפתח.</p>
+<div class="shots"><figure><img src="screenshots/14-bank.jpg" alt="טופס פרטי חשבון הבנק" width="600" height="1063" loading="lazy" decoding="async"><figcaption>פרטי חשבון בנק</figcaption></figure><figure><img src="screenshots/15-done.jpg" alt="מסך סיום עם גביע: תודה, החשבון נפתח" width="600" height="1063" loading="lazy" decoding="async"><figcaption>סיום ההרשמה</figcaption></figure></div>
+
+<h2>שלב 10: העברת הכסף - כבר עכשיו</h2>
+<p>במסך הסיום מופיעים פרטי חשבון הבנק של אלטשולר שחם טרייד ואפשרות להעברת כספים מהירה. אני ממליץ לעשות את ההעברה הראשונה כבר עכשיו, דרך האפשרות המהירה. בהמשך תוכל להעביר כסף גם לפי פרטי החשבון שמופיעים באפליקציה.</p>
+<div class="tip"><p>כל עוד לא העברת כסף, לא תקבל שם משתמש וסיסמה. כנראה גם יתקשרו אליך לשאול למה עוד לא העברת. לכן כדאי לא לדחות את זה.</p></div>
+<div class="shots one"><figure><img src="screenshots/16-transfer.jpg" alt="מסך העברת כספים לאלטשולר שחם טרייד" width="600" height="1063" loading="lazy" decoding="async"><figcaption>העברת כספים מהירה</figcaption></figure></div>
+
+<h2>מה קורה אחרי ההרשמה?</h2>
+<p>מכאן זה עניין של המתנה. לפי הניסיון שלי, זה לוקח בין כמה ימים לשבוע.</p>
+<ul class="list">
+<li>קודם מגיעה הודעת SMS מאלטשולר שחם שהחשבון נפתח והכל עבר בהצלחה.</li>
+<li>אחריה מגיעה הודעה נוספת עם <strong>שם משתמש וסיסמה זמנית</strong> למערכת המסחר.</li>
+<li>רק כשהגיעה ההודעה השנייה, החשבון מוכן ואפשר להיכנס.</li>
+</ul>
+
+<h2>הדגשים החשובים בקצרה</h2>
+<ul class="list">
+<li>תקדיש לזה 10-15 דקות רצופות, בבית, עם תעודת זהות או רישיון נהיגה.</li>
+<li>שאלות הסף (תושבות, US Person, תושבות מס, שימוש פרטי) - לענות בדיוק.</li>
+<li>שאלות ההיכרות - לענות בכנות ולהתקדם בלי להיתקע.</li>
+<li>להשאיר דיווחים למייל דלוק.</li>
+<li>לשמור את הקוד האישי.</li>
+<li>להעביר את הכסף באותו יום.</li>
+</ul>
+<p>מסכי ההרשמה עשויים להשתנות מעט עם הזמן, אבל העיקרון נשאר זהה.</p>
+
+<div class="notice"><p>אני לא יועץ פיננסי. זאת דעתי בלבד, וזאת איננה המלצה לפעולה. הכתבה נועדה למידע כללי ואינה ייעוץ השקעות אישי.</p></div>
+
+<section class="open-cta"><p>מוכן? הקישור לפתיחת חשבון מסחר עצמאי באלטשולר שחם טרייד:</p><a class="cta" href="https://digitalsolutions.as-invest.co.il/trade_OnBoarding/?utm_source=Shaharl&amp;utm_medium=Link" target="_blank" rel="sponsored noopener">לפתיחת חשבון מסחר עצמאי</a><p class="cta-note">גילוי נאות: זהו קישור שותפים. אני מקבל תגמול על פתיחת חשבון דרך הקישור הזה. ההצעה כפופה לתנאי החברה ולמסמכי החשבון.</p></section>
+
+</main><script src="/legal-kit.js" defer></script></body></html>
