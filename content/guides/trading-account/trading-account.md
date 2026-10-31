@@ -1,7 +1,7 @@
 ---
 title: מדריך בחירת חשבון מסחר עצמאי
 type: guide
-status: staging
+status: published
 tags: [מדריך, מסחר, שותפים]
 updated: 2026-10-31
 keyword: מסחר
@@ -13,7 +13,7 @@ keyword: מסחר
 
 - קובץ העמוד: `index.html` באותה תיקייה.
 - תצוגת staging: https://shahar-finance-staging.vercel.app/guides/trading-account/
-- כתובת ייצור לאחר אישור: https://shaharfinance.com/guides/trading-account/
+- כתובת ייצור: https://shaharfinance.com/guides/trading-account/
 - קישורי ההצטרפות וההעדפות נשמרים במקור אחד: [[marketing/trading-affiliates]].
 - מקורות המידע וההבחנה בין מחיר רשמי להצעת אתר השוואה מופיעים בסוף העמוד.
 
@@ -23,3 +23,7 @@ keyword: מסחר
 
 ## קשור
 [[projects/website/CLAUDE]] · [[marketing/marketing]]
+
+## אימות פרסום
+
+פורסם ואומת ב-31.10.2026. קומיט ייצור `6366d40`. העמוד, רשימת המדריכים, מפת האתר, robots, תמונת השיתוף והלוגואים החזירו HTTP 200. בדיקת SEO כוללת canonical, Article ו-BreadcrumbList, תגיות שיתוף וכותרות.
