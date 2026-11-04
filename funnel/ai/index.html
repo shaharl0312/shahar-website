@@ -89,13 +89,6 @@
 
     /* Hero */
     .hero { position: relative; overflow: hidden; }
-    .hero::before {
-      content: ''; position: absolute; inset: 0; pointer-events: none;
-      background:
-        radial-gradient(42% 60% at 20% 60%, rgba(21, 128, 61, .10), transparent 72%);
-      -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
-      mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
-    }
     .hero .wrap {
       position: relative;
       display: grid; grid-template-columns: 1.35fr 1fr; gap: 32px; align-items: end;
@@ -109,8 +102,10 @@
     .hero-photo { position: relative; align-self: end; }
     .hero-photo img {
       display: block; width: 100%; max-width: 440px; height: auto; margin-inline: auto;
-      -webkit-mask-image: linear-gradient(to bottom, #000 84%, transparent 100%);
-      mask-image: linear-gradient(to bottom, #000 84%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent, #000 13%, #000 87%, transparent), linear-gradient(to bottom, #000 78%, transparent 100%);
+      -webkit-mask-composite: source-in;
+      mask-image: linear-gradient(to right, transparent, #000 13%, #000 87%, transparent), linear-gradient(to bottom, #000 78%, transparent 100%);
+      mask-composite: intersect;
     }
 
     /* Recognition */
@@ -121,7 +116,6 @@
     .aside b { color: var(--text); font-weight: 600; }
 
     /* About */
-    .about { background: linear-gradient(180deg, #FFFFFF, #F1F7F3 50%, #FFFFFF); }
     .about .wrap { max-width: 720px; text-align: center; }
     .about h2 { margin-bottom: 26px; }
     .about p { font-size: clamp(1.1875rem, 2.2vw, 1.5rem); line-height: 1.5; color: #33404F; }
@@ -164,10 +158,6 @@
 
     /* Close */
     .close { text-align: center; position: relative; overflow: hidden; }
-    .close::before {
-      content: ''; position: absolute; inset: 0; pointer-events: none;
-      background: radial-gradient(52% 62% at 50% 100%, rgba(21, 128, 61, .09), transparent 75%);
-    }
     .close .wrap { position: relative; }
     .avatar { display: block; width: 104px; height: 104px; margin: 0 auto 28px; border-radius: 50%; object-fit: cover; object-position: 50% 0; background: #E8F5EC; }
     .close h2 { max-width: 16em; margin: 0 auto 14px; }
@@ -186,7 +176,6 @@
       .hero .wrap { grid-template-columns: 1fr; gap: 0; text-align: center; }
       .hero-copy { padding-block: 44px 28px; }
       .lead { margin-inline: auto; }
-      .hero::before { background: radial-gradient(85% 32% at 50% 80%, rgba(21, 128, 61, .10), transparent 75%); }
       .hero-photo { padding-block: 0; }
       .hero-photo img { max-width: 300px; }
       .pains, .work, .steps { grid-template-columns: 1fr; }
