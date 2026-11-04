@@ -65,6 +65,9 @@ cp -r funnel/course-landing/testimonial-videos _infra/dist/course-landing/
 # Erosion calculator (checking-account inflation quiz)
 mkdir -p _infra/dist/erosion-calculator && cp tools/erosion-calculator/index.html _infra/dist/erosion-calculator/index.html
 
+# AI for businesses landing page (/ai/)
+mkdir -p _infra/dist/ai && cp funnel/ai/index.html funnel/ai/shahar.jpg _infra/dist/ai/
+
 # Guides (SEO content section)
 mkdir -p _infra/dist/guides/trading-account && cp content/guides/trading-account/index.html _infra/dist/guides/trading-account/ && cp -r content/guides/trading-account/screenshots _infra/dist/guides/trading-account/
 mkdir -p _infra/dist/guides/altshuler-account && cp content/guides/altshuler-account/index.html _infra/dist/guides/altshuler-account/ && cp -r content/guides/altshuler-account/screenshots _infra/dist/guides/altshuler-account/
