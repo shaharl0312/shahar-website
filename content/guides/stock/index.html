@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מניה - איך זה עובד באמת | שחר לוי</title>
+<meta name="description" content="מה זה מניה, למה חברות מוכרות מניות, איך מרוויחים מהן ולמה השוק עולה ויורד - מדריך פשוט וברור, בלי ז׳רגון.">
+<link rel="canonical" href="https://shaharfinance.com/guides/stock/">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="מניה - איך זה עובד באמת">
+<meta property="og:description" content="מה זה מניה, איך מרוויחים ממניות, ולמה השוק עולה ויורד - פשוט וברור, בלי ז׳רגון.">
+<meta property="og:url" content="https://shaharfinance.com/guides/stock/">
+<meta property="og:locale" content="he_IL">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --gold: #C9A84C;
+    --ink: #2D2D2D;
+    --cream: #F7F5F0;
+    --muted: #6B6660;
+    --rule: #E3DED4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { overflow-x: hidden; width: 100%; }
+
+  body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+    font-family: 'Heebo', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  /* ---- Top bar ---- */
+  .topbar {
+    border-bottom: 1px solid var(--rule);
+    padding: 20px 24px;
+  }
+  .topbar-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand {
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+  }
+  .back-link {
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .back-link:hover { color: var(--ink); }
+
+  /* ---- Article header ---- */
+  .article-header {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 56px 24px 32px;
+  }
+  .kicker {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+    background: rgba(201,168,76,0.12);
+    padding: 5px 12px;
+    border-radius: 3px;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(32px, 5vw, 44px);
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 18px;
+  }
+  .lede {
+    font-size: 19px;
+    font-weight: 400;
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 600px;
+  }
+  .meta-row {
+    display: flex;
+    gap: 16px;
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* ---- Article body ---- */
+  .article-body {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  section.block { margin-top: 56px; }
+  section.block:first-child { margin-top: 0; }
+
+  .section-num {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    font-size: 26px;
+    font-weight: 900;
+    line-height: 1.3;
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 28px 0 10px;
+  }
+
+  p {
+    font-size: 17px;
+    color: #3D3D3D;
+    line-height: 1.85;
+    margin-bottom: 18px;
+  }
+
+  p strong { font-weight: 700; color: var(--ink); }
+
+  /* ---- Pull quote / callout ---- */
+  .callout {
+    margin: 32px 0;
+    padding: 24px 28px;
+    background: #ffffff;
+    border-right: 3px solid var(--gold);
+    border-radius: 4px;
+  }
+  .callout-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .callout p { font-size: 15px; margin-bottom: 0; color: #3D3D3D; }
+
+  .tip {
+    font-size: 14px;
+    color: var(--muted);
+    border-right: 2px solid var(--rule);
+    padding-right: 14px;
+    margin: 20px 0;
+  }
+
+  /* ---- Checklist ---- */
+  .checklist {
+    list-style: none;
+    margin: 20px 0;
+  }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 16px;
+    color: #3D3D3D;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+    margin-top: 9px;
+  }
+
+  hr.rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 56px 0;
+  }
+
+  /* ---- Closing CTA (text only, no photo) ---- */
+  .closing {
+    margin-top: 64px;
+    padding-top: 36px;
+    border-top: 2px solid var(--ink);
+  }
+  .closing h3 {
+    font-size: 21px;
+    font-weight: 900;
+    margin: 0 0 12px;
+  }
+  .closing p {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 560px;
+  }
+  .closing-link {
+    display: inline-block;
+    margin-top: 18px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 3px;
+  }
+  .closing-link:hover { color: var(--gold); }
+
+  footer.site-footer {
+    text-align: center;
+    padding: 32px 24px;
+    font-size: 13px;
+    color: var(--muted);
+    border-top: 1px solid var(--rule);
+  }
+
+  @media (max-width: 480px) {
+    .article-header { padding: 40px 20px 24px; }
+    .article-body { padding: 0 20px 60px; }
+    .lede { font-size: 17px; }
+  }
+
+  /* ---- Fund list ---- */
+  .funds { list-style: none; margin: 18px 0 22px; border-top: 1px solid var(--rule); }
+  .funds li { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--rule); font-size: 16px; }
+  .funds .num { direction: ltr; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .disclaimer { margin-top: 28px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+</style>
+
+  <!-- SEO: social preview + structured data -->
+  <meta property="article:published_time" content="2026-10-03">
+  <meta property="article:modified_time" content="2026-10-15">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta property="og:site_name" content="שחר לוי">
+  <meta property="og:image" content="https://shaharfinance.com/guides/og/stock.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="מניה - איך זה עובד באמת">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://shaharfinance.com/guides/og/stock.jpg">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://shaharfinance.com/guides/stock/#article",
+      "headline": "מניה - איך זה עובד באמת",
+      "description": "מה זה מניה, למה חברות מוכרות מניות, איך מרוויחים מהן ולמה השוק עולה ויורד - מדריך פשוט וברור, בלי ז׳רגון.",
+      "inLanguage": "he-IL",
+      "url": "https://shaharfinance.com/guides/stock/",
+      "mainEntityOfPage": "https://shaharfinance.com/guides/stock/",
+      "image": "https://shaharfinance.com/guides/og/stock.jpg",
+      "datePublished": "2026-11-04",
+      "dateModified": "2026-11-04",
+      "author": {
+        "@id": "https://shaharfinance.com/#shahar"
+      },
+      "publisher": {
+        "@id": "https://shaharfinance.com/#shahar"
+      },
+      "isPartOf": {
+        "@id": "https://shaharfinance.com/guides/#collection"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://shaharfinance.com/#shahar",
+      "name": "שחר לוי",
+      "alternateName": "Shahar Levi",
+      "url": "https://shaharfinance.com/",
+      "image": "https://shaharfinance.com/shahar_headshot.png",
+      "jobTitle": "מלווה פיננסי",
+      "sameAs": [
+        "https://www.instagram.com/shahar.levy1/",
+        "https://www.youtube.com/@shahar.levy1"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "שחר לוי",
+          "item": "https://shaharfinance.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "המדריכים",
+          "item": "https://shaharfinance.com/guides/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "מניה - איך זה עובד באמת",
+          "item": "https://shaharfinance.com/guides/stock/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="/">שחר לוי</a>
+    <a class="back-link" href="/guides/">כל המדריכים ←</a>
+  </div>
+</div>
+
+<header class="article-header">
+  <span class="kicker">מדריך פיננסי</span>
+  <h1>מניה - איך זה עובד באמת</h1>
+  <p class="lede">
+    המילה "מניה" עולה בכל שיחה, בכל כותרת, בכל פרסומת להשקעות. אבל רוב האנשים לא יודעים בדיוק מה זה אומר. זה המדריך שמסביר את זה פשוט, ברור, ובלי ז׳רגון.
+  </p>
+  <div class="meta-row">
+    <span>עדכון אחרון: נובמבר 2026</span>
+    <span>·</span>
+    <span>5 דקות קריאה</span>
+  </div>
+</header>
+
+<main class="article-body">
+
+  <div class="callout" style="margin-top:0">
+    <div class="callout-label">בקצרה</div>
+    <p>
+      מניה היא בעלות חלקית בחברה אמיתית. מרוויחים ממנה בשתי דרכים: עליית ערך ודיבידנד. תנודות בשוק הן חלק מהמשחק, ובמקום לנחש מניות בודדות אפשר לקנות את השוק כולו דרך קרן סל.
+    </p>
+  </div>
+
+  <section class="block">
+    <div class="section-num">01</div>
+    <h2>מה זה מניה?</h2>
+    <p>
+      אתם יודעים את הרגע שמישהו מזכיר מניות בשיחה ואתם מחייכים - אבל לא לגמרי בטוחים מה זה אומר בפועל? אז ככה: מניה היא פשוט חלק בבעלות על חברה. כשאפל, מיקרוסופט, או כל חברה אחרת רוצות לגדול, הן מוכרות חלקים קטנים מעצמן לציבור. מי שקונה חלק כזה - נהיה בעלים שלה, בצורה חלקית.
+    </p>
+    <p>
+      אם קניתם מניה אחת של אפל, אתם בעלים של חלק קטן מאוד מהחברה. לא בגדול, אבל ממש. כשאפל מרוויחה יותר - הבעלות שלכם יכולה להיות שווה יותר. זאת ההגדרה המדויקת: מניה = בעלות חלקית בחברה אמיתית.
+    </p>
+  </section>
+
+  <section class="block">
+    <div class="section-num">02</div>
+    <h2>למה חברות מוכרות מניות?</h2>
+    <p>
+      כשחברה רוצה לגדול - לבנות מפעל, לפתח מוצר, לכבוש שווקים חדשים - היא צריכה כסף. האופציה הראשונה היא הלוואה מבנק, עם ריבית שצריך להחזיר. האופציה השנייה היא למכור חלקים מעצמה לציבור - זה נקרא הנפקה לבורסה, או IPO. גוגל עשתה את זה ב-2004. פייסבוק ב-2012. הציבור נותן כסף, החברה מקבלת הון לגדול, והמשקיע מקבל בעלות.
+    </p>
+    <div class="callout">
+      <div class="callout-label">למה זה כדאי לשני הצדדים</div>
+      <p>
+        מבחינת החברה - קיבלה כסף שלא צריך להחזיר. מבחינת המשקיע - אם החברה תצמח, הבעלות תהיה שווה יותר. כך שני הצדדים מרוויחים כשהחברה מצליחה.
+      </p>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="section-num">03</div>
+    <h2>איך מרוויחים ממניות?</h2>
+    <p>
+      יש שתי דרכים עיקריות. הראשונה היא עליית ערך - קניתם מניה ב-100 שקל, המחיר עלה ל-150, מכרתם ברווח של 50 שקל. הדרך השנייה היא דיבידנד - חברות רווחיות לפעמים מחלקות חלק מהרווחים שלהן ישירות למחזיקי המניות, סוג של "תודה שהאמנת בנו".
+    </p>
+    <p>
+      רוב המניות הגדולות שאנשים מכירים - אפל, נבידיה, אמזון - בעיקר עולות בערך. חברות ותיקות ויציבות יותר, כמו קוקה קולה או ג׳ונסון אנד ג׳ונסון, נוטות יותר לחלק דיבידנדים. בפועל, אצל רוב משקיעי הטווח הארוך עיקר הרווח מגיע מהצמיחה בערך לאורך שנים.
+    </p>
+  </section>
+
+  <section class="block">
+    <div class="section-num">04</div>
+    <h2>מה קובע את מחיר המניה?</h2>
+    <p>
+      מחיר המניה נקבע כל יום, כל שעה, לפי היצע וביקוש - כמה אנשים רוצים לקנות מול כמה רוצים למכור. אם יצאו תוצאות רבעוניות מצוינות - יותר אנשים ירצו לקנות, המחיר יעלה. אם יצאו חדשות רעות - יותר אנשים ירצו למכור, המחיר ירד. בטווח הקצר מחיר המניה מושפע מהרבה גורמים - חדשות, ריביות, פוליטיקה, ואפילו רגשות. בטווח הארוך הוא נוטה לעקוב אחרי הרווחים האמיתיים של החברה.
+    </p>
+  </section>
+
+  <section class="block">
+    <div class="section-num">05</div>
+    <h2>למה השוק עולה ויורד?</h2>
+    <p>
+      תנודות בשוק הן חלק מהמשחק, לא תקלה. ב-2020 מדד S&amp;P 500 ירד ב-34% בתוך פחות מחודשיים בגלל הקורונה - ובאוגוסט של אותה שנה כבר חזר לשיא חדש. מי שמכר מבהלה "נעל" הפסד. מי שנשאר - ראה את התיק שלו מתאושש. עד היום המדד התאושש מכל הירידות הגדולות שלו, כי הכלכלה גדלה, חברות מרוויחות יותר, ורווחים גבוהים מושכים מחירים מעלה. זה מה שקרה עד עכשיו, לא הבטחה לעתיד.
+    </p>
+  </section>
+
+  <section class="block">
+    <div class="section-num">06</div>
+    <h2>אז מה עושים עם כל זה?</h2>
+    <p>
+      כמעט אף אחד לא מצליח לבחור בעקביות מניות בודדות שמנצחות את השוק - אפילו מנהלי קרנות מקצועיים לרוב לא מצליחים. לכן הדרך החכמה היא לא לנסות לנחש - אלא לקנות את השוק כולו. זה בדיוק מה שקרן סל (ETF) עושה: קונה בבת אחת מאות ואלפי מניות מחברות שונות.
+    </p>
+    <p>
+      במקום להתחיל ממניה בודדת, מומלץ להתחיל מקרן שמחזיקה את כל השוק. כך הסיכון מפוזר, אין צורך להיות מומחה, ואפשר להתחיל גם עם סכומים קטנים. הצעד הראשון הוא להבין מה יש - והצעד השני הוא לבנות תיק מסודר שעובד בשבילכם. אפשר להמשיך ל<a href="/guides/irish-etf/">מדריך הקרנות האיריות</a>.
+    </p>
+  </section>
+
+  <section class="block">
+    <div class="section-num">07</div>
+    <h2>מה לקחתם מהמדריך הזה</h2>
+    <ul class="checklist">
+      <li><span class="dot"></span> מניה = בעלות חלקית בחברה אמיתית, לא מספר על מסך</li>
+      <li><span class="dot"></span> חברות מוכרות מניות כדי לגייס הון לצמיחה - לא מתנדבות לציבור</li>
+      <li><span class="dot"></span> יש שתי דרכים להרוויח: עליית ערך ודיבידנד - ברוב המקרים הראשונה חשובה יותר</li>
+      <li><span class="dot"></span> תנודות בשוק הן חלק מהמשחק - מי שנשאר לאורך זמן, בדרך כלל הרוויח</li>
+      <li><span class="dot"></span> הדרך החכמה היא לא לנחש מניות בודדות - אלא לקנות את השוק כולו דרך קרן סל</li>
+    </ul>
+    <div class="callout">
+      <div class="callout-label">השורה התחתונה</div>
+      <p>
+        מניה היא לא הימור על מספרים - היא בעלות בעסק אמיתי. הטעות הגדולה ביותר היא לחכות לרגע "הנכון" להתחיל - הזמן בשוק חשוב יותר מתזמון השוק.
+      </p>
+    </div>
+  </section>
+
+  <div class="closing">
+    <h3>רוצים לדעת איך מתחילים?</h3>
+    <p>
+      אני מלווה אנשים לבנות תיק השקעות פסיבי ופשוט - בחירת קרנות, פתיחת חשבון ואסטרטגיה מותאמת אישית. בלי ידע מוקדם, בלי זמן רב, עם מסלול ברור.
+    </p>
+    <a class="closing-link" href="https://instagram.com/shahar.levy1" target="_blank" rel="noopener">דברו איתי - @shahar.levy1 ←</a>
+  </div>
+  <p class="disclaimer">המדריך הוא מידע כללי ואינו ייעוץ השקעות או התאמה אישית. השקעה בשוק ההון כרוכה בסיכון, ותנאים ומיסוי יכולים להשתנות, לכן בודקים אותם לפני שמשקיעים.</p>
+
+</main>
+
+<footer class="site-footer">
+  © שחר לוי · <a href="/guides/">כל המדריכים</a>
+</footer>
+
+<script src="/legal-kit.js" defer></script>
+</body>
+</html>

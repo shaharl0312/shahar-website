@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>קרנות איריות - המדריך המלא | שחר לוי</title>
+<meta name="description" content="מה זה קרן אירית, מה ההבדל בין פיזית לסינטטית, אילו קרנות עוקבות אחרי S&amp;P 500, NASDAQ ומדד עולמי, ואיך בוחרים 1-3 קרנות - מדריך מעשי.">
+<link rel="canonical" href="https://shaharfinance.com/guides/irish-etf/">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="קרנות איריות - המדריך המלא">
+<meta property="og:description" content="מה זה קרן אירית, פיזית מול סינטטית, ורשימת הקרנות המעשית עם מספרי הנייר.">
+<meta property="og:url" content="https://shaharfinance.com/guides/irish-etf/">
+<meta property="og:locale" content="he_IL">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --gold: #C9A84C;
+    --ink: #2D2D2D;
+    --cream: #F7F5F0;
+    --muted: #6B6660;
+    --rule: #E3DED4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { overflow-x: hidden; width: 100%; }
+
+  body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+    font-family: 'Heebo', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  /* ---- Top bar ---- */
+  .topbar {
+    border-bottom: 1px solid var(--rule);
+    padding: 20px 24px;
+  }
+  .topbar-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand {
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+  }
+  .back-link {
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .back-link:hover { color: var(--ink); }
+
+  /* ---- Article header ---- */
+  .article-header {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 56px 24px 32px;
+  }
+  .kicker {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+    background: rgba(201,168,76,0.12);
+    padding: 5px 12px;
+    border-radius: 3px;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(32px, 5vw, 44px);
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 18px;
+  }
+  .lede {
+    font-size: 19px;
+    font-weight: 400;
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 600px;
+  }
+  .meta-row {
+    display: flex;
+    gap: 16px;
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* ---- Article body ---- */
+  .article-body {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  section.block { margin-top: 56px; }
+  section.block:first-child { margin-top: 0; }
+
+  .section-num {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    font-size: 26px;
+    font-weight: 900;
+    line-height: 1.3;
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 28px 0 10px;
+  }
+
+  p {
+    font-size: 17px;
+    color: #3D3D3D;
+    line-height: 1.85;
+    margin-bottom: 18px;
+  }
+
+  p strong { font-weight: 700; color: var(--ink); }
+
+  /* ---- Pull quote / callout ---- */
+  .callout {
+    margin: 32px 0;
+    padding: 24px 28px;
+    background: #ffffff;
+    border-right: 3px solid var(--gold);
+    border-radius: 4px;
+  }
+  .callout-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .callout p { font-size: 15px; margin-bottom: 0; color: #3D3D3D; }
+
+  .tip {
+    font-size: 14px;
+    color: var(--muted);
+    border-right: 2px solid var(--rule);
+    padding-right: 14px;
+    margin: 20px 0;
+  }
+
+  /* ---- Checklist ---- */
+  .checklist {
+    list-style: none;
+    margin: 20px 0;
+  }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 16px;
+    color: #3D3D3D;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+    margin-top: 9px;
+  }
+
+  hr.rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 56px 0;
+  }
+
+  /* ---- Closing CTA (text only, no photo) ---- */
+  .closing {
+    margin-top: 64px;
+    padding-top: 36px;
+    border-top: 2px solid var(--ink);
+  }
+  .closing h3 {
+    font-size: 21px;
+    font-weight: 900;
+    margin: 0 0 12px;
+  }
+  .closing p {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 560px;
+  }
+  .closing-link {
+    display: inline-block;
+    margin-top: 18px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 3px;
+  }
+  .closing-link:hover { color: var(--gold); }
+
+  footer.site-footer {
+    text-align: center;
+    padding: 32px 24px;
+    font-size: 13px;
+    color: var(--muted);
+    border-top: 1px solid var(--rule);
+  }
+
+  @media (max-width: 480px) {
+    .article-header { padding: 40px 20px 24px; }
+    .article-body { padding: 0 20px 60px; }
+    .lede { font-size: 17px; }
+  }
+
+  /* ---- Fund list ---- */
+  .funds { list-style: none; margin: 18px 0 22px; border-top: 1px solid var(--rule); }
+  .funds li { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--rule); font-size: 16px; }
+  .funds .num { direction: ltr; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .disclaimer { margin-top: 28px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+</style>
+
+  <!-- SEO: social preview + structured data -->
+  <meta property="article:published_time" content="2026-10-03">
+  <meta property="article:modified_time" content="2026-10-15">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta property="og:site_name" content="שחר לוי">
+  <meta property="og:image" content="https://shaharfinance.com/guides/og/irish-etf.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="קרנות איריות - המדריך המלא">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://shaharfinance.com/guides/og/irish-etf.jpg">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://shaharfinance.com/guides/irish-etf/#article",
+      "headline": "קרנות איריות - המדריך המלא",
+      "description": "מה זה קרן אירית, מה ההבדל בין פיזית לסינטטית, אילו קרנות עוקבות אחרי S&amp;P 500, NASDAQ ומדד עולמי, ואיך בוחרים 1-3 קרנות - מדריך מעשי.",
+      "inLanguage": "he-IL",
+      "url": "https://shaharfinance.com/guides/irish-etf/",
+      "mainEntityOfPage": "https://shaharfinance.com/guides/irish-etf/",
+      "image": "https://shaharfinance.com/guides/og/irish-etf.jpg",
+      "datePublished": "2026-11-04",
+      "dateModified": "2026-11-04",
+      "author": {
+        "@id": "https://shaharfinance.com/#shahar"
+      },
+      "publisher": {
+        "@id": "https://shaharfinance.com/#shahar"
+      },
+      "isPartOf": {
+        "@id": "https://shaharfinance.com/guides/#collection"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://shaharfinance.com/#shahar",
+      "name": "שחר לוי",
+      "alternateName": "Shahar Levi",
+      "url": "https://shaharfinance.com/",
+      "image": "https://shaharfinance.com/shahar_headshot.png",
+      "jobTitle": "מלווה פיננסי",
+      "sameAs": [
+        "https://www.instagram.com/shahar.levy1/",
+        "https://www.youtube.com/@shahar.levy1"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "שחר לוי",
+          "item": "https://shaharfinance.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "המדריכים",
+          "item": "https://shaharfinance.com/guides/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "קרנות איריות - המדריך המלא",
+          "item": "https://shaharfinance.com/guides/irish-etf/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="/">שחר לוי</a>
+    <a class="back-link" href="/guides/">כל המדריכים ←</a>
+  </div>
+</div>
+
+<header class="article-header">
+  <span class="kicker">מדריך פיננסי</span>
+  <h1>קרנות איריות - המדריך המלא</h1>
+  <p class="lede">
+    בקרן אירית פחות מס מנוכה מהדיבידנדים בדרך, ויש ממנה יותר סוגים ממה שחושבים. מדריך מלא עם הרשימה המעשית.
+  </p>
+  <div class="meta-row">
+    <span>עדכון אחרון: נובמבר 2026</span>
+    <span>·</span>
+    <span>5 דקות קריאה</span>
+  </div>
+</header>
+
+<main class="article-body">
+
+  <div class="callout" style="margin-top:0">
+    <div class="callout-label">בקצרה</div>
+    <p>
+      קרן אירית היא קרן סל שרשומה בדבלין ועוקבת אחרי מדדי מניות גדולים. בקרן אירית פיזית מנוכים 15% מס על דיבידנדים אמריקאיים, ובסינטטית 0%. הכלל הפשוט: בוחרים 1-3 קרנות, קובעים הוראת קבע חודשית, ונותנים לזמן לעשות את העבודה.
+    </p>
+  </div>
+
+  <section class="block">
+    <div class="section-num">01</div>
+    <h2>מה זה קרן אירית?</h2>
+    <p>
+      אתם יודעים את הרגע שמישהו בקבוצת ווטסאפ מדבר על קרנות איריות ואתם לא בטוחים מה זה בדיוק? קרן אירית היא קרן סל - ETF - שרשומה בדבלין ועובדת תחת חקיקת האיחוד האירופי. היא עוקבת אחרי מדדי מניות גדולים בדיוק כמו הקרנות האמריקאיות. ההבדל הוא לא מה שהיא עוקבת אחריו - אלא כמה מס מנוכה בדרך.
+    </p>
+    <p>
+      לישראלים שמשקיעים בקרנות אמריקאיות מחלקות כמו VOO, ארה"ב מנכה בדרך כלל 25% מהדיבידנדים לפני שהם מגיעים לחשבון, עם תיעוד מתאים. בקרן אירית פיזית שמחזיקה בדיוק את אותן מניות - בגלל אמנת מס בין ארה"ב לאירלנד - הניכוי הוא 15% בתוך הקרן. ויש קרנות שמורידות את זה ל-0%.
+    </p>
+  </section>
+
+  <section class="block">
+    <div class="section-num">02</div>
+    <h2>למה אירית - יתרון שמצטבר</h2>
+    <p>
+      מעבר לניכוי המס הנמוך יותר על הדיבידנדים, רוב הקרנות האיריות הפופולריות הן צוברות - Accumulating. הן לא מחלקות דיבידנדים כסף אלא משקיעות אותם מחדש בתוך הקרן אוטומטית - כך לא משלמים מס על הדיבידנד כל שנה, והכסף ממשיך לעבוד בריבית דריבית עד שמחליטים למכור. במכירה עשוי לחול מס רווח הון בישראל, גם על עליית ערך שמקורה בדיבידנדים שנצברו.
+    </p>
+    <div class="callout">
+      <div class="callout-label">פיזית מול סינטטית</div>
+      <p>
+        קרן פיזית קונה את המניות עצמן - ומנוכים לה 15% מס דיבידנד פנימי. קרן סינטטית מחקה את המדד דרך הסכמי החלפה ולא מחזיקה מניות ישירות - ולכן הניכוי הפנימי הוא 0%, ובתמורה יש בה חשיפה לגופים שמולם נחתמים ההסכמים. iShares מתמקדת בפיזיות, Invesco - בסינטטיות. ההבדל מצטבר על פני שנים.
+      </p>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="section-num">03</div>
+    <h2>הקרנות: S&amp;P 500 ומדד עולמי</h2>
+    <h3>S&amp;P 500 - פיזית וסינטטית</h3>
+    <ul class="funds">
+      <li><span>iShares - פיזית</span><span class="num">1159250</span></li>
+      <li><span>Invesco - סינטטית</span><span class="num">1183441</span></li>
+    </ul>
+    <p>
+      שתיהן עוקבות אחרי אותן 500 חברות גדולות בארה"ב - אפל, מיקרוסופט, אמזון, נבידיה ועוד. ה-iShares היא הפיזית הנפוצה ביותר בישראל. ה-Invesco עובדת דרך הסכמי החלפה ומשלמת 0% מס דיבידנד פנימי. שתיהן צוברות, שתיהן נסחרות בבורסת לונדון.
+    </p>
+    <h3>מדד עולמי - מפותחים וגם מתפתחים</h3>
+    <ul class="funds">
+      <li><span>iShares MSCI ACWI - פיזית</span><span class="num">1159235</span></li>
+      <li><span>Invesco MSCI World - סינטטית</span><span class="num">1185164</span></li>
+    </ul>
+    <p>
+      מדד MSCI ACWI מכסה כ-2,500 חברות מ-47 מדינות - ארה"ב, אירופה, יפן, ולצידם שווקים מתפתחים כמו סין, הודו וברזיל. ה-Invesco MSCI World סינטטית ומתמקדת ב-23 מדינות מפותחות בלבד. מי שרוצה גיוון מקסימלי בקרן אחת - ה-ACWI היא הבחירה הרחבה יותר.
+    </p>
+  </section>
+
+  <section class="block">
+    <div class="section-num">04</div>
+    <h2>NASDAQ 100 - חשיפה לטכנולוגיה</h2>
+    <ul class="funds">
+      <li><span>iShares - פיזית</span><span class="num">1159243</span></li>
+      <li><span>Invesco - סינטטית</span><span class="num">1186063</span></li>
+    </ul>
+    <p>
+      100 החברות הגדולות בנאסד"ק - אפל, מיקרוסופט, נבידיה, מטא, גוגל ואמזון - עם ריכוז גבוה בטכנולוגיה. גם כאן שתי קרנות איריות: iShares הפיזית ו-Invesco הסינטטית. NASDAQ 100 יותר תנודתי מה-S&amp;P 500 ומהמדד העולמי, אבל מתאים למי שמחפש חשיפה ממוקדת לסקטור הטכנולוגי.
+    </p>
+  </section>
+
+  <section class="block">
+    <div class="section-num">05</div>
+    <h2>איפה קונים בישראל</h2>
+    <p>
+      בתי השקעות ובנקים בישראל מאפשרים לקנות קרנות איריות - ישירות מהפלטפורמה, בעברית, בלי צורך בחשבון בחו"ל. פותחים חשבון דיגיטלית עם תעודת זהות, מחפשים את הקרן לפי המספר שלה, ומבצעים קנייה. <a href="/guides/trading-account/">ההשוואה שלי בין חשבונות המסחר</a> תעזור לכם לבחור איפה.
+    </p>
+    <p>
+      יתרון גדול של בית השקעות ישראלי: הוא מטפל בניכוי המס ומנפיק אישור מס שנתי, כך שיש הרבה פחות מה להכין לבד. זה חוסך זמן וטעויות.
+    </p>
+  </section>
+
+  <section class="block">
+    <div class="section-num">06</div>
+    <h2>איך בוחרים</h2>
+    <p>
+      הכלל הפשוט: בחרו 1-3 קרנות, קבעו הוראת קבע חודשית, ותנו לזמן לעשות את העבודה. מי שרוצה פשטות מוחלטת - קרן אחת שמכסה הכל, כמו iShares MSCI ACWI (1159235). מי שמאמין בשוק האמריקאי בלבד - iShares S&amp;P 500 (1159250). ומי שרוצה לנצל את יתרון הסינטטי - להוסיף קרן Invesco לצד הפיזית.
+    </p>
+    <p>
+      לא צריך להיות מומחה כדי להתחיל. הצעד הראשון הוא לפתוח חשבון בבית השקעות, לבחור קרן אחת לפי המספר שלה, ולהגדיר הוראת קבע. ההחלטה הקריטית היא לא איזו קרן לבחור - אלא להתחיל בכלל.
+    </p>
+  </section>
+
+  <section class="block">
+    <div class="section-num">07</div>
+    <h2>מתי קרן אירית מתאימה לכם?</h2>
+    <ul class="checklist">
+      <li><span class="dot"></span> אתם רוצים להשקיע לטווח ארוך - 10 שנים ומעלה - ומחפשים חשיפה לשוק ההון העולמי</li>
+      <li><span class="dot"></span> יש לכם סכום פנוי שלא תצטרכו בשנתיים הקרובות ורוצים להגדיר הוראת קבע</li>
+      <li><span class="dot"></span> אתם לא רוצים לבחור מניות בודדות - אתם רוצים לעקוב אחרי השוק כולו</li>
+      <li><span class="dot"></span> אתם רוצים שפחות מס ינוכה מהדיבידנדים לאורך עשורים</li>
+      <li><span class="dot"></span> יש לכם הכנסה קבועה ואתם רוצים לבנות הון פסיבי שעובד בשבילכם בצד</li>
+    </ul>
+    <div class="callout">
+      <div class="callout-label">השורה התחתונה</div>
+      <p>
+        קרנות איריות לא שונות מהקרנות האמריקאיות במה שהן עוקבות אחריו - הן שונות במה שנשאר לכם בחשבון. אותו מדד, פחות ניכוי מס על הדיבידנדים.
+      </p>
+    </div>
+  </section>
+
+  <div class="closing">
+    <h3>רוצים לבנות תיק השקעות שעובד?</h3>
+    <p>
+      אני מלווה אנשים לבנות תיק פסיבי נכון מהיסוד - בחירת הקרנות, הפלטפורמה ואסטרטגיית ה-DCA. בלי ידע מוקדם, בלי זמן רב, עם מסלול ברור ומותאם אישית.
+    </p>
+    <a class="closing-link" href="https://instagram.com/shahar.levy1" target="_blank" rel="noopener">דברו איתי - @shahar.levy1 ←</a>
+  </div>
+  <p class="disclaimer">המדריך הוא מידע כללי ואינו ייעוץ השקעות או התאמה אישית. השקעה בשוק ההון כרוכה בסיכון, ותנאים ומיסוי יכולים להשתנות, לכן בודקים אותם לפני שמשקיעים.</p>
+
+</main>
+
+<footer class="site-footer">
+  © שחר לוי · <a href="/guides/">כל המדריכים</a>
+</footer>
+
+<script src="/legal-kit.js" defer></script>
+</body>
+</html>
