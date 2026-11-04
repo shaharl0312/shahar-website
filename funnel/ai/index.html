@@ -7,6 +7,7 @@
   <title>שחר לוי - AI לעסקים | שיחת אפיון חינמית</title>
   <meta name="description" content="30 דקות בזום: מוצאים איפה הכי הרבה זמן הולך לאיבוד בעסק שלכם, ובוחרים פתרון AI אחד שעושה את העבודה הזו במקומכם." />
   <link rel="canonical" href="https://shaharfinance.com/" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230E2A47'/%3E%3Ccircle cx='16' cy='16' r='5.500' fill='%2322C55E'/%3E%3C/svg%3E" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="he_IL" />
   <meta property="og:url" content="https://shaharfinance.com/" />
@@ -87,6 +88,16 @@
     a:focus-visible, summary:focus-visible { outline: 3px solid var(--green-light); outline-offset: 3px; border-radius: 8px; }
     .note { margin-top: 14px; color: var(--muted); font-size: 1rem; }
 
+    /* Icons */
+    .i { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .facts { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 14px; color: var(--muted); font-size: 1rem; }
+    .facts li { display: inline-flex; align-items: center; gap: 6px; }
+    .facts .i { width: 19px; height: 19px; flex: none; color: var(--green-light); }
+    .close .facts { justify-content: center; }
+    .nav-cta { gap: 7px; }
+    .wa-i { width: 19px; height: 19px; flex: none; fill: currentColor; }
+    .pains .icon { display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; margin-bottom: 18px; border-radius: 14px; background: rgba(34, 197, 94, .14); color: var(--green-light); }
+
     /* Hero */
     .hero { position: relative; overflow: hidden; }
     .hero .wrap {
@@ -149,11 +160,8 @@
       font-size: 1.1875rem; font-weight: 600; line-height: 1.35;
     }
     .faq summary::-webkit-details-marker { display: none; }
-    .faq summary::after {
-      content: '+'; flex: none; color: var(--green-light); font-size: 1.75rem; font-weight: 400; line-height: 1;
-      transition: transform .25s var(--spring);
-    }
-    .faq details[open] summary::after { transform: rotate(45deg); }
+    .faq summary .i { width: 22px; height: 22px; flex: none; color: var(--green-light); transition: transform .25s var(--spring); }
+    .faq details[open] summary .i { transform: rotate(180deg); }
     .faq details p { padding-bottom: 22px; color: var(--muted); }
 
     /* Close */
@@ -173,6 +181,7 @@
     .js .reveal.in { opacity: 1; transform: none; }
 
     @media (max-width: 860px) {
+      .facts { justify-content: center; }
       .hero .wrap { grid-template-columns: 1fr; gap: 0; text-align: center; }
       .hero-copy { padding-block: 44px 28px; }
       .lead { margin-inline: auto; }
@@ -186,7 +195,7 @@
     @media (prefers-reduced-motion: reduce) {
       .cta-ring::before { animation: none; background: var(--green); }
       .js .reveal { transform: none; transition: opacity .2s ease; }
-      .btn, .faq summary::after { transition: none; }
+      .btn, .faq summary .i { transition: none; }
       .btn:active { transform: none; }
     }
     @media (prefers-reduced-transparency: reduce) {
@@ -198,12 +207,19 @@
 <body>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <symbol id="wa" viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.3 5.2 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></symbol>
+    <symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="video" viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="2.500"/><path d="m16 10.500 5-3v9l-5-3"/></symbol>
+    <symbol id="gift" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7M7.500 8a2.500 2.500 0 0 1 0-5C10 3 12 8 12 8s2-5 4.500-5a2.500 2.500 0 0 1 0 5"/></symbol>
+    <symbol id="chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.800 7L4 20.500l1.500-5A8 8 0 1 1 21 12z"/><path d="M8.500 11h7M8.500 14.500h4.500"/></symbol>
+    <symbol id="receipt" viewBox="0 0 24 24"><path d="M5 3v18l2.500-1.500L10 21l2-1.500 2 1.500 2.500-1.500L19 21V3l-2.500 1.500L14 3l-2 1.500L10 3 7.500 4.500z"/><path d="M9 9.500h6M9 13.500h6"/></symbol>
+    <symbol id="swap" viewBox="0 0 24 24"><rect x="3" y="4" width="7" height="7" rx="1.500"/><rect x="14" y="13" width="7" height="7" rx="1.500"/><path d="M14 7h4a2 2 0 0 1 2 2v1M18 8l2 2 2-2M10 17H6a2 2 0 0 1-2-2v-1M6 16l-2-2-2 2"/></symbol>
+    <symbol id="chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
   </svg>
 
   <header class="nav">
     <div class="wrap">
       <strong>שחר לוי</strong>
-      <a class="nav-cta" href="https://wa.me/972587790990?text=%D7%94%D7%99%D7%99%20%D7%A9%D7%97%D7%A8%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%99%D7%97%D7%AA%20%D7%90%D7%A4%D7%99%D7%95%D7%9F%20%D7%97%D7%99%D7%A0%D7%9E%D7%99%D7%AA%20%D7%A2%D7%9C%20AI%20%D7%9C%D7%A2%D7%A1%D7%A7%20%D7%A9%D7%9C%D7%99" target="_blank" rel="noopener">לשיחה חינמית</a>
+      <a class="nav-cta" href="https://wa.me/972587790990?text=%D7%94%D7%99%D7%99%20%D7%A9%D7%97%D7%A8%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%99%D7%97%D7%AA%20%D7%90%D7%A4%D7%99%D7%95%D7%9F%20%D7%97%D7%99%D7%A0%D7%9E%D7%99%D7%AA%20%D7%A2%D7%9C%20AI%20%D7%9C%D7%A2%D7%A1%D7%A7%20%D7%A9%D7%9C%D7%99" target="_blank" rel="noopener"><svg class="wa-i" aria-hidden="true"><use href="#wa"/></svg>לשיחה חינמית</a>
     </div>
   </header>
 
@@ -217,7 +233,7 @@
           <div class="cta-ring">
             <a class="btn" href="https://wa.me/972587790990?text=%D7%94%D7%99%D7%99%20%D7%A9%D7%97%D7%A8%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%99%D7%97%D7%AA%20%D7%90%D7%A4%D7%99%D7%95%D7%9F%20%D7%97%D7%99%D7%A0%D7%9E%D7%99%D7%AA%20%D7%A2%D7%9C%20AI%20%D7%9C%D7%A2%D7%A1%D7%A7%20%D7%A9%D7%9C%D7%99" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg>לשיחת אפיון חינמית בוואטסאפ</a>
           </div>
-          <p class="note">30 דקות בזום, בלי עלות.</p>
+          <ul class="facts"><li><svg class="i" aria-hidden="true"><use href="#clock"/></svg>30 דקות</li><li><svg class="i" aria-hidden="true"><use href="#video"/></svg>בזום</li><li><svg class="i" aria-hidden="true"><use href="#gift"/></svg>בלי עלות</li></ul>
         </div>
         <div class="hero-photo">
           <img src="/ai/shahar.webp" width="900" height="1125" alt="שחר לוי מסתכל למצלמה" fetchpriority="high" />
@@ -229,9 +245,9 @@
       <div class="wrap">
         <div class="head reveal"><h2>איפה זה מופיע אצלכם?</h2></div>
         <div class="pains">
-          <div class="tile reveal"><p>אותן שאלות מלקוחות בוואטסאפ, שוב ושוב.</p></div>
-          <div class="tile reveal"><p>חשבונית ומעקב תשלום אחרי כל עבודה.</p></div>
-          <div class="tile reveal"><p>נתונים שמעתיקים ידנית ממערכת למערכת.</p></div>
+          <div class="tile reveal"><div class="icon"><svg class="i" aria-hidden="true"><use href="#chat"/></svg></div><p>אותן שאלות מלקוחות בוואטסאפ, שוב ושוב.</p></div>
+          <div class="tile reveal"><div class="icon"><svg class="i" aria-hidden="true"><use href="#receipt"/></svg></div><p>חשבונית ומעקב תשלום אחרי כל עבודה.</p></div>
+          <div class="tile reveal"><div class="icon"><svg class="i" aria-hidden="true"><use href="#swap"/></svg></div><p>נתונים שמעתיקים ידנית ממערכת למערכת.</p></div>
         </div>
         <p class="aside reveal">אם הייתה לעסק עוד יד עובדת, <b>מה הדבר הראשון שהיא הייתה לוקחת?</b></p>
       </div>
@@ -289,19 +305,19 @@
         <div class="head reveal"><h2>שאלות שעולות</h2></div>
         <div class="faq reveal">
           <details>
-            <summary>אני לא מבין בטכנולוגיה. זה מתאים לי?</summary>
+            <summary>אני לא מבין בטכנולוגיה. זה מתאים לי?<svg class="i" aria-hidden="true"><use href="#chev"/></svg></summary>
             <p>כן. בשיחה מדברים על העסק שלכם ועל איך העבודה נראית היום. את הצד הטכני אני לוקח עליי.</p>
           </details>
           <details>
-            <summary>השיחה באמת בחינם?</summary>
+            <summary>השיחה באמת בחינם?<svg class="i" aria-hidden="true"><use href="#chev"/></svg></summary>
             <p>כן. 30 דקות בזום, בלי עלות. אם נרצה להמשיך, קובעים פגישה נפרדת להצעה.</p>
           </details>
           <details>
-            <summary>כמה עולה לבנות פתרון?</summary>
+            <summary>כמה עולה לבנות פתרון?<svg class="i" aria-hidden="true"><use href="#chev"/></svg></summary>
             <p>זה תלוי בפתרון. בשיחה נראה את הכיוון ואת העלויות, ולפני הצעת המחיר תקבלו סכום מדויק, כולל שירותים חיצוניים שמשולמים ישירות על ידכם.</p>
           </details>
           <details>
-            <summary>ואם לא נמצא בעיה אחת ברורה?</summary>
+            <summary>ואם לא נמצא בעיה אחת ברורה?<svg class="i" aria-hidden="true"><use href="#chev"/></svg></summary>
             <p>לא נלחצים. קובעים המשך, ובשבוע שביניהם אתם עוקבים אחרי התהליך בעסק כדי שנראה איפה הזמן הולך.</p>
           </details>
         </div>
@@ -316,7 +332,7 @@
         <div class="cta-ring">
           <a class="btn" href="https://wa.me/972587790990?text=%D7%94%D7%99%D7%99%20%D7%A9%D7%97%D7%A8%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%99%D7%97%D7%AA%20%D7%90%D7%A4%D7%99%D7%95%D7%9F%20%D7%97%D7%99%D7%A0%D7%9E%D7%99%D7%AA%20%D7%A2%D7%9C%20AI%20%D7%9C%D7%A2%D7%A1%D7%A7%20%D7%A9%D7%9C%D7%99" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg>לשיחת אפיון חינמית בוואטסאפ</a>
         </div>
-        <p class="note">30 דקות בזום, בלי עלות.</p>
+        <ul class="facts"><li><svg class="i" aria-hidden="true"><use href="#clock"/></svg>30 דקות</li><li><svg class="i" aria-hidden="true"><use href="#video"/></svg>בזום</li><li><svg class="i" aria-hidden="true"><use href="#gift"/></svg>בלי עלות</li></ul>
         <p class="sign">שחר</p>
       </div>
     </section>
