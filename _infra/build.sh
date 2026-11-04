@@ -74,6 +74,9 @@ mkdir -p _infra/dist/guides/altshuler-account && cp content/guides/altshuler-acc
 mkdir -p _infra/dist/guides/flight-claude _infra/dist/guides/keren-kaspit _infra/dist/guides/bank-money _infra/dist/guides/us-bonds
 cp content/guides/index.html _infra/dist/guides/index.html
 cp content/guides/keren-kaspit/index.html _infra/dist/guides/keren-kaspit/index.html
+mkdir -p _infra/dist/guides/irish-etf _infra/dist/guides/stock
+cp content/guides/irish-etf/index.html _infra/dist/guides/irish-etf/index.html
+cp content/guides/stock/index.html _infra/dist/guides/stock/index.html
 cp content/guides/bank-money/index.html _infra/dist/guides/bank-money/index.html
 cp content/guides/us-bonds/index.html _infra/dist/guides/us-bonds/index.html
 mkdir -p _infra/dist/guides/discharge && cp content/guides/discharge/index.html _infra/dist/guides/discharge/ && cp -r content/guides/discharge/screenshots _infra/dist/guides/discharge/
