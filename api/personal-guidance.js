@@ -1,3 +1,5 @@
+import { guard } from './_guard.js';
+
 const ALLOWED_ORIGINS = [
   'https://shaharfinance.com',
   'https://shahar-finance-staging.vercel.app'
@@ -35,6 +37,7 @@ export default async function handler(req, res) {
 
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+  if (guard(req, res, { max: 5 })) return;
 
   const { name, phone } = req.body || {};
 

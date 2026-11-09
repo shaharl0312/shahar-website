@@ -1,3 +1,5 @@
+import { guard } from './_guard.js';
+
 const ALLOWED_ORIGIN = 'https://shaharfinance.com';
 
 export default async function handler(req, res) {
@@ -10,6 +12,7 @@ export default async function handler(req, res) {
 
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+  if (guard(req, res, { max: 3 })) return;
 
   const { name, date } = req.body || {};
   if (!name || typeof name !== 'string') return res.status(400).json({ error: 'Missing name' });

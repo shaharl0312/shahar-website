@@ -595,7 +595,7 @@ async function submitForm(ids, btn, errMsg, contentName) {
     var res = await fetch('/api/ravmesser-lead', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: name, email: email, phone: phone, ref: CAPTURED_REF || undefined })
+      body: JSON.stringify({ name: name, email: email, phone: phone, ref: CAPTURED_REF || undefined, company: (document.getElementById('hp-company') || {}).value || undefined })
     });
     if (res.ok) {
       leadSubmitted = true;
@@ -711,5 +711,6 @@ document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape' && exitOverlay.classList.contains('visible')) closeExitPopup();
 });
 </script>
+<div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;"><label for="hp-company">חברה</label><input type="text" id="hp-company" name="company" tabindex="-1" autocomplete="off" /></div>
 </body>
 </html>
