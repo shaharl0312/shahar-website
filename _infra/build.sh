@@ -88,6 +88,7 @@ mkdir -p _infra/dist/guides/og && cp content/guides/og/*.jpg _infra/dist/guides/
 mkdir -p _infra/dist/guides/cpi
 cp content/guides/cpi/index.html _infra/dist/guides/cpi/index.html
 cp -r content/guides/cpi/screenshots _infra/dist/guides/cpi/
+mkdir -p _infra/dist/guides/ribit-derebit && cp content/guides/ribit-derebit/index.html _infra/dist/guides/ribit-derebit/
 
 # SEO site files (robots.txt, sitemap.xml, llms.txt) at the domain root
 cp content/site-files/robots.txt content/site-files/sitemap.xml content/site-files/llms.txt _infra/dist/
