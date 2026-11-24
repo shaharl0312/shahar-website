@@ -3,7 +3,7 @@ title: Website
 type: project
 status: active
 tags: [פרויקטים, אתר]
-updated: 2026-09-12
+updated: 2026-11-12
 ---
 
 # אתר - shaharfinance.com
@@ -18,43 +18,19 @@ updated: 2026-09-12
 | בניית דף נחיתה חדש  | `/landing-page` ואז `/landing-page-copy`                   |
 | לפני העלאה לפרודקשן | `/vercel-deploy` - צ'קליסט לפני דפלוי                      |
 | עיצוב               | `[[core/design-refs/README\|core/design-refs]]` - 70 פירוקי מותגים |
+| מדריך חדש           | העיצוב הנוכחי: `[[core/brand/colors#מדריכים באתר]]`, משכפלים את `content/guides/bituach-leumi/` |
+| מדריך חדש באתר      | עיצוב נייבי + זהב ותמונת avatar: [[core/brand/colors#מדריכים באתר]]. דוגמה: [[projects/website/content/guides/bituach-leumi/bituach-leumi\|ביטוח לאומי]] |
 
 ## מבנה
 
-מחולק לפי חשיבות עסקית - לא רק לפי סוג עמוד. תיקיית המקור שונה, ה-URL הציבורי (הנתיבים
-למטה) לא השתנה בכלל.
-
-```
-website/
-├── funnel/                        המשפך הקריטי - הכנסה/לידים
-│   ├── landing-page-first/        → /            דף נחיתה ראשי + todah.html
-│   ├── funnel-hadracha/           → /guide/, /guide-hayalim/
-│   └── course-landing/            → /course/, /course-v9/
-├── content/guides/                → /guides/, /guides/<slug>/   מדריכים (SEO, עמוד web)
-├── client-services/
-│   ├── warriors-hub/              → /warriors-hub/mifgash-1..3   ליווי ללקוחות קיימים
-│   ├── agreement/                 → /agreement/
-│   └── agreement-one-meeting/     → /agreement-one-meeting/
-├── tools/
-│   ├── etf-app/                   → /etf-app/          כלי השוואת ETF
-│   ├── my-app/ribit-derebit/      → /my-app/ribit-derebit/  מחשבון ריבית דריבית
-│   └── erosion-calculator/        → /erosion-calculator/
-├── misc/
-│   └── side-projects/             → /schoolslide/, /tzofim/, /trip-madeira/  לא עסקי
-├── api/                            פונקציות Vercel (submit-lead)
-└── _infra/build.sh                סקריפט הבנייה. הפלט ל-_infra/dist (לא לערוך ידנית)
-```
-
-`/bank-money/` הישן מפנה (redirect קבוע ב-`vercel.json`) ל-`/guides/bank-money/` - המדריך עבר
-לקטגוריית המדריכים, ה-URL החדש הוא הקנוני.
+מחולק לפי חשיבות עסקית: `funnel/` (הכנסה ולידים), `content/guides/` (מדריכים וכתבות),
+`client-services/`, `tools/`, `misc/` (לא עסקי), `api/`, `_infra/build.sh`.
+עץ התיקיות המלא, הנתיבים הציבוריים ודפי ה-opt-in: [[projects/website/structure]].
 
 ## דפלוי
 
-```sh
-git add <file> && git commit -m "..." && git push
-```
-
-Vercel בונה אוטומטית בכל פוש. `vercel.json` מריץ `sh _infra/build.sh` ומגיש מ-`_infra/dist`.
+`git add <file> && git commit -m "..." && git push`. Vercel בונה אוטומטית בכל פוש:
+`vercel.json` מריץ `sh _infra/build.sh` ומגיש מ-`_infra/dist`.
 דף חדש = תיקייה + `index.html` בתוכה, ואז הוספה ל-`build.sh`.
 
 | ענף       | כתובת                             | תפקיד                         |
@@ -64,10 +40,12 @@ Vercel בונה אוטומטית בכל פוש. `vercel.json` מריץ `sh _infr
 
 ## שים לב
 
-- `_infra/dist/` נוצר אוטומטית. לעולם לא לערוך שם.
-- אין קבצי גרסאות. הקובץ החי הוא תמיד `index.html`. הגיט הוא ההיסטוריה.
-- `funnel/funnel-hadracha/optin-v2.html` הוא דף ה-opt-in החי (`/guide/`, קהל רחב). `funnel/funnel-hadracha/optin-hayalim.html` (`/guide-hayalim/`) הוא וריאנט ייעודי לקמפיין חיילים משוחררים - קופי נפרד, אותה תשתית טכנית. `optin.html` ו-`video.html`/`video-v2.html` נמחקו (2026-08-19, אושר על ידי שחר - לא בשימוש).
-- **ה-remote של גיט (`git remote -v`) חושף GitHub PAT בטקסט גלוי בתוך ה-URL** (`https://ghp_...@github.com/...`). לא תוקן עדיין - מומלץ לסובב את הטוקן ב-GitHub ולהגדיר remote מחדש בלי טוקן בתוך ה-URL (ר' [[core/env]] לאן שמקומם האמיתי).
+- **העלאת מדריך בודד לפרודקשן:** ב-staging יש קומיטים שלא אושרו, ומיזוג בתוך iCloud נתקע בטיימאאוט. עושים cherry-pick של קומיטי המדריך ל-git worktree זמני מחוץ ל-iCloud על `origin/master`, ומשם push (ר' [[agents/mine/system/shahar-website-edit/SKILL]] שלב 5).
+- `_infra/dist/` נוצר אוטומטית. לעולם לא לערוך שם. אין קבצי גרסאות - הגיט הוא ההיסטוריה.
+- **כל דף חדש כולל פוטר משפטי ותוסף נגישות** (חוק ישראלי): שורה אחת לפני `</body>`:
+  `<script src="/legal-kit.js" defer></script>`. דף עם מעקב (Pixel, Clarity) צריך גם באנר עוגיות מלא.
+- **ה-remote של גיט חושף GitHub PAT בטקסט גלוי ב-URL.** לא תוקן - לסובב את הטוקן ב-GitHub
+  ולהגדיר remote מחדש בלעדיו (ר' [[core/env]]).
 
 ## קשור
-[[projects/website/status|status]] · [[core/brand/colors]] · [[core/design-refs/README]] · [[projects/dashboard/CLAUDE]] · [[projects/campaign/CLAUDE]]
+[[projects/website/status|status]] · [[projects/website/structure|structure]] · [[core/brand/colors]] · [[core/design-refs/README]] · [[marketing/campaign/dashboard/README]] · [[marketing/campaign/CLAUDE]]

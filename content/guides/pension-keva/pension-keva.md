@@ -1,6 +1,6 @@
 ---
 type: guide
-status: draft
+status: active
 tags: [אתר, מדריך, מגנט-לידים, שחרור, פנסיה]
 updated: 2026-11-12
 keyword: פנסיה
@@ -8,9 +8,9 @@ keyword: פנסיה
 
 # פנסיה אחרי שחרור מקבע - /guides/pension-keva/
 
-**כתובת:** https://shaharfinance.com/guides/pension-keva/ (טרם עלה - מחכה לאישור שחר)
-**קובץ:** `index.html` + `screenshots/` (webp, הומרו מצילומי [[projects/website/content/guides/discharge/discharge|מדריך השחרור]]). שיתוף: `og/pension-keva.jpg`.
-**עיצוב:** לפי [[projects/website/content/guides/altshuler-account/CLAUDE|altshuler-account]] - רקע לבן, Assistant, כותרת עם שורה זהובה, "בקצרה", אזהרה בהתחלה ובסוף.
+**כתובת:** https://shaharfinance.com/guides/pension-keva/ (עלה לפרודקשן 2026-11-12, רק הקומיט של המדריך, בלי שאר מה שבסטייג'ינג)
+**קובץ:** `index.html` + `screenshots/` (webp, הומרו מצילומי [[projects/website/content/guides/discharge/discharge|מדריך השחרור]]). שיתוף: `og/pension-keva.jpg` (נייבי + זהב + avatar).
+**עיצוב:** הסגנון הנייבי של המדריכים ([[core/brand/colors]]), שכפול של [[projects/website/content/guides/bituach-leumi/bituach-leumi|bituach-leumi]]. תמונת הפרופיל בסיום נטענת מ-`/guides/bituach-leumi/shahar-avatar`.
 **הסרטון שמוביל לכאן:** [[marketing/video/rendered/pension-keva|pension-keva]].
 
 ## מה בדף
